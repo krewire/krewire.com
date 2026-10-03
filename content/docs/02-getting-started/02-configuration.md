@@ -147,7 +147,9 @@ hand is never duplicated. Cache busting uses `?v=<project version>`.
   paint; `body` appends them at the end of `<body>` instead.
 - **`exclude`:** Asset names, base names, or globs that must never be injected.
 - **`order`:** Pins one asset to a cascade layer, when the default position is
-  wrong for your project.
+  wrong for your project. An unrecognized layer name is reported as a build
+  warning and the default order is kept, so a typo is visible without failing
+  the build.
 
 Assets are **not** injected alphabetically — alphabetical order silently loads
 book content before the utilities meant to override it. They load in cascade
