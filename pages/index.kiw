@@ -1,5 +1,5 @@
 ---
-title: "Krewire — One Go Framework for Every Workload"
+title: "Krewire — Modular Go Libraries for Every Workload"
 description: "End-to-end digital SDLC ecosystem in Go — secure, sustainable, scalable. One CLI kiw, one config krewire.yaml, every workload: app, cli, site, book, worker, service, infra, runtime."
 layout: Landing
 ---
@@ -22,7 +22,7 @@ layout: Landing
         <!-- Headline -->
         <h1 class="font-black tracking-tighter leading-tight mb-4 text-fg dark:text-fg-dark"
             style="font-size:clamp(32px,7vw,56px); letter-spacing:-0.04em">
-          One Go Framework.<br>Every Workload.
+          Modular Go Libraries.<br>Every Workload.
         </h1>
 
         <!-- Lead -->
@@ -128,7 +128,7 @@ layout: Landing
   <div class="container-site">
     <div class="section-head">
       <span class="badge badge-primary mb-3">Unified Workload Engine</span>
-      <h2>One Framework. Eight Workloads.</h2>
+      <h2>Modular Libraries. Eight Workloads.</h2>
       <p>Stop assembling disparate frameworks for web, CLI, background queues, and infra. Krewire provides unified ergonomics, shared configuration, and zero context switching.</p>
     </div>
 

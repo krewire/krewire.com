@@ -8,7 +8,7 @@ date: "2026-09-29"
 
 Modern software engineering is plagued by **toolchain fragmentation**. Building a production web service typically forces engineering teams to juggle three or four programming languages, disparate configuration formats, and disconnected build pipelines.
 
-Krewire solves this problem by offering **One Go Framework for Every Workload**.
+Krewire solves this problem by offering **Modular Go Libraries for Every Workload**.
 
 ---
 

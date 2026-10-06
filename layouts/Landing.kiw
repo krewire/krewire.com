@@ -5,20 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
   <title>{{.Title}}</title>
-  <meta name="description" content="Unified Go Framework for every workload — app, cli, site, book, worker, service, infra, runtime. One CLI kiw, one config krewire.yaml.">
+  <meta name="description" content="Modular Go libraries for every workload — app, cli, site, book, worker, service, infra, runtime. One CLI kiw, one config krewire.yaml.">
   <link rel="canonical" href="https://krewire.com/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <!-- OpenGraph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="{{.Title}}">
-  <meta property="og:description" content="Unified Go Framework for every workload — app, cli, site, book, worker, service, infra, runtime. One CLI kiw, one config krewire.yaml.">
+  <meta property="og:description" content="Modular Go libraries for every workload — app, cli, site, book, worker, service, infra, runtime. One CLI kiw, one config krewire.yaml.">
   <meta property="og:url" content="https://krewire.com/">
   <meta property="og:site_name" content="Krewire">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="{{.Title}}">
-  <meta name="twitter:description" content="Unified Go Framework for every workload — app, cli, site, book, worker, service, infra, runtime. One CLI kiw, one config krewire.yaml.">
+  <meta name="twitter:description" content="Modular Go libraries for every workload — app, cli, site, book, worker, service, infra, runtime. One CLI kiw, one config krewire.yaml.">
 
 </head>
 <body>

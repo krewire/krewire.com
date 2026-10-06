@@ -39,7 +39,7 @@ die()     { printf "${RED}${BLD}  ✗${RST}  %s\n" "$*" >&2; exit 1; }
 # ── Banner ───────────────────────────────────────────────────────────────────
 printf "\n"
 printf "${BLD}  Krewire kiw Installer${RST}\n"
-printf "  One Go Framework for Every Workload\n"
+printf "  Modular Go Libraries for Every Workload\n"
 printf "  https://krewire.com\n\n"
 
 # ── Fetch helper (curl or wget) ───────────────────────────────────────────────

@@ -1,6 +1,6 @@
 ---
 title: "Overview"
-description: "Welcome to Krewire — One Go Framework for Every Workload. Learn the core architecture, philosophy, workloads, and developer workflows."
+description: "Welcome to Krewire — Modular Go Libraries for Every Workload. Learn the core architecture, philosophy, workloads, and developer workflows."
 date: "2026-09-29"
 ---
 
@@ -8,7 +8,7 @@ date: "2026-09-29"
 
 Welcome to the **Krewire Documentation**.
 
-**Krewire** is an open-source, end-to-end **digital SDLC ecosystem**: one Go-native path from specification to production operations, held to three pillars — **secure**, **sustainable**, and **scalable**. It provides a single language (**Go**), a single command-line interface (**`kiw`**), and a unified devtool configuration (**`krewire.yaml`**) to build, test, and deploy **eight distinct workloads**:
+**Krewire** is an open-source, end-to-end **digital SDLC ecosystem** delivered as **Modular Libraries**: independent, single-purpose Go packages you compose behind one CLI (**`kiw`**) and one unified configuration (**`krewire.yaml`**) to build, test, and deploy **eight distinct workloads**:
 
 1. **Fullstack Web Monoliths (`app`)**
 2. **Terminal Interfaces & TUIs (`cli`)**

@@ -60,7 +60,7 @@ Inspiration (not plagiarism): `laravel.com` distributes **laravel new**, code sn
 | KRW-LAND-012 | `layouts/Base.kiw` provides HTML shell, `<head>` theme script (`localStorage krewire-theme`), nav, footer, content slot `{{.Content}}` | Must | MUST |
 | KRW-LAND-020 | Components: `Hero.kiw` (title, subtitle, code window, CTAs), `FeatureCard.kiw`, `Ecosystem.kiw`, `CodeWindow.kiw`, `Section.kiw` — invocable via `{{component "Hero" .}}` | Must | MUST |
 | KRW-LAND-021 | Styles: scoped by default, `:root` global for theme vars `--color-primary`, `--show-sun/moon` from `framework/ui`; collected to `assets/style.css` | Must | MUST |
-| KRW-LAND-030 | Content: hero (tagline "One Go Framework. Every Workload." — Krewire's own positioning, not borrowed taglines, `kiw new my-app`, CTA), 8 workload cards, code snippet (file-based routing + .kiw DSL), ecosystem links, community placeholder | Must | MUST |
+| KRW-LAND-030 | Content: hero (tagline "Modular Go Libraries. Every Workload." — Krewire's own positioning, not borrowed taglines, `kiw new my-app`, CTA), 8 workload cards, code snippet (file-based routing + .kiw DSL), ecosystem links, community placeholder | Must | MUST |
 | KRW-LAND-031 | Positioning: hero and a dedicated "Three Pillars" section state Krewire as an end-to-end digital SDLC ecosystem (specification → production operations) held to three pillars — secure · sustainable · scalable — referencing the canonical definitions in `internal/docs/project-vision.md` rather than restating them | Must | MUST |
 | KRW-LAND-040 | `public/` assets (favicon, logo) copied verbatim; no extra toolchain | Must | MUST |
 | KRW-LAND-050 | `krewire build` in repo root builds deterministic `site/`; `krewire serve` previews locally | Must | MUST |
@@ -99,7 +99,7 @@ Inspiration (not plagiarism): `laravel.com` distributes **laravel new**, code sn
 
 ## 7. Testing & Verification Plan
 
-- Unit: `krewire build` in repo root → `site/index.html` contains "One Go Framework", workload names, `data-kiw-component="Hero"`, `data-kiw-layout="Base"`; `site/assets/style.css` contains scoped selectors; `curl` readable without JS
+- Unit: `krewire build` in repo root → `site/index.html` contains "Modular Go Libraries", workload names, `data-kiw-component="Hero"`, `data-kiw-layout="Base"`; `site/assets/style.css` contains scoped selectors; `curl` readable without JS
 - Gates: `gofmt -l .` (no Go in repo, N/A), `kiw build` deterministic, `site/` size check
 
 ## 8. Rollout
