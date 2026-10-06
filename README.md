@@ -1,4 +1,4 @@
-# Krewire — krewire/krewire
+# Krewire — krewire/krewire.com
 
 Source for the unified Krewire site (landing + docs), **100% built with Krewire** (`site` workload, file-based `.kiw`).
 
@@ -24,7 +24,7 @@ pages/docs/[slug].kiw    → /docs/:slug  (from content/docs/*.md)
 
 ## Deploy
 
-- **Source:** `krewire/krewire` `main` (this repo)
+- **Source:** `krewire/krewire.com` `main` (this repo)
 - **Production:** built output will be deployed to the Krewire-hosted machine with Docker; domain configuration is managed separately.
 
 The `main` branch is the source of truth. The production deployment is independent of `krewire/krewire.github.io`.

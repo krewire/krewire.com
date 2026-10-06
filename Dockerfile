@@ -5,7 +5,7 @@ FROM nginx:alpine@sha256:df221db836e1754089190208cee7eeda94f233197056426eda74a43
 
 LABEL org.opencontainers.image.title="krewire-web" \
       org.opencontainers.image.description="Krewire static documentation and landing site" \
-      org.opencontainers.image.source="https://github.com/krewire/krewire" \
+      org.opencontainers.image.source="https://github.com/krewire/krewire.com" \
       org.opencontainers.image.version="v0.1.0" \
       org.opencontainers.image.licenses="MIT"
 

@@ -11,7 +11,7 @@
 
 ## 1. Summary
 
-Build `krewire/krewire` (public repo) as the **unified site** for the Krewire ecosystem — **landing + documentation** — **100% built with the ecosystem itself** (file-based `.kiw` DSL, `krewire.yaml`, `pages/`/`components/`/`layouts/`/`content/`/`public/` → `krewire build` → `site/`), inspired by `laravel.com`'s clarity but Go-native and docs-ready. The site proves the `site` workload is production-ready for both marketing and long-form docs, validates the static-site pipeline (file-based routing, scoped CSS, theme toggle, asset hashing, content collections), and is prepared for deployment to the Krewire-hosted production machine via Docker — not too narrowly scoped to a one-page landing. It also positions Krewire as an end-to-end digital SDLC ecosystem (specification → production operations) held to three pillars — secure, sustainable, scalable — through a dedicated "Three Pillars" section on the landing page.
+Build `krewire/krewire.com` (public repo) as the **unified site** for the Krewire ecosystem — **landing + documentation** — **100% built with the ecosystem itself** (file-based `.kiw` DSL, `krewire.yaml`, `pages/`/`components/`/`layouts/`/`content/`/`public/` → `krewire build` → `site/`), inspired by `laravel.com`'s clarity but Go-native and docs-ready. The site proves the `site` workload is production-ready for both marketing and long-form docs, validates the static-site pipeline (file-based routing, scoped CSS, theme toggle, asset hashing, content collections), and is prepared for deployment to the Krewire-hosted production machine via Docker — not too narrowly scoped to a one-page landing. It also positions Krewire as an end-to-end digital SDLC ecosystem (specification → production operations) held to three pillars — secure, sustainable, scalable — through a dedicated "Three Pillars" section on the landing page.
 
 ## 2. Background & Context
 
@@ -28,7 +28,7 @@ Inspiration (not plagiarism): `laravel.com` distributes **laravel new**, code sn
 ## 4. Goals & Non-Goals
 
 ### Goals
-- G1 — Ship `krewire/krewire` public repo as the **source** for the unified site; deploy the built `site/` to the Krewire production machine with Docker, using a domain configured separately.
+- G1 — Ship `krewire/krewire.com` public repo as the **source** for the unified site; deploy the built `site/` to the Krewire production machine with Docker, using a domain configured separately.
 - G2 — Landing surface: elegant display typography, code snippet (`kiw new my-app && kiw build`), CTAs (Get Started → docs, View on GitHub), feature cards, ecosystem strip — not over-scoped to a single hero.
 - G3 — Documentation surface: file-based docs under `/docs` (getting-started, workload matrix, `.kiw` DSL) with sidebar nav, prose, code windows, callouts — same engine as landing, proving the site is **general-purpose**.
 - G4 — Reusable system: `layouts/Base.kiw` + docs-aware layout (`Docs.kiw`) and generic components (`Hero`, `FeatureCard`, `Ecosystem`, `CodeWindow`, `Section`, `Prose`, `Callout`, `DocNav`) — landing and docs share the same design tokens.
@@ -54,7 +54,7 @@ Inspiration (not plagiarism): `laravel.com` distributes **laravel new**, code sn
 
 | ID | Requirement | Priority | RFC 2119 |
 |----|-------------|----------|----------|
-| KRW-LAND-001 | Repo `krewire/krewire` is public; `main` holds sources (`krewire.yaml`, `pages/`, `components/`, `layouts/`, `public/`, `docs/specs/`); `gh-pages` holds built `site/` (index.html, assets) | Must | MUST |
+| KRW-LAND-001 | Repo `krewire/krewire.com` is public; `main` holds sources (`krewire.yaml`, `pages/`, `components/`, `layouts/`, `public/`, `docs/specs/`); `gh-pages` holds built `site/` (index.html, assets) | Must | MUST |
 | KRW-LAND-010 | `krewire.yaml` declares `project.kind: site`, `title`, `description`, `theme` (light #ff6b00 / dark #ff8c42 per `framework/ui`) | Must | MUST |
 | KRW-LAND-011 | `pages/index.kiw` is the landing; routes extensionless (`/` → `index.html`), no trailing slashes | Must | MUST |
 | KRW-LAND-012 | `layouts/Base.kiw` provides HTML shell, `<head>` theme script (`localStorage krewire-theme`), nav, footer, content slot `{{.Content}}` | Must | MUST |
@@ -104,7 +104,7 @@ Inspiration (not plagiarism): `laravel.com` distributes **laravel new**, code sn
 
 ## 8. Rollout
 
-- Phase: Spec draft → scaffold `krewire/krewire` (krewire.yaml + pages/layouts/components/public) → `kiw build` → verify `site/` → push `main` → build and deploy the site to the Krewire production machine with Docker
+- Phase: Spec draft → scaffold `krewire/krewire.com` (krewire.yaml + pages/layouts/components/public) → `kiw build` → verify `site/` → push `main` → build and deploy the site to the Krewire production machine with Docker
 
 ## 9. Open Questions
 

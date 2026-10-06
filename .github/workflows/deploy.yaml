@@ -205,7 +205,7 @@ jobs:
             PREV_ID="$(docker inspect --format='{{.Id}}' krewire-web:previous 2>/dev/null || true)"
 
             echo "▶ Restarting container..."
-            cd ~/workspace/krewire/krewire
+            cd ~/workspace/krewire/krewire.com
             docker compose up -d --no-build
 
             echo "▶ Waiting for container to become healthy..."
