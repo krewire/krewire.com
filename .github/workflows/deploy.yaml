@@ -39,26 +39,9 @@ jobs:
 
       - name: Install kiw CLI
         run: |
-          # Build kiw from the ecosystem's own sources rather than installing a
-          # published tag. `go install ...@v0.1.0` would resolve framework/libs/
-          # mdbind from the module proxy, i.e. the released code, which does not
-          # contain the site fixes on this branch. Cloning the modules and
-          # joining them with a go.work pins every dependency to this commit.
-          for repo in libs framework kiw mdbind hub ship forge boost; do
-            git clone --depth 1 --branch main "https://github.com/krewire/${repo}.git" "${RUNNER_TEMP}/krewire/${repo}"
-          done
+          git clone --depth 1 --branch main "https://github.com/krewire/krewire.git" "${RUNNER_TEMP}/krewire"
           cd "${RUNNER_TEMP}/krewire"
-          go work init
-          go work use ./libs ./framework ./kiw ./mdbind ./hub ./ship ./forge ./boost
-          # The workspace root is not a git repository, so go.work.sum is not
-          # cloned with the modules. Without it Go falls back to the module
-          # proxy, which still serves a stale boost@v0.1.0 that declares itself
-          # as github.com/krewire/guild and every build then fails with a
-          # module-path mismatch. GOPRIVATE keeps Go off the proxy for these
-          # paths; workspace mode already binds them to these checkouts.
-          export GOPRIVATE="github.com/krewire/*"
-          export GONOSUMDB="github.com/krewire/*"
-          go build -o "${RUNNER_TEMP}/bin/kiw" ./kiw/cmd/kiw
+          go build -o "${RUNNER_TEMP}/bin/kiw" ./tools/kiw/cmd/kiw
           echo "${RUNNER_TEMP}/bin" >> "$GITHUB_PATH"
 
       - name: Verify kiw installation
