@@ -64,13 +64,13 @@ curl -fsSL https://krewire.com/scripts/install.sh | INSTALL_DIR="$HOME/bin" sh
 If you already have Go installed and `$GOPATH/bin` configured in your system `PATH`, install `kiw` directly from source:
 
 ```bash
-go install github.com/krewire/kiw/cmd/kiw@latest
+go install github.com/krewire/krewire/tools/kiw/cmd/kiw@latest
 ```
 
 To pin a specific version (e.g. `v0.1.0`):
 
 ```bash
-go install github.com/krewire/kiw/cmd/kiw@v0.1.0
+go install github.com/krewire/krewire/tools/kiw/cmd/kiw@v0.1.0
 ```
 
 #### Configuring Your PATH:

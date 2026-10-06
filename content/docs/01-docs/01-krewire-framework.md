@@ -1,52 +1,57 @@
 ---
-title: "Krewire Framework"
-description: "Comprehensive architectural deep dive into github.com/krewire/framework, the ecosystem modules, package layout, and modular monolith design."
+title: "Krewire Monorepo & Packages"
+description: "Comprehensive architectural deep dive into github.com/krewire/krewire, the 5 repositories, package layout, and modular monolith design."
 date: "2026-09-29"
 ---
 
-# Krewire Framework
+# Krewire Architecture & Packages
 
-The **Krewire Framework** (`github.com/krewire/framework`) is the foundational web and application engine powering the Krewire ecosystem. It provides an expressive, idiomatic Go toolset for building everything from lightweight static sites and command-line interfaces to high-throughput fullstack monoliths and distributed microservices.
+The **Krewire** core monorepo (`github.com/krewire/krewire`) is the foundational application engine powering the Krewire ecosystem. It provides an expressive, idiomatic Go toolset for building everything from lightweight static sites and command-line interfaces to high-throughput fullstack monoliths and distributed microservices.
 
 ---
 
-## 1. Ecosystem Architecture
+## 1. Ecosystem Architecture (5 Repositories)
 
-The Krewire project is divided into focused, decoupled repositories that compose cleanly:
+The Krewire project is divided into 5 focused repositories that compose cleanly:
 
+```text
+krewire/             # Core monorepo (github.com/krewire/krewire)
+├── packages/        # Modular domain packages (kern, web, app, ui, tui, runtime, sec, etc.)
+├── apps/            # First-party services (auth, krewire)
+├── tools/kiw/       # Developer CLI (kiw)
+└── templates/       # Templates (boost AI agent template, init, new)
+mdbind/              # Standalone Markdown book & docs builder (github.com/krewire/mdbind)
+internal/            # Private docs hub: ADRs, roadmaps, guides (github.com/krewire/internal)
+krewire.com/         # Production website & docs portal (site workload, .kiw DSL)
+krewire.github.io/   # Community portal & sponsorship hub
 ```
-krewire/
-├── framework/    # Core runtime & web engine (web, ui, tui, app, worker, service, infra)
-├── libs/         # Low-level standard-library utilities (core, kern, term, config, validation)
-├── kiw/          # Developer CLI, task runner, and .kiw DSL compiler (kiw new, dev, build, run, test)
-└── mdbind/       # Framework-free markdown manuscript & documentation book compiler
-```
 
-- **`github.com/krewire/libs`**: The standard-library-only foundation. Contains `libs/core` (declarative workload registry and core domain models), `libs/kern` (the imperative execution kernel), `libs/term` (terminal rendering utilities), `libs/config` (typed configuration loaders), and `libs/validation` (struct tag validator).
-- **`github.com/krewire/framework`**: The high-level developer framework. Combines HTTP routing, the component presentation layer, scoped styling, background worker harnesses, service discovery, and cloud IaC abstractions.
-- **`github.com/krewire/kiw`**: The developer CLI tool and `.kiw` DSL compiler (`github.com/krewire/kiw/dsl`). Drives scaffolding, compilation, hot reloading, test execution, and deployment pipelines.
-- **`github.com/krewire/mdbind`**: The independent markdown book engine powering `krewire.com/docs/` and standalone technical manuscripts.
+- **`github.com/krewire/krewire`**: The core monorepo combining low-level control plane (`packages/kern`), web engine (`packages/web`), presentation layer (`packages/ui`), developer CLI (`tools/kiw`), and templates.
+- **`github.com/krewire/mdbind`**: The independent markdown book engine powering documentation sites and standalone technical manuscripts.
+- **`github.com/krewire/internal`**: Private repository for architecture decision records, roadmaps, and guides.
+- **`krewire.com`**: The production website and docs portal.
+- **`krewire.github.io`**: The open-source community portal.
 
 ---
 
 ## 2. Package Organization
 
-In accordance with specification `KWF-ARCH-M8K2Q`, the framework follows a flat, opt-in package architecture. Workload capabilities are activated solely through imports—unused features add zero bytes to compiled binaries:
+In accordance with specification `KWF-ARCH-M8K2Q`, Krewire packages follow a flat, opt-in package architecture under `packages/`. Workload capabilities are activated solely through imports—unused features add zero bytes to compiled binaries:
 
 | Package | Purpose & Functionality |
 | :--- | :--- |
-| `framework/web` | Expressive HTTP routing, request/response lifecycle, middleware pipeline, CORS, CSRF, security headers, sessions, cookies, and `html/template` rendering. |
-| `framework/web/ssg` | File-based static site generator compiling `.kiw` files into optimized HTML/CSS assets. |
-| `framework/ui` | Theme engine, Light/Dark palettes, CSS design tokens, and scoped class scoping (`data-kiw-component`, `data-kiw-layout`). |
-| `framework/tui` | Command-line app harness, reactive terminal UI engine, POSIX flags, and `log/slog` structured logging. |
-| `kiw/dsl` | Compiler for the unified `.kiw` component format (HTML, CSS, Go, and Markdown in one file). |
-| `framework/assets` | Static asset manager with multi-source store (`dir` / `embed.FS`), ETag generation, Cache-Control headers, and fingerprint manifests. |
-| `framework/storage` | Key-value store abstraction with Memory and File backends, context cancellation, and DI provider binding. |
-| `framework/app` | Fullstack application assembly, Dependency Injection (DI) container, and modular monolith wiring (`KWF-5ZHQV`). |
-| `framework/worker` | Background jobs, asynchronous queues, cron schedules, exponential retry backoff, and dead-letter queues (DLQ). |
-| `framework/service` | Microservice contracts: service discovery (Consul, etcd, DNS), API gateway routing, rate limiting, circuit breaker, and OpenTelemetry (OTel) tracing. |
-| `framework/infra` | Provider-agnostic cloud infrastructure as code (IaC) declaring compute, databases, storage, and networking in pure Go. |
-| `framework/runtime` | WebAssembly client runtime (`GOOS=js GOARCH=wasm`) with Virtual DOM diffing and interactive island hydration. |
+| `packages/web` | Expressive HTTP routing, request/response lifecycle, middleware pipeline, CORS, CSRF, security headers, sessions, cookies, and `html/template` rendering. |
+| `packages/web/ssg` | File-based static site generator compiling `.kiw` files into optimized HTML/CSS assets. |
+| `packages/ui` | Theme engine, Light/Dark palettes, CSS design tokens, and scoped class scoping (`data-kiw-component`, `data-kiw-layout`). |
+| `packages/tui` | Command-line app harness, reactive terminal UI engine, POSIX flags, and structured logging. |
+| `packages/kiw` | Parser and compiler for the unified `.kiw` component format (HTML, CSS, Go, and Markdown in one file). |
+| `packages/assets` | Static asset manager with multi-source store (`dir` / `embed.FS`), ETag generation, Cache-Control headers, and fingerprint manifests. |
+| `packages/storage` | Key-value store abstraction with Memory and File backends, context cancellation, and DI provider binding. |
+| `packages/app` | Fullstack application assembly, Dependency Injection (DI) container, and modular monolith wiring (`KWF-5ZHQV`). |
+| `packages/cloud/worker` | Background jobs, asynchronous queues, cron schedules, exponential retry backoff, and dead-letter queues (DLQ). |
+| `packages/cloud/service` | Microservice contracts: service discovery, API gateway routing, rate limiting, circuit breaker, and tracing. |
+| `packages/cloud/infra` | Provider-agnostic cloud infrastructure as code (IaC) declaring compute, databases, storage, and networking in pure Go. |
+| `packages/runtime` | WebAssembly client runtime (`GOOS=js GOARCH=wasm`) with Virtual DOM diffing and interactive island hydration. |
 
 ---
 
@@ -149,7 +154,7 @@ package main
 import (
     "context"
     "net/http"
-    "github.com/krewire/framework/web"
+    "github.com/krewire/krewire/packages/web"
 )
 
 func main() {

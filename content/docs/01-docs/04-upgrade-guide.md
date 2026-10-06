@@ -12,7 +12,7 @@ This guide details the versioning policies, upgrade procedures, and configuratio
 
 ## 1. Versioning Strategy & Compatibility Promise
 
-Krewire strictly adheres to **Semantic Versioning (SemVer 2.0.0)** across all ecosystem repositories (`framework`, `libs`, `kiw`, `mdbind`):
+Krewire strictly adheres to **Semantic Versioning (SemVer 2.0.0)** across the ecosystem:
 
 $$\text{vMAJOR}.\text{MINOR}.\text{PATCH}$$
 
@@ -40,7 +40,7 @@ The script automatically downloads the latest release matching your CPU architec
 ### Option B: Via `go install`
 
 ```bash
-go install github.com/krewire/kiw/cmd/kiw@latest
+go install github.com/krewire/krewire/tools/kiw/cmd/kiw@latest
 ```
 
 ### Verify the Updated Version
@@ -55,14 +55,11 @@ Confirm that the CLI version matches the current release (`v0.1.0`+).
 
 ## 3. Upgrading Go Dependencies
 
-In your application repository, update the Krewire framework and library modules:
+In your application repository, update Krewire packages:
 
 ```bash
-# Update framework and runtime packages
-go get -u github.com/krewire/framework@latest
-
-# Update core standard-library utilities
-go get -u github.com/krewire/libs@latest
+# Update Krewire monorepo packages
+go get -u github.com/krewire/krewire@latest
 
 # Prune unused dependencies and sync go.sum
 go mod tidy
