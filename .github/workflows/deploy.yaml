@@ -190,6 +190,7 @@ jobs:
 
             echo "▶ Restarting container..."
             cd ~/workspace/krewire/krewire.com
+            docker rm -f krewire-web 2>/dev/null || true
             docker compose up -d --no-build
 
             echo "▶ Waiting for container to become healthy..."
@@ -212,6 +213,7 @@ jobs:
               echo "✗ Health check failed — rolling back to previous image."
               if [ -n "$PREV_ID" ]; then
                 docker tag "$PREV_ID" krewire-web:latest
+                docker rm -f krewire-web 2>/dev/null || true
                 docker compose up -d --no-build
                 echo "✓ Rollback complete."
               else
