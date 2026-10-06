@@ -8,7 +8,7 @@ date: "2026-09-29"
 
 Modern software engineering is rapidly shifting toward collaboration between human developers and autonomous AI coding agents. However, unguided AI agents frequently hallucinate architectures, break conventions, or introduce dependency bloat.
 
-Krewire solves this through **Krewire Boost** (`github.com/krewire/boost`)—an embedded agentic guild and configuration standard that equips AI agents with deep, intrinsic knowledge of the Krewire ecosystem, its 8 workloads, the `kiw` CLI, and strict spec-driven quality gates.
+Krewire solves this through **Krewire Boost** (`templates/boost` in `github.com/krewire/krewire`)—an embedded agentic guild and configuration standard that equips AI agents with deep, intrinsic knowledge of the Krewire ecosystem, its 8 workloads, the `kiw` CLI, and strict spec-driven quality gates.
 
 ---
 

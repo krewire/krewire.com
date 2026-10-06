@@ -43,12 +43,12 @@ Krewire unifies all of these workloads under **Go**, **`kiw`**, and **`krewire.y
 | :--- | :--- | :--- |
 | **Static Site** | Node.js + Astro / Hugo / Next.js | `kiw build --site` (Go SSG, zero client JS) |
 | **Documentation** | Docusaurus / GitBook / MkDocs | `kiw build --book` (`mdbind` markdown engine) |
-| **Web Monolith** | Laravel / Django / Next.js + Node | `kiw run` (`framework/app` single Go binary) |
-| **CLI & TUI** | Python Click / Node / Cobra | `kiw build --cli` (`framework/tui` reactive terminal) |
-| **Background Jobs** | Celery + Python + Redis / Sidekiq | `kiw run --worker` (`framework/worker` queues & cron) |
-| **Microservices** | Spring Boot / Express / Go kit | `kiw run --service` (`framework/service` gateway & OTel) |
-| **Cloud Infra** | Terraform / HCL / CloudFormation | `kiw infra apply` (`framework/infra` Go IaC declarations) |
-| **Client Frontend** | React / Vue / Angular + bundlers | `kiw build --wasm` (`framework/runtime` Go-to-WASM) |
+| **Web Monolith** | Laravel / Django / Next.js + Node | `kiw run` (`packages/app` single Go binary) |
+| **CLI & TUI** | Python Click / Node / Cobra | `kiw build --cli` (`packages/tui` reactive terminal) |
+| **Background Jobs** | Celery + Python + Redis / Sidekiq | `kiw run --worker` (`packages/cloud/worker` queues & cron) |
+| **Microservices** | Spring Boot / Express / Go kit | `kiw run --service` (`packages/cloud/service` gateway & OTel) |
+| **Cloud Infra** | Terraform / HCL / CloudFormation | `kiw infra apply` (`packages/cloud/infra` Go IaC declarations) |
+| **Client Frontend** | React / Vue / Angular + bundlers | `kiw build --wasm` (`packages/runtime` Go-to-WASM) |
 
 ---
 

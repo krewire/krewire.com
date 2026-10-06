@@ -215,7 +215,7 @@ Styles defined inside `<style>` blocks are **scoped to the component automatical
    ```html
    <div class="card" data-kiw-component="Card">...</div>
    ```
-2. The CSS compiler (`framework/web/ssg`) rewrites your selectors to bind strictly to that component's scope:
+2. The CSS compiler (`packages/web/ssg`) rewrites your selectors to bind strictly to that component's scope:
    ```css
    /* Your authored CSS */
    .card { padding: 20px; }
@@ -268,7 +268,7 @@ For content-heavy sections, you can write native Markdown directly within your `
 </section>
 ```
 
-The Krewire compiler automatically converts the Markdown block to clean, sanitized HTML at build time using `github.com/krewire/libs/markdown`.
+The Krewire compiler automatically converts the Markdown block to clean, sanitized HTML at build time using `packages/kiw` and `github.com/krewire/mdbind`.
 
 ---
 

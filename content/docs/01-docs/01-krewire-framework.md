@@ -144,7 +144,7 @@ func Load(ctx context.Context, p Props) (Props, error) {
 
 ## 5. Production HTTP Engine
 
-The `framework/web` package delivers a robust HTTP pipeline built directly on top of Go's `net/http` standard library:
+The `packages/web` package delivers a robust HTTP pipeline built directly on top of Go's `net/http` standard library:
 
 ### Expressive Routing & Middleware
 

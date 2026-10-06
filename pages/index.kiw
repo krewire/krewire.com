@@ -206,7 +206,7 @@ layout: Landing
           <span class="badge badge-muted text-2xs font-mono">Async</span>
         </div>
         <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark group-hover:text-primary transition-colors">worker</h3>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed flex-1 mb-3">Asynchronous job queues, scheduled cron tasks, retry policies, backoff timers, and dead-letter queues via <code class="code-inline">framework/worker</code>.</p>
+        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed flex-1 mb-3">Asynchronous job queues, scheduled cron tasks, retry policies, backoff timers, and dead-letter queues via <code class="code-inline">packages/cloud/worker</code>.</p>
         <div class="mt-auto flex items-center justify-between gap-2 pt-2">
           <div class="px-2.5 py-1.5 rounded-md w-fit bg-bg-2 dark:bg-bg-dark-2" style="border:1.5px solid var(--border); box-shadow:1.5px 1.5px 0 var(--border)">
             <code class="font-mono text-xs font-extrabold text-fg dark:text-fg-dark">kiw worker</code>

@@ -184,7 +184,7 @@ curl -fsSL https://krewire.com/scripts/install.sh | sh
 For Windows or Go-centric workflows, install directly via `go install`:
 
 ```bash
-go install github.com/krewire/kiw/cmd/kiw@latest
+go install github.com/krewire/krewire/tools/kiw/cmd/kiw@latest
 ```
 
 Verify that the CLI is accessible in your system `PATH`:
@@ -321,14 +321,14 @@ Krewire supports eight first-class workload archetypes. When bootstrapping a new
 
 | Workload Kind | CLI Scaffold Flag | Primary Purpose | Key Packages | Primary Output |
 | :--- | :--- | :--- | :--- | :--- |
-| **Static Site (`site`)** | `kiw new <name> --site` | Marketing websites, landing pages, blogs | `libs/kiw`, `libs/web` | Static HTML / CSS / Assets |
-| **Documentation (`book`)** | `kiw new <name> --book` | Technical books, engineering docs, manuals | `mdbind`, `libs/web` | Multi-chapter static portal |
-| **Fullstack App (`app`)** | `kiw new <name> --app` | SaaS platforms, dashboards, dynamic monoliths | `framework/web`, `libs/orm` | Single Go binary + embedded assets |
-| **Terminal Tool (`cli`)** | `kiw new <name> --cli` | Developer tools, system utilities, TUIs | `framework/tui`, `libs/cli` | Single standalone CLI binary |
-| **Background Worker (`worker`)** | `kiw init --worker` | Async job processors, queue consumers | `framework/queue`, `libs/cron`| Long-running worker daemon |
-| **Microservice (`service`)** | `kiw init --service` | High-throughput HTTP/gRPC API microservices | `framework/rpc`, `libs/telemetry` | Cloud-native service binary |
-| **Cloud Infra (`infra`)** | `kiw init --infra` | Declarative cloud topologies & provisioning | `framework/infra` | Infrastructure definition & plans |
-| **WASM Client (`runtime`)** | `kiw init --runtime` | Client-side reactive UI runtimes in Go | `framework/vdom`, Go WASM | `.wasm` binary + JS bridge |
+| **Static Site (`site`)** | `kiw new <name> --site` | Marketing websites, landing pages, blogs | `packages/kiw`, `packages/web/ssg` | Static HTML / CSS / Assets |
+| **Documentation (`book`)** | `kiw new <name> --book` | Technical books, engineering docs, manuals | `mdbind` | Multi-chapter static portal |
+| **Fullstack App (`app`)** | `kiw new <name> --app` | SaaS platforms, dashboards, dynamic monoliths | `packages/web`, `packages/app` | Single Go binary + embedded assets |
+| **Terminal Tool (`cli`)** | `kiw new <name> --cli` | Developer tools, system utilities, TUIs | `packages/tui` | Single standalone CLI binary |
+| **Background Worker (`worker`)** | `kiw init --worker` | Async job processors, queue consumers | `packages/cloud/worker` | Long-running worker daemon |
+| **Microservice (`service`)** | `kiw init --service` | High-throughput HTTP/gRPC API microservices | `packages/cloud/service` | Cloud-native service binary |
+| **Cloud Infra (`infra`)** | `kiw init --infra` | Declarative cloud topologies & provisioning | `packages/cloud/infra` | Infrastructure definition & plans |
+| **WASM Client (`runtime`)** | `kiw init --runtime` | Client-side reactive UI runtimes in Go | `packages/runtime` | `.wasm` binary + JS bridge |
 
 > [!TIP]
 > **Progressive Growth:** You can start with `--site` and later evolve your codebase into an `--app` or extract parts into a `--service` without rewriting your component files or folder layouts.

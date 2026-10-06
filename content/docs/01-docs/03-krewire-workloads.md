@@ -23,14 +23,14 @@ project:
 
 | Workload | Kind Name | Primary Use Case | CLI Execution | Key Packages |
 | :--- | :--- | :--- | :--- | :--- |
-| **Fullstack Monolith** | `app` | Web applications, SSR, JSON APIs, sessions, database access | `kiw run`, `kiw dev` | `framework/web`, `framework/app`, `framework/ui` |
-| **Terminal CLI & TUI** | `cli` | Command-line utilities, interactive developer TUIs | `kiw run`, `kiw new my-cli --cli` | `framework/tui`, `libs/term` |
-| **Static Site (SSG)** | `site` | Landing pages, marketing websites, blogs, portfolios | `kiw build`, `kiw dev` | `framework/web/ssg`, `kiw/dsl` |
-| **Technical Book** | `book` | Multi-chapter documentation, books, software manuals | `kiw build --target book`, `kiw dev` | `mdbind/book` |
-| **Background Worker** | `worker` | Asynchronous job queues, cron schedules, retries, DLQ | `kiw worker` | `framework/worker` |
-| **Microservice** | `service` | Distributed RPC/HTTP APIs, service registry, gateways | `kiw run`, `kiw dashboard` | `framework/service` |
-| **Cloud Infra (IaC)** | `infra` | Provider-agnostic cloud resource provisioning (AWS/K8s) | `kiw deploy --target infra` | `framework/infra` |
-| **WASM Frontend** | `runtime` | Go-compiled client WebAssembly with reactive VDOM | `kiw build --target wasm` | `framework/runtime` |
+| **Fullstack Monolith** | `app` | Web applications, SSR, JSON APIs, sessions, database access | `kiw run`, `kiw dev` | `packages/web`, `packages/app`, `packages/ui` |
+| **Terminal CLI & TUI** | `cli` | Command-line utilities, interactive developer TUIs | `kiw run`, `kiw new my-cli --cli` | `packages/tui` |
+| **Static Site (SSG)** | `site` | Landing pages, marketing websites, blogs, portfolios | `kiw build`, `kiw dev` | `packages/web/ssg`, `packages/kiw` |
+| **Technical Book** | `book` | Multi-chapter documentation, books, software manuals | `kiw build --target book`, `kiw dev` | `mdbind` |
+| **Background Worker** | `worker` | Asynchronous job queues, cron schedules, retries, DLQ | `kiw worker` | `packages/cloud/worker` |
+| **Microservice** | `service` | Distributed RPC/HTTP APIs, service registry, gateways | `kiw run`, `kiw dashboard` | `packages/cloud/service` |
+| **Cloud Infra (IaC)** | `infra` | Provider-agnostic cloud resource provisioning (AWS/K8s) | `kiw deploy --target infra` | `packages/cloud/infra` |
+| **WASM Frontend** | `runtime` | Go-compiled client WebAssembly with reactive VDOM | `kiw build --target wasm` | `packages/runtime` |
 
 ---
 
@@ -61,8 +61,8 @@ The `cli` workload is tailored for building command-line utilities, developer to
 
 ### Characteristics
 
-- **Terminal Model:** Powered by `framework/tui` with an Elm/Bubble Tea-inspired Model-Update-View architecture.
-- **Flag Parsing & Commands:** POSIX-compliant flag parser with automatic `--help` generation and exit-code discipline (`libs/core`).
+- **Terminal Model:** Powered by `packages/tui` with an Elm/Bubble Tea-inspired Model-Update-View architecture.
+- **Flag Parsing & Commands:** POSIX-compliant flag parser with automatic `--help` generation and exit-code discipline (`packages/kern/errs`).
 - **Structured Logging:** Integrated with Go's `log/slog` for structured, colorized terminal output.
 
 ### Scaffolding & Running
