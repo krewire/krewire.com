@@ -123,15 +123,15 @@
 
   /* ── Section header block ── */
   .section-head {
-    @apply max-w-prose mx-auto mb-8 text-center;
+    @apply w-full max-w-3xl mx-auto mb-6 sm:mb-8 md:mb-10 text-center flex flex-col items-center justify-center;
   }
   .section-head h2 {
-    @apply font-black tracking-tight leading-tight mb-3 text-fg dark:text-fg-dark;
+    @apply w-full max-w-3xl mx-auto text-center font-black tracking-tight leading-tight mb-2.5 sm:mb-3 text-fg dark:text-fg-dark;
     font-size: clamp(22px, 5vw, 36px);
     letter-spacing: -0.035em;
   }
   .section-head p {
-    @apply text-muted dark:text-muted-dark text-base leading-relaxed;
+    @apply w-full max-w-2xl mx-auto text-center text-muted dark:text-muted-dark text-sm sm:text-base leading-relaxed;
   }
 
   /* ── Buttons ── */

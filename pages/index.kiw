@@ -520,21 +520,21 @@ p  { font-size: 15px; color: var(--muted); }
      ===================================================================== -->
 <section class="w-full bg-bg dark:bg-bg-dark py-12 lg:py-16">
   <div class="container-site">
-    <div class="rounded-2xl text-center bg-bg-2 dark:bg-bg-dark-2 bg-dots px-5 py-12 md:px-10 lg:px-16 lg:py-16"
+    <div class="rounded-2xl text-center bg-bg-2 dark:bg-bg-dark-2 bg-dots px-5 py-10 sm:py-12 md:px-10 lg:px-16 lg:py-16 flex flex-col items-center justify-center"
          style="border:var(--pop-border); box-shadow:var(--pop-shadow-lg)">
       <span class="badge badge-primary mb-4">Ready to Build</span>
-      <h2 class="font-black tracking-tight mb-3 text-fg dark:text-fg-dark"
+      <h2 class="w-full max-w-2xl mx-auto font-black tracking-tight mb-3 text-fg dark:text-fg-dark text-center"
           style="font-size:clamp(22px,5vw,36px); letter-spacing:-0.03em">
         Start Building with Krewire Today
       </h2>
-      <p class="text-base text-muted dark:text-muted-dark leading-relaxed mx-auto mb-7" style="max-width:640px">
+      <p class="w-full max-w-xl mx-auto text-base text-muted dark:text-muted-dark leading-relaxed mb-7 text-center">
         Start with a lightweight static site, scale to a web monolith, then to distributed cloud services — one repository, one CLI, one configuration.
       </p>
-      <div class="flex flex-col sm:flex-row gap-3 justify-center mb-6">
+      <div class="flex flex-col sm:flex-row gap-3 justify-center mb-6 w-full sm:w-auto">
         <Button Variant="primary" Size="lg" Href="/getting-started">Get Started — 5 Min →</Button>
         <Button Variant="outline" Size="lg" Href="https://github.com/krewire/krewire.com" Target="_blank"><span>★</span> Star on GitHub</Button>
       </div>
-      <div class="max-w-md mx-auto text-left">
+      <div class="w-full max-w-md mx-auto text-left">
         <Terminal Command="kiw new my-app --site &amp;&amp; cd my-app &amp;&amp; kiw dev" Class="bg-bg dark:bg-bg-dark" />
       </div>
     </div>
