@@ -8,7 +8,7 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 </head>
 <body>
-  <Navbar ShowSidebarToggle=true Version=.Version />
+  <Navbar ShowSidebarToggle=true ShowLangToggle=true Version=.Version />
   <div class="site-layout" id="site-layout">
     <Sidebar Title="Navigate" />
     <main class="site-main">{{.Content}}</main>
