@@ -15,6 +15,7 @@ module.exports = {
       md: "768px",
       lg: "1024px",
       xl: "1280px",
+      "2xl": "1536px",
     },
     extend: {
       colors: {
@@ -67,7 +68,8 @@ module.exports = {
         "6xl": ["56px", { lineHeight: "1.05" }],
       },
       maxWidth: {
-        container: "88rem",
+        container: "108rem",
+        "container-wide": "120rem",
         prose: "760px",
       },
       boxShadow: {

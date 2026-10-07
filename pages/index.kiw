@@ -26,12 +26,12 @@ layout: Landing
         </h1>
 
         <!-- Lead -->
-        <p class="text-sm sm:text-base md:text-lg text-muted dark:text-muted-dark leading-relaxed mb-5 max-w-xl">
+        <p class="text-sm sm:text-base md:text-lg text-muted dark:text-muted-dark leading-relaxed mb-5 max-w-xl lg:max-w-2xl xl:max-w-none">
           Krewire is an end-to-end <b class="text-fg dark:text-fg-dark">digital SDLC ecosystem</b> — from the first line of the spec to production operations — built on three pillars: <b class="text-fg dark:text-fg-dark">secure</b>, <b class="text-fg dark:text-fg-dark">sustainable</b>, and <b class="text-fg dark:text-fg-dark">scalable</b>. From single-binary web monoliths to interactive TUIs, high-speed static sites, book pipelines, background workers, microservices, cloud infra, and Go WebAssembly runtimes — build everything in Go with one CLI <code class="code-inline">kiw</code> and zero JS fatigue.
         </p>
 
         <!-- Quick terminal: install first -->
-        <div class="mb-5 w-full max-w-xl flex flex-col gap-2">
+        <div class="mb-5 w-full max-w-xl lg:max-w-2xl xl:max-w-none flex flex-col gap-2">
           <Terminal Command="curl -fsSL https://krewire.com/scripts/install.sh | sh" />
           <Terminal Command="kiw new my-app --site &amp;&amp; cd my-app &amp;&amp; kiw dev" PromptColor="muted" />
         </div>
@@ -534,7 +534,7 @@ p  { font-size: 15px; color: var(--muted); }
         <Button Variant="primary" Size="lg" Href="/getting-started">Get Started — 5 Min →</Button>
         <Button Variant="outline" Size="lg" Href="https://github.com/krewire/krewire.com" Target="_blank"><span>★</span> Star on GitHub</Button>
       </div>
-      <div class="w-full max-w-md mx-auto text-left">
+      <div class="w-full max-w-md sm:max-w-lg md:max-w-xl mx-auto text-left">
         <Terminal Command="kiw new my-app --site &amp;&amp; cd my-app &amp;&amp; kiw dev" Class="bg-bg dark:bg-bg-dark" />
       </div>
     </div>
