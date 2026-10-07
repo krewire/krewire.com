@@ -27,7 +27,7 @@
   <Navbar ShowSidebarToggle=false Version=.Version />
 
   <!-- PAGE CONTENT -->
-  <main id="main" class="w-full min-w-0 flex-1">{{.Content}}</main>
+  <main id="main" class="w-full min-w-0 flex-1 max-w-none">{{.Content}}</main>
 
   <!-- FOOTER -->
   <Footer Variant="full" Version=.Version />
@@ -85,5 +85,11 @@
   --shadow: var(--pop-shadow);
   --show-sun: none;
   --show-moon: inline;
+}
+
+#main {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
 }
 </style>
