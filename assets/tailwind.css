@@ -71,7 +71,7 @@
   html { scroll-behavior: smooth; }
 
   body {
-    @apply m-0 font-sans bg-bg dark:bg-bg-dark text-fg dark:text-fg-dark
+    @apply m-0 w-full min-w-0 font-sans bg-bg dark:bg-bg-dark text-fg dark:text-fg-dark
            leading-relaxed antialiased overflow-x-hidden;
   }
 
@@ -86,7 +86,7 @@
 
   /* ── Container ── */
   .container-site {
-    @apply max-w-container mx-auto px-4 sm:px-6 lg:px-8;
+    @apply w-full min-w-0 max-w-container mx-auto px-4 sm:px-6 md:px-8 lg:px-10;
   }
 
   /* ── Pop shadow (uses CSS var so dark-mode override works) ── */
@@ -172,7 +172,7 @@
 
   /* ── Card ── */
   .card {
-    @apply flex flex-col bg-bg dark:bg-bg-dark rounded-xl p-5 transition-all duration-150;
+    @apply flex flex-col w-full min-w-0 bg-bg dark:bg-bg-dark rounded-xl p-4 sm:p-5 transition-all duration-150;
     border: var(--pop-border);
     box-shadow: var(--pop-shadow);
   }

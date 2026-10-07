@@ -7,37 +7,37 @@ layout: Landing
 <!-- =====================================================================
      HERO
      ===================================================================== -->
-<section class="w-full bg-bg dark:bg-bg-dark bg-dots py-10 md:py-14 lg:py-20" style="border-bottom:var(--pop-border)">
+<section class="w-full bg-bg dark:bg-bg-dark bg-dots py-8 sm:py-12 md:py-16 lg:py-20" style="border-bottom:var(--pop-border)">
   <div class="container-site">
-    <div class="flex flex-col md:grid md:grid-cols-2 md:items-center gap-8 lg:gap-12">
+    <div class="flex flex-col md:grid md:grid-cols-2 md:items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12">
 
       <!-- Copy -->
-      <div class="min-w-0">
+      <div class="min-w-0 w-full">
         <!-- Eyebrow -->
-        <div class="badge badge-primary mb-4">
+        <div class="badge badge-primary mb-3 sm:mb-4">
           <span>◈</span>
           <span>End-to-End Digital SDLC Ecosystem · v0.1.0 · Open Source</span>
         </div>
 
         <!-- Headline -->
-        <h1 class="font-black tracking-tighter leading-tight mb-4 text-fg dark:text-fg-dark"
-            style="font-size:clamp(32px,7vw,56px); letter-spacing:-0.04em">
-          Modular Go Libraries.<br>Every Workload.
+        <h1 class="font-black tracking-tighter leading-tight mb-3 sm:mb-4 text-fg dark:text-fg-dark break-words"
+            style="font-size:clamp(30px,6.5vw,56px); letter-spacing:-0.04em">
+          Modular Go Libraries.<br class="hidden sm:inline">Every Workload.
         </h1>
 
         <!-- Lead -->
-        <p class="text-base text-muted dark:text-muted-dark leading-relaxed mb-5 max-w-lg">
+        <p class="text-sm sm:text-base md:text-lg text-muted dark:text-muted-dark leading-relaxed mb-5 max-w-xl">
           Krewire is an end-to-end <b class="text-fg dark:text-fg-dark">digital SDLC ecosystem</b> — from the first line of the spec to production operations — built on three pillars: <b class="text-fg dark:text-fg-dark">secure</b>, <b class="text-fg dark:text-fg-dark">sustainable</b>, and <b class="text-fg dark:text-fg-dark">scalable</b>. From single-binary web monoliths to interactive TUIs, high-speed static sites, book pipelines, background workers, microservices, cloud infra, and Go WebAssembly runtimes — build everything in Go with one CLI <code class="code-inline">kiw</code> and zero JS fatigue.
         </p>
 
         <!-- Quick terminal: install first -->
-        <div class="mb-5 max-w-lg flex flex-col gap-2">
+        <div class="mb-5 w-full max-w-xl flex flex-col gap-2">
           <Terminal Command="curl -fsSL https://krewire.com/scripts/install.sh | sh" />
           <Terminal Command="kiw new my-app --site &amp;&amp; cd my-app &amp;&amp; kiw dev" PromptColor="muted" />
         </div>
 
         <!-- CTAs: stacked on mobile, row on sm+ -->
-        <div class="flex flex-col sm:flex-row gap-3 mb-4">
+        <div class="flex flex-col sm:flex-row gap-3 mb-4 w-full sm:w-auto">
           <Button Variant="primary" Size="lg" Href="/getting-started">Get Started — 5 Min →</Button>
           <Button Variant="outline" Size="lg" Href="#workloads">Explore 8 Workloads ↓</Button>
         </div>
@@ -46,7 +46,7 @@ layout: Landing
       </div>
 
       <!-- Art / Code window -->
-      <div class="min-w-0 w-full">
+      <div class="min-w-0 w-full mt-4 md:mt-0">
         <CodeWindow />
       </div>
     </div>
@@ -56,10 +56,10 @@ layout: Landing
 <!-- =====================================================================
      TRUST BAR
      ===================================================================== -->
-<section class="w-full bg-bg-2 dark:bg-bg-dark-2 py-3.5" style="border-bottom:var(--pop-border)">
-  <div class="container-site flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+<section class="w-full bg-bg-2 dark:bg-bg-dark-2 py-3 sm:py-3.5 md:py-4" style="border-bottom:var(--pop-border)">
+  <div class="container-site flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 md:gap-6">
     <span class="badge badge-secondary shrink-0">Unified Go Toolchain</span>
-    <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-semibold text-muted dark:text-muted-dark">
+    <div class="flex flex-wrap items-center gap-x-2.5 sm:gap-x-3.5 md:gap-x-4 gap-y-1 text-xs sm:text-xs md:text-sm font-semibold text-muted dark:text-muted-dark">
       <span><b class="text-fg dark:text-fg-dark">100%</b> Go Standard Library</span>
       <span class="hidden sm:inline opacity-40">·</span>
       <span><b class="text-fg dark:text-fg-dark">0</b> npm / 0 Bundlers</span>
@@ -76,7 +76,7 @@ layout: Landing
 <!-- =====================================================================
      THREE PILLARS
      ===================================================================== -->
-<section id="pillars" class="w-full bg-bg-2 dark:bg-bg-dark-2 bg-dots py-12 lg:py-16" style="border-bottom:var(--pop-border)">
+<section id="pillars" class="w-full bg-bg-2 dark:bg-bg-dark-2 bg-dots py-10 sm:py-12 md:py-14 lg:py-16" style="border-bottom:var(--pop-border)">
   <div class="container-site">
     <div class="section-head">
       <span class="badge badge-primary mb-3">Three Pillars</span>
@@ -84,8 +84,8 @@ layout: Landing
       <p>Krewire is an end-to-end digital SDLC ecosystem — from the first line of the specification to running production. Every capability must pass all three pillars before it ships, and each claim traces to a spec, a test, or a gate.</p>
     </div>
 
-    <!-- Grid: 1 col → md: 3 col -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-5">
+    <!-- Grid: 1 col on mobile → 2 col on sm → 3 col on md/lg -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 md:gap-5 lg:gap-6">
 
       <!-- Secure -->
       <div class="card">
@@ -108,7 +108,7 @@ layout: Landing
       </div>
 
       <!-- Scalable -->
-      <div class="card">
+      <div class="card sm:col-span-2 md:col-span-1">
         <div class="flex items-center justify-between gap-2 mb-3">
           <span class="icon-box bg-primary text-primary-content text-xl">⚡</span>
           <span class="badge badge-primary text-2xs font-mono">Pillar 03</span>
@@ -124,7 +124,7 @@ layout: Landing
 <!-- =====================================================================
      8 WORKLOADS
      ===================================================================== -->
-<section id="workloads" class="w-full bg-bg dark:bg-bg-dark py-12 lg:py-16" style="border-bottom:var(--pop-border)">
+<section id="workloads" class="w-full bg-bg dark:bg-bg-dark py-10 sm:py-12 md:py-14 lg:py-16" style="border-bottom:var(--pop-border)">
   <div class="container-site">
     <div class="section-head">
       <span class="badge badge-primary mb-3">Unified Workload Engine</span>
@@ -132,8 +132,8 @@ layout: Landing
       <p>Stop assembling disparate frameworks for web, CLI, background queues, and infra. Krewire provides unified ergonomics, shared configuration, and zero context switching.</p>
     </div>
 
-    <!-- Grid: 1 col → sm: 2 col → lg: 4 col -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <!-- Grid: 1 col on mobile → 2 col on sm/md → 4 col on lg -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-4 md:gap-5 lg:gap-5">
 
       <!-- 1. APP -->
       <a href="/docs/krewire-workloads#1-fullstack-monolith-app" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
@@ -270,7 +270,7 @@ layout: Landing
 <!-- =====================================================================
      FOUR STEPS
      ===================================================================== -->
-<section class="w-full bg-bg-2 dark:bg-bg-dark-2 bg-dots py-12 lg:py-16" style="border-bottom:var(--pop-border)">
+<section class="w-full bg-bg-2 dark:bg-bg-dark-2 bg-dots py-10 sm:py-12 md:py-14 lg:py-16" style="border-bottom:var(--pop-border)">
   <div class="container-site">
     <div class="section-head">
       <span class="badge badge-secondary mb-3">Developer Workflow</span>
@@ -278,8 +278,8 @@ layout: Landing
       <p>Install once, then scaffold, develop, and deploy — no toolchain fatigue, no breaking dependency trees.</p>
     </div>
 
-    <!-- Grid: 1 col → sm: 2 col → md: 4 col -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 lg:gap-5">
+    <!-- Grid: 1 col on mobile → 2 col on sm/md → 4 col on lg -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-4 md:gap-5 lg:gap-5">
 
       <!-- Step 1: Install -->
       <div class="card">
@@ -333,7 +333,7 @@ layout: Landing
 <!-- =====================================================================
      WHY KREWIRE
      ===================================================================== -->
-<section class="w-full bg-bg dark:bg-bg-dark py-12 lg:py-16" style="border-bottom:var(--pop-border)">
+<section class="w-full bg-bg dark:bg-bg-dark py-10 sm:py-12 md:py-14 lg:py-16" style="border-bottom:var(--pop-border)">
   <div class="container-site">
     <div class="section-head">
       <span class="badge badge-primary mb-3">Architecture &amp; Philosophy</span>
@@ -341,8 +341,8 @@ layout: Landing
       <p>Built for engineers who value compilation speed, predictable deployments, and maintainable software architecture.</p>
     </div>
 
-    <!-- Grid: 1 col → sm: 2 col → lg: 4 col -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <!-- Grid: 1 col on mobile → 2 col on sm/md → 4 col on lg -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-4 md:gap-5 lg:gap-5">
 
       <div class="card">
         <span class="icon-box bg-secondary text-secondary-content mb-4 text-xl">◈</span>
@@ -375,7 +375,7 @@ layout: Landing
 <!-- =====================================================================
      DSL SHOWCASE
      ===================================================================== -->
-<section class="w-full bg-bg-2 dark:bg-bg-dark-2 bg-dots py-12 lg:py-16" style="border-bottom:var(--pop-border)">
+<section class="w-full bg-bg-2 dark:bg-bg-dark-2 bg-dots py-10 sm:py-12 md:py-14 lg:py-16" style="border-bottom:var(--pop-border)">
   <div class="container-site">
     <div class="section-head">
       <span class="badge badge-secondary mb-3">Component DSL</span>
@@ -383,11 +383,11 @@ layout: Landing
       <p>The elegance of Svelte and Astro brought to Go. Frontmatter + HTML + scoped CSS in one intuitive file.</p>
     </div>
 
-    <!-- Grid: 1 col → md: 2 col -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-start">
+    <!-- Grid: 1 col on mobile/sm → 2 col on md/lg -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-10 items-start">
 
       <!-- Code panel -->
-      <div class="rounded-xl overflow-hidden" style="background:#0B1F3B; border:var(--pop-border); box-shadow:var(--pop-shadow-lg)">
+      <div class="w-full rounded-xl overflow-hidden min-w-0" style="background:#0B1F3B; border:var(--pop-border); box-shadow:var(--pop-shadow-lg)">
         <!-- Panel header -->
         <div class="flex items-center gap-2.5 px-4 py-3" style="background:#071426; border-bottom:var(--pop-border-thin)">
           <div class="flex gap-1.5">
@@ -398,7 +398,7 @@ layout: Landing
           <span class="ml-auto font-mono text-xs font-extrabold text-slate-400 tracking-widest uppercase">pages/index.kiw</span>
         </div>
         <!-- Code -->
-        <pre class="m-0 px-5 py-5 overflow-x-auto font-mono text-sm leading-relaxed" style="color:#FAF8F4"><code><span style="color:#64748b;font-style:italic">---</span>
+        <pre class="m-0 px-4 sm:px-5 py-4 sm:py-5 overflow-x-auto font-mono text-xs sm:text-sm leading-relaxed" style="color:#FAF8F4"><code><span style="color:#64748b;font-style:italic">---</span>
 <span style="color:#00D1C1;font-weight:700">title:</span> "Welcome to Krewire"
 <span style="color:#00D1C1;font-weight:700">layout:</span> Landing
 <span style="color:#64748b;font-style:italic">---</span>
@@ -456,7 +456,7 @@ p  { font-size: 15px; color: var(--muted); }
 <!-- =====================================================================
      COMPARISON MATRIX
      ===================================================================== -->
-<section class="w-full bg-bg dark:bg-bg-dark py-12 lg:py-16" style="border-bottom:var(--pop-border)">
+<section class="w-full bg-bg dark:bg-bg-dark py-10 sm:py-12 md:py-14 lg:py-16" style="border-bottom:var(--pop-border)">
   <div class="container-site">
     <div class="section-head">
       <span class="badge badge-primary mb-3">Stack Comparison</span>
@@ -464,45 +464,45 @@ p  { font-size: 15px; color: var(--muted); }
       <p>Compare the simplicity of an all-in-one Go toolchain against fragmented multi-language setups.</p>
     </div>
 
-    <div class="overflow-x-auto rounded-xl" style="border:var(--pop-border); box-shadow:var(--pop-shadow-lg); background:var(--bg)">
-      <table class="w-full text-left border-collapse text-sm">
+    <div class="w-full overflow-x-auto rounded-xl min-w-0" style="border:var(--pop-border); box-shadow:var(--pop-shadow-lg); background:var(--bg)">
+      <table class="w-full text-left border-collapse text-xs sm:text-sm">
         <thead>
           <tr style="border-bottom:var(--pop-border); background:var(--bg-2)">
-            <th class="py-3.5 px-4 font-black text-xs uppercase tracking-wider text-fg dark:text-fg-dark">Architecture Dimension</th>
-            <th class="py-3.5 px-4 font-black text-xs uppercase tracking-wider text-muted dark:text-muted-dark">Traditional Fragmented Stack</th>
-            <th class="py-3.5 px-4 font-black text-xs uppercase tracking-wider text-primary">Krewire Unified Go</th>
+            <th class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-black text-2xs sm:text-xs uppercase tracking-wider text-fg dark:text-fg-dark">Architecture Dimension</th>
+            <th class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-black text-2xs sm:text-xs uppercase tracking-wider text-muted dark:text-muted-dark">Traditional Fragmented Stack</th>
+            <th class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-black text-2xs sm:text-xs uppercase tracking-wider text-primary">Krewire Unified Go</th>
           </tr>
         </thead>
         <tbody class="divide-y" style="border-color:var(--border-subtle)">
           <tr>
-            <td class="py-3.5 px-4 font-bold text-fg dark:text-fg-dark">Toolchain &amp; Runtime</td>
-            <td class="py-3.5 px-4 text-muted dark:text-muted-dark">2–3 Languages (Go + Node.js/TS + Python/HCL)</td>
-            <td class="py-3.5 px-4 font-bold text-primary">100% Pure Go across all workloads</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark">Toolchain &amp; Runtime</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark">2–3 Languages (Go + Node.js/TS + Python/HCL)</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary">100% Pure Go across all workloads</td>
           </tr>
           <tr>
-            <td class="py-3.5 px-4 font-bold text-fg dark:text-fg-dark">Package Management</td>
-            <td class="py-3.5 px-4 text-muted dark:text-muted-dark"><code class="code-inline">go.mod</code> + <code class="code-inline">package.json</code> + npm/pnpm trees</td>
-            <td class="py-3.5 px-4 font-bold text-primary">Single <code class="code-inline">go.mod</code> (Zero npm / Zero JS)</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark">Package Management</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark"><code class="code-inline">go.mod</code> + <code class="code-inline">package.json</code> + npm/pnpm trees</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary">Single <code class="code-inline">go.mod</code> (Zero npm / Zero JS)</td>
           </tr>
           <tr>
-            <td class="py-3.5 px-4 font-bold text-fg dark:text-fg-dark">Developer CLI</td>
-            <td class="py-3.5 px-4 text-muted dark:text-muted-dark">Multiple: Air + npm + Cobra + Terraform</td>
-            <td class="py-3.5 px-4 font-bold text-primary">One binary CLI: <code class="code-inline">kiw</code></td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark">Developer CLI</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark">Multiple: Air + npm + Cobra + Terraform</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary">One binary CLI: <code class="code-inline">kiw</code></td>
           </tr>
           <tr>
-            <td class="py-3.5 px-4 font-bold text-fg dark:text-fg-dark">Configuration</td>
-            <td class="py-3.5 px-4 text-muted dark:text-muted-dark">Scattered (.air.toml, vite.config, tsconfig, Dockerfile)</td>
-            <td class="py-3.5 px-4 font-bold text-primary">Single unified <code class="code-inline">krewire.yaml</code></td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark">Configuration</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark">Scattered (.air.toml, vite.config, tsconfig, Dockerfile)</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary">Single unified <code class="code-inline">krewire.yaml</code></td>
           </tr>
           <tr>
-            <td class="py-3.5 px-4 font-bold text-fg dark:text-fg-dark">Component Styling</td>
-            <td class="py-3.5 px-4 text-muted dark:text-muted-dark">Tailwind CLI / PostCSS bundler pipeline</td>
-            <td class="py-3.5 px-4 font-bold text-primary">Native scoped <code class="code-inline">.kiw</code> components</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark">Component Styling</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark">Tailwind CLI / PostCSS bundler pipeline</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary">Native scoped <code class="code-inline">.kiw</code> components</td>
           </tr>
           <tr>
-            <td class="py-3.5 px-4 font-bold text-fg dark:text-fg-dark">Production Deployment</td>
-            <td class="py-3.5 px-4 text-muted dark:text-muted-dark">Heavy multi-stage Docker containers with Node layers</td>
-            <td class="py-3.5 px-4 font-bold text-primary">Single self-contained Go binary or static assets</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark">Production Deployment</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark">Heavy multi-stage Docker containers with Node layers</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary">Single self-contained Go binary or static assets</td>
           </tr>
         </tbody>
       </table>
@@ -518,16 +518,16 @@ p  { font-size: 15px; color: var(--muted); }
 <!-- =====================================================================
      FINAL CTA
      ===================================================================== -->
-<section class="w-full bg-bg dark:bg-bg-dark py-12 lg:py-16">
+<section class="w-full bg-bg dark:bg-bg-dark py-10 sm:py-12 md:py-14 lg:py-16">
   <div class="container-site">
-    <div class="rounded-2xl text-center bg-bg-2 dark:bg-bg-dark-2 bg-dots px-5 py-10 sm:py-12 md:px-10 lg:px-16 lg:py-16 flex flex-col items-center justify-center"
+    <div class="rounded-2xl text-center bg-bg-2 dark:bg-bg-dark-2 bg-dots px-4 py-8 sm:px-8 sm:py-10 md:px-12 md:py-14 lg:px-16 lg:py-16 flex flex-col items-center justify-center w-full"
          style="border:var(--pop-border); box-shadow:var(--pop-shadow-lg)">
-      <span class="badge badge-primary mb-4">Ready to Build</span>
-      <h2 class="w-full max-w-2xl mx-auto font-black tracking-tight mb-3 text-fg dark:text-fg-dark text-center"
+      <span class="badge badge-primary mb-3 sm:mb-4">Ready to Build</span>
+      <h2 class="w-full max-w-2xl mx-auto font-black tracking-tight mb-2.5 sm:mb-3 text-fg dark:text-fg-dark text-center"
           style="font-size:clamp(22px,5vw,36px); letter-spacing:-0.03em">
         Start Building with Krewire Today
       </h2>
-      <p class="w-full max-w-xl mx-auto text-base text-muted dark:text-muted-dark leading-relaxed mb-7 text-center">
+      <p class="w-full max-w-xl mx-auto text-sm sm:text-base text-muted dark:text-muted-dark leading-relaxed mb-6 sm:mb-7 text-center">
         Start with a lightweight static site, scale to a web monolith, then to distributed cloud services — one repository, one CLI, one configuration.
       </p>
       <div class="flex flex-col sm:flex-row gap-3 justify-center mb-6 w-full sm:w-auto">

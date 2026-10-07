@@ -21,13 +21,13 @@
   <meta name="twitter:description" content="Modular Go libraries for every workload — app, cli, site, book, worker, service, infra, runtime. One CLI kiw, one config krewire.yaml.">
 
 </head>
-<body>
+<body class="w-full min-w-0 flex flex-col min-h-screen">
 
   <!-- NAVBAR -->
   <Navbar ShowSidebarToggle=false Version=.Version />
 
   <!-- PAGE CONTENT -->
-  <main id="main">{{.Content}}</main>
+  <main id="main" class="w-full min-w-0 flex-1">{{.Content}}</main>
 
   <!-- FOOTER -->
   <Footer Variant="full" Version=.Version />

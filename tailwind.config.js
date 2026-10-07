@@ -67,7 +67,7 @@ module.exports = {
         "6xl": ["56px", { lineHeight: "1.05" }],
       },
       maxWidth: {
-        container: "80rem",
+        container: "88rem",
         prose: "760px",
       },
       boxShadow: {
