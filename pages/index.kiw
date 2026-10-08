@@ -40,7 +40,7 @@ layout: Landing
 
         <!-- CTAs: stacked on mobile, row on sm+ -->
         <div class="flex flex-col sm:flex-row gap-3 mb-4 w-full sm:w-auto">
-          <Button Variant="primary" Size="lg" Href="/getting-started"><span data-i18n="hero.cta_start">Get Started — 5 Min →</span></Button>
+          <Button Variant="primary" Size="lg" Href="/docs/getting-started"><span data-i18n="hero.cta_start">Get Started — 5 Min →</span></Button>
           <Button Variant="outline" Size="lg" Href="#workloads"><span data-i18n="hero.cta_workloads">Explore 8 Workloads ↓</span></Button>
         </div>
 
@@ -417,8 +417,8 @@ p  { font-size: 15px; color: var(--muted); }
 <span style="color:#39D353;font-weight:700">&lt;/style&gt;</span></code></pre>
         <!-- Panel footer -->
         <div class="flex flex-wrap gap-2.5 px-4 py-4" style="background:#071426; border-top:1.5px solid rgba(255,255,255,0.1)">
-          <Button Variant="primary" Size="sm" Href="/getting-started/dsl">Explore DSL Syntax →</Button>
-          <Button Variant="outline" Size="sm" Href="/getting-started">Read the Docs</Button>
+          <Button Variant="primary" Size="sm" Href="/docs/getting-started/dsl">Explore DSL Syntax →</Button>
+          <Button Variant="outline" Size="sm" Href="/docs/getting-started">Read the Docs</Button>
         </div>
       </div>
 
@@ -535,7 +535,7 @@ p  { font-size: 15px; color: var(--muted); }
         Start with a lightweight static site, scale to a web monolith, then to distributed cloud services — one repository, one CLI, one configuration.
       </p>
       <div class="flex flex-col sm:flex-row gap-3 justify-center mb-6 w-full sm:w-auto">
-        <Button Variant="primary" Size="lg" Href="/getting-started"><span data-i18n="cta.button">Get Started — 5 Min →</span></Button>
+        <Button Variant="primary" Size="lg" Href="/docs/getting-started"><span data-i18n="cta.button">Get Started — 5 Min →</span></Button>
         <Button Variant="outline" Size="lg" Href="https://github.com/krewire/krewire.com" Target="_blank"><span>★</span> <span data-i18n="cta.star">Star on GitHub</span></Button>
       </div>
       <div class="w-full max-w-md sm:max-w-lg md:max-w-xl mx-auto text-left">

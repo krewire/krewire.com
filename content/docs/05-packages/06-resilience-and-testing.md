@@ -10,7 +10,7 @@ Import paths:
 - `github.com/krewire/krewire/packages/resilience`
 - `github.com/krewire/krewire/packages/testing`
 
-Distributed systems and web applications fail over network boundaries. Krewire provides built-in resilience primitives to isolate failures and a testing framework that links test suites directly to formal specifications.
+Distributed systems and web applications fail over network boundaries. Krewire provides built-in resilience primitives to isolate failures and a testing library that links test suites directly to formal specifications.
 
 ---
 

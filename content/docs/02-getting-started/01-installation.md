@@ -118,7 +118,7 @@ kiw info
 
 ### 3. Compatibility Check
 
-Run `kiw compat` inside any Krewire project directory to verify that your local CLI matches the framework dependencies in `go.mod`:
+Run `kiw compat` inside any Krewire project directory to verify that your local CLI matches the package dependencies in `go.mod`:
 
 ```bash
 kiw compat

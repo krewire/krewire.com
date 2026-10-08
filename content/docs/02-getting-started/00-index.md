@@ -350,7 +350,7 @@ Keep these everyday `kiw` commands at your fingertips during development:
 | **`vet`** | `kiw vet` | Run standard Go static analysis (`go vet`) across the project. |
 | **`fmt`** | `kiw fmt --write` | Format all Go and `.kiw` component files according to conventions. |
 | **`boost`** | `kiw boost install [path]` | Install the Krewire Boost AI agent guild into the project. |
-| **`version`** | `kiw version` | Display current CLI and framework release versions. |
+| **`version`** | `kiw version` | Display current CLI and package release versions. |
 | **`info`** | `kiw info` | Print detailed project environment and diagnostic information. |
 | **`help`** | `kiw help [command]` | Display comprehensive documentation for any CLI command. |
 

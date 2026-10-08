@@ -5,60 +5,125 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  <!-- Chapter 1: Overview -->
+  <!-- Documentation Index -->
   <url>
     <loc>https://krewire.com/docs</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <!-- Chapter 1: Overview -->
   <url>
-    <loc>https://krewire.com/docs/krewire-framework</loc>
+    <loc>https://krewire.com/docs/overview</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://krewire.com/docs/why-krewire</loc>
+    <loc>https://krewire.com/docs/overview/why-krewire</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://krewire.com/docs/krewire-workloads</loc>
+    <loc>https://krewire.com/docs/overview/krewire-workloads</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://krewire.com/docs/upgrade-guide</loc>
+    <loc>https://krewire.com/docs/overview/upgrade-guide</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <!-- Chapter 2: Getting Started -->
   <url>
-    <loc>https://krewire.com/getting-started</loc>
+    <loc>https://krewire.com/docs/getting-started</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://krewire.com/getting-started/installation</loc>
+    <loc>https://krewire.com/docs/getting-started/installation</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://krewire.com/getting-started/configuration</loc>
+    <loc>https://krewire.com/docs/getting-started/configuration</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://krewire.com/getting-started/directory-structure</loc>
+    <loc>https://krewire.com/docs/getting-started/directory-structure</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://krewire.com/getting-started/agentic-development</loc>
+    <loc>https://krewire.com/docs/getting-started/agentic-development</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://krewire.com/getting-started/dsl</loc>
+    <loc>https://krewire.com/docs/getting-started/dsl</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Chapter 3: Workloads -->
+  <url>
+    <loc>https://krewire.com/docs/workloads</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://krewire.com/docs/workloads/app</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://krewire.com/docs/workloads/cli</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://krewire.com/docs/workloads/site</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://krewire.com/docs/workloads/book</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://krewire.com/docs/workloads/worker</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://krewire.com/docs/workloads/service</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://krewire.com/docs/workloads/infra</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://krewire.com/docs/workloads/runtime</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Chapter 4: CLI Reference -->
+  <url>
+    <loc>https://krewire.com/docs/cli-reference</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Chapter 5: Packages -->
+  <url>
+    <loc>https://krewire.com/docs/packages</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Chapter 6: Guides -->
+  <url>
+    <loc>https://krewire.com/docs/guides</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

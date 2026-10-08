@@ -164,7 +164,7 @@ Go Version:   go1.27.1 (linux/amd64)
 
 ### `kiw version`
 
-Print the version of the `kiw` CLI and underlying Krewire framework:
+Print the version of the `kiw` CLI and underlying Krewire packages:
 
 ```bash
 kiw version

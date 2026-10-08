@@ -54,8 +54,8 @@ Krewire unifies all of these workloads under **Go**, **`kiw`**, and **`krewire.y
 
 ## 3. The Three Pillars: Secure, Sustainable, Scalable
 
-Krewire is not only a web framework — it is an end-to-end **digital SDLC
-ecosystem**, from the first line of the specification (upstream) to production
+Krewire is not a monolithic framework — it is a suite of **modular Go libraries**
+and an end-to-end **digital SDLC ecosystem**, from the first line of the specification (upstream) to production
 operations and maintenance (downstream). Every capability it ships must pass
 three pillars before it lands:
 

@@ -31,18 +31,6 @@ This **Overview** chapter introduces you to the core philosophy, technical archi
     <div class="chapter-card-head">
       <span class="chapter-card-num">1.1</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/overview/krewire-framework">Krewire Framework <span class="arrow">→</span></a>
-      </h3>
-    </div>
-    <p class="chapter-card-desc">
-      Explore the modular monolith architecture, the package ecosystem (<code>framework</code>, <code>libs</code>, <code>kiw</code>, <code>mdbind</code>), and the core web engine.
-    </p>
-  </div>
-
-  <div class="chapter-card">
-    <div class="chapter-card-head">
-      <span class="chapter-card-num">1.2</span>
-      <h3 class="chapter-card-title">
         <a href="/docs/overview/why-krewire">Why Krewire? <span class="arrow">→</span></a>
       </h3>
     </div>
@@ -53,7 +41,7 @@ This **Overview** chapter introduces you to the core philosophy, technical archi
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">1.3</span>
+      <span class="chapter-card-num">1.2</span>
       <h3 class="chapter-card-title">
         <a href="/docs/overview/krewire-workloads">Krewire Workloads <span class="arrow">→</span></a>
       </h3>
@@ -65,13 +53,13 @@ This **Overview** chapter introduces you to the core philosophy, technical archi
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">1.4</span>
+      <span class="chapter-card-num">1.3</span>
       <h3 class="chapter-card-title">
         <a href="/docs/overview/upgrade-guide">Upgrade Guide <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Learn the SemVer zero-breakage promise, migration steps for <code>krewire.yaml</code> decoupling, and how to update CLI & framework dependencies.
+      Learn the SemVer zero-breakage promise, migration steps for <code>krewire.yaml</code> decoupling, and how to update CLI & packages dependencies.
     </p>
   </div>
 
@@ -123,6 +111,6 @@ Explore the comprehensive manual for the Krewire ecosystem:
 
 To begin building with Krewire, explore the subchapters in order:
 
-- Proceed to [**1.1 Krewire Framework →**](/docs/overview/krewire-framework)
+- Proceed to [**1.1 Why Krewire? →**](/docs/overview/why-krewire)
 - Jump to [**2. Getting Started →**](/docs/getting-started)
 - Or dive into [**3. Workloads in Depth →**](/docs/workloads)

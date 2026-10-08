@@ -261,7 +261,7 @@ For content-heavy sections, you can write native Markdown directly within your `
   <h2>Release Notes</h2>
   <markdown>
   ### Version 0.1.0 (Initial Release)
-  - **Framework:** Core modular monolith architecture.
+  - **Libraries:** Core modular library architecture.
   - **Kiw CLI:** Scaffolding, dev server, and build pipeline.
   - **Zero Bloat:** 100% Go standard library, zero npm dependencies.
   </markdown>
