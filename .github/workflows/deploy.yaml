@@ -62,7 +62,7 @@ jobs:
           cd .krewire/build
           fail=0
           # The cascade order must hold on every page, landing and docs alike.
-          for page in index.html docs/overview.html docs/getting-started/configuration.html; do
+          for page in index.html docs/index.html docs/overview.html docs/getting-started/configuration.html; do
             test -f "$page" || { echo "✗ missing page $page"; fail=1; continue; }
             order=$(grep -o 'href="[^"]*assets/[a-z]*\.css[^"]*"' "$page" | sed 's|.*assets/||;s|?.*"||' | tr '\n' ' ')
             if [ "$order" != "style.css tailwind.css forge.css theme.css mdbind.css " ]; then
@@ -87,6 +87,7 @@ jobs:
           test -f .krewire/build/index.html
           test -d .krewire/build/assets
           test -f .krewire/build/assets/app.js
+          test -f .krewire/build/docs/index.html
           test -f .krewire/build/docs/getting-started.html
           test -f .krewire/build/docs/overview.html
           test -f .krewire/build/scripts/install.sh
@@ -256,12 +257,12 @@ jobs:
             echo "⚠ install.sh returned HTTP ${SH_CODE} — check nginx routing."
             exit 1
           fi
-          # Verify docs path is reachable (HTTP 200 or 302 redirect)
+          # Verify docs path is reachable directly (HTTP 200, no redirect)
           DOCS_CODE="$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 https://krewire.com/docs 2>/dev/null || true)"
-          if [ "${DOCS_CODE}" = "200" ] || [ "${DOCS_CODE}" = "302" ]; then
-            echo "✓ /docs reachable (HTTP ${DOCS_CODE})."
+          if [ "${DOCS_CODE}" = "200" ]; then
+            echo "✓ /docs reachable directly (HTTP ${DOCS_CODE})."
           else
-            echo "⚠ /docs returned HTTP ${DOCS_CODE}."
+            echo "✗ /docs returned HTTP ${DOCS_CODE} (expected 200)."
             exit 1
           fi
           echo "✓ All smoke tests passed."
