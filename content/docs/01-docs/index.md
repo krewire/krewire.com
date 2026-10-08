@@ -104,9 +104,25 @@ Krewire is engineered around four guiding tenets:
 
 ---
 
+## Documentation Roadmap
+
+Explore the comprehensive manual for the Krewire ecosystem:
+
+| Chapter | Title | Focus |
+| :--- | :--- | :--- |
+| **1.** | [**Overview**](/docs) | Ecosystem architecture, core tenets, three pillars, and workloads overview. |
+| **2.** | [**Getting Started**](/getting-started) | Prerequisites, 5-minute quickstart, project anatomy, agentic SDLC, and `.kiw` DSL. |
+| **3.** | [**Workloads in Depth**](/workloads) | Detailed architecture and guides for all 8 workloads (`app`, `cli`, `site`, `book`, `worker`, `service`, `infra`, `runtime`). |
+| **4.** | [**CLI Reference**](/cli-reference) | Complete `kiw` command catalog, `krewire.yaml` schema specification, and task automation. |
+| **5.** | [**Packages & Libraries**](/packages) | Domain libraries catalog: `kern`, `web`, `app`, `sec`, `auth`, `ui`, `tui`, `storage`, `resilience`, and `testing`. |
+| **6.** | [**Architecture & Guides**](/guides) | Spec-driven engineering methodology, open core licensing rules, and production deployment playbooks. |
+
+---
+
 ## Next Steps
 
 To begin building with Krewire, explore the subchapters in order:
 
 - Proceed to [**1.1 Krewire Framework →**](/docs/krewire-framework)
-- Or jump directly to [**2. Getting Started →**](/getting-started)
+- Jump to [**2. Getting Started →**](/getting-started)
+- Or dive into [**3. Workloads in Depth →**](/workloads)
