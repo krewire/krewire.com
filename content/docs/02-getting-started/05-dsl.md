@@ -290,5 +290,5 @@ Krewire provides built-in template helper functions:
 
 Now that you have mastered the `.kiw` DSL and Krewire's component system:
 
-- Explore the [**1.3 Krewire Workloads →**](/docs/overview/krewire-workloads) matrix to see how `.kiw` powers static sites, books, and web applications.
+- Explore the [**1.2 Krewire Workloads →**](/docs/overview/krewire-workloads) matrix to see how `.kiw` powers static sites, books, and web applications.
 - Return to the [**2. Getting Started Index →**](/docs/getting-started).

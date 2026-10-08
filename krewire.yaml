@@ -8,6 +8,22 @@ project:
   version: "v0.1.0"
   author: "Krewire Contributors"
 
+title: "Krewire"
+
+nav:
+  - text: "Get Started"
+    url: "/docs/getting-started"
+  - text: "Workloads"
+    url: "/docs/workloads"
+  - text: "DSL"
+    url: "/docs/getting-started/dsl"
+  - text: "Docs"
+    url: "/docs"
+  - text: "Ecosystem"
+    url: "/#ecosystem"
+  - text: "GitHub"
+    url: "https://github.com/krewire/krewire"
+
 # Content directory for documentation manuscripts (mdbind)
 input: "content/docs"
 

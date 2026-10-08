@@ -536,7 +536,7 @@ p  { font-size: 15px; color: var(--muted); }
       </p>
       <div class="flex flex-col sm:flex-row gap-3 justify-center mb-6 w-full sm:w-auto">
         <Button Variant="primary" Size="lg" Href="/docs/getting-started"><span data-i18n="cta.button">Get Started — 5 Min →</span></Button>
-        <Button Variant="outline" Size="lg" Href="https://github.com/krewire/krewire.com" Target="_blank"><span>★</span> <span data-i18n="cta.star">Star on GitHub</span></Button>
+        <Button Variant="outline" Size="lg" Href="https://github.com/krewire/krewire" Target="_blank"><span>★</span> <span data-i18n="cta.star">Star on GitHub</span></Button>
       </div>
       <div class="w-full max-w-md sm:max-w-lg md:max-w-xl mx-auto text-left">
         <Terminal Command="kiw new my-app --site && cd my-app && kiw dev" Class="bg-bg dark:bg-bg-dark" />
