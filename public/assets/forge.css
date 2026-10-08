@@ -7,6 +7,8 @@
 .theme-toggle svg { width: 1.05rem; height: 1.05rem; display: block; }
 .theme-toggle .icon-sun { display: var(--show-sun); }
 .theme-toggle .icon-moon { display: var(--show-moon); }
+.lang-switch { border: 1px solid var(--neutral, #e3dfd5); border-radius: 999px; background: transparent; color: var(--ink, inherit); padding: .3rem .55rem; line-height: 1; font-size: .75rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: .3rem; text-decoration: none; transition: border-color .2s ease, color .2s ease; }
+.lang-switch:hover { border-color: var(--primary); color: var(--primary); }
 
 :root {
   --forge-primary: var(--primary, #39D353);

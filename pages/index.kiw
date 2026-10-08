@@ -470,41 +470,41 @@ p  { font-size: 15px; color: var(--muted); }
       <table class="w-full text-left border-collapse text-xs sm:text-sm">
         <thead>
           <tr style="border-bottom:var(--pop-border); background:var(--bg-2)">
-            <th class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-black text-2xs sm:text-xs uppercase tracking-wider text-fg dark:text-fg-dark">Architecture Dimension</th>
-            <th class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-black text-2xs sm:text-xs uppercase tracking-wider text-muted dark:text-muted-dark">Traditional Fragmented Stack</th>
-            <th class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-black text-2xs sm:text-xs uppercase tracking-wider text-primary">Krewire Unified Go</th>
+            <th class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-black text-2xs sm:text-xs uppercase tracking-wider text-fg dark:text-fg-dark" data-i18n="matrix.th_dimension">Architecture Dimension</th>
+            <th class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-black text-2xs sm:text-xs uppercase tracking-wider text-muted dark:text-muted-dark" data-i18n="matrix.th_traditional">Traditional Fragmented Stack</th>
+            <th class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-black text-2xs sm:text-xs uppercase tracking-wider text-primary" data-i18n="matrix.th_krewire">Krewire Unified Go</th>
           </tr>
         </thead>
         <tbody class="divide-y" style="border-color:var(--border-subtle)">
           <tr>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark">Toolchain & Runtime</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark">2–3 Languages (Go + Node.js/TS + Python/HCL)</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary">100% Pure Go across all workloads</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row1_dim">Toolchain & Runtime</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row1_trad">2–3 Languages (Go + Node.js/TS + Python/HCL)</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row1_krewire">100% Pure Go across all workloads</td>
           </tr>
           <tr>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark">Package Management</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark"><code class="code-inline">go.mod</code> + <code class="code-inline">package.json</code> + npm/pnpm trees</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary">Single <code class="code-inline">go.mod</code> (Zero npm / Zero JS)</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row2_dim">Package Management</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row2_trad">go.mod + package.json + npm/pnpm trees</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row2_krewire">Single go.mod (Zero npm / Zero JS)</td>
           </tr>
           <tr>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark">Developer CLI</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark">Multiple: Air + npm + Cobra + Terraform</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary">One binary CLI: <code class="code-inline">kiw</code></td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row3_dim">Developer CLI</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row3_trad">Multiple: Air + npm + Cobra + Terraform</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row3_krewire">One binary CLI: kiw</td>
           </tr>
           <tr>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark">Configuration</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark">Scattered (.air.toml, vite.config, tsconfig, Dockerfile)</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary">Single unified <code class="code-inline">krewire.yaml</code></td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row4_dim">Configuration</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row4_trad">Scattered (.air.toml, vite.config, tsconfig, Dockerfile)</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row4_krewire">Single unified krewire.yaml</td>
           </tr>
           <tr>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark">Component Styling</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark">Tailwind CLI / PostCSS bundler pipeline</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary">Native scoped <code class="code-inline">.kiw</code> components</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row5_dim">Component Styling</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row5_trad">Tailwind CLI / PostCSS bundler pipeline</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row5_krewire">Native scoped .kiw components</td>
           </tr>
           <tr>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark">Production Deployment</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark">Heavy multi-stage Docker containers with Node layers</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary">Single self-contained Go binary or static assets</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row6_dim">Production Deployment</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row6_trad">Heavy multi-stage Docker containers with Node layers</td>
+            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row6_krewire">Single self-contained Go binary or static assets</td>
           </tr>
         </tbody>
       </table>

@@ -80,7 +80,43 @@
   "matrix": {
     "badge": "Perbandingan Stack",
     "title": "Mengapa Engineer Memilih Krewire",
-    "lead": "Bandingkan kesederhanaan toolchain Go terpadu all-in-one dengan tumpukan multi-bahasa yang terfragmentasi."
+    "lead": "Bandingkan kesederhanaan toolchain Go terpadu all-in-one dengan tumpukan multi-bahasa yang terfragmentasi.",
+    "th_dimension": "Dimensi Arsitektur",
+    "th_traditional": "Stack Tradisional Terfragmentasi",
+    "th_krewire": "Krewire Go Terpadu",
+    "row1_dim": "Toolchain & Runtime",
+    "row1_trad": "2–3 Bahasa (Go + Node.js/TS + Python/HCL)",
+    "row1_krewire": "100% Go Murni di semua workload",
+    "row2_dim": "Manajemen Paket",
+    "row2_trad": "go.mod + package.json + pohon npm/pnpm",
+    "row2_krewire": "Satu go.mod (Nol npm / Nol JS)",
+    "row3_dim": "CLI Pengembang",
+    "row3_trad": "Banyak tool: Air + npm + Cobra + Terraform",
+    "row3_krewire": "Satu binary CLI: kiw",
+    "row4_dim": "Konfigurasi",
+    "row4_trad": "Tersebar (.air.toml, vite.config, tsconfig, Dockerfile)",
+    "row4_krewire": "Satu krewire.yaml terpadu",
+    "row5_dim": "Styling Komponen",
+    "row5_trad": "Pipeline bundler Tailwind CLI / PostCSS",
+    "row5_krewire": "Komponen .kiw terisolasi native",
+    "row6_dim": "Deployment Produksi",
+    "row6_trad": "Container Docker bertingkat berat dengan layer Node",
+    "row6_krewire": "Binary Go mandiri tunggal atau aset statis"
+  },
+  "ecosystem": {
+    "badge": "Ekosistem Resmi",
+    "title": "5 Repositori Git — Arsitektur Terpadu",
+    "lead": "Seluruh ekosistem Krewire diorganisasi ke dalam tepat 5 repositori terarah yang terkomposisi bersih.",
+    "core_badge": "Monorepo Inti",
+    "core_desc": "Paket inti, aplikasi, developer CLI (kiw), dan template agent Boost dalam Go.",
+    "book_badge": "Engine Buku",
+    "book_desc": "Compiler buku Markdown & situs dokumentasi mandiri yang menggerakkan workload book.",
+    "internal_badge": "Pusat Dokumen",
+    "internal_desc": "Pusat dokumentasi: ADR, roadmap teknis, panduan kontributor, dan riset.",
+    "portal_badge": "Situs Portal",
+    "portal_desc": "Situs produksi resmi dan portal dokumentasi yang dibangun dengan workload site & DSL .kiw.",
+    "community_badge": "Komunitas",
+    "community_desc": "Portal komunitas untuk kontributor, rilis, panduan, dan sponsor."
   },
   "cta": {
     "badge": "Siap Membangun",
@@ -88,5 +124,21 @@
     "lead": "Mulai dari situs statis ringan, skalakan ke monolit web, lalu ke layanan cloud terdistribusi — satu repositori, satu CLI, satu konfigurasi.",
     "button": "Mulai Sekarang — 5 Menit →",
     "star": "★ Star di GitHub"
+  },
+  "footer": {
+    "workloads_title": "8 Workload",
+    "docs_title": "Dokumentasi",
+    "ecosystem_title": "Ekosistem",
+    "tagline_html": "Library Go Modular untuk Setiap Workload.<br>Satu CLI <code class=\"code-inline\">kiw</code>, satu konfigurasi <code class=\"code-inline\">krewire.yaml</code>.",
+    "badge": "Go Terkompilasi · Bebas Kembung",
+    "copyright_html": "© 2026 Kontributor Krewire — 100% dibangun dengan workload <code class=\"code-inline\">site</code> Krewire."
+  },
+  "docs_reader": {
+    "toc_title": "Daftar Isi",
+    "search_placeholder": "Cari bab...",
+    "copy_button": "Salin",
+    "copied_button": "✓ Tersalin!",
+    "prev_label": "Sebelumnya",
+    "next_label": "Selanjutnya"
   }
 }

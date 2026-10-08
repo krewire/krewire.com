@@ -80,7 +80,43 @@
   "matrix": {
     "badge": "Stack Comparison",
     "title": "Why Engineers Choose Krewire",
-    "lead": "Compare the simplicity of an all-in-one Go toolchain against fragmented multi-language setups."
+    "lead": "Compare the simplicity of an all-in-one Go toolchain against fragmented multi-language setups.",
+    "th_dimension": "Architecture Dimension",
+    "th_traditional": "Traditional Fragmented Stack",
+    "th_krewire": "Krewire Unified Go",
+    "row1_dim": "Toolchain & Runtime",
+    "row1_trad": "2–3 Languages (Go + Node.js/TS + Python/HCL)",
+    "row1_krewire": "100% Pure Go across all workloads",
+    "row2_dim": "Package Management",
+    "row2_trad": "go.mod + package.json + npm/pnpm trees",
+    "row2_krewire": "Single go.mod (Zero npm / Zero JS)",
+    "row3_dim": "Developer CLI",
+    "row3_trad": "Multiple: Air + npm + Cobra + Terraform",
+    "row3_krewire": "One binary CLI: kiw",
+    "row4_dim": "Configuration",
+    "row4_trad": "Scattered (.air.toml, vite.config, tsconfig, Dockerfile)",
+    "row4_krewire": "Single unified krewire.yaml",
+    "row5_dim": "Component Styling",
+    "row5_trad": "Tailwind CLI / PostCSS bundler pipeline",
+    "row5_krewire": "Native scoped .kiw components",
+    "row6_dim": "Production Deployment",
+    "row6_trad": "Heavy multi-stage Docker containers with Node layers",
+    "row6_krewire": "Single self-contained Go binary or static assets"
+  },
+  "ecosystem": {
+    "badge": "Official Ecosystem",
+    "title": "5 Git Repositories — Unified Architecture",
+    "lead": "The entire Krewire ecosystem is organized into exactly 5 focused repositories that compose cleanly.",
+    "core_badge": "Core Monorepo",
+    "core_desc": "Core packages, apps, devtool CLI (kiw), and Boost agent templates in Go.",
+    "book_badge": "Book Engine",
+    "book_desc": "Standalone Markdown book and docs site builder powering the book workload.",
+    "internal_badge": "Docs Hub",
+    "internal_desc": "Documentation hub: ADRs, technical roadmaps, contributor guides, and research.",
+    "portal_badge": "Portal Site",
+    "portal_desc": "Official production website and documentation portal built with site kind & .kiw DSL.",
+    "community_badge": "Community",
+    "community_desc": "Community portal for contributors, releases, guides, and sponsorships."
   },
   "cta": {
     "badge": "Ready to Build",
@@ -88,5 +124,21 @@
     "lead": "Start with a lightweight static site, scale to a web monolith, then to distributed cloud services — one repository, one CLI, one configuration.",
     "button": "Get Started — 5 Min →",
     "star": "★ Star on GitHub"
+  },
+  "footer": {
+    "workloads_title": "8 Workloads",
+    "docs_title": "Documentation",
+    "ecosystem_title": "Ecosystem",
+    "tagline_html": "Modular Go Libraries for Every Workload.<br>One CLI <code class=\"code-inline\">kiw</code>, one config <code class=\"code-inline\">krewire.yaml</code>.",
+    "badge": "Compiled Go · Zero Bloat",
+    "copyright_html": "© 2026 Krewire Contributors — 100% built with Krewire <code class=\"code-inline\">site</code> workload."
+  },
+  "docs_reader": {
+    "toc_title": "Contents",
+    "search_placeholder": "Filter chapters...",
+    "copy_button": "Copy",
+    "copied_button": "✓ Copied!",
+    "prev_label": "Previous",
+    "next_label": "Next"
   }
 }
