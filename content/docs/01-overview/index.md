@@ -31,7 +31,7 @@ This **Overview** chapter introduces you to the core philosophy, technical archi
     <div class="chapter-card-head">
       <span class="chapter-card-num">1.1</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/krewire-framework">Krewire Framework <span class="arrow">→</span></a>
+        <a href="/docs/overview/krewire-framework">Krewire Framework <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -43,7 +43,7 @@ This **Overview** chapter introduces you to the core philosophy, technical archi
     <div class="chapter-card-head">
       <span class="chapter-card-num">1.2</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/why-krewire">Why Krewire? <span class="arrow">→</span></a>
+        <a href="/docs/overview/why-krewire">Why Krewire? <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -55,7 +55,7 @@ This **Overview** chapter introduces you to the core philosophy, technical archi
     <div class="chapter-card-head">
       <span class="chapter-card-num">1.3</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/krewire-workloads">Krewire Workloads <span class="arrow">→</span></a>
+        <a href="/docs/overview/krewire-workloads">Krewire Workloads <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -67,7 +67,7 @@ This **Overview** chapter introduces you to the core philosophy, technical archi
     <div class="chapter-card-head">
       <span class="chapter-card-num">1.4</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/upgrade-guide">Upgrade Guide <span class="arrow">→</span></a>
+        <a href="/docs/overview/upgrade-guide">Upgrade Guide <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -111,11 +111,11 @@ Explore the comprehensive manual for the Krewire ecosystem:
 | Chapter | Title | Focus |
 | :--- | :--- | :--- |
 | **1.** | [**Overview**](/docs) | Ecosystem architecture, core tenets, three pillars, and workloads overview. |
-| **2.** | [**Getting Started**](/getting-started) | Prerequisites, 5-minute quickstart, project anatomy, agentic SDLC, and `.kiw` DSL. |
-| **3.** | [**Workloads in Depth**](/workloads) | Detailed architecture and guides for all 8 workloads (`app`, `cli`, `site`, `book`, `worker`, `service`, `infra`, `runtime`). |
-| **4.** | [**CLI Reference**](/cli-reference) | Complete `kiw` command catalog, `krewire.yaml` schema specification, and task automation. |
-| **5.** | [**Packages & Libraries**](/packages) | Domain libraries catalog: `kern`, `web`, `app`, `sec`, `auth`, `ui`, `tui`, `storage`, `resilience`, and `testing`. |
-| **6.** | [**Architecture & Guides**](/guides) | Spec-driven engineering methodology, open core licensing rules, and production deployment playbooks. |
+| **2.** | [**Getting Started**](/docs/getting-started) | Prerequisites, 5-minute quickstart, project anatomy, agentic SDLC, and `.kiw` DSL. |
+| **3.** | [**Workloads in Depth**](/docs/workloads) | Detailed architecture and guides for all 8 workloads (`app`, `cli`, `site`, `book`, `worker`, `service`, `infra`, `runtime`). |
+| **4.** | [**CLI Reference**](/docs/cli-reference) | Complete `kiw` command catalog, `krewire.yaml` schema specification, and task automation. |
+| **5.** | [**Packages & Libraries**](/docs/packages) | Domain libraries catalog: `kern`, `web`, `app`, `sec`, `auth`, `ui`, `tui`, `storage`, `resilience`, and `testing`. |
+| **6.** | [**Architecture & Guides**](/docs/guides) | Spec-driven engineering methodology, open core licensing rules, and production deployment playbooks. |
 
 ---
 
@@ -123,6 +123,6 @@ Explore the comprehensive manual for the Krewire ecosystem:
 
 To begin building with Krewire, explore the subchapters in order:
 
-- Proceed to [**1.1 Krewire Framework →**](/docs/krewire-framework)
-- Jump to [**2. Getting Started →**](/getting-started)
-- Or dive into [**3. Workloads in Depth →**](/workloads)
+- Proceed to [**1.1 Krewire Framework →**](/docs/overview/krewire-framework)
+- Jump to [**2. Getting Started →**](/docs/getting-started)
+- Or dive into [**3. Workloads in Depth →**](/docs/workloads)

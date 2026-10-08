@@ -22,7 +22,7 @@ This chapter provides comprehensive architectural documentation, configuration g
     <div class="chapter-card-head">
       <span class="chapter-card-num">3.1</span>
       <h3 class="chapter-card-title">
-        <a href="/workloads/app">Fullstack Monolith (app) <span class="arrow">→</span></a>
+        <a href="/docs/workloads/app">Fullstack Monolith (app) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -34,7 +34,7 @@ This chapter provides comprehensive architectural documentation, configuration g
     <div class="chapter-card-head">
       <span class="chapter-card-num">3.2</span>
       <h3 class="chapter-card-title">
-        <a href="/workloads/cli">Terminal CLI &amp; TUI (cli) <span class="arrow">→</span></a>
+        <a href="/docs/workloads/cli">Terminal CLI &amp; TUI (cli) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -46,7 +46,7 @@ This chapter provides comprehensive architectural documentation, configuration g
     <div class="chapter-card-head">
       <span class="chapter-card-num">3.3</span>
       <h3 class="chapter-card-title">
-        <a href="/workloads/site">Static Site Generator (site) <span class="arrow">→</span></a>
+        <a href="/docs/workloads/site">Static Site Generator (site) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -58,7 +58,7 @@ This chapter provides comprehensive architectural documentation, configuration g
     <div class="chapter-card-head">
       <span class="chapter-card-num">3.4</span>
       <h3 class="chapter-card-title">
-        <a href="/workloads/book">Documentation Book (book) <span class="arrow">→</span></a>
+        <a href="/docs/workloads/book">Documentation Book (book) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -70,7 +70,7 @@ This chapter provides comprehensive architectural documentation, configuration g
     <div class="chapter-card-head">
       <span class="chapter-card-num">3.5</span>
       <h3 class="chapter-card-title">
-        <a href="/workloads/worker">Background Worker (worker) <span class="arrow">→</span></a>
+        <a href="/docs/workloads/worker">Background Worker (worker) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -82,7 +82,7 @@ This chapter provides comprehensive architectural documentation, configuration g
     <div class="chapter-card-head">
       <span class="chapter-card-num">3.6</span>
       <h3 class="chapter-card-title">
-        <a href="/workloads/service">Microservices (service) <span class="arrow">→</span></a>
+        <a href="/docs/workloads/service">Microservices (service) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -94,7 +94,7 @@ This chapter provides comprehensive architectural documentation, configuration g
     <div class="chapter-card-head">
       <span class="chapter-card-num">3.7</span>
       <h3 class="chapter-card-title">
-        <a href="/workloads/infra">Cloud Infrastructure (infra) <span class="arrow">→</span></a>
+        <a href="/docs/workloads/infra">Cloud Infrastructure (infra) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -106,7 +106,7 @@ This chapter provides comprehensive architectural documentation, configuration g
     <div class="chapter-card-head">
       <span class="chapter-card-num">3.8</span>
       <h3 class="chapter-card-title">
-        <a href="/workloads/runtime">WebAssembly Runtime (runtime) <span class="arrow">→</span></a>
+        <a href="/docs/workloads/runtime">WebAssembly Runtime (runtime) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">

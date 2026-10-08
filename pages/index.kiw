@@ -138,7 +138,7 @@ layout: Landing
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-4 md:gap-5 lg:gap-5">
 
       <!-- 1. APP -->
-      <a href="/docs/krewire-workloads#1-fullstack-monolith-app" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
+      <a href="/docs/workloads/app" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
         <div class="flex items-center justify-between gap-2 mb-3">
           <span class="icon-box bg-secondary text-secondary-content">▲</span>
           <span class="badge badge-muted text-2xs font-mono">Fullstack</span>
@@ -154,7 +154,7 @@ layout: Landing
       </a>
 
       <!-- 2. CLI -->
-      <a href="/docs/krewire-workloads#2-terminal-cli--tui-cli" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
+      <a href="/docs/workloads/cli" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
         <div class="flex items-center justify-between gap-2 mb-3">
           <span class="icon-box bg-secondary text-secondary-content">›_</span>
           <span class="badge badge-muted text-2xs font-mono">Terminal</span>
@@ -170,7 +170,7 @@ layout: Landing
       </a>
 
       <!-- 3. SITE -->
-      <a href="/docs/krewire-workloads#3-static-site-generator-site" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
+      <a href="/docs/workloads/site" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
         <div class="flex items-center justify-between gap-2 mb-3">
           <span class="icon-box bg-secondary text-secondary-content">◧</span>
           <span class="badge badge-muted text-2xs font-mono">SSG</span>
@@ -186,7 +186,7 @@ layout: Landing
       </a>
 
       <!-- 4. BOOK -->
-      <a href="/docs/krewire-workloads#4-technical-book-book" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
+      <a href="/docs/workloads/book" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
         <div class="flex items-center justify-between gap-2 mb-3">
           <span class="icon-box bg-secondary text-secondary-content">≡</span>
           <span class="badge badge-muted text-2xs font-mono">Publishing</span>
@@ -202,7 +202,7 @@ layout: Landing
       </a>
 
       <!-- 5. WORKER -->
-      <a href="/docs/krewire-workloads#5-background-worker-worker" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
+      <a href="/docs/workloads/worker" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
         <div class="flex items-center justify-between gap-2 mb-3">
           <span class="icon-box bg-secondary text-secondary-content">⚙</span>
           <span class="badge badge-muted text-2xs font-mono">Async</span>
@@ -218,7 +218,7 @@ layout: Landing
       </a>
 
       <!-- 6. SERVICE -->
-      <a href="/docs/krewire-workloads#6-microservice-service" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
+      <a href="/docs/workloads/service" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
         <div class="flex items-center justify-between gap-2 mb-3">
           <span class="icon-box bg-secondary text-secondary-content">⬢</span>
           <span class="badge badge-muted text-2xs font-mono">Microservice</span>
@@ -234,7 +234,7 @@ layout: Landing
       </a>
 
       <!-- 7. INFRA -->
-      <a href="/docs/krewire-workloads#7-cloud-infrastructure-as-code-infra" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
+      <a href="/docs/workloads/infra" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
         <div class="flex items-center justify-between gap-2 mb-3">
           <span class="icon-box bg-secondary text-secondary-content">☁</span>
           <span class="badge badge-muted text-2xs font-mono">Cloud IaC</span>
@@ -250,7 +250,7 @@ layout: Landing
       </a>
 
       <!-- 8. RUNTIME -->
-      <a href="/docs/krewire-workloads#8-webassembly-runtime-runtime" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
+      <a href="/docs/workloads/runtime" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
         <div class="flex items-center justify-between gap-2 mb-3">
           <span class="icon-box bg-secondary text-secondary-content">◈</span>
           <span class="badge badge-muted text-2xs font-mono">WASM</span>

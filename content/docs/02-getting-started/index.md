@@ -24,7 +24,7 @@ This **Getting Started** chapter is divided into five focused, in-depth subchapt
     <div class="chapter-card-head">
       <span class="chapter-card-num">2.1</span>
       <h3 class="chapter-card-title">
-        <a href="/getting-started/installation">Installation <span class="arrow">→</span></a>
+        <a href="/docs/getting-started/installation">Installation <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -41,7 +41,7 @@ This **Getting Started** chapter is divided into five focused, in-depth subchapt
     <div class="chapter-card-head">
       <span class="chapter-card-num">2.2</span>
       <h3 class="chapter-card-title">
-        <a href="/getting-started/configuration">Configuration <span class="arrow">→</span></a>
+        <a href="/docs/getting-started/configuration">Configuration <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -58,7 +58,7 @@ This **Getting Started** chapter is divided into five focused, in-depth subchapt
     <div class="chapter-card-head">
       <span class="chapter-card-num">2.3</span>
       <h3 class="chapter-card-title">
-        <a href="/getting-started/directory-structure">Directory Structure <span class="arrow">→</span></a>
+        <a href="/docs/getting-started/directory-structure">Directory Structure <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -75,7 +75,7 @@ This **Getting Started** chapter is divided into five focused, in-depth subchapt
     <div class="chapter-card-head">
       <span class="chapter-card-num">2.4</span>
       <h3 class="chapter-card-title">
-        <a href="/getting-started/agentic-development">Agentic Development <span class="arrow">→</span></a>
+        <a href="/docs/getting-started/agentic-development">Agentic Development <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -92,7 +92,7 @@ This **Getting Started** chapter is divided into five focused, in-depth subchapt
     <div class="chapter-card-head">
       <span class="chapter-card-num">2.5</span>
       <h3 class="chapter-card-title">
-        <a href="/getting-started/dsl">DSL (.kiw) <span class="arrow">→</span></a>
+        <a href="/docs/getting-started/dsl">DSL (.kiw) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -406,5 +406,5 @@ Keep these everyday `kiw` commands at your fingertips during development:
 
 Now that you understand the big picture and development workflow, dive deep into the implementation details:
 
-- Proceed to [**2.1 Installation →**](/getting-started/installation) to install and configure `kiw` for your specific operating system.
+- Proceed to [**2.1 Installation →**](/docs/getting-started/installation) to install and configure `kiw` for your specific operating system.
 - Or explore the architectural foundation in [**1. Overview →**](/docs).

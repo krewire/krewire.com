@@ -132,4 +132,4 @@ If you encounter unexpected build behaviors or test failures:
 
 - Open a discussion on the [Krewire GitHub Forum](https://github.com/orgs/krewire/discussions).
 - Check the [issue tracker](https://github.com/krewire/krewire.com/issues) for known issues.
-- Return to [**1.1 Krewire Framework →**](/docs/krewire-framework) or proceed to [**2. Getting Started →**](/getting-started).
+- Return to [**1.1 Krewire Framework →**](/docs/overview/krewire-framework) or proceed to [**2. Getting Started →**](/docs/getting-started).

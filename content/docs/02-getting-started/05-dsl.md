@@ -166,7 +166,7 @@ Components located in the `components/` directory (or embedded from `forge`) can
 
 ```html
 <!-- Tag-based invocation with attributes as props -->
-<Button Variant="primary" Href="/getting-started">Get Started</Button>
+<Button Variant="primary" Href="/docs/getting-started">Get Started</Button>
 <Alert Type="warning" Message="System update in progress" />
 ```
 
@@ -290,5 +290,5 @@ Krewire provides built-in template helper functions:
 
 Now that you have mastered the `.kiw` DSL and Krewire's component system:
 
-- Explore the [**1.3 Krewire Workloads →**](/docs/krewire-workloads) matrix to see how `.kiw` powers static sites, books, and web applications.
-- Return to the [**2. Getting Started Index →**](/getting-started).
+- Explore the [**1.3 Krewire Workloads →**](/docs/overview/krewire-workloads) matrix to see how `.kiw` powers static sites, books, and web applications.
+- Return to the [**2. Getting Started Index →**](/docs/getting-started).

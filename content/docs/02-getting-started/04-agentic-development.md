@@ -195,4 +195,4 @@ The agent generates a structured specification document under `docs/specs/SPEC-A
 
 Now that you know how to supercharge development with AI agents, explore the component templating language:
 
-Proceed to [**2.5 DSL (.kiw) →**](/getting-started/dsl) to learn the component architecture of Krewire.
+Proceed to [**2.5 DSL (.kiw) →**](/docs/getting-started/dsl) to learn the component architecture of Krewire.

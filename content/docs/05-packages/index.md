@@ -23,7 +23,7 @@ Every package in the `krewire/packages` catalog adheres to strict architectural 
     <div class="chapter-card-head">
       <span class="chapter-card-num">5.1</span>
       <h3 class="chapter-card-title">
-        <a href="/packages/kern">Kernel &amp; Model (kern) <span class="arrow">→</span></a>
+        <a href="/docs/packages/kern">Kernel &amp; Model (kern) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -35,7 +35,7 @@ Every package in the `krewire/packages` catalog adheres to strict architectural 
     <div class="chapter-card-head">
       <span class="chapter-card-num">5.2</span>
       <h3 class="chapter-card-title">
-        <a href="/packages/web-and-app">Web &amp; Application (web, app) <span class="arrow">→</span></a>
+        <a href="/docs/packages/web-and-app">Web &amp; Application (web, app) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -47,7 +47,7 @@ Every package in the `krewire/packages` catalog adheres to strict architectural 
     <div class="chapter-card-head">
       <span class="chapter-card-num">5.3</span>
       <h3 class="chapter-card-title">
-        <a href="/packages/security-and-auth">Security &amp; Auth (sec, auth) <span class="arrow">→</span></a>
+        <a href="/docs/packages/security-and-auth">Security &amp; Auth (sec, auth) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -59,7 +59,7 @@ Every package in the `krewire/packages` catalog adheres to strict architectural 
     <div class="chapter-card-head">
       <span class="chapter-card-num">5.4</span>
       <h3 class="chapter-card-title">
-        <a href="/packages/ui-and-tui">User Interfaces (ui, tui) <span class="arrow">→</span></a>
+        <a href="/docs/packages/ui-and-tui">User Interfaces (ui, tui) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -71,7 +71,7 @@ Every package in the `krewire/packages` catalog adheres to strict architectural 
     <div class="chapter-card-head">
       <span class="chapter-card-num">5.5</span>
       <h3 class="chapter-card-title">
-        <a href="/packages/storage-and-fs">Storage &amp; Filesystem (storage, fs, file) <span class="arrow">→</span></a>
+        <a href="/docs/packages/storage-and-fs">Storage &amp; Filesystem (storage, fs, file) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -83,7 +83,7 @@ Every package in the `krewire/packages` catalog adheres to strict architectural 
     <div class="chapter-card-head">
       <span class="chapter-card-num">5.6</span>
       <h3 class="chapter-card-title">
-        <a href="/packages/resilience-and-testing">Resilience &amp; Testing (resilience, testing) <span class="arrow">→</span></a>
+        <a href="/docs/packages/resilience-and-testing">Resilience &amp; Testing (resilience, testing) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">

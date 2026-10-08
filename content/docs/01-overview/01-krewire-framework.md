@@ -228,4 +228,4 @@ func registerHandler(r *web.Request) *web.Response {
 
 The Krewire Framework bridges the gap between high-velocity developer ergonomics and robust Go system design. By standardizing routing, configuration, component compilation, and deployment into a unified ecosystem, Krewire allows teams to scale seamlessly from idea to high-volume production.
 
-Proceed to [**1.2 Why Krewire? →**](/docs/why-krewire) to learn how Krewire compares to traditional multi-language architectures.
+Proceed to [**1.2 Why Krewire? →**](/docs/overview/why-krewire) to learn how Krewire compares to traditional multi-language architectures.
