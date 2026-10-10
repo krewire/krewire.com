@@ -109,3 +109,64 @@ Enable and start the service:
 sudo systemctl daemon-reload
 sudo systemctl enable --now krewire-app
 ```
+
+---
+
+## 4. Static Site & Documentation Portal Hosting
+
+For `site` and `book` workloads built with `kiw build`, static artifacts are compiled into `.krewire/build`.
+
+### Nginx Virtual Host for Static Assets
+
+```nginx
+server {
+    server_name example.com;
+
+    root /var/www/example.com;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ $uri.html /index.html;
+    }
+
+    # Static asset caching
+    location ~* \.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {
+        expires 7d;
+        add_header Cache-Control "public, immutable";
+    }
+
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+}
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name example.com;
+    return 301 https://$host$request_uri;
+}
+```
+
+### Automated TLS via Certbot
+
+Issue automated TLS certificates using Certbot:
+
+```bash
+sudo certbot --nginx -d example.com --non-interactive --agree-tos --redirect -m admin@example.com
+```
+
+### CI/CD Deployment with GitHub Actions & Rsync
+
+```yaml
+- name: Deploy to VPS
+  run: |
+    rsync -az --delete \
+      -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" \
+      .krewire/build/ \
+      user@vps-host:/var/www/example.com/
+```
+

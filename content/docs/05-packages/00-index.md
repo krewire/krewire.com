@@ -91,6 +91,30 @@ Every package in the `krewire/packages` catalog adheres to strict architectural 
     </p>
   </div>
 
+  <div class="chapter-card">
+    <div class="chapter-card-head">
+      <span class="chapter-card-num">5.7</span>
+      <h3 class="chapter-card-title">
+        <a href="/docs/packages/cloud-and-distributed">Cloud &amp; Distributed (cloud) <span class="arrow">→</span></a>
+      </h3>
+    </div>
+    <p class="chapter-card-desc">
+      Asynchronous worker queues, cron schedulers, microservice registry and mesh, and Infrastructure as Code (IaC) schema.
+    </p>
+  </div>
+
+  <div class="chapter-card">
+    <div class="chapter-card-head">
+      <span class="chapter-card-num">5.8</span>
+      <h3 class="chapter-card-title">
+        <a href="/docs/packages/config-and-validation">Config &amp; Validation (config, validation) <span class="arrow">→</span></a>
+      </h3>
+    </div>
+    <p class="chapter-card-desc">
+      Hierarchical config loaders with dotenv and CLI overrides, paired with composable, zero-reflection input validation rules.
+    </p>
+  </div>
+
 </div>
 
 ---
