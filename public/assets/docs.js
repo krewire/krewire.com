@@ -161,13 +161,188 @@
     });
   }
 
-  // ── 6. Auto-Run on DOMContentLoaded ──────────────────────────────────────
+  // ── 6. Documentation Sidebar Drawer Controller ──────────────────────────
+  function initDocsSidebarDrawer() {
+    var sidebar = document.getElementById('sidebar');
+    var toggle = document.getElementById('sidebar-toggle');
+    var close = document.getElementById('sidebar-close');
+    var overlay = document.getElementById('sidebar-overlay');
+
+    function setOpen(open) {
+      document.documentElement.classList.toggle('sidebar-open', open);
+      if (toggle) toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (sidebar) sidebar.setAttribute('aria-hidden', open ? 'false' : 'true');
+    }
+
+    if (toggle) {
+      toggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        setOpen(!document.documentElement.classList.contains('sidebar-open'));
+      });
+    }
+
+    if (close) {
+      close.addEventListener('click', function (e) {
+        e.preventDefault();
+        setOpen(false);
+      });
+    }
+
+    if (overlay) {
+      overlay.addEventListener('click', function (e) {
+        e.preventDefault();
+        setOpen(false);
+      });
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setOpen(false);
+    });
+
+    // Close drawer when clicking a navigation link inside sidebar on mobile
+    if (sidebar) {
+      sidebar.querySelectorAll('a.toc-link, a.toc-sub').forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (window.innerWidth < 1024) {
+            setOpen(false);
+          }
+        });
+      });
+    }
+
+    // Collapsible sub-chapter groups
+    document.querySelectorAll('[data-group] .toc-toggle').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var g = btn.closest('[data-group]');
+        if (!g) return;
+        var open = g.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        var link = g.querySelector('.toc-link');
+        if (link) {
+          try {
+            localStorage.setItem('krewire-toc-' + link.getAttribute('href'), open ? '1' : '0');
+          } catch (_) {}
+        }
+      });
+    });
+
+    // Expand / collapse all groups button
+    var toggleAll = document.getElementById('toc-toggle-all');
+    if (toggleAll) {
+      toggleAll.addEventListener('click', function (e) {
+        e.preventDefault();
+        var groups = document.querySelectorAll('[data-group]');
+        var anyClosed = Array.from(groups).some(function (g) { return !g.classList.contains('open'); });
+        groups.forEach(function (g) {
+          g.classList.toggle('open', anyClosed);
+          var b = g.querySelector('.toc-toggle');
+          if (b) b.setAttribute('aria-expanded', anyClosed ? 'true' : 'false');
+          var link = g.querySelector('.toc-link');
+          if (link) {
+            try {
+              localStorage.setItem('krewire-toc-' + link.getAttribute('href'), anyClosed ? '1' : '0');
+            } catch (_) {}
+          }
+        });
+      });
+    }
+
+    // Quick chapter search/filter
+    var searchInput = document.getElementById('toc-search');
+    var searchClear = document.getElementById('toc-search-clear');
+    var searchKbd = document.getElementById('toc-search-kbd');
+    var noResults = document.getElementById('toc-no-results');
+    if (searchInput) {
+      searchInput.addEventListener('input', function () {
+        var q = searchInput.value.trim().toLowerCase();
+        if (searchClear) searchClear.style.display = q ? 'inline-flex' : 'none';
+        if (searchKbd) searchKbd.style.display = q ? 'none' : '';
+        var matchCount = 0;
+        document.querySelectorAll('#sidebar-toc > *').forEach(function (el) {
+          if (!q) {
+            el.style.display = '';
+            if (el.hasAttribute('data-group')) {
+              el.querySelectorAll('.toc-sub').forEach(function (s) { s.style.display = ''; });
+              var l = el.querySelector('.toc-link');
+              var href = l ? l.getAttribute('href') : '';
+              var v = href ? localStorage.getItem('krewire-toc-' + href) : null;
+              var hasActive = el.querySelector('.active');
+              var open = hasActive || v === '1' || (v !== '0' && el.classList.contains('open'));
+              el.classList.toggle('open', !!open);
+              var b = el.querySelector('.toc-toggle');
+              if (b) b.setAttribute('aria-expanded', open ? 'true' : 'false');
+            }
+            return;
+          }
+          if (el.hasAttribute('data-group')) {
+            var parentMatch = (el.querySelector('.toc-link') ? el.querySelector('.toc-link').textContent || '' : '').toLowerCase().indexOf(q) !== -1;
+            var subMatches = 0;
+            el.querySelectorAll('.toc-sub').forEach(function (s) {
+              var m = (s.textContent || '').toLowerCase().indexOf(q) !== -1;
+              s.style.display = (m || parentMatch) ? '' : 'none';
+              if (m) subMatches++;
+            });
+            if (parentMatch || subMatches > 0) {
+              el.style.display = '';
+              el.classList.add('open');
+              var b = el.querySelector('.toc-toggle');
+              if (b) b.setAttribute('aria-expanded', 'true');
+              matchCount += (parentMatch ? 1 : 0) + subMatches;
+            } else {
+              el.style.display = 'none';
+            }
+          } else {
+            var match = (el.textContent || '').toLowerCase().indexOf(q) !== -1;
+            el.style.display = match ? '' : 'none';
+            if (match) matchCount++;
+          }
+        });
+        if (noResults) {
+          noResults.style.display = (q && matchCount === 0) ? 'block' : 'none';
+        }
+      });
+
+      if (searchClear) {
+        searchClear.addEventListener('click', function () {
+          searchInput.value = '';
+          searchInput.dispatchEvent(new Event('input'));
+          searchInput.focus();
+        });
+      }
+
+      document.addEventListener('keydown', function (e) {
+        var tag = (e.target && e.target.tagName) || '';
+        if (tag === 'INPUT' || tag === 'TEXTAREA' || (e.target && e.target.isContentEditable)) return;
+        if (e.key === '/' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+          e.preventDefault();
+          searchInput.focus();
+          searchInput.select();
+        }
+      });
+
+      searchInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          if (searchInput.value) {
+            searchInput.value = '';
+            searchInput.dispatchEvent(new Event('input'));
+          } else {
+            searchInput.blur();
+          }
+        }
+      });
+    }
+  }
+
+  // ── 7. Auto-Run on DOMContentLoaded ──────────────────────────────────────
   function initAll() {
     initCodeBlocks();
     initHeadingAnchors();
     initKeyboardNav();
     initDocsLangSwitch();
     initDocsReaderI18n();
+    initDocsSidebarDrawer();
   }
 
   if (document.readyState === 'loading') {
