@@ -7,7 +7,7 @@
     "ecosystem": "Ekosistem"
   },
   "hero": {
-    "eyebrow": "◈ Ekosistem SDLC Digital End-to-End · v0.1.0 · Open Source",
+    "eyebrow": "Ekosistem SDLC Digital End-to-End · v0.1.0 · Open Source",
     "title_html": "Library Go Modular.<br class=\"hidden sm:inline\">Untuk Setiap Workload.",
     "lead_html": "Krewire adalah <b class=\"text-fg dark:text-fg-dark\">ekosistem SDLC digital</b> end-to-end — dari baris pertama spesifikasi hingga operasi produksi — dibangun di atas tiga pilar: <b class=\"text-fg dark:text-fg-dark\">secure</b>, <b class=\"text-fg dark:text-fg-dark\">sustainable</b>, dan <b class=\"text-fg dark:text-fg-dark\">scalable</b>. Dari monolit web binary tunggal hingga TUI interaktif, situs statis berkecepatan tinggi, pipeline buku, worker latar belakang, microservices, cloud infra, dan runtime Go WebAssembly — bangun semuanya dalam Go dengan satu CLI <code class=\"code-inline\">kiw</code> dan bebas kelelahan JS.",
     "cta_start": "Mulai Sekarang — 5 Menit →",

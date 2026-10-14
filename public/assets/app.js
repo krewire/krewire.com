@@ -186,7 +186,7 @@ window.copyCmd = copyCmd;
       "ecosystem": "Ecosystem"
     },
     "hero": {
-      "eyebrow": "◈ End-to-End Digital SDLC Ecosystem · v0.1.0 · Open Source",
+      "eyebrow": "End-to-End Digital SDLC Ecosystem · v0.1.0 · Open Source",
       "title_html": "Modular Go Libraries.<br class=\"hidden sm:inline\">Every Workload.",
       "lead_html": "Krewire is an end-to-end <b class=\"text-fg dark:text-fg-dark\">digital SDLC ecosystem</b> — from the first line of the spec to production operations — built on three pillars: <b class=\"text-fg dark:text-fg-dark\">secure</b>, <b class=\"text-fg dark:text-fg-dark\">sustainable</b>, and <b class=\"text-fg dark:text-fg-dark\">scalable</b>. From single-binary web monoliths to interactive TUIs, high-speed static sites, book pipelines, background workers, microservices, cloud infra, and Go WebAssembly runtimes — build everything in Go with one CLI <code class=\"code-inline\">kiw</code> and zero JS fatigue.",
       "cta_start": "Get Started — 5 Min →",
@@ -328,7 +328,7 @@ window.copyCmd = copyCmd;
       "ecosystem": "Ekosistem"
     },
     "hero": {
-      "eyebrow": "◈ Ekosistem SDLC Digital End-to-End · v0.1.0 · Open Source",
+      "eyebrow": "Ekosistem SDLC Digital End-to-End · v0.1.0 · Open Source",
       "title_html": "Library Go Modular.<br class=\"hidden sm:inline\">Untuk Setiap Workload.",
       "lead_html": "Krewire adalah <b class=\"text-fg dark:text-fg-dark\">ekosistem SDLC digital</b> end-to-end — dari baris pertama spesifikasi hingga operasi produksi — dibangun di atas tiga pilar: <b class=\"text-fg dark:text-fg-dark\">secure</b>, <b class=\"text-fg dark:text-fg-dark\">sustainable</b>, dan <b class=\"text-fg dark:text-fg-dark\">scalable</b>. Dari monolit web binary tunggal hingga TUI interaktif, situs statis berkecepatan tinggi, pipeline buku, worker latar belakang, microservices, cloud infra, dan runtime Go WebAssembly — bangun semuanya dalam Go dengan satu CLI <code class=\"code-inline\">kiw</code> dan bebas kelelahan JS.",
       "cta_start": "Mulai Sekarang — 5 Menit →",
