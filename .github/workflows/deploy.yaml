@@ -70,6 +70,26 @@ jobs:
       - name: Verify kiw installation
         run: kiw version
 
+      - name: Build contributor portal (krewire.github.io → public/contribute)
+        run: |
+          # The contributor portal is a separate repository built with the
+          # same `kiw` toolchain. It is mounted under /contribute/ on
+          # krewire.com, so it is built here from source (never committed as
+          # a stale artifact) and dropped into public/, which `kiw build`
+          # copies verbatim into the site output.
+          git clone --depth 1 --branch main "https://github.com/krewire/krewire.github.io.git" "${RUNNER_TEMP}/portal"
+          ( cd "${RUNNER_TEMP}/portal" && npm ci && kiw build )
+          rm -rf public/contribute
+          mkdir -p public/contribute
+          cp -a "${RUNNER_TEMP}/portal/.krewire/build/." public/contribute/
+          test -f public/contribute/index.html || { echo "✗ portal build missing index.html"; exit 1; }
+          # Every portal asset must resolve under /contribute/ (build.base),
+          # never the root site's /assets/ — otherwise it loads the wrong CSS/JS.
+          if grep -qE '(href|src)="/assets/' public/contribute/index.html; then
+            echo "✗ portal emitted root-absolute /assets/ URLs (build.base not applied)"; exit 1
+          fi
+          echo "✓ Contributor portal built into public/contribute with /contribute/ base."
+
       - name: Build static site
         run: |
           # `kiw build` emits the complete site, including the shared asset plan:
@@ -305,6 +325,22 @@ jobs:
             echo "✓ /docs reachable directly (HTTP ${DOCS_CODE})."
           else
             echo "✗ /docs returned HTTP ${DOCS_CODE} (expected 200)."
+            exit 1
+          fi
+          # Verify the contributor portal is served under /contribute/
+          CONTRIB_CODE="$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 https://krewire.com/contribute/ 2>/dev/null || true)"
+          if [ "${CONTRIB_CODE}" = "200" ]; then
+            echo "✓ /contribute/ reachable (HTTP ${CONTRIB_CODE})."
+          else
+            echo "✗ /contribute/ returned HTTP ${CONTRIB_CODE} (expected 200)."
+            exit 1
+          fi
+          # The portal must load its own assets, not the root site's.
+          CONTRIB_ASSET="$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 https://krewire.com/contribute/assets/app.js 2>/dev/null || true)"
+          if [ "${CONTRIB_ASSET}" = "200" ]; then
+            echo "✓ /contribute/assets/app.js reachable (HTTP ${CONTRIB_ASSET})."
+          else
+            echo "✗ /contribute/assets/app.js returned HTTP ${CONTRIB_ASSET} (expected 200)."
             exit 1
           fi
           echo "✓ All production smoke tests passed."

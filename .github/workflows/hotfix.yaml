@@ -77,9 +77,21 @@ jobs:
           go build -o "${RUNNER_TEMP}/bin/kiw" ./tools/kiw/cmd/kiw
           echo "${RUNNER_TEMP}/bin" >> "$GITHUB_PATH"
 
+      - name: Build contributor portal (krewire.github.io → public/contribute)
+        run: |
+          git clone --depth 1 --branch main "https://github.com/krewire/krewire.github.io.git" "${RUNNER_TEMP}/portal"
+          ( cd "${RUNNER_TEMP}/portal" && npm ci && kiw build )
+          rm -rf public/contribute
+          mkdir -p public/contribute
+          cp -a "${RUNNER_TEMP}/portal/.krewire/build/." public/contribute/
+          test -f public/contribute/index.html || { echo "✗ portal build missing index.html"; exit 1; }
+          if grep -qE '(href|src)="/assets/' public/contribute/index.html; then
+            echo "✗ portal emitted root-absolute /assets/ URLs (build.base not applied)"; exit 1
+          fi
+          echo "✓ Contributor portal built into public/contribute with /contribute/ base."
+
       - name: Build static site (Hotfix)
         run: kiw build
-
       - name: Fast sanity check of build outputs
         run: |
           test -f .krewire/build/index.html || { echo "✗ Missing index.html"; exit 1; }
@@ -249,6 +261,13 @@ jobs:
             echo "✓ Live site responded HTTP 200 after emergency hotfix."
           else
             echo "✗ Smoke test failed: HTTP ${HTTP_CODE} — initiating fallback step!"
+            exit 1
+          fi
+          CONTRIB_CODE="$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 https://krewire.com/contribute/ 2>/dev/null || true)"
+          if [ "${CONTRIB_CODE}" = "200" ]; then
+            echo "✓ /contribute/ responded HTTP 200 after emergency hotfix."
+          else
+            echo "✗ Smoke test failed: /contribute/ returned HTTP ${CONTRIB_CODE}."
             exit 1
           fi
 
