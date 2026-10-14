@@ -30,4 +30,4 @@ Explore the comprehensive guides and reference documentation:
 - [**Workloads**](/docs/workloads) — Detailed guides for all 8 supported project kinds.
 - [**CLI Reference**](/docs/cli-reference) — Complete `kiw` command catalog, configuration schema, and scripting.
 - [**Packages**](/docs/packages) — Domain libraries across kernel, web, security, UI, storage, and resilience.
-- [**Guides**](/docs/guides) — Spec-driven development, open core licensing, and deployment operations.
+- [**Guides**](/docs/guides) — Architectural discipline, open core licensing, and deployment operations.

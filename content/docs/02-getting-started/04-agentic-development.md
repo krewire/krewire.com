@@ -1,6 +1,6 @@
 ---
 title: "Agentic Development"
-description: "Equip your Krewire projects with an autonomous AI agent guild using Krewire Boost — spec-driven development, unified constitutions, and automated quality gates."
+description: "Equip your Krewire projects with an autonomous AI agent guild using Krewire Boost — unified constitutions, agent skills, and automated quality gates."
 date: "2026-09-29"
 ---
 
@@ -8,7 +8,7 @@ date: "2026-09-29"
 
 Modern software engineering is rapidly shifting toward collaboration between human developers and autonomous AI coding agents. However, unguided AI agents frequently hallucinate architectures, break conventions, or introduce dependency bloat.
 
-Krewire solves this through **Krewire Boost** (`templates/boost` in `github.com/krewire/krewire`)—an embedded agentic guild and configuration standard that equips AI agents with deep, intrinsic knowledge of the Krewire ecosystem, its 8 workloads, the `kiw` CLI, and strict spec-driven quality gates.
+Krewire solves this through **Krewire Boost** (`templates/boost` in `github.com/krewire/krewire`)—an embedded agentic guild and configuration standard that equips AI agents with deep, intrinsic knowledge of the Krewire ecosystem, its 8 workloads, the `kiw` CLI, and strict automated quality gates.
 
 ---
 
@@ -165,18 +165,18 @@ The agent scans `krewire.yaml`, checks Go dependencies, detects that the workloa
 ✓ Identified Krewire project: "my-first-app" (workload: site)
 ✓ Build command: kiw build
 ✓ Dev command: kiw dev (port 8080)
-✓ Ready for tasks. Use /spec to design or /test to verify.
+✓ Ready for tasks. Use /plan to design or /test to verify.
 ```
 
-### Spec-Driven Feature Development
+### Requirements-Driven Feature Development
 
 To design a new user registration feature:
 
 ```text
-/spec user-registration
+/plan user-registration
 ```
 
-The agent generates a structured specification document under `docs/specs/SPEC-AUTH-user-registration.md` outlining the request schema, database constraints, error handling, and test cases before touching production code.
+The agent generates a structured requirements and implementation plan outlining request schema, constraints, error handling, and test cases before touching production code.
 
 ---
 

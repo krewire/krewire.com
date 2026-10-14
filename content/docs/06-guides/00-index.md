@@ -1,6 +1,6 @@
 ---
 title: "Architecture & Guides"
-description: "Engineering guides, architectural discipline, spec-driven development, open-core licensing model, and production deployment operations."
+description: "Engineering guides, architectural discipline, open-core licensing model, and production deployment operations."
 date: "2026-10-08"
 ---
 
@@ -20,18 +20,6 @@ Whether you are contributing to core packages or authoring mission-critical appl
     <div class="chapter-card-head">
       <span class="chapter-card-num">6.1</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/guides/spec-driven-development">Spec-Driven Development <span class="arrow">→</span></a>
-      </h3>
-    </div>
-    <p class="chapter-card-desc">
-      Learn the spec-first engineering methodology: requirement numbering (KWL/KWN/KWM), traceability citations in Go tests, and automated quality gates.
-    </p>
-  </div>
-
-  <div class="chapter-card">
-    <div class="chapter-card-head">
-      <span class="chapter-card-num">6.2</span>
-      <h3 class="chapter-card-title">
         <a href="/docs/guides/open-core-and-licensing">Open Core &amp; Licensing <span class="arrow">→</span></a>
       </h3>
     </div>
@@ -42,7 +30,7 @@ Whether you are contributing to core packages or authoring mission-critical appl
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">6.3</span>
+      <span class="chapter-card-num">6.2</span>
       <h3 class="chapter-card-title">
         <a href="/docs/guides/deployment-and-operations">Deployment &amp; Operations <span class="arrow">→</span></a>
       </h3>

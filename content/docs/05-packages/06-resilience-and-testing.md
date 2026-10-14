@@ -1,6 +1,6 @@
 ---
 title: "Resilience & Testing (resilience, testing)"
-description: "Fault-tolerant network communication with retry policies and circuit breakers, paired with the spec-driven testing harness."
+description: "Fault-tolerant network communication with retry policies and circuit breakers, paired with the testing assertion harness."
 date: "2026-10-08"
 ---
 
@@ -10,7 +10,7 @@ Import paths:
 - `github.com/krewire/krewire/packages/resilience`
 - `github.com/krewire/krewire/packages/testing`
 
-Distributed systems and web applications fail over network boundaries. Krewire provides built-in resilience primitives to isolate failures and a testing library that links test suites directly to formal specifications.
+Distributed systems and web applications fail over network boundaries. Krewire provides built-in resilience primitives to isolate failures and a testing library that provides HTTP and UI assertion utilities.
 
 ---
 
@@ -59,9 +59,9 @@ err := cb.Execute(func() error {
 
 ---
 
-## 2. Spec-Driven Testing (`packages/testing`)
+## 2. Testing Utilities (`packages/testing`)
 
-Krewire mandates **Spec-Driven Testing** across all repositories. Every non-trivial capability is governed by a specification with numbered requirement IDs, cited directly in test cases:
+Krewire provides testing utilities across all packages and applications, including HTTP helpers and UI assertions:
 
 ```go
 package payment_test
@@ -71,8 +71,6 @@ import (
 	"github.com/krewire/krewire/packages/testing/assert"
 )
 
-// Tests for KWL-PAY-X92KA
-// Spec: KWL-PAY-X92KA REQ-001 Scope: PAYMENT
 func TestPayment_ChargesCardWithIdempotency(t *testing.T) {
 	charge, err := ProcessCharge("ch_123", 5000)
 
@@ -81,4 +79,4 @@ func TestPayment_ChargesCardWithIdempotency(t *testing.T) {
 }
 ```
 
-This discipline ensures that test coverage maps 1:1 to written requirements and prevents specification drift across software releases.
+This discipline ensures clean, readable, and robust test suites that verify behavior across software releases.

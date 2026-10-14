@@ -197,4 +197,4 @@ Equip any project repository with the **Krewire Boost** AI agent guild:
 kiw boost install [path]
 ```
 
-Installs the autonomous agent guild definitions, custom slash commands, and spec-driven SDLC workflows into `.agents/` and `AGENTS.md`.
+Installs the autonomous agent guild definitions, custom slash commands, and autonomous SDLC workflows into `.agents/` and `AGENTS.md`.

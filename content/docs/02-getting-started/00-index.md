@@ -79,7 +79,7 @@ This **Getting Started** chapter is divided into five focused, in-depth subchapt
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Equip your repositories with an autonomous AI agent guild using Krewire Boost. Master spec-driven engineering, the 6-step agent workflow, and automated quality gates.
+      Equip your repositories with an autonomous AI agent guild using Krewire Boost. Master autonomous SDLC workflows, the 6-step agent process, and automated quality gates.
     </p>
     <ul class="chapter-card-list">
       <li>Krewire Boost guild scaffolding (<code>kiw boost install</code>)</li>

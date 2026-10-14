@@ -87,7 +87,7 @@ Every package in the `krewire/packages` catalog adheres to strict architectural 
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Exponential backoff retries, circuit breakers, dead-letter dispatch, and the spec-driven test harness with traceability citations.
+      Exponential backoff retries, circuit breakers, dead-letter dispatch, and the testing harness with HTTP and UI assertion utilities.
     </p>
   </div>
 

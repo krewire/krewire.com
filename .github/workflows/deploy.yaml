@@ -1,9 +1,20 @@
-name: Deploy to krewire.com
+name: Deploy to krewire.com (Production)
 
+# ─────────────────────────────────────────────────────────────────────────────
+# Trigger on stable version git tags only (e.g. v0.1.0, v1.0.0, v2.1.3).
+# Pre-releases, development branches, and raw commits must pass through
+# the release process before reaching production.
+# ─────────────────────────────────────────────────────────────────────────────
 on:
   push:
-    branches: [main]
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
   workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Reason for manual production deployment'
+        required: false
+        default: 'Manual maintenance trigger'
 
 concurrency:
   group: deploy-production
@@ -11,14 +22,25 @@ concurrency:
 
 jobs:
   # ─────────────────────────────────────────────────────────────────────────────
-  # JOB 1 — Build the static site
+  # JOB 1 — Build the static site with strict quality gates
   # ─────────────────────────────────────────────────────────────────────────────
   build:
-    name: Build site
+    name: Build site (Production Gate)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Validate Release Tag
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          echo "▶ Validating stable release tag: ${TAG}"
+          if [[ ! "${TAG}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "✗ Error: '${TAG}' is not a valid stable SemVer tag."
+            exit 1
+          fi
+          echo "✓ Stable version tag validated: ${TAG}"
 
       - name: Setup Go
         uses: actions/setup-go@v5
@@ -104,10 +126,10 @@ jobs:
           if-no-files-found: error
 
   # ─────────────────────────────────────────────────────────────────────────────
-  # JOB 2 — Build Docker image & deploy to VPS
+  # JOB 2 — Build Docker image & deploy to VPS with atomic zero-downtime & rollback
   # ─────────────────────────────────────────────────────────────────────────────
   deploy:
-    name: Deploy to VPS
+    name: Deploy to VPS (Production Release)
     runs-on: ubuntu-latest
     needs: build
     environment:
@@ -126,6 +148,18 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      - name: Determine Version Tags
+        id: meta
+        run: |
+          RELEASE_TAG="${GITHUB_REF#refs/tags/}"
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            echo "version_tag=${RELEASE_TAG}" >> "$GITHUB_OUTPUT"
+            echo "image_tags=krewire-web:${{ github.sha }},krewire-web:${RELEASE_TAG},krewire-web:latest" >> "$GITHUB_OUTPUT"
+          else
+            echo "version_tag=manual-${{ github.sha }}" >> "$GITHUB_OUTPUT"
+            echo "image_tags=krewire-web:${{ github.sha }},krewire-web:latest" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Build Docker image
         uses: docker/build-push-action@v6
         with:
@@ -133,7 +167,7 @@ jobs:
           file: Dockerfile
           push: false
           load: true
-          tags: krewire-web:${{ github.sha }}
+          tags: ${{ steps.meta.outputs.image_tags }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -152,7 +186,6 @@ jobs:
           printf '%s\n' "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
           # Write known_hosts fingerprint — provided as a repository secret.
-          # Obtain with: ssh-keyscan <host> and store as VPS_KNOWN_HOSTS secret.
           printf '%s\n' "${{ secrets.VPS_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
 
@@ -168,13 +201,15 @@ jobs:
       - name: Deploy on VPS
         env:
           SHA: ${{ github.sha }}
+          VERSION: ${{ steps.meta.outputs.version_tag }}
         run: |
           ssh -i ~/.ssh/deploy_key \
               -o StrictHostKeyChecking=yes \
               -o BatchMode=yes \
-              ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} bash -s "${{ github.sha }}" << 'REMOTE'
+              ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} bash -s "${{ github.sha }}" "${{ steps.meta.outputs.version_tag }}" << 'REMOTE'
             set -euo pipefail
             SHA="$1"
+            VERSION="$2"
 
             echo "▶ Verifying image checksum on VPS..."
             sha256sum -c /tmp/krewire-web.tar.gz.sha256 \
@@ -186,6 +221,9 @@ jobs:
 
             echo "▶ Tagging image..."
             docker tag "krewire-web:${SHA}" krewire-web:latest
+            if [ -n "${VERSION}" ]; then
+              docker tag "krewire-web:${SHA}" "krewire-web:${VERSION}"
+            fi
 
             echo "▶ Saving previous image tag for rollback..."
             PREV_ID="$(docker inspect --format='{{.Id}}' krewire-web:previous 2>/dev/null || true)"
@@ -224,10 +262,12 @@ jobs:
               exit 1
             fi
 
-            echo "✓ Container is healthy."
-
-            echo "▶ Tagging deployed image as :previous for future rollback..."
+            echo "▶ Tagging deployed image as :previous and :stable for rollback baseline..."
             docker tag krewire-web:latest krewire-web:previous
+            docker tag krewire-web:latest krewire-web:stable
+            if [ -n "${VERSION}" ]; then
+              docker tag krewire-web:latest "krewire-web:${VERSION}"
+            fi
 
             echo "▶ Cleaning up transfer files..."
             rm -f /tmp/krewire-web.tar.gz /tmp/krewire-web.tar.gz.sha256
@@ -235,7 +275,9 @@ jobs:
             echo "▶ Pruning dangling images (not removing tagged images)..."
             docker image prune -f --filter "label!=com.krewire.keep=true"
 
-            echo "✓ Deployment complete."
+            echo "[$(date -u +%Y-%m-%dT%H:%M:%SZ)] PRODUCTION DEPLOY: version=${VERSION} sha=${SHA}" >> ~/workspace/krewire/deploy.log
+
+            echo "✓ Production deployment complete for ${VERSION}."
           REMOTE
 
       - name: Smoke test — verify live site
@@ -265,4 +307,4 @@ jobs:
             echo "✗ /docs returned HTTP ${DOCS_CODE} (expected 200)."
             exit 1
           fi
-          echo "✓ All smoke tests passed."
+          echo "✓ All production smoke tests passed."

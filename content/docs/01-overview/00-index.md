@@ -43,6 +43,18 @@ This **Overview** chapter introduces you to the core philosophy, technical archi
     <div class="chapter-card-head">
       <span class="chapter-card-num">1.2</span>
       <h3 class="chapter-card-title">
+        <a href="/docs/overview/philosophy">Philosophy <span class="arrow">→</span></a>
+      </h3>
+    </div>
+    <p class="chapter-card-desc">
+      Explore the core philosophy, the Three Pillars (Secure, Sustainable, Scalable), and the seven engineering tenets driving Krewire.
+    </p>
+  </div>
+
+  <div class="chapter-card">
+    <div class="chapter-card-head">
+      <span class="chapter-card-num">1.3</span>
+      <h3 class="chapter-card-title">
         <a href="/docs/overview/krewire-workloads">Krewire Workloads <span class="arrow">→</span></a>
       </h3>
     </div>
@@ -53,7 +65,7 @@ This **Overview** chapter introduces you to the core philosophy, technical archi
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">1.3</span>
+      <span class="chapter-card-num">1.4</span>
       <h3 class="chapter-card-title">
         <a href="/docs/overview/upgrade-guide">Upgrade Guide <span class="arrow">→</span></a>
       </h3>
@@ -103,7 +115,7 @@ Explore the comprehensive manual for the Krewire ecosystem:
 | **3.** | [**Workloads in Depth**](/docs/workloads) | Detailed architecture and guides for all 8 workloads (`app`, `cli`, `site`, `book`, `worker`, `service`, `infra`, `runtime`). |
 | **4.** | [**CLI Reference**](/docs/cli-reference) | Complete `kiw` command catalog, `krewire.yaml` schema specification, and task automation. |
 | **5.** | [**Packages & Libraries**](/docs/packages) | Domain libraries catalog: `kern`, `web`, `app`, `sec`, `auth`, `ui`, `tui`, `storage`, `resilience`, and `testing`. |
-| **6.** | [**Architecture & Guides**](/docs/guides) | Spec-driven engineering methodology, open core licensing rules, and production deployment playbooks. |
+| **6.** | [**Architecture & Guides**](/docs/guides) | Architectural design, open core licensing rules, and production deployment playbooks. |
 
 ---
 
