@@ -406,7 +406,7 @@ layout: Landing
 <span style="color:#64748b;font-style:italic">---</span>
 
 <span style="color:#39D353;font-weight:700">&lt;section class="welcome"&gt;</span>
-  <span style="color:#39D353;font-weight:700">&lt;h1&gt;</span>{{"{{"}} .Title {{"}}"}}<span style="color:#39D353;font-weight:700">&lt;/h1&gt;</span>
+  <span style="color:#39D353;font-weight:700">&lt;h1&gt;</span>&lbrace;title&rbrace;<span style="color:#39D353;font-weight:700">&lt;/h1&gt;</span>
   <span style="color:#39D353;font-weight:700">&lt;p&gt;</span>Compiled Go speed with zero runtime bloat.<span style="color:#39D353;font-weight:700">&lt;/p&gt;</span>
 <span style="color:#39D353;font-weight:700">&lt;/section&gt;</span>
 
