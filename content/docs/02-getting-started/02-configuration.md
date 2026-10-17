@@ -159,7 +159,7 @@ order, so each layer can win over the previous one:
 | ------------- | ------------------------------------------------ |
 | `scoped`      | styles generated from `<style>` in components/layouts |
 | `vendor`      | third-party output such as plugin CSS (Tailwind) |
-| `component`   | component-library styling (Forge)                |
+| `component`   | component-library styling (Krewire UI)           |
 | `theme`       | theme variables and last-mile design overrides   |
 | `book`        | content-pipeline styling (mdbind)                |
 | `page`        | per-page overrides — always last                 |

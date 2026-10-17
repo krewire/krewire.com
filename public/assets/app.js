@@ -64,7 +64,7 @@ function fallbackCopy(text, cb) {
 
 window.copyCmd = copyCmd;
 
-// ── 3. Forge Drawer & Mobile Menu Controller ────────────────────────────────
+// ── 3. UI Drawer & Mobile Menu Controller ────────────────────────────────────
 (function () {
   'use strict';
 
@@ -75,7 +75,7 @@ window.copyCmd = copyCmd;
     return { drawer: drawer, backdrop: backdrop, togglers: togglers };
   }
 
-  window.forgeDrawer = {
+  var drawerCtrl = {
     open: function (id) {
       var els = getDrawerElements(id);
       if (!els.drawer) return;
@@ -109,6 +109,9 @@ window.copyCmd = copyCmd;
     }
   };
 
+  window.uiDrawer = drawerCtrl;
+  window.forgeDrawer = drawerCtrl; // Backwards compatibility alias
+
   document.addEventListener('DOMContentLoaded', function () {
     // Event delegation for drawers
     document.addEventListener('click', function (e) {
@@ -117,7 +120,7 @@ window.copyCmd = copyCmd;
         var id = toggleBtn.getAttribute('data-drawer-toggle');
         if (id) {
           e.preventDefault();
-          window.forgeDrawer.toggle(id);
+          window.uiDrawer.toggle(id);
           return;
         }
       }
@@ -127,7 +130,7 @@ window.copyCmd = copyCmd;
         var id = closeBtn.getAttribute('data-drawer-close');
         if (id) {
           e.preventDefault();
-          window.forgeDrawer.close(id);
+          window.uiDrawer.close(id);
           return;
         }
       }
@@ -137,7 +140,7 @@ window.copyCmd = copyCmd;
         var id = backdrop.getAttribute('data-drawer-backdrop');
         if (id) {
           e.preventDefault();
-          window.forgeDrawer.close(id);
+          window.uiDrawer.close(id);
           return;
         }
       }
@@ -147,7 +150,7 @@ window.copyCmd = copyCmd;
       if (drawerLink) {
         var drawer = drawerLink.closest('.drawer');
         if (drawer && drawer.id) {
-          window.forgeDrawer.close(drawer.id);
+          window.uiDrawer.close(drawer.id);
         }
       }
     });
@@ -156,7 +159,7 @@ window.copyCmd = copyCmd;
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') {
         document.querySelectorAll('.drawer.drawer-open').forEach(function (d) {
-          window.forgeDrawer.close(d.id);
+          window.uiDrawer.close(d.id);
         });
       }
     });

@@ -5,7 +5,7 @@ module.exports = {
     "components/**/*.kiw",
     "layouts/**/*.kiw",
     "content/**/*.md",
-    "../forge/components/**/*.kiw",
+    "../krewire/packages/ui/components/**/*.kiw",
     ".krewire/build/**/*.html",
   ],
   darkMode: "class",

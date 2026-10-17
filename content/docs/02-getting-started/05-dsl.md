@@ -174,7 +174,7 @@ injection off or exclude specific files.
 
 ## 4. Reusable Component Composition
 
-Components located in the `components/` directory (or embedded from `forge`) can be instantiated dynamically inside any page, layout, or other component using either custom component tags or the `component` helper:
+Components located in the `components/` directory (or embedded from Krewire UI) can be instantiated dynamically inside any page, layout, or other component using either custom component tags or the `component` helper:
 
 ```html
 <!-- Tag-based invocation with attributes as props -->
