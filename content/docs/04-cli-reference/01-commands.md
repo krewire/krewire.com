@@ -191,10 +191,10 @@ kiw ws exec <cmd>   # Execute a command across every workspace module
 
 ### `kiw boost install`
 
-Equip any project repository with the **Krewire Boost** AI agent guild:
+Equip any project repository with the **Krewire Boost** AI agent system:
 
 ```bash
 kiw boost install [path]
 ```
 
-Installs the autonomous agent guild definitions, custom slash commands, and autonomous SDLC workflows into `.agents/` and `AGENTS.md`.
+Installs the autonomous agent definitions, custom slash commands, and autonomous SDLC workflows into `.agents/` and `AGENTS.md`.

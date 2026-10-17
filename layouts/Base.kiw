@@ -13,12 +13,12 @@
   <meta name="theme-color" content="#0B1F3B">
 </head>
 <body>
-  <Navbar showSidebarToggle showLangToggle {version} />
+  <Navbar showSidebarToggle showLangToggle version={version} />
   <div class="site-layout" id="site-layout">
     <Sidebar Title="Navigate" />
     <main class="site-main">{content}</main>
   </div>
-  <Footer variant="simple" {version} />
+  <Footer variant="simple" version={version} />
   <script>
     (function(){
       var layout=document.getElementById('site-layout');

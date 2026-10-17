@@ -34,7 +34,7 @@ build:
 
 # Dev server configuration
 dev:
-  port: "8080"
+  port: 8080
 
 # Book configuration for documentation manuscript
 book:

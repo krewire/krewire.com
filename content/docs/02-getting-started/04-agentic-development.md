@@ -1,6 +1,6 @@
 ---
 title: "Agentic Development"
-description: "Equip your Krewire projects with an autonomous AI agent guild using Krewire Boost — unified constitutions, agent skills, and automated quality gates."
+description: "Equip your Krewire projects with autonomous AI agents using Krewire Boost — unified constitutions, agent skills, and automated quality gates."
 date: "2026-09-29"
 ---
 
@@ -8,13 +8,13 @@ date: "2026-09-29"
 
 Modern software engineering is rapidly shifting toward collaboration between human developers and autonomous AI coding agents. However, unguided AI agents frequently hallucinate architectures, break conventions, or introduce dependency bloat.
 
-Krewire solves this through **Krewire Boost** (`templates/boost` in `github.com/krewire/krewire`)—an embedded agentic guild and configuration standard that equips AI agents with deep, intrinsic knowledge of the Krewire ecosystem, its 8 workloads, the `kiw` CLI, and strict automated quality gates.
+Krewire solves this through **Krewire Boost** (`templates/boost` in `github.com/krewire/krewire`)—an embedded agentic framework and configuration standard that equips AI agents with deep, intrinsic knowledge of the Krewire ecosystem, its 8 workloads, the `kiw` CLI, and strict automated quality gates.
 
 ---
 
 ## 1. What is Krewire Boost?
 
-**Krewire Boost** is distributed as a Go module embedded directly inside the `kiw` CLI. With a single command, you can bootstrap a complete agent guild into any Krewire repository:
+**Krewire Boost** is distributed as a Go module embedded directly inside the `kiw` CLI. With a single command, you can bootstrap a complete agent system into any Krewire repository:
 
 ```bash
 kiw boost install
@@ -23,7 +23,7 @@ kiw boost install
 ### Core Capabilities:
 
 1. **Unified Constitution (`AGENTS.md`):** Encodes the 8-workload detection table, the full `kiw` command matrix, architectural boundaries (SRP, SoC), and immutable project rules.
-2. **Specialized Subagent Guild:** 15+ dedicated agent personas (`scout`, `plan`, `build`, `reviewer`, `tester`, `debugger`, `refactor`, `docs`, `security`, `deploy`).
+2. **Specialized Subagent Roster:** 15+ dedicated agent personas (`scout`, `plan`, `build`, `reviewer`, `tester`, `debugger`, `refactor`, `docs`, `security`, `deploy`).
 3. **Structured Slash Commands:** 16 standard commands (`/kickoff`, `/spec`, `/plan`, `/review`, `/test`, `/fix`, `/commit`, `/deploy`).
 4. **Context-Aware Skills:** 20+ reusable procedural skills (`context-awareness`, `quality-gate`, `wasm-runtime`, `infra-provision`, `worker-queue`).
 5. **Zero Vendor Lock-In:** Plug-and-play with OpenCode natively, and easily adapted for Claude Code, Cursor, Windsurf, Copilot, and Codex.
@@ -40,7 +40,7 @@ kiw boost install .
 
 *Terminal output:*
 ```text
-2026/09/29 21:00:00 INFO installing Krewire Boost guild into .
+2026/09/29 21:00:00 INFO installing Krewire Boost into .
 created AGENTS.md
 created opencode.json
 created .agents/agents/build.md
@@ -60,11 +60,10 @@ created .agents/skills/quality-gate/SKILL.md
 | `kiw boost install [path]` | Install template files into the target directory (defaults to current dir). |
 | `--force` | Overwrite existing managed agent files without interactive confirmation. |
 | `--dry-run` | Preview files that would be created without writing to disk. |
-| `kiw guild install` | Canonical CLI alias for `kiw boost install`. |
 
 ---
 
-## 3. Directory Layout of the Agent Guild
+## 3. Directory Layout of the Agent System
 
 Once installed, your repository contains a standardized `.agents/` structure:
 

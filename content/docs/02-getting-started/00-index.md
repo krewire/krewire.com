@@ -79,10 +79,10 @@ This **Getting Started** chapter is divided into five focused, in-depth subchapt
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Equip your repositories with an autonomous AI agent guild using Krewire Boost. Master autonomous SDLC workflows, the 6-step agent process, and automated quality gates.
+      Equip your repositories with autonomous AI agents using Krewire Boost. Master autonomous SDLC workflows, the 6-step agent process, and automated quality gates.
     </p>
     <ul class="chapter-card-list">
-      <li>Krewire Boost guild scaffolding (<code>kiw boost install</code>)</li>
+      <li>Krewire Boost scaffolding (<code>kiw boost install</code>)</li>
       <li><code>AGENTS.md</code> unified constitution & slash commands</li>
       <li>OpenCode, Claude Code, and Cursor workflows</li>
     </ul>
@@ -349,7 +349,7 @@ Keep these everyday `kiw` commands at your fingertips during development:
 | **`test`** | `kiw test` | Execute unit and integration tests across all packages. |
 | **`vet`** | `kiw vet` | Run standard Go static analysis (`go vet`) across the project. |
 | **`fmt`** | `kiw fmt --write` | Format all Go and `.kiw` component files according to conventions. |
-| **`boost`** | `kiw boost install [path]` | Install the Krewire Boost AI agent guild into the project. |
+| **`boost`** | `kiw boost install [path]` | Install the Krewire Boost AI agent framework into the project. |
 | **`version`** | `kiw version` | Display current CLI and package release versions. |
 | **`info`** | `kiw info` | Print detailed project environment and diagnostic information. |
 | **`help`** | `kiw help [command]` | Display comprehensive documentation for any CLI command. |

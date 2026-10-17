@@ -31,13 +31,13 @@
 <body class="w-full min-w-0 flex flex-col min-h-screen">
 
   <!-- NAVBAR -->
-  <Navbar showSidebarToggle=false showLangToggle {version} />
+  <Navbar showSidebarToggle=false showLangToggle version={version} />
 
   <!-- PAGE CONTENT -->
   <main id="main" class="w-full min-w-0 flex-1 max-w-none">{content}</main>
 
   <!-- FOOTER -->
-  <Footer variant="full" {version} />
+  <Footer variant="full" version={version} />
 </body>
 </html>
 
