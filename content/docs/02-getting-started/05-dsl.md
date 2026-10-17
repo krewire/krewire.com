@@ -130,6 +130,18 @@ The body of a `.kiw` file uses Go's standard `html/template` syntax. It provides
 </ul>
 ```
 
+#### Class Composition Helper (`class`)
+To collapse verbose conditional modifier blocks inside class attributes without bypassing contextual HTML escaping:
+
+```html
+<!-- Composes base token + conditional modifiers + trailing class props -->
+<a href="{href}" class="{{class "btn" .Variant "primary" .Size "md" .Class}}">
+  {body}
+</a>
+```
+
+The `class` helper automatically handles prefix resolution (e.g. `btn-primary`, `btn-md`), falls back to defaults when props are empty or omitted, collapses whitespace, and returns a plain string so standard `html/template` attribute-context escaping is strictly preserved.
+
 #### Layout Content Injection
 In layout components (`layouts/*.kiw`), the page's rendered body is injected using the `{{.Content}}` directive:
 
