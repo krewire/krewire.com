@@ -93,32 +93,28 @@ jobs:
         run: |
           cd .krewire/build
           fail=0
-          # The cascade order must hold on every page, landing and docs alike.
+          # The bundle must hold on every page, landing and docs alike.
           for page in index.html docs/index.html docs/overview.html docs/getting-started/configuration.html; do
             test -f "$page" || { echo "✗ missing page $page"; fail=1; continue; }
-            order=$(grep -o 'href="[^"]*assets/[a-z]*\.css[^"]*"' "$page" | sed 's|.*assets/||;s|?.*"||' | tr '\n' ' ')
-            if [ "$order" != "style.css tailwind.css forge.css theme.css mdbind.css " ]; then
-              echo "✗ $page asset order = $order"
-              fail=1
-            fi
-            # Every injected asset must be cache-busted, or a reader keeps a
-            # stale stylesheet on one page family and a fresh one on another.
-            if grep -q 'href="[^"]*assets/[a-z]*\.css"' "$page"; then
-              echo "✗ $page has an unversioned stylesheet"
-              fail=1
-            fi
-            # The reader script must come from the build, not from a sed patch.
-            grep -q '<script src="/assets/app.js?v=' "$page" || { echo "✗ $page missing app.js"; fail=1; }
-            grep -q '<script src="/assets/docs.js?v=' "$page" || { echo "✗ $page missing docs.js"; fail=1; }
+            grep -q 'href="/assets/krewire\.css?v=' "$page" || { echo "✗ $page missing krewire.css"; fail=1; }
+            grep -q '<script src="/assets/krewire\.js?v=' "$page" || { echo "✗ $page missing krewire.js"; fail=1; }
+            case "$page" in
+              docs/*)
+                grep -q 'href="/docs/assets/mdbind\.css?v=' "$page" || { echo "✗ $page missing mdbind.css"; fail=1; }
+                ;;
+            esac
           done
+          test -f assets/krewire.css || { echo "✗ missing assets/krewire.css"; fail=1; }
+          test -f assets/krewire.js || { echo "✗ missing assets/krewire.js"; fail=1; }
           [ "$fail" -eq 0 ] || { echo "✗ asset injection verification failed"; exit 1; }
-          echo "✓ Asset order and cache busting verified on landing and docs pages."
+          echo "✓ Asset bundle and cache busting verified on landing and docs pages."
 
       - name: Verify build outputs
         run: |
           test -f .krewire/build/index.html
           test -d .krewire/build/assets
-          test -f .krewire/build/assets/app.js
+          test -f .krewire/build/assets/krewire.css
+          test -f .krewire/build/assets/krewire.js
           test -f .krewire/build/docs/index.html
           test -f .krewire/build/docs/getting-started.html
           test -f .krewire/build/docs/overview.html

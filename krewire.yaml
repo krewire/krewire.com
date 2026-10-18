@@ -40,3 +40,7 @@ dev:
 book:
   mount: "/docs"
   toc: true
+
+# Asset injection and bundling
+auto_assets:
+  bundle: true
