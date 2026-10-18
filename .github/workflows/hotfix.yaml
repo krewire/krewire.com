@@ -59,16 +59,6 @@ jobs:
           check-latest: true
           cache: true
 
-      - name: Setup Node (Tailwind)
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: npm
-          cache-dependency-path: package-lock.json
-
-      - name: Install Node dependencies
-        run: npm ci
-
       - name: Install kiw CLI
         run: |
           git clone --depth 1 --branch main "https://github.com/krewire/krewire.git" "${RUNNER_TEMP}/krewire"
@@ -80,7 +70,7 @@ jobs:
       - name: Build contributor portal (krewire.github.io → public/contribute)
         run: |
           git clone --depth 1 --branch main "https://github.com/krewire/krewire.github.io.git" "${RUNNER_TEMP}/portal"
-          ( cd "${RUNNER_TEMP}/portal" && npm ci && kiw build )
+          ( cd "${RUNNER_TEMP}/portal" && kiw build )
           rm -rf public/contribute
           mkdir -p public/contribute
           cp -a "${RUNNER_TEMP}/portal/.krewire/build/." public/contribute/
