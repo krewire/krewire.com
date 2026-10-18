@@ -40,4 +40,16 @@ Whether you are contributing to core packages or authoring mission-critical appl
     </p>
   </div>
 
+  <div class="chapter-card">
+    <div class="chapter-card-head">
+      <span class="chapter-card-num">6.3</span>
+      <h3 class="chapter-card-title">
+        <a href="/docs/guides/agentic-development">Agentic Development <span class="arrow">→</span></a>
+      </h3>
+    </div>
+    <p class="chapter-card-desc">
+      Pair with AI coding agents using native Model Context Protocol (MCP), Unified AI SDK structured outputs, and Boost presets.
+    </p>
+  </div>
+
 </div>
