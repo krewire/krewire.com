@@ -69,9 +69,10 @@ window.copyCmd = copyCmd;
   'use strict';
 
   function getDrawerElements(id) {
-    var drawer = document.getElementById(id);
-    var backdrop = document.getElementById(id + '-backdrop') || document.querySelector('[data-drawer-backdrop="' + id + '"]');
-    var togglers = document.querySelectorAll('[data-drawer-toggle="' + id + '"], [aria-controls="' + id + '"]');
+    if (!id) return { drawer: null, backdrop: null, togglers: [] };
+    var drawer = document.getElementById(id) || document.querySelector('.' + id) || document.querySelector('[data-drawer="' + id + '"]');
+    var backdrop = document.getElementById(id + '-backdrop') || document.querySelector('[data-drawer-backdrop="' + id + '"]') || document.querySelector('.drawer-backdrop');
+    var togglers = document.querySelectorAll('[data-drawer-toggle="' + id + '"], [aria-controls="' + id + '"], #' + id + '-toggle');
     return { drawer: drawer, backdrop: backdrop, togglers: togglers };
   }
 
@@ -80,6 +81,8 @@ window.copyCmd = copyCmd;
       var els = getDrawerElements(id);
       if (!els.drawer) return;
       els.drawer.classList.add('drawer-open');
+      els.drawer.classList.add('is-open');
+      els.drawer.setAttribute('aria-hidden', 'false');
       if (els.backdrop) els.backdrop.classList.add('backdrop-open');
       els.togglers.forEach(function (btn) {
         btn.setAttribute('aria-expanded', 'true');
@@ -91,6 +94,8 @@ window.copyCmd = copyCmd;
       var els = getDrawerElements(id);
       if (!els.drawer) return;
       els.drawer.classList.remove('drawer-open');
+      els.drawer.classList.remove('is-open');
+      els.drawer.setAttribute('aria-hidden', 'true');
       if (els.backdrop) els.backdrop.classList.remove('backdrop-open');
       els.togglers.forEach(function (btn) {
         btn.setAttribute('aria-expanded', 'false');
@@ -101,7 +106,7 @@ window.copyCmd = copyCmd;
     toggle: function (id) {
       var els = getDrawerElements(id);
       if (!els.drawer) return;
-      if (els.drawer.classList.contains('drawer-open')) {
+      if (els.drawer.classList.contains('drawer-open') || els.drawer.classList.contains('is-open')) {
         this.close(id);
       } else {
         this.open(id);
@@ -112,13 +117,28 @@ window.copyCmd = copyCmd;
   window.uiDrawer = drawerCtrl;
   window.forgeDrawer = drawerCtrl; // Backwards compatibility alias
 
-  document.addEventListener('DOMContentLoaded', function () {
+  window.uiToggleDrawer = function (btn, id) {
+    if (!id && btn) {
+      id = btn.getAttribute('data-drawer-toggle') || btn.getAttribute('aria-controls');
+    }
+    if (id) {
+      window.uiDrawer.toggle(id);
+    }
+  };
+
+  window.uiCloseDrawer = function (id) {
+    if (id) {
+      window.uiDrawer.close(id);
+    }
+  };
+
+  function bindDrawerEvents() {
     // Event delegation for drawers
     document.addEventListener('click', function (e) {
-      var toggleBtn = e.target.closest('[data-drawer-toggle]');
+      var toggleBtn = e.target.closest('[data-drawer-toggle], .nav-toggler, [aria-controls]');
       if (toggleBtn) {
-        var id = toggleBtn.getAttribute('data-drawer-toggle');
-        if (id) {
+        var id = toggleBtn.getAttribute('data-drawer-toggle') || toggleBtn.getAttribute('aria-controls');
+        if (id && (document.getElementById(id) || document.querySelector('.' + id))) {
           e.preventDefault();
           window.uiDrawer.toggle(id);
           return;
@@ -172,7 +192,13 @@ window.copyCmd = copyCmd;
         }
       });
     });
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindDrawerEvents);
+  } else {
+    bindDrawerEvents();
+  }
 })();
 
 // ── 4. i18n System (English & Indonesian) ────────────────────────────────────
