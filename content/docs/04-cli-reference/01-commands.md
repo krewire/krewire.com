@@ -92,6 +92,21 @@ Start a local HTTP server to preview static output (`site` or `book` workloads) 
 kiw serve [--port 3000] [--dir .krewire/build]
 ```
 
+### `kiw dashboard`
+
+Launch an interactive local developer dashboard and real-time observability telemetry server:
+
+```bash
+kiw dashboard [--port 4000] [--host 127.0.0.1]
+```
+
+- **Interactive UI (`/`)**: Dark-themed web dashboard inspecting detected pages, handlers, configured microservices, and live memory metrics.
+- **Real-Time Telemetry (`/api/events`)**: Server-Sent Events (SSE) stream pushing goroutine count, memory allocation, and GC telemetry every 2 seconds.
+- **REST Endpoints**:
+  - `GET /api/info`: Project shape, Go toolchain version, services, and route table.
+  - `GET /api/metrics`: Live memory allocations and goroutine counter.
+  - `GET /api/health`: Health status probe for local containers and automation.
+
 ---
 
 ## 3. Building & Deployment
