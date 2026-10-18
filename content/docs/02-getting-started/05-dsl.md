@@ -215,6 +215,28 @@ Instantiate `Alert` inside `pages/index.kiw`:
 <Alert Type="warning" Message="Maintenance scheduled tonight at 23:00 UTC" />
 ```
 
+### Interactive Islands & Client Hydration
+
+Krewire implements an **Island Architecture** (`packages/runtime/mount` and `packages/runtime/boot`) allowing selective client-side hydration of interactive components while keeping the rest of the page 100% zero-JavaScript static HTML.
+
+You declare hydration behavior using `client:*` directives directly on component tags:
+
+```html
+<!-- Hydrate immediately on page load -->
+<Counter client:load initial=0 />
+
+<!-- Hydrate once the browser main thread is idle (requestIdleCallback) -->
+<SearchDialog client:idle placeholder="Search docs..." />
+
+<!-- Hydrate only when scrolled into the viewport (IntersectionObserver) -->
+<CommentThread client:visible threadId="kw-99" />
+```
+
+**How It Works:**
+1. **Server Rendering (SSR/SSG)**: During build, Krewire renders the component to HTML and wraps it in a lightweight marker container (`data-kiw-mount="Counter" data-kiw-hydrate="load" data-kiw-props='{"initial":0}'`).
+2. **Instant Preview**: The browser paints the full content immediately with zero layout shift (CLS: 0).
+3. **Progressive Hydration**: The Krewire WebAssembly runtime (`packages/runtime`) scans for mount markers, seeds the VDOM fiber with the existing DOM, and attaches reactive events without re-rendering server text.
+
 ---
 
 ## 5. Automatic Scoped CSS
