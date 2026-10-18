@@ -198,3 +198,24 @@ kiw boost install [path]
 ```
 
 Installs the autonomous agent definitions, custom slash commands, and autonomous SDLC workflows into `.agents/` and `AGENTS.md`.
+
+### `kiw add <package[@version]>`
+
+Add a Go module or an opt-in ecosystem plugin (such as Tailwind CSS):
+
+```bash
+kiw add twcss@latest
+kiw add tailwindcss
+kiw add github.com/krewire/krewire@v0.1.0
+```
+
+- **Zero JS by Default**: Krewire defaults to zero JavaScript and standalone CSS tokens.
+- **Opt-In Technology**: When adding `twcss`, `kiw` automatically initializes `tailwind.config.js` and enables the Tailwind compiler runner (standalone CLI binary in `bin/tailwindcss`, Bun, PNPM, or npm/npx fallback).
+
+### `kiw remove <package>`
+
+Uninstall a package or deactivate an opt-in plugin:
+
+```bash
+kiw remove twcss
+```
