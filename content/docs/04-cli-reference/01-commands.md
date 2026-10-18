@@ -38,6 +38,22 @@ kiw init [--site | --book | --cli | --worker | --service | --infra]
 
 - `--template <git-url>`: Clone an external starter template repository into an empty directory.
 
+### `kiw make <kind> <name>`
+
+Rapidly scaffold application artifacts with idiomatic conventions:
+
+```bash
+kiw make component <Name>       # Scaffold components/<Name>.kiw
+kiw make page <name>            # Scaffold pages/<name>.kiw
+kiw make handler <Name>         # Scaffold internal/handlers/<name>.go
+kiw make migration <name>       # Scaffold migrations/YYYYMMDDHHMMSS_<name>.sql
+kiw make model <Name>           # Scaffold internal/models/<name>.go
+kiw make middleware <Name>      # Scaffold internal/middleware/<name>.go
+kiw make service <Name>         # Scaffold internal/services/<name>.go
+```
+
+Supports colon syntax (e.g. `kiw make:component Card` or `kiw make component:Card`) and explicit flags (`--kind`, `--name`).
+
 ---
 
 ## 2. Development & Execution
