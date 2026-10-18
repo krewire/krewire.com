@@ -102,10 +102,32 @@ kiw dashboard [--port 4000] [--host 127.0.0.1]
 
 - **Interactive UI (`/`)**: Dark-themed web dashboard inspecting detected pages, handlers, configured microservices, and live memory metrics.
 - **Real-Time Telemetry (`/api/events`)**: Server-Sent Events (SSE) stream pushing goroutine count, memory allocation, and GC telemetry every 2 seconds.
-- **REST Endpoints**:
+- **REST & MCP Endpoints**:
   - `GET /api/info`: Project shape, Go toolchain version, services, and route table.
   - `GET /api/metrics`: Live memory allocations and goroutine counter.
   - `GET /api/health`: Health status probe for local containers and automation.
+  - `GET /mcp/sse`: Native Model Context Protocol (MCP) server for AI coding agents.
+
+### `kiw mcp`
+
+Start a native Model Context Protocol (MCP) server for AI coding agents (Antigravity, Cursor, Claude Desktop, OpenCode):
+
+```bash
+kiw mcp --stdio                      # Standard stdio transport for AI IDEs
+kiw mcp --port 4000 --host 127.0.0.1 # Standalone HTTP/SSE transport
+```
+
+- **MCP Resources**:
+  - `krewire://project/info`: Project metadata, detected kind, Go version, and configured services.
+  - `krewire://project/routes`: All discovered `.kiw` pages, Markdown articles, and Go HTTP handlers.
+  - `krewire://runtime/metrics`: Live memory allocation, system memory, goroutines, and GC stats.
+  - `krewire://runtime/health`: Continuous health status probe.
+- **MCP Tools**:
+  - `kiw_inspect_project`: Inspect project configuration, architecture shape, and environment.
+  - `kiw_list_routes`: Extract the full routing tree.
+  - `kiw_make_scaffold`: Generate components, pages, handlers, migrations, models, middleware, and services.
+  - `kiw_get_metrics`: Real-time telemetry probe for AI performance audits.
+  - `kiw_run_tests`: Run test suites (`go test ./...`) with structured outcome.
 
 ---
 
