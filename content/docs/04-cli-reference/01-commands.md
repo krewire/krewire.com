@@ -50,6 +50,7 @@ kiw make migration <name>       # Scaffold migrations/YYYYMMDDHHMMSS_<name>.sql
 kiw make model <Name>           # Scaffold internal/models/<name>.go
 kiw make middleware <Name>      # Scaffold internal/middleware/<name>.go
 kiw make service <Name>         # Scaffold internal/services/<name>.go
+kiw make job <Name>             # Scaffold internal/jobs/<name>_job.go
 ```
 
 Supports colon syntax (e.g. `kiw make:component Card` or `kiw make component:Card`) and explicit flags (`--kind`, `--name`).
@@ -127,7 +128,29 @@ kiw mcp --port 4000 --host 127.0.0.1 # Standalone HTTP/SSE transport
   - `kiw_list_routes`: Extract the full routing tree.
   - `kiw_make_scaffold`: Generate components, pages, handlers, migrations, models, middleware, and services.
   - `kiw_get_metrics`: Real-time telemetry probe for AI performance audits.
-  - `kiw_run_tests`: Run test suites (`go test ./...`) with structured outcome.
+### `kiw worker`
+
+Run asynchronous background workers and queue processors:
+
+```bash
+kiw worker [--queue memory|file|kv] [--concurrency <N>] [--dlq list|clear]
+```
+
+- `--queue`: Queue storage backend (`memory`, `file`, or `kv`).
+- `--concurrency`: Number of concurrent job workers (default derived from `krewire.yaml` or CPU count).
+- `--dlq list`: Inspect dead-lettered failed jobs.
+- `--dlq clear`: Flush and purge all dead-lettered jobs.
+
+### `kiw gateway`
+
+Run a high-performance API gateway and reverse proxy for microservices:
+
+```bash
+kiw gateway [--port 8080] [--host 0.0.0.0] [--routes "/api/orders=http://localhost:8081,/api/users=http://localhost:8082"]
+```
+
+- Dispatches routes based on `gateway:` configuration in `krewire.yaml` or explicit `--routes` flag.
+- Built-in circuit breaking, distributed rate limiting, CORS, distributed tracing headers, and round-robin load balancing.
 
 ---
 
@@ -152,10 +175,12 @@ kiw build [--target site|book|binary|wasm|infra] [--output <path>]
 Validate the project, run quality gates, stage distribution artifacts into `.krewire/dist/`, and publish to target environments:
 
 ```bash
-kiw deploy [--target binary|gh-pages|infra] [--branch <name>] [--remote <name>] [--dry-run]
+kiw deploy [--target binary|systemd|gh-pages|infra] [--branch <name>] [--remote <name>] [--dry-run]
 ```
 
 - `--dry-run`: Preview deployment steps without publishing or mutating cloud state.
+- `--target binary`: Build and stage standalone executable into distribution directory.
+- `--target systemd`: Generate and configure Linux systemd unit service files (`/etc/systemd/system/<app>.service`) with custom user, working directory, and auto-restart policies.
 - `--target gh-pages`: Commit and push the static output to GitHub Pages (`gh-pages` branch).
 - `--target infra`: Provision declared cloud resources via provider adapters.
 
