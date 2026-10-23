@@ -41,6 +41,15 @@ book:
   mount: "/docs"
   toc: true
 
+# Internationalization: supported locales for docs content.
+# Content lives under content/docs/<locale>/ (e.g. content/docs/en/, content/docs/id/).
+# Build output goes to .krewire/build/<locale>/docs/...
+i18n:
+  default_locale: "en"
+  fallback_locale: "en"
+  base_path: "lang"
+  locales: ["en", "id"]
+
 # Asset injection and bundling
 auto_assets:
   bundle: true
