@@ -34,10 +34,11 @@ The `main` branch is the source of truth. The production deployment is independe
 ```
 krewire.yaml          # devtool config: kind, build output, dev server, project metadata
 pages/                # file-based routes
-layouts/              # Base (shell) + Docs (sidebar)
-components/           # Hero, FeatureCard, CodeWindow, Ecosystem, Callout, DocNav (frontmatter-free)
-content/docs/         # Markdown collections (getting-started, workloads, dsl)
-public/               # favicon.svg, copied verbatim
+layouts/              # Base (shell) + Docs (sidebar) layouts
+lang/                 # Locale translation dictionaries (en.json, id.json)
+content/docs/         # Markdown documentation collections
+public/               # Static assets (favicon, images, client JS/CSS)
+docker/               # Deployment Dockerfile and web server configs
 ```
 
 ## Ecosystem
