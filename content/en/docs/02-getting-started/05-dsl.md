@@ -302,7 +302,7 @@ For content-heavy sections, you can write native Markdown directly within your `
 </section>
 ```
 
-The Krewire compiler automatically converts the Markdown block to clean, sanitized HTML at build time using `packages/kiw` and `github.com/krewire/mdbind`.
+The Krewire compiler automatically converts the Markdown block to clean, sanitized HTML at build time using `pkg/kiw` and `pkg/markdown`.
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "Documentation Book (book)"
-description: "Compile Markdown manuscripts into responsive, book-shaped documentation portals with mdbind, automated chapter ordering, search, and themes."
+description: "Compile Markdown manuscripts into responsive, book-shaped documentation portals with Krewire native book engine, automated chapter ordering, search, and themes."
 date: "2026-10-08"
 ---
 
@@ -8,7 +8,7 @@ date: "2026-10-08"
 
 The **`book`** workload compiles folders of Markdown manuscripts into structured, responsive, book-shaped documentation portals.
 
-Powered by **`mdbind`** (`github.com/krewire/mdbind`), the book engine operates with zero external dependencies and compiles hundreds of documentation pages into static HTML in less than **15 milliseconds**.
+Powered by Krewire's native **`pkg/book`** engine (`github.com/krewire/krewire/pkg/book`), the book engine operates with zero external dependencies and compiles hundreds of documentation pages into static HTML in less than **15 milliseconds**.
 
 ---
 
@@ -17,7 +17,7 @@ Powered by **`mdbind`** (`github.com/krewire/mdbind`), the book engine operates 
 1. **Pure Go Standard Library:** Zero npm scripts, no Python runtime, and no Node.js dependencies.
 2. **Automated Chapter Ordering:** Files and directories with numeric prefixes (`01-overview`, `02-guide`) are automatically converted into numbered chapters and subchapters with clean URL slugs.
 3. **Responsive Navigation & Search:** Built-in collapsible sidebar, quick chapter search filter, keyboard shortcut navigation (`/` to search), and breadcrumbs.
-4. **Instant Live Authoring:** `mdbind serve` provides a local HTTP server that re-renders Markdown files dynamically on browser refresh.
+4. **Instant Live Authoring:** `kiw dev` or `kiw serve` provides a local HTTP server that re-renders Markdown files dynamically on browser refresh.
 5. **Dark & Light Theming:** Built-in theme switcher with automatic OS preference detection and `localStorage` persistence.
 
 ---

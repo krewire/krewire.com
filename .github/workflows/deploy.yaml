@@ -52,7 +52,6 @@ jobs:
       - name: Install kiw CLI
         run: |
           git clone --depth 1 --branch main "https://github.com/krewire/krewire.git" "${RUNNER_TEMP}/krewire"
-          git clone --depth 1 --branch main "https://github.com/krewire/mdbind.git" "${RUNNER_TEMP}/mdbind"
           git clone --depth 1 --branch main "https://github.com/krewire/krew.git" "${RUNNER_TEMP}/krew"
           cd "${RUNNER_TEMP}/krewire"
           go build -o "${RUNNER_TEMP}/bin/kiw" ./tools/kiw/cmd/kiw
@@ -63,11 +62,6 @@ jobs:
 
       - name: Build static site
         run: |
-          # `kiw build` emits the complete site, including the shared asset plan:
-          # every page already links style.css → tailwind.css →
-          # theme.css → mdbind.css and the site scripts, in cascade order with
-          # ?v=<version> cache busting. No post-processing step may reorder or
-          # re-link those assets.
           kiw build
 
       - name: Verify asset injection
@@ -79,11 +73,6 @@ jobs:
             test -f "$page" || { echo "✗ missing page $page"; fail=1; continue; }
             grep -q 'href="/assets/krewire\.css?v=' "$page" || { echo "✗ $page missing krewire.css"; fail=1; }
             grep -q '<script src="/assets/krewire\.js?v=' "$page" || { echo "✗ $page missing krewire.js"; fail=1; }
-            case "$page" in
-              docs/*)
-                grep -q 'href="/docs/assets/mdbind\.css?v=' "$page" || { echo "✗ $page missing mdbind.css"; fail=1; }
-                ;;
-            esac
           done
           test -f assets/krewire.css || { echo "✗ missing assets/krewire.css"; fail=1; }
           test -f assets/krewire.js || { echo "✗ missing assets/krewire.js"; fail=1; }
