@@ -65,7 +65,7 @@ auto_assets:
     "assets/theme.css":
       layer: "page"             # scoped | vendor | component | theme | book | page
 
-# Documentation Book Pipeline (mdbind)
+# Documentation Book Pipeline (pkg/book)
 book:
   mount: "/docs/"               # Mount path in output URL space (hybrid mode)
   toc: true                     # Generate root table-of-contents page
@@ -95,7 +95,7 @@ The `project:` section defines the identity and workload behavior:
   - `app`: Fullstack web monolith with embedded assets (`kiw run`)
   - `cli`: Terminal command-line tool or TUI (`kiw run`)
   - `site`: Scoped `.kiw` component static site generator (`kiw build`)
-  - `book`: Markdown documentation manuscript via `mdbind` (`kiw build --target book`)
+  - `book`: Markdown documentation manuscript via `pkg/book` (`kiw build --target book`)
   - `worker`: Asynchronous background task processor (`kiw worker`)
   - `service`: High-throughput microservice (`kiw run`)
   - `infra`: Infrastructure as code in Go (`kiw deploy --target infra`)
@@ -110,7 +110,7 @@ These are top-level keys — they are **not** nested under `build:`:
 
 - **`output`:** The directory where compiled static files or assets are staged. Defaults to `.krewire/build`.
 - **`base`:** The URL prefix under which assets and pages are served. Defaults to `/`. For sites hosted under subpaths (e.g. `https://example.com/blog/`), set `base: "/blog/"`.
-- **`input`:** The content directory consumed by the book (`mdbind`) pipeline. Defaults to `content`.
+- **`input`:** The content directory consumed by the book (`pkg/book`) pipeline. Defaults to `content`.
 
 ---
 
@@ -161,7 +161,7 @@ order, so each layer can win over the previous one:
 | `vendor`      | third-party output such as plugin CSS (Tailwind) |
 | `component`   | component-library styling (Krewire UI)           |
 | `theme`       | theme variables and last-mile design overrides   |
-| `book`        | content-pipeline styling (mdbind)                |
+| `book`        | content-pipeline styling (pkg/book)                |
 | `page`        | per-page overrides — always last                 |
 
 ```yaml

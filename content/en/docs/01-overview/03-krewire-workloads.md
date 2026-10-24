@@ -26,7 +26,7 @@ project:
 | **Fullstack Monolith** | `app` | Web applications, SSR, JSON APIs, sessions, database access | `kiw run`, `kiw dev` | `packages/web`, `packages/app`, `packages/ui` |
 | **Terminal CLI & TUI** | `cli` | Command-line utilities, interactive developer TUIs | `kiw run`, `kiw new my-cli --cli` | `packages/tui` |
 | **Static Site (SSG)** | `site` | Landing pages, marketing websites, blogs, portfolios | `kiw build`, `kiw dev` | `packages/web/ssg`, `packages/kiw` |
-| **Technical Book** | `book` | Multi-chapter documentation, books, software manuals | `kiw build --target book`, `kiw dev` | `mdbind` |
+| **Technical Book** | `book` | Multi-chapter documentation, books, software manuals | `kiw build --target book`, `kiw dev` | `pkg/book` |
 | **Background Worker** | `worker` | Asynchronous job queues, cron schedules, retries, DLQ | `kiw worker` | `packages/cloud/worker` |
 | **Microservice** | `service` | Distributed RPC/HTTP APIs, service registry, gateways | `kiw run`, `kiw dashboard` | `packages/cloud/service` |
 | **Cloud Infra (IaC)** | `infra` | Provider-agnostic cloud resource provisioning (AWS/K8s) | `kiw deploy --target infra` | `packages/cloud/infra` |
@@ -98,7 +98,7 @@ kiw dev # Starts dev server at localhost:8080 with live reload
 
 ## 4. Technical Book (`book`)
 
-The `book` workload transforms Markdown manuscripts into responsive, reader-friendly documentation portals via the integrated `mdbind` engine:
+The `book` workload transforms Markdown manuscripts into responsive, reader-friendly documentation portals via the integrated `pkg/book` engine:
 
 ### Characteristics
 

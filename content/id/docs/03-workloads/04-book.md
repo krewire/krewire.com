@@ -50,7 +50,7 @@ my-book/
 
 ## Chapter Ordering Rules
 
-`mdbind` uses deterministic naming rules to generate human-friendly navigation:
+Engine book menggunakan aturan penamaan deterministik untuk membuat navigasi yang ramah pembaca:
 
 | Directory or File Name | Number | Slug | Display Title |
 | :--- | :--- | :--- | :--- |
@@ -60,27 +60,27 @@ my-book/
 | `01-installation.md` | 2.1 | `installation` | `2.1 Installation` |
 
 > [!NOTE]
-> Titles are extracted automatically from the first `# Heading` in each Markdown file. If no heading is present, the slug is formatted as the title.
+> Judul diekstraksi otomatis dari `# Heading` pertama di setiap file Markdown. Jika tidak ada heading, slug akan diformat sebagai judul.
 
 ---
 
 ## Frontmatter Support
 
-`mdbind` tolerates YAML frontmatter blocks, allowing manuscript files to be shared seamlessly with SSG collections:
+Kompiler book mendukung blok frontmatter YAML sehingga file manuskrip dapat digunakan bersama dengan koleksi SSG:
 
 ```markdown
 ---
-title: "Installation Guide"
-description: "How to set up the toolchain on Linux and macOS"
+title: "Panduan Instalasi"
+description: "Cara menyiapkan toolchain di Linux dan macOS"
 date: "2026-10-08"
 ---
 
-# Installation Guide
+# Panduan Instalasi
 
-Follow the instructions below to install the binaries...
+Ikuti petunjuk di bawah untuk menginstal binary...
 ```
 
-The frontmatter is automatically stripped before Markdown rendering, ensuring clean HTML output.
+Frontmatter akan dihapus otomatis sebelum perenderan Markdown untuk menghasilkan output HTML yang bersih.
 
 ---
 
@@ -92,7 +92,7 @@ project:
   kind: book
   version: "0.1.0"
 
-# Source directory containing markdown manuscripts
+# Direktori sumber manuskrip markdown
 input: "content"
 
 build:
@@ -102,14 +102,14 @@ build:
 
 ---
 
-## Standalone CLI Usage (`mdbind`)
+## Penggunaan CLI Native (`kiw`)
 
-`mdbind` can also be run standalone without `kiw`:
+Build dan serve buku Anda langsung menggunakan `kiw`:
 
 ```bash
-# Build book to dist/
-mdbind build --input content --output dist
+# Build book ke direktori output
+kiw build
 
-# Serve book locally with live re-rendering
-mdbind serve --input content --port 8080
+# Serve book secara lokal dengan live re-rendering
+kiw serve
 ```

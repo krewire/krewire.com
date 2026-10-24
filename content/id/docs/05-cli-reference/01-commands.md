@@ -23,7 +23,7 @@ kiw new my-app [--site | --app | --cli | --book | --worker | --service | --infra
 - `--site`: Static site generator with `.kiw` Single-File Components.
 - `--app`: Fullstack web monolith with `net/http` and embedded assets.
 - `--cli`: Terminal utility with Elm-style Model-Update-View architecture.
-- `--book`: Documentation book with Markdown manuscripts and `mdbind`.
+- `--book`: Documentation book with Markdown manuscripts and `pkg/book`.
 - `--worker`: Asynchronous job worker daemon.
 - `--service`: Cloud-native microservice.
 - `--infra`: Infrastructure as Code in Go.

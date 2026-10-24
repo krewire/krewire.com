@@ -55,7 +55,7 @@ Siapkan toolchain Go lokal, kuasai CLI tunggal `kiw`, struktur direktori standar
 Bangun aplikasi nyata dengan mendalami jenis workload yang sesuai dengan kebutuhan Anda:
 
 1. **Dokumentasi & Konten:**
-   - [**Buku Dokumentasi (`book`)**](/docs/workloads/book) — Kompilasi manuskrip markdown super cepat menjadi situs buku dengan `mdbind`.
+   - [**Buku Dokumentasi (`book`)**](/docs/workloads/book) — Kompilasi manuskrip markdown super cepat menjadi situs buku dengan `pkg/book`.
    - [**Situs Statis (`site`)**](/docs/workloads/site) — Situs SSG cepat dan ramah SEO yang dibuat dengan Go murni.
 2. **Alat Bantu Terminal:**
    - [**CLI Interaktif & TUI (`cli`)**](/docs/workloads/cli) — Membangun antarmuka terminal interaktif dengan `pkg/tui`.

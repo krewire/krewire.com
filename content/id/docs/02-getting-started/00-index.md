@@ -322,7 +322,7 @@ Krewire supports eight first-class workload archetypes. When bootstrapping a new
 | Workload Kind | CLI Scaffold Flag | Primary Purpose | Key Packages | Primary Output |
 | :--- | :--- | :--- | :--- | :--- |
 | **Static Site (`site`)** | `kiw new <name> --site` | Marketing websites, landing pages, blogs | `packages/kiw`, `packages/web/ssg` | Static HTML / CSS / Assets |
-| **Documentation (`book`)** | `kiw new <name> --book` | Technical books, engineering docs, manuals | `mdbind` | Multi-chapter static portal |
+| **Documentation (`book`)** | `kiw new <name> --book` | Technical books, engineering docs, manuals | `pkg/book` | Multi-chapter static portal |
 | **Fullstack App (`app`)** | `kiw new <name> --app` | SaaS platforms, dashboards, dynamic monoliths | `packages/web`, `packages/app` | Single Go binary + embedded assets |
 | **Terminal Tool (`cli`)** | `kiw new <name> --cli` | Developer tools, system utilities, TUIs | `packages/tui` | Single standalone CLI binary |
 | **Background Worker (`worker`)** | `kiw init --worker` | Async job processors, queue consumers | `packages/cloud/worker` | Long-running worker daemon |

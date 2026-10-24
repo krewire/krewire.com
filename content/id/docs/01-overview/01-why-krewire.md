@@ -42,7 +42,7 @@ Krewire unifies all of these workloads under **Go**, **`kiw`**, and **`krewire.y
 | Workload | Traditional Fragmented Approach | The Krewire Approach |
 | :--- | :--- | :--- |
 | **Static Site** | Node.js + Astro / Hugo / Next.js | `kiw build --site` (Go SSG, zero client JS) |
-| **Documentation** | Docusaurus / GitBook / MkDocs | `kiw build --book` (`mdbind` markdown engine) |
+| **Documentation** | Docusaurus / GitBook / MkDocs | `kiw build --book` (`pkg/book` markdown engine) |
 | **Web Monolith** | Laravel / Django / Next.js + Node | `kiw run` (`packages/app` single Go binary) |
 | **CLI & TUI** | Python Click / Node / Cobra | `kiw build --cli` (`packages/tui` reactive terminal) |
 | **Background Jobs** | Celery + Python + Redis / Sidekiq | `kiw run --worker` (`packages/cloud/worker` queues & cron) |

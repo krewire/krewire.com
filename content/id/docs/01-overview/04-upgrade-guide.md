@@ -107,7 +107,7 @@ dev:
 | **Page Title & SEO** | YAML frontmatter in `.kiw` (`pages/*.kiw`) or Markdown | Content-specific metadata belongs with content |
 | **Navigation & Links** | Reusable layout shell (`layouts/Base.kiw` or `components/Nav.kiw`) | Presentation structure belongs in UI components |
 | **Footer & Copyright** | Layout footer section (`layouts/Base.kiw`) | UI components manage responsive layout display |
-| **Theme & Color Palettes** | CSS design tokens (`theme.css` / `mdbind.css`) | Styling variables belong in stylesheets |
+| **Theme & Color Palettes** | CSS design tokens (`theme.css` / `pkg/book.css`) | Styling variables belong in stylesheets |
 | **Database & API Keys** | Standard environment variables (`.env`) | Sensitive credentials must never be committed |
 
 ---

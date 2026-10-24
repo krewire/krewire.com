@@ -40,7 +40,7 @@
     "app_desc": "Fullstack web monolith — compile your web interface, HTTP routing, and API handlers into a single static Go binary.",
     "cli_desc": "Developer command-line tools & rich terminal interfaces powered by the lightweight TUI library with zero dependencies.",
     "site_desc": "High-performance static marketing sites, landing pages, and blogs built with the .kiw DSL and scoped CSS styling.",
-    "book_desc": "Technical documentation, knowledge bases, and API references compiled with the standalone mdbind engine.",
+    "book_desc": "Technical documentation, knowledge bases, and API references compiled with the native pkg/book engine.",
     "worker_desc": "Asynchronous background queues, scheduled recurring tasks, and durable workers with graceful shutdowns.",
     "service_desc": "Headless microservices, JSON REST APIs, and gRPC endpoints engineered for high concurrency and low latency.",
     "infra_desc": "Automated bare-metal and VPS provisioning, TLS certificate issuance, and zero-downtime blue-green deployments.",

@@ -55,7 +55,7 @@ Bootstrap your local Go toolchain, master the single CLI `kiw`, explore file-bas
 Build real-world applications by diving into the specific workload kind tailored to your requirements:
 
 1. **Content & Documentation:**
-   - [**Documentation Books (`book`)**](/docs/workloads/book) — Ultra-fast manuscript-to-site compilation with `mdbind`.
+   - [**Documentation Books (`book`)**](/docs/workloads/book) — Ultra-fast manuscript-to-site compilation with `pkg/book`.
    - [**Static Sites (`site`)**](/docs/workloads/site) — Fast, SEO-optimized static sites built with pure Go.
 2. **Terminal Tools:**
    - [**Interactive CLI & TUIs (`cli`)**](/docs/workloads/cli) — Building rich command-line interfaces with `pkg/tui`.

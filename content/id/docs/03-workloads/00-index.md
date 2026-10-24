@@ -62,7 +62,7 @@ This chapter provides comprehensive architectural documentation, configuration g
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Multi-chapter documentation portals and manuals compiled from Markdown manuscripts using the zero-dependency <code>mdbind</code> engine.
+      Multi-chapter documentation portals and manuals compiled from Markdown manuscripts using the zero-dependency <code>pkg/book</code> engine.
     </p>
   </div>
 
@@ -125,7 +125,7 @@ This chapter provides comprehensive architectural documentation, configuration g
 | **`app`** | `cmd/server/main.go` or `main.go` | `web`, `app`, `ui`, `sec` | Single Go Binary | VPS, Docker, VM |
 | **`cli`** | `cmd/<name>/main.go` | `tui`, `term`, `kern/errs` | Standalone CLI Binary | User Terminal, PATH |
 | **`site`** | `pages/index.kiw` | `kiw`, `web/ssg`, `ui` | Static HTML / CSS / JS | GitHub Pages, S3, Nginx |
-| **`book`** | `content/` or `manuscript/` | `mdbind`, `markdown` | Static Book Site | Documentation CDN |
+| **`book`** | `content/` or `manuscript/` | `pkg/book`, `markdown` | Static Book Site | Documentation CDN |
 | **`worker`** | `cmd/worker/main.go` | `cloud/worker`, `resilience` | Long-running Daemon | Docker, K8s, Systemd |
 | **`service`** | `cmd/service/main.go` | `cloud/service`, `sec` | RPC/HTTP Service | Kubernetes, ECS, Bare Metal |
 | **`infra`** | `infra/main.go` | `cloud/infra` | Deployment Plan / State | AWS, GCP, Azure, K8s |

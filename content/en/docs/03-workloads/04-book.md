@@ -50,7 +50,7 @@ my-book/
 
 ## Chapter Ordering Rules
 
-`mdbind` uses deterministic naming rules to generate human-friendly navigation:
+The book engine uses deterministic naming rules to generate human-friendly navigation:
 
 | Directory or File Name | Number | Slug | Display Title |
 | :--- | :--- | :--- | :--- |
@@ -66,7 +66,7 @@ my-book/
 
 ## Frontmatter Support
 
-`mdbind` tolerates YAML frontmatter blocks, allowing manuscript files to be shared seamlessly with SSG collections:
+The book compiler tolerates YAML frontmatter blocks, allowing manuscript files to be shared seamlessly with SSG collections:
 
 ```markdown
 ---
@@ -102,14 +102,14 @@ build:
 
 ---
 
-## Standalone CLI Usage (`mdbind`)
+## Native CLI Usage (`kiw`)
 
-`mdbind` can also be run standalone without `kiw`:
+Build and serve your book directly with `kiw`:
 
 ```bash
-# Build book to dist/
-mdbind build --input content --output dist
+# Build book to output directory
+kiw build
 
 # Serve book locally with live re-rendering
-mdbind serve --input content --port 8080
+kiw serve
 ```

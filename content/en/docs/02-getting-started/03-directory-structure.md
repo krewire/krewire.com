@@ -34,7 +34,7 @@ my-project/
 │   ├── Footer.kiw        # Footer section
 │   └── CodeBlock.kiw     # Syntax highlighter component
 │
-├── content/              # Documentation manuscripts & books (mdbind)
+├── content/              # Documentation manuscripts & books (pkg/book)
 │   ├── 01-overview/      # Chapter 1 directory
 │   │   ├── index.md      # Chapter landing page
 │   │   └── 01-arch.md    # Subchapter 1.1
@@ -92,7 +92,7 @@ Components are standalone `.kiw` files composed with either the JSX-like `<Compo
 ---
 
 ### `content/` (Manuscript Engine)
-Stores Markdown documentation manuscripts compiled by `mdbind`. Numeric prefixes (`01-`, `02-`) dictate chapter and subchapter reading order in the generated navigation sidebar.
+Stores Markdown documentation manuscripts compiled by `pkg/book`. Numeric prefixes (`01-`, `02-`) dictate chapter and subchapter reading order in the generated navigation sidebar.
 
 ---
 
