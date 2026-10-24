@@ -597,13 +597,12 @@ window.copyCmd = copyCmd;
           } catch (_) {}
 
           if (isDocs) {
-            var target = path;
+            var target;
             if (next === 'id') {
-              if (!target.startsWith('/id/')) {
-                target = '/id' + (target.startsWith('/') ? target : '/' + target);
-              }
+              var clean = path.replace(/^\/en(\/|$)/, '/');
+              target = '/id' + (clean.startsWith('/') ? clean : '/' + clean);
             } else {
-              target = target.replace(/^\/id/, '') || '/docs';
+              target = path.replace(/^\/id(\/|$)/, '/') || '/docs';
             }
             window.location.href = target;
             return;

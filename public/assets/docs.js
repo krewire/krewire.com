@@ -112,6 +112,16 @@
       el.textContent = curLang.toUpperCase();
     });
 
+    // Localize topbar and mobile nav links if browsing Indonesian docs
+    if (isIndonesian) {
+      document.querySelectorAll('.topbar nav .nav-links a, .sidebar-mobile-nav a').forEach(function (a) {
+        var href = a.getAttribute('href');
+        if (href && href.startsWith('/docs') && !href.startsWith('/id/')) {
+          a.setAttribute('href', '/id' + href);
+        }
+      });
+    }
+
     // Delegate language click with full documentation route switching
     document.querySelectorAll('.lang-switch, [data-lang-toggle]').forEach(function (btn) {
       if (btn._docsLangBound) return;
@@ -124,13 +134,12 @@
           localStorage.setItem('krewire-lang', nextLang);
         } catch (_) {}
 
-        var target = path;
+        var target;
         if (nextLang === 'id') {
-          if (!target.startsWith('/id/')) {
-            target = '/id' + (target.startsWith('/') ? target : '/' + target);
-          }
+          var clean = path.replace(/^\/en(\/|$)/, '/');
+          target = '/id' + (clean.startsWith('/') ? clean : '/' + clean);
         } else {
-          target = target.replace(/^\/id/, '') || '/docs';
+          target = path.replace(/^\/id(\/|$)/, '/') || '/docs';
         }
         window.location.href = target;
       });
@@ -153,22 +162,26 @@
       try {
         localStorage.setItem('krewire-lang', nextLang);
       } catch (_) {}
-      var target = path;
+      var target;
       if (nextLang === 'id') {
-        if (!target.startsWith('/id/')) {
-          target = '/id' + (target.startsWith('/') ? target : '/' + target);
-        }
+        var clean = path.replace(/^\/en(\/|$)/, '/');
+        target = '/id' + (clean.startsWith('/') ? clean : '/' + clean);
       } else {
-        target = target.replace(/^\/id/, '') || '/docs';
+        target = path.replace(/^\/id(\/|$)/, '/') || '/docs';
       }
       window.location.href = target;
     });
 
     var themeToggle = nav.querySelector('[data-theme-toggle]');
-    if (themeToggle) {
-      nav.insertBefore(btn, themeToggle);
+    if (themeToggle && themeToggle.parentNode) {
+      themeToggle.parentNode.insertBefore(btn, themeToggle);
     } else {
-      nav.appendChild(btn);
+      var actions = nav.querySelector('.topbar-actions');
+      if (actions) {
+        actions.appendChild(btn);
+      } else {
+        nav.appendChild(btn);
+      }
     }
   }
 
