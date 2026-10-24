@@ -105,16 +105,20 @@
   },
   "ecosystem": {
     "badge": "Ekosistem Resmi",
-    "title": "4 Repositori Git — Arsitektur Terpadu",
-    "lead": "Seluruh ekosistem Krewire diorganisasi ke dalam tepat 4 repositori terarah yang terkomposisi bersih.",
+    "title": "Arsitektur Multi-Repo Terpadu",
+    "lead": "Platform SDLC digital Krewire diorganisasi ke dalam repositori independen terfokus yang terkomposisi bersih.",
     "core_badge": "Monorepo Inti",
-    "core_desc": "Paket inti, aplikasi, developer CLI (kiw), dan template agent Boost dalam Go.",
+    "core_desc": "Paket Go modular (pkg/*), developer CLI (kiw), runtime fullstack WASM, ORM, dan agent Boost AI.",
+    "cloud_badge": "Hybrid PaaS",
+    "cloud_desc": "Engine PaaS mandiri, control plane cloud multi-tenant, hermetic builder, dan dynamic edge reverse proxy.",
+    "auth_badge": "Auth Enterprise",
+    "auth_desc": "Identitas multi-tenant, Single Sign-On (OIDC/SAML2), MFA (TOTP), reset password, dan hierarki RBAC.",
     "book_badge": "Engine Buku",
     "book_desc": "Compiler buku Markdown & situs dokumentasi mandiri yang menggerakkan workload book.",
     "portal_badge": "Situs Portal",
     "portal_desc": "Situs produksi resmi dan portal dokumentasi yang dibangun dengan workload site & DSL .kiw.",
     "community_badge": "Komunitas",
-    "community_desc": "Portal komunitas untuk kontributor, rilis, panduan, dan sponsor."
+    "community_desc": "Portal komunitas untuk kontributor, rilis, panduan, dan sponsorship."
   },
   "cta": {
     "badge": "Siap Membangun",

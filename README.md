@@ -43,4 +43,4 @@ docker/               # Deployment Dockerfile and web server configs
 
 ## Ecosystem
 
-Krewire consists of 5 repositories (`krewire`, `mdbind`, `internal`, `krewire.com`, `krewire.github.io`). This site dogfoods `packages/web/ssg` + `packages/kiw` DSL (`<markdown>`, `dict` helper, optional frontmatter) and validates the `site` path end-to-end.
+Krewire consists of 7 repositories (`krewire`, `cloud`, `auth`, `mdbind`, `internal`, `krewire.com`, `krewire.github.io`). This site dogfoods `pkg/web/ssg` + `pkg/kiw` DSL (`<markdown>`, `dict` helper, optional frontmatter) and validates the `site` path end-to-end.

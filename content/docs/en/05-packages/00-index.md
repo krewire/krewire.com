@@ -9,7 +9,7 @@ date: "2026-10-08"
 Krewire is delivered as **Modular Libraries**: independent, single-purpose Go packages that you compose, rather than a monolithic framework you inherit.
 
 Every package in the `krewire/pkg` catalog adheres to strict architectural boundaries:
-- **Strict Downward-Only Dependencies:** Domain primitives and rules reside in `packages/kern/model`. Higher-level libraries never inject upward dependencies.
+- **Strict Downward-Only Dependencies:** Domain primitives and rules reside in `pkg/model`. Higher-level libraries never inject upward dependencies.
 - **Single Source of Truth (SSOT):** Facts, constants, and validation rules are owned by exactly one package and imported elsewhere.
 - **Standard Library Alignment:** Zero unnecessary third-party dependencies. Where the Go standard library provides a capability (`net/http`, `context`, `slog`, `embed`), Krewire builds upon it rather than replacing it.
 
@@ -130,10 +130,10 @@ templates/boost (AI agent starters)
 tools/kiw (Developer CLI)
        │
        ▼
-pkg/* (Domain libraries: web, sec, auth, ui, tui, storage...)
+pkg/* (Domain libraries: web, sec, auth, ui, tui, storage, orm, cache, mail...)
        │
        ▼
-packages/kern (Kernel model, lifecycle, errors, environment, version)
+pkg/model, pkg/errs (Kernel model, lifecycle, errors, environment, version)
 ```
 
-No library or package may ever import `kiw`. Domain rules belong in `packages/kern/model`, and runtime mechanics belong in `packages/kern/lifecycle`.
+No library or package may ever import `kiw`. Domain rules belong in `pkg/model`, and runtime mechanics belong in `pkg/lifecycle`.
