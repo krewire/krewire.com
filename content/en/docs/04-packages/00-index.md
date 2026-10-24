@@ -23,11 +23,11 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.1</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/packages/kern">Kernel &amp; Model (pkg/model, pkg/errs) <span class="arrow">→</span></a>
+        <a href="/packages/model-and-lifecycle">Model, Lifecycle &amp; Errors (pkg/model, pkg/lifecycle, pkg/errs) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      The foundational control plane: workload kinds, lifecycle supervision, error taxonomy, environment detection, and version contracts.
+      The foundational control plane: workload kinds, lifecycle supervision, error taxonomy, environment resolution, and version contracts.
     </p>
   </div>
 
@@ -35,7 +35,7 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.2</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/packages/web-and-app">Web &amp; Application (pkg/web, pkg/app) <span class="arrow">→</span></a>
+        <a href="/packages/web-and-app">Web &amp; Application (pkg/web, pkg/app) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -47,7 +47,7 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.3</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/packages/security-and-auth">Security &amp; Auth (pkg/sec, pkg/auth) <span class="arrow">→</span></a>
+        <a href="/packages/security-and-auth">Security &amp; Auth (pkg/sec, pkg/auth) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -59,7 +59,7 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.4</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/packages/ui-and-tui">User Interfaces (pkg/ui, pkg/tui) <span class="arrow">→</span></a>
+        <a href="/packages/ui-and-tui">User Interfaces (pkg/ui, pkg/tui) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -71,7 +71,7 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.5</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/packages/storage-and-fs">Storage &amp; Filesystem (pkg/storage, pkg/fs, pkg/file) <span class="arrow">→</span></a>
+        <a href="/packages/storage-and-fs">Storage &amp; Filesystem (pkg/storage, pkg/fs, pkg/file) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -83,7 +83,7 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.6</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/packages/resilience-and-testing">Resilience &amp; Testing (pkg/resilience, pkg/testing) <span class="arrow">→</span></a>
+        <a href="/packages/resilience-and-testing">Resilience &amp; Testing (pkg/resilience, pkg/testing) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -95,7 +95,7 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.7</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/packages/cloud-and-distributed">Cloud &amp; Distributed (pkg/cloud) <span class="arrow">→</span></a>
+        <a href="/packages/cloud-and-distributed">Cloud &amp; Distributed (pkg/cloud) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -107,7 +107,7 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.8</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/packages/config-and-validation">Config &amp; Validation (pkg/config, pkg/validation) <span class="arrow">→</span></a>
+        <a href="/packages/config-and-validation">Config &amp; Validation (pkg/config, pkg/validation) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -119,7 +119,7 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.9</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/packages/ai-and-agents">AI &amp; Agent Orchestration (pkg/ai) <span class="arrow">→</span></a>
+        <a href="/packages/ai-and-agents">AI &amp; Agent Orchestration (pkg/ai) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -131,7 +131,7 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.10</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/packages/database-and-orm">Database &amp; Multi-Driver ORM (pkg/orm) <span class="arrow">→</span></a>
+        <a href="/packages/database-and-orm">Database &amp; Multi-Driver ORM (pkg/orm) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -143,7 +143,7 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.11</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/packages/caching-and-mail">Cache &amp; Mail System (pkg/cache, pkg/mail) <span class="arrow">→</span></a>
+        <a href="/packages/caching-and-mail">Cache &amp; Mail System (pkg/cache, pkg/mail) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -155,7 +155,7 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.12</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/packages/commerce-and-payments">Commerce &amp; Local Payments (pkg/commerce) <span class="arrow">→</span></a>
+        <a href="/packages/commerce-and-payments">Commerce &amp; Local Payments (pkg/commerce) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -167,7 +167,7 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.13</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/packages/identity-and-auth">Enterprise Identity &amp; Auth (krewire/auth) <span class="arrow">→</span></a>
+        <a href="/packages/identity-and-auth">Enterprise Identity &amp; Auth (krewire/auth) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -179,11 +179,23 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.14</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/packages/cloud-paas">Hybrid PaaS Platform (krewire/cloud) <span class="arrow">→</span></a>
+        <a href="/packages/cloud-paas">Hybrid PaaS Platform (krewire/cloud) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
       Go-native self-hosted PaaS engine and managed cloud SaaS, featuring hermetic builders, supervised process pools, and dynamic reverse proxy edge routing.
+    </p>
+  </div>
+
+  <div class="chapter-card">
+    <div class="chapter-card-head">
+      <span class="chapter-card-num">4.15</span>
+      <h3 class="chapter-card-title">
+        <a href="/packages/web-runtime">Web Runtime &amp; WASM (pkg/runtime) <span class="arrow">→</span></a>
+      </h3>
+    </div>
+    <p class="chapter-card-desc">
+      Client-side Go WebAssembly: virtual DOM diffing, generic hooks, the component registry, SSR hydration markers, and a reproducible WASM build pipeline.
     </p>
   </div>
 
@@ -205,7 +217,7 @@ tools/kiw (Developer CLI)
 pkg/* (Domain libraries: web, sec, auth, ui, tui, storage, orm, cache, mail...)
        │
        ▼
-pkg/model, pkg/errs (Kernel model, lifecycle, errors, environment, version)
+pkg/model, pkg/lifecycle, pkg/errs (domain model, supervision, errors, environment, version)
 ```
 
 No library or package may ever import `kiw`. Domain rules belong in `pkg/model`, and runtime mechanics belong in `pkg/lifecycle`.

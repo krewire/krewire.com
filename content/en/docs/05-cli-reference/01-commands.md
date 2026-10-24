@@ -6,7 +6,7 @@ date: "2026-10-08"
 
 # Command Catalog
 
-The **`kiw`** CLI provides an end-to-end command set spanning the entire software development lifecycle—from kernel initialization to production deployment.
+The **`kiw`** CLI provides an end-to-end command set spanning the entire software development lifecycle—from project initialization to production deployment.
 
 ---
 
@@ -167,7 +167,7 @@ kiw build [--target site|book|binary|wasm|infra] [--output <path>]
 - **`site`**: Generates optimized static HTML and scoped CSS into `.krewire/build`.
 - **`book`**: Compiles Markdown manuscripts into multi-chapter documentation portal.
 - **`app`/`cli`/`service`/`worker`**: Compiles a single Go binary with embedded assets.
-- **`runtime`**: Compiles client-side Go WebAssembly into `public/app.wasm`.
+- **`wasm`**: Compiles a `pkg/runtime` client bundle into a `.wasm` module plus JS glue.
 - **`infra`**: Compiles and verifies the cloud infrastructure topology plan.
 
 ### `kiw deploy`

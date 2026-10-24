@@ -4,7 +4,7 @@ description: "Reference guide for Krewire's unified Go AI SDK: provider-agnostic
 date: "2026-10-18"
 ---
 
-# AI & Agents (`packages/ai`)
+# AI & Agents (`pkg/ai`)
 
 Import paths:
 - `github.com/krewire/krewire/pkg/ai`

@@ -43,12 +43,12 @@ Krewire unifies all of these workloads under **Go**, **`kiw`**, and **`krewire.y
 | :--- | :--- | :--- |
 | **Static Site** | Node.js + Astro / Hugo / Next.js | `kiw build --site` (Go SSG, zero client JS) |
 | **Documentation** | Docusaurus / GitBook / MkDocs | `kiw build --book` (`pkg/book` markdown engine) |
-| **Web Monolith** | Laravel / Django / Next.js + Node | `kiw run` (`packages/app` single Go binary) |
-| **CLI & TUI** | Python Click / Node / Cobra | `kiw build --cli` (`packages/tui` reactive terminal) |
-| **Background Jobs** | Celery + Python + Redis / Sidekiq | `kiw run --worker` (`packages/cloud/worker` queues & cron) |
-| **Microservices** | Spring Boot / Express / Go kit | `kiw run --service` (`packages/cloud/service` gateway & OTel) |
-| **Cloud Infra** | Terraform / HCL / CloudFormation | `kiw infra apply` (`packages/cloud/infra` Go IaC declarations) |
-| **Client Frontend** | React / Vue / Angular + bundlers | `kiw build --wasm` (`packages/runtime` Go-to-WASM) |
+| **Web Monolith** | Laravel / Django / Next.js + Node | `kiw run` (`pkg/app` single Go binary) |
+| **CLI & TUI** | Python Click / Node / Cobra | `kiw build --cli` (`pkg/tui` reactive terminal) |
+| **Background Jobs** | Celery + Python + Redis / Sidekiq | `kiw run --worker` (`pkg/cloud/worker` queues & cron) |
+| **Microservices** | Spring Boot / Express / Go kit | `kiw run --service` (`pkg/cloud/service` gateway & OTel) |
+| **Cloud Infra** | Terraform / HCL / CloudFormation | `kiw infra apply` (`pkg/cloud/infra` Go IaC declarations) |
+| **Client Frontend** | React / Vue / Angular + bundlers | `kiw build --wasm` (`pkg/runtime` Go-to-WASM) |
 
 ---
 
@@ -123,4 +123,4 @@ In Krewire, system growth is an **incremental upgrade**, not a rewrite. Your pro
 
 Krewire eliminates the cognitive overhead of modern web development. With one language, one CLI, and one unified configuration file, developers spend less time fighting build tools and more time shipping software.
 
-Next, discover the underlying principles: proceed to [**1.2 Philosophy →**](/docs/overview/philosophy) or explore [**1.3 Krewire Workloads →**](/docs/overview/krewire-workloads).
+Next, discover the underlying principles: proceed to [**1.2 Philosophy →**](/overview/philosophy) or explore [**1.3 Krewire Workloads →**](/overview/krewire-workloads).

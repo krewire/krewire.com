@@ -10,11 +10,11 @@ Import paths:
 - `github.com/krewire/krewire/pkg/ui`
 - `github.com/krewire/krewire/pkg/tui`
 
-Krewire provides unified interface tooling spanning both web browsers (`packages/ui`) and terminal consoles (`packages/tui`).
+Krewire provides unified interface tooling spanning both web browsers (`pkg/ui`) and terminal consoles (`pkg/tui`).
 
 ---
 
-## 1. Web UI Components & Tokens (`packages/ui`)
+## 1. Web UI Components & Tokens (`pkg/ui`)
 
 The `ui` package provides reusable Single-File Components (`.kiw`), semantic CSS design tokens, and a theme switching engine.
 
@@ -43,7 +43,7 @@ html[data-theme="dark"] {
 ```
 
 ### Shared UI Components
-Available in `packages/ui/components/`:
+Available in `pkg/ui/components/`:
 - `<Navbar />`: Responsive navigation bar with theme and mobile drawer toggles.
 - `<Sidebar />`: Collapsible sidebar navigation for documentation.
 - `<Button />`: Accessible button with `primary`, `secondary`, and `outline` variants.
@@ -52,7 +52,7 @@ Available in `packages/ui/components/`:
 
 ---
 
-## 2. Terminal UI Toolkit (`packages/tui`)
+## 2. Terminal UI Toolkit (`pkg/tui`)
 
 The `tui` package powers interactive terminal user interfaces using an Elm/Bubble Tea architecture:
 

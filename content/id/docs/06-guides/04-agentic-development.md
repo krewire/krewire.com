@@ -28,7 +28,7 @@ flowchart TD
     end
 
     subgraph Outbound ["Outbound Application Intelligence (KWN-AI-001)"]
-        AISDK["packages/ai"]
+        AISDK["pkg/ai"]
         PROV["Providers (Gemini, Claude, OpenAI, Ollama)"]
     end
 
@@ -50,7 +50,7 @@ flowchart TD
 ```
 
 1. **Inbound Protocol (Native MCP Server)**: Agents query and command your Krewire project using the open [Model Context Protocol (MCP)](https://modelcontextprotocol.io/).
-2. **Outbound Intelligence (Unified Go AI SDK)**: Your applications, HTTP handlers, and background workers generate structured outputs (`ai.GenerateObject[T]`), stream tokens, and call tools using `packages/ai`.
+2. **Outbound Intelligence (Unified Go AI SDK)**: Your applications, HTTP handlers, and background workers generate structured outputs (`ai.GenerateObject[T]`), stream tokens, and call tools using `pkg/ai`.
 
 ---
 
@@ -125,9 +125,9 @@ When an agent connects to `krewire-mcp`, it gains access to standardized resourc
 
 ---
 
-## 4. Outbound Intelligence with `packages/ai`
+## 4. Outbound Intelligence with `pkg/ai`
 
-When your application needs to generate content, analyze user input, or run autonomous workflows, import `packages/ai`:
+When your application needs to generate content, analyze user input, or run autonomous workflows, import `pkg/ai`:
 
 ```go
 package main

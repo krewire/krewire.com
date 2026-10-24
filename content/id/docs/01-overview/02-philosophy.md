@@ -117,6 +117,6 @@ Each of the seven tenets directly supports and reinforces the primary pillars:
 
 With Krewire's philosophical foundations established, continue exploring the architecture:
 
-- Proceed to [**1.3 Krewire Workloads →**](/docs/overview/krewire-workloads) to inspect the 8 execution models.
-- Review [**1.1 Why Krewire? ←**](/docs/overview/why-krewire) to see how Krewire resolves toolchain fragmentation.
-- Or jump directly into [**2. Getting Started →**](/docs/getting-started).
+- Proceed to [**1.3 Krewire Workloads →**](/overview/krewire-workloads) to inspect the 8 execution models.
+- Review [**1.1 Why Krewire? ←**](/overview/why-krewire) to see how Krewire resolves toolchain fragmentation.
+- Or jump directly into [**2. Getting Started →**](/getting-started).

@@ -10,11 +10,11 @@ Import paths:
 - `github.com/krewire/krewire/pkg/sec`
 - `github.com/krewire/krewire/pkg/auth`
 
-Security is Krewire's primary pillar. Rather than leaving hardening as an afterthought, `packages/sec` and `packages/auth` provide battle-tested, secure-by-default primitives aligned with OWASP Top 10 and CWE benchmarks.
+Security is Krewire's primary pillar. Rather than leaving hardening as an afterthought, `pkg/sec` and `pkg/auth` provide battle-tested, secure-by-default primitives aligned with OWASP Top 10 and CWE benchmarks.
 
 ---
 
-## 1. Security Controls (`packages/sec`)
+## 1. Security Controls (`pkg/sec`)
 
 ### Security Headers Middleware
 Automatically applies modern HTTP defense headers:
@@ -62,7 +62,7 @@ safeLog := sec.MaskPII(rawUserData)
 
 ---
 
-## 2. Authentication Primitives (`packages/auth`)
+## 2. Authentication Primitives (`pkg/auth`)
 
 ### JWT Authentication
 Sign, parse, and verify cryptographically signed JSON Web Tokens using HMAC-SHA256:

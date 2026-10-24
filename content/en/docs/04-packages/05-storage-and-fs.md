@@ -15,9 +15,9 @@ Filesystem and persistent object access are core requirements for modern web app
 
 ---
 
-## 1. Object Storage Abstraction (`packages/storage`)
+## 1. Object Storage Abstraction (`pkg/storage`)
 
-`packages/storage` defines a uniform interface for storing, reading, and deleting binary objects, with swappable drivers for:
+`pkg/storage` defines a uniform interface for storing, reading, and deleting binary objects, with swappable drivers for:
 - **In-Memory Store:** Instant, deterministic test execution without side-effects.
 - **Local Disk Store:** Storing uploads and generated artifacts on the server filesystem.
 - **Cloud S3 Store:** Storing assets in Amazon S3, MinIO, or Cloudflare R2.
@@ -50,9 +50,9 @@ func main() {
 
 ---
 
-## 2. Atomic File Replacement (`packages/file`)
+## 2. Atomic File Replacement (`pkg/file`)
 
-Writing files directly to disk risks leaving corrupted or partial files if a crash occurs mid-write. `packages/file` provides crash-safe atomic write operations:
+Writing files directly to disk risks leaving corrupted or partial files if a crash occurs mid-write. `pkg/file` provides crash-safe atomic write operations:
 
 ```go
 import "github.com/krewire/krewire/pkg/file"
@@ -63,9 +63,9 @@ err := file.WriteAtomic("config.json", data, 0644)
 
 ---
 
-## 3. Testable Virtual Filesystem (`packages/fs`)
+## 3. Testable Virtual Filesystem (`pkg/fs`)
 
-`packages/fs` exposes a clean interface mirroring standard OS file operations, allowing unit tests to simulate filesystems in memory without touching disk:
+`pkg/fs` exposes a clean interface mirroring standard OS file operations, allowing unit tests to simulate filesystems in memory without touching disk:
 
 ```go
 import "github.com/krewire/krewire/pkg/fs"

@@ -99,13 +99,15 @@ After installation completes, verify that the binary is accessible and operation
 kiw version
 ```
 
-Expected output:
+Expected output (the `Commit` line is printed only for builds with module
+provenance):
 
 ```text
 kiw Krewire Devtool
-  version:   v0.1.0
-  built:     2026-09-29
-  target:    site, book, app, cli, worker, service, infra, runtime
+  Krewire Ecosystem  v0.1.0
+  Signature          build with krewire
+  Go                 go1.27.1 (linux/amd64)
+  Commit             a1b2c3d4
 ```
 
 ### 2. Environment Diagnostics
@@ -136,7 +138,7 @@ To upgrade to the latest stable release:
   ```
 - **Via Go Toolchain:**
   ```bash
-  go install github.com/krewire/kiw/cmd/kiw@latest
+  go install github.com/krewire/krewire/tools/kiw/cmd/kiw@latest
   ```
 
 ---
@@ -160,4 +162,4 @@ rm -f "$(go env GOPATH)/bin/kiw"
 
 ## Next Steps
 
-Now that your toolchain is installed, proceed to [**2.2 Configuration →**](/docs/getting-started/configuration) to learn how to configure projects using `krewire.yaml`.
+Now that your toolchain is installed, proceed to [**2.2 Configuration →**](/getting-started/configuration) to learn how to configure projects using `krewire.yaml`.

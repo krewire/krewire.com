@@ -14,7 +14,7 @@ Distributed systems and web applications fail over network boundaries. Krewire p
 
 ---
 
-## 1. Resilience Patterns (`packages/resilience`)
+## 1. Resilience Patterns (`pkg/resilience`)
 
 ### Retry Policies with Jittered Backoff
 
@@ -59,7 +59,7 @@ err := cb.Execute(func() error {
 
 ---
 
-## 2. Testing Utilities (`packages/testing`)
+## 2. Testing Utilities (`pkg/testing`)
 
 Krewire provides testing utilities across all packages and applications, including HTTP helpers and UI assertions:
 

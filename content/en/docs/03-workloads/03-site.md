@@ -8,7 +8,7 @@ date: "2026-10-08"
 
 The **`site`** workload provides an ultra-fast static site generator designed for marketing websites, landing pages, blogs, and public documentation portals.
 
-Powered by `packages/web/ssg` and the `.kiw` DSL, the `site` compiler transforms Single-File Components (SFC) into optimized, semantic HTML and CSS with **zero runtime JavaScript overhead by default**.
+Powered by `pkg/web/ssg` and the `.kiw` DSL, the `site` compiler transforms Single-File Components (SFC) into optimized, semantic HTML and CSS with **zero runtime JavaScript overhead by default**.
 
 ---
 

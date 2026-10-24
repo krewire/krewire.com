@@ -34,7 +34,7 @@ Below is the complete, canonical schema of `krewire.yaml` with production defaul
 # Project Identity & Workload Kind
 project:
   name: "my-service"            # Project identifier (read by the site loader)
-  kind: "site"                  # Workload: app | cli | site | book | worker | service | infra | kernel
+  kind: "site"                  # Workload: app | cli | site | book | worker | service | gateway | infra
   version: "v0.1.0"             # Semantic version injected as `.Version` into pages
   dirs:                         # Optional: Override canonical folder locations
     web: "web"                  # Web handlers and templates
@@ -98,8 +98,11 @@ The `project:` section defines the identity and workload behavior:
   - `book`: Markdown documentation manuscript via `pkg/book` (`kiw build --target book`)
   - `worker`: Asynchronous background task processor (`kiw worker`)
   - `service`: High-throughput microservice (`kiw run`)
+  - `gateway`: Declarative reverse proxy with per-route middleware (`kiw gateway`)
   - `infra`: Infrastructure as code in Go (`kiw deploy --target infra`)
-  - `kernel`: Scaffold-only project before it is equipped (`kiw init`)
+
+  A pre-scaffold bootstrap project is **not** a kind: `kiw info` reports `none`
+  with the marker `pre-init` until `kiw init` equips a variant.
 - **`dirs` (Optional):** Allows customization of the default directory layout if integrating Krewire into an existing repository layout.
 
 ---
@@ -218,4 +221,4 @@ KIW_ENV=production KIW_DEBUG=false kiw run
 
 ## Next Steps
 
-With your configuration in place, proceed to [**2.3 Directory Structure →**](/docs/getting-started/directory-structure) to explore the standard directory layouts for each workload.
+With your configuration in place, proceed to [**2.3 Directory Structure →**](/getting-started/directory-structure) to explore the standard directory layouts for each workload.

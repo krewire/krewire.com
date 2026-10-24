@@ -14,7 +14,7 @@ Robust configuration loading and strict input validation prevent runtime errors 
 
 ---
 
-## 1. Hierarchical Configuration (`packages/config`)
+## 1. Hierarchical Configuration (`pkg/config`)
 
 The `config` package loads typed application settings with deterministic priority:
 1. Explicit CLI flags
@@ -53,7 +53,7 @@ func main() {
 
 ---
 
-## 2. Composable Input Validation (`packages/validation`)
+## 2. Composable Input Validation (`pkg/validation`)
 
 The `validation` package validates data structures without reflection overhead, providing clear error structures for APIs and web forms.
 

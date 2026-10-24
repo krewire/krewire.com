@@ -54,7 +54,7 @@ storefront/
 
 ## Application Entry Point (`main.go`)
 
-A minimal, production-grade `app` workload uses `packages/app` for lifecycle supervision and `packages/web` for HTTP routing:
+A minimal, production-grade `app` workload uses `pkg/app` for lifecycle supervision and `pkg/web` for HTTP routing:
 
 ```go
 package main

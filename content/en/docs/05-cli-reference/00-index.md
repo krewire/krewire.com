@@ -6,7 +6,7 @@ date: "2026-10-08"
 
 # CLI Reference
 
-The **`kiw`** CLI is the unified entry point for the entire Krewire ecosystem. It drives all eight project kinds (`app`, `cli`, `site`, `book`, `worker`, `service`, `infra`, `kernel`) behind one binary and one configuration file (**`krewire.yaml`**).
+The **`kiw`** CLI is the unified entry point for the entire Krewire ecosystem. It drives all eight project kinds (`app`, `cli`, `site`, `book`, `worker`, `service`, `gateway`, `infra`) behind one binary and one configuration file (**`krewire.yaml`**).
 
 `kiw` dogfoods Krewire's own `pkg/tui` and `pkg/term` libraries, ensuring zero external dependencies, near-instant startup times (<2ms), and consistent POSIX exit code discipline.
 
@@ -20,7 +20,7 @@ The **`kiw`** CLI is the unified entry point for the entire Krewire ecosystem. I
     <div class="chapter-card-head">
       <span class="chapter-card-num">5.1</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/cli-reference/commands">Command Catalog <span class="arrow">→</span></a>
+        <a href="/cli-reference/commands">Command Catalog <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -32,7 +32,7 @@ The **`kiw`** CLI is the unified entry point for the entire Krewire ecosystem. I
     <div class="chapter-card-head">
       <span class="chapter-card-num">5.2</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/cli-reference/configuration">Configuration Schema (krewire.yaml) <span class="arrow">→</span></a>
+        <a href="/cli-reference/configuration">Configuration Schema (krewire.yaml) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -44,7 +44,7 @@ The **`kiw`** CLI is the unified entry point for the entire Krewire ecosystem. I
     <div class="chapter-card-head">
       <span class="chapter-card-num">5.3</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/cli-reference/scripting">Task Automation &amp; Scripting <span class="arrow">→</span></a>
+        <a href="/cli-reference/scripting">Task Automation &amp; Scripting <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -64,15 +64,16 @@ Every `kiw` command respects the following global flags and environment variable
 | :--- | :--- | :--- | :--- |
 | `--help`, `-h` | Boolean | `false` | Display command usage and flag descriptions. |
 | `--verbose`, `-v` | Boolean | `false` | Enable verbose debug output and diagnostics. |
-| `KIW_PORT` | Integer | `8080` | Override the development or preview server HTTP port. |
-| `KIW_ENV` | String | `development` | Active runtime environment (`development`, `staging`, `production`). |
+| `--addr` | String | `:8080` | Listen address for `kiw serve`/`kiw dev`; overrides any port declared in `krewire.yaml`. |
+| `KIW_ENV` | String | `local` | Active runtime environment (`local`, `production`, `testing`). |
+| `KIW_DEBUG` | Flag | `false` | Enable debug mode (`1`, `true`, or `yes`). |
 | `NO_COLOR` | Flag | `false` | Disable ANSI color sequences in accordance with the `NO_COLOR` standard. |
 
 ---
 
 ## POSIX Exit Code Contract
 
-`kiw` adheres to strict exit code standards across all commands (`packages/kern/errs`):
+`kiw` adheres to strict exit code standards across all commands (`pkg/errs`):
 
 | Exit Code | Constant | Meaning |
 | :---: | :--- | :--- |

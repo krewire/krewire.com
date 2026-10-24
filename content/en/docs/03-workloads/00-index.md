@@ -1,6 +1,6 @@
 ---
 title: "Workloads"
-description: "Comprehensive guide to Krewire's 8 official workload kinds: app, cli, site, book, worker, service, infra, and runtime. Learn architecture, execution models, and progressive scaling."
+description: "Comprehensive guide to Krewire's 8 official workload kinds: app, cli, site, book, worker, service, gateway, and infra. Learn architecture, execution models, and progressive scaling."
 date: "2026-10-08"
 ---
 
@@ -22,7 +22,7 @@ This chapter provides comprehensive architectural documentation, configuration g
     <div class="chapter-card-head">
       <span class="chapter-card-num">3.1</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/workloads/app">Fullstack Monolith (app) <span class="arrow">→</span></a>
+        <a href="/workloads/app">Fullstack Monolith (app) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -34,11 +34,11 @@ This chapter provides comprehensive architectural documentation, configuration g
     <div class="chapter-card-head">
       <span class="chapter-card-num">3.2</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/workloads/cli">Terminal CLI &amp; TUI (cli) <span class="arrow">→</span></a>
+        <a href="/workloads/cli">Terminal CLI &amp; TUI (cli) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Interactive terminal utilities and command trees powered by the lightweight <code>packages/tui</code> toolkit and POSIX-compliant flag parser.
+      Interactive terminal utilities and command trees powered by the lightweight <code>pkg/tui</code> toolkit and POSIX-compliant flag parser.
     </p>
   </div>
 
@@ -46,7 +46,7 @@ This chapter provides comprehensive architectural documentation, configuration g
     <div class="chapter-card-head">
       <span class="chapter-card-num">3.3</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/workloads/site">Static Site Generator (site) <span class="arrow">→</span></a>
+        <a href="/workloads/site">Static Site Generator (site) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -58,7 +58,7 @@ This chapter provides comprehensive architectural documentation, configuration g
     <div class="chapter-card-head">
       <span class="chapter-card-num">3.4</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/workloads/book">Documentation Book (book) <span class="arrow">→</span></a>
+        <a href="/workloads/book">Documentation Book (book) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -70,11 +70,11 @@ This chapter provides comprehensive architectural documentation, configuration g
     <div class="chapter-card-head">
       <span class="chapter-card-num">3.5</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/workloads/worker">Background Worker (worker) <span class="arrow">→</span></a>
+        <a href="/workloads/worker">Background Worker (worker) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Asynchronous queue processing, scheduled cron tasks, retry policies, backoff timers, and dead-letter queues via <code>packages/cloud/worker</code>.
+      Asynchronous queue processing, scheduled cron tasks, retry policies, backoff timers, and dead-letter queues via <code>pkg/cloud/worker</code>.
     </p>
   </div>
 
@@ -82,7 +82,7 @@ This chapter provides comprehensive architectural documentation, configuration g
     <div class="chapter-card-head">
       <span class="chapter-card-num">3.6</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/workloads/service">Microservices (service) <span class="arrow">→</span></a>
+        <a href="/workloads/service">Microservices (service) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -94,7 +94,7 @@ This chapter provides comprehensive architectural documentation, configuration g
     <div class="chapter-card-head">
       <span class="chapter-card-num">3.7</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/workloads/infra">Cloud Infrastructure (infra) <span class="arrow">→</span></a>
+        <a href="/workloads/infra">Cloud Infrastructure (infra) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -106,11 +106,11 @@ This chapter provides comprehensive architectural documentation, configuration g
     <div class="chapter-card-head">
       <span class="chapter-card-num">3.8</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/workloads/runtime">WebAssembly Runtime (runtime) <span class="arrow">→</span></a>
+        <a href="/workloads/gateway">API Gateway (gateway) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Client-side Go WebAssembly runtimes with virtual DOM diffing, partial island hydration, and bi-directional JavaScript interop.
+      Declarative reverse proxies with per-route middleware, rate limiting, timeouts, and service-discovery load balancing.
     </p>
   </div>
 
@@ -125,11 +125,11 @@ This chapter provides comprehensive architectural documentation, configuration g
 | **`app`** | `cmd/server/main.go` or `main.go` | `web`, `app`, `ui`, `sec` | Single Go Binary | VPS, Docker, VM |
 | **`cli`** | `cmd/<name>/main.go` | `tui`, `term`, `kern/errs` | Standalone CLI Binary | User Terminal, PATH |
 | **`site`** | `pages/index.kiw` | `kiw`, `web/ssg`, `ui` | Static HTML / CSS / JS | GitHub Pages, S3, Nginx |
-| **`book`** | `content/` or `manuscript/` | `pkg/book`, `markdown` | Static Book Site | Documentation CDN |
+| **`book`** | `content/` | `pkg/book`, `markdown` | Static Book Site | Documentation CDN |
 | **`worker`** | `cmd/worker/main.go` | `cloud/worker`, `resilience` | Long-running Daemon | Docker, K8s, Systemd |
 | **`service`** | `cmd/service/main.go` | `cloud/service`, `sec` | RPC/HTTP Service | Kubernetes, ECS, Bare Metal |
 | **`infra`** | `infra/main.go` | `cloud/infra` | Deployment Plan / State | AWS, GCP, Azure, K8s |
-| **`runtime`** | `main.go` (`js/wasm`) | `runtime` | `.wasm` + loader script | Browser / Web Client |
+| **`gateway`** | `main.go` | `web/gateway`, `cloud/service/registry` | Go Binary (reverse proxy) | Edge, Kubernetes, VM |
 
 ---
 
@@ -140,18 +140,23 @@ To set the workload for your project, configure the `project.kind` field:
 ```yaml
 project:
   name: "storefront"
-  kind: app # app, cli, site, book, worker, service, infra, runtime
+  kind: app # app, cli, site, book, worker, service, gateway, infra
   version: "0.1.0"
   author: "Acme Corp"
 ```
 
 When `project.kind` is omitted, `kiw` automatically infers the kind using shape markers:
 - Directories containing `pages/` or an `ssg:` key are detected as **`site`**.
-- Directories containing `content/` or `book.yaml` are detected as **`book`**.
+- Directories containing `content/` are detected as **`book`**.
 - Directories containing a `worker:` key are detected as **`worker`**.
 - Directories containing a `service:` key are detected as **`service`**.
+- Directories containing a `gateway:` key are detected as **`gateway`**.
 - Directories containing an `infra:` key are detected as **`infra`**.
 - Repositories containing `main.go` or `cmd/` without specialized keys default to **`app`**.
+
+A pre-scaffold bootstrap project (only `go.mod`, `krewire.yaml`, and the starter
+`main.go`) is **not** a kind: `kiw info` reports `none` with the marker
+`pre-init` until `kiw init` equips a variant.
 
 > [!TIP]
 > Always declare `project.kind` explicitly in `krewire.yaml` to ensure deterministic CLI behavior across CI/CD and developer workstations.

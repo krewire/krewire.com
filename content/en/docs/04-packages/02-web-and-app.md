@@ -14,7 +14,7 @@ The **`web`** and **`app`** packages provide the high-performance HTTP web engin
 
 ---
 
-## 1. Web Engine (`packages/web`)
+## 1. Web Engine (`pkg/web`)
 
 The `web` package wraps Go's `net/http` with expressive routing, parameter extraction, middleware chains, and JSON serialization.
 
@@ -61,7 +61,7 @@ func main() {
 
 ---
 
-## 2. Application Container (`packages/app`)
+## 2. Application Container (`pkg/app`)
 
 The `app` package manages application lifecycle, dependency injection, and graceful process supervision.
 

@@ -24,7 +24,7 @@ This **Getting Started** chapter is divided into five focused, in-depth subchapt
     <div class="chapter-card-head">
       <span class="chapter-card-num">2.1</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/getting-started/installation">Installation <span class="arrow">→</span></a>
+        <a href="/getting-started/installation">Installation <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -41,7 +41,7 @@ This **Getting Started** chapter is divided into five focused, in-depth subchapt
     <div class="chapter-card-head">
       <span class="chapter-card-num">2.2</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/getting-started/configuration">Configuration <span class="arrow">→</span></a>
+        <a href="/getting-started/configuration">Configuration <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -49,7 +49,7 @@ This **Getting Started** chapter is divided into five focused, in-depth subchapt
     </p>
     <ul class="chapter-card-list">
       <li>Canonical YAML schema specification</li>
-      <li>Environment variable overrides (<code>KIW_PORT</code>, <code>KIW_ENV</code>)</li>
+      <li>Environment variable overrides (<code>KIW_ENV</code>, <code>KIW_DEBUG</code>)</li>
       <li>Task automation & custom scripts</li>
     </ul>
   </div>
@@ -58,7 +58,7 @@ This **Getting Started** chapter is divided into five focused, in-depth subchapt
     <div class="chapter-card-head">
       <span class="chapter-card-num">2.3</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/getting-started/directory-structure">Directory Structure <span class="arrow">→</span></a>
+        <a href="/getting-started/directory-structure">Directory Structure <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -75,7 +75,7 @@ This **Getting Started** chapter is divided into five focused, in-depth subchapt
     <div class="chapter-card-head">
       <span class="chapter-card-num">2.4</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/getting-started/agentic-development">Agentic Development <span class="arrow">→</span></a>
+        <a href="/getting-started/agentic-development">Agentic Development <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -92,7 +92,7 @@ This **Getting Started** chapter is divided into five focused, in-depth subchapt
     <div class="chapter-card-head">
       <span class="chapter-card-num">2.5</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/getting-started/dsl">DSL (.kiw) <span class="arrow">→</span></a>
+        <a href="/getting-started/dsl">DSL (.kiw) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -321,14 +321,14 @@ Krewire supports eight first-class workload archetypes. When bootstrapping a new
 
 | Workload Kind | CLI Scaffold Flag | Primary Purpose | Key Packages | Primary Output |
 | :--- | :--- | :--- | :--- | :--- |
-| **Static Site (`site`)** | `kiw new <name> --site` | Marketing websites, landing pages, blogs | `packages/kiw`, `packages/web/ssg` | Static HTML / CSS / Assets |
+| **Static Site (`site`)** | `kiw new <name> --site` | Marketing websites, landing pages, blogs | `pkg/kiw`, `pkg/web/ssg` | Static HTML / CSS / Assets |
 | **Documentation (`book`)** | `kiw new <name> --book` | Technical books, engineering docs, manuals | `pkg/book` | Multi-chapter static portal |
-| **Fullstack App (`app`)** | `kiw new <name> --app` | SaaS platforms, dashboards, dynamic monoliths | `packages/web`, `packages/app` | Single Go binary + embedded assets |
-| **Terminal Tool (`cli`)** | `kiw new <name> --cli` | Developer tools, system utilities, TUIs | `packages/tui` | Single standalone CLI binary |
-| **Background Worker (`worker`)** | `kiw init --worker` | Async job processors, queue consumers | `packages/cloud/worker` | Long-running worker daemon |
-| **Microservice (`service`)** | `kiw init --service` | High-throughput HTTP/gRPC API microservices | `packages/cloud/service` | Cloud-native service binary |
-| **Cloud Infra (`infra`)** | `kiw init --infra` | Declarative cloud topologies & provisioning | `packages/cloud/infra` | Infrastructure definition & plans |
-| **WASM Client (`runtime`)** | `kiw init --runtime` | Client-side reactive UI runtimes in Go | `packages/runtime` | `.wasm` binary + JS bridge |
+| **Fullstack App (`app`)** | `kiw new <name> --app` | SaaS platforms, dashboards, dynamic monoliths | `pkg/web`, `pkg/app` | Single Go binary + embedded assets |
+| **Terminal Tool (`cli`)** | `kiw new <name> --cli` | Developer tools, system utilities, TUIs | `pkg/tui` | Single standalone CLI binary |
+| **Background Worker (`worker`)** | `kiw init --worker` | Async job processors, queue consumers | `pkg/cloud/worker` | Long-running worker daemon |
+| **Microservice (`service`)** | `kiw init --service` | High-throughput HTTP/gRPC API microservices | `pkg/cloud/service` | Cloud-native service binary |
+| **Cloud Infra (`infra`)** | `kiw init --infra` | Declarative cloud topologies & provisioning | `pkg/cloud/infra` | Infrastructure definition & plans |
+| **API Gateway (`gateway`)** | `kiw new <name> --gateway` | Declarative reverse proxy in front of upstream services | `pkg/web/gateway` | Go binary (reverse proxy) |
 
 > [!TIP]
 > **Progressive Growth:** You can start with `--site` and later evolve your codebase into an `--app` or extract parts into a `--service` without rewriting your component files or folder layouts.
@@ -341,7 +341,7 @@ Keep these everyday `kiw` commands at your fingertips during development:
 
 | Command | Syntax | Description |
 | :--- | :--- | :--- |
-| **`new`** | `kiw new <name> [--site\|--app\|--cli\|--book]` | Scaffold a new project kernel with the selected workload template. |
+| **`new`** | `kiw new <name> [--site\|--app\|--cli\|--book]` | Scaffold a new project bootstrap with the selected workload template. |
 | **`dev`** | `kiw dev` | Start the local development server with file watching and hot reload. |
 | **`build`** | `kiw build` | Compile the project into production-ready static assets or binaries. |
 | **`serve`** | `kiw serve [--port 3000]` | Preview the static build output locally over HTTP. |
@@ -383,11 +383,11 @@ Keep these everyday `kiw` commands at your fingertips during development:
 - Specify a custom port in `krewire.yaml`:
   ```yaml
   dev:
-    port: "3000"
+    port: 3000
   ```
-- Or override on the command line using environment variables:
+- Or override the listen address on the command line:
   ```bash
-  KIW_PORT=3000 kiw dev
+  kiw serve --addr :3000
   ```
 
 ---
@@ -406,5 +406,5 @@ Keep these everyday `kiw` commands at your fingertips during development:
 
 Now that you understand the big picture and development workflow, dive deep into the implementation details:
 
-- Proceed to [**2.1 Installation →**](/docs/getting-started/installation) to install and configure `kiw` for your specific operating system.
-- Or explore the architectural foundation in [**1. Overview →**](/docs).
+- Proceed to [**2.1 Installation →**](/getting-started/installation) to install and configure `kiw` for your specific operating system.
+- Or explore the architectural foundation in [**1. Overview →**](/).

@@ -1,6 +1,6 @@
 ---
 title: "Background Worker (worker)"
-description: "Asynchronous job processing, recurring cron schedules, retry policies with backoff, and graceful shutdown in Go with packages/cloud/worker."
+description: "Asynchronous job processing, recurring cron schedules, retry policies with backoff, and graceful shutdown in Go with pkg/cloud/worker."
 date: "2026-10-08"
 ---
 
@@ -8,7 +8,7 @@ date: "2026-10-08"
 
 The **`worker`** workload is designed for running long-lived background daemons, asynchronous job consumers, and scheduled cron workflows.
 
-Powered by `packages/cloud/worker` and `packages/resilience`, workers operate reliably under high load with automatic retry policies, exponential backoff, dead-letter queues (DLQ), and graceful shutdown handling.
+Powered by `pkg/cloud/worker` and `pkg/resilience`, workers operate reliably under high load with automatic retry policies, exponential backoff, dead-letter queues (DLQ), and graceful shutdown handling.
 
 ---
 

@@ -8,7 +8,7 @@ date: "2026-10-08"
 
 The **`service`** workload equips developers to build high-throughput, cloud-native microservices and distributed APIs.
 
-Powered by `packages/cloud/service`, `packages/sec`, and `packages/resilience`, the `service` workload includes production-grade discovery, distributed tracing, gateway routing, and telemetry out of the box.
+Powered by `pkg/cloud/service`, `pkg/sec`, and `pkg/resilience`, the `service` workload includes production-grade discovery, distributed tracing, gateway routing, and telemetry out of the box.
 
 ---
 

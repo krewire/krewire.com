@@ -132,7 +132,7 @@ The `build` agent executes the minimal, convention-respecting code change. For s
 | :--- | :--- |
 | Database migrations or ORM queries | `service` |
 | Scoped `.kiw` component UI | `build` |
-| WebAssembly client compilation | `runtime` |
+| Gateway route tables and middleware | `gateway` |
 | Cloud infrastructure definitions | `infra` |
 | Background queues and cron schedules | `worker` |
 
@@ -194,4 +194,4 @@ The agent generates a structured requirements and implementation plan outlining 
 
 Now that you know how to supercharge development with AI agents, explore the component templating language:
 
-Proceed to [**2.5 DSL (.kiw) →**](/docs/getting-started/dsl) to learn the component architecture of Krewire.
+Proceed to [**2.5 DSL (.kiw) →**](/getting-started/dsl) to learn the component architecture of Krewire.

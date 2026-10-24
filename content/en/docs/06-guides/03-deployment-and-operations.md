@@ -93,7 +93,7 @@ ExecStart=/var/www/app/bin/server
 Restart=always
 RestartSec=5
 Environment=KIW_ENV=production
-Environment=KIW_PORT=8080
+Environment=APP_ADDR=:8080
 
 # Hardening
 ProtectSystem=full

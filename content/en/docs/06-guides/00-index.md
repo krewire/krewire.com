@@ -20,7 +20,7 @@ Whether you are contributing to core packages or authoring mission-critical appl
     <div class="chapter-card-head">
       <span class="chapter-card-num">6.1</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/guides/architecture-discipline">Architecture &amp; Invariants <span class="arrow">→</span></a>
+        <a href="/guides/architecture-discipline">Architecture &amp; Invariants <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -32,7 +32,7 @@ Whether you are contributing to core packages or authoring mission-critical appl
     <div class="chapter-card-head">
       <span class="chapter-card-num">6.2</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/guides/agentic-development">Agentic Development <span class="arrow">→</span></a>
+        <a href="/guides/agentic-development">Agentic Development <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -44,7 +44,7 @@ Whether you are contributing to core packages or authoring mission-critical appl
     <div class="chapter-card-head">
       <span class="chapter-card-num">6.3</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/guides/deployment-and-operations">Deployment &amp; Operations <span class="arrow">→</span></a>
+        <a href="/guides/deployment-and-operations">Deployment &amp; Operations <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -56,7 +56,7 @@ Whether you are contributing to core packages or authoring mission-critical appl
     <div class="chapter-card-head">
       <span class="chapter-card-num">6.4</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/guides/hybrid-paas-and-cloud">Hybrid PaaS &amp; Managed Cloud <span class="arrow">→</span></a>
+        <a href="/guides/hybrid-paas-and-cloud">Hybrid PaaS &amp; Managed Cloud <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -68,7 +68,7 @@ Whether you are contributing to core packages or authoring mission-critical appl
     <div class="chapter-card-head">
       <span class="chapter-card-num">6.5</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/guides/open-core-and-licensing">Open Core &amp; Licensing <span class="arrow">→</span></a>
+        <a href="/guides/open-core-and-licensing">Open Core &amp; Licensing <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
