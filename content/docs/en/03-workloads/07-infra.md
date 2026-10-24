@@ -48,8 +48,8 @@ import (
 	"context"
 	"os"
 
-	"github.com/krewire/krewire/packages/cloud/infra"
-	"github.com/krewire/krewire/packages/cloud/infra/providers/aws"
+	"github.com/krewire/krewire/pkg/cloud/infra"
+	"github.com/krewire/krewire/pkg/cloud/infra/providers/aws"
 )
 
 func main() {

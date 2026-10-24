@@ -29,5 +29,5 @@ Explore the comprehensive guides and reference documentation:
 - [**Getting Started**](/docs/getting-started) — Installation, configuration, directory structure, agentic development, and DSL.
 - [**Workloads**](/docs/workloads) — Detailed guides for all 8 supported project kinds.
 - [**CLI Reference**](/docs/cli-reference) — Complete `kiw` command catalog, configuration schema, and scripting.
-- [**Packages**](/docs/packages) — Domain libraries across kernel, web, security, UI, storage, and resilience.
+- [**Packages**](/docs/pkg) — Domain libraries across kernel, web, security, UI, storage, and resilience.
 - [**Guides**](/docs/guides) — Architectural discipline, open core licensing, and deployment operations.

@@ -56,8 +56,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/krewire/krewire/packages/cloud/worker"
-	"github.com/krewire/krewire/packages/resilience"
+	"github.com/krewire/krewire/pkg/cloud/worker"
+	"github.com/krewire/krewire/pkg/resilience"
 )
 
 type SendEmailPayload struct {

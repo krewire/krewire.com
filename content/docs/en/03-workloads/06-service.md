@@ -56,8 +56,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/krewire/krewire/packages/cloud/service"
-	"github.com/krewire/krewire/packages/web"
+	"github.com/krewire/krewire/pkg/cloud/service"
+	"github.com/krewire/krewire/pkg/web"
 )
 
 func main() {

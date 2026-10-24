@@ -7,8 +7,8 @@ date: "2026-10-08"
 # Resilience & Testing (`resilience`, `testing`)
 
 Import paths:
-- `github.com/krewire/krewire/packages/resilience`
-- `github.com/krewire/krewire/packages/testing`
+- `github.com/krewire/krewire/pkg/resilience`
+- `github.com/krewire/krewire/pkg/testing`
 
 Distributed systems and web applications fail over network boundaries. Krewire provides built-in resilience primitives to isolate failures and a testing library that provides HTTP and UI assertion utilities.
 
@@ -24,7 +24,7 @@ package main
 import (
 	"context"
 	"time"
-	"github.com/krewire/krewire/packages/resilience"
+	"github.com/krewire/krewire/pkg/resilience"
 )
 
 func main() {
@@ -68,7 +68,7 @@ package payment_test
 
 import (
 	"testing"
-	"github.com/krewire/krewire/packages/testing/assert"
+	"github.com/krewire/krewire/pkg/testing/assert"
 )
 
 func TestPayment_ChargesCardWithIdempotency(t *testing.T) {

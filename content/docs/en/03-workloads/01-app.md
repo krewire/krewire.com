@@ -65,9 +65,9 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/krewire/krewire/packages/app"
-	"github.com/krewire/krewire/packages/web"
-	"github.com/krewire/krewire/packages/sec"
+	"github.com/krewire/krewire/pkg/app"
+	"github.com/krewire/krewire/pkg/web"
+	"github.com/krewire/krewire/pkg/sec"
 )
 
 //go:embed public/* views/*

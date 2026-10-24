@@ -7,8 +7,8 @@ date: "2026-10-10"
 # Config & Validation (`config`, `validation`)
 
 Import paths:
-- `github.com/krewire/krewire/packages/config`
-- `github.com/krewire/krewire/packages/validation`
+- `github.com/krewire/krewire/pkg/config`
+- `github.com/krewire/krewire/pkg/validation`
 
 Robust configuration loading and strict input validation prevent runtime errors and security vulnerabilities before requests reach core domain logic.
 
@@ -31,7 +31,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/krewire/krewire/packages/config"
+	"github.com/krewire/krewire/pkg/config"
 )
 
 type AppConfig struct {
@@ -71,8 +71,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/krewire/krewire/packages/validation"
-	"github.com/krewire/krewire/packages/validation/rules"
+	"github.com/krewire/krewire/pkg/validation"
+	"github.com/krewire/krewire/pkg/validation/rules"
 )
 
 type RegisterRequest struct {

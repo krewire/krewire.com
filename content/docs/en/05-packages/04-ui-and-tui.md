@@ -7,8 +7,8 @@ date: "2026-10-08"
 # User Interfaces (`ui`, `tui`)
 
 Import paths:
-- `github.com/krewire/krewire/packages/ui`
-- `github.com/krewire/krewire/packages/tui`
+- `github.com/krewire/krewire/pkg/ui`
+- `github.com/krewire/krewire/pkg/tui`
 
 Krewire provides unified interface tooling spanning both web browsers (`packages/ui`) and terminal consoles (`packages/tui`).
 
@@ -61,8 +61,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/krewire/krewire/packages/term"
-	"github.com/krewire/krewire/packages/tui"
+	"github.com/krewire/krewire/pkg/term"
+	"github.com/krewire/krewire/pkg/tui"
 )
 
 type appModel struct {

@@ -7,8 +7,8 @@ date: "2026-10-18"
 # AI & Agents (`packages/ai`)
 
 Import paths:
-- `github.com/krewire/krewire/packages/ai`
-- `github.com/krewire/krewire/packages/ai/providers`
+- `github.com/krewire/krewire/pkg/ai`
+- `github.com/krewire/krewire/pkg/ai/providers`
 
 The `ai` package provides a unified, provider-agnostic Go SDK for integrating Large Language Models into Krewire web apps, background workers, and autonomous agent workflows with zero external runtime dependencies.
 
@@ -36,8 +36,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/krewire/krewire/packages/ai"
-	"github.com/krewire/krewire/packages/ai/providers"
+	"github.com/krewire/krewire/pkg/ai"
+	"github.com/krewire/krewire/pkg/ai/providers"
 )
 
 func main() {

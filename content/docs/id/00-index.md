@@ -29,5 +29,5 @@ Jelajahi panduan dan referensi dokumentasi yang komprehensif:
 - [**Getting Started**](/id/docs/getting-started) — Instalasi, konfigurasi, struktur direktori, pengembangan agen, dan DSL.
 - [**Workloads**](/id/docs/workloads) — Panduan rinci untuk semua 8 jenis proyek yang didukung.
 - [**CLI Reference**](/id/docs/cli-reference) — Katalog lengkap perintah `kiw`, skema konfigurasi, dan skrip.
-- [**Packages**](/id/docs/packages) — Pustaka domain di seluruh kernel, web, keamanan, UI, penyimpanan, dan ketahanan.
+- [**Packages**](/id/docs/pkg) — Pustaka domain di seluruh kernel, web, keamanan, UI, penyimpanan, dan ketahanan.
 - [**Guides**](/id/docs/guides) - Disiplin arsitektural, lisensi open core, dan operasi penyebaran.

@@ -114,7 +114,7 @@ Explore the comprehensive manual for the Krewire ecosystem:
 | **2.** | [**Getting Started**](/docs/getting-started) | Prerequisites, 5-minute quickstart, project anatomy, agentic SDLC, and `.kiw` DSL. |
 | **3.** | [**Workloads in Depth**](/docs/workloads) | Detailed architecture and guides for all 8 workloads (`app`, `cli`, `site`, `book`, `worker`, `service`, `infra`, `runtime`). |
 | **4.** | [**CLI Reference**](/docs/cli-reference) | Complete `kiw` command catalog, `krewire.yaml` schema specification, and task automation. |
-| **5.** | [**Packages & Libraries**](/docs/packages) | Domain libraries catalog: `kern`, `web`, `app`, `sec`, `auth`, `ui`, `tui`, `storage`, `resilience`, and `testing`. |
+| **5.** | [**Packages & Libraries**](/docs/pkg) | Domain libraries catalog: `kern`, `web`, `app`, `sec`, `auth`, `ui`, `tui`, `storage`, `resilience`, and `testing`. |
 | **6.** | [**Architecture & Guides**](/docs/guides) | Architectural design, open core licensing rules, and production deployment playbooks. |
 
 ---

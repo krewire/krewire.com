@@ -7,9 +7,9 @@ date: "2026-10-08"
 # Storage & Filesystem (`storage`, `fs`, `file`)
 
 Import paths:
-- `github.com/krewire/krewire/packages/storage`
-- `github.com/krewire/krewire/packages/file`
-- `github.com/krewire/krewire/packages/fs`
+- `github.com/krewire/krewire/pkg/storage`
+- `github.com/krewire/krewire/pkg/file`
+- `github.com/krewire/krewire/pkg/fs`
 
 Filesystem and persistent object access are core requirements for modern web applications. Krewire provides clean, testable boundaries that decouple business logic from local disks or cloud storage providers.
 
@@ -28,7 +28,7 @@ package main
 import (
 	"context"
 	"strings"
-	"github.com/krewire/krewire/packages/storage"
+	"github.com/krewire/krewire/pkg/storage"
 )
 
 func main() {
@@ -55,7 +55,7 @@ func main() {
 Writing files directly to disk risks leaving corrupted or partial files if a crash occurs mid-write. `packages/file` provides crash-safe atomic write operations:
 
 ```go
-import "github.com/krewire/krewire/packages/file"
+import "github.com/krewire/krewire/pkg/file"
 
 // Writes to a temporary sibling file first, then atomically renames
 err := file.WriteAtomic("config.json", data, 0644)
@@ -68,7 +68,7 @@ err := file.WriteAtomic("config.json", data, 0644)
 `packages/fs` exposes a clean interface mirroring standard OS file operations, allowing unit tests to simulate filesystems in memory without touching disk:
 
 ```go
-import "github.com/krewire/krewire/packages/fs"
+import "github.com/krewire/krewire/pkg/fs"
 
 // Production: real OS disk
 filesystem := fs.NewOS()

@@ -8,7 +8,7 @@ date: "2026-10-08"
 
 Krewire is delivered as **Modular Libraries**: independent, single-purpose Go packages that you compose, rather than a monolithic framework you inherit.
 
-Every package in the `krewire/packages` catalog adheres to strict architectural boundaries:
+Every package in the `krewire/pkg` catalog adheres to strict architectural boundaries:
 - **Strict Downward-Only Dependencies:** Domain primitives and rules reside in `packages/kern/model`. Higher-level libraries never inject upward dependencies.
 - **Single Source of Truth (SSOT):** Facts, constants, and validation rules are owned by exactly one package and imported elsewhere.
 - **Standard Library Alignment:** Zero unnecessary third-party dependencies. Where the Go standard library provides a capability (`net/http`, `context`, `slog`, `embed`), Krewire builds upon it rather than replacing it.
@@ -23,7 +23,7 @@ Every package in the `krewire/packages` catalog adheres to strict architectural 
     <div class="chapter-card-head">
       <span class="chapter-card-num">5.1</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/packages/kern">Kernel &amp; Model (kern) <span class="arrow">→</span></a>
+        <a href="/docs/pkg/kern">Kernel &amp; Model (kern) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -35,7 +35,7 @@ Every package in the `krewire/packages` catalog adheres to strict architectural 
     <div class="chapter-card-head">
       <span class="chapter-card-num">5.2</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/packages/web-and-app">Web &amp; Application (web, app) <span class="arrow">→</span></a>
+        <a href="/docs/pkg/web-and-app">Web &amp; Application (web, app) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -47,7 +47,7 @@ Every package in the `krewire/packages` catalog adheres to strict architectural 
     <div class="chapter-card-head">
       <span class="chapter-card-num">5.3</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/packages/security-and-auth">Security &amp; Auth (sec, auth) <span class="arrow">→</span></a>
+        <a href="/docs/pkg/security-and-auth">Security &amp; Auth (sec, auth) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -59,7 +59,7 @@ Every package in the `krewire/packages` catalog adheres to strict architectural 
     <div class="chapter-card-head">
       <span class="chapter-card-num">5.4</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/packages/ui-and-tui">User Interfaces (ui, tui) <span class="arrow">→</span></a>
+        <a href="/docs/pkg/ui-and-tui">User Interfaces (ui, tui) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -71,7 +71,7 @@ Every package in the `krewire/packages` catalog adheres to strict architectural 
     <div class="chapter-card-head">
       <span class="chapter-card-num">5.5</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/packages/storage-and-fs">Storage &amp; Filesystem (storage, fs, file) <span class="arrow">→</span></a>
+        <a href="/docs/pkg/storage-and-fs">Storage &amp; Filesystem (storage, fs, file) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -83,7 +83,7 @@ Every package in the `krewire/packages` catalog adheres to strict architectural 
     <div class="chapter-card-head">
       <span class="chapter-card-num">5.6</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/packages/resilience-and-testing">Resilience &amp; Testing (resilience, testing) <span class="arrow">→</span></a>
+        <a href="/docs/pkg/resilience-and-testing">Resilience &amp; Testing (resilience, testing) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -95,7 +95,7 @@ Every package in the `krewire/packages` catalog adheres to strict architectural 
     <div class="chapter-card-head">
       <span class="chapter-card-num">5.7</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/packages/cloud-and-distributed">Cloud &amp; Distributed (cloud) <span class="arrow">→</span></a>
+        <a href="/docs/pkg/cloud-and-distributed">Cloud &amp; Distributed (cloud) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -107,7 +107,7 @@ Every package in the `krewire/packages` catalog adheres to strict architectural 
     <div class="chapter-card-head">
       <span class="chapter-card-num">5.8</span>
       <h3 class="chapter-card-title">
-        <a href="/docs/packages/config-and-validation">Config &amp; Validation (config, validation) <span class="arrow">→</span></a>
+        <a href="/docs/pkg/config-and-validation">Config &amp; Validation (config, validation) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -130,7 +130,7 @@ templates/boost (AI agent starters)
 tools/kiw (Developer CLI)
        │
        ▼
-packages/* (Domain libraries: web, sec, auth, ui, tui, storage...)
+pkg/* (Domain libraries: web, sec, auth, ui, tui, storage...)
        │
        ▼
 packages/kern (Kernel model, lifecycle, errors, environment, version)

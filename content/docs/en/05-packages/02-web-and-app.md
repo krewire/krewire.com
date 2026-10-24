@@ -7,8 +7,8 @@ date: "2026-10-08"
 # Web & Application (`web`, `app`)
 
 Import paths:
-- `github.com/krewire/krewire/packages/web`
-- `github.com/krewire/krewire/packages/app`
+- `github.com/krewire/krewire/pkg/web`
+- `github.com/krewire/krewire/pkg/app`
 
 The **`web`** and **`app`** packages provide the high-performance HTTP web engine and dependency injection container powering the `app`, `service`, and `site` workloads.
 
@@ -31,7 +31,7 @@ package main
 
 import (
 	"net/http"
-	"github.com/krewire/krewire/packages/web"
+	"github.com/krewire/krewire/pkg/web"
 )
 
 func main() {

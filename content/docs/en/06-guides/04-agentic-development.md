@@ -137,8 +137,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/krewire/krewire/packages/ai"
-	"github.com/krewire/krewire/packages/ai/providers"
+	"github.com/krewire/krewire/pkg/ai"
+	"github.com/krewire/krewire/pkg/ai/providers"
 )
 
 type CodeReview struct {

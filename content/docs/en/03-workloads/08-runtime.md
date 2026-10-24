@@ -49,7 +49,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/krewire/krewire/packages/runtime"
+	"github.com/krewire/krewire/pkg/runtime"
 )
 
 type CounterState struct {

@@ -56,8 +56,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/krewire/krewire/packages/term"
-	"github.com/krewire/krewire/packages/tui"
+	"github.com/krewire/krewire/pkg/term"
+	"github.com/krewire/krewire/pkg/tui"
 )
 
 type model struct {

@@ -6,7 +6,7 @@ date: "2026-10-10"
 
 # Cloud & Distributed Systems (`cloud`)
 
-Import path: `github.com/krewire/krewire/packages/cloud`
+Import path: `github.com/krewire/krewire/pkg/cloud`
 
 The **`cloud`** suite equips Krewire applications with production-grade distributed systems primitives, background task scheduling, microservice routing, and declarative cloud infrastructure as code.
 
@@ -14,7 +14,7 @@ The **`cloud`** suite equips Krewire applications with production-grade distribu
 
 ## 1. Background Worker & Job Queues (`cloud/worker`)
 
-Import path: `github.com/krewire/krewire/packages/cloud/worker`
+Import path: `github.com/krewire/krewire/pkg/cloud/worker`
 
 The `worker` package provides asynchronous background job execution, scheduled cron jobs, configurable retry backoffs, and dead-letter queues (DLQ).
 
@@ -28,7 +28,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/krewire/krewire/packages/cloud/worker"
+	"github.com/krewire/krewire/pkg/cloud/worker"
 )
 
 type EmailPayload struct {
@@ -70,7 +70,7 @@ func main() {
 
 ## 2. Microservice Mesh & Gateways (`cloud/service`)
 
-Import path: `github.com/krewire/krewire/packages/cloud/service`
+Import path: `github.com/krewire/krewire/pkg/cloud/service`
 
 The `service` package provides cloud-native microservice routing, dynamic service discovery, configuration synchronization, and distributed tracing.
 
@@ -88,7 +88,7 @@ package main
 import (
 	"context"
 
-	"github.com/krewire/krewire/packages/cloud/service/registry"
+	"github.com/krewire/krewire/pkg/cloud/service/registry"
 )
 
 func main() {
@@ -115,7 +115,7 @@ func main() {
 
 ## 3. Infrastructure as Code (`cloud/infra`)
 
-Import path: `github.com/krewire/krewire/packages/cloud/infra`
+Import path: `github.com/krewire/krewire/pkg/cloud/infra`
 
 The `infra` package enables developers to define cloud infrastructure declaratively in Go. It enforces deterministic dependency resolution and generates execution plans with zero side-effects prior to applying changes.
 
@@ -125,8 +125,8 @@ The `infra` package enables developers to define cloud infrastructure declarativ
 package main
 
 import (
-	"github.com/krewire/krewire/packages/cloud/infra/schema"
-	"github.com/krewire/krewire/packages/cloud/infra/state"
+	"github.com/krewire/krewire/pkg/cloud/infra/schema"
+	"github.com/krewire/krewire/pkg/cloud/infra/state"
 )
 
 func main() {

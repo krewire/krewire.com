@@ -7,8 +7,8 @@ date: "2026-10-08"
 # Security & Auth (`sec`, `auth`)
 
 Import paths:
-- `github.com/krewire/krewire/packages/sec`
-- `github.com/krewire/krewire/packages/auth`
+- `github.com/krewire/krewire/pkg/sec`
+- `github.com/krewire/krewire/pkg/auth`
 
 Security is Krewire's primary pillar. Rather than leaving hardening as an afterthought, `packages/sec` and `packages/auth` provide battle-tested, secure-by-default primitives aligned with OWASP Top 10 and CWE benchmarks.
 
@@ -25,7 +25,7 @@ Automatically applies modern HTTP defense headers:
 - `Strict-Transport-Security (HSTS)`
 
 ```go
-import "github.com/krewire/krewire/packages/sec"
+import "github.com/krewire/krewire/pkg/sec"
 
 router.Use(sec.SecurityHeaders(sec.HeadersConfig{
     HSTSMaxAge: 31536000,
@@ -68,7 +68,7 @@ safeLog := sec.MaskPII(rawUserData)
 Sign, parse, and verify cryptographically signed JSON Web Tokens using HMAC-SHA256:
 
 ```go
-import "github.com/krewire/krewire/packages/auth"
+import "github.com/krewire/krewire/pkg/auth"
 
 // Sign token
 token, err := auth.SignJWT(auth.Claims{
