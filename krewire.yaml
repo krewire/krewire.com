@@ -26,6 +26,7 @@ nav:
 
 # Content directory for documentation manuscripts (mdbind)
 input: "content/docs"
+output: ".krewire/build"
 
 # Devtool build pipeline configuration
 build:

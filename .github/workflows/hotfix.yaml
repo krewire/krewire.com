@@ -85,6 +85,8 @@ jobs:
       - name: Fast sanity check of build outputs
         run: |
           test -f .krewire/build/index.html || { echo "✗ Missing index.html"; exit 1; }
+          test -f .krewire/build/docs/index.html || { echo "✗ Missing docs/index.html"; exit 1; }
+          test -f .krewire/build/id/docs/index.html || { echo "✗ Missing id/docs/index.html"; exit 1; }
           test -d .krewire/build/assets || { echo "✗ Missing assets directory"; exit 1; }
           test -f .krewire/build/assets/krewire.css || { echo "✗ Missing assets/krewire.css"; exit 1; }
           test -f .krewire/build/assets/krewire.js || { echo "✗ Missing assets/krewire.js"; exit 1; }
@@ -260,6 +262,20 @@ jobs:
             echo "✓ /contribute/ responded HTTP 200 after emergency hotfix."
           else
             echo "✗ Smoke test failed: /contribute/ returned HTTP ${CONTRIB_CODE}."
+            exit 1
+          fi
+          DOCS_CODE="$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 https://krewire.com/docs/ 2>/dev/null || true)"
+          if [ "${DOCS_CODE}" = "200" ]; then
+            echo "✓ /docs/ responded HTTP 200 after emergency hotfix."
+          else
+            echo "✗ Smoke test failed: /docs/ returned HTTP ${DOCS_CODE}."
+            exit 1
+          fi
+          ID_DOCS_CODE="$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 https://krewire.com/id/docs/ 2>/dev/null || true)"
+          if [ "${ID_DOCS_CODE}" = "200" ]; then
+            echo "✓ /id/docs/ responded HTTP 200 after emergency hotfix."
+          else
+            echo "✗ Smoke test failed: /id/docs/ returned HTTP ${ID_DOCS_CODE}."
             exit 1
           fi
 
