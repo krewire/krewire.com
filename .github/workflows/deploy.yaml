@@ -83,7 +83,7 @@ jobs:
       - name: Build static site
         run: |
           # `kiw build` emits the complete site, including the shared asset plan:
-          # every page already links style.css → tailwind.css → forge.css →
+          # every page already links style.css → tailwind.css →
           # theme.css → mdbind.css and the site scripts, in cascade order with
           # ?v=<version> cache busting. No post-processing step may reorder or
           # re-link those assets.

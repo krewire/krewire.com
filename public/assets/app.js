@@ -121,7 +121,6 @@ window.copyCmd = copyCmd;
   };
 
   window.uiDrawer = drawerCtrl;
-  window.forgeDrawer = drawerCtrl; // Backwards compatibility alias
 
   window.uiToggleDrawer = function (btn, id) {
     if (!id && btn) {
