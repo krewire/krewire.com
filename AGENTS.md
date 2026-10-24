@@ -20,7 +20,6 @@ To keep progress tracking fully automated, resilient against markdown parsing dr
    - Active specifications and their implementation progress are tracked as GitHub Issues under `krewire/krewire.com` with label `spec`.
    - Title format: `[Spec: KRW-<Code>] <Title>` (e.g. `[Spec: KRW-X7K9Q] Krewire Site — Landing + Documentation`).
    - Every issue body contains the structured requirement checklist with `- [ ]` and `- [x]` checkboxes citing `ReqID` and priority (e.g. `- [ ] KRW-LAND-001 [Must] ...`).
-   - `docs/specs/index.md` links directly to these GitHub Issues.
 
 2. **Automated Agent & Developer Progress Workflow:**
    - **Discovering tasks:** Query active specs via CLI/API:
@@ -41,7 +40,12 @@ Before finishing any task, run:
 ```bash
 kiw build
 ```
-Verify that the output in `site/` builds without errors, theme toggling works, and HTML renders cleanly.
+`kiw build` must exit 0 and write the site to `.krewire/build/` (the directory the
+Docker image copies). Verify the landing page renders, theme toggling works, and
+both locales are emitted under `.krewire/build/docs/` and `.krewire/build/id/docs/`.
+
+Docs content is Markdown under `content/<locale>/docs/` and is rendered by
+`pkg/book`; the `site` half owns `pages/index.kiw` and `layouts/`.
 
 ## Commit Discipline
 

@@ -24,9 +24,9 @@ nav:
   - text: "GitHub"
     url: "https://github.com/krewire/krewire"
 
-# Content directory for documentation manuscripts (pkg/book)
+# Default-locale content directory. With i18n enabled, `kiw build` resolves
+# content/<locale>/docs/ per locale and only falls back to this value.
 input: "content/en/docs"
-output: ".krewire/build"
 
 # Devtool build pipeline configuration
 build:
