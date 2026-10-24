@@ -75,8 +75,8 @@
 :root[data-theme="dark"], html[data-theme="dark"], .dark {
   --primary: #39D353 !important;
   --primary-content: #0B1F3B !important;
-  --secondary: #00D1C1 !important;
-  --secondary-content: #0B1F3B !important;
+  --secondary: #112646 !important;
+  --secondary-content: #FAF8F4 !important;
   --bg: #0B1F3B;
   --bg-2: #112646;
   --fg: #FAF8F4;

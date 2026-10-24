@@ -16,14 +16,20 @@
   } catch (e) {}
 
   window.krewireTheme = {
-    toggle: function () {
-      var cur = document.documentElement.dataset.theme || (document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-      var nxt = cur === 'dark' ? 'light' : 'dark';
-      document.documentElement.dataset.theme = nxt;
-      document.documentElement.classList.toggle('dark', nxt === 'dark');
+    get: function () {
+      return document.documentElement.dataset.theme || (document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+    },
+    set: function (mode) {
+      document.documentElement.dataset.theme = mode;
+      document.documentElement.classList.toggle('dark', mode === 'dark');
       try {
-        localStorage.setItem('krewire-theme', nxt);
+        localStorage.setItem('krewire-theme', mode);
       } catch (e) {}
+    },
+    toggle: function () {
+      var cur = window.krewireTheme.get();
+      var nxt = cur === 'dark' ? 'light' : 'dark';
+      window.krewireTheme.set(nxt);
     }
   };
 })();
@@ -184,13 +190,12 @@ window.copyCmd = copyCmd;
       }
     });
 
-    // Theme switches
-    document.querySelectorAll('[data-theme-toggle]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        if (window.krewireTheme && window.krewireTheme.toggle) {
-          window.krewireTheme.toggle();
-        }
-      });
+    // Theme switch (single delegated click handler)
+    document.addEventListener('click', function (e) {
+      var btn = e.target && e.target.closest ? e.target.closest('[data-theme-toggle]') : null;
+      if (btn && window.krewireTheme && window.krewireTheme.toggle) {
+        window.krewireTheme.toggle();
+      }
     });
   }
 

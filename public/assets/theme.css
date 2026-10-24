@@ -29,8 +29,8 @@
 :root[data-theme="dark"], [data-theme="dark"], html[data-theme="dark"]{
   --primary:#39D353 !important;
   --primary-content:#0B1F3B !important;
-  --secondary:#00D1C1 !important;
-  --secondary-content:#0B1F3B !important;
+  --secondary:#112646 !important;
+  --secondary-content:#FAF8F4 !important;
   --bg:#0B1F3B;
   --bg-2:#112646;
   --fg:#FAF8F4;
@@ -46,4 +46,87 @@
   --shadow:4px 4px 0px #39D353;
   --show-sun:none;
   --show-moon:inline;
+}
+
+/* Guard: Button text must never inherit generic link hover colors */
+.btn-primary, a.btn-primary, a.btn-primary:hover {
+  background-color: var(--primary) !important;
+  color: var(--primary-content) !important;
+}
+.btn-primary:hover:not(:disabled) {
+  background-color: #2ecc50 !important;
+  color: var(--primary-content) !important;
+}
+
+.btn-secondary, a.btn-secondary, a.btn-secondary:hover {
+  background-color: var(--secondary) !important;
+  color: var(--secondary-content) !important;
+}
+.btn-secondary:hover:not(:disabled) {
+  background-color: #00b8aa !important;
+  color: var(--secondary-content) !important;
+}
+
+.btn-outline, a.btn-outline, a.btn-outline:hover {
+  background-color: var(--bg) !important;
+  color: var(--fg) !important;
+}
+.btn-outline:hover:not(:disabled) {
+  background-color: var(--bg-2) !important;
+  color: var(--fg) !important;
+}
+
+/* Dark mode specific button enhancements */
+html[data-theme="dark"] .btn-primary,
+.dark .btn-primary,
+html[data-theme="dark"] a.btn-primary,
+.dark a.btn-primary {
+  background-color: #39D353 !important;
+  color: #0B1F3B !important;
+  border-color: #FAF8F4 !important;
+  box-shadow: 2px 2px 0px #39D353 !important;
+}
+html[data-theme="dark"] .btn-primary:hover:not(:disabled),
+.dark .btn-primary:hover:not(:disabled),
+html[data-theme="dark"] a.btn-primary:hover:not(:disabled),
+.dark a.btn-primary:hover:not(:disabled) {
+  background-color: #4ae664 !important;
+  color: #0B1F3B !important;
+  box-shadow: 4px 4px 0px #39D353 !important;
+}
+
+html[data-theme="dark"] .btn-secondary,
+.dark .btn-secondary,
+html[data-theme="dark"] a.btn-secondary,
+.dark a.btn-secondary {
+  background-color: #112646 !important;
+  color: #FAF8F4 !important;
+  border-color: #FAF8F4 !important;
+  box-shadow: 2px 2px 0px #FAF8F4 !important;
+}
+html[data-theme="dark"] .btn-secondary:hover:not(:disabled),
+.dark .btn-secondary:hover:not(:disabled),
+html[data-theme="dark"] a.btn-secondary:hover:not(:disabled),
+.dark a.btn-secondary:hover:not(:disabled) {
+  background-color: #1a3865 !important;
+  color: #ffffff !important;
+  box-shadow: 4px 4px 0px #FAF8F4 !important;
+}
+
+html[data-theme="dark"] .btn-outline,
+.dark .btn-outline,
+html[data-theme="dark"] a.btn-outline,
+.dark a.btn-outline {
+  background-color: transparent !important;
+  color: #FAF8F4 !important;
+  border-color: #FAF8F4 !important;
+  box-shadow: 2px 2px 0px #FAF8F4 !important;
+}
+html[data-theme="dark"] .btn-outline:hover:not(:disabled),
+.dark .btn-outline:hover:not(:disabled),
+html[data-theme="dark"] a.btn-outline:hover:not(:disabled),
+.dark a.btn-outline:hover:not(:disabled) {
+  background-color: rgba(250, 248, 244, 0.12) !important;
+  color: #ffffff !important;
+  box-shadow: 4px 4px 0px #FAF8F4 !important;
 }
