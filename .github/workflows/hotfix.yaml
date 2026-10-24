@@ -258,10 +258,10 @@ jobs:
             exit 1
           fi
           CONTRIB_CODE="$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 https://krewire.com/contribute/ 2>/dev/null || true)"
-          if [ "${CONTRIB_CODE}" = "200" ]; then
-            echo "✓ /contribute/ responded HTTP 200 after emergency hotfix."
+          if [ "${CONTRIB_CODE}" = "301" ]; then
+            echo "✓ /contribute/ redirected to open.krewire.com (HTTP 301)."
           else
-            echo "✗ Smoke test failed: /contribute/ returned HTTP ${CONTRIB_CODE}."
+            echo "✗ Smoke test failed: /contribute/ returned HTTP ${CONTRIB_CODE} (expected 301)."
             exit 1
           fi
           DOCS_CODE="$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 https://krewire.com/docs/ 2>/dev/null || true)"

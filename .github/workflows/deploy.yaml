@@ -313,20 +313,12 @@ jobs:
             echo "✗ /docs returned HTTP ${DOCS_CODE} (expected 200)."
             exit 1
           fi
-          # Verify the contributor portal is served under /contribute/
+          # Verify legacy /contribute/ redirects (301) to open.krewire.com
           CONTRIB_CODE="$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 https://krewire.com/contribute/ 2>/dev/null || true)"
-          if [ "${CONTRIB_CODE}" = "200" ]; then
-            echo "✓ /contribute/ reachable (HTTP ${CONTRIB_CODE})."
+          if [ "${CONTRIB_CODE}" = "301" ]; then
+            echo "✓ /contribute/ redirected (HTTP ${CONTRIB_CODE})."
           else
-            echo "✗ /contribute/ returned HTTP ${CONTRIB_CODE} (expected 200)."
-            exit 1
-          fi
-          # The portal must load its own assets, not the root site's.
-          CONTRIB_ASSET="$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 https://krewire.com/contribute/assets/app.js 2>/dev/null || true)"
-          if [ "${CONTRIB_ASSET}" = "200" ]; then
-            echo "✓ /contribute/assets/app.js reachable (HTTP ${CONTRIB_ASSET})."
-          else
-            echo "✗ /contribute/assets/app.js returned HTTP ${CONTRIB_ASSET} (expected 200)."
+            echo "✗ /contribute/ returned HTTP ${CONTRIB_CODE} (expected 301)."
             exit 1
           fi
           echo "✓ All production smoke tests passed."
