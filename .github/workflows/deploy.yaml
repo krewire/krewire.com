@@ -68,7 +68,7 @@ jobs:
           # a stale artifact) and dropped into public/, which `kiw build`
           # copies verbatim into the site output.
           git clone --depth 1 --branch main "https://github.com/krewire/krewire.github.io.git" "${RUNNER_TEMP}/portal"
-          ( cd "${RUNNER_TEMP}/portal" && kiw build )
+          ( cd "${RUNNER_TEMP}/portal" && kiw build --base /contribute/ )
           rm -rf public/contribute
           mkdir -p public/contribute
           cp -a "${RUNNER_TEMP}/portal/.krewire/build/." public/contribute/
