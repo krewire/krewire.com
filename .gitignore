@@ -1,11 +1,11 @@
-site/
-.krewire/
-node_modules/
+/site/
+/.krewire/
+/node_modules/
 .DS_Store
-en/
-id/
+/en/
+/id/
 
 # Contributor portal (krewire.github.io) is built into public/contribute
 # by the deploy/hotfix workflows from its own source repo — never committed
 # as a stale artifact.
-public/contribute/
+/public/contribute/

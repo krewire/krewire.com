@@ -1,0 +1,299 @@
+---
+title: "Command Catalog"
+description: "Complete command catalog for kiw: syntax, flags, workload support, and examples for every command in the Krewire developer CLI."
+date: "2026-10-08"
+---
+
+# Command Catalog
+
+The **`kiw`** CLI provides an end-to-end command set spanning the entire software development lifecycle—from kernel initialization to production deployment.
+
+---
+
+## 1. Project Initialization & Scaffolding
+
+### `kiw new <name>`
+
+Scaffold a new project in a new directory with a pre-configured template.
+
+```bash
+kiw new my-app [--site | --app | --cli | --book | --worker | --service | --infra]
+```
+
+- `--site`: Static site generator with `.kiw` Single-File Components.
+- `--app`: Fullstack web monolith with `net/http` and embedded assets.
+- `--cli`: Terminal utility with Elm-style Model-Update-View architecture.
+- `--book`: Documentation book with Markdown manuscripts and `mdbind`.
+- `--worker`: Asynchronous job worker daemon.
+- `--service`: Cloud-native microservice.
+- `--infra`: Infrastructure as Code in Go.
+
+### `kiw init`
+
+Equip an existing project directory with Krewire workload structures:
+
+```bash
+kiw init [--site | --book | --cli | --worker | --service | --infra]
+```
+
+- `--template <git-url>`: Clone an external starter template repository into an empty directory.
+
+### `kiw make <kind> <name>`
+
+Rapidly scaffold application artifacts with idiomatic conventions:
+
+```bash
+kiw make component <Name>       # Scaffold components/<Name>.kiw
+kiw make page <name>            # Scaffold pages/<name>.kiw
+kiw make handler <Name>         # Scaffold internal/handlers/<name>.go
+kiw make migration <name>       # Scaffold migrations/YYYYMMDDHHMMSS_<name>.sql
+kiw make model <Name>           # Scaffold internal/models/<name>.go
+kiw make middleware <Name>      # Scaffold internal/middleware/<name>.go
+kiw make service <Name>         # Scaffold internal/services/<name>.go
+kiw make job <Name>             # Scaffold internal/jobs/<name>_job.go
+```
+
+Supports colon syntax (e.g. `kiw make:component Card` or `kiw make component:Card`) and explicit flags (`--kind`, `--name`).
+
+---
+
+## 2. Development & Execution
+
+### `kiw dev`
+
+Start the local development server with automatic file watching and live reload:
+
+```bash
+kiw dev [--port 8080]
+```
+
+- Watches `pages/`, `layouts/`, `components/`, `public/`, and Go source files.
+- Automatically re-renders templates or restarts Go server processes in `<10ms`.
+
+### `kiw run [task|args]`
+
+Run a Go entry point or a custom task defined in `krewire.yaml`:
+
+```bash
+kiw run [task-name] [-- args...]
+```
+
+Examples:
+```bash
+kiw run                # Runs the default Go entry point
+kiw run build-css      # Executes the 'build-css' task from krewire.yaml
+kiw run -- --verbose   # Forwards '--verbose' flag to the application
+```
+
+### `kiw serve`
+
+Start a local HTTP server to preview static output (`site` or `book` workloads) or listen on a web port:
+
+```bash
+kiw serve [--port 3000] [--dir .krewire/build]
+```
+
+### `kiw dashboard`
+
+Launch an interactive local developer dashboard and real-time observability telemetry server:
+
+```bash
+kiw dashboard [--port 4000] [--host 127.0.0.1]
+```
+
+- **Interactive UI (`/`)**: Dark-themed web dashboard inspecting detected pages, handlers, configured microservices, and live memory metrics.
+- **Real-Time Telemetry (`/api/events`)**: Server-Sent Events (SSE) stream pushing goroutine count, memory allocation, and GC telemetry every 2 seconds.
+- **REST & MCP Endpoints**:
+  - `GET /api/info`: Project shape, Go toolchain version, services, and route table.
+  - `GET /api/metrics`: Live memory allocations and goroutine counter.
+  - `GET /api/health`: Health status probe for local containers and automation.
+  - `GET /mcp/sse`: Native Model Context Protocol (MCP) server for AI coding agents.
+
+### `kiw mcp`
+
+Start a native Model Context Protocol (MCP) server for AI coding agents (Antigravity, Cursor, Claude Desktop, OpenCode):
+
+```bash
+kiw mcp --stdio                      # Standard stdio transport for AI IDEs
+kiw mcp --port 4000 --host 127.0.0.1 # Standalone HTTP/SSE transport
+```
+
+- **MCP Resources**:
+  - `krewire://project/info`: Project metadata, detected kind, Go version, and configured services.
+  - `krewire://project/routes`: All discovered `.kiw` pages, Markdown articles, and Go HTTP handlers.
+  - `krewire://runtime/metrics`: Live memory allocation, system memory, goroutines, and GC stats.
+  - `krewire://runtime/health`: Continuous health status probe.
+- **MCP Tools**:
+  - `kiw_inspect_project`: Inspect project configuration, architecture shape, and environment.
+  - `kiw_list_routes`: Extract the full routing tree.
+  - `kiw_make_scaffold`: Generate components, pages, handlers, migrations, models, middleware, and services.
+  - `kiw_get_metrics`: Real-time telemetry probe for AI performance audits.
+### `kiw worker`
+
+Run asynchronous background workers and queue processors:
+
+```bash
+kiw worker [--queue memory|file|kv] [--concurrency <N>] [--dlq list|clear]
+```
+
+- `--queue`: Queue storage backend (`memory`, `file`, or `kv`).
+- `--concurrency`: Number of concurrent job workers (default derived from `krewire.yaml` or CPU count).
+- `--dlq list`: Inspect dead-lettered failed jobs.
+- `--dlq clear`: Flush and purge all dead-lettered jobs.
+
+### `kiw gateway`
+
+Run a high-performance API gateway and reverse proxy for microservices:
+
+```bash
+kiw gateway [--port 8080] [--host 0.0.0.0] [--routes "/api/orders=http://localhost:8081,/api/users=http://localhost:8082"]
+```
+
+- Dispatches routes based on `gateway:` configuration in `krewire.yaml` or explicit `--routes` flag.
+- Built-in circuit breaking, distributed rate limiting, CORS, distributed tracing headers, and round-robin load balancing.
+
+---
+
+## 3. Building & Deployment
+
+### `kiw build`
+
+Compile the current project into release-ready artifacts according to its workload kind:
+
+```bash
+kiw build [--target site|book|binary|wasm|infra] [--output <path>]
+```
+
+- **`site`**: Generates optimized static HTML and scoped CSS into `.krewire/build`.
+- **`book`**: Compiles Markdown manuscripts into multi-chapter documentation portal.
+- **`app`/`cli`/`service`/`worker`**: Compiles a single Go binary with embedded assets.
+- **`runtime`**: Compiles client-side Go WebAssembly into `public/app.wasm`.
+- **`infra`**: Compiles and verifies the cloud infrastructure topology plan.
+
+### `kiw deploy`
+
+Validate the project, run quality gates, stage distribution artifacts into `.krewire/dist/`, and publish to target environments:
+
+```bash
+kiw deploy [--target binary|systemd|gh-pages|infra] [--branch <name>] [--remote <name>] [--dry-run]
+```
+
+- `--dry-run`: Preview deployment steps without publishing or mutating cloud state.
+- `--target binary`: Build and stage standalone executable into distribution directory.
+- `--target systemd`: Generate and configure Linux systemd unit service files (`/etc/systemd/system/<app>.service`) with custom user, working directory, and auto-restart policies.
+- `--target gh-pages`: Commit and push the static output to GitHub Pages (`gh-pages` branch).
+- `--target infra`: Provision declared cloud resources via provider adapters.
+
+---
+
+## 4. Code Quality & Testing
+
+### `kiw test`
+
+Execute unit and integration tests across all Go packages:
+
+```bash
+kiw test [--verbose] [--race] [--cover]
+```
+
+Spawns `go test ./...` with standardized colorized output and test summary reporting.
+
+### `kiw vet`
+
+Run static code analysis:
+
+```bash
+kiw vet
+```
+
+Runs Go's official `go vet ./...` analyzer, catching potential defects, dead code, and invalid struct tags.
+
+### `kiw fmt`
+
+Inspect or format source code and `.kiw` component files:
+
+```bash
+kiw fmt [--write]
+```
+
+- Without `--write`: Prints unformatted files and exits with code `1` if formatting is required (useful for CI gates).
+- With `--write`: Formats all Go and component files in-place according to canonical conventions.
+
+---
+
+## 5. Ecosystem & Management
+
+### `kiw info`
+
+Display detected workload kind, active configuration, and Go environment diagnostics:
+
+```bash
+kiw info
+```
+
+*Example Output:*
+```text
+Project:      storefront (v0.1.0)
+Kind:         app (Fullstack Monolith)
+Config:       /home/reasvyn/workspace/storefront/krewire.yaml
+Output:       bin/server
+Go Version:   go1.27.1 (linux/amd64)
+```
+
+### `kiw version`
+
+Print the version of the `kiw` CLI and underlying Krewire packages:
+
+```bash
+kiw version
+```
+
+### `kiw compat`
+
+Validate version compatibility across all module declarations in the workspace:
+
+```bash
+kiw compat
+```
+
+### `kiw ws <command>`
+
+Manage multi-package Go workspaces (`go.work`):
+
+```bash
+kiw ws info         # Show workspace members and active modules
+kiw ws list         # List paths of all packages
+kiw ws sync         # Synchronize go.work and go.mod dependencies
+kiw ws exec <cmd>   # Execute a command across every workspace module
+```
+
+### `kiw boost install`
+
+Equip any project repository with the **Krewire Boost** AI agent system:
+
+```bash
+kiw boost install [path]
+```
+
+Installs the autonomous agent definitions, custom slash commands, and autonomous SDLC workflows into `.agents/` and `AGENTS.md`.
+
+### `kiw add <package[@version]>`
+
+Add a Go module or an opt-in ecosystem plugin (such as Tailwind CSS):
+
+```bash
+kiw add twcss@latest
+kiw add tailwindcss
+kiw add github.com/krewire/krewire@v0.1.0
+```
+
+- **Zero JS by Default**: Krewire defaults to zero JavaScript and standalone CSS tokens.
+- **Opt-In Technology**: When adding `twcss`, `kiw` automatically initializes `tailwind.config.js` and enables the Tailwind compiler runner (standalone CLI binary in `bin/tailwindcss`, Bun, PNPM, or npm/npx fallback).
+
+### `kiw remove <package>`
+
+Uninstall a package or deactivate an opt-in plugin:
+
+```bash
+kiw remove twcss
+```

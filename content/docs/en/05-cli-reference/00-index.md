@@ -8,7 +8,7 @@ date: "2026-10-08"
 
 The **`kiw`** CLI is the unified entry point for the entire Krewire ecosystem. It drives all eight project kinds (`app`, `cli`, `site`, `book`, `worker`, `service`, `infra`, `kernel`) behind one binary and one configuration file (**`krewire.yaml`**).
 
-`kiw` dogfoods Krewire's own `packages/tui` and `packages/term` libraries, ensuring zero external dependencies, near-instant startup times (<2ms), and consistent POSIX exit code discipline.
+`kiw` dogfoods Krewire's own `pkg/tui` and `pkg/term` libraries, ensuring zero external dependencies, near-instant startup times (<2ms), and consistent POSIX exit code discipline.
 
 ---
 
@@ -18,7 +18,7 @@ The **`kiw`** CLI is the unified entry point for the entire Krewire ecosystem. I
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">4.1</span>
+      <span class="chapter-card-num">5.1</span>
       <h3 class="chapter-card-title">
         <a href="/docs/cli-reference/commands">Command Catalog <span class="arrow">→</span></a>
       </h3>
@@ -30,7 +30,7 @@ The **`kiw`** CLI is the unified entry point for the entire Krewire ecosystem. I
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">4.2</span>
+      <span class="chapter-card-num">5.2</span>
       <h3 class="chapter-card-title">
         <a href="/docs/cli-reference/configuration">Configuration Schema (krewire.yaml) <span class="arrow">→</span></a>
       </h3>
@@ -42,7 +42,7 @@ The **`kiw`** CLI is the unified entry point for the entire Krewire ecosystem. I
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">4.3</span>
+      <span class="chapter-card-num">5.3</span>
       <h3 class="chapter-card-title">
         <a href="/docs/cli-reference/scripting">Task Automation &amp; Scripting <span class="arrow">→</span></a>
       </h3>

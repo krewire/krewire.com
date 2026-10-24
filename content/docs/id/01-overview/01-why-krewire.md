@@ -1,126 +1,126 @@
 ---
-title: "Mengapa Krewire?"
-description: "Mengapa Go menjadi fondasi arsitektur, bagaimana Krewire menghilangkan fragmentasi toolchain, dan pipeline progressive enhancement."
+title: "Why Krewire?"
+description: "Why Go is the architectural foundation, how Krewire eliminates toolchain fragmentation, and the progressive enhancement pipeline."
 date: "2026-09-29"
 ---
 
-# Mengapa Krewire?
+# Why Krewire?
 
-Rekayasa perangkat lunak modern diparai oleh **fragmentasi toolchain**. Membangun layanan web produksi biasanya memaksa tim pengengineering raga tiga atau empat bahasa pemrograman, format konfigurasi yang beragam, dan pipeline build yang terputus.
+Modern software engineering is plagued by **toolchain fragmentation**. Building a production web service typically forces engineering teams to juggle three or four programming languages, disparate configuration formats, and disconnected build pipelines.
 
-Krewire memecahkan masalah ini dengan menawarkan **Library Go Modular untuk Setiap Workload**.
+Krewire solves this problem by offering **Modular Go Libraries for Every Workload**.
 
 ---
 
-## 1. Masalah: Fragmentasi Toolchain
+## 1. The Problem: Toolchain Fragmentation
 
-Siklus hidup produk web typikal dimulai sederhana dan cepat pecah seiring perkembangan kebutuhan:
+A typical web product lifecycle begins simply and quickly fractures as requirements expand:
 
 ```
-Stack Modern Typikal:
+Typical Modern Stack:
 ├── Web Frontend:    Node.js + npm + Vite/Webpack + React/Next.js (JavaScript/TypeScript)
-├── Backend API:     Go (Gin/Fiber) atau Python (FastAPI) atau Ruby on Rails
-├── Background Jobs: Python + Celery + Redis atau Node + BullMQ
-├── CLI Tooling:     Go (Cobra) atau Rust (Clap)
-├── Dokumentasi:     Docusaurus atau MkDocs atau Hugo
-└── Infrastruktur:  Terraform/HCL atau Pulumi atau CloudFormation
+├── Backend API:     Go (Gin/Fiber) or Python (FastAPI) or Ruby on Rails
+├── Background Jobs: Python + Celery + Redis or Node + BullMQ
+├── CLI Tooling:     Go (Cobra) or Rust (Clap)
+├── Documentation:   Docusaurus or MkDocs or Hugo
+└── Infrastructure:  Terraform/HCL or Pulumi or CloudFormation
 ```
 
-### Biaya dari Fragmentasi
+### The Cost of Fragmentation
 
-- **Context Switching:** Pengembang terus bolak-balik antara sintaks JavaScript, Python, Go, dan HCL.
-- **Dependency Hell:** Satu `npm install` menarik ribuan paket pihak ketiga yang tidak terverifikasi, menciptakan risiko keamanan, pembaruan semver yang rusak, dan folder `node_modules` yang besar.
-- **Pipeline Deployment Tidak Kompatibel:** Frontend di-deploy ke Vercel/Netlify; back-end berjalan dalam container Docker di ECS/Kubernetes; worker berjalan sebagai proses worker terpisah; infra di-deploy melalui Terraform Cloud.
-- **Rewrite Tax:** Sebuah situs statis sederhana yang membutuhkan fitur interaktif atau API back-end memaksa tim untuk melakukan pembaruan arsitektur yang mahal dan berisiko.
+- **Context Switching:** Developers constantly bounce between JavaScript, Python, Go, and HCL syntaxes.
+- **Dependency Hell:** A single `npm install` pulls thousands of unvetted third-party packages, creating security risks, breaking semver updates, and massive `node_modules` folders.
+- **Incompatible Deployment Pipelines:** Frontends deploy to Vercel/Netlify; backends run in Docker containers on ECS/Kubernetes; workers run as separate worker processes; infra deploys via Terraform Cloud.
+- **Rewrite Tax:** When a simple static site requires interactive features or backend APIs, teams are forced into expensive, risky architectural rewrites.
 
 ---
 
-## 2. Solusi Krewire
+## 2. The Krewire Solution
 
-Krewire menyatukan semua workload ini di bawah **Go**, **`kiw`**, dan **`krewire.yaml`**:
+Krewire unifies all of these workloads under **Go**, **`kiw`**, and **`krewire.yaml`**:
 
-| Workload | Pendekatan Terfragmentasi Tradisional | Pendekatan Krewire |
+| Workload | Traditional Fragmented Approach | The Krewire Approach |
 | :--- | :--- | :--- |
 | **Static Site** | Node.js + Astro / Hugo / Next.js | `kiw build --site` (Go SSG, zero client JS) |
-| **Dokumentasi** | Docusaurus / GitBook / MkDocs | `kiw build --book` (engine markdown `mdbind`) |
-| **Web Monolith** | Laravel / Django / Next.js + Node | `kiw run` (binary Go tunggal `packages/app`) |
-| **CLI & TUI** | Python Click / Node / Cobra | `kiw build --cli` (`packages/tui` terminal reaktif) |
-| **Background Jobs** | Celery + Python + Redis / Sidekiq | `kiw run --worker` (`packages/cloud/worker` antrean & cron) |
+| **Documentation** | Docusaurus / GitBook / MkDocs | `kiw build --book` (`mdbind` markdown engine) |
+| **Web Monolith** | Laravel / Django / Next.js + Node | `kiw run` (`packages/app` single Go binary) |
+| **CLI & TUI** | Python Click / Node / Cobra | `kiw build --cli` (`packages/tui` reactive terminal) |
+| **Background Jobs** | Celery + Python + Redis / Sidekiq | `kiw run --worker` (`packages/cloud/worker` queues & cron) |
 | **Microservices** | Spring Boot / Express / Go kit | `kiw run --service` (`packages/cloud/service` gateway & OTel) |
-| **Cloud Infra** | Terraform / HCL / CloudFormation | `kiw infra apply` (`packages/cloud/infra` deklarasi IaC Go) |
+| **Cloud Infra** | Terraform / HCL / CloudFormation | `kiw infra apply` (`packages/cloud/infra` Go IaC declarations) |
 | **Client Frontend** | React / Vue / Angular + bundlers | `kiw build --wasm` (`packages/runtime` Go-to-WASM) |
 
 ---
 
-## 3. Tiga Pilar: Secure, Sustainable, Scalable
+## 3. The Three Pillars: Secure, Sustainable, Scalable
 
-Krewire bukan framework monolitik — itu adalah serangkaian **library Go modular**
-dan ekosistem **SDLC digital** menyeluruh, dari baris pertama spesifikasi (upstream) hingga
-operasi dan pemeliharaan produksi (downstream). Setiap kapabilitas yang dikirimkan harus lolos
-tiga pilar sebelum resmi dirilis:
+Krewire is not a monolithic framework — it is a suite of **modular Go libraries**
+and an end-to-end **digital SDLC ecosystem**, from the first line of the specification (upstream) to production
+operations and maintenance (downstream). Every capability it ships must pass
+three pillars before it lands:
 
-| Pilar | Artinya | Apa yang terlihat dalam Krewire |
+| Pillar | What it means | What it looks like in Krewire |
 | :--- | :--- | :--- |
-| **Secure** | Keamanan adalah default, bukan add-on atau tier berbayar. | Graf dependensi berbasis stdlib, primitif HTTP aman secara default, kontrol selaras OWASP/CWE, rahasia `${env:NAME}`, sandboxing WASM, dan uji teracak spesifikasi yang dapat dicek siapa saja. |
-| **Sustainable** | Satu pembangun masih dapat membaca, menjalankan, dan mengandainya satu dekade mendatang. | Binary statis tunggal dengan aset tersemat, baterai opt-in tanpa biaya saat tidak digunakan, bagian yang terbukti dan stabil, tidak ada biaya lisensi, dan komunitas learn-by-shipping. |
-| **Scalable** | Pertumbuhan bersifat aditif, bukan pembuatan ulang. | Pipeline progresif (di bawah): setiap tahap adalah baterai opt-in dan dapat dibalikkan, jadi produk $5 VPS dapat mencapai hyperscale tanpa di-re-architect. |
+| **Secure** | Safety is the default, not an add-on or a paid tier. | Stdlib-first dependency graph, secure-by-default HTTP primitives, OWASP/CWE-aligned controls, `${env:NAME}` secrets, WASM sandboxing, and spec-traceable tests anyone can check. |
+| **Sustainable** | A single builder can still read, run, and afford it a decade from now. | Single static binaries with embedded assets, opt-in batteries that cost zero when unused, boring proven parts, no license fees, and a learn-by-shipping community. |
+| **Scalable** | Growth is additive, not a rewrite. | The progressive pipeline (below): each stage is an opt-in, reversible battery, so a $5 VPS product can reach hyperscale without being re-architected. |
 
-Pilar inilah yang menjadi jawaban konkret "Mengapa Krewire?" untuk setiap tahap
-siklus hidup, bukan hanya untuk kode: satu format spesifikasi, satu konfigurasi,
-satu CLI, dan satu bahasa — dari `docs/specs/` hingga `kiw deploy`.
-
----
-
-## 4. Mengapa Go sebagai Fondasi Arsitektur?
-
-Memilih Go adalah **arsitektural, bukan preferensi**:
-
-1. **Kelengkapan Standard Library:**  
-   Standard library Go (`net/http`, `html/template`, `embed`, `context`, `log/slog`, `flag`) menyediakan jaringan, templating, dan penyematan aset tingkat produksi secara bawaan. Tidak perlu runtime atau interpreter eksternal.
-2. **Binary Statis Tunggal Sebenarnya:**  
-   Satu `go build` menghasilkan binary statis yang terhubung berisi semua kode yang dikompilasi, templat, dan aset statis. Startup dalam milidetik dengan jejak memori kecil (10–30 MB RAM).
-3. **Satu Gerbang Tooling:**  
-   Satu command pipeline (`gofmt`, `go vet`, `go test`) memeriksa dan memformat setiap workload di repositori Anda — dari frontend SSG hingga infrastruktur cloud.
-4. **Kecepatan Kompilasi & Konkuren:**  
-   Go dikompilasi dalam hitungan detik dan menawarkan goroutine ringan yang dapat menangani puluhan ribu koneksi jaringan konkuren tanpa kelelahan thread.
-5. **Tidak ada Pajak Virtual Machine atau Interpreter:**  
-   Tidak seperti Node.js atau Python, Go tidak memerlukan pengelolaan lingkungan runtime (`nvm`, `venv`), menghindari drift versi antara mesin pengembang lokal dan container produksi.
+These pillars are why "Why Krewire?" has a concrete answer for every stage of
+the life cycle, not just for the code: one specification format, one config,
+one CLI, and one language — from `docs/specs/` to `kiw deploy`.
 
 ---
 
-## 5. Pipeline Progresif (`KWF-ARCH-P7L2Q`)
+## 4. Why Go as the Architectural Foundation?
 
-Dalam Krewire, pertumbuhan sistem adalah **pengalihan bertahap**, bukan pembuatan ulang. Produk Anda berkembang secara alami melalui tahapan pipeline standar:
+Choosing Go is **architectural, not preferential**:
+
+1. **Standard Library Completeness:**  
+   Go's standard library (`net/http`, `html/template`, `embed`, `context`, `log/slog`, `flag`) provides production-grade networking, templating, and asset embedding out of the box. No external runtime or interpreter is required.
+2. **True Static Single Binaries:**  
+   A single `go build` produces a statically linked binary containing all compiled code, templates, and static assets. Startups occur in milliseconds with tiny memory footprints (10–30 MB RAM).
+3. **One Tooling Gate:**  
+   A single command pipeline (`gofmt`, `go vet`, `go test`) checks and formats every single workload in your repository—from the frontend SSG to the cloud infrastructure plans.
+4. **Compile Speed & Concurrency:**  
+   Go compiles in seconds and offers lightweight goroutines that can handle tens of thousands of concurrent network connections without thread exhaustion.
+5. **No Virtual Machine or Interpreter Tax:**  
+   Unlike Node.js or Python, Go does not require managing runtime environments (`nvm`, `venv`), avoiding version drift between local developer machines and production containers.
+
+---
+
+## 5. The Progressive Pipeline (`KWF-ARCH-P7L2Q`)
+
+In Krewire, system growth is an **incremental upgrade**, not a rewrite. Your product evolves naturally through standardized pipeline stages:
 
 ```
 [P0] Static Site / Book
        │
-       ▼ (Tambah pulau WebAssembly interaktif)
-[P1] Interactive Static (Runtime WASM)
+       ▼ (Add interactive WebAssembly islands)
+[P1] Interactive Static (WASM Runtime)
        │
-       ▼ (Tambah rute server, database, autentikasi sesi)
-[P2] Web Monolith (Binary Aplikasi Tunggal)
+       ▼ (Add server routes, database, session auth)
+[P2] Web Monolith (Single Binary App)
        │
-       ▼ (Refaktor ke dalam paket domain internal)
+       ▼ (Refactor into internal domain packages)
 [P3] Modular Monolith (KWF-5ZHQV)
        │
-       ▼ (Opsional: Ekstrak modul lalu lintas tinggi)
-[P4/P5] Worker & Microservices yang Diekstrak
+       ▼ (Optional: Extract high-traffic modules)
+[P4/P5] Extracted Workers & Microservices
        │
-       ▼ (Otomatisasi topologi cloud)
+       ▼ (Automate cloud topology)
 [P6] Cloud Infra & Service Mesh
 ```
 
-### Mengapa Pipeline Progresif Penting
+### Why the Progressive Pipeline Matters
 
-- **Tidak ada File yang Dipindahkan Dua Kali:** Anda tidak pernah membuang kode. Komponen `.kiw`, tata letak, dan logika bisnis Go Anda membawa ke depan utuh dari P0 ke P6.
-- **Dapat Dibalik dengan Provider Swap:** Modul layanan dapat berjalan di dalam modul monolitik Anda selama pengembangan, dan dapat diekstrak ke binary layanan mandiri dalam produksi dengan cukup menyesuaikan konfigurasi.
-- **Biaya Nol saat Tidak Digunakan:** Jika proyek Anda hanya membutuhkan situs dokumentasi statis, paket microservice dan worker tidak dikompilasi ke dalam output Anda.
+- **No File Moved Twice:** You never throw away code. Your `.kiw` components, layouts, and Go business logic carry forward intact from P0 to P6.
+- **Reversible by Provider Swap:** A service module can run in-process within your modular monolith during development, and be extracted to a standalone service binary in production by simply adjusting configuration.
+- **Zero Cost When Unused:** If your project only needs a static documentation site, the microservice and worker packages are not compiled into your output.
 
 ---
 
-## 6. Ringkasan
+## 6. Summary
 
-Krewire menghilangkan beban kognitif dari pengembangan web modern. Dengan satu bahasa, satu CLI, dan satu file konfigurasi terpadu, pengembang menghabiskan lebih sedikit waktu memerangi alat build dan lebih banyak waktu mengiriman perangkat lunak.
+Krewire eliminates the cognitive overhead of modern web development. With one language, one CLI, and one unified configuration file, developers spend less time fighting build tools and more time shipping software.
 
-Selanjutnya, temukan prinsip dasar: lanjut ke [**1.2 Filsafan →**](/docs/overview/philosophy) atau jelajahi [**1.3 Workload Krewire →**](/docs/overview/krewire-workloads).
+Next, discover the underlying principles: proceed to [**1.2 Philosophy →**](/docs/overview/philosophy) or explore [**1.3 Krewire Workloads →**](/docs/overview/krewire-workloads).
