@@ -19,7 +19,11 @@
 # ─────────────────────────────────────────────────────────────────────────────
 set -eu
 
-REPO="krewire/kiw"
+# Release assets are published from the krewire monorepo, and the CLI package
+# lives under tools/kiw inside that module. Keep both paths here so the release
+# download and the `go install` fallback can never drift apart.
+REPO="krewire/krewire"
+MODULE="github.com/krewire/krewire/tools/kiw/cmd/kiw"
 BINARY="kiw"
 INSTALL_DIR="/usr/local/bin"
 FALLBACK_DIR="${HOME}/.local/bin"
@@ -213,10 +217,10 @@ else
   fi
 
   info "Found $(go version)"
-  info "Installing via: go install github.com/${REPO}/cmd/kiw@${TARGET_TAG}"
+  info "Installing via: go install ${MODULE}@${TARGET_TAG}"
   # NOTE: GONOSUMDB / GONOSUMCHECK not set — module sum database remains active.
   # GOPROXY defaults to proxy.golang.org ensuring provenance.
-  go install "github.com/${REPO}/cmd/kiw@${TARGET_TAG}"
+  go install "${MODULE}@${TARGET_TAG}"
 
   GOPATH_BIN="$(go env GOPATH)/bin"
   GOBIN_DIR="$(go env GOBIN 2>/dev/null || true)"

@@ -9,7 +9,7 @@
   "hero": {
     "eyebrow": "Ekosistem SDLC Digital End-to-End · v0.1.0 · Open Source",
     "title_html": "Library Go Modular.<br class=\"hidden sm:inline\">Untuk Setiap Workload.",
-    "lead_html": "Krewire adalah <b class=\"text-fg dark:text-fg-dark\">ekosistem SDLC digital</b> end-to-end — dari baris pertama spesifikasi hingga operasi produksi — dibangun di atas tiga pilar: <b class=\"text-fg dark:text-fg-dark\">secure</b>, <b class=\"text-fg dark:text-fg-dark\">sustainable</b>, dan <b class=\"text-fg dark:text-fg-dark\">scalable</b>. Dari monolit web binary tunggal hingga TUI interaktif, situs statis berkecepatan tinggi, pipeline buku, worker latar belakang, microservices, cloud infra, dan runtime Go WebAssembly — bangun semuanya dalam Go dengan satu CLI <code class=\"code-inline\">kiw</code> dan bebas kelelahan JS.",
+    "lead_html": "Krewire adalah <b class=\"text-fg dark:text-fg-dark\">ekosistem SDLC digital</b> end-to-end — dari baris pertama spesifikasi hingga operasi produksi — dibangun di atas tiga pilar: <b class=\"text-fg dark:text-fg-dark\">secure</b>, <b class=\"text-fg dark:text-fg-dark\">sustainable</b>, dan <b class=\"text-fg dark:text-fg-dark\">scalable</b>. Dari monolit web binary tunggal hingga TUI interaktif, situs statis berkecepatan tinggi, pipeline buku, worker latar belakang, microservices, cloud infra, dan gateway API — bangun semuanya dalam Go dengan satu CLI <code class=\"code-inline\">kiw</code> dan bebas kelelahan JS.",
     "cta_start": "Mulai Sekarang — 5 Menit →",
     "cta_workloads": "Jelajahi 8 Workload ↓",
     "meta": "Go 1.27.1+ · Dari Spek ke Produksi · Routing Berbasis Berkas · Scoped CSS · 100% Bebas JS secara Bawaan"
@@ -44,7 +44,7 @@
     "worker_desc": "Antrean background asinkron, penjadwalan tugas berkala, dan worker tangguh dengan penghentian anggun (graceful shutdown).",
     "service_desc": "Microservice headless, REST API JSON, dan endpoint gRPC yang dirancang untuk konkurensi tinggi dan latensi rendah.",
     "infra_desc": "Penyediaan otomatis bare-metal & VPS, penerbitan sertifikat TLS, dan deployment blue-green tanpa downtime.",
-    "runtime_desc": "Runtime WebAssembly reaktif yang mengompilasi Go ke client-side WASM dengan diffing virtual DOM dan hidrasi cepat."
+    "gateway_desc": "Reverse proxy deklaratif yang membentengi layanan upstream dengan middleware per rute, rate limiting, timeout, dan penyeimbangan service discovery."
   },
   "steps": {
     "badge": "Pengalaman Pengembang",
@@ -108,7 +108,7 @@
     "title": "Arsitektur Multi-Repo Terpadu",
     "lead": "Platform SDLC digital Krewire diorganisasi ke dalam repositori independen terfokus yang terkomposisi bersih.",
     "core_badge": "Monorepo Inti",
-    "core_desc": "Paket Go modular (pkg/*), developer CLI (kiw), runtime fullstack WASM, ORM, dan agent Boost AI.",
+    "core_desc": "Paket Go modular (pkg/*), developer CLI (kiw), runtime web WebAssembly, ORM, dan agent Boost AI.",
     "cloud_badge": "Hybrid PaaS",
     "cloud_desc": "Engine PaaS mandiri, control plane cloud multi-tenant, hermetic builder, dan dynamic edge reverse proxy.",
     "auth_badge": "Auth Enterprise",
