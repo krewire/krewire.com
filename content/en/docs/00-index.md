@@ -70,14 +70,14 @@ Build real-world applications by diving into the specific workload kind tailored
 ### Stage 4: Domain Packages Deep-Dive
 Leverage Krewire's modular, independent batteries to power core application concerns:
 
-- [**Kernel & Lifecycle (`pkg/model`, `pkg/lifecycle`, `pkg/errs`)**](/docs/pkg/kern) — Taxonomy, domain rules, and process supervisors.
-- [**Web & HTTP Routing (`pkg/web`, `pkg/app`)**](/docs/pkg/web-and-app) — HTTP multiplexers, middleware pipelines, and DI containers.
-- [**Security & Identity (`pkg/sec`, `pkg/auth`)**](/docs/pkg/security-and-auth) — Hardened OWASP middleware, PBKDF2 password hashing, TOTP 2FA, SSO (OIDC/SAML2), and RBAC.
-- [**User Interfaces (`pkg/ui`, `pkg/tui`)**](/docs/pkg/ui-and-tui) — Reusable components, design tokens, and themes.
-- [**Storage & Caching (`pkg/storage`, `pkg/cache`, `pkg/redis`)**](/docs/pkg/storage-and-fs) — Multi-driver object storage (memory, disk, S3) and Redis caching.
-- [**Data, Mail & Commerce (`pkg/orm`, `pkg/mail`, `pkg/commerce`)**](/docs/pkg) — Multi-driver ORM (SQLite, MySQL, Postgres, MongoDB, Elasticsearch), email dispatch (SMTP, Resend, Sendgrid), and Indonesian payments (Midtrans QRIS/VA).
-- [**Resilience & Quality Assurance (`pkg/resilience`, `pkg/testing`)**](/docs/pkg/resilience-and-testing) — Circuit breakers, retry backoff, and test harnesses.
-- [**AI Orchestration (`pkg/ai`)**](/docs/pkg/ai-and-agents) — Multi-provider LLM integrations and prompt engines.
+- [**Kernel & Lifecycle (`pkg/model`, `pkg/lifecycle`, `pkg/errs`)**](/docs/packages/kern) — Taxonomy, domain rules, and process supervisors.
+- [**Web & HTTP Routing (`pkg/web`, `pkg/app`)**](/docs/packages/web-and-app) — HTTP multiplexers, middleware pipelines, and DI containers.
+- [**Security & Identity (`pkg/sec`, `pkg/auth`)**](/docs/packages/security-and-auth) — Hardened OWASP middleware, PBKDF2 password hashing, TOTP 2FA, SSO (OIDC/SAML2), and RBAC.
+- [**User Interfaces (`pkg/ui`, `pkg/tui`)**](/docs/packages/ui-and-tui) — Reusable components, design tokens, and themes.
+- [**Storage & Caching (`pkg/storage`, `pkg/cache`, `pkg/redis`)**](/docs/packages/storage-and-fs) — Multi-driver object storage (memory, disk, S3) and Redis caching.
+- [**Data, Mail & Commerce (`pkg/orm`, `pkg/mail`, `pkg/commerce`)**](/docs/packages) — Multi-driver ORM (SQLite, MySQL, Postgres, MongoDB, Elasticsearch), email dispatch (SMTP, Resend, Sendgrid), and Indonesian payments (Midtrans QRIS/VA).
+- [**Resilience & Quality Assurance (`pkg/resilience`, `pkg/testing`)**](/docs/packages/resilience-and-testing) — Circuit breakers, retry backoff, and test harnesses.
+- [**AI Orchestration (`pkg/ai`)**](/docs/packages/ai-and-agents) — Multi-provider LLM integrations and prompt engines.
 
 ### Stage 5: Daily Developer Workflows & CLI Tooling
 Accelerate developer productivity with automated test suites, formatting, project introspection, and custom build tasks:

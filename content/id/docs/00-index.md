@@ -70,14 +70,14 @@ Bangun aplikasi nyata dengan mendalami jenis workload yang sesuai dengan kebutuh
 ### Tahap 4: Eksplorasi Paket Domain & Baterai
 Manfaatkan baterai modular mandiri Krewire untuk menangani kebutuhan inti aplikasi:
 
-- [**Kernel & Siklus Hidup (`pkg/model`, `pkg/lifecycle`, `pkg/errs`)**](/docs/pkg/kern) — Taksonomi error, aturan domain, dan supervisor proses.
-- [**Web & HTTP Routing (`pkg/web`, `pkg/app`)**](/docs/pkg/web-and-app) — Multiplexer HTTP, pipeline middleware, dan container Dependency Injection.
-- [**Keamanan & Otentikasi (`pkg/sec`, `pkg/auth`)**](/docs/pkg/security-and-auth) — Middleware keamanan standar OWASP, hashing PBKDF2, TOTP 2FA, SSO (OIDC/SAML2), dan RBAC hierarkis.
-- [**Antarmuka Pengguna (`pkg/ui`, `pkg/tui`)**](/docs/pkg/ui-and-tui) — Komponen pakai-ulang, token desain, dan tema gelap/terang.
-- [**Penyimpanan & Cache (`pkg/storage`, `pkg/cache`, `pkg/redis`)**](/docs/pkg/storage-and-fs) — Object storage multi-driver (memory, disk, S3) dan caching Redis.
-- [**Database, Mail & Commerce (`pkg/orm`, `pkg/mail`, `pkg/commerce`)**](/docs/pkg) — ORM multi-driver (SQLite, MySQL, Postgres, MongoDB, Elasticsearch), pengiriman email (SMTP, Resend, Sendgrid), dan pembayaran lokal Indonesia (Midtrans QRIS/VA).
-- [**Resiliensi & Jaminan Mutu (`pkg/resilience`, `pkg/testing`)**](/docs/pkg/resilience-and-testing) — Circuit breaker, retry exponential backoff, dan assertion testing harness.
-- [**Orkestrasi AI (`pkg/ai`)**](/docs/pkg/ai-and-agents) — Integrasi multi-provider LLM dan manajemen prompt.
+- [**Kernel & Siklus Hidup (`pkg/model`, `pkg/lifecycle`, `pkg/errs`)**](/docs/packages/kern) — Taksonomi error, aturan domain, dan supervisor proses.
+- [**Web & HTTP Routing (`pkg/web`, `pkg/app`)**](/docs/packages/web-and-app) — Multiplexer HTTP, pipeline middleware, dan container Dependency Injection.
+- [**Keamanan & Otentikasi (`pkg/sec`, `pkg/auth`)**](/docs/packages/security-and-auth) — Middleware keamanan standar OWASP, hashing PBKDF2, TOTP 2FA, SSO (OIDC/SAML2), dan RBAC hierarkis.
+- [**Antarmuka Pengguna (`pkg/ui`, `pkg/tui`)**](/docs/packages/ui-and-tui) — Komponen pakai-ulang, token desain, dan tema gelap/terang.
+- [**Penyimpanan & Cache (`pkg/storage`, `pkg/cache`, `pkg/redis`)**](/docs/packages/storage-and-fs) — Object storage multi-driver (memory, disk, S3) dan caching Redis.
+- [**Database, Mail & Commerce (`pkg/orm`, `pkg/mail`, `pkg/commerce`)**](/docs/packages) — ORM multi-driver (SQLite, MySQL, Postgres, MongoDB, Elasticsearch), pengiriman email (SMTP, Resend, Sendgrid), dan pembayaran lokal Indonesia (Midtrans QRIS/VA).
+- [**Resiliensi & Jaminan Mutu (`pkg/resilience`, `pkg/testing`)**](/docs/packages/resilience-and-testing) — Circuit breaker, retry exponential backoff, dan assertion testing harness.
+- [**Orkestrasi AI (`pkg/ai`)**](/docs/packages/ai-and-agents) — Integrasi multi-provider LLM dan manajemen prompt.
 
 ### Tahap 5: Workflow Harian & Otomasi CLI `kiw`
 Tingkatkan produktivitas pengembang dengan suite pengujian otomatis, pemformatan, dan kustomisasi tugas kompilasi:

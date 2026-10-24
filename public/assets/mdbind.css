@@ -1366,8 +1366,44 @@ nav.pager a.next::before {
 :root { --show-sun: block; --show-moon: none; }
 :root[data-theme="dark"] { --show-sun: none; --show-moon: block; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme]) { --show-sun: none; --show-moon: block; } }
-.theme-toggle { border: 1px solid var(--neutral); border-radius: 999px; background: transparent; color: var(--ink); padding: .35rem .5rem; line-height: 0; cursor: pointer; transition: border-color .2s ease, color .2s ease; }
-.theme-toggle:hover { border-color: var(--primary); color: var(--primary); }
-.theme-toggle svg { width: 1.05rem; height: 1.05rem; display: block; }
+
+.theme-toggle {
+  border: var(--pop-border-thin);
+  box-shadow: var(--pop-shadow-sm);
+  border-radius: 8px;
+  background: var(--base-2);
+  color: var(--ink);
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.theme-toggle:hover {
+  background: var(--base-3);
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px var(--border);
+}
+.theme-toggle:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px var(--border);
+}
+.theme-toggle svg {
+  width: 17px;
+  height: 17px;
+  display: block;
+}
 .theme-toggle .icon-sun { display: var(--show-sun); }
 .theme-toggle .icon-moon { display: var(--show-moon); }
+
+/* Bilingual Pager Titles */
+:root[lang="id"] nav.pager a.prev::before,
+html[lang="id"] nav.pager a.prev::before {
+  content: "Bab Sebelumnya";
+}
+:root[lang="id"] nav.pager a.next::before,
+html[lang="id"] nav.pager a.next::before {
+  content: "Bab Selanjutnya";
+}

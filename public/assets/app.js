@@ -189,13 +189,17 @@ window.copyCmd = copyCmd;
       }
     });
 
-    // Theme switch (single delegated click handler)
-    document.addEventListener('click', function (e) {
-      var btn = e.target && e.target.closest ? e.target.closest('[data-theme-toggle]') : null;
-      if (btn && window.krewireTheme && window.krewireTheme.toggle) {
-        window.krewireTheme.toggle();
-      }
-    });
+    // Theme switch (single delegated click handler with guard)
+    if (!window._krewireThemeBound) {
+      window._krewireThemeBound = true;
+      document.addEventListener('click', function (e) {
+        var btn = e.target && e.target.closest ? e.target.closest('[data-theme-toggle]') : null;
+        if (btn && window.krewireTheme && window.krewireTheme.toggle) {
+          e.preventDefault();
+          window.krewireTheme.toggle();
+        }
+      });
+    }
   }
 
   if (document.readyState === 'loading') {
@@ -513,11 +517,15 @@ window.copyCmd = copyCmd;
   function initI18n() {
     var currentLang = 'en';
     try {
-      var saved = localStorage.getItem('krewire-lang');
-      if (saved === 'id' || saved === 'en') {
-        currentLang = saved;
-      } else if (navigator.language && navigator.language.toLowerCase().startsWith('id')) {
+      if (window.location.pathname.startsWith('/id/') || window.location.pathname === '/id') {
         currentLang = 'id';
+      } else {
+        var saved = localStorage.getItem('krewire-lang');
+        if (saved === 'id' || saved === 'en') {
+          currentLang = saved;
+        } else if (navigator.language && navigator.language.toLowerCase().startsWith('id')) {
+          currentLang = 'id';
+        }
       }
     } catch (e) {}
 
@@ -573,14 +581,38 @@ window.copyCmd = copyCmd;
 
     applyLanguage(currentLang);
 
-    // Event listener for lang switch clicks
-    document.addEventListener('click', function (e) {
-      var btn = e.target.closest('[data-lang-toggle], .lang-switch');
-      if (btn) {
-        e.preventDefault();
-        window.krewireI18n.toggle();
-      }
-    });
+    // Event listener for lang switch clicks (with docs routing support)
+    if (!window._krewireLangBound) {
+      window._krewireLangBound = true;
+      document.addEventListener('click', function (e) {
+        var btn = e.target && e.target.closest ? e.target.closest('[data-lang-toggle], .lang-switch') : null;
+        if (btn) {
+          e.preventDefault();
+          var path = window.location.pathname;
+          var isDocs = path.indexOf('/docs') !== -1;
+          var next = currentLang === 'en' ? 'id' : 'en';
+
+          try {
+            localStorage.setItem('krewire-lang', next);
+          } catch (_) {}
+
+          if (isDocs) {
+            var target = path;
+            if (next === 'id') {
+              if (!target.startsWith('/id/')) {
+                target = '/id' + (target.startsWith('/') ? target : '/' + target);
+              }
+            } else {
+              target = target.replace(/^\/id/, '') || '/docs';
+            }
+            window.location.href = target;
+            return;
+          }
+
+          applyLanguage(next);
+        }
+      });
+    }
   }
 
   if (document.readyState === 'loading') {

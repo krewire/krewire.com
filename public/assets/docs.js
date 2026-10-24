@@ -103,17 +103,41 @@
 
   // ── 4. Documentation Topbar Language Switcher ───────────────────────────
   function initDocsLangSwitch() {
+    var path = window.location.pathname;
+    var isIndonesian = path.startsWith('/id/') || path === '/id';
+    var curLang = isIndonesian ? 'id' : 'en';
+
+    // Synchronize all existing buttons on page
+    document.querySelectorAll('.lang-switch .lang-code, [data-lang-toggle] .lang-code').forEach(function (el) {
+      el.textContent = curLang.toUpperCase();
+    });
+
+    // Delegate language click with full documentation route switching
+    document.querySelectorAll('.lang-switch, [data-lang-toggle]').forEach(function (btn) {
+      if (btn._docsLangBound) return;
+      btn._docsLangBound = true;
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var nextLang = curLang === 'en' ? 'id' : 'en';
+        try {
+          localStorage.setItem('krewire-lang', nextLang);
+        } catch (_) {}
+
+        var target = path;
+        if (nextLang === 'id') {
+          if (!target.startsWith('/id/')) {
+            target = '/id' + (target.startsWith('/') ? target : '/' + target);
+          }
+        } else {
+          target = target.replace(/^\/id/, '') || '/docs';
+        }
+        window.location.href = target;
+      });
+    });
+
     var nav = document.querySelector('.topbar nav');
     if (!nav || nav.querySelector('[data-lang-toggle], .lang-switch')) return;
-
-    var curLang = 'en';
-    if (window.krewireI18n && window.krewireI18n.getLocale) {
-      curLang = window.krewireI18n.getLocale();
-    } else {
-      try {
-        curLang = localStorage.getItem('krewire-lang') || 'en';
-      } catch (e) {}
-    }
 
     var btn = document.createElement('button');
     btn.type = 'button';
@@ -122,12 +146,22 @@
     btn.setAttribute('aria-label', 'Toggle language');
     btn.setAttribute('title', 'Switch language (EN/ID)');
     btn.innerHTML = '<span class="lang-icon" aria-hidden="true">🌐</span><span class="lang-code">' + curLang.toUpperCase() + '</span>';
-
+    btn._docsLangBound = true;
     btn.addEventListener('click', function (e) {
       e.preventDefault();
-      if (window.krewireI18n && window.krewireI18n.toggle) {
-        window.krewireI18n.toggle();
+      var nextLang = curLang === 'en' ? 'id' : 'en';
+      try {
+        localStorage.setItem('krewire-lang', nextLang);
+      } catch (_) {}
+      var target = path;
+      if (nextLang === 'id') {
+        if (!target.startsWith('/id/')) {
+          target = '/id' + (target.startsWith('/') ? target : '/' + target);
+        }
+      } else {
+        target = target.replace(/^\/id/, '') || '/docs';
       }
+      window.location.href = target;
     });
 
     var themeToggle = nav.querySelector('[data-theme-toggle]');
@@ -174,33 +208,40 @@
       if (sidebar) sidebar.setAttribute('aria-hidden', open ? 'false' : 'true');
     }
 
-    if (toggle) {
+    if (toggle && !toggle._docsDrawerBound) {
+      toggle._docsDrawerBound = true;
       toggle.addEventListener('click', function (e) {
         e.preventDefault();
         setOpen(!document.documentElement.classList.contains('sidebar-open'));
       });
     }
 
-    if (close) {
+    if (close && !close._docsDrawerBound) {
+      close._docsDrawerBound = true;
       close.addEventListener('click', function (e) {
         e.preventDefault();
         setOpen(false);
       });
     }
 
-    if (overlay) {
+    if (overlay && !overlay._docsDrawerBound) {
+      overlay._docsDrawerBound = true;
       overlay.addEventListener('click', function (e) {
         e.preventDefault();
         setOpen(false);
       });
     }
 
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') setOpen(false);
-    });
+    if (!window._docsEscBound) {
+      window._docsEscBound = true;
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') setOpen(false);
+      });
+    }
 
     // Close drawer when clicking a navigation link inside sidebar on mobile
-    if (sidebar) {
+    if (sidebar && !sidebar._docsLinksBound) {
+      sidebar._docsLinksBound = true;
       sidebar.querySelectorAll('a.toc-link, a.toc-sub').forEach(function (link) {
         link.addEventListener('click', function () {
           if (window.innerWidth < 1024) {
@@ -212,6 +253,8 @@
 
     // Collapsible sub-chapter groups
     document.querySelectorAll('[data-group] .toc-toggle').forEach(function (btn) {
+      if (btn._docsGroupBound) return;
+      btn._docsGroupBound = true;
       btn.addEventListener('click', function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -230,7 +273,8 @@
 
     // Expand / collapse all groups button
     var toggleAll = document.getElementById('toc-toggle-all');
-    if (toggleAll) {
+    if (toggleAll && !toggleAll._docsGroupBound) {
+      toggleAll._docsGroupBound = true;
       toggleAll.addEventListener('click', function (e) {
         e.preventDefault();
         var groups = document.querySelectorAll('[data-group]');
@@ -238,6 +282,16 @@
         groups.forEach(function (g) {
           g.classList.toggle('open', anyClosed);
           var b = g.querySelector('.toc-toggle');
+          if (b) b.setAttribute('aria-expanded', anyClosed ? 'true' : 'false');
+          var link = g.querySelector('.toc-link');
+          if (link) {
+            try {
+              localStorage.setItem('krewire-toc-' + link.getAttribute('href'), anyClosed ? '1' : '0');
+            } catch (_) {}
+          }
+        });
+      });
+    }
           if (b) b.setAttribute('aria-expanded', anyClosed ? 'true' : 'false');
           var link = g.querySelector('.toc-link');
           if (link) {
