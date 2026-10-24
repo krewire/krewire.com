@@ -42,18 +42,20 @@ project:
     internal: "internal"        # Private domain packages
     cmd: "cmd"                  # Executable entry points
 
-# Build Output & Content (top level — not nested under build:)
-output: ".krewire/build"        # Target compilation output directory
-base: "/"                       # URL base the site is served under
+# Content Input (top level)
 input: "content"                # Content directory consumed by the book pipeline
 
 # Devtool Build Pipeline
 build:
+  output: ".krewire/build"      # Target compilation output directory
+  base: "/"                     # URL base the site is served under
   include:                      # Glob patterns for content inclusion
     - "**/*.md"
   exclude:                      # Glob patterns for exclusion
     - "**/README.md"
     - "**/readme.md"
+  depends_on:                   # Shell commands run before the build
+    - "go generate ./..."
 
 # Automatic CSS/JS Injection (site kind; on by default)
 auto_assets:
@@ -64,6 +66,7 @@ auto_assets:
   order:                        # Pin where a specific asset loads
     "assets/theme.css":
       layer: "page"             # scoped | vendor | component | theme | book | page
+  bundle: false                 # true merges CSS/JS into assets/krewire.{css,js}
 
 # Documentation Book Pipeline (pkg/book)
 book:
@@ -107,28 +110,40 @@ The `project:` section defines the identity and workload behavior:
 
 ---
 
-### 3.2 Output, Base & Input (top level)
+### 3.2 Content Input (`input:`)
 
-These are top-level keys — they are **not** nested under `build:`:
-
-- **`output`:** The directory where compiled static files or assets are staged. Defaults to `.krewire/build`.
-- **`base`:** The URL prefix under which assets and pages are served. Defaults to `/`. For sites hosted under subpaths (e.g. `https://example.com/blog/`), set `base: "/blog/"`.
-- **`input`:** The content directory consumed by the book (`pkg/book`) pipeline. Defaults to `content`.
+- **`input`:** The content directory consumed by the book (`pkg/book`) pipeline. Defaults to `content`. With `i18n:` enabled, `kiw build` resolves `content/<locale>/docs/` per locale and only falls back to this value.
 
 ---
 
 ### 3.3 Build Block (`build:`)
 
-Controls which content files the pipeline processes:
+Controls where artifacts land and which content files the pipeline processes:
 
+- **`output`:** The directory where compiled static files or assets are staged. Defaults to `.krewire/build`. A compiled `app`/`cli` binary lands in `<output>/bin/<project name>`.
+- **`base`:** The URL prefix under which assets and pages are served. Defaults to `/`. For sites hosted under subpaths (e.g. `https://example.com/blog/`), set `base: "/blog/"`.
 - **`include` & `exclude`:** Glob patterns controlling which Markdown manuscripts or content files are processed. Unset `include` defaults to `**/*.md`; unset `exclude` defaults to skipping `README.md`/`readme.md`. An empty list disables that filter.
+- **`depends_on`:** Shell commands run in order before the build.
+- **`outputs`:** Runtime name to output directory, for polyglot projects.
+
+The top-level `output:` and `base:` keys are legacy aliases. The nested
+`build.*` value wins when both are set, and the `--output` / `--base` flags win
+over both. Declare each value once — do not repeat it at both levels.
 
 ---
 
-### 3.4 Dev Server Port
+### 3.4 Dev Server Port (`dev:`)
 
-There is no `dev:` block in `krewire.yaml`. The local server port is set
-per invocation with `--addr` (default `:8080`):
+The `dev:` block declares the local development port:
+
+```yaml
+dev:
+  port: 8080
+```
+
+The listen address resolves in this order: the `--addr` flag, then
+`runtime.port`, `dev.port`, `server.port`, and the first `services[].port`,
+then `:8080`:
 
 ```bash
 kiw dev --addr :3000
@@ -153,6 +168,8 @@ hand is never duplicated. Cache busting uses `?v=<project version>`.
   wrong for your project. An unrecognized layer name is reported as a build
   warning and the default order is kept, so a typo is visible without failing
   the build.
+- **`bundle`:** `true` merges the eligible CSS and JS into `assets/krewire.css`
+  and `assets/krewire.js`, trading per-asset requests for one of each.
 
 Assets are **not** injected alphabetically — alphabetical order silently loads
 book content before the utilities meant to override it. They load in cascade

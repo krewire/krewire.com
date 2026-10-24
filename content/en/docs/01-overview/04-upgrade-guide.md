@@ -94,7 +94,7 @@ build:
   base: "/"
 
 dev:
-  port: "8080"
+  port: 8080
 ```
 
 ### Separation of Concerns Matrix

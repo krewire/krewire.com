@@ -132,7 +132,7 @@ project:
   version: "0.1.0"
 
 build:
-  output: "bin/sysmon"
+  output: ".krewire/build"      # binary lands at .krewire/build/bin/sysmon
 ```
 
 ---

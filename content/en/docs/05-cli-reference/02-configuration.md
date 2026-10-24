@@ -140,6 +140,21 @@ over both. Declare the value once — do not repeat it at both levels.
 | `base_path` | String | `lang` | Directory holding `<locale>/site.json` dictionaries. |
 | `locales` | Array | `[]` | Locales to build (`content/<locale>/docs/` → `.krewire/build/<locale>/docs/`). |
 
+### `ssg`
+
+| Key | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `description` | String | — | Injected into every page's template data. |
+| `layouts` | Array | `[]` | Named layouts (`name`, `body`, `style`, or a `ui` shell). |
+| `components` | Array | `[]` | Named components (`name`, `body`, `style`). |
+| `pages` | Array | `[]` | Output pages (`path`, `title`, `layout`, `root`, `data`). |
+| `assets` | Map | `{}` | Output path to file contents. |
+| `auto_assets` | Block | on | CSS/JS injection; see [Configuration](/getting-started/configuration). |
+
+A project with a `pages/` directory builds as `site` without this block. The
+`ssg:` key is required only for a fully declarative site that has no page files
+on disk.
+
 ### `wasm`
 
 | Key | Type | Default | Description |

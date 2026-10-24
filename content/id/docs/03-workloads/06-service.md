@@ -99,16 +99,14 @@ project:
   version: "0.1.0"
 
 service:
-  port: "8080"
-  discovery:
-    provider: "kubernetes" # consul, etcd, kubernetes, static
-    service_name: "auth-service"
-  rate_limit:
-    requests_per_second: 1000
-    burst: 200
-  telemetry:
-    endpoint: "otel-collector:4317"
+  name: "auth-service"
+  port: 8080
 ```
+
+`name` and `port` are the only `service:` keys. Service discovery
+(`pkg/cloud/service/registry`), rate limiting and circuit breaking
+(`pkg/cloud/service/resilience`), and tracing (`pkg/cloud/service/tracing`) are
+composed in Go code, where the registry and transport are wired.
 
 ---
 

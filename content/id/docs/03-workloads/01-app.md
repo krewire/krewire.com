@@ -124,17 +124,15 @@ project:
   version: "0.1.0"
 
 dev:
-  port: "8080"
-  watch:
-    - "cmd"
-    - "internal"
-    - "views"
-    - "public"
+  port: 8080
 
 build:
-  output: "bin/server"
-  tags: ["netgo"]
+  output: ".krewire/build"      # binary lands at .krewire/build/bin/storefront
+  depends_on:
+    - "go generate ./..."
 ```
+
+`--addr` overrides `dev.port` for a single invocation (`kiw run --addr :3000`).
 
 ---
 

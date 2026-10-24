@@ -122,9 +122,14 @@ project:
 
 worker:
   concurrency: 8
-  queue: "redis://127.0.0.1:6379/0"
-  dead_letter_queue: "failed_jobs"
+  queues:
+    - default
+    - email
 ```
+
+`concurrency` and `queues` are the only `worker:` keys. The queue backend —
+in-memory, KV-backed, or your own `pkg/cloud/worker.Queue` implementation — is
+selected in Go code, not in `krewire.yaml`.
 
 ---
 
