@@ -29,7 +29,8 @@ Setiap paket di dalam katalog `krewire/pkg` mematuhi batasan arsitektur yang ket
 | **`pkg/ui`** | Token desain, komponen UI pakai ulang, tema terang/gelap | Presentasi Web |
 | **`pkg/tui`** | Komponen terminal interaktif, tabel reaktif, bilah progres | Terminal UI |
 | **`pkg/storage`** | Abstraksi penyimpanan berkas & objek (memory, disk, S3) | File Storage |
-| **`pkg/cache`** | Caching in-memory berkecepatan tinggi dengan TTL dan invalidasi | Cache |
+| **`pkg/cache`** | Caching in-memory berkecepatan tinggi dengan TTL dan invalidasi terdistribusi | Cache |
+| **`pkg/mail`** | Pengiriman email transaksional multi-driver (SMTP, Resend, SendGrid, Postmark) | Komunikasi & Email |
 | **`pkg/resilience`** | Circuit breaker, retry dengan exponential backoff, timeout | Keandalan Sistem |
 | **`pkg/testing`** | Harness pengujian, fixture assertion, mock HTTP | Jaminan Mutu |
 | **`pkg/book`** | Engine generator situs dokumentasi dan buku teknis | Dokumentasi |

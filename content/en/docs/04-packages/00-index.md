@@ -143,17 +143,29 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.11</span>
       <h3 class="chapter-card-title">
-        <a href="/packages/caching-and-mail">Cache &amp; Mail System (pkg/cache, pkg/mail) <span class="arrow">→</span></a>
+        <a href="/packages/caching">Multi-Driver Cache (pkg/cache, pkg/redis) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      In-memory and Redis distributed caching with TTL and tags, paired with multi-driver email dispatch (SMTP, Resend, SendGrid, Postmark).
+      In-memory and Redis distributed caching with TTL, expiration sweeps, and connection pooling.
     </p>
   </div>
 
   <div class="chapter-card">
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.12</span>
+      <h3 class="chapter-card-title">
+        <a href="/packages/mail">Transactional Mailer (pkg/mail) <span class="arrow">→</span></a>
+      </h3>
+    </div>
+    <p class="chapter-card-desc">
+      Multi-driver transactional email dispatch supporting SMTP, Resend, SendGrid, Postmark, and in-memory testing.
+    </p>
+  </div>
+
+  <div class="chapter-card">
+    <div class="chapter-card-head">
+      <span class="chapter-card-num">4.13</span>
       <h3 class="chapter-card-title">
         <a href="/packages/commerce-and-payments">Commerce &amp; Local Payments (pkg/commerce) <span class="arrow">→</span></a>
       </h3>
@@ -165,7 +177,7 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">4.13</span>
+      <span class="chapter-card-num">4.14</span>
       <h3 class="chapter-card-title">
         <a href="/packages/identity-and-auth">Enterprise Identity &amp; Auth (krewire/auth) <span class="arrow">→</span></a>
       </h3>
@@ -177,7 +189,7 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">4.14</span>
+      <span class="chapter-card-num">4.15</span>
       <h3 class="chapter-card-title">
         <a href="/packages/cloud-paas">Hybrid PaaS Platform (krewire/cloud) <span class="arrow">→</span></a>
       </h3>
@@ -189,7 +201,7 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">4.15</span>
+      <span class="chapter-card-num">4.16</span>
       <h3 class="chapter-card-title">
         <a href="/packages/web-runtime">Web Runtime &amp; WASM (pkg/runtime) <span class="arrow">→</span></a>
       </h3>
