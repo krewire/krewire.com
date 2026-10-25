@@ -1,7 +1,7 @@
 ---
 title: "Packages & Libraries"
 description: "Reference catalog for Krewire's modular domain libraries: strict downward dependencies, SSOT invariant, package catalog, and integration patterns."
-date: "2026-10-24"
+date: "2026-10-25"
 ---
 
 # Packages & Libraries
@@ -23,11 +23,11 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.1</span>
       <h3 class="chapter-card-title">
-        <a href="/packages/model-and-lifecycle">Model, Lifecycle &amp; Errors (pkg/model, pkg/lifecycle, pkg/errs) <span class="arrow">→</span></a>
+        <a href="/packages/model">Workload Model & Domain Primitives (pkg/model, pkg/errs) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      The foundational control plane: workload kinds, lifecycle supervision, error taxonomy, environment resolution, and version contracts.
+      The foundational domain model: eight workload kinds, project metadata, scope hierarchy, error taxonomy, environment detection, and version contracts.
     </p>
   </div>
 
@@ -35,11 +35,11 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.2</span>
       <h3 class="chapter-card-title">
-        <a href="/packages/web-and-app">Web &amp; Application (pkg/web, pkg/app) <span class="arrow">→</span></a>
+        <a href="/packages/lifecycle">Lifecycle Supervision & Kernel (pkg/lifecycle) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      HTTP routing engine, middleware pipelines, RFC 7807 problem details, dependency injection container, and server lifecycle runners.
+      Imperative control plane of Krewire: kernel supervisor, module registry, dependency ordering, and graceful process shutdown.
     </p>
   </div>
 
@@ -47,11 +47,11 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.3</span>
       <h3 class="chapter-card-title">
-        <a href="/packages/security-and-auth">Security &amp; Auth (pkg/sec, pkg/auth) <span class="arrow">→</span></a>
+        <a href="/packages/web">Web Engine & HTTP Routing (pkg/web) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Hardened security defaults, OWASP Top 10 middleware, CSRF tokens, SSRF protection, PII masking, JWT verification, and basic authentication.
+      Zero-allocation radix tree HTTP router, middleware pipeline, RFC 7807 problem details, parameter extraction, and render helpers.
     </p>
   </div>
 
@@ -59,11 +59,11 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.4</span>
       <h3 class="chapter-card-title">
-        <a href="/packages/ui-and-tui">User Interfaces (pkg/ui, pkg/tui) <span class="arrow">→</span></a>
+        <a href="/packages/app">Application Container & Monolith (pkg/app) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Reusable Single-File Components, design tokens, light/dark themes, and interactive terminal user interface (TUI) toolkits.
+      Dependency injection container, application lifecycle management, and graceful process supervision for web monoliths.
     </p>
   </div>
 
@@ -71,11 +71,11 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.5</span>
       <h3 class="chapter-card-title">
-        <a href="/packages/storage-and-fs">Storage &amp; Filesystem (pkg/storage, pkg/fs, pkg/file) <span class="arrow">→</span></a>
+        <a href="/packages/security">Security Controls & Hardening (pkg/sec) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Backend-independent object storage (S3, local disk, memory), atomic file replacements, and mockable filesystem boundaries.
+      Hardened security defaults, OWASP Top 10 middleware, CSRF tokens, SSRF protection, and PII masking.
     </p>
   </div>
 
@@ -83,11 +83,11 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.6</span>
       <h3 class="chapter-card-title">
-        <a href="/packages/resilience-and-testing">Resilience &amp; Testing (pkg/resilience, pkg/testing) <span class="arrow">→</span></a>
+        <a href="/packages/auth">Authentication Primitives (pkg/auth) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Exponential backoff retries, circuit breakers, dead-letter dispatch, and the testing harness with HTTP and UI assertion utilities.
+      Core cryptographic authentication primitives, HMAC-SHA256 JWT tokens, and constant-time HTTP Basic Auth.
     </p>
   </div>
 
@@ -95,11 +95,11 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.7</span>
       <h3 class="chapter-card-title">
-        <a href="/packages/cloud-and-distributed">Cloud &amp; Distributed (pkg/cloud) <span class="arrow">→</span></a>
+        <a href="/packages/ui">Web UI Components & Tokens (pkg/ui) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Asynchronous worker queues, cron schedulers, microservice registry and mesh, and Infrastructure as Code (IaC) schema.
+      Reusable Single-File Components (.kiw), semantic CSS design tokens, and light/dark theme switching engine.
     </p>
   </div>
 
@@ -107,11 +107,11 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.8</span>
       <h3 class="chapter-card-title">
-        <a href="/packages/config-and-validation">Config &amp; Validation (pkg/config, pkg/validation) <span class="arrow">→</span></a>
+        <a href="/packages/tui">Terminal UI Toolkit (pkg/tui) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Hierarchical config loaders with dotenv and CLI overrides, paired with composable, zero-reflection input validation rules.
+      Interactive terminal user interfaces, Elm/Bubble Tea architecture, ANSI color styling, tables, and progress bars.
     </p>
   </div>
 
@@ -119,11 +119,11 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.9</span>
       <h3 class="chapter-card-title">
-        <a href="/packages/ai-and-agents">AI &amp; Agent Orchestration (pkg/ai) <span class="arrow">→</span></a>
+        <a href="/packages/storage">Multi-Driver Object Storage (pkg/storage) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Multi-provider LLM integrations, OpenAI/Anthropic/Gemini adapters, streaming completions, and prompt template engines.
+      Uniform object storage abstraction with swappable drivers for memory, local disk, and Amazon S3 / MinIO.
     </p>
   </div>
 
@@ -131,7 +131,91 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.10</span>
       <h3 class="chapter-card-title">
-        <a href="/packages/database-and-orm">Database &amp; Multi-Driver ORM (pkg/orm) <span class="arrow">→</span></a>
+        <a href="/packages/filesystem">Virtual Filesystem & Atomic Files (pkg/fs, pkg/file) <span class="arrow">→</span></a>
+      </h3>
+    </div>
+    <p class="chapter-card-desc">
+      Testable virtual filesystem boundaries, atomic crash-safe file writes, and path safety.
+    </p>
+  </div>
+
+  <div class="chapter-card">
+    <div class="chapter-card-head">
+      <span class="chapter-card-num">4.11</span>
+      <h3 class="chapter-card-title">
+        <a href="/packages/resilience">Resilience Patterns & Circuit Breakers (pkg/resilience) <span class="arrow">→</span></a>
+      </h3>
+    </div>
+    <p class="chapter-card-desc">
+      Fault-tolerant network communication with jittered retry policies, timeout propagation, and circuit breakers.
+    </p>
+  </div>
+
+  <div class="chapter-card">
+    <div class="chapter-card-head">
+      <span class="chapter-card-num">4.12</span>
+      <h3 class="chapter-card-title">
+        <a href="/packages/testing">Testing Utilities & Assertions (pkg/testing) <span class="arrow">→</span></a>
+      </h3>
+    </div>
+    <p class="chapter-card-desc">
+      Testing assertion harness, HTTP test helpers, UI component assertions, and mock fixtures.
+    </p>
+  </div>
+
+  <div class="chapter-card">
+    <div class="chapter-card-head">
+      <span class="chapter-card-num">4.13</span>
+      <h3 class="chapter-card-title">
+        <a href="/packages/cloud-distributed">Cloud & Distributed Systems (pkg/cloud) <span class="arrow">→</span></a>
+      </h3>
+    </div>
+    <p class="chapter-card-desc">
+      Asynchronous worker queues, cron schedulers, microservice registry and mesh, and Infrastructure as Code schema.
+    </p>
+  </div>
+
+  <div class="chapter-card">
+    <div class="chapter-card-head">
+      <span class="chapter-card-num">4.14</span>
+      <h3 class="chapter-card-title">
+        <a href="/packages/config">Hierarchical Configuration (pkg/config) <span class="arrow">→</span></a>
+      </h3>
+    </div>
+    <p class="chapter-card-desc">
+      Deterministic configuration loading from CLI flags, environment variables, .env files, and structs.
+    </p>
+  </div>
+
+  <div class="chapter-card">
+    <div class="chapter-card-head">
+      <span class="chapter-card-num">4.15</span>
+      <h3 class="chapter-card-title">
+        <a href="/packages/validation">Composable Input Validation (pkg/validation) <span class="arrow">→</span></a>
+      </h3>
+    </div>
+    <p class="chapter-card-desc">
+      Composable data validation without reflection overhead, providing structured errors for APIs and forms.
+    </p>
+  </div>
+
+  <div class="chapter-card">
+    <div class="chapter-card-head">
+      <span class="chapter-card-num">4.16</span>
+      <h3 class="chapter-card-title">
+        <a href="/packages/ai-and-agents">AI & Agent Orchestration (pkg/ai) <span class="arrow">→</span></a>
+      </h3>
+    </div>
+    <p class="chapter-card-desc">
+      Multi-provider LLM integrations, OpenAI/Anthropic/Gemini adapters, streaming completions, and prompt templates.
+    </p>
+  </div>
+
+  <div class="chapter-card">
+    <div class="chapter-card-head">
+      <span class="chapter-card-num">4.17</span>
+      <h3 class="chapter-card-title">
+        <a href="/packages/database-and-orm">Database & Multi-Driver ORM (pkg/orm) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -141,19 +225,19 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">4.11</span>
+      <span class="chapter-card-num">4.18</span>
       <h3 class="chapter-card-title">
         <a href="/packages/caching">Multi-Driver Cache (pkg/cache, pkg/redis) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      In-memory and Redis distributed caching with TTL, expiration sweeps, and connection pooling.
+      High-performance in-memory and Redis distributed caching with TTL, expiration sweeps, and connection pooling.
     </p>
   </div>
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">4.12</span>
+      <span class="chapter-card-num">4.19</span>
       <h3 class="chapter-card-title">
         <a href="/packages/mail">Transactional Mailer (pkg/mail) <span class="arrow">→</span></a>
       </h3>
@@ -165,9 +249,9 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">4.13</span>
+      <span class="chapter-card-num">4.20</span>
       <h3 class="chapter-card-title">
-        <a href="/packages/commerce-and-payments">Commerce &amp; Local Payments (pkg/commerce) <span class="arrow">→</span></a>
+        <a href="/packages/commerce-and-payments">Commerce & Local Payments (pkg/commerce) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -177,33 +261,33 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">4.14</span>
+      <span class="chapter-card-num">4.21</span>
       <h3 class="chapter-card-title">
-        <a href="/packages/identity-and-auth">Enterprise Identity &amp; Auth (krewire/auth) <span class="arrow">→</span></a>
+        <a href="/packages/identity-and-auth">Enterprise Identity & Auth (krewire/auth) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Multi-tenant user identity, PBKDF2 password hashing, RFC 6238 TOTP 2FA, enterprise SSO (OIDC/SAML2), hierarchical RBAC, and responsive web auth UI.
+      Multi-tenant user identity, PBKDF2 password hashing, RFC 6238 TOTP 2FA, enterprise SSO (OIDC/SAML2), and hierarchical RBAC.
     </p>
   </div>
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">4.15</span>
+      <span class="chapter-card-num">4.22</span>
       <h3 class="chapter-card-title">
         <a href="/packages/cloud-paas">Hybrid PaaS Platform (krewire/cloud) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Go-native self-hosted PaaS engine and managed cloud SaaS, featuring hermetic builders, supervised process pools, and dynamic reverse proxy edge routing.
+      Go-native self-hosted PaaS engine and managed cloud SaaS, featuring hermetic builders, supervised process pools, and reverse proxy edge routing.
     </p>
   </div>
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">4.16</span>
+      <span class="chapter-card-num">4.23</span>
       <h3 class="chapter-card-title">
-        <a href="/packages/web-runtime">Web Runtime &amp; WASM (pkg/runtime) <span class="arrow">→</span></a>
+        <a href="/packages/web-runtime">Web Runtime & WASM (pkg/runtime) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">

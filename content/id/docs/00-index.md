@@ -70,14 +70,28 @@ Bangun aplikasi nyata dengan mendalami jenis workload yang sesuai dengan kebutuh
 ### Tahap 4: Eksplorasi Paket Domain & Baterai
 Manfaatkan baterai modular mandiri Krewire untuk menangani kebutuhan inti aplikasi:
 
-- [**Model, Siklus Hidup & Error (`pkg/model`, `pkg/lifecycle`, `pkg/errs`)**](/packages/model-and-lifecycle) — Jenis workload, supervisi siklus hidup, taksonomi error, dan kontrak versi.
-- [**Web & HTTP Routing (`pkg/web`, `pkg/app`)**](/packages/web-and-app) — Multiplexer HTTP, pipeline middleware, dan container Dependency Injection.
-- [**Keamanan & Otentikasi (`pkg/sec`, `pkg/auth`)**](/packages/security-and-auth) — Middleware keamanan standar OWASP, hashing PBKDF2, TOTP 2FA, SSO (OIDC/SAML2), dan RBAC hierarkis.
-- [**Antarmuka Pengguna (`pkg/ui`, `pkg/tui`)**](/packages/ui-and-tui) — Komponen pakai-ulang, token desain, dan tema gelap/terang.
-- [**Penyimpanan & Cache (`pkg/storage`, `pkg/cache`, `pkg/redis`)**](/packages/storage-and-fs) — Object storage multi-driver (memory, disk, S3) dan caching Redis.
-- [**Database, Mail & Commerce (`pkg/orm`, `pkg/mail`, `pkg/commerce`)**](/packages) — ORM multi-driver (SQLite, MySQL, Postgres, MongoDB, Elasticsearch), pengiriman email (SMTP, Resend, Sendgrid), dan pembayaran lokal Indonesia (Midtrans QRIS/VA).
-- [**Resiliensi & Jaminan Mutu (`pkg/resilience`, `pkg/testing`)**](/packages/resilience-and-testing) — Circuit breaker, retry exponential backoff, dan assertion testing harness.
-- [**Orkestrasi AI (`pkg/ai`)**](/packages/ai-and-agents) — Integrasi multi-provider LLM dan manajemen prompt.
+- [**Model Workload & Primitif Domain (`pkg/model`, `pkg/errs`)**](/packages/model) — Jenis workload, metadata proyek, taksonomi error, dan kontrak versi.
+- [**Supervisi Siklus Hidup & Kernel (`pkg/lifecycle`)**](/packages/lifecycle) — Registri modul, pengurutan dependensi, dan graceful shutdown.
+- [**Web Engine & Perutean HTTP (`pkg/web`)**](/packages/web) — Router radix tree berkinerja tinggi, pipeline middleware, dan helper render.
+- [**Wadah Aplikasi & Monolit (`pkg/app`)**](/packages/app) — Wadah dependency injection, manajemen siklus hidup aplikasi, dan signal draining.
+- [**Kontrol Keamanan & Hardening (`pkg/sec`)**](/packages/security) — Header pertahanan standar OWASP, token CSRF, proteksi SSRF, dan redaksi PII.
+- [**Primitif Autentikasi (`pkg/auth`)**](/packages/auth) — Token JWT kriptografis, verifikasi claims, dan HTTP Basic Auth waktu konstan.
+- [**Komponen Web UI & Token Desain (`pkg/ui`)**](/packages/ui) — Komponen Single-File (.kiw), token desain CSS semantik, dan tema.
+- [**Toolkit Terminal UI (`pkg/tui`)**](/packages/tui) — Antarmuka pengguna terminal, arsitektur Elm/Bubble Tea, dan pewarnaan ANSI.
+- [**Penyimpanan Objek Multi-Driver (`pkg/storage`)**](/packages/storage) — Penyimpanan objek multi-driver (memori, disk lokal, S3 / MinIO).
+- [**Sistem Berkas Virtual & Penulisan Atomik (`pkg/fs`, `pkg/file`)**](/packages/filesystem) — Batas sistem berkas virtual yang dapat diuji dan penulisan atomik crash-safe.
+- [**Pola Resiliensi & Circuit Breaker (`pkg/resilience`)**](/packages/resilience) — Circuit breaker, retry backoff berjitter, dan isolasi kegagalan.
+- [**Utilitas Pengujian & Asersi (`pkg/testing`)**](/packages/testing) — Harness asersi pengujian, pembantu HTTP, dan fixture mock.
+- [**Konfigurasi Hierarkis (`pkg/config`)**](/packages/config) — Pemuatan konfigurasi terstruktur dari flag CLI, env vars, dan file .env.
+- [**Validasi Input Komposabel (`pkg/validation`)**](/packages/validation) — Validasi data komposabel tanpa refleksi untuk form dan API.
+- [**Cache Multi-Driver (`pkg/cache`, `pkg/redis`)**](/packages/caching) — Caching in-memory dan Redis terdistribusi dengan TTL dan pembersihan invalidasi.
+- [**Mailer Transaksional (`pkg/mail`)**](/packages/mail) — Pengiriman email transaksional multi-driver (SMTP, Resend, SendGrid, Postmark).
+- [**Database & Multi-Driver ORM (`pkg/orm`)**](/packages/database-and-orm) — ORM multi-driver (SQLite, MySQL, Postgres, MongoDB, Elasticsearch).
+- [**Commerce & Gateway Pembayaran Indonesia (`pkg/commerce`)**](/packages/commerce-and-payments) — Midtrans QRIS, Virtual Account (BCA, Mandiri, BRI, BNI), dan kartu kredit.
+- [**Platform Identitas & Autentikasi Enterprise (`krewire/auth`)**](/packages/identity-and-auth) — Manajemen identitas multi-tenant, PBKDF2, TOTP 2FA, SSO (OIDC/SAML2), dan RBAC.
+- [**Platform PaaS Hibrida (`krewire/cloud`)**](/packages/cloud-paas) — Mesin PaaS open-core self-hosted dan kontrol plane cloud SaaS terkelola.
+- [**Web Runtime & WASM (`pkg/runtime`)**](/packages/web-runtime) — Kompilasi Go ke WebAssembly di sisi klien, virtual DOM diffing, dan hidrasi SSR.
+- [**Orkestrasi AI (`pkg/ai`)**](/packages/ai-and-agents) — Integrasi LLM multi-provider dan engine template prompt.
 
 ### Tahap 5: Workflow Harian & Otomasi CLI `kiw`
 Tingkatkan produktivitas pengembang dengan suite pengujian otomatis, pemformatan, dan kustomisasi tugas kompilasi:

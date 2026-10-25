@@ -70,13 +70,27 @@ Build real-world applications by diving into the specific workload kind tailored
 ### Stage 4: Domain Packages Deep-Dive
 Leverage Krewire's modular, independent batteries to power core application concerns:
 
-- [**Model, Lifecycle & Errors (`pkg/model`, `pkg/lifecycle`, `pkg/errs`)**](/packages/model-and-lifecycle) — Workload kinds, lifecycle supervision, error taxonomy, and version contracts.
-- [**Web & HTTP Routing (`pkg/web`, `pkg/app`)**](/packages/web-and-app) — HTTP multiplexers, middleware pipelines, and DI containers.
-- [**Security & Identity (`pkg/sec`, `pkg/auth`)**](/packages/security-and-auth) — Hardened OWASP middleware, PBKDF2 password hashing, TOTP 2FA, SSO (OIDC/SAML2), and RBAC.
-- [**User Interfaces (`pkg/ui`, `pkg/tui`)**](/packages/ui-and-tui) — Reusable components, design tokens, and themes.
-- [**Storage & Caching (`pkg/storage`, `pkg/cache`, `pkg/redis`)**](/packages/storage-and-fs) — Multi-driver object storage (memory, disk, S3) and Redis caching.
-- [**Data, Mail & Commerce (`pkg/orm`, `pkg/mail`, `pkg/commerce`)**](/packages) — Multi-driver ORM (SQLite, MySQL, Postgres, MongoDB, Elasticsearch), email dispatch (SMTP, Resend, Sendgrid), and Indonesian payments (Midtrans QRIS/VA).
-- [**Resilience & Quality Assurance (`pkg/resilience`, `pkg/testing`)**](/packages/resilience-and-testing) — Circuit breakers, retry backoff, and test harnesses.
+- [**Workload Model & Domain Primitives (`pkg/model`, `pkg/errs`)**](/packages/model) — Workload kinds, project metadata, error taxonomy, and version contracts.
+- [**Lifecycle Supervision & Kernel (`pkg/lifecycle`)**](/packages/lifecycle) — Module registry, dependency ordering, and graceful shutdown.
+- [**Web Engine & HTTP Routing (`pkg/web`)**](/packages/web) — High-performance radix tree router, middleware pipeline, and render helpers.
+- [**Application Container & Monolith (`pkg/app`)**](/packages/app) — Dependency injection container, application lifecycle management, and signal draining.
+- [**Security Controls & Hardening (`pkg/sec`)**](/packages/security) — Hardened OWASP defense headers, CSRF tokens, SSRF protection, and PII redaction.
+- [**Authentication Primitives (`pkg/auth`)**](/packages/auth) — Cryptographic JWT tokens, claims verification, and constant-time HTTP Basic Auth.
+- [**Web UI Components & Tokens (`pkg/ui`)**](/packages/ui) — Reusable Single-File Components (.kiw), semantic CSS design tokens, and themes.
+- [**Terminal UI Toolkit (`pkg/tui`)**](/packages/tui) — Terminal user interfaces, Elm/Bubble Tea architecture, and ANSI styling.
+- [**Multi-Driver Object Storage (`pkg/storage`)**](/packages/storage) — Multi-driver object storage (memory, disk, S3 / MinIO).
+- [**Virtual Filesystem & Atomic Files (`pkg/fs`, `pkg/file`)**](/packages/filesystem) — Testable virtual filesystem boundaries and crash-safe atomic file writes.
+- [**Resilience Patterns & Circuit Breakers (`pkg/resilience`)**](/packages/resilience) — Circuit breakers, jittered retry backoff, and failure isolation.
+- [**Testing Utilities & Assertions (`pkg/testing`)**](/packages/testing) — Test assertion harness, HTTP helpers, and mock fixtures.
+- [**Hierarchical Configuration (`pkg/config`)**](/packages/config) — Deterministic configuration loading from CLI flags, env vars, and .env files.
+- [**Composable Input Validation (`pkg/validation`)**](/packages/validation) — Zero-reflection composable data validation for forms and APIs.
+- [**Multi-Driver Cache (`pkg/cache`, `pkg/redis`)**](/packages/caching) — In-memory and Redis distributed caching with TTL and invalidation sweeps.
+- [**Transactional Mailer (`pkg/mail`)**](/packages/mail) — Multi-driver transactional email dispatch (SMTP, Resend, SendGrid, Postmark).
+- [**Database & Multi-Driver ORM (`pkg/orm`)**](/packages/database-and-orm) — Multi-driver ORM (SQLite, MySQL, Postgres, MongoDB, Elasticsearch).
+- [**Commerce & Indonesian Payments (`pkg/commerce`)**](/packages/commerce-and-payments) — Midtrans QRIS, Virtual Accounts (BCA, Mandiri, BRI, BNI), and credit cards.
+- [**Enterprise Identity & Auth Platform (`krewire/auth`)**](/packages/identity-and-auth) — Multi-tenant identity, PBKDF2, TOTP 2FA, SSO (OIDC/SAML2), and RBAC.
+- [**Hybrid PaaS Platform (`krewire/cloud`)**](/packages/cloud-paas) — Go-native self-hosted PaaS engine and managed cloud control plane.
+- [**Web Runtime & WASM (`pkg/runtime`)**](/packages/web-runtime) — Client-side Go WebAssembly, virtual DOM diffing, and SSR hydration.
 - [**AI Orchestration (`pkg/ai`)**](/packages/ai-and-agents) — Multi-provider LLM integrations and prompt engines.
 
 ### Stage 5: Daily Developer Workflows & CLI Tooling
