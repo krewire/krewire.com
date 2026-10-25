@@ -1,51 +1,51 @@
 ---
-title: "Configuration Schema (krewire.yaml)"
-description: "Canonical reference for krewire.yaml: project identity, build and content inputs, dev server, book/SSG/i18n blocks, and every workload-specific section."
+title: "Skema Konfigurasi (krewire.yaml)"
+description: "Referensi kanonikal untuk krewire.yaml: identitas proyek, input build dan konten, dev server, blok book/SSG/i18n, serta setiap bagian spesifik workload."
 date: "2026-10-25"
 ---
 
-# Configuration Schema (`krewire.yaml`)
+# Skema Konfigurasi (`krewire.yaml`)
 
-Krewire operates under the **One Config** rule: all settings across all eight workloads are declared in a single file—**`krewire.yaml`**.
+Krewire beroperasi di bawah aturan **Satu Konfigurasi (One Config)**: semua pengaturan di seluruh delapan jenis workload dideklarasikan dalam satu berkas tunggal—**`krewire.yaml`**.
 
-There is no separate `ssg.yaml` or tool-specific configuration file. Configuration is typed, validated against schema rules (`pkg/validation`), and loaded using `pkg/config` (schema owner: `tools/kiw/internal/config`).
+Tidak ada berkas konfigurasi terpisah seperti `ssg.yaml` atau berkas spesifik perkakas lainnya. Konfigurasi memiliki tipe data kuat, divalidasi terhadap aturan skema (`pkg/validation`), dan dimuat menggunakan `pkg/config` (pemilik skema: `tools/kiw/internal/config`).
 
 ---
 
-## Canonical Schema Overview
+## Ringkasan Skema Kanonikal
 
 ```yaml
-# 1. Project Identity
+# 1. Identitas Proyek
 project:
-  name: "my-service"            # Unique project name (DNS-safe identifier)
+  name: "my-service"            # Nama unik proyek (pengenal aman-DNS)
   kind: "service"               # app, cli, site, book, worker, service, gateway, infra
-  version: "v0.1.0"             # Product version, injected as .Version into pages
+  version: "v0.1.0"             # Versi produk, disuntikkan sebagai .Version ke halaman
 
-title: "My Service"             # Site/book title
-author: "Krewire Team"          # Site/book author
-env: "local"                    # local, production, testing (KIW_ENV overrides)
+title: "My Service"             # Judul situs/buku
+author: "Krewire Team"          # Penulis situs/buku
+env: "local"                    # local, production, testing (dapat ditimpa oleh KIW_ENV)
 
-# 2. Content Input
-input: "content"                # Content directory for site and book workloads
+# 2. Input Konten
+input: "content"                # Direktori konten untuk workload site dan book
 
-# 3. Build Pipeline
+# 3. Pipeline Build
 build:
-  output: ".krewire/build"      # Output directory (default .krewire/build)
-  base: "/"                     # URL base the site is served under
-  include: ["**/*.md"]          # Content globs to include
-  exclude: ["**/README.md"]     # Content globs to drop after include
-  depends_on: []                # Shell commands run before the build
+  output: ".krewire/build"      # Direktori output (default .krewire/build)
+  base: "/"                     # URL dasar tempat situs disajikan
+  include: ["**/*.md"]          # Pola glob konten yang disertakan
+  exclude: ["**/README.md"]     # Pola glob konten yang diabaikan setelah disertakan
+  depends_on: []                # Perintah shell yang dijalankan sebelum build
 
-# 4. Local Development Server
+# 4. Server Pengembangan Lokal
 dev:
-  port: 8080                    # Dev server port (integer; --addr overrides)
+  port: 8080                    # Port server dev (integer; ditimpa oleh --addr)
 
-# 5. Workload-Specific Settings (only the block matching project.kind applies)
+# 5. Pengaturan Khusus Workload (hanya blok yang cocok dengan project.kind yang berlaku)
 
 # kind: worker
 worker:
-  concurrency: 10               # Maximum concurrent workers
-  queues: ["default", "email"]  # Queue names this worker consumes
+  concurrency: 10               # Jumlah maksimum worker konkuren
+  queues: ["default", "email"]  # Nama-nama antrean yang dikonsumsi worker ini
 
 # kind: service
 service:
@@ -76,158 +76,149 @@ infra:
 
 ---
 
-## Schema Sections Reference
+## Referensi Bagian Skema
 
 ### `project`
 
-| Key | Type | Required | Description |
+| Kunci | Tipe | Wajib | Deskripsi |
 | :--- | :--- | :---: | :--- |
-| `name` | String | Yes | Name of the project or service. |
-| `kind` | String | Yes | Workload kind (`app`, `cli`, `site`, `book`, `worker`, `service`, `gateway`, `infra`). |
-| `version` | String | No | Semantic release version (`vX.Y.Z`); folded into the effective version used by every pipeline. |
+| `name` | String | Ya | Nama proyek atau layanan. |
+| `kind` | String | Ya | Jenis workload (`app`, `cli`, `site`, `book`, `worker`, `service`, `gateway`, `infra`). |
+| `version` | String | Tidak | Versi rilis semantik (`vX.Y.Z`); digabungkan ke dalam versi efektif yang digunakan oleh setiap pipeline. |
 
-A pre-scaffold bootstrap project is **not** a kind: `kiw info` reports `none`
-with the marker `pre-init` until `kiw init` equips a variant.
+Proyek bootstrap pra-perancah (pre-scaffold) **bukan** sebuah kind: `kiw info` melaporkan `none` dengan penanda `pre-init` hingga `kiw init` memilih suatu varian.
 
-### Top-level metadata
+### Metadata tingkat atas
 
-| Key | Type | Default | Description |
+| Kunci | Tipe | Nilai Default | Deskripsi |
 | :--- | :--- | :--- | :--- |
-| `title` | String | module name | Site or book title. |
-| `author` | String | — | Author shown in book pages and metadata. |
-| `version` | String | `project.version` | Product version injected as `.Version`. |
-| `env` | String | `local` | Target environment (`local`, `production`, `testing`). |
-| `debug` | Bool | `false` | Enable debug mode (`KIW_DEBUG` overrides). |
-| `input` | String | `content` | Content directory for site and book workloads. |
-| `nav` | Array | `[]` | Navbar links (`text` + `url`). |
-| `footer` | String | — | Footer text. |
-| `scripts` | Map | `{}` | Named shell tasks run with `kiw run <task>`. |
+| `title` | String | nama modul | Judul situs atau buku. |
+| `author` | String | — | Penulis yang ditampilkan pada halaman buku dan metadata. |
+| `version` | String | `project.version` | Versi produk yang disuntikkan sebagai `.Version`. |
+| `env` | String | `local` | Lingkungan target (`local`, `production`, `testing`). |
+| `debug` | Bool | `false` | Mengaktifkan mode debug (`KIW_DEBUG` menimpa ini). |
+| `input` | String | `content` | Direktori konten untuk workload site dan book. |
+| `nav` | Array | `[]` | Tautan navigasi (`text` + `url`). |
+| `footer` | String | — | Teks footer. |
+| `scripts` | Map | `{}` | Tugas shell bernama yang dijalankan dengan `kiw run <tugas>`. |
 
 ### `build`
 
-| Key | Type | Default | Description |
+| Kunci | Tipe | Nilai Default | Deskripsi |
 | :--- | :--- | :--- | :--- |
-| `output` | String | `.krewire/build` | Directory where build artifacts are written. |
-| `base` | String | `/` | Base URL prefix for static links and assets. |
-| `include` | Array | `["**/*.md"]` | Content globs to include; an empty list disables the filter. |
-| `exclude` | Array | README notes | Content globs removed after inclusion. |
-| `depends_on` | Array | `[]` | Shell commands run in order before the build. |
-| `outputs` | Map | `{}` | Runtime name → output directory, for polyglot projects. |
+| `output` | String | `.krewire/build` | Direktori tempat artefak build ditulis. |
+| `base` | String | `/` | Awalan URL dasar untuk tautan dan aset statis. |
+| `include` | Array | `["**/*.md"]` | Pola glob konten yang disertakan; daftar kosong menonaktifkan filter. |
+| `exclude` | Array | catatan README | Pola glob konten yang dihapus setelah proses penyertaan. |
+| `depends_on` | Array | `[]` | Perintah shell yang dijalankan berurutan sebelum build. |
+| `outputs` | Map | `{}` | Nama runtime → direktori output, untuk proyek poliglot. |
 
-The top-level `output:` and `base:` keys are legacy aliases; the nested
-`build.*` value wins when both are set, and the `--output` / `--base` flags win
-over both. Declare the value once — do not repeat it at both levels.
+Kunci tingkat atas `output:` dan `base:` adalah alias lama (legacy); nilai bersarang `build.*` diprioritaskan saat keduanya diatur, dan flag `--output` / `--base` menimpa keduanya. Deklarasikan nilai sekali saja—jangan mengulanginya di kedua tingkatan.
 
 ### `dev`
 
-| Key | Type | Default | Description |
+| Kunci | Tipe | Nilai Default | Deskripsi |
 | :--- | :--- | :--- | :--- |
-| `port` | Int | `8080` | Local dev server port; the `--addr` flag wins over it. |
+| `port` | Int | `8080` | Port server dev lokal; flag `--addr` diprioritaskan dibanding ini. |
 
 ### `book`
 
-| Key | Type | Default | Description |
+| Kunci | Tipe | Nilai Default | Deskripsi |
 | :--- | :--- | :--- | :--- |
-| `mount` | String | — | Sub-path the book occupies in output and URL space (e.g. `/docs/`). |
-| `toc` | Bool | auto | Force the generated root table-of-contents page on or off. |
+| `mount` | String | — | Sub-path yang ditempati buku dalam output dan ruang URL (misalnya `/docs/`). |
+| `toc` | Bool | auto | Memaksa halaman daftar isi akar (table-of-contents) yang dihasilkan aktif atau nonaktif. |
 
 ### `i18n`
 
-| Key | Type | Default | Description |
+| Kunci | Tipe | Nilai Default | Deskripsi |
 | :--- | :--- | :--- | :--- |
-| `default_locale` | String | `en` | Locale served at the site root. |
-| `fallback_locale` | String | `en` | Locale used when a key is missing. |
-| `base_path` | String | `lang` | Directory holding `<locale>/site.json` dictionaries. |
-| `locales` | Array | `[]` | Locales to build (`content/<locale>/docs/` → `.krewire/build/<locale>/docs/`). |
+| `default_locale` | String | `en` | Lokal yang disajikan pada root situs. |
+| `fallback_locale` | String | `en` | Lokal cadangan yang digunakan saat kunci terjemahan tidak ditemukan. |
+| `base_path` | String | `lang` | Direktori yang menyimpan kamus `<locale>/site.json`. |
+| `locales` | Array | `[]` | Lokal yang akan di-build (`content/<locale>/docs/` → `.krewire/build/<locale>/docs/`). |
 
 ### `ssg`
 
-| Key | Type | Default | Description |
+| Kunci | Tipe | Nilai Default | Deskripsi |
 | :--- | :--- | :--- | :--- |
-| `description` | String | — | Injected into every page's template data. |
-| `layouts` | Array | `[]` | Named layouts (`name`, `body`, `style`, or a `ui` shell). |
-| `components` | Array | `[]` | Named components (`name`, `body`, `style`). |
-| `pages` | Array | `[]` | Output pages (`path`, `title`, `layout`, `root`, `data`). |
-| `assets` | Map | `{}` | Output path to file contents. |
-| `auto_assets` | Block | on | CSS/JS injection; see [Configuration](/getting-started/configuration). |
+| `description` | String | — | Disuntikkan ke dalam data templat setiap halaman. |
+| `layouts` | Array | `[]` | Layout bernama (`name`, `body`, `style`, atau shell `ui`). |
+| `components` | Array | `[]` | Komponen bernama (`name`, `body`, `style`). |
+| `pages` | Array | `[]` | Halaman output (`path`, `title`, `layout`, `root`, `data`). |
+| `assets` | Map | `{}` | Jalur output ke isi berkas. |
+| `auto_assets` | Blok | on | Penyuntikan CSS/JS; lihat [Konfigurasi](/id/docs/01-getting-started/02-configuration). |
 
-A project with a `pages/` directory builds as `site` without this block. The
-`ssg:` key is required only for a fully declarative site that has no page files
-on disk.
+Proyek dengan direktori `pages/` otomatis di-build sebagai `site` tanpa memerlukan blok ini. Kunci `ssg:` hanya diperlukan untuk situs yang sepenuhnya deklaratif tanpa adanya berkas halaman di disk.
 
 ### `wasm`
 
-| Key | Type | Default | Description |
+| Kunci | Tipe | Nilai Default | Deskripsi |
 | :--- | :--- | :--- | :--- |
-| `entry` | String | `./wasm` | Main package built with `GOOS=js GOARCH=wasm`. |
-| `name` | String | `runtime` | Output module name. |
+| `entry` | String | `./wasm` | Paket utama yang dikompilasi dengan `GOOS=js GOARCH=wasm`. |
+| `name` | String | `runtime` | Nama modul output. |
 
-Client-side WebAssembly is a **library target**, not a workload kind: build it
-with `kiw build --target wasm` inside an `app` or `site` project.
+WebAssembly sisi klien adalah **target pustaka (library target)**, bukan jenis workload: lakukan build dengan `kiw build --target wasm` di dalam proyek `app` atau `site`.
 
 ### `worker`
 
-| Key | Type | Default | Description |
+| Kunci | Tipe | Nilai Default | Deskripsi |
 | :--- | :--- | :--- | :--- |
-| `concurrency` | Int | `1` | Maximum concurrent workers. |
-| `queues` | Array | `[]` | Queue names this worker consumes. |
+| `concurrency` | Int | `1` | Jumlah maksimum worker yang berjalan serentak. |
+| `queues` | Array | `[]` | Nama antrean yang dikonsumsi oleh worker ini. |
 
 ### `service`
 
-| Key | Type | Default | Description |
+| Kunci | Tipe | Nilai Default | Deskripsi |
 | :--- | :--- | :--- | :--- |
-| `name` | String | `project.name` | Service name used for registration and discovery. |
-| `port` | Int | `8080` | Port the service binds. |
+| `name` | String | `project.name` | Nama service yang digunakan untuk registrasi dan discovery. |
+| `port` | Int | `8080` | Port yang di-bind oleh service. |
 
-`services` accepts a list of the same shape when one project declares several
-services.
+`services` menerima daftar dengan struktur yang sama saat satu proyek mendeklarasikan beberapa service sekaligus.
 
 ### `gateway`
 
-| Key | Type | Default | Description |
+| Kunci | Tipe | Nilai Default | Deskripsi |
 | :--- | :--- | :--- | :--- |
-| `host` | String | `""` | Bind address (empty means all interfaces). |
-| `port` | Int | `8080` | Port the gateway binds (`GATEWAY_ADDR` overrides both). |
-| `routes` | Array | `[]` | Route table; see below. |
+| `host` | String | `""` | Alamat pengikatan (bind address, kosong berarti semua antarmuka). |
+| `port` | Int | `8080` | Port yang di-bind oleh gateway (`GATEWAY_ADDR` menimpa keduanya). |
+| `routes` | Array | `[]` | Tabel perutean; lihat di bawah. |
 
-Route keys:
+Kunci untuk rute:
 
-| Key | Type | Description |
+| Kunci | Tipe | Deskripsi |
 | :--- | :--- | :--- |
-| `path` | String | Exact path, or prefix when `prefix: true`. |
-| `method` | String | Optional HTTP method filter. |
-| `service` | String | Upstream resolved through the service registry. |
-| `target_url` | String | Fixed upstream URL (alternative to `service`). |
-| `prefix` | Bool | Treat `path` as a prefix match. |
-| `strip_prefix` | Bool | Remove `path` from the upstream request path. |
-| `middleware` | Array | Names registered on the gateway via `WithMiddleware`. |
-| `rate_limit` | Int | Requests per second for this route (enforced). |
-| `timeout` | String | Per-route deadline, e.g. `10s` (enforced; exceeded → `504`). |
+| `path` | String | Jalur pasti, atau awalan saat `prefix: true`. |
+| `method` | String | Filter metode HTTP opsional. |
+| `service` | String | Upstream yang di-resolve melalui service registry. |
+| `target_url` | String | URL upstream tetap (alternatif untuk `service`). |
+| `prefix` | Bool | Memperlakukan `path` sebagai pencocokan awalan (prefix match). |
+| `strip_prefix` | Bool | Menghapus `path` dari jalur permintaan upstream. |
+| `middleware` | Array | Nama middleware yang didaftarkan pada gateway melalui `WithMiddleware`. |
+| `rate_limit` | Int | Permintaan per detik untuk rute ini (diberlakukan). |
+| `timeout` | String | Batas waktu per rute, misal `10s` (diberlakukan; jika terlampaui → `504`). |
 
 ### `infra`
 
-| Key | Type | Default | Description |
+| Kunci | Tipe | Nilai Default | Deskripsi |
 | :--- | :--- | :--- | :--- |
-| `provider` | String | `aws` | Target provider (`aws`, `gcp`, `kubernetes`). |
-| `region` | String | — | Provider region. |
-| `state` | String | — | State backend location. |
-| `resources` | Array | `[]` | Declared resources applied by `kiw deploy --target infra`. |
+| `provider` | String | `aws` | Penyedia cloud target (`aws`, `gcp`, `kubernetes`). |
+| `region` | String | — | Wilayah/region penyedia. |
+| `state` | String | — | Lokasi backend status penyimpanan (state). |
+| `resources` | Array | `[]` | Sumber daya terdeklarasi yang diterapkan oleh `kiw deploy --target infra`. |
 
 ### `runtime`
 
-| Key | Type | Default | Description |
+| Kunci | Tipe | Nilai Default | Deskripsi |
 | :--- | :--- | :--- | :--- |
-| `namespace` | String | — | Prefix for Krewire environment variables (e.g. `go` → `GO_*`). |
-| `env_file` | String | `.env` | Path to the environment file loaded at startup. |
-| `port` | Int | — | Default runtime port; the first port consulted when resolving a listen address. |
+| `namespace` | String | — | Awalan untuk variabel lingkungan Krewire (misal `go` → `GO_*`). |
+| `env_file` | String | `.env` | Jalur ke berkas lingkungan yang dimuat saat startup. |
+| `port` | Int | — | Port runtime default; port pertama yang dikonsultasikan saat menentukan alamat dengar. |
 
 ---
 
-## Environment Overlays & Dotenv (`.env`)
+## Lapisan Lingkungan & Dotenv (`.env`)
 
-`kiw` loads the environment file from the project root (path from
-`runtime.env_file`, default `.env`) without overwriting variables that are
-already set in the process environment:
+`kiw` memuat berkas lingkungan dari direktori akar proyek (jalur dari `runtime.env_file`, default `.env`) tanpa menimpa variabel yang telah disetel sebelumnya di lingkungan proses:
 
 ```bash
 # .env
@@ -235,13 +226,10 @@ DATABASE_URL=postgres://user:pass@localhost:5432/db
 LOG_LEVEL=debug
 ```
 
-`KIW_ENV` and `KIW_DEBUG` are read directly from the environment and take
-precedence over the `env:` and `debug:` keys in `krewire.yaml`.
+`KIW_ENV` dan `KIW_DEBUG` dibaca langsung dari lingkungan dan memiliki prioritas lebih tinggi dibandingkan kunci `env:` dan `debug:` dalam `krewire.yaml`.
 
-The dev server port is **not** an environment variable. The listen address
-resolves in this order:
+Port server dev **bukan** sebuah variabel lingkungan. Alamat dengar ditentukan dengan urutan resolusi berikut:
 
-1. `--addr` flag (`kiw serve --addr :3000`).
-2. `runtime.port`, then `dev.port`, then `server.port`, then the first
-   `services[].port`.
+1. Flag `--addr` (`kiw serve --addr :3000`).
+2. `runtime.port`, kemudian `dev.port`, lalu `server.port`, disusul `services[].port` pertama.
 3. `:8080`.

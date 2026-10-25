@@ -1,57 +1,57 @@
 ---
-title: "Installation"
-description: "Comprehensive installation guide for the kiw CLI developer tool on Linux, macOS, and Windows."
+title: "Instalasi"
+description: "Panduan instalasi komprehensif untuk alat pengembang CLI kiw di Linux, macOS, dan Windows."
 date: "2026-09-29"
 ---
 
-# Installation
+# Instalasi
 
-The **`kiw`** CLI is the unified developer multi-tool for the Krewire ecosystem. A single binary powers project scaffolding, code generation, local development servers, testing, asset compilation, and production deployment across all eight workloads.
+CLI **`kiw`** adalah multi-tool terpadu bagi pengembang di seluruh ekosistem Krewire. Satu binary mandiri mendukung scaffolding proyek, pembuatan kode (code generation), server pengembangan lokal, pengujian, kompilasi aset, dan deployment produksi di seluruh delapan jenis workload.
 
 ---
 
-## 1. System Requirements
+## 1. Persyaratan Sistem
 
-Before installing `kiw`, verify that your development environment satisfies the baseline requirements:
+Sebelum menginstal `kiw`, pastikan lingkungan pengembangan Anda memenuhi persyaratan dasar berikut:
 
-| Requirement | Supported Specifications | Notes |
+| Persyaratan | Spesifikasi yang Didukung | Catatan |
 | :--- | :--- | :--- |
-| **Operating System** | Linux (Ubuntu, Debian, Fedora, Arch, Alpine), macOS (12+), Windows (10/11) | Native binaries available for all platforms. |
-| **Architecture** | `amd64` (x86_64), `arm64` (Apple Silicon, ARM64 servers) | Verified multi-arch static builds. |
-| **Go Runtime** | **Go 1.27.1 or higher** | Required when building from source or running Go workloads. |
-| **Version Control** | `git` (2.30+) | Required for template bootstrapping and module fetching. |
+| **Sistem Operasi** | Linux (Ubuntu, Debian, Fedora, Arch, Alpine), macOS (12+), Windows (10/11) | Binary bawaan (native) tersedia untuk semua platform. |
+| **Arsitektur** | `amd64` (x86_64), `arm64` (Apple Silicon, server ARM64) | Build statis multi-arsitektur terverifikasi. |
+| **Go Runtime** | **Go 1.27.1 atau lebih tinggi** | Diperlukan saat membangun dari source code atau menjalankan workload Go. |
+| **Version Control** | `git` (2.30+) | Diperlukan untuk bootstrap template dan pengambilan modul. |
 
-Check your current Go version:
+Periksa versi Go Anda saat ini:
 
 ```bash
 go version
 ```
 
 > [!NOTE]
-> If you do not have Go installed, download and install the official package from [golang.org/dl](https://golang.org/dl).
+> Jika Anda belum menginstal Go, unduh dan pasang paket resmi dari [golang.org/dl](https://golang.org/dl).
 
 ---
 
-## 2. Installation Methods
+## 2. Metode Instalasi
 
-Choose the installation method best suited to your platform and workflow:
+Pilih metode penginstalan yang paling sesuai dengan platform dan alur kerja Anda:
 
-### Method A: Automated Shell Installer (Linux & macOS)
+### Metode A: Skrip Penginstal Otomatis (Linux & macOS)
 
-The recommended installation method for Linux and macOS systems uses the automated installation script:
+Metode instalasi yang direkomendasikan untuk sistem Linux dan macOS menggunakan skrip penginstalan otomatis:
 
 ```bash
 curl -fsSL https://krewire.com/scripts/install.sh | sh
 ```
 
-#### How the Installer Works:
-1. **Platform Detection:** Inspects your kernel (`Linux`/`Darwin`) and CPU architecture (`x86_64`/`arm64`).
-2. **Tag Resolution:** Resolves the latest official stable release (e.g. `v0.1.0`) from the GitHub release registry.
-3. **Checksum Verification:** Downloads the official `kiw_checksums.txt` manifest and cryptographically validates the SHA256 hash of the downloaded archive before extraction.
-4. **Atomic Placement:** Places the binary into `/usr/local/bin` using `install -m 755`. If run without root permissions, it automatically falls back to `~/.local/bin`.
-5. **Secure Cleanup:** Traps exit signals (`INT`, `TERM`, `EXIT`) to guarantee temporary extraction directories are safely erased.
+#### Cara Kerja Penginstal:
+1. **Deteksi Platform:** Memeriksa kernel Anda (`Linux`/`Darwin`) dan arsitektur CPU (`x86_64`/`arm64`).
+2. **Resolusi Tag:** Menemukan rilis stabil resmi terbaru (misalnya `v0.1.0`) dari registry rilis GitHub.
+3. **Verifikasi Checksum:** Mengunduh manifes resmi `kiw_checksums.txt` dan memvalidasi hash SHA256 dari arsip yang diunduh secara kriptografis sebelum ekstraksi.
+4. **Penempatan Atomik:** Menempatkan binary ke `/usr/local/bin` menggunakan `install -m 755`. Jika dijalankan tanpa izin root, secara otomatis beralih ke `~/.local/bin`.
+5. **Pembersihan Aman:** Menangkap sinyal keluar (`INT`, `TERM`, `EXIT`) untuk menjamin direktori ekstraksi sementara dihapus secara aman.
 
-To customize the installation directory, pass the `INSTALL_DIR` environment variable:
+Untuk menyesuaikan direktori instalasi, gunakan variabel lingkungan `INSTALL_DIR`:
 
 ```bash
 curl -fsSL https://krewire.com/scripts/install.sh | INSTALL_DIR="$HOME/bin" sh
@@ -59,29 +59,29 @@ curl -fsSL https://krewire.com/scripts/install.sh | INSTALL_DIR="$HOME/bin" sh
 
 ---
 
-### Method B: Install via Go Toolchain (Cross-Platform / Windows)
+### Metode B: Instal via Go Toolchain (Lintas Platform / Windows)
 
-If you already have Go installed and `$GOPATH/bin` configured in your system `PATH`, install `kiw` directly from source:
+Jika Anda sudah menginstal Go dan mengonfigurasi `$GOPATH/bin` dalam `PATH` sistem Anda, instal `kiw` langsung dari source code:
 
 ```bash
 go install github.com/krewire/krewire/tools/kiw/cmd/kiw@latest
 ```
 
-To pin a specific version (e.g. `v0.1.0`):
+Untuk mengunci versi tertentu (misalnya `v0.1.0`):
 
 ```bash
 go install github.com/krewire/krewire/tools/kiw/cmd/kiw@v0.1.0
 ```
 
-#### Configuring Your PATH:
-Ensure your Go binary directory is included in your shell profile (`~/.bashrc`, `~/.zshrc`, or Windows Environment Variables):
+#### Mengonfigurasi PATH Anda:
+Pastikan direktori binary Go Anda disertakan dalam profil shell (`~/.bashrc`, `~/.zshrc`, atau Environment Variables Windows):
 
 ```bash
-# Add to ~/.bashrc or ~/.zshrc if not already present:
+# Tambahkan ke ~/.bashrc atau ~/.zshrc jika belum ada:
 export PATH="$PATH:$(go env GOPATH)/bin"
 ```
 
-On Windows PowerShell:
+Pada Windows PowerShell:
 
 ```powershell
 $env:Path += ";$((go env GOPATH))\bin"
@@ -89,18 +89,17 @@ $env:Path += ";$((go env GOPATH))\bin"
 
 ---
 
-## 3. Verifying the Installation
+## 3. Memverifikasi Instalasi
 
-After installation completes, verify that the binary is accessible and operational:
+Setelah instalasi selesai, pastikan bahwa binary dapat diakses dan berfungsi normal:
 
-### 1. Version Inspection
+### 1. Pemeriksaan Versi
 
 ```bash
 kiw version
 ```
 
-Expected output (the `Commit` line is printed only for builds with module
-provenance):
+Output yang diharapkan (baris `Commit` hanya dicetak untuk build dengan informasi provenance modul):
 
 ```text
 kiw Krewire Devtool
@@ -110,17 +109,17 @@ kiw Krewire Devtool
   Commit             a1b2c3d4
 ```
 
-### 2. Environment Diagnostics
+### 2. Diagnostik Lingkungan
 
-Run `kiw info` to inspect your active toolchain, operating system, and Go environment:
+Jalankan `kiw info` untuk memeriksa toolchain aktif, sistem operasi, dan lingkungan Go Anda:
 
 ```bash
 kiw info
 ```
 
-### 3. Compatibility Check
+### 3. Pemeriksaan Kompatibilitas
 
-Run `kiw compat` inside any Krewire project directory to verify that your local CLI matches the package dependencies in `go.mod`:
+Jalankan `kiw compat` di dalam direktori proyek Krewire mana pun untuk memverifikasi bahwa CLI lokal Anda sesuai dengan dependensi paket di `go.mod`:
 
 ```bash
 kiw compat
@@ -128,11 +127,11 @@ kiw compat
 
 ---
 
-## 4. Upgrading `kiw`
+## 4. Memperbarui `kiw`
 
-To upgrade to the latest stable release:
+Untuk memperbarui ke rilis stabil terbaru:
 
-- **Via Shell Installer:**
+- **Via Skrip Penginstal Shell:**
   ```bash
   curl -fsSL https://krewire.com/scripts/install.sh | sh
   ```
@@ -143,23 +142,23 @@ To upgrade to the latest stable release:
 
 ---
 
-## 5. Uninstalling `kiw`
+## 5. Menghapus (Uninstall) `kiw`
 
-Because `kiw` is distributed as a single static binary with no background daemons or registry entries, uninstallation is straightforward:
+Karena `kiw` didistribusikan sebagai satu binary statis mandiri tanpa daemon latar belakang atau entri registry, penghapusannya sangat mudah:
 
 ```bash
-# For standard system-wide install:
+# Untuk instalasi standar di seluruh sistem:
 sudo rm -f /usr/local/bin/kiw
 
-# For user-local install:
+# Untuk instalasi lokal pengguna:
 rm -f ~/.local/bin/kiw
 
-# For Go bin install:
+# Untuk instalasi via Go bin:
 rm -f "$(go env GOPATH)/bin/kiw"
 ```
 
 ---
 
-## Next Steps
+## Langkah Berikutnya
 
-Now that your toolchain is installed, proceed to [**2.2 Configuration →**](/getting-started/configuration) to learn how to configure projects using `krewire.yaml`.
+Sekarang toolchain Anda telah terinstal, lanjutkan ke [**2.2 Konfigurasi →**](/getting-started/configuration) untuk mempelajari cara mengonfigurasi proyek menggunakan `krewire.yaml`.

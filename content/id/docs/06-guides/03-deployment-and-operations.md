@@ -1,18 +1,18 @@
 ---
-title: "Deployment & Operations"
-description: "Production operations playbook: multi-stage Dockerfiles, Nginx reverse proxies, systemd unit files, and zero-downtime deployments."
+title: "Deployment & Operasional"
+description: "Playbook operasional produksi: Dockerfile multi-stage, reverse proxy Nginx, berkas unit systemd, dan deployment tanpa downtime (zero-downtime)."
 date: "2026-10-08"
 ---
 
-# Deployment & Operations
+# Deployment & Operasional
 
-Krewire applications compile into single static binaries with embedded assets, making production operations simpler, faster, and more reliable than traditional multi-language web runtimes.
+Aplikasi Krewire dikompilasi menjadi binary statis tunggal dengan aset yang disematkan (embedded assets), menjadikan operasional produksi lebih sederhana, lebih cepat, dan lebih andal dibandingkan runtime web multi-bahasa konvensional.
 
 ---
 
-## 1. Multi-Stage Dockerfile
+## 1. Dockerfile Multi-Stage
 
-Because Krewire monoliths and services have zero runtime CGo or Node.js dependencies, production container images can be based on lightweight Alpine or scratch images:
+Karena monolit dan service Krewire tidak memiliki dependensi runtime CGo maupun Node.js, image kontainer produksi dapat berbasis image Alpine atau scratch yang sangat ringan:
 
 ```dockerfile
 # Stage 1: Build binary
@@ -25,7 +25,7 @@ RUN go mod download
 COPY . .
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -o /app/server ./cmd/server/main.go
 
-# Stage 2: Minimal runtime image
+# Stage 2: Image runtime minimal
 FROM alpine:3.20
 
 RUN apk --no-cache add ca-certificates tzdata
@@ -39,13 +39,13 @@ USER nobody:nobody
 ENTRYPOINT ["/app/server"]
 ```
 
-The resulting container image is typically **under 25MB** with zero operating system vulnerabilities.
+Image kontainer yang dihasilkan biasanya berukuran **di bawah 25MB** dengan nol kerentanan sistem operasi.
 
 ---
 
-## 2. Nginx Reverse Proxy Configuration
+## 2. Konfigurasi Reverse Proxy Nginx
 
-When hosting multiple applications behind Nginx on a Linux VPS:
+Saat menampung beberapa aplikasi di balik Nginx pada Linux VPS:
 
 ```nginx
 server {
@@ -74,14 +74,14 @@ server {
 
 ---
 
-## 3. Systemd Service Unit
+## 3. Unit Service Systemd
 
-To run a Krewire binary directly as a managed system daemon:
+Untuk menjalankan binary Krewire secara langsung sebagai daemon sistem terkelola:
 
 ```ini
 # /etc/systemd/system/krewire-app.service
 [Unit]
-Description=Krewire Production Web Application
+Description=Aplikasi Web Produksi Krewire
 After=network.target
 
 [Service]
@@ -103,7 +103,7 @@ NoNewPrivileges=true
 WantedBy=multi-user.target
 ```
 
-Enable and start the service:
+Aktifkan dan jalankan service:
 
 ```bash
 sudo systemctl daemon-reload
@@ -112,11 +112,11 @@ sudo systemctl enable --now krewire-app
 
 ---
 
-## 4. Static Site & Documentation Portal Hosting
+## 4. Hosting Situs Statis & Portal Dokumentasi
 
-For `site` and `book` workloads built with `kiw build`, static artifacts are compiled into `.krewire/build`.
+Untuk workload `site` dan `book` yang di-build menggunakan `kiw build`, artefak statis dikompilasi ke dalam direktori `.krewire/build`.
 
-### Nginx Virtual Host for Static Assets
+### Virtual Host Nginx untuk Aset Statis
 
 ```nginx
 server {
@@ -129,7 +129,7 @@ server {
         try_files $uri $uri/ $uri.html /index.html;
     }
 
-    # Static asset caching
+    # Caching aset statis
     location ~* \.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {
         expires 7d;
         add_header Cache-Control "public, immutable";
@@ -151,22 +151,21 @@ server {
 }
 ```
 
-### Automated TLS via Certbot
+### TLS Otomatis via Certbot
 
-Issue automated TLS certificates using Certbot:
+Menerbitkan sertifikat TLS otomatis menggunakan Certbot:
 
 ```bash
 sudo certbot --nginx -d example.com --non-interactive --agree-tos --redirect -m admin@example.com
 ```
 
-### CI/CD Deployment with GitHub Actions & Rsync
+### Deployment CI/CD dengan GitHub Actions & Rsync
 
 ```yaml
-- name: Deploy to VPS
+- name: Deploy ke VPS
   run: |
     rsync -az --delete \
       -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" \
       .krewire/build/ \
       user@vps-host:/var/www/example.com/
 ```
-

@@ -1,93 +1,93 @@
 ---
-title: "Command Catalog"
-description: "Complete command catalog for kiw: syntax, flags, workload support, and examples for every command in the Krewire developer CLI."
+title: "Katalog Perintah"
+description: "Katalog perintah lengkap untuk kiw: sintaks, flag, dukungan workload, dan contoh untuk setiap perintah pada CLI pengembang Krewire."
 date: "2026-10-08"
 ---
 
-# Command Catalog
+# Katalog Perintah
 
-The **`kiw`** CLI provides an end-to-end command set spanning the entire software development lifecycle—from project initialization to production deployment.
+CLI **`kiw`** menyediakan rangkaian perintah menyeluruh yang mencakup seluruh siklus hidup pengembangan perangkat lunak (SDLC)—mulai dari inisialisasi proyek hingga deployment ke lingkungan produksi.
 
 ---
 
-## 1. Project Initialization & Scaffolding
+## 1. Inisialisasi Proyek & Perancah (Scaffolding)
 
-### `kiw new <name>`
+### `kiw new <nama>`
 
-Scaffold a new project in a new directory with a pre-configured template.
+Membuat perancah proyek baru di direktori baru menggunakan templat yang telah dikonfigurasi sebelumnya.
 
 ```bash
 kiw new my-app [--site | --app | --cli | --book | --worker | --service | --infra]
 ```
 
-- `--site`: Static site generator with `.kiw` Single-File Components.
-- `--app`: Fullstack web monolith with `net/http` and embedded assets.
-- `--cli`: Terminal utility with Elm-style Model-Update-View architecture.
-- `--book`: Documentation book with Markdown manuscripts and `pkg/book`.
-- `--worker`: Asynchronous job worker daemon.
-- `--service`: Cloud-native microservice.
-- `--infra`: Infrastructure as Code in Go.
+- `--site`: Generator situs statis (SSG) dengan Single-File Component `.kiw`.
+- `--app`: Monolit web fullstack dengan `net/http` dan aset yang disematkan (embedded assets).
+- `--cli`: Utilitas terminal dengan arsitektur Model-Update-View bergaya Elm.
+- `--book`: Buku dokumentasi berbasis naskah Markdown dan `pkg/book`.
+- `--worker`: Daemon pemroses pekerjaan latar belakang (background job worker) asinkron.
+- `--service`: Layanan mikro (microservice) cloud-native.
+- `--infra`: Infrastructure as Code dalam bahasa Go.
 
 ### `kiw init`
 
-Equip an existing project directory with Krewire workload structures:
+Melengkapi direktori proyek yang sudah ada dengan struktur workload Krewire:
 
 ```bash
 kiw init [--site | --book | --cli | --worker | --service | --infra]
 ```
 
-- `--template <git-url>`: Clone an external starter template repository into an empty directory.
+- `--template <git-url>`: Melakukan kloning repositori starter template eksternal ke dalam direktori kosong.
 
-### `kiw make <kind> <name>`
+### `kiw make <kind> <nama>`
 
-Rapidly scaffold application artifacts with idiomatic conventions:
+Membuat perancah artefak aplikasi secara cepat mengikuti konvensi idiomatik:
 
 ```bash
-kiw make component <Name>       # Scaffold components/<Name>.kiw
-kiw make page <name>            # Scaffold pages/<name>.kiw
-kiw make handler <Name>         # Scaffold internal/handlers/<name>.go
-kiw make migration <name>       # Scaffold migrations/YYYYMMDDHHMMSS_<name>.sql
-kiw make model <Name>           # Scaffold internal/models/<name>.go
-kiw make middleware <Name>      # Scaffold internal/middleware/<name>.go
-kiw make service <Name>         # Scaffold internal/services/<name>.go
-kiw make job <Name>             # Scaffold internal/jobs/<name>_job.go
+kiw make component <Name>       # Membuat perancah components/<Name>.kiw
+kiw make page <name>            # Membuat perancah pages/<name>.kiw
+kiw make handler <Name>         # Membuat perancah internal/handlers/<name>.go
+kiw make migration <name>       # Membuat perancah migrations/YYYYMMDDHHMMSS_<name>.sql
+kiw make model <Name>           # Membuat perancah internal/models/<name>.go
+kiw make middleware <Name>      # Membuat perancah internal/middleware/<name>.go
+kiw make service <Name>         # Membuat perancah internal/services/<name>.go
+kiw make job <Name>             # Membuat perancah internal/jobs/<name>_job.go
 ```
 
-Supports colon syntax (e.g. `kiw make:component Card` or `kiw make component:Card`) and explicit flags (`--kind`, `--name`).
+Mendukung sintaks titik dua (misalnya `kiw make:component Card` atau `kiw make component:Card`) dan flag eksplisit (`--kind`, `--name`).
 
 ---
 
-## 2. Development & Execution
+## 2. Pengembangan & Eksekusi
 
 ### `kiw dev`
 
-Start the local development server with automatic file watching and live reload:
+Menjalankan server pengembangan lokal dengan pemantauan berkas otomatis (file watching) dan live reload:
 
 ```bash
 kiw dev [--port 8080]
 ```
 
-- Watches `pages/`, `layouts/`, `components/`, `public/`, and Go source files.
-- Automatically re-renders templates or restarts Go server processes in `<10ms`.
+- Memantau direktori `pages/`, `layouts/`, `components/`, `public/`, serta berkas sumber Go.
+- Me-render ulang templat secara otomatis atau me-restart proses server Go dalam waktu `<10ms`.
 
 ### `kiw run [task|args]`
 
-Run a Go entry point or a custom task defined in `krewire.yaml`:
+Menjalankan titik masuk (entry point) Go atau tugas kustom yang didefinisikan dalam `krewire.yaml`:
 
 ```bash
-kiw run [task-name] [-- args...]
+kiw run [nama-tugas] [-- args...]
 ```
 
-Examples:
+Contoh:
 ```bash
-kiw run                # Runs the default Go entry point
-kiw run build-css      # Executes the 'build-css' task from krewire.yaml
-kiw run -- --verbose   # Forwards '--verbose' flag to the application
+kiw run                # Menjalankan entry point Go default
+kiw run build-css      # Menjalankan tugas 'build-css' dari krewire.yaml
+kiw run -- --verbose   # Meneruskan flag '--verbose' ke aplikasi
 ```
 
 ### `kiw serve`
 
-Start a local HTTP server to preview static output (`site` or `book` workloads) or listen on a web port:
+Menjalankan server HTTP lokal untuk meninjau output statis (workload `site` atau `book`) atau mendengarkan port web:
 
 ```bash
 kiw serve [--port 3000] [--dir .krewire/build]
@@ -95,143 +95,144 @@ kiw serve [--port 3000] [--dir .krewire/build]
 
 ### `kiw dashboard`
 
-Launch an interactive local developer dashboard and real-time observability telemetry server:
+Meluncurkan dasbor pengembang lokal yang interaktif dan server telemetri observabilitas real-time:
 
 ```bash
 kiw dashboard [--port 4000] [--host 127.0.0.1]
 ```
 
-- **Interactive UI (`/`)**: Dark-themed web dashboard inspecting detected pages, handlers, configured microservices, and live memory metrics.
-- **Real-Time Telemetry (`/api/events`)**: Server-Sent Events (SSE) stream pushing goroutine count, memory allocation, and GC telemetry every 2 seconds.
-- **REST & MCP Endpoints**:
-  - `GET /api/info`: Project shape, Go toolchain version, services, and route table.
-  - `GET /api/metrics`: Live memory allocations and goroutine counter.
-  - `GET /api/health`: Health status probe for local containers and automation.
-  - `GET /mcp/sse`: Native Model Context Protocol (MCP) server for AI coding agents.
+- **UI Interaktif (`/`)**: Dasbor web bertema gelap untuk memeriksa halaman yang terdeteksi, handler, layanan mikro terkonfigurasi, dan metrik memori secara langsung.
+- **Telemetri Real-Time (`/api/events`)**: Aliran Server-Sent Events (SSE) yang mengirimkan jumlah goroutine, alokasi memori, dan statistik GC setiap 2 detik.
+- **Endpoint REST & MCP**:
+  - `GET /api/info`: Bentuk proyek, versi toolchain Go, layanan, dan tabel rute.
+  - `GET /api/metrics`: Alokasi memori langsung dan penghitung goroutine.
+  - `GET /api/health`: Probe status kesehatan untuk kontainer lokal dan otomasi.
+  - `GET /mcp/sse`: Server native Model Context Protocol (MCP) untuk AI coding agent.
 
 ### `kiw mcp`
 
-Start a native Model Context Protocol (MCP) server for AI coding agents (Antigravity, Cursor, Claude Desktop, OpenCode):
+Menjalankan server native Model Context Protocol (MCP) untuk AI coding agent (Antigravity, Cursor, Claude Desktop, OpenCode):
 
 ```bash
-kiw mcp --stdio                      # Standard stdio transport for AI IDEs
-kiw mcp --port 4000 --host 127.0.0.1 # Standalone HTTP/SSE transport
+kiw mcp --stdio                      # Transportasi standar stdio untuk AI IDE
+kiw mcp --port 4000 --host 127.0.0.1 # Transportasi mandiri HTTP/SSE
 ```
 
-- **MCP Resources**:
-  - `krewire://project/info`: Project metadata, detected kind, Go version, and configured services.
-  - `krewire://project/routes`: All discovered `.kiw` pages, Markdown articles, and Go HTTP handlers.
-  - `krewire://runtime/metrics`: Live memory allocation, system memory, goroutines, and GC stats.
-  - `krewire://runtime/health`: Continuous health status probe.
-- **MCP Tools**:
-  - `kiw_inspect_project`: Inspect project configuration, architecture shape, and environment.
-  - `kiw_list_routes`: Extract the full routing tree.
-  - `kiw_make_scaffold`: Generate components, pages, handlers, migrations, models, middleware, and services.
-  - `kiw_get_metrics`: Real-time telemetry probe for AI performance audits.
+- **Resource MCP**:
+  - `krewire://project/info`: Metadata proyek, kind yang terdeteksi, versi Go, dan layanan yang terkonfigurasi.
+  - `krewire://project/routes`: Semua halaman `.kiw`, artikel Markdown, dan HTTP handler Go yang ditemukan.
+  - `krewire://runtime/metrics`: Alokasi memori langsung, memori sistem, goroutine, dan statistik GC.
+  - `krewire://runtime/health`: Probe status kesehatan berkala.
+- **Tools MCP**:
+  - `kiw_inspect_project`: Memeriksa konfigurasi proyek, bentuk arsitektur, dan lingkungan.
+  - `kiw_list_routes`: Mengekstrak seluruh pohon perutean (routing tree).
+  - `kiw_make_scaffold`: Menghasilkan komponen, halaman, handler, migrasi, model, middleware, dan service.
+  - `kiw_get_metrics`: Probe telemetri real-time untuk audit performa berbasis AI.
+
 ### `kiw worker`
 
-Run asynchronous background workers and queue processors:
+Menjalankan worker latar belakang asinkron dan pemroses antrean (queue processor):
 
 ```bash
 kiw worker [--queue memory|file|kv] [--concurrency <N>] [--dlq list|clear]
 ```
 
-- `--queue`: Queue storage backend (`memory`, `file`, or `kv`).
-- `--concurrency`: Number of concurrent job workers (default derived from `krewire.yaml` or CPU count).
-- `--dlq list`: Inspect dead-lettered failed jobs.
-- `--dlq clear`: Flush and purge all dead-lettered jobs.
+- `--queue`: Backend penyimpanan antrean (`memory`, `file`, atau `kv`).
+- `--concurrency`: Jumlah worker pekerjaan konkuren (default diambil dari `krewire.yaml` atau jumlah CPU).
+- `--dlq list`: Memeriksa pekerjaan yang gagal dan masuk ke dead-letter queue.
+- `--dlq clear`: Mengosongkan dan membersihkan seluruh pekerjaan di dead-letter queue.
 
 ### `kiw gateway`
 
-Run a high-performance API gateway and reverse proxy for microservices:
+Menjalankan API gateway dan reverse proxy performa tinggi untuk layanan mikro:
 
 ```bash
 kiw gateway [--port 8080] [--host 0.0.0.0] [--routes "/api/orders=http://localhost:8081,/api/users=http://localhost:8082"]
 ```
 
-- Dispatches routes based on `gateway:` configuration in `krewire.yaml` or explicit `--routes` flag.
-- Built-in circuit breaking, distributed rate limiting, CORS, distributed tracing headers, and round-robin load balancing.
+- Meneruskan rute berdasarkan konfigurasi `gateway:` di `krewire.yaml` atau flag eksplisit `--routes`.
+- Dilengkapi circuit breaking bawaan, distributed rate limiting, CORS, distributed tracing header, dan penyeimbangan beban round-robin.
 
 ---
 
-## 3. Building & Deployment
+## 3. Kompilasi & Deployment
 
 ### `kiw build`
 
-Compile the current project into release-ready artifacts according to its workload kind:
+Mengompilasi proyek saat ini menjadi artefak siap rilis sesuai dengan jenis workload-nya:
 
 ```bash
 kiw build [--target site|book|binary|wasm|infra] [--output <path>]
 ```
 
-- **`site`**: Generates optimized static HTML and scoped CSS into `.krewire/build`.
-- **`book`**: Compiles Markdown manuscripts into multi-chapter documentation portal.
-- **`app`/`cli`/`service`/`worker`**: Compiles a single Go binary with embedded assets.
-- **`wasm`**: Compiles a `pkg/runtime` client bundle into a `.wasm` module plus JS glue.
-- **`infra`**: Compiles and verifies the cloud infrastructure topology plan.
+- **`site`**: Menghasilkan HTML statis teroptimasi dan CSS terlingkup (scoped CSS) ke dalam direktori `.krewire/build`.
+- **`book`**: Mengompilasi naskah Markdown menjadi portal dokumentasi multi-bab.
+- **`app`/`cli`/`service`/`worker`**: Mengompilasi binary Go tunggal dengan aset yang disematkan.
+- **`wasm`**: Mengompilasi bundle klien `pkg/runtime` menjadi modul `.wasm` beserta lem (glue) JS.
+- **`infra`**: Mengompilasi dan memverifikasi rencana topologi infrastruktur cloud.
 
 ### `kiw deploy`
 
-Validate the project, run quality gates, stage distribution artifacts into `.krewire/dist/`, and publish to target environments:
+Memvalidasi proyek, menjalankan quality gate, menyiapkan artefak distribusi ke `.krewire/dist/`, dan memublikasikannya ke lingkungan target:
 
 ```bash
 kiw deploy [--target binary|systemd|gh-pages|infra] [--branch <name>] [--remote <name>] [--dry-run]
 ```
 
-- `--dry-run`: Preview deployment steps without publishing or mutating cloud state.
-- `--target binary`: Build and stage standalone executable into distribution directory.
-- `--target systemd`: Generate and configure Linux systemd unit service files (`/etc/systemd/system/<app>.service`) with custom user, working directory, and auto-restart policies.
-- `--target gh-pages`: Commit and push the static output to GitHub Pages (`gh-pages` branch).
-- `--target infra`: Provision declared cloud resources via provider adapters.
+- `--dry-run`: Meninjau langkah-langkah deployment tanpa memublikasikan atau mengubah status cloud.
+- `--target binary`: Mengompilasi dan menyiapkan berkas eksekusi mandiri ke direktori distribusi.
+- `--target systemd`: Menghasilkan dan mengonfigurasi berkas unit service Linux systemd (`/etc/systemd/system/<app>.service`) lengkap dengan user kustom, direktori kerja, dan kebijakan auto-restart.
+- `--target gh-pages`: Melakukan commit dan push output statis ke GitHub Pages (branch `gh-pages`).
+- `--target infra`: Melakukan provisi sumber daya cloud yang dideklarasikan melalui adaptor penyedia (provider).
 
 ---
 
-## 4. Code Quality & Testing
+## 4. Kualitas Kode & Pengujian
 
 ### `kiw test`
 
-Execute unit and integration tests across all Go packages:
+Menjalankan unit test dan integration test di seluruh paket Go:
 
 ```bash
 kiw test [--verbose] [--race] [--cover]
 ```
 
-Spawns `go test ./...` with standardized colorized output and test summary reporting.
+Menjalankan `go test ./...` dengan output berwarna standar serta laporan ringkasan pengujian.
 
 ### `kiw vet`
 
-Run static code analysis:
+Menjalankan analisis kode statis:
 
 ```bash
 kiw vet
 ```
 
-Runs Go's official `go vet ./...` analyzer, catching potential defects, dead code, and invalid struct tags.
+Menjalankan penganalisis resmi Go `go vet ./...`, mendeteksi potensi kerusakan kode, kode yang tidak terpakai (dead code), dan tag struct yang tidak valid.
 
 ### `kiw fmt`
 
-Inspect or format source code and `.kiw` component files:
+Memeriksa atau memformat kode sumber dan berkas komponen `.kiw`:
 
 ```bash
 kiw fmt [--write]
 ```
 
-- Without `--write`: Prints unformatted files and exits with code `1` if formatting is required (useful for CI gates).
-- With `--write`: Formats all Go and component files in-place according to canonical conventions.
+- Tanpa `--write`: Menampilkan berkas yang belum terformat dan keluar dengan kode `1` jika pemformatan diperlukan (berguna untuk gerbang CI).
+- Dengan `--write`: Memformat seluruh berkas Go dan berkas komponen secara langsung di tempat sesuai dengan konvensi kanonikal.
 
 ---
 
-## 5. Ecosystem & Management
+## 5. Ekosistem & Manajemen
 
 ### `kiw info`
 
-Display detected workload kind, active configuration, and Go environment diagnostics:
+Menampilkan jenis workload yang terdeteksi, konfigurasi aktif, dan diagnostik lingkungan Go:
 
 ```bash
 kiw info
 ```
 
-*Example Output:*
+*Contoh Output:*
 ```text
 Project:      storefront (v0.1.0)
 Kind:         app (Fullstack Monolith)
@@ -242,7 +243,7 @@ Go Version:   go1.27.1 (linux/amd64)
 
 ### `kiw version`
 
-Print the version of the `kiw` CLI and underlying Krewire packages:
+Mencetak versi CLI `kiw` dan paket Krewire yang mendasarinya:
 
 ```bash
 kiw version
@@ -250,36 +251,36 @@ kiw version
 
 ### `kiw compat`
 
-Validate version compatibility across all module declarations in the workspace:
+Memvalidasi kompatibilitas versi di semua deklarasi modul dalam workspace:
 
 ```bash
 kiw compat
 ```
 
-### `kiw ws <command>`
+### `kiw ws <perintah>`
 
-Manage multi-package Go workspaces (`go.work`):
+Mengelola multi-paket Go workspace (`go.work`):
 
 ```bash
-kiw ws info         # Show workspace members and active modules
-kiw ws list         # List paths of all packages
-kiw ws sync         # Synchronize go.work and go.mod dependencies
-kiw ws exec <cmd>   # Execute a command across every workspace module
+kiw ws info         # Menampilkan anggota workspace dan modul yang aktif
+kiw ws list         # Mendaftar path dari semua paket
+kiw ws sync         # Menyinkronkan dependensi go.work dan go.mod
+kiw ws exec <cmd>   # Menjalankan perintah di setiap modul workspace
 ```
 
 ### `kiw boost install`
 
-Equip any project repository with the **Krewire Boost** AI agent system:
+Melengkapi repositori proyek apa pun dengan sistem AI agent **Krewire Boost**:
 
 ```bash
 kiw boost install [path]
 ```
 
-Installs the autonomous agent definitions, custom slash commands, and autonomous SDLC workflows into `.agents/` and `AGENTS.md`.
+Memasang definisi agen otonom, slash command kustom, dan alur kerja SDLC otonom ke dalam direktori `.agents/` dan `AGENTS.md`.
 
 ### `kiw add <package[@version]>`
 
-Add a Go module or an opt-in ecosystem plugin (such as Tailwind CSS):
+Menambahkan modul Go atau plugin ekosistem pilihan (seperti Tailwind CSS):
 
 ```bash
 kiw add twcss@latest
@@ -287,12 +288,12 @@ kiw add tailwindcss
 kiw add github.com/krewire/krewire@v0.1.0
 ```
 
-- **Zero JS by Default**: Krewire defaults to zero JavaScript and standalone CSS tokens.
-- **Opt-In Technology**: When adding `twcss`, `kiw` automatically initializes `tailwind.config.js` and enables the Tailwind compiler runner (standalone CLI binary in `bin/tailwindcss`, Bun, PNPM, or npm/npx fallback).
+- **Nol JS secara Default**: Krewire secara default tidak memerlukan JavaScript serta menggunakan token CSS mandiri.
+- **Teknologi Pilihan (Opt-In)**: Saat menambahkan `twcss`, `kiw` akan menginisialisasi `tailwind.config.js` secara otomatis dan mengaktifkan runner compiler Tailwind (binary CLI mandiri di `bin/tailwindcss`, Bun, PNPM, atau fallback npm/npx).
 
 ### `kiw remove <package>`
 
-Uninstall a package or deactivate an opt-in plugin:
+Menghapus paket atau menonaktifkan plugin pilihan:
 
 ```bash
 kiw remove twcss

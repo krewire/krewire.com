@@ -1,22 +1,22 @@
 ---
-title: "Resilience & Testing (resilience, testing)"
-description: "Fault-tolerant network communication with retry policies and circuit breakers, paired with the testing assertion harness."
+title: "Resiliensi & Jaminan Mutu (resilience, testing)"
+description: "Komunikasi jaringan toleran-kegagalan dengan kebijakan retry dan circuit breaker, dipadukan dengan harness assertion pengujian."
 date: "2026-10-08"
 ---
 
-# Resilience & Testing (`resilience`, `testing`)
+# Resiliensi & Jaminan Mutu (`resilience`, `testing`)
 
-Import paths:
+Jalur impor (*import paths*):
 - `github.com/krewire/krewire/pkg/resilience`
 - `github.com/krewire/krewire/pkg/testing`
 
-Distributed systems and web applications fail over network boundaries. Krewire provides built-in resilience primitives to isolate failures and a testing library that provides HTTP and UI assertion utilities.
+Sistem terdistribusi dan aplikasi web pasti menghadapi kegagalan di batas jaringan. Krewire menyediakan primitif resiliensi bawaan untuk mengisolasi kegagalan serta pustaka pengujian lengkap dengan utilitas assertion HTTP dan UI.
 
 ---
 
-## 1. Resilience Patterns (`pkg/resilience`)
+## 1. Pola Resiliensi (`pkg/resilience`)
 
-### Retry Policies with Jittered Backoff
+### Kebijakan Retry dengan Jittered Backoff
 
 ```go
 package main
@@ -36,7 +36,7 @@ func main() {
 	}
 
 	err := policy.Do(context.Background(), func(ctx context.Context) error {
-		// Call unreliable third-party payment API
+		// Memanggil API pihak ketiga yang mungkin tidak stabil
 		return callPaymentGateway()
 	})
 }
@@ -44,7 +44,7 @@ func main() {
 
 ### Circuit Breakers
 
-Prevent cascading service outages by tripping open when an upstream dependency fails repeatedly:
+Mencegah pemadaman sistem beruntun (*cascading failure*) dengan memutus aliran permintaan saat layanan upstream gagal berulang kali:
 
 ```go
 cb := resilience.NewCircuitBreaker(resilience.CircuitBreakerConfig{
@@ -59,9 +59,9 @@ err := cb.Execute(func() error {
 
 ---
 
-## 2. Testing Utilities (`pkg/testing`)
+## 2. Utilitas Pengujian (`pkg/testing`)
 
-Krewire provides testing utilities across all packages and applications, including HTTP helpers and UI assertions:
+Krewire menyediakan utilitas pengujian di seluruh paket dan aplikasi, termasuk helper HTTP dan assertion:
 
 ```go
 package payment_test
@@ -79,4 +79,4 @@ func TestPayment_ChargesCardWithIdempotency(t *testing.T) {
 }
 ```
 
-This discipline ensures clean, readable, and robust test suites that verify behavior across software releases.
+Disiplin ini menjamin test suite yang bersih, mudah dibaca, dan tangguh dalam memverifikasi perilaku perangkat lunak di setiap rilis.

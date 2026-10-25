@@ -1,51 +1,51 @@
 ---
 title: "Microservice (service)"
-description: "Cloud-native microservices with service discovery, API gateway routing, rate limiting, circuit breaking, and OpenTelemetry distributed tracing."
+description: "Microservice cloud-native dengan penemuan layanan (service discovery), perutean API gateway, pembatasan laju (rate limiting), circuit breaking, dan tracing terdistribusi OpenTelemetry."
 date: "2026-10-08"
 ---
 
 # Microservice (`service`)
 
-The **`service`** workload equips developers to build high-throughput, cloud-native microservices and distributed APIs.
+Workload **`service`** memperlengkapi para pengembang untuk membangun microservice cloud-native ber-throughput tinggi dan API terdistribusi.
 
-Powered by `pkg/cloud/service`, `pkg/sec`, and `pkg/resilience`, the `service` workload includes production-grade discovery, distributed tracing, gateway routing, and telemetry out of the box.
-
----
-
-## Architectural Characteristics
-
-1. **Service Discovery:** Native drivers for Consul, etcd, Kubernetes DNS, and AWS Cloud Map.
-2. **Telemetry & Observability:** Built-in OpenTelemetry (OTel) instrumentation for distributed tracing, metrics, and structured logging with W3C `traceparent` propagation.
-3. **Traffic Resilience:** Token-bucket rate limiting, circuit breakers, timeout propagation, and concurrency bulkheads.
-4. **Health & Liveness Check Probes:** Automatic `/healthz` and `/readyz` endpoints adhering to cloud container conventions.
+Ditenagai oleh `pkg/cloud/service`, `pkg/sec`, dan `pkg/resilience`, workload `service` sudah mencakup penemuan layanan (service discovery) kelas produksi, tracing terdistribusi, perutean gateway, dan telemetri langsung sejak awal.
 
 ---
 
-## Scaffolding a `service` Project
+## Karakteristik Arsitektur
+
+1. **Service Discovery:** Driver bawaan untuk Consul, etcd, Kubernetes DNS, dan AWS Cloud Map.
+2. **Telemetri & Observabilitas:** Instrumentasi bawaan OpenTelemetry (OTel) untuk tracing terdistribusi, metrik, dan structured logging dengan propagasi W3C `traceparent`.
+3. **Ketahanan Lalu Lintas (Traffic Resilience):** Rate limiting token-bucket, circuit breaker, propagasi batas waktu (timeout), dan bulkhead konkurensi.
+4. **Pemeriksaan Kesehatan & Kesiapan:** Endpoint `/healthz` dan `/readyz` otomatis yang mematuhi konvensi kontainer cloud.
+
+---
+
+## Scaffolding Proyek `service`
 
 ```bash
 kiw new auth-service --service
 cd auth-service
 ```
 
-Directory layout:
+Tata letak direktori:
 
 ```text
 auth-service/
-├── krewire.yaml          # Project configuration
+├── krewire.yaml          # Konfigurasi proyek
 ├── go.mod
 ├── cmd/
 │   └── service/
-│       └── main.go       # Service entry point
+│       └── main.go       # Titik masuk service
 └── internal/
-    ├── api/              # HTTP / gRPC endpoint handlers
-    ├── discovery/        # Service registration logic
-    └── domain/           # Core domain business logic
+    ├── api/              # Handler endpoint HTTP / gRPC
+    ├── discovery/        # Logika registrasi service
+    └── domain/           # Logika bisnis domain inti
 ```
 
 ---
 
-## Service Implementation
+## Implementasi Service
 
 ```go
 package main
@@ -69,11 +69,11 @@ func main() {
 
 	router := web.NewRouter()
 
-	// Health and readiness endpoints
+	// Endpoint kesehatan dan kesiapan
 	router.Get("/healthz", service.HealthHandler())
 	router.Get("/readyz", service.ReadinessHandler())
 
-	// Protected business route
+	// Route bisnis yang dilindungi
 	router.Post("/v1/tokens/verify", func(w http.ResponseWriter, r *http.Request) {
 		web.JSON(w, http.StatusOK, map[string]any{
 			"valid":     true,
@@ -81,7 +81,7 @@ func main() {
 		})
 	})
 
-	// Start service with automated discovery registration
+	// Jalankan service dengan registrasi penemuan otomatis
 	if err := svc.Start(context.Background(), router); err != nil {
 		os.Exit(1)
 	}
@@ -90,7 +90,7 @@ func main() {
 
 ---
 
-## Configuration (`krewire.yaml`)
+## Konfigurasi (`krewire.yaml`)
 
 ```yaml
 project:
@@ -103,23 +103,19 @@ service:
   port: 8080
 ```
 
-`name` and `port` are the only `service:` keys. Service discovery
-(`pkg/cloud/service/registry`), rate limiting and circuit breaking
-(`pkg/cloud/service/resilience`), and tracing (`pkg/cloud/service/tracing`) are
-composed in Go code, where the registry and transport are wired.
+`name` dan `port` adalah satu-satunya kunci di bawah `service:`. Penemuan layanan (`pkg/cloud/service/registry`), rate limiting dan circuit breaking (`pkg/cloud/service/resilience`), serta tracing (`pkg/cloud/service/tracing`) disusun langsung dalam kode Go tempat registry dan transport dihubungkan.
 
 ---
 
-## Running and Verifying
+## Menjalankan dan Memverifikasi
 
-Run the service locally:
+Jalankan service secara lokal:
 
 ```bash
 kiw run
 ```
 
-Inspect registered endpoints and service health status:
+Periksa endpoint yang terdaftar dan status kesehatan service:
 
 ```bash
 curl http://localhost:8080/healthz
-```

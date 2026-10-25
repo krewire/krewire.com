@@ -1,26 +1,26 @@
 ---
-title: "User Interfaces (ui, tui)"
-description: "Cross-surface user interface engineering: web Single-File Components, design tokens, light/dark themes, and interactive terminal interfaces."
+title: "Antarmuka Pengguna (ui, tui)"
+description: "Rekayasa antarmuka pengguna lintas permukaan: Single-File Component web, token desain, tema terang/gelap, dan antarmuka terminal interaktif."
 date: "2026-10-08"
 ---
 
-# User Interfaces (`ui`, `tui`)
+# Antarmuka Pengguna (`ui`, `tui`)
 
-Import paths:
+Jalur impor (*import paths*):
 - `github.com/krewire/krewire/pkg/ui`
 - `github.com/krewire/krewire/pkg/tui`
 
-Krewire provides unified interface tooling spanning both web browsers (`pkg/ui`) and terminal consoles (`pkg/tui`).
+Krewire menyediakan tooling antarmuka terpadu yang mencakup peramban web (`pkg/ui`) maupun konsol terminal (`pkg/tui`).
 
 ---
 
-## 1. Web UI Components & Tokens (`pkg/ui`)
+## 1. Komponen Web UI & Token Desain (`pkg/ui`)
 
-The `ui` package provides reusable Single-File Components (`.kiw`), semantic CSS design tokens, and a theme switching engine.
+Paket `ui` menyediakan Single-File Component pakai ulang (`.kiw`), token desain CSS semantik, dan engine peralihan tema terang/gelap.
 
-### Canonical Theme Tokens
+### Token Tema Kanonikal
 
-Themes are driven entirely via CSS custom properties attached to `:root` and `html[data-theme="dark"]`:
+Tema sepenuhnya digerakkan melalui variabel custom CSS yang terpasang pada `:root` dan `html[data-theme="dark"]`:
 
 ```css
 :root {
@@ -42,19 +42,19 @@ html[data-theme="dark"] {
 }
 ```
 
-### Shared UI Components
-Available in `pkg/ui/components/`:
-- `<Navbar />`: Responsive navigation bar with theme and mobile drawer toggles.
-- `<Sidebar />`: Collapsible sidebar navigation for documentation.
-- `<Button />`: Accessible button with `primary`, `secondary`, and `outline` variants.
-- `<Terminal />`: Terminal code block preview with syntax styling.
-- `<Drawer />`: Slide-out mobile drawer overlay.
+### Komponen UI Siap Pakai
+Tersedia di dalam direktori `pkg/ui/components/`:
+- `<Navbar />`: Bar navigasi responsif lengkap dengan pemilih bahasa, tema, dan toggle drawer ponsel.
+- `<Sidebar />`: Navigasi sidebar yang dapat diciutkan (*collapsible*) untuk dokumentasi.
+- `<Button />`: Tombol aksesibel dengan varian `primary`, `secondary`, dan `outline`.
+- `<Terminal />`: Pratinjau blok kode terminal dengan styling sintaks.
+- `<Drawer />`: Hamparan drawer geser untuk tampilan layar ponsel.
 
 ---
 
-## 2. Terminal UI Toolkit (`pkg/tui`)
+## 2. Toolkit Terminal UI (`pkg/tui`)
 
-The `tui` package powers interactive terminal user interfaces using an Elm/Bubble Tea architecture:
+Paket `tui` mentenagai antarmuka pengguna terminal interaktif menggunakan pola arsitektur Elm/Bubble Tea:
 
 ```go
 package main
@@ -79,7 +79,7 @@ func (m appModel) Update(msg tui.Msg) (tui.Model, tui.Cmd) {
 }
 
 func (m appModel) View() string {
-	return term.Bold(term.Green("Krewire Terminal Ready! Press 'q' to quit.\n"))
+	return term.Bold(term.Green("Terminal Krewire Siap! Tekan 'q' untuk keluar.\n"))
 }
 
 func main() {

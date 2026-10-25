@@ -1,75 +1,75 @@
 ---
-title: "Task Automation & Scripting"
-description: "Declare custom workflow tasks, build pipelines, and automation scripts directly in krewire.yaml with argument forwarding and cross-platform execution."
+title: "Otomasi Tugas & Skrip"
+description: "Deklarasikan tugas alur kerja kustom, pipeline build, dan skrip otomasi langsung di krewire.yaml dengan penerusan argumen serta eksekusi lintas platform."
 date: "2026-10-08"
 ---
 
-# Task Automation & Scripting
+# Otomasi Tugas & Skrip
 
-Krewire includes a built-in task automation engine directly within `kiw`, eliminating the need for `Makefile`, `npm run`, or external task runners.
+Krewire menyertakan mesin otomasi tugas bawaan langsung di dalam `kiw`, menghilangkan kebutuhan akan `Makefile`, `npm run`, atau task runner eksternal lainnya.
 
-Tasks are declared in the `scripts:` block of `krewire.yaml` and executed via `kiw run <task>`.
+Tugas-tugas dideklarasikan di dalam blok `scripts:` pada `krewire.yaml` dan dieksekusi melalui `kiw run <tugas>`.
 
 ---
 
-## Defining Scripts in `krewire.yaml`
+## Mendefinisikan Skrip di `krewire.yaml`
 
 ```yaml
 scripts:
-  # Simple single-line task
+  # Tugas baris tunggal sederhana
   lint: "golangci-lint run ./..."
 
-  # Sequential multi-command pipeline
+  # Pipeline multi-perintah berurutan
   ci:
     - "kiw fmt"
     - "kiw vet"
     - "kiw test"
 
-  # Task with environment variables
+  # Tugas dengan variabel lingkungan
   seed:
     cmd: "go run ./cmd/seed/main.go"
     env:
       DB_MODE: "test"
 
-  # Database migration runner
+  # Runner migrasi basis data
   migrate: "go run ./cmd/migrate/main.go up"
 ```
 
 ---
 
-## Executing Scripts
+## Mengeksekusi Skrip
 
-Run any named script using `kiw run`:
+Jalankan skrip bernama apa pun menggunakan `kiw run`:
 
 ```bash
-# Run the lint script
+# Menjalankan skrip lint
 kiw run lint
 
-# Run the complete CI validation chain
+# Menjalankan seluruh rantai validasi CI
 kiw run ci
 ```
 
-### Argument Forwarding
+### Penerusan Argumen (Argument Forwarding)
 
-Arguments passed after `--` are automatically forwarded to the target command:
+Argumen yang diberikan setelah tanda `--` secara otomatis diteruskan ke perintah target:
 
 ```bash
 kiw run migrate -- --steps 2
 ```
 
-The underlying command executes:
+Perintah di balik layar yang dieksekusi:
 ```bash
 go run ./cmd/migrate/main.go up --steps 2
 ```
 
 ---
 
-## Built-In Ecosystem Tasks
+## Tugas Ekosistem Bawaan
 
-If no script with the specified name is found in `krewire.yaml`, `kiw run` attempts to execute matching Go files or entry points:
+Jika tidak ada skrip dengan nama yang cocok di `krewire.yaml`, `kiw run` akan mencoba mengeksekusi berkas atau titik masuk (entry point) Go yang sesuai:
 
 ```bash
 kiw run ./cmd/server/main.go
 ```
 
-This guarantees a frictionless workflow for both scripted and ad-hoc Go development tasks.
+Hal ini menjamin alur kerja yang mulus dan bebas hambatan, baik untuk tugas pengembangan Go terprogram maupun tugas ad-hoc.

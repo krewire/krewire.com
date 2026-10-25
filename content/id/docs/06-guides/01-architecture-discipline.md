@@ -1,43 +1,43 @@
 ---
-title: "Architecture & Engineering Discipline"
-description: "Core architectural invariants: strict downward dependencies, Single Source of Truth (SSOT), and Single Responsibility Principle."
+title: "Arsitektur & Disiplin Rekayasa"
+description: "Invarian arsitektur inti: dependensi ketat ke arah bawah, Single Source of Truth (SSOT), dan Single Responsibility Principle."
 date: "2026-10-24"
 ---
 
-# Architecture & Engineering Discipline
+# Arsitektur & Disiplin Rekayasa
 
-The Krewire codebase is governed by non-negotiable architectural invariants defined in [ADR-6CAB8C](file:///home/reasvyn/workspace/krewire/internal/docs/adr/ADR-6CAB8C-ecosystem-architecture-baseline.md).
+Basis kode Krewire diatur oleh invarian arsitektur yang tidak dapat ditawar, sebagaimana didefinisikan dalam [ADR-6CAB8C](file:///home/reasvyn/workspace/krewire/internal/docs/adr/ADR-6CAB8C-ecosystem-architecture-baseline.md).
 
-## 1. Strict Downward-Only Dependencies
+## 1. Dependensi Ketat Hanya ke Arah Bawah
 
-Dependencies flow strictly downward:
+Aliran dependensi berjalan ketat ke arah bawah:
 
 ```text
-templates/boost (AI agent templates)
+templates/boost (Templat agen AI)
        │
        ▼
-tools/kiw (Developer CLI)
+tools/kiw (CLI Pengembang)
        │
        ▼
-pkg/* (Modular libraries: web, orm, cache, auth, sec, storage...)
+pkg/* (Pustaka modular: web, orm, cache, auth, sec, storage...)
        │
        ▼
-pkg/model, pkg/errs (Domain primitives & error taxonomy)
+pkg/model, pkg/errs (Primitif domain & taksonomi error)
 ```
 
-- `pkg/model` depends only on Go standard library packages and `pkg/errs`.
-- No library package may **ever** import `kiw`.
-- Generated user projects depend on Krewire libraries, never on `kiw`.
+- `pkg/model` hanya bergantung pada pustaka standar Go dan `pkg/errs`.
+- Tidak ada paket pustaka yang boleh **sekali pun** mengimpor `kiw`.
+- Proyek pengguna yang dihasilkan bergantung pada pustaka Krewire, tidak pernah pada `kiw`.
 
 ## 2. Single Source of Truth (SSOT)
 
-A value that the ecosystem must agree upon is declared **once** in the package that owns it:
+Nilai yang harus disepakati oleh seluruh ekosistem dideklarasikan **satu kali** di dalam paket yang memilikinya:
 
-- **Banned:** Copying literal tables or constant lists into multiple files.
-- **Banned:** Re-deriving ordering logic that has an existing canonical resolver.
-- **Banned:** Duplicating version strings in markdown when they are declared in code.
-- **Required:** One owner per fact. Export the resolver function rather than reimplementing it in consumer packages.
+- **Dilarang:** Menyalin tabel literal atau daftar konstanta ke beberapa berkas berbeda.
+- **Dilarang:** Menurunkan ulang logika pengurutan yang sudah memiliki canonical resolver yang ada.
+- **Dilarang:** Menduplikasi string versi di markdown ketika nilai tersebut telah dideklarasikan di dalam kode.
+- **Wajib:** Satu pemilik per fakta. Ekspor fungsi resolver alih-alih mengimplementasikannya kembali di dalam paket konsumen.
 
-## 3. Pure Go (`CGO_ENABLED=0`) Invariant
+## 3. Invarian Go Murni (`CGO_ENABLED=0`)
 
-Every library and workload binary must cross-compile cleanly to Linux, macOS (`darwin/arm64`), and Windows (`windows/amd64`) without C compiler toolchains.
+Setiap pustaka dan binary workload harus dapat dikompilasi silang (cross-compile) secara bersih ke Linux, macOS (`darwin/arm64`), dan Windows (`windows/amd64`) tanpa memerlukan toolchain compiler C.

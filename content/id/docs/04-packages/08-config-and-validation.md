@@ -1,30 +1,30 @@
 ---
-title: "Config & Validation (config, validation)"
-description: "Reference guide for hierarchical configuration loading, environment overrides, dotenv support, and composable validation rules."
+title: "Konfigurasi & Validasi (config, validation)"
+description: "Panduan referensi pemuatan konfigurasi hierarkis, override environment, dukungan dotenv, dan aturan validasi yang dapat dikomposisikan."
 date: "2026-10-10"
 ---
 
-# Config & Validation (`config`, `validation`)
+# Konfigurasi & Validasi (`config`, `validation`)
 
-Import paths:
+Jalur impor (*import paths*):
 - `github.com/krewire/krewire/pkg/config`
 - `github.com/krewire/krewire/pkg/validation`
 
-Robust configuration loading and strict input validation prevent runtime errors and security vulnerabilities before requests reach core domain logic.
+Pemuatan konfigurasi yang tangguh dan validasi input yang ketat mencegah error saat runtime serta celah keamanan sebelum permintaan masuk ke logika domain inti.
 
 ---
 
-## 1. Hierarchical Configuration (`pkg/config`)
+## 1. Konfigurasi Hierarkis (`pkg/config`)
 
-The `config` package loads typed application settings with deterministic priority:
-1. Explicit CLI flags
-2. Environment variables (`APP_*` prefix)
-3. Local environment file (`.env.local`)
-4. Base environment file (`.env`)
-5. Configuration files (`krewire.yaml` / JSON)
-6. Struct field default tags
+Paket `config` memuat pengaturan aplikasi bertipe (*typed settings*) dengan prioritas deterministik:
+1. Flag eksplisit CLI
+2. Variabel environment (awalan prefix `APP_*`)
+3. Berkas environment lokal (`.env.local`)
+4. Berkas environment dasar (`.env`)
+5. Berkas konfigurasi (`krewire.yaml` / JSON)
+6. Tag nilai default pada field struct
 
-### Example
+### Contoh Penggunaan
 
 ```go
 package main
@@ -42,29 +42,29 @@ type AppConfig struct {
 
 func main() {
 	var cfg AppConfig
-	// Loads from .env, env vars, and defaults automatically
+	// Memuat dari .env, variabel environment, dan nilai default secara otomatis
 	if err := config.Load(&cfg); err != nil {
 		panic(err)
 	}
 
-	fmt.Printf("Server listening on port %d with log level %s\n", cfg.Port, cfg.LogLevel)
+	fmt.Printf("Server berjalan di port %d dengan level log %s\n", cfg.Port, cfg.LogLevel)
 }
 ```
 
 ---
 
-## 2. Composable Input Validation (`pkg/validation`)
+## 2. Validasi Input yang Dapat Dikomposisikan (`pkg/validation`)
 
-The `validation` package validates data structures without reflection overhead, providing clear error structures for APIs and web forms.
+Paket `validation` memvalidasi struktur data tanpa beban performa reflection berlebih, menyajikan struktur error yang terang untuk API dan formulir web.
 
-### Common Rules:
-- **`rules.Required`**: Value must not be empty or zero.
-- **`rules.Email`**: RFC 5322 compliant email format.
-- **`rules.Min` / `rules.Max`**: Numeric bounds or minimum/maximum string length.
-- **`rules.OneOf`**: Value must match one of the allowed options.
-- **`rules.Pattern`**: Regular expression validation.
+### Aturan Umum (*Common Rules*):
+- **`rules.Required`**: Nilai tidak boleh kosong atau bernilai nol.
+- **`rules.Email`**: Format email yang mematuhi standar RFC 5322.
+- **`rules.Min` / `rules.Max`**: Batas numerik atau batas minimum/maksimum panjang string.
+- **`rules.OneOf`**: Nilai harus cocok dengan salah satu opsi yang diizinkan.
+- **`rules.Pattern`**: Validasi berbasis ekspresi reguler (regex).
 
-### Example
+### Contoh Penggunaan
 
 ```go
 package main

@@ -1,12 +1,12 @@
 ---
-title: "Model, Lifecycle & Errors (pkg/model, pkg/lifecycle, pkg/errs)"
-description: "Foundational control plane of Krewire: workload model primitives, lifecycle supervision, error taxonomy, environment detection, and version contracts."
+title: "Model, Siklus Hidup & Error (pkg/model, pkg/lifecycle, pkg/errs)"
+description: "Control plane fondasi Krewire: primitif model workload, supervisi siklus hidup, taksonomi error, deteksi environment, dan kontrak versi."
 date: "2026-10-25"
 ---
 
-# Model, Lifecycle & Errors
+# Model, Siklus Hidup & Error
 
-Import paths:
+Jalur impor (*import paths*):
 
 ```text
 github.com/krewire/krewire/pkg/model
@@ -16,32 +16,28 @@ github.com/krewire/krewire/pkg/env
 github.com/krewire/krewire/pkg/version
 ```
 
-These five packages form the foundation of the ecosystem. They define domain
-primitives, workload kinds, lifecycle supervision, the error taxonomy,
-environment resolution, and semantic version contracts.
+Kelima paket ini membentuk fondasi arsitektur ekosistem. Mereka mendefinisikan primitif domain, jenis-jenis workload, supervisi siklus hidup (*lifecycle supervision*), taksonomi error, resolusi environment, dan kontrak versi semantik.
 
-Per ADR `ADR-B7D3A`, `pkg/model` may depend **only on Go standard library
-packages** and its internal `errs` sibling — never on higher-level packages and
-never on `kiw`.
+Sesuai ADR `ADR-B7D3A`, `pkg/model` **hanya boleh bergantung pada pustaka standar Go (stdlib)** dan paket saudara internalnya `errs` — tidak boleh bergantung pada paket tingkat yang lebih tinggi dan tidak boleh mengimpor `kiw`.
 
 ---
 
-## Package Layout
+## Tata Letak Paket
 
 ```text
 pkg/
-├── model/        # Workload kinds, project scopes, tiers, opt-in rules
-├── lifecycle/    # Kernel supervisor, module registry, graceful shutdown
-├── errs/         # Error classification and POSIX exit codes
-├── env/          # Target environments (local, production, testing)
-└── version/      # Semantic version parsing and compatibility validation
+├── model/        # Jenis workload, scope proyek, tier lisensi, aturan opt-in
+├── lifecycle/    # Kernel supervisor, registri modul, graceful shutdown
+├── errs/         # Klasifikasi error dan kode keluar POSIX
+├── env/          # Target environment (local, production, testing)
+└── version/      # Parsing versi semantik dan validasi kompatibilitas
 ```
 
 ---
 
-## Workload Model (`pkg/model`)
+## Model Workload (`pkg/model`)
 
-The eight official workload kinds are declared as typed constants:
+Delapan jenis workload resmi dideklarasikan sebagai konstanta bertipe (*typed constants*):
 
 ```go
 package model
@@ -59,30 +55,25 @@ const (
 	KindInfra   Kind = "infra"
 )
 
-// AllKinds lists every valid Kind in canonical order.
+// AllKinds mendaftar setiap Kind yang valid dalam urutan kanonikal.
 var AllKinds = []Kind{KindApp, KindCLI, KindSite, KindBook, KindWorker, KindService, KindGateway, KindInfra}
 
-// IsValid reports whether k is one of the eight known kinds.
+// IsValid melaporkan apakah k merupakan salah satu dari 8 jenis yang dikenali.
 func (k Kind) IsValid() bool
 
-// ParseKind parses s as a Kind, returning a usage error on unknown input.
+// ParseKind mem-parsing string s menjadi Kind, menghasilkan usage error pada input yang tidak dikenal.
 func ParseKind(s string) (Kind, error)
 ```
 
-`AllKinds` is the single owner of the kind list: every other package (including
-`kiw`'s shape detector) derives from it instead of restating the eight names.
+`AllKinds` adalah satu-satunya pemilik daftar jenis workload: seluruh paket lainnya (termasuk shape detector milik `kiw`) menurunkan nilainya dari sini tanpa mendefinisikan ulang kedelapan nama tersebut.
 
-`pkg/model` also declares `Project` (name, module path, kind, config path) with
-`Validate`, the `Scope` ladder (`workspace` → `module` → `domain` → `service` →
-`unit`), the open-core `Tier` ladder, and the generic `OptInRule` /
-`ViolatesOptIn` constraints that keep batteries out of kinds that did not opt in.
+`pkg/model` juga mendeklarasikan `Project` (nama, module path, kind, path konfigurasi) dengan method `Validate`, tangga cakupan `Scope` (`workspace` → `module` → `domain` → `service` → `unit`), tangga lisensi `Tier`, serta aturan kendala `OptInRule` / `ViolatesOptIn` yang mencegah penautan paket tambahan pada workload yang tidak memilihnya.
 
 ---
 
-## Lifecycle Supervision (`pkg/lifecycle`)
+## Supervisi Siklus Hidup (`pkg/lifecycle`)
 
-`lifecycle.Kernel` is the imperative control plane: it binds a validated
-`model.Project` to registered modules and executes a declared workload.
+`lifecycle.Kernel` adalah pengendali imperatif: ia mengikat `model.Project` yang telah divalidasi ke modul-modul terdaftar dan mengeksekusi workload yang dideklarasikan.
 
 ```go
 k, err := lifecycle.New(project)
@@ -90,8 +81,8 @@ if err != nil {
 	return err
 }
 
-k.Use(bootModule, webModule)          // modules initialize in dependency order
-k.RegisterHandler(model.KindApp, run) // one handler per workload kind
+k.Use(bootModule, webModule)          // modul diinisialisasi sesuai urutan dependensi
+k.RegisterHandler(model.KindApp, run) // satu handler per jenis workload
 
 if err := k.Boot(ctx); err != nil {
 	return err
@@ -101,77 +92,72 @@ defer k.Shutdown(ctx)
 os.Exit(k.Execute(ctx, workload).Int())
 ```
 
-Supporting types:
+Tipe pendukung:
 
-- **`Registry`** — `NewRegistry`, `Register`, `Ordered`, `Resolve`; ordering is
-  resolved from each module's `DependsOn() []string`, never from map iteration.
-- **`Supervisor`** — `NewSupervisor`, `Add`, `Start`, `Stop`, `Health`,
-  `Reload`, `WithShutdownTimeout`; supervises long-running workloads.
-- **`Module` / `Startable` / `Depender`** — opt-in capability interfaces.
+- **`Registry`** — `NewRegistry`, `Register`, `Ordered`, `Resolve`; urutan eksekusi diselesaikan dari `DependsOn() []string` masing-masing modul, bukan dari iterasi map acak.
+- **`Supervisor`** — `NewSupervisor`, `Add`, `Start`, `Stop`, `Health`, `Reload`, `WithShutdownTimeout`; mengawasi workload yang berjalan lama (*long-running*).
+- **`Module` / `Startable` / `Depender`** — antarmuka kemampuan opsional (*opt-in capability interfaces*).
 
 ---
 
-## Error Handling & Exit Codes (`pkg/errs`)
+## Penanganan Error & Kode Keluar (`pkg/errs`)
 
-Krewire standardizes errors across all packages with a structured taxonomy and
-POSIX exit codes:
+Krewire menstandarisasi penanganan error di seluruh paket dengan taksonomi terstruktur dan kode keluar POSIX:
 
 ```go
 import "github.com/krewire/krewire/pkg/errs"
 
-// Exit codes
+// Kode keluar standar
 errs.ExitCodeSuccess // 0
 errs.ExitCodeFailure // 1
 errs.ExitCodeUsage   // 2
 
-// Error construction
+// Konstruksi error
 err := errs.UsageError("kiw build: unknown target")
 err = errs.FailureError("build failed")
 err = errs.NewError("custom", errs.ExitCode(3))
 
-// Context that survives the error chain
-err = errs.WithHint(err, "run 'kiw init' first")
+// Konteks yang tetap bertahan dalam rantai error
+err = errs.WithHint(err, "jalankan 'kiw init' terlebih dahulu")
 err = errs.WithAttrs(err, errs.Attr{Key: "path", Value: "krewire.yaml"})
 err = errs.WithStack(err)
 
 fmt.Println(errs.FormatTree(err))
 ```
 
-`errs.HintOf`, `errs.AttrsOf`, and `errs.StackOf` read that context back, so a
-single top-level handler can render a complete diagnostic tree.
+Fungsi `errs.HintOf`, `errs.AttrsOf`, dan `errs.StackOf` membaca kembali konteks tersebut, sehingga satu handler di level teratas mampu merender pohon diagnostik lengkap yang mudah dibaca.
 
 ---
 
-## Environment Resolution (`pkg/env`)
+## Resolusi Lingkungan (`pkg/env`)
 
-`pkg/env` owns the environment vocabulary; resolution itself comes from
-configuration (`env:` in `krewire.yaml`, `KIW_ENV`, or `--env`).
+`pkg/env` memiliki kosakata environment; resolusi nilai environment itu sendiri berasal dari konfigurasi (`env:` di `krewire.yaml`, variabel `KIW_ENV`, atau argumen `--env`).
 
 ```go
 import "github.com/krewire/krewire/pkg/env"
 
-current, err := env.ParseEnv(cfg.Env) // empty input yields env.DefaultEnv
+current, err := env.ParseEnv(cfg.Env) // input kosong menghasilkan env.DefaultEnv
 if err != nil {
 	return err
 }
 
 switch current {
 case env.EnvLocal:
-	// debug diagnostics and hot reload
+	// diagnostik debug dan live-reload
 case env.EnvProduction:
-	// strict TLS and secure cookies
+	// TLS ketat dan cookie aman
 case env.EnvTesting:
-	// deterministic fixtures
+	// fixture deterministik
 }
 ```
 
-`env.Envs()` exposes the canonical order (`local`, `production`, `testing`).
+`env.Envs()` mengekspos urutan kanonikal (`local`, `production`, `testing`).
 
 ---
 
-## Version Contract (`pkg/version`)
+## Kontrak Versi (`pkg/version`)
 
-Semantic versions are parsed, compared, and validated:
+Versi semantik di-parsing, dibandingkan, dan divalidasi:
 
 ```go
 import "github.com/krewire/krewire/pkg/version"
@@ -180,12 +166,12 @@ v := version.MustParseVersion("0.1.0")
 fmt.Println(v.String()) // 0.1.0
 
 if !v.IsCompatible(version.MustParseVersion("0.1.0")) {
-	return fmt.Errorf("incompatible version %s", v)
+	return fmt.Errorf("versi tidak kompatibel %s", v)
 }
 
-// Ecosystem-wide compatibility gate used by `kiw compat`.
+// Gerbang kompatibilitas seluruh ekosistem yang digunakan oleh `kiw compat`.
 err := version.CheckEcosystemCompatibility(required, actual)
 
-// Build watermark printed by `kiw version`.
+// Watermark build yang dicetak oleh perintah `kiw version`.
 sig := version.BuildSignature()
 ```

@@ -1,53 +1,53 @@
 ---
 title: "Terminal CLI & TUI (cli)"
-description: "Build developer command-line interfaces and interactive terminal applications in Go with pkg/tui, POSIX flag parsing, and strict exit code discipline."
+description: "Bangun antarmuka command-line pengembang dan aplikasi terminal interaktif di Go dengan pkg/tui, parsing flag POSIX, dan disiplin exit code yang ketat."
 date: "2026-10-08"
 ---
 
 # Terminal CLI & TUI (`cli`)
 
-The **`cli`** workload is engineered for authoring high-performance command-line utilities, system tools, developer CLIs, and interactive terminal user interfaces (TUIs).
+Workload **`cli`** dirancang khusus untuk membangun utilitas command-line berkinerja tinggi, perkakas sistem, CLI pengembang, dan terminal user interface (TUI) yang interaktif.
 
-Powered by `pkg/tui` and `pkg/term`, the `cli` workload delivers an Elm/Bubble Tea-inspired **Model-Update-View (MUV)** pattern with zero external dependencies and strict POSIX exit code discipline (`pkg/errs`).
-
----
-
-## Architectural Characteristics
-
-1. **Lightweight & Fast:** Starts in under 2ms with zero heavy CGo or third-party terminal dependencies.
-2. **Model-Update-View Architecture:** Stateful, reactive terminal applications with automatic double-buffering and cursor management.
-3. **Graceful Degradation:** Detects non-TTY pipes, CI environments (`CI=true`), and `NO_COLOR` settings, automatically disabling ANSI escape sequences.
-4. **POSIX Exit Codes:** Conforms to standard Unix conventions: `0` for success, `1` for general error, and `2` for command-line syntax errors.
+Ditenagai oleh `pkg/tui` dan `pkg/term`, workload `cli` menghadirkan pola **Model-Update-View (MUV)** yang terinspirasi dari Elm/Bubble Tea dengan nol dependensi eksternal serta disiplin exit code POSIX yang ketat (`pkg/errs`).
 
 ---
 
-## Scaffolding a `cli` Project
+## Karakteristik Arsitektur
+
+1. **Ringan & Cepat:** Memulai eksekusi dalam waktu kurang dari 2 md tanpa dependensi terminal pihak ketiga atau CGo yang berat.
+2. **Arsitektur Model-Update-View:** Aplikasi terminal reaktif berbasis state dengan double-buffering otomatis dan manajemen kursor.
+3. **Degradasi Anggun (Graceful Degradation):** Mendeteksi pipe non-TTY, lingkungan CI (`CI=true`), dan pengaturan `NO_COLOR`, secara otomatis menonaktifkan kode escape ANSI.
+4. **Exit Code POSIX:** Mematuhi konvensi standar Unix: `0` untuk sukses, `1` untuk kesalahan umum, dan `2` untuk kesalahan sintaks command-line.
+
+---
+
+## Scaffolding Proyek `cli`
 
 ```bash
 kiw new sysmon --cli
 cd sysmon
 ```
 
-Standard project directory structure:
+Struktur direktori standar proyek:
 
 ```text
 sysmon/
-├── krewire.yaml          # Project configuration
-├── go.mod                # Go module definition
+├── krewire.yaml          # Konfigurasi proyek
+├── go.mod                # Definisi modul Go
 ├── cmd/
 │   └── sysmon/
-│       └── main.go       # CLI entry point
+│       └── main.go       # Titik masuk CLI
 └── internal/
-    ├── commands/         # Subcommand handlers
-    ├── ui/               # TUI views and models
-    └── system/           # Core metrics collectors
+    ├── commands/         # Handler sub-perintah
+    ├── ui/               # Tampilan dan model TUI
+    └── system/           # Pengumpul metrik inti
 ```
 
 ---
 
-## Interactive TUI Implementation
+## Implementasi TUI Interaktif
 
-Here is an interactive terminal dashboard using `pkg/tui`:
+Berikut adalah contoh dasbor terminal interaktif menggunakan `pkg/tui`:
 
 ```go
 package main
@@ -123,7 +123,7 @@ func main() {
 
 ---
 
-## Configuration (`krewire.yaml`)
+## Konfigurasi (`krewire.yaml`)
 
 ```yaml
 project:
@@ -132,22 +132,21 @@ project:
   version: "0.1.0"
 
 build:
-  output: ".krewire/build"      # binary lands at .krewire/build/bin/sysmon
+  output: ".krewire/build"      # binary ditempatkan di .krewire/build/bin/sysmon
 ```
 
 ---
 
-## Running and Testing
+## Menjalankan dan Menguji
 
-Run the CLI during development:
+Jalankan CLI selama tahap pengembangan:
 
 ```bash
 kiw run -- --verbose
 ```
 
-Build the release binary:
+Build binary rilis:
 
 ```bash
 kiw build
 ./bin/sysmon
-```

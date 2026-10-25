@@ -1,32 +1,32 @@
 ---
-title: "AI & Agents (ai)"
-description: "Reference guide for Krewire's unified Go AI SDK: provider-agnostic abstractions, streaming SSE, structured outputs, and reflection-based tool calling."
+title: "AI & Agen Otonom (ai)"
+description: "Panduan referensi untuk SDK AI Go terpadu Krewire: abstraksi multi-provider, streaming SSE, output terstruktur, dan tool calling berbasis reflection."
 date: "2026-10-18"
 ---
 
-# AI & Agents (`pkg/ai`)
+# AI & Agen Otonom (`pkg/ai`)
 
-Import paths:
+Jalur impor (*import paths*):
 - `github.com/krewire/krewire/pkg/ai`
 - `github.com/krewire/krewire/pkg/ai/providers`
 
-The `ai` package provides a unified, provider-agnostic Go SDK for integrating Large Language Models into Krewire web apps, background workers, and autonomous agent workflows with zero external runtime dependencies.
+Paket `ai` menyediakan SDK Go terpadu dan agnostik terhadap penyedia (*provider-agnostic*) untuk mengintegrasikan model bahasa besar (LLM) ke dalam aplikasi web Krewire, worker latar belakang, dan alur agen otonom tanpa dependensi runtime eksternal.
 
 ---
 
-## 1. Supported Providers
+## 1. Provider yang Didukung
 
-The SDK supports leading commercial and local open-source LLM providers out of the box:
+SDK ini mendukung penyedia komersial terkemuka maupun model open-source lokal secara bawaan:
 
 - **Google Gemini** (`providers.NewGemini(apiKey)`)
 - **Anthropic Claude** (`providers.NewAnthropic(apiKey)`)
-- **OpenAI & Compatible** (`providers.NewOpenAI(apiKey, opts...)` — works with OpenAI, Groq, DeepSeek, vLLM)
-- **Ollama** (`providers.NewOllama(opts...)` — local Llama 3, Qwen, Mistral, DeepSeek)
-- **Mock Provider** (`providers.NewMock(content)` — 100% offline unit test fixture)
+- **OpenAI & Kompatibel** (`providers.NewOpenAI(apiKey, opts...)` — dapat digunakan bersama OpenAI, Groq, DeepSeek, vLLM)
+- **Ollama** (`providers.NewOllama(opts...)` — model lokal seperti Llama 3, Qwen, Mistral, DeepSeek)
+- **Mock Provider** (`providers.NewMock(content)` — fixture pengujian unit 100% offline)
 
 ---
 
-## 2. Basic Chat & Prompt Completion
+## 2. Percakapan Dasar & Penyelesaian Prompt
 
 ```go
 package main
@@ -43,10 +43,10 @@ import (
 func main() {
 	provider := providers.NewOpenAI(os.Getenv("OPENAI_API_KEY"))
 	client := ai.NewClient(provider, "gpt-4o").
-		WithSystem("You are a helpful software architecture assistant.")
+		WithSystem("Anda adalah asisten arsitektur perangkat lunak yang andal.")
 
-	// Simple completion
-	answer, err := client.Complete(context.Background(), "Explain Krewire downward dependencies.")
+	// Penyelesaian prompt sederhana
+	answer, err := client.Complete(context.Background(), "Jelaskan aturan dependensi menurun Krewire.")
 	if err != nil {
 		panic(err)
 	}
@@ -56,13 +56,13 @@ func main() {
 
 ---
 
-## 3. Type-Safe Structured Outputs (`GenerateObject[T]`)
+## 3. Output Terstruktur dengan Type-Safety (`GenerateObject[T]`)
 
-Extract strictly typed Go structs directly from LLM completions using reflection and JSON schema generation:
+Mengekstrak struct Go bertipe ketat secara langsung dari hasil komplesi LLM menggunakan reflection dan pembuatan skema JSON:
 
 ```go
 type UserReport struct {
-	Summary    string   `json:"summary" description:"Executive summary of the user issue"`
+	Summary    string   `json:"summary" description:"Ringkasan eksekutif laporan pengguna"`
 	Severity   string   `json:"severity" description:"low, medium, high, critical"`
 	Categories []string `json:"categories"`
 	Actionable bool     `json:"actionable"`
@@ -72,36 +72,36 @@ report, err := ai.GenerateObject[UserReport](
 	ctx,
 	provider,
 	"claude-3-5-sonnet-20241022",
-	"Analyze error logs: database timeout on pool exhaustion",
+	"Analisis log error berikut: database timeout on pool exhaustion",
 )
 if err != nil {
 	log.Fatal(err)
 }
 
-fmt.Printf("Severity: %s (Actionable: %v)\n", report.Severity, report.Actionable)
+fmt.Printf("Tingkat Keparahan: %s (Dapat Ditindaklanjuti: %v)\n", report.Severity, report.Actionable)
 ```
 
 ---
 
-## 4. Reflection-Based Tool & Function Calling
+## 4. Pemanggilan Fungsi & Alat (*Tool Calling*) Berbasis Reflection
 
-Register standard Go functions as LLM tools without manually writing JSON Schema definitions:
+Mendaftarkan fungsi standar Go sebagai alat (tools) bagi LLM tanpa perlu menulis definisi JSON Schema secara manual:
 
 ```go
 type SearchQuery struct {
-	Keywords []string `json:"keywords" description:"Search keywords"`
-	Limit    int      `json:"limit" description:"Maximum results to return"`
+	Keywords []string `json:"keywords" description:"Kata kunci pencarian"`
+	Limit    int      `json:"limit" description:"Jumlah maksimal hasil yang dikembalikan"`
 }
 
 func searchDocs(ctx context.Context, args SearchQuery) ([]string, error) {
-	// Query local documentation index...
-	return []string{"Result 1", "Result 2"}, nil
+	// Menjalankan kueri ke indeks dokumentasi lokal...
+	return []string{"Hasil 1", "Hasil 2"}, nil
 }
 
-// Convert Go func into a validated AI Tool
-searchTool, err := ai.NewTool("search_docs", "Search documentation index", searchDocs)
+// Mengonversi fungsi Go menjadi Alat AI yang tervalidasi
+searchTool, err := ai.NewTool("search_docs", "Cari indeks dokumentasi", searchDocs)
 
-// Pass tool to client or completion request
+// Mendaftarkan alat ke client
 client.WithTools(searchTool)
 ```
 
@@ -109,19 +109,19 @@ client.WithTools(searchTool)
 
 ## 5. Streaming & Server-Sent Events (SSE)
 
-Stream tokens in real-time to web components and HTTP route handlers:
+Mengalirkan token secara real-time ke komponen web dan handler rute HTTP:
 
 ```go
 func handleStream(w http.ResponseWriter, r *http.Request) {
 	stream, err := client.Stream(r.Context(), []ai.Message{
-		ai.UserMessage("Stream an explanation of Go concurrency"),
+		ai.UserMessage("Alirkan penjelasan mengenai konkurensi di Go"),
 	})
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	// Flushes SSE events: event: delta, event: tool_call, event: done
+	// Mengirim event SSE: event: delta, event: tool_call, event: done
 	_ = ai.ServeSSE(w, stream)
 }
 ```

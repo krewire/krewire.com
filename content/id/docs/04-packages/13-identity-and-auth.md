@@ -1,30 +1,30 @@
 ---
-title: "Enterprise Identity & Auth Platform"
-description: "Architecture, PBKDF2 hashing, RFC 6238 TOTP 2FA, enterprise SSO (OIDC/SAML2), RBAC, and web UI handlers in krewire/auth."
+title: "Platform Identitas & Autentikasi Enterprise"
+description: "Arsitektur, hashing PBKDF2, TOTP 2FA RFC 6238, SSO enterprise (OIDC/SAML2), RBAC, dan web UI handler di krewire/auth."
 date: "2026-10-24"
 ---
 
-# Enterprise Identity & Auth Platform (`github.com/krewire/auth`)
+# Platform Identitas & Autentikasi Enterprise (`github.com/krewire/auth`)
 
-`krewire/auth` is the dedicated enterprise monorepo providing full-spectrum identity, Single Sign-On (SSO), multi-factor authentication, and access governance for the Krewire ecosystem.
+`krewire/auth` adalah monorepo enterprise terdedikasi yang menyediakan spektrum penuh manajemen identitas, Single Sign-On (SSO), autentikasi multifaktor, dan tata kelola akses untuk ekosistem Krewire.
 
-## Subsystems
+## Subsistem
 
 1. **`pkg/identity`**:
-   - OWASP-recommended PBKDF2-HMAC-SHA256 password hashing (600,000 iterations).
-   - Time-based One-Time Passwords (TOTP RFC 6238) with `otpauth://` provisioning URIs.
-   - 8-count emergency backup recovery codes with SHA-256 hash validation.
-   - Time-limited, single-use password reset token store.
+   - Hashing kata sandi PBKDF2-HMAC-SHA256 sesuai rekomendasi OWASP (600.000 iterasi).
+   - Time-based One-Time Passwords (TOTP RFC 6238) dengan URI provisi `otpauth://`.
+   - Kode pemulihan darurat cadangan (8 kode) dengan validasi hash SHA-256.
+   - Toko token reset kata sandi sekali pakai yang dibatasi waktu.
 2. **`pkg/sso`**:
-   - Generic OIDC/OAuth2 with PKCE (RFC 7636).
-   - Pre-configured identity provider presets: Google Workspace, GitHub, Microsoft Azure AD / Entra ID.
-   - SAML 2.0 SP metadata generation and cryptographic assertion validation.
+   - OIDC/OAuth2 generik dengan PKCE (RFC 7636).
+   - Preset penyedia identitas bawaan: Google Workspace, GitHub, Microsoft Azure AD / Entra ID.
+   - Pembuatan metadata SP SAML 2.0 dan validasi cryptographic assertion.
 3. **`pkg/rbac`**:
-   - Hierarchical roles (`superadmin` > `org_admin` > `developer` > `viewer`).
-   - Granular `resource:action` permissions with wildcard support (`workloads:*`, `projects:deploy`).
-   - Multi-tenant boundary isolation check (`evaluator.Can(ctx, user, action, tenant)`).
+   - Peran hierarkis (`superadmin` > `org_admin` > `developer` > `viewer`).
+   - Izin granular `resource:action` dengan dukungan wildcard (`workloads:*`, `projects:deploy`).
+   - Pemeriksaan isolasi batas multi-tenant (`evaluator.Can(ctx, user, action, tenant)`).
 4. **`pkg/webauth`**:
-   - Ready-to-mount HTTP handlers with clean, responsive dark/light UI:
+   - Handler HTTP siap pasang dengan antarmuka web responsif dark/light:
      - `GET /login`, `POST /login`
      - `GET /register`, `POST /register`
      - `GET /forgot-password`, `POST /forgot-password`

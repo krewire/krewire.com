@@ -1,17 +1,17 @@
 ---
-title: "Caching & Mail Systems"
-description: "High-performance in-memory and Redis caching alongside multi-driver transactional email dispatch."
+title: "Sistem Cache & Email"
+description: "Caching performa tinggi in-memory dan Redis serta pengiriman email transaksional dengan multi-driver."
 date: "2026-10-24"
 ---
 
-# Caching & Mail Systems (`pkg/cache`, `pkg/mail`)
+# Sistem Cache & Email (`pkg/cache`, `pkg/mail`)
 
 ## 1. Multi-Driver Cache (`pkg/cache`, `pkg/redis`)
 
-`pkg/cache` delivers a unified key-value caching abstraction with support for TTL, expiration sweeps, and distributed invalidation:
+`pkg/cache` menghadirkan abstraksi caching key-value terpadu dengan dukungan TTL, pembersihan kedaluwarsa berkala, dan invalidasi terdistribusi:
 
-- **`memory`**: High-speed, in-process thread-safe cache using Go mutexes.
-- **`redis`**: Distributed caching engine using the native RESP protocol (`pkg/redis`) with connection pooling and pipeline commands.
+- **`memory`**: Cache in-process thread-safe berkecepatan tinggi menggunakan mutex Go.
+- **`redis`**: Engine caching terdistribusi menggunakan protokol asli RESP (`pkg/redis`) dengan connection pooling dan pipelining perintah.
 
 ```go
 cacheStore, _ := cache.New(cache.Config{
@@ -19,24 +19,24 @@ cacheStore, _ := cache.New(cache.Config{
     Host:   "127.0.0.1:6379",
 })
 
-// Set with 10-minute TTL
+// Menyimpan entri dengan TTL 10 menit
 _ = cacheStore.Set(ctx, "session:usr_123", userData, 10*time.Minute)
 
-// Get cached entry
+// Mengambil entri dari cache
 val, err := cacheStore.Get(ctx, "session:usr_123")
 ```
 
-## 2. Multi-Driver Transactional Mailer (`pkg/mail`)
+## 2. Mailer Transaksional Multi-Driver (`pkg/mail`)
 
-`pkg/mail` dispatches transactional emails across different providers without rewriting business code:
+`pkg/mail` mengirimkan email transaksional ke berbagai penyedia tanpa perlu mengubah kode logika bisnis:
 
-| Driver | Best For | Authentication |
+| Driver | Sangat Cocok Untuk | Autentikasi |
 |---|---|---|
-| `memory` | Unit and integration testing | In-memory message capture |
-| `smtp` | Self-hosted Postfix/Exim or Google Workspace | SMTP TLS credentials |
-| `resend` | Modern developer email API | API Key via HTTP |
-| `sendgrid` | High-volume transactional delivery | Bearer API token |
-| `postmark` | Strict deliverability & password resets | Server API Token |
+| `memory` | Pengujian unit dan integrasi | Penangkapan pesan di dalam memori |
+| `smtp` | Self-hosted Postfix/Exim atau Google Workspace | Kredensial SMTP TLS |
+| `resend` | API email modern untuk pengembang | Kunci API via HTTP |
+| `sendgrid` | Pengiriman transaksional volume tinggi | Token Bearer API |
+| `postmark` | Keterkiriman ketat & reset kata sandi | Token API Server |
 
 ```go
 mailer := mail.New(mail.Config{
@@ -47,7 +47,7 @@ mailer := mail.New(mail.Config{
 
 err := mailer.Send(ctx, mail.Message{
     To:      []string{"developer@example.com"},
-    Subject: "Welcome to Krewire",
-    HTML:    "<h1>Welcome!</h1><p>Your deployment is ready.</p>",
+    Subject: "Selamat Datang di Krewire",
+    HTML:    "<h1>Selamat Datang!</h1><p>Deployment Anda telah siap digunakan.</p>",
 })
 ```

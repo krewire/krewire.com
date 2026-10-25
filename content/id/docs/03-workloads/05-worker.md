@@ -1,50 +1,50 @@
 ---
-title: "Background Worker (worker)"
-description: "Asynchronous job processing, recurring cron schedules, retry policies with backoff, and graceful shutdown in Go with pkg/cloud/worker."
+title: "Worker Latar Belakang (worker)"
+description: "Pemrosesan tugas asinkron, jadwal cron berulang, kebijakan retry dengan backoff, dan graceful shutdown di Go dengan pkg/cloud/worker."
 date: "2026-10-08"
 ---
 
-# Background Worker (`worker`)
+# Worker Latar Belakang (`worker`)
 
-The **`worker`** workload is designed for running long-lived background daemons, asynchronous job consumers, and scheduled cron workflows.
+Workload **`worker`** dirancang untuk menjalankan daemon latar belakang berumur panjang (long-lived), consumer antrean tugas asinkron, dan alur kerja terjadwal berbasis cron.
 
-Powered by `pkg/cloud/worker` and `pkg/resilience`, workers operate reliably under high load with automatic retry policies, exponential backoff, dead-letter queues (DLQ), and graceful shutdown handling.
-
----
-
-## Architectural Characteristics
-
-1. **Pluggable Queue Backends:** Standard queue interfaces with drivers for in-memory channels (for testing/development), Redis, NATS, and AWS SQS.
-2. **Resilience & Retry Policies:** Configurable max attempts, jittered exponential backoff, and DLQ dispatch for poison pill jobs.
-3. **Cron Scheduler:** Precision scheduled job triggers with standard 5-part cron syntax.
-4. **Clean OS Signal Handling:** Drains in-flight jobs gracefully when receiving `SIGINT` or `SIGTERM`, preventing data corruption.
+Ditenagai oleh `pkg/cloud/worker` dan `pkg/resilience`, worker beroperasi secara andal di bawah beban tinggi dengan kebijakan retry otomatis, backoff eksponensial, dead-letter queue (DLQ), dan penanganan shutdown yang anggun (graceful shutdown).
 
 ---
 
-## Scaffolding a `worker` Project
+## Karakteristik Arsitektur
+
+1. **Backend Antrean Pluggable:** Antarmuka antrean standar dengan driver untuk channel in-memory (untuk pengujian/pengembangan lokal), Redis, NATS, dan AWS SQS.
+2. **Ketahanan & Kebijakan Retry:** Batas percobaan maksimal yang dapat dikonfigurasi, backoff eksponensial dengan jitter, dan pengiriman ke DLQ untuk pesan bermasalah (poison pill).
+3. **Penjadwal Cron:** Pemicu tugas terjadwal presisi menggunakan sintaks cron 5-bagian standar.
+4. **Penanganan Sinyal OS yang Bersih:** Menyelesaikan tugas yang sedang berjalan secara anggun saat menerima sinyal `SIGINT` atau `SIGTERM`, mencegah terjadinya korupsi data.
+
+---
+
+## Scaffolding Proyek `worker`
 
 ```bash
 kiw new email-worker --worker
 cd email-worker
 ```
 
-Directory structure:
+Struktur direktori:
 
 ```text
 email-worker/
-├── krewire.yaml          # Project configuration
+├── krewire.yaml          # Konfigurasi proyek
 ├── go.mod
 ├── cmd/
 │   └── worker/
-│       └── main.go       # Worker entry point
+│       └── main.go       # Titik masuk worker
 └── internal/
-    ├── jobs/             # Job payload definitions & handlers
-    └── services/         # Third-party email API clients
+    ├── jobs/             # Definisi payload tugas & handler
+    └── services/         # Klien API email pihak ketiga
 ```
 
 ---
 
-## Worker Implementation
+## Implementasi Worker
 
 ```go
 package main
@@ -69,13 +69,13 @@ type SendEmailPayload struct {
 func main() {
 	logger := slog.New(slog.NewJSONHandler(os.Stdout, nil))
 
-	// Initialize the worker dispatcher
+	// Inisialisasi dispatcher worker
 	dispatcher := worker.NewDispatcher(worker.Config{
 		Concurrency: 10,
 		Logger:      logger,
 	})
 
-	// Register a job handler with retry policy
+	// Daftarkan handler tugas dengan kebijakan retry
 	dispatcher.RegisterHandler("send_email", func(ctx context.Context, job worker.Job) error {
 		var payload SendEmailPayload
 		if err := job.Decode(&payload); err != nil {
@@ -84,7 +84,7 @@ func main() {
 
 		logger.Info("Processing email job", "recipient", payload.Recipient)
 
-		// Simulate business logic
+		// Simulasi logika bisnis
 		if payload.Recipient == "" {
 			return fmt.Errorf("invalid recipient")
 		}
@@ -96,13 +96,13 @@ func main() {
 		MaxBackoff:     5 * time.Second,
 	}))
 
-	// Register a recurring cron task (every 5 minutes)
+	// Daftarkan tugas cron berulang (setiap 5 menit)
 	dispatcher.RegisterCron("*/5 * * * *", func(ctx context.Context) error {
 		logger.Info("Running 5-minute health check")
 		return nil
 	})
 
-	// Start consuming tasks until OS interrupt
+	// Mulai memproses tugas hingga interupsi OS diterima
 	if err := dispatcher.Run(context.Background()); err != nil {
 		logger.Error("Worker terminated with error", "err", err)
 		os.Exit(1)
@@ -112,7 +112,7 @@ func main() {
 
 ---
 
-## Configuration (`krewire.yaml`)
+## Konfigurasi (`krewire.yaml`)
 
 ```yaml
 project:
@@ -127,22 +127,19 @@ worker:
     - email
 ```
 
-`concurrency` and `queues` are the only `worker:` keys. The queue backend —
-in-memory, KV-backed, or your own `pkg/cloud/worker.Queue` implementation — is
-selected in Go code, not in `krewire.yaml`.
+`concurrency` dan `queues` adalah satu-satunya kunci di bawah `worker:`. Backend antrean—baik in-memory, berbasis KV, atau implementasi kustom `pkg/cloud/worker.Queue` milik Anda—dipilih langsung di dalam kode Go, bukan di `krewire.yaml`.
 
 ---
 
-## Running Workers
+## Menjalankan Worker
 
-Run the worker daemon locally:
+Jalankan daemon worker secara lokal:
 
 ```bash
 kiw worker
 ```
 
-Run with custom concurrency or queue:
+Jalankan dengan konkurensi atau antrean kustom:
 
 ```bash
 kiw worker --concurrency 16
-```

@@ -1,24 +1,24 @@
 ---
 title: "Database & Multi-Driver ORM"
-description: "Reference guide for Krewire's multi-driver ORM: SQLite, MySQL, PostgreSQL, MongoDB, and Elasticsearch with fluent query builder and migration helpers."
+description: "Panduan referensi untuk ORM multi-driver Krewire: SQLite, MySQL, PostgreSQL, MongoDB, dan Elasticsearch dengan fluent query builder serta migrasi skema."
 date: "2026-10-24"
 ---
 
 # Database & Multi-Driver ORM (`pkg/orm`)
 
-`pkg/orm` provides an expressive, database-agnostic Object-Relational Mapping (ORM) and query builder designed for Go's type-safe ecosystem.
+`pkg/orm` menyediakan Object-Relational Mapping (ORM) ekspresif dan query builder agnostik database yang dirancang untuk ekosistem Go yang aman secara tipe (*type-safe*).
 
-## Supported Drivers
+## Driver yang Didukung
 
-| Driver | Target Database | Protocol / Architecture |
+| Driver | Target Database | Protokol / Karakteristik |
 |---|---|---|
-| `sqlite` | SQLite 3 | Embedded, zero-CGO, ideal for edge nodes and local development |
-| `mysql` | MySQL 8.0+ / MariaDB | Standard relational protocol with connection pooling |
-| `postgres` | PostgreSQL 14+ | Advanced relational features, JSONB, and SSL modes |
-| `mongodb` | MongoDB 6.0+ | Document-oriented NoSQL storage with BSON mapping |
-| `elasticsearch` | Elasticsearch 8+ / OpenSearch | Full-text search and analytical document indexing |
+| `sqlite` | SQLite 3 | Tersemat (*embedded*), bebas CGO, sangat ideal untuk node edge dan pengembangan lokal |
+| `mysql` | MySQL 8.0+ / MariaDB | Protokol relasional standar dengan pooling koneksi otomatis |
+| `postgres` | PostgreSQL 14+ | Fitur relasional tingkat lanjut, tipe data JSONB, dan enkripsi SSL |
+| `mongodb` | MongoDB 6.0+ | Penyimpanan NoSQL berorientasi dokumen dengan pemetaan BSON |
+| `elasticsearch` | Elasticsearch 8+ / OpenSearch | Pencarian teks lengkap (*full-text search*) dan pengindeksan dokumen analitis |
 
-## Quick Usage
+## Contoh Penggunaan Cepat
 
 ```go
 package main
@@ -39,7 +39,7 @@ type User struct {
 func main() {
     ctx := context.Background()
     
-    // Connect to SQLite (or postgres/mysql via DSN)
+    // Terhubung ke SQLite (atau postgres/mysql via DSN)
     db, err := orm.Open(orm.Config{
         Driver: "sqlite",
         DSN:    ":memory:",

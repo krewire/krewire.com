@@ -1,28 +1,25 @@
 ---
 title: "Web Runtime & WASM (pkg/runtime)"
-description: "Author client-side reactive web applications in Go compiled to WebAssembly: virtual DOM diffing, hooks, component registry, SSR hydration markers, and a reproducible WASM build pipeline."
+description: "Menulis aplikasi web reaktif di sisi klien menggunakan Go yang dikompilasi ke WebAssembly: diffing virtual DOM, hooks, registri komponen, penanda hidrasi SSR, dan pipeline build WASM yang dapat direproduksi."
 date: "2026-10-25"
 ---
 
 # Web Runtime & WASM (`pkg/runtime`)
 
-The `pkg/runtime` family compiles Go to WebAssembly (`GOOS=js GOARCH=wasm`) so
-interactive islands can share the same component model as server-rendered
-`.kiw` pages. It is a **library**, not a workload kind: a WASM frontend ships
-inside an `app` or `site` project and is built with `kiw build --target wasm`.
+Keluarga package `pkg/runtime` mengompilasi kode Go ke WebAssembly (`GOOS=js GOARCH=wasm`) agar komponen pulau interaktif (interactive islands) dapat berbagi model komponen yang sama dengan halaman `.kiw` yang dirender di sisi server (SSR). Ini adalah sebuah **pustaka (library)**, bukan jenis beban kerja (workload kind): antarmuka frontend WASM dikirimkan di dalam proyek `app` atau `site` dan dibangun menggunakan perintah `kiw build --target wasm`.
 
 ---
 
-## Subpackage Layout
+## Tata Letak Subpackage
 
 ```text
 pkg/runtime/
-├── vdom/         # Immutable virtual DOM: VNode, El, Text, Component, Diff, RenderHTML
-├── component/    # Component model, hooks, event handlers, component registry
-├── mount/        # SSR hydration contract shared by the emitter and the client boot
-├── boot/         # Scans data-kiw-mount markers and hydrates registered components
-├── schedule/     # Per-frame render batching (requestAnimationFrame on js/wasm)
-└── build/        # BuildWASM: go build wrapper with hashing and diagnostics
+├── vdom/         # Virtual DOM immutable: VNode, El, Text, Component, Diff, RenderHTML
+├── component/    # Model komponen, hooks, event handler, registri komponen
+├── mount/        # Kontrak hidrasi SSR yang digunakan bersama oleh pembuat (emitter) dan boot klien
+├── boot/         # Memindai penanda data-kiw-mount dan menghidrasi komponen terdaftar
+├── schedule/     # Pengelompokan render per-frame (requestAnimationFrame pada js/wasm)
+└── build/        # BuildWASM: pembungkus go build dengan hashing dan diagnostik
 ```
 
 ---
@@ -33,23 +30,21 @@ pkg/runtime/
 import "github.com/krewire/krewire/pkg/runtime/vdom"
 
 tree := vdom.El("section", map[string]string{"class": "hero"},
-	vdom.El("h1", nil, vdom.Text("Hello from Go")),
+	vdom.El("h1", nil, vdom.Text("Halo dari Go")),
 	vdom.Component("Counter", "counter-1", map[string]string{"initial": "0"}),
 )
 
-html := vdom.RenderHTML(tree) // server-side rendering
-patches := vdom.Diff(oldTree, tree) // client-side reconciliation
+html := vdom.RenderHTML(tree)        // server-side rendering (SSR)
+patches := vdom.Diff(oldTree, tree) // rekonsiliasi sisi klien
 ```
 
-`VNode` is an immutable description. `RenderHTML` and `Diff` both funnel props
-through `NormalizeProps`, so server output and client reconciliation agree on
-attribute names, classes, and event markers.
+`VNode` adalah deskripsi struktur pohon yang bersifat immutable. Fungsi `RenderHTML` dan `Diff` sama-sama menyalurkan properti melalui `NormalizeProps`, sehingga output server dan rekonsiliasi klien memiliki kesesuaian identik pada nama atribut, kelas CSS, serta penanda event.
 
 ---
 
-## Component Model (`pkg/runtime/component`)
+## Model Komponen (`pkg/runtime/component`)
 
-A component is anything that renders a virtual tree:
+Komponen adalah entitas apa pun yang merender pohon virtual:
 
 ```go
 type Component interface {
@@ -57,8 +52,7 @@ type Component interface {
 }
 ```
 
-Stateful logic uses generic hooks, which bind to the `Fiber` currently being
-rendered and enforce a stable call order:
+Logika berstatus (stateful) menggunakan hooks generik yang terikat ke `Fiber` yang sedang dirender dan menegakkan urutan panggilan yang stabil:
 
 ```go
 import (
@@ -79,8 +73,8 @@ func (c *Counter) Render() *vdom.VNode {
 	})
 
 	return vdom.El("div", map[string]string{"class": "counter"},
-		vdom.El("h2", nil, vdom.Text(fmt.Sprintf("Count: %d", count))),
-		vdom.El("button", map[string]string{"data-kiw-on": "click:inc"}, vdom.Text("Increment")),
+		vdom.El("h2", nil, vdom.Text(fmt.Sprintf("Hitungan: %d", count))),
+		vdom.El("button", map[string]string{"data-kiw-on": "click:inc"}, vdom.Text("Tambah")),
 	)
 }
 
@@ -91,17 +85,13 @@ func init() {
 }
 ```
 
-Available hooks: `UseState`, `UseRef`, `UseMemo`, `UseEffect`, `UseEvent`.
-Lifecycle participation is opt-in through the `Mounter`, `Unmounter`, and
-`ShouldUpdater` capability interfaces. Calling a hook outside a render panics
-with `*component.HookRuleError`, which surfaces the ordering mistake instead of
-silently corrupting state.
+Hooks yang tersedia: `UseState`, `UseRef`, `UseMemo`, `UseEffect`, `UseEvent`. Partisipasi siklus hidup bersifat pilihan melalui antarmuka kapabilitas `Mounter`, `Unmounter`, dan `ShouldUpdater`. Memanggil hook di luar fungsi render akan memicu panic dengan galat `*component.HookRuleError`, yang secara eksplisit memunculkan kesalahan urutan panggilan alih-alih merusak state secara diam-diam.
 
 ---
 
-## SSR Hydration (`pkg/runtime/mount` and `pkg/runtime/boot`)
+## Hidrasi SSR (`pkg/runtime/mount` dan `pkg/runtime/boot`)
 
-The server emits a fragment wrapped in a container carrying three attributes:
+Server mengeluarkan fragmen HTML yang dibungkus dalam kontainer dengan tiga atribut khusus:
 
 ```html
 <div data-kiw-mount="Counter" data-kiw-hydrate="load" data-kiw-props='{"initial":0}'>
@@ -109,14 +99,11 @@ The server emits a fragment wrapped in a container carrying three attributes:
 </div>
 ```
 
-`boot` scans for those markers on the client, instantiates the registered
-component, and seeds the fiber with the server-rendered DOM so the first render
-diffs instead of re-rendering. Later updates coalesce through `schedule`, which
-batches notifications into one flush per animation frame.
+`boot` memindai penanda-penanda tersebut pada sisi klien, membuat instansiasi komponen yang terdaftar, dan mengisikan fiber awal dengan DOM hasil render server sehingga proses render pertama melakukan diffing alih-alih rendering ulang penuh. Pembaruan berikutnya digabungkan melalui `schedule`, yang mengelompokkan notifikasi ke dalam satu proses flush per frame animasi (`requestAnimationFrame`).
 
 ---
 
-## Building a WASM Module (`pkg/runtime/build`)
+## Membangun Modul WASM (`pkg/runtime/build`)
 
 ```go
 import "github.com/krewire/krewire/pkg/runtime/build"
@@ -133,15 +120,12 @@ if err != nil {
 fmt.Println(artifacts.WASM, artifacts.JS, artifacts.Digest)
 ```
 
-`BuildWASM` wraps `go build` with `GOOS=js GOARCH=wasm`, copies `wasm_exec.js`,
-content-hashes the module, and returns actionable diagnostics for toolchain and
-version mismatches.
+`BuildWASM` membungkus `go build` dengan flag lingkungan `GOOS=js GOARCH=wasm`, menyalin skrip perekat `wasm_exec.js`, menghasilkan hash konten modul, serta menyediakan diagnostik komprehensif saat terjadi ketidakcocokan toolchain maupun versi.
 
-From the CLI, the same pipeline is reachable as a build target:
+Dari CLI `kiw`, pipeline yang sama dapat dipanggil langsung sebagai target build:
 
 ```bash
 kiw build --target wasm
 ```
 
-The resulting module and JS glue are placed in your output directory, ready to be
-mounted into any HTML page served by the `app` or `site` workload.
+Modul biner hasil kompilasi dan skrip perekat JS akan ditempatkan di direktori output Anda, siap dipasang ke halaman HTML mana pun yang dilayani oleh workload `app` atau `site`.

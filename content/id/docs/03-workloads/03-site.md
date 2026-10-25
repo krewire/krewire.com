@@ -1,59 +1,59 @@
 ---
-title: "Static Site Generator (site)"
-description: "High-performance static site compilation with file-based routing, single-file .kiw components, compile-time scoped CSS, and zero client-side JavaScript."
+title: "Generator Situs Statis (site)"
+description: "Kompilasi situs statis berkinerja tinggi dengan perutean berbasis file, komponen .kiw berkas-tunggal, scoped CSS saat kompilasi, dan nol JavaScript sisi klien."
 date: "2026-10-08"
 ---
 
-# Static Site Generator (`site`)
+# Generator Situs Statis (`site`)
 
-The **`site`** workload provides an ultra-fast static site generator designed for marketing websites, landing pages, blogs, and public documentation portals.
+Workload **`site`** menyediakan generator situs statis (SSG) super cepat yang dirancang untuk situs web pemasaran, landing page, blog, dan portal dokumentasi publik.
 
-Powered by `pkg/web/ssg` and the `.kiw` DSL, the `site` compiler transforms Single-File Components (SFC) into optimized, semantic HTML and CSS with **zero runtime JavaScript overhead by default**.
-
----
-
-## Architectural Characteristics
-
-1. **File-Based Routing:** Pages map directly from the filesystem hierarchy:
-   - `pages/index.kiw` → `/index.html` (served at `/`)
-   - `pages/about.kiw` → `/about.html` (served at `/about`)
-   - `pages/blog/[slug].kiw` → Dynamic slug generation from Markdown frontmatter.
-2. **Compile-Time Scoped CSS:** Styles declared in `<style>` blocks are automatically hashed and scoped with `data-kiw-component` attributes. No CSS collisions or complex naming conventions needed.
-3. **No Build Step Bloat:** Compiles dozens of pages in under 15ms using pure Go. No Node.js or `node_modules` required.
-4. **Tailwind CSS Plugin:** Native integration with Tailwind CSS: when `tailwind.config.js` exists, `kiw` automatically triggers minified utility generation.
+Ditenagai oleh `pkg/web/ssg` dan DSL `.kiw`, compiler `site` mengubah Single-File Components (SFC) menjadi HTML dan CSS semantik yang teroptimasi dengan **nol overhead JavaScript runtime secara default**.
 
 ---
 
-## Scaffolding a `site` Project
+## Karakteristik Arsitektur
+
+1. **Perutean Berbasis File:** Halaman dipetakan langsung dari hierarki sistem file:
+   - `pages/index.kiw` → `/index.html` (disajikan di `/`)
+   - `pages/about.kiw` → `/about.html` (disajikan di `/about`)
+   - `pages/blog/[slug].kiw` → Pembuatan slug dinamis dari frontmatter Markdown.
+2. **Scoped CSS Saat Kompilasi:** Gaya visual yang dideklarasikan dalam blok `<style>` di-hash secara otomatis dan diberi cakupan (scoped) dengan atribut `data-kiw-component`. Tidak ada tabrakan CSS atau perlunya konvensi penamaan yang rumit.
+3. **Bebas Bloat Langkah Build:** Mengompilasi puluhan halaman dalam waktu kurang dari 15 md menggunakan Go murni. Tidak memerlukan Node.js atau folder `node_modules`.
+4. **Plugin Tailwind CSS:** Integrasi bawaan dengan Tailwind CSS: jika `tailwind.config.js` tersedia, `kiw` secara otomatis memicu pembuatan utility class yang diminifikasi.
+
+---
+
+## Scaffolding Proyek `site`
 
 ```bash
 kiw new my-site --site
 cd my-site
 ```
 
-Standard directory layout:
+Tata letak direktori standar:
 
 ```text
 my-site/
-├── krewire.yaml          # Project configuration
+├── krewire.yaml          # Konfigurasi proyek
 ├── layouts/
-│   └── Base.kiw          # HTML document layout
+│   └── Base.kiw          # Layout dokumen HTML
 ├── pages/
-│   ├── index.kiw         # Home page
-│   └── about.kiw         # About page
+│   ├── index.kiw         # Halaman utama
+│   └── about.kiw         # Halaman tentang
 ├── components/
-│   ├── Navbar.kiw        # Reusable navigation
-│   └── Footer.kiw        # Reusable footer
-├── public/               # Raw static files copied verbatim
+│   ├── Navbar.kiw        # Navigasi pakai-ulang
+│   └── Footer.kiw        # Footer pakai-ulang
+├── public/               # File statis mentah yang disalin langsung
 │   ├── favicon.svg
 │   └── robots.txt
 └── assets/
-    └── tailwind.css      # Optional Tailwind stylesheet
+    └── tailwind.css      # Stylesheet Tailwind opsional
 ```
 
 ---
 
-## Writing a Component (`pages/index.kiw`)
+## Menulis Komponen (`pages/index.kiw`)
 
 ```html
 ---
@@ -110,9 +110,9 @@ p {
 
 ---
 
-## Layout Document (`layouts/Base.kiw`)
+## Dokumen Layout (`layouts/Base.kiw`)
 
-The layout wraps pages with HTML metadata, global styles, and slots:
+Layout membungkus halaman dengan metadata HTML, gaya visual global, dan slot konten:
 
 ```html
 <!doctype html>
@@ -133,20 +133,17 @@ The layout wraps pages with HTML metadata, global styles, and slots:
 
 ---
 
-## Development & Deployment
+## Pengembangan & Deployment
 
-### Start Dev Server with Live Reload
+### Menjalankan Dev Server dengan Live Reload
 
 ```bash
 kiw dev
 ```
 
-Visit `http://localhost:8080`. Edits to `.kiw` files, layouts, and components trigger hot reloading in `< 10ms`.
+Buka `http://localhost:8080`. Perubahan pada file `.kiw`, layout, dan komponen akan memicu reload instan dalam waktu `< 10ms`.
 
-### Build Static Site
+### Membangun Situs Statis
 
 ```bash
 kiw build
-```
-
-The output in `.krewire/build` is completely static and can be deployed directly to GitHub Pages, Cloudflare Pages, AWS S3, or Nginx.

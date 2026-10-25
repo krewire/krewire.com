@@ -1,31 +1,31 @@
 ---
-title: "Hybrid PaaS & Managed Cloud"
-description: "Operating Krewire Cloud: self-hosted single-binary PaaS engine on private VPS vs managed cloud SaaS platform."
+title: "PaaS Hibrida & Cloud Terkelola"
+description: "Mengoperasikan Krewire Cloud: mesin PaaS binary tunggal self-hosted di VPS privat vs platform SaaS cloud terkelola."
 date: "2026-10-24"
 ---
 
-# Hybrid PaaS & Managed Cloud (`cloud`)
+# PaaS Hibrida & Cloud Terkelola (`cloud`)
 
-Krewire Cloud adopts **Model C (Hybrid Open-Core PaaS & Managed Cloud SaaS)** per [ADR-C9L2P](file:///home/reasvyn/workspace/krewire/internal/docs/adr/ADR-C9L2P-hybrid-paas-platform-architecture.md).
+Krewire Cloud mengadopsi **Model C (Open-Core PaaS Hibrida & Cloud SaaS Terkelola)** sesuai dengan [ADR-C9L2P](file:///home/reasvyn/workspace/krewire/internal/docs/adr/ADR-C9L2P-hybrid-paas-platform-architecture.md).
 
-## 1. Self-Hosted Open-Core PaaS Engine
+## 1. Mesin PaaS Open-Core Self-Hosted
 
-Run your private Go-native platform on any Linux VPS (Ubuntu, Debian, Alpine) with a single command:
+Jalankan platform privat native-Go Anda di Linux VPS mana pun (Ubuntu, Debian, Alpine) hanya dengan satu perintah:
 
 ```bash
 cd cloud
 go run ./cmd/cloud-server
 ```
 
-- **Extreme RAM Efficiency**: Go workloads run in 15–30MB RAM. A single $5/month VPS can host dozens of live applications.
-- **Zero-Downtime Rolling Deploys**: Supervised process pool binds new instances to dynamic ports, validates health checks, and dynamically updates the reverse proxy.
-- **Automatic Let's Encrypt TLS**: Automated ACME certificates for wildcard subdomains and custom domains.
+- **Efisiensi RAM Ekstrem**: Workload Go berjalan hanya dalam 15–30MB RAM. Satu VPS seharga $5/bulan dapat menampung puluhan aplikasi aktif.
+- **Rolling Deployment Tanpa Downtime (Zero-Downtime)**: Pool proses tersupervisi mengikat instance baru ke port dinamis, memvalidasi health check, dan secara dinamis memperbarui reverse proxy.
+- **TLS Otomatis Let's Encrypt**: Sertifikat ACME otomatis untuk wildcard subdomain dan domain kustom.
 
-## 2. Managed Multi-Tenant Cloud Platform (`cloud.krewire.com`)
+## 2. Platform Cloud Multi-Tenant Terkelola (`cloud.krewire.com`)
 
-For teams that prefer instantaneous serverless deployments without VPS management:
+Bagi tim yang menginginkan deployment serverless instan tanpa repot mengelola VPS:
 
-- `kiw deploy --cloud`: Directly bundles and stages projects into production.
-- Real-time build streaming and centralized log aggregation.
-- Local Indonesian billing via QRIS and Bank Virtual Accounts.
-- Full data sovereignty compliance under Indonesia's Personal Data Protection Law (UU PDP).
+- `kiw deploy --cloud`: Langsung membundel dan menyiapkan proyek ke lingkungan produksi.
+- Streaming build real-time dan agregasi log terpusat.
+- Pembayaran lokal Indonesia melalui QRIS dan Virtual Account Bank.
+- Kepatuhan kedaulatan data penuh di bawah Undang-Undang Perlindungan Data Pribadi (UU PDP) Indonesia.

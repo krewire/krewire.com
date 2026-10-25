@@ -1,56 +1,56 @@
 ---
-title: "Documentation Book (book)"
-description: "Compile Markdown manuscripts into responsive, book-shaped documentation portals with Krewire native book engine, automated chapter ordering, search, and themes."
+title: "Buku Dokumentasi (book)"
+description: "Kompilasi manuskrip Markdown menjadi portal dokumentasi berbentuk buku yang responsif dengan engine book bawaan Krewire, pengurutan bab otomatis, pencarian, dan tema."
 date: "2026-10-08"
 ---
 
-# Documentation Book (`book`)
+# Buku Dokumentasi (`book`)
 
-The **`book`** workload compiles folders of Markdown manuscripts into structured, responsive, book-shaped documentation portals.
+Workload **`book`** mengompilasi folder-folder manuskrip Markdown menjadi portal dokumentasi yang terstruktur, responsif, dan berbentuk buku.
 
-Powered by Krewire's native **`pkg/book`** engine (`github.com/krewire/krewire/pkg/book`), the book engine operates with zero external dependencies and compiles hundreds of documentation pages into static HTML in less than **15 milliseconds**.
-
----
-
-## Architectural Characteristics
-
-1. **Pure Go Standard Library:** Zero npm scripts, no Python runtime, and no Node.js dependencies.
-2. **Automated Chapter Ordering:** Files and directories with numeric prefixes (`01-overview`, `02-guide`) are automatically converted into numbered chapters and subchapters with clean URL slugs.
-3. **Responsive Navigation & Search:** Built-in collapsible sidebar, quick chapter search filter, keyboard shortcut navigation (`/` to search), and breadcrumbs.
-4. **Instant Live Authoring:** `kiw dev` or `kiw serve` provides a local HTTP server that re-renders Markdown files dynamically on browser refresh.
-5. **Dark & Light Theming:** Built-in theme switcher with automatic OS preference detection and `localStorage` persistence.
+Ditenagai oleh engine bawaan Krewire **`pkg/book`** (`github.com/krewire/krewire/pkg/book`), engine buku beroperasi tanpa dependensi eksternal apa pun dan mengompilasi ratusan halaman dokumentasi menjadi HTML statis dalam waktu kurang dari **15 milidetik**.
 
 ---
 
-## Scaffolding a `book` Project
+## Karakteristik Arsitektur
+
+1. **Pustaka Standar Go Murni:** Tanpa script npm, tanpa runtime Python, dan tanpa dependensi Node.js.
+2. **Pengurutan Bab Otomatis:** File dan direktori dengan awalan numerik (`01-overview`, `02-guide`) secara otomatis diubah menjadi bab dan sub-bab bernomor dengan URL slug yang rapi.
+3. **Navigasi & Pencarian Responsif:** Dilengkapi sidebar yang dapat dilipat, filter pencarian bab instan, pintasan navigasi keyboard (`/` untuk mencari), dan breadcrumb.
+4. **Penulisan Langsung Instan (Live Authoring):** `kiw dev` atau `kiw serve` menyediakan server HTTP lokal yang merender ulang file Markdown secara dinamis saat browser dimuat ulang.
+5. **Tema Gelap & Terang:** Pengalih tema bawaan dengan deteksi preferensi OS otomatis dan persistensi `localStorage`.
+
+---
+
+## Scaffolding Proyek `book`
 
 ```bash
 kiw new my-book --book
 cd my-book
 ```
 
-Directory layout:
+Tata letak direktori:
 
 ```text
 my-book/
-├── krewire.yaml          # Project configuration
-└── content/              # Documentation manuscript files
+├── krewire.yaml          # Konfigurasi proyek
+└── content/              # File manuskrip dokumentasi
     ├── 01-introduction/
-    │   ├── index.md      # Chapter 1 overview
-    │   ├── 01-welcome.md # Subchapter 1.1
-    │   └── 02-setup.md   # Subchapter 1.2
+    │   ├── index.md      # Ikhtisar Bab 1
+    │   ├── 01-welcome.md # Sub-bab 1.1
+    │   └── 02-setup.md   # Sub-bab 1.2
     ├── 02-architecture/
-    │   ├── index.md      # Chapter 2 overview
-    │   └── 01-layers.md  # Subchapter 2.1
+    │   ├── index.md      # Ikhtisar Bab 2
+    │   └── 01-layers.md  # Sub-bab 2.1
     └── 03-api/
-        └── index.md      # Chapter 3 overview
+        └── index.md      # Ikhtisar Bab 3
 ```
 
 ---
 
-## Chapter Ordering Rules
+## Aturan Pengurutan Bab
 
-Engine book menggunakan aturan penamaan deterministik untuk membuat navigasi yang ramah pembaca:
+Engine buku menggunakan aturan penamaan deterministik untuk menghasilkan navigasi yang ramah pengguna:
 
 | Directory or File Name | Number | Slug | Display Title |
 | :--- | :--- | :--- | :--- |
@@ -60,13 +60,13 @@ Engine book menggunakan aturan penamaan deterministik untuk membuat navigasi yan
 | `01-installation.md` | 2.1 | `installation` | `2.1 Installation` |
 
 > [!NOTE]
-> Judul diekstraksi otomatis dari `# Heading` pertama di setiap file Markdown. Jika tidak ada heading, slug akan diformat sebagai judul.
+> Judul diekstraksi secara otomatis dari `# Heading` pertama di setiap file Markdown. Jika tidak ada heading, slug akan diformat sebagai judul.
 
 ---
 
-## Frontmatter Support
+## Dukungan Frontmatter
 
-Kompiler book mendukung blok frontmatter YAML sehingga file manuskrip dapat digunakan bersama dengan koleksi SSG:
+Compiler buku menerima blok frontmatter YAML, sehingga file manuskrip dapat digunakan bersama dengan koleksi SSG secara mulus:
 
 ```markdown
 ---
@@ -80,11 +80,11 @@ date: "2026-10-08"
 Ikuti petunjuk di bawah untuk menginstal binary...
 ```
 
-Frontmatter akan dihapus otomatis sebelum perenderan Markdown untuk menghasilkan output HTML yang bersih.
+Frontmatter akan dihapus otomatis sebelum perenderan Markdown untuk memastikan keluaran HTML yang bersih.
 
 ---
 
-## Configuration (`krewire.yaml`)
+## Konfigurasi (`krewire.yaml`)
 
 ```yaml
 project:
@@ -102,14 +102,14 @@ build:
 
 ---
 
-## Penggunaan CLI Native (`kiw`)
+## Penggunaan CLI Bawaan (`kiw`)
 
-Build dan serve buku Anda langsung menggunakan `kiw`:
+Build dan sajikan buku Anda langsung dengan `kiw`:
 
 ```bash
-# Build book ke direktori output
+# Build buku ke direktori output
 kiw build
 
-# Serve book secara lokal dengan live re-rendering
+# Sajikan buku secara lokal dengan live re-rendering
 kiw serve
 ```

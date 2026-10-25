@@ -1,20 +1,20 @@
 ---
 title: "DSL (.kiw)"
-description: "In-depth guide to the .kiw component templating language: YAML frontmatter, Go html/template expressions, scoped CSS, client scripts, and embedded Markdown."
+description: "Panduan mendalam tentang bahasa templating komponen .kiw: YAML frontmatter, ekspresi Go html/template, CSS ber-scope, skrip klien, dan Markdown tersemat."
 date: "2026-09-29"
 ---
 
 # DSL (.kiw)
 
-The **`.kiw` Component DSL** (`pkg/kiw`) is Krewire's unified, file-based component templating language. It brings modern Single-File Component (SFC) ergonomics—reminiscent of Astro, Svelte, or Vue—directly to the Go ecosystem without requiring Node.js, `npm`, webpack, or JavaScript build fatigue.
+**DSL Komponen `.kiw`** (`pkg/kiw`) adalah bahasa templating komponen berbasis berkas terpadu milik Krewire. Bahasa ini menghadirkan ergonomi Single-File Component (SFC) modern—serupa dengan Astro, Svelte, atau Vue—langsung ke ekosistem Go tanpa memerlukan Node.js, `npm`, webpack, ataupun kerumitan build JavaScript.
 
-Every `.kiw` file encapsulates its metadata, markup, scoped styles, and client interactions in a single, readable file that compiles down to high-performance Go template trees and static assets in milliseconds.
+Setiap berkas `.kiw` merangkum metadata, markup, scoped style, dan interaksi sisi klien di dalam satu berkas yang mudah dibaca, yang dikompilasi menjadi pohon template Go berkinerja tinggi serta aset statis hanya dalam hitungan milidetik.
 
 ---
 
-## 1. Anatomy of a `.kiw` File
+## 1. Anatomi Berkas `.kiw`
 
-A canonical `.kiw` component consists of four distinct, optional sections:
+Sebuah komponen kanonikal `.kiw` terdiri dari empat bagian opsional yang terpisah:
 
 ```html
 ---
@@ -24,19 +24,19 @@ layout: Base
 roles: ["admin", "editor"]
 ---
 
-<!-- 2. Template Body (Go html/template) -->
+<!-- 2. Body Template (Go html/template) -->
 <article class="profile-card">
   <h2>{{.Title}}</h2>
   <p>Status: <span class="badge">Active</span></p>
 
-  <!-- 3. Embedded Markdown (Optional) -->
+  <!-- 3. Markdown Tersemat (Opsional) -->
   <markdown>
   ### Bio
-  Fullstack developer passionate about **Go** and systems engineering.
+  Pengembang fullstack yang antusias dengan **Go** dan rekayasa sistem.
   </markdown>
 </article>
 
-<!-- 4. Scoped CSS (Automatically Scoped) -->
+<!-- 4. Scoped CSS (Diisolasi Otomatis) -->
 <style>
 .profile-card {
   border: var(--pop-border, 2px solid #0B1F3B);
@@ -54,7 +54,7 @@ h2 {
 }
 </style>
 
-<!-- 5. Client Script (Automatically Extracted) -->
+<!-- 5. Skrip Klien (Diekstraksi Otomatis) -->
 <script hydrate="idle">
 console.log("Profile card mounted and active.");
 </script>
@@ -64,12 +64,12 @@ console.log("Profile card mounted and active.");
 
 ## 2. YAML Frontmatter
 
-The top of any page or layout file can declare frontmatter delimited by triple dashes (`---`). Frontmatter is parsed into typed Go data structures via `gopkg.in/yaml.v3`:
+Bagian atas dari setiap halaman atau berkas layout dapat mendeklarasikan frontmatter yang dibatasi oleh tiga tanda hubung (`---`). Frontmatter diparsing ke dalam struktur data Go bertipe melalui `gopkg.in/yaml.v3`:
 
 ```yaml
 ---
-title: "Documentation Guide"
-description: "Learn how to build documentation portals."
+title: "Panduan Dokumentasi"
+description: "Pelajari cara membangun portal dokumentasi."
 layout: Base
 date: "2026-09-29"
 draft: false
@@ -77,77 +77,77 @@ tags:
   - golang
   - architecture
 author:
-  name: "Krewire Team"
+  name: "Tim Krewire"
   email: "team@krewire.com"
 ---
 ```
 
-### Special Frontmatter Keys:
+### Kunci Frontmatter Khusus:
 
-| Key | Purpose | Used In |
+| Kunci | Tujuan | Digunakan Di |
 | :--- | :--- | :--- |
-| `title` | Page title injected into the layout's `<title>` tag and OpenGraph headers. | `pages/` |
-| `layout` | Name of the layout wrapper inside `layouts/` (e.g. `layout: Base` wraps with `layouts/Base.kiw`). | `pages/` |
-| `description` | Meta description for search engines and social cards. | `pages/` |
-| `draft` | When set to `true`, the page is excluded from production builds. | `pages/` |
-| `date` | ISO 8601 publication or modification timestamp. | `pages/`, `content/` |
+| `title` | Judul halaman yang diinjeksikan ke dalam tag `<title>` layout dan header OpenGraph. | `pages/` |
+| `layout` | Nama pembungkus layout di dalam `layouts/` (misalnya `layout: Base` membungkus dengan `layouts/Base.kiw`). | `pages/` |
+| `description` | Deskripsi meta untuk mesin pencari dan kartu media sosial. | `pages/` |
+| `draft` | Jika disetel ke `true`, halaman tidak akan dimasukkan ke dalam build produksi. | `pages/` |
+| `date` | Timestamp publikasi atau modifikasi berformat ISO 8601. | `pages/`, `content/` |
 
-All custom keys declared in frontmatter are exposed directly inside template expressions via the root context: `{{.Title}}`, `{{.Tags}}`, `{{.Author.Name}}`.
+Semua kunci kustom yang dideklarasikan dalam frontmatter dapat diakses langsung di dalam ekspresi template melalui root context: `{{.Title}}`, `{{.Tags}}`, `{{.Author.Name}}`.
 
 ---
 
-## 3. Template Body & Go Expressions
+## 3. Body Template & Ekspresi Go
 
-The body of a `.kiw` file uses Go's standard `html/template` syntax. It provides context-aware HTML escaping to prevent Cross-Site Scripting (XSS) by default.
+Body dari berkas `.kiw` menggunakan sintaksis standar `html/template` bawaan Go. Ini menyediakan fitur escaping HTML yang sadar konteks (context-aware) untuk mencegah celah Cross-Site Scripting (XSS) secara default.
 
-### Common Expressions:
+### Ekspresi Umum:
 
-#### Data Interpolation
+#### Interpolasi Data
 ```html
 <h1>{{.Title}}</h1>
-<p>Author: {{.Author.Name}}</p>
+<p>Penulis: {{.Author.Name}}</p>
 ```
 
-#### Conditional Rendering
+#### Render Bersyarat (Conditional Rendering)
 ```html
 {{if .IsAdmin}}
   <a href="/admin/dashboard" class="btn btn-danger">Admin Panel</a>
 {{else if .IsSubscriber}}
   <span class="badge">Subscriber</span>
 {{else}}
-  <a href="/signup" class="btn">Join Now</a>
+  <a href="/signup" class="btn">Daftar Sekarang</a>
 {{end}}
 ```
 
-#### Looping over Slices and Maps
+#### Looping pada Slice dan Map
 ```html
 <ul class="tag-list">
   {{range .Tags}}
     <li class="tag-item">{{.}}</li>
   {{else}}
-    <li class="empty">No tags available</li>
+    <li class="empty">Tidak ada tag tersedia</li>
   {{end}}
 </ul>
 ```
 
-#### Class Composition Helper (`class`)
-To collapse verbose conditional modifier blocks inside class attributes without bypassing contextual HTML escaping:
+#### Helper Komposisi Kelas (`class`)
+Untuk meringkas blok modifikasi bersyarat yang panjang di dalam atribut class tanpa melewati escaping kontekstual HTML:
 
 ```html
-<!-- Composes base token + conditional modifiers + trailing class props -->
+<!-- Mengomposisikan token dasar + modifier bersyarat + prop class tambahan -->
 <a href="{href}" class="{{class "btn" .Variant "primary" .Size "md" .Class}}">
   {body}
 </a>
 ```
 
-The `class` helper automatically handles prefix resolution (e.g. `btn-primary`, `btn-md`), falls back to defaults when props are empty or omitted, collapses whitespace, and returns a plain string so standard `html/template` attribute-context escaping is strictly preserved.
+Helper `class` secara otomatis menangani resolusi prefix (misalnya `btn-primary`, `btn-md`), kembali ke nilai default saat props kosong atau diabaikan, merapikan spasi (whitespace), dan mengembalikan string polos sehingga escaping atribut standar `html/template` tetap terjaga dengan ketat.
 
-#### Layout Content Injection
-In layout components (`layouts/*.kiw`), the page's rendered body is injected using the `{{.Content}}` directive:
+#### Injeksi Konten Layout
+Pada komponen layout (`layouts/*.kiw`), konten halaman yang telah dirender diinjeksikan menggunakan direktif `{{.Content}}`:
 
 ```html
 <!doctype html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="utf-8">
   <title>{{.Title}}</title>
@@ -162,34 +162,25 @@ In layout components (`layouts/*.kiw`), the page's rendered body is injected usi
 </html>
 ```
 
-No `<link>` or `<script>` tag is needed for site CSS/JS: every file in
-`public/assets/` ending in `.css` or `.js` is injected automatically —
-stylesheets into `<head>`, scripts into `<head>` — with a `?v=<version>`
-cache-busting query derived from the project version. Writing a tag by hand
-still works; the pipeline never adds a second copy of an asset you linked
-yourself. See `auto_assets:` in [`krewire.yaml`](configuration) to turn
-injection off or exclude specific files.
+Tidak diperlukan tag `<link>` atau `<script>` manual untuk CSS/JS situs: setiap berkas di `public/assets/` yang berakhiran `.css` atau `.js` akan diinjeksikan secara otomatis — stylesheet ke dalam `<head>`, skrip ke dalam `<head>` — dengan kueri cache-busting `?v=<version>` yang diambil dari versi proyek. Menulis tag secara manual tetap didukung; pipeline tidak akan menduplikasi aset yang sudah Anda tautkan sendiri. Lihat `auto_assets:` di [`krewire.yaml`](configuration) untuk mematikan injeksi atau mengecualikan berkas tertentu.
 
 ---
 
-## 4. Reusable Component Composition
+## 4. Komposisi Komponen yang Dapat Digunakan Kembali
 
-Components located in the `components/` directory (or embedded from Krewire UI) can be instantiated dynamically inside any page, layout, or other component using either custom component tags or the `component` helper:
+Komponen yang terletak di direktori `components/` (atau disematkan dari Krewire UI) dapat diinstansiasi secara dinamis di dalam halaman, layout, atau komponen lainnya menggunakan tag komponen kustom atau helper `component`:
 
 ```html
-<!-- Tag-based invocation with attributes as props -->
-<Button Variant="primary" Href="/docs/getting-started">Get Started</Button>
-<Alert Type="warning" Message="System update in progress" />
+<!-- Pemanggilan berbasis tag dengan atribut sebagai props -->
+<Button Variant="primary" Href="/docs/getting-started">Mulai Sekarang</Button>
+<Alert Type="warning" Message="Pembaruan sistem sedang berlangsung" />
 ```
 
-The equivalent template-helper form is `{{component "ComponentName" .}}`; both forms produce the same component composition.
+Bentuk ekuivalen menggunakan helper template adalah `{{component "ComponentName" .}}`; kedua bentuk ini menghasilkan komposisi komponen yang sama.
 
+### Contoh: Komponen dengan Props Ber-Scope
 
-
-
-### Example: Component with Scoped Props
-
-Define `components/Alert.kiw`:
+Definisikan `components/Alert.kiw`:
 
 ```html
 <div class="alert alert-{{.Type}}">
@@ -209,120 +200,120 @@ Define `components/Alert.kiw`:
 </style>
 ```
 
-Instantiate `Alert` inside `pages/index.kiw`:
+Instansiasi `Alert` di dalam `pages/index.kiw`:
 
 ```html
-<Alert Type="warning" Message="Maintenance scheduled tonight at 23:00 UTC" />
+<Alert Type="warning" Message="Pemeliharaan dijadwalkan malam ini pukul 23:00 UTC" />
 ```
 
-### Interactive Islands & Client Hydration
+### Island Architecture & Hidrasi Sisi Klien
 
-Krewire implements an **Island Architecture** (`pkg/runtime/mount` and `pkg/runtime/boot`) allowing selective client-side hydration of interactive components while keeping the rest of the page 100% zero-JavaScript static HTML.
+Krewire mengimplementasikan **Island Architecture** (`pkg/runtime/mount` dan `pkg/runtime/boot`) yang memungkinkan hidrasi sisi klien secara selektif untuk komponen interaktif, sementara bagian halaman lainnya tetap berupa HTML statis 100% tanpa JavaScript.
 
-You declare hydration behavior using `client:*` directives directly on component tags:
+Anda mendeklarasikan perilaku hidrasi menggunakan direktif `client:*` langsung pada tag komponen:
 
 ```html
-<!-- Hydrate immediately on page load -->
+<!-- Hidrasi langsung saat halaman dimuat -->
 <Counter client:load initial=0 />
 
-<!-- Hydrate once the browser main thread is idle (requestIdleCallback) -->
-<SearchDialog client:idle placeholder="Search docs..." />
+<!-- Hidrasi setelah thread utama browser menganggur/idle (requestIdleCallback) -->
+<SearchDialog client:idle placeholder="Cari dokumentasi..." />
 
-<!-- Hydrate only when scrolled into the viewport (IntersectionObserver) -->
+<!-- Hidrasi hanya ketika elemen masuk ke dalam viewport (IntersectionObserver) -->
 <CommentThread client:visible threadId="kw-99" />
 ```
 
-**How It Works:**
-1. **Server Rendering (SSR/SSG)**: During build, Krewire renders the component to HTML and wraps it in a lightweight marker container (`data-kiw-mount="Counter" data-kiw-hydrate="load" data-kiw-props='{"initial":0}'`).
-2. **Instant Preview**: The browser paints the full content immediately with zero layout shift (CLS: 0).
-3. **Progressive Hydration**: The Krewire WebAssembly runtime (`pkg/runtime`) scans for mount markers, seeds the VDOM fiber with the existing DOM, and attaches reactive events without re-rendering server text.
+**Cara Kerjanya:**
+1. **Server Rendering (SSR/SSG)**: Selama proses build, Krewire me-render komponen menjadi HTML dan membungkusnya dalam wadah penanda ringan (`data-kiw-mount="Counter" data-kiw-hydrate="load" data-kiw-props='{"initial":0}'`).
+2. **Pratinjau Instan**: Browser menampilkan konten lengkap dengan segera tanpa adanya pergeseran tata letak (CLS: 0).
+3. **Hidrasi Progresif**: Runtime WebAssembly Krewire (`pkg/runtime`) memindai penanda mount, menginisialisasi fiber VDOM dengan DOM yang sudah ada, dan memasang event reaktif tanpa me-render ulang teks server.
 
 ---
 
-## 5. Automatic Scoped CSS
+## 5. CSS Ber-Scope Otomatis
 
-Styles defined inside `<style>` blocks are **scoped to the component automatically** at build time. You never have to worry about CSS class name collisions.
+Style yang didefinisikan di dalam blok `<style>` secara **otomatis diisolasi ke komponen terkait** pada saat proses build. Anda tidak perlu khawatir tentang tabrakan nama class CSS.
 
-### How Scoping Works:
+### Cara Kerja Scoping:
 
-1. When parsing a component (e.g. `components/Card.kiw`), Krewire injects a unique attribute into the component's root elements:
+1. Saat mem-parsing komponen (misalnya `components/Card.kiw`), Krewire menyisipkan atribut unik ke elemen root komponen:
    ```html
    <div class="card" data-kiw-component="Card">...</div>
    ```
-2. The CSS compiler (`pkg/web/ssg`) rewrites your selectors to bind strictly to that component's scope:
+2. Kompiler CSS (`pkg/web/ssg`) menulis ulang selektor Anda agar terikat ketat pada scope komponen tersebut:
    ```css
-   /* Your authored CSS */
+   /* CSS yang Anda tulis */
    .card { padding: 20px; }
    h3 { font-size: 1.25rem; }
 
-   /* Compiled CSS output in assets/style.css */
+   /* Output CSS yang dikompilasi di assets/style.css */
    [data-kiw-component="Card"] .card, [data-kiw-component="Card"].card { padding: 20px; }
    [data-kiw-component="Card"] h3, [data-kiw-component="Card"]h3 { font-size: 1.25rem; }
    ```
-3. All component styles are bundled and minified into a single `assets/style.css` file, eliminating render-blocking CSS requests.
+3. Semua style komponen digabungkan dan diminifikasi menjadi satu berkas `assets/style.css`, menghilangkan permintaan CSS yang memblokir rendering halaman.
 
 ---
 
-## 6. Client Scripts & Hydration Directives
+## 6. Skrip Klien & Direktif Hidrasi
 
-Scripts inside `<script>` tags are extracted from the HTML and compiled into static JavaScript asset files. This guarantees clean Separation of Concerns and strict Content Security Policy (CSP) compliance without inline script execution risks.
+Skrip di dalam tag `<script>` diekstraksi dari HTML dan dikompilasi menjadi berkas aset JavaScript statis. Ini menjamin Pemisahan Tanggung Jawab (Separation of Concerns) yang bersih serta kepatuhan ketat pada Kebijakan Keamanan Konten (Content Security Policy - CSP) tanpa risiko eksekusi skrip inline.
 
 ```html
 <script hydrate="visible">
   const button = document.querySelector(".btn-interactive");
   button.addEventListener("click", () => {
-    console.log("Button clicked!");
+    console.log("Tombol diklik!");
   });
 </script>
 ```
 
-### Hydration Tiers (`hydrate` attribute):
+### Tingkatan Hidrasi (Atribut `hydrate`):
 
-| Hydration Directive | Execution Timing | Ideal Use Case |
+| Direktif Hidrasi | Waktu Eksekusi | Kasus Penggunaan Ideal |
 | :--- | :--- | :--- |
-| `hydrate="load"` *(default)* | Executes immediately when the DOM loads (`DOMContentLoaded`). | Navigation menus, critical UI toggles, theme switchers. |
-| `hydrate="idle"` | Executes when the main browser thread is idle (`requestIdleCallback`). | Analytics, non-critical telemetry, background widgets. |
-| `hydrate="visible"` | Executes only when the element enters the viewport (`IntersectionObserver`). | Image carousels, lazy-loaded interactive charts, comments. |
+| `hydrate="load"` *(default)* | Dieksekusi langsung saat DOM dimuat (`DOMContentLoaded`). | Menu navigasi, toggle UI penting, pengubah tema. |
+| `hydrate="idle"` | Dieksekusi saat thread utama browser menganggur (`requestIdleCallback`). | Analitik, telemetri non-kritis, widget latar belakang. |
+| `hydrate="visible"` | Dieksekusi hanya saat elemen memasuki viewport (`IntersectionObserver`). | Carousel gambar, grafik interaktif yang dimuat malas (lazy-loaded), kolom komentar. |
 
 ---
 
-## 7. Embedded Markdown
+## 7. Markdown Tersemat
 
-For content-heavy sections, you can write native Markdown directly within your `.kiw` component using the `<markdown>` tag:
+Untuk bagian yang berfokus pada konten tekstual, Anda dapat menulis Markdown native langsung di dalam komponen `.kiw` menggunakan tag `<markdown>`:
 
 ```html
 <section class="changelog">
-  <h2>Release Notes</h2>
+  <h2>Catatan Rilis</h2>
   <markdown>
-  ### Version 0.1.0 (Initial Release)
-  - **Libraries:** Core modular library architecture.
-  - **Kiw CLI:** Scaffolding, dev server, and build pipeline.
-  - **Zero Bloat:** 100% Go standard library, zero npm dependencies.
+  ### Versi 0.1.0 (Rilis Perdana)
+  - **Pustaka:** Arsitektur pustaka modular inti.
+  - **Kiw CLI:** Scaffolding, dev server, dan pipeline build.
+  - **Nol Bloat:** 100% pustaka standar Go, nol dependensi npm.
   </markdown>
 </section>
 ```
 
-The Krewire compiler automatically converts the Markdown block to clean, sanitized HTML at build time using `pkg/kiw` and `pkg/markdown`.
+Kompiler Krewire secara otomatis mengonversi blok Markdown menjadi HTML yang bersih dan tersanitasi pada waktu build menggunakan `pkg/kiw` dan `pkg/markdown`.
 
 ---
 
-## 8. Built-in Helpers & Internationalization
+## 8. Helper Bawaan & Internasionalisasi (i18n)
 
-Krewire provides built-in template helper functions:
+Krewire menyediakan fungsi-fungsi helper template bawaan:
 
-| Helper | Syntax | Description |
+| Helper | Sintaksis | Deskripsi |
 | :--- | :--- | :--- |
-| Component tags | `<Name />` | Renders a child component using JSX-like syntax. |
-| `component` | `{{component "Name" .}}` | Compatible template-helper form for rendering a child component with context or dict props. |
-| `t` / `translate` | `{{t "home.welcome"}}` | Translates a key using the active language bundle (`lang/*.json`). |
-| `tLocale` | `{{tLocale "fr" "home.welcome"}}` | Translates a key for a specific locale. |
-| `locales` | `{{locales}}` | Returns a list of all configured language codes. |
+| Tag Komponen | `<Name />` | Me-render komponen turunan menggunakan sintaksis mirip JSX. |
+| `component` | `{{component "Name" .}}` | Bentuk helper template yang kompatibel untuk me-render komponen turunan dengan konteks atau props dict. |
+| `t` / `translate` | `{{t "home.welcome"}}` | Menerjemahkan kunci menggunakan bundle bahasa yang aktif (`lang/*.json`). |
+| `tLocale` | `{{tLocale "id" "home.welcome"}}` | Menerjemahkan kunci untuk lokal tertentu. |
+| `locales` | `{{locales}}` | Mengembalikan daftar semua kode bahasa yang dikonfigurasi. |
 
 ---
 
-## Next Steps
+## Langkah Berikutnya
 
-Now that you have mastered the `.kiw` DSL and Krewire's component system:
+Setelah Anda menguasai DSL `.kiw` dan sistem komponen Krewire:
 
-- Explore the [**1.3 Krewire Workloads →**](/overview/krewire-workloads) matrix to see how `.kiw` powers static sites, books, and web applications.
-- Return to the [**2. Getting Started Index →**](/getting-started).
+- Pelajari matriks [**1.3 Workload Krewire →**](/overview/krewire-workloads) untuk melihat bagaimana `.kiw` mendukung situs statis, buku, dan aplikasi web.
+- Kembali ke [**2. Indeks Memulai (Getting Started) →**](/getting-started).

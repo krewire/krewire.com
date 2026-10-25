@@ -1,56 +1,48 @@
 ---
 title: "API Gateway (gateway)"
-description: "Front one or more upstream services with a declarative route table, per-route middleware, rate limiting, timeouts, and service-discovery load balancing."
+description: "Posisikan di depan satu atau beberapa layanan upstream dengan tabel rute deklaratif, middleware per-route, pembatasan laju (rate limiting), batas waktu (timeouts), dan penyeimbangan beban service-discovery."
 date: "2026-10-25"
 ---
 
 # API Gateway (`gateway`)
 
-The **`gateway`** workload is a standalone reverse proxy that fronts one or more
-upstream services. It owns a declarative route table, applies middleware (CORS,
-tracing, timeouts, rate limiting, circuit breaking), and resolves upstream
-addresses through the service registry.
+Workload **`gateway`** adalah reverse proxy mandiri yang menjadi gerbang utama di depan satu atau beberapa layanan upstream. Beban kerja ini memiliki tabel rute deklaratif, menerapkan middleware (CORS, tracing, timeout, rate limiting, circuit breaking), dan menguraikan alamat upstream melalui service registry.
 
-Powered by `pkg/web/gateway`, the same route table runs from the project binary
-or straight from the CLI with `kiw gateway`.
+Ditenagai oleh `pkg/web/gateway`, tabel rute yang sama dapat dijalankan dari binary proyek maupun langsung dari CLI melalui `kiw gateway`.
 
 ---
 
-## Architectural Characteristics
+## Karakteristik Arsitektur
 
-1. **Declarative Route Table:** exact and prefix routes, per-route method
-   matching, and either a fixed `target_url` or a registry-resolved `service`.
-2. **Per-Route Middleware:** CORS, tracing, timeout, rate limiting, and circuit
-   breaking are registered by name and composed per route instead of globally.
-3. **Service Discovery:** round-robin load balancing over registered endpoints;
-   an unavailable upstream returns `502` with a structured Problem JSON body.
-4. **One Route Table, Two Runners:** `kiw dev` / `kiw run` execute the project
-   binary; `kiw gateway` runs the identical `gateway:` block without a rebuild.
+1. **Tabel Rute Deklaratif:** Rute eksak dan prefiks, pencocokan method per-route, serta penentuan alamat baik dengan `target_url` tetap maupun `service` yang diuraikan oleh registry.
+2. **Middleware Per-Route:** CORS, tracing, timeout, rate limiting, dan circuit breaking didaftarkan berdasarkan nama dan disusun per-route alih-alih secara global.
+3. **Penemuan Layanan (Service Discovery):** Penyeimbangan beban round-robin di atas endpoint yang terdaftar; upstream yang tidak tersedia akan mengembalikan `502` dengan payload bodi Problem JSON terstruktur.
+4. **Satu Tabel Rute, Dua Cara Eksekusi:** `kiw dev` / `kiw run` mengeksekusi binary proyek; `kiw gateway` menjalankan blok `gateway:` yang identik secara langsung tanpa perlu build ulang.
 
 ---
 
-## Scaffolding a `gateway` Project
+## Scaffolding Proyek `gateway`
 
 ```bash
 kiw new my-gateway --gateway
 cd my-gateway
 ```
 
-Directory layout:
+Tata letak direktori:
 
 ```text
 my-gateway/
-├── krewire.yaml          # Project configuration and route table
+├── krewire.yaml          # Konfigurasi proyek dan tabel rute
 ├── go.mod
-├── main.go               # Loads krewire.yaml and serves the gateway
+├── main.go               # Memuat krewire.yaml dan menyajikan gateway
 ├── internal/
-│   └── config/           # Typed loader for the gateway: block
+│   └── config/           # Loader bertipe data untuk blok gateway:
 └── README.md
 ```
 
 ---
 
-## Route Table Implementation (`main.go`)
+## Implementasi Tabel Rute (`main.go`)
 
 ```go
 package main
@@ -116,7 +108,7 @@ func main() {
 
 ---
 
-## Configuration (`krewire.yaml`)
+## Konfigurasi (`krewire.yaml`)
 
 ```yaml
 project:
@@ -139,43 +131,34 @@ gateway:
       rate_limit: 100
 ```
 
-Route fields map to `gateway.Route`: `path`, `method`, `service`, `target_url`,
-`prefix`, `strip_prefix`, `middleware`, `rate_limit`, and `timeout`.
+Field rute dipetakan langsung ke `gateway.Route`: `path`, `method`, `service`, `target_url`, `prefix`, `strip_prefix`, `middleware`, `rate_limit`, dan `timeout`.
 
-`rate_limit` (requests per second) and `timeout` are enforced by the gateway
-itself — a route is rate limited and bounded even with no middleware attached.
-A request that exceeds its budget gets `429` with `Retry-After`; a slow upstream
-gets `504 Gateway Timeout`. `GATEWAY_ADDR` overrides `gateway.host` +
-`gateway.port`.
+`rate_limit` (permintaan per detik) dan `timeout` ditegakkan langsung oleh gateway itu sendiri—rute akan dibatasi lajunya dan diberi tenggat waktu bahkan jika tidak ada middleware yang dipasang. Permintaan yang melebihi kuota akan menerima status `429` beserta header `Retry-After`; upstream yang lambat akan memicu respons `504 Gateway Timeout`. Variabel lingkungan `GATEWAY_ADDR` menimpa nilai `gateway.host` + `gateway.port`.
 
 ---
 
 ## Middleware
 
-Middleware is registered on the gateway under a name and selected per route
-through the `middleware:` list. Names are yours to choose; the package provides
-the constructors:
+Middleware didaftarkan pada gateway di bawah sebuah nama dan dipilih per-route melalui daftar `middleware:`. Penamaan bebas ditentukan sendiri; package menyediakan fungsi konstruktor:
 
 - `gateway.CORSMiddleware(allowedOrigins ...string)`
-- `gateway.TracingMiddleware()` — propagates `X-Request-ID`
-- `gateway.TimeoutMiddleware(d)` — sets a request deadline
-- `gateway.RateLimitMiddleware(rps)` — spaces requests 1/rps apart
-- `gateway.CircuitBreakerMiddleware(breaker)` — fail fast on a degraded upstream
+- `gateway.TracingMiddleware()` — mempropagasi `X-Request-ID`
+- `gateway.TimeoutMiddleware(d)` — menetapkan batas waktu permintaan (deadline)
+- `gateway.RateLimitMiddleware(rps)` — mengatur jarak permintaan sebesar 1/rps
+- `gateway.CircuitBreakerMiddleware(breaker)` — fail fast ketika layanan upstream mengalami degradasi
 
-A route naming a middleware the gateway has not registered skips it, so the
-wiring stays explicit in `main.go`.
+Rute yang menyebutkan nama middleware yang belum didaftarkan pada gateway akan mengabaikannya, sehingga pemasangan alur tetap eksplisit di dalam `main.go`.
 
 ---
 
-## Running the Gateway
+## Menjalankan Gateway
 
 ```bash
-# Development: rebuild and restart on change
+# Pengembangan: compile ulang dan restart saat ada perubahan file
 kiw dev
 
-# Production binary in .krewire/build/bin/<name>
+# Binary produksi di .krewire/build/bin/<name>
 kiw build
 
-# Run the shared route table without building the project binary
+# Jalankan tabel rute bersama tanpa perlu melakukan build binary proyek
 kiw gateway --port 8080 --routes "/api=user-service,/pay=payment-service"
-```

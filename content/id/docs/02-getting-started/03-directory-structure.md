@@ -1,81 +1,81 @@
 ---
-title: "Directory Structure"
-description: "Anatomy and conventions of Krewire project directory layouts across all workload variants."
+title: "Struktur Direktori"
+description: "Anatomi dan konvensi tata letak direktori proyek Krewire di semua varian workload."
 date: "2026-09-29"
 ---
 
-# Directory Structure
+# Struktur Direktori
 
-Krewire establishes predictable, standardized project structures designed to scale gracefully from single-file prototypes into enterprise modular monoliths.
+Krewire menetapkan struktur proyek standar yang terprediksi, dirancang untuk berkembang secara mulus dari prototipe satu berkas menjadi monolit modular tingkat enterprise.
 
 ---
 
-## 1. Standard Project Anatomy
+## 1. Anatomi Proyek Standar
 
-Below is the standard, unified file layout of a comprehensive Krewire project:
+Berikut adalah tata letak berkas standar terpadu dari proyek Krewire yang komprehensif:
 
 ```text
 my-project/
-├── krewire.yaml          # Devtool & build pipeline configuration
-├── go.mod                # Go module definition
-├── go.sum                # Dependency checksums
+├── krewire.yaml          # Konfigurasi devtool & pipeline build
+├── go.mod                # Definisi modul Go
+├── go.sum                # Checksum dependensi
 │
-├── pages/                # File-based routes (.kiw component files)
-│   ├── index.kiw         # Serves "/"
-│   ├── about.kiw         # Serves "/about"
-│   └── 404.html          # Custom error page
+├── pages/                # Rute berbasis berkas (berkas komponen .kiw)
+│   ├── index.kiw         # Menyajikan "/"
+│   ├── about.kiw         # Menyajikan "/about"
+│   └── 404.html          # Halaman error kustom
 │
-├── layouts/              # Shared page wrappers (.kiw)
-│   ├── Base.kiw          # Default HTML document layout
-│   └── Landing.kiw       # Full-bleed landing page layout
+├── layouts/              # Pembungkus halaman bersama (.kiw)
+│   ├── Base.kiw          # Layout dokumen HTML default
+│   └── Landing.kiw       # Layout halaman landing full-bleed
 │
-├── components/           # Reusable scoped UI components (.kiw)
-│   ├── Header.kiw        # Navigation bar
-│   ├── Footer.kiw        # Footer section
-│   └── CodeBlock.kiw     # Syntax highlighter component
+├── components/           # Komponen UI ber-scope yang dapat digunakan kembali (.kiw)
+│   ├── Header.kiw        # Bilah navigasi
+│   ├── Footer.kiw        # Bagian footer
+│   └── CodeBlock.kiw     # Komponen syntax highlighter
 │
-├── content/              # Documentation manuscripts & books (pkg/book)
-│   ├── 01-overview/      # Chapter 1 directory
-│   │   ├── index.md      # Chapter landing page
-│   │   └── 01-arch.md    # Subchapter 1.1
-│   └── 02-guides/        # Chapter 2 directory
+├── content/              # Manuskrip & buku dokumentasi (pkg/book)
+│   ├── 01-overview/      # Direktori Bab 1
+│   │   ├── index.md      # Halaman utama bab
+│   │   └── 01-arch.md    # Sub-bab 1.1
+│   └── 02-guides/        # Direktori Bab 2
 │
-├── public/               # Raw static assets served directly
-│   ├── favicon.svg       # Browser favicon
-│   ├── robots.txt        # Web crawler configuration
-│   ├── sitemap.xml       # Search engine index
-│   └── assets/           # Client scripts, stylesheets, and images
+├── public/               # Aset statis mentah yang disajikan langsung
+│   ├── favicon.svg       # Favicon browser
+│   ├── robots.txt        # Konfigurasi web crawler
+│   ├── sitemap.xml       # Indeks mesin pencari
+│   └── assets/           # Skrip klien, stylesheet, dan gambar
 │
-├── cmd/                  # Executable Go entry points
+├── cmd/                  # Titik masuk executable Go
 │   └── my-service/
-│       └── main.go       # Service entry point
+│       └── main.go       # Titik masuk service
 │
-├── internal/             # Private application logic (enforced by Go compiler)
-│   ├── domain/           # Core business entities & models
-│   ├── handler/          # HTTP & RPC request handlers
-│   └── service/          # Domain services & business rules
+├── internal/             # Logika aplikasi privat (ditegakkan oleh compiler Go)
+│   ├── domain/           # Entitas bisnis inti & model
+│   ├── handler/          # Handler permintaan HTTP & RPC
+│   └── service/          # Domain service & aturan bisnis
 │
-└── .krewire/             # Toolchain state & build artifacts (git-ignored)
-    ├── build/            # Default compilation output
+└── .krewire/             # Status toolchain & artefak build (diabaikan oleh git)
+    ├── build/            # Output kompilasi default
     └── .kiw-build-manifest
 ```
 
 ---
 
-## 2. Directory Roles & Responsibilities
+## 2. Peran & Tanggung Jawab Direktori
 
-### `pages/` (File-Based Routing)
-Files in `pages/` map directly to public URL routes:
+### `pages/` (Perutean Berbasis Berkas / File-Based Routing)
+Berkas di dalam `pages/` dipetakan langsung ke rute URL publik:
 - `pages/index.kiw` → `https://example.com/`
 - `pages/pricing.kiw` → `https://example.com/pricing`
 - `pages/blog/first-post.kiw` → `https://example.com/blog/first-post`
 
-Each `.kiw` page file encapsulates its YAML frontmatter, HTML template markup, and scoped `<style>` block.
+Setiap berkas halaman `.kiw` merangkum frontmatter YAML, markup template HTML, dan blok `<style>` yang memiliki scope lokal.
 
 ---
 
-### `layouts/` (Document Shells)
-Layouts provide the outer HTML shell (`<!doctype html>`, `<head>`, `<nav>`, `<footer>`) wrapping page content via `{{.Content}}`. Pages declare their desired layout in frontmatter:
+### `layouts/` (Cangkang Dokumen)
+Layout menyediakan cangkang luar HTML (`<!doctype html>`, `<head>`, `<nav>`, `<footer>`) yang membungkus konten halaman melalui `{{.Content}}`. Halaman mendeklarasikan layout yang diinginkan di frontmatter:
 
 ```yaml
 ---
@@ -86,44 +86,42 @@ layout: AppLayout
 
 ---
 
-### `components/` (Reusable Scoped Blocks)
-Components are standalone `.kiw` files composed with either the JSX-like `<ComponentName />` syntax or the compatible `{{component "Name" .}}` template helper. Styles inside components are scoped automatically at compile time with zero CSS collisions.
+### `components/` (Blok UI Ber-Scope yang Dapat Digunakan Kembali)
+Komponen adalah berkas `.kiw` mandiri yang disusun menggunakan sintaksis mirip JSX `<ComponentName />` atau helper template `{{component "Name" .}}` yang kompatibel. Style di dalam komponen secara otomatis diisolasi (scoped) saat waktu kompilasi tanpa ada tabrakan CSS.
 
 ---
 
-### `content/` (Manuscript Engine)
-Stores Markdown documentation manuscripts compiled by `pkg/book`. Numeric prefixes (`01-`, `02-`) dictate chapter and subchapter reading order in the generated navigation sidebar.
+### `content/` (Engine Manuskrip)
+Menyimpan manuskrip dokumentasi Markdown yang dikompilasi oleh `pkg/book`. Awalan numerik (`01-`, `02-`) menentukan urutan membaca bab dan sub-bab pada bilah navigasi samping (sidebar) yang dihasilkan.
 
 ---
 
-### `public/` (Uncompiled Static Assets)
-Files inside `public/` are served verbatim without preprocessing:
-- `public/favicon.svg` is served at `/favicon.svg`.
-- `public/robots.txt` is served at `/robots.txt`.
-- `public/assets/` contains client scripts and CSS stylesheets. Files ending
-  in `.css` or `.js` are linked into every page automatically — no `<link>`
-  or `<script>` tag in the layout is required.
+### `public/` (Aset Statis Tanpa Kompilasi)
+Berkas di dalam `public/` disajikan apa adanya tanpa pra-pemrosesan:
+- `public/favicon.svg` disajikan di `/favicon.svg`.
+- `public/robots.txt` disajikan di `/robots.txt`.
+- `public/assets/` berisi skrip sisi klien dan stylesheet CSS. Berkas yang berakhiran `.css` atau `.js` ditautkan ke setiap halaman secara otomatis — tidak memerlukan tag `<link>` atau `<script>` manual di dalam layout.
 
 ---
 
-### `cmd/` & `internal/` (Go Application Core)
-- **`cmd/<name>/main.go`:** Main entry points for fullstack monoliths (`app`), CLI utilities (`cli`), or background workers (`worker`).
-- **`internal/`:** Go compiler-enforced private packages. Code inside `internal/` cannot be imported by external modules, preserving clean architectural encapsulation (`KWF-5ZHQV`).
+### `cmd/` & `internal/` (Inti Aplikasi Go)
+- **`cmd/<name>/main.go`:** Titik masuk utama untuk monolit fullstack (`app`), utilitas baris perintah (`cli`), atau worker latar belakang (`worker`).
+- **`internal/`:** Paket privat yang ditegakkan langsung oleh compiler Go. Kode di dalam `internal/` tidak dapat diimpor oleh modul eksternal, menjaga enkapsulasi arsitektur yang bersih (`KWF-5ZHQV`).
 
 ---
 
-### `.krewire/` (Build Artifacts)
-Created automatically by `kiw dev` and `kiw build`:
-- **`.krewire/build/`:** Houses the compiled production output ready for static hosting or Docker image packaging.
-- This directory is managed by `kiw` and should always be added to your `.gitignore`.
+### `.krewire/` (Artefak Build)
+Dibuat secara otomatis oleh `kiw dev` dan `kiw build`:
+- **`.krewire/build/`:** Menyimpan output produksi hasil kompilasi yang siap untuk hosting statis atau pemaketan citra Docker.
+- Direktori ini dikelola sepenuhnya oleh `kiw` dan harus selalu ditambahkan ke dalam `.gitignore` Anda.
 
 ---
 
-## 3. Workload-Specific Layouts
+## 3. Tata Letak Khusus untuk Masing-Masing Workload
 
-When scaffolding a new project via `kiw new <project> [flags]`, `kiw` equips the directory structure tailored to that workload:
+Saat membuat proyek baru melalui `kiw new <project> [flags]`, `kiw` akan menyiapkan struktur direktori yang disesuaikan untuk workload tersebut:
 
-### 1. Static Site (`kiw new my-site --site`)
+### 1. Situs Statis (`kiw new my-site --site`)
 ```text
 my-site/
 ├── krewire.yaml
@@ -136,7 +134,7 @@ my-site/
 └── public/
 ```
 
-### 2. Documentation Book (`kiw new my-docs --book`)
+### 2. Buku Dokumentasi (`kiw new my-docs --book`)
 ```text
 my-docs/
 ├── krewire.yaml
@@ -146,7 +144,7 @@ my-docs/
     └── 01-getting-started.md
 ```
 
-### 3. Fullstack Monolith (`kiw new my-app --app`)
+### 3. Monolit Fullstack (`kiw new my-app --app`)
 ```text
 my-app/
 ├── krewire.yaml
@@ -162,7 +160,7 @@ my-app/
 └── public/
 ```
 
-### 4. Terminal CLI (`kiw new my-cli --cli`)
+### 4. CLI Terminal (`kiw new my-cli --cli`)
 ```text
 my-cli/
 ├── krewire.yaml
@@ -176,9 +174,9 @@ my-cli/
 
 ---
 
-## 4. Customizing Directory Locations
+## 4. Menyesuaikan Lokasi Direktori
 
-If you are incorporating Krewire into an established repository with non-standard folder conventions, override them in `krewire.yaml`:
+Jika Anda mengintegrasikan Krewire ke dalam repositori lama yang memiliki konvensi folder non-standar, Anda dapat menimpanya di dalam `krewire.yaml`:
 
 ```yaml
 project:
@@ -191,12 +189,12 @@ project:
     cmd: "entrypoints"
 ```
 
-The `kiw` compiler resolves all paths against these mappings automatically.
+Kompiler `kiw` akan me-resolve semua path terhadap pemetaan ini secara otomatis.
 
 ---
 
-## Summary
+## Rangkuman
 
-With the installation, configuration, and directory layout understood, you are equipped to build robust applications across any Krewire workload.
+Dengan pemahaman mengenai instalasi, konfigurasi, dan tata letak direktori, Anda siap membangun aplikasi yang tangguh di seluruh varian workload Krewire.
 
-Proceed to [**2.4 Agentic Development →**](/getting-started/agentic-development) to equip your projects with autonomous AI coding agents.
+Lanjutkan ke [**2.4 Pengembangan Agentik →**](/getting-started/agentic-development) untuk melengkapi proyek Anda dengan agen coding AI otonom.

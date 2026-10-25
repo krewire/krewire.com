@@ -1,45 +1,45 @@
 ---
-title: "Cloud Infrastructure as Code (infra)"
-description: "Declare, plan, and provision cloud resources directly in Go with pkg/cloud/infra, deterministic execution plans, and zero external DSL bloat."
+title: "Infrastruktur Cloud sebagai Kode (infra)"
+description: "Deklarasikan, rencanakan, dan sediakan sumber daya cloud langsung di Go dengan pkg/cloud/infra, rencana eksekusi deterministik, dan bebas bloat DSL eksternal."
 date: "2026-10-08"
 ---
 
-# Cloud Infrastructure as Code (`infra`)
+# Infrastruktur Cloud sebagai Kode (`infra`)
 
-The **`infra`** workload allows engineering teams to define cloud topology, container orchestration, networking, and storage directly using **typed Go structures** instead of disjointed HCL or complex YAML templates.
+Workload **`infra`** memungkinkan tim rekayasa mendefinisikan topologi cloud, orkestrasi kontainer, jaringan, dan penyimpanan langsung menggunakan **struktur Go bertipe data kuat (typed structures)** alih-alih berkas HCL terpisah atau template YAML yang rumit.
 
-Powered by `pkg/cloud/infra`, the engine compiles Go declarations into deterministic execution plans and provisions cloud targets safely.
-
----
-
-## Architectural Characteristics
-
-1. **Go as the Unified Language:** Refactor and test your infrastructure using standard Go compiler guarantees, type checking, and unit testing (`go test`).
-2. **Deterministic Execution Plans:** Run `kiw deploy --target infra --plan` to preview added, modified, or destroyed cloud resources before any mutations take place.
-3. **Provider-Agnostic Topologies:** Abstract declarations for compute (containers, serverless), networking (VPC, load balancers), and persistence (PostgreSQL, object stores).
-4. **State Integrity:** Stores encrypted state snapshots in remote backends (AWS S3, Google Cloud Storage, or Kubernetes Secrets).
+Ditenagai oleh `pkg/cloud/infra`, engine mengompilasi deklarasi Go menjadi rencana eksekusi deterministik dan menyediakan target cloud secara aman.
 
 ---
 
-## Scaffolding an `infra` Project
+## Karakteristik Arsitektur
+
+1. **Go sebagai Bahasa Terpadu:** Lakukan refaktor dan uji infrastruktur Anda menggunakan jaminan compiler Go standar, pemeriksaan tipe (type checking), dan pengujian unit (`go test`).
+2. **Rencana Eksekusi Deterministik:** Jalankan `kiw deploy --target infra --plan` untuk melihat pratinjau sumber daya cloud yang ditambahkan, diubah, atau dihapus sebelum mutasi apa pun dilakukan.
+3. **Topologi Bebas Penyedia (Provider-Agnostic):** Deklarasi abstrak untuk komputasi (kontainer, serverless), jaringan (VPC, load balancer), dan persistensi (PostgreSQL, object store).
+4. **Integritas Status (State):** Menyimpan snapshot state terenkripsi di backend jarak jauh (AWS S3, Google Cloud Storage, atau Kubernetes Secrets).
+
+---
+
+## Scaffolding Proyek `infra`
 
 ```bash
 kiw new cloud-env --infra
 cd cloud-env
 ```
 
-Directory layout:
+Tata letak direktori:
 
 ```text
 cloud-env/
-├── krewire.yaml          # Project configuration
+├── krewire.yaml          # Konfigurasi proyek
 ├── go.mod
-└── main.go               # Infrastructure topology definition
+└── main.go               # Definisi topologi infrastruktur
 ```
 
 ---
 
-## Topology Declaration (`main.go`)
+## Deklarasi Topologi (`main.go`)
 
 ```go
 package main
@@ -55,16 +55,16 @@ import (
 func main() {
 	stack := infra.NewStack("production-ecommerce")
 
-	// Declare VPC
+	// Deklarasi VPC
 	network := aws.NewVPC(stack, "ecommerce-vpc", aws.VPCConfig{
 		CIDRBlock: "10.0.0.0/16",
 		Subnets: []string{
-			"10.0.1.0/24", // public
-			"10.0.2.0/24", // private
+			"10.0.1.0/24", // publik
+			"10.0.2.0/24", // privat
 		},
 	})
 
-	// Declare Managed PostgreSQL Database
+	// Deklarasi Basis Data Terkelola PostgreSQL
 	db := aws.NewRDSInstance(stack, "ecommerce-db", aws.RDSConfig{
 		VPC:           network,
 		Engine:        "postgres",
@@ -73,7 +73,7 @@ func main() {
 		AllocatedGB:   50,
 	})
 
-	// Declare Container Service
+	// Deklarasi Layanan Kontainer
 	aws.NewECSCluster(stack, "ecommerce-compute", aws.ECSConfig{
 		VPC:         network,
 		Database:    db,
@@ -82,7 +82,7 @@ func main() {
 		Memory:      "1024",
 	})
 
-	// Execute Plan or Apply based on CLI flags
+	// Eksekusi Plan atau Apply berdasarkan flag CLI
 	if err := infra.Execute(context.Background(), stack); err != nil {
 		os.Exit(1)
 	}
@@ -91,7 +91,7 @@ func main() {
 
 ---
 
-## Configuration (`krewire.yaml`)
+## Konfigurasi (`krewire.yaml`)
 
 ```yaml
 project:
@@ -110,9 +110,9 @@ infra:
 
 ---
 
-## CLI Commands for Infrastructure
+## Perintah CLI untuk Infrastruktur
 
-### Previewing Changes (Dry Run Plan)
+### Melihat Pratinjau Perubahan (Dry Run Plan)
 
 ```bash
 kiw deploy --target infra --plan
@@ -126,8 +126,7 @@ Plan: 3 to add, 0 to change, 0 to destroy.
 + aws_ecs_cluster.ecommerce-compute (4 tasks)
 ```
 
-### Applying Changes
+### Menerapkan Perubahan (Apply)
 
 ```bash
 kiw deploy --target infra
-```

@@ -1,84 +1,84 @@
 ---
-title: "Configuration"
-description: "Detailed specification and guide for krewire.yaml — the unified declarative devtool configuration."
+title: "Konfigurasi"
+description: "Spesifikasi dan panduan mendalam untuk krewire.yaml — konfigurasi devtool deklaratif terpadu."
 date: "2026-09-29"
 ---
 
-# Configuration
+# Konfigurasi
 
-Every Krewire project is driven by a single, declarative configuration file: **`krewire.yaml`**.
+Setiap proyek Krewire dikendalikan oleh satu berkas konfigurasi deklaratif: **`krewire.yaml`**.
 
-`krewire.yaml` acts as the **Single Source of Truth (SSOT)** for project metadata, compiler pipeline settings, local development servers, and custom automation scripts.
-
----
-
-## 1. Architectural Philosophy
-
-Krewire maintains a strict separation of concerns between devtool configuration and application runtime logic:
-
-1. **Devtool Controls (`krewire.yaml`):** Instructs the `kiw` CLI on how to build, run, test, and package the project.
-2. **Application Settings:** Web titles, layouts, meta tags, and component styling belong inside pages, templates, and Go code—never duplicated in YAML.
-3. **Decoupled Toolchain:** Projects compile cleanly with standard `go build` even if `krewire.yaml` is absent, falling back to sensible Go conventions.
+`krewire.yaml` bertindak sebagai **Single Source of Truth (SSOT)** untuk metadata proyek, pengaturan pipeline kompilasi, server pengembangan lokal, dan skrip otomatisasi kustom.
 
 ---
 
-## 2. Complete Schema Reference
+## 1. Filosofi Arsitektur
 
-Below is the complete, canonical schema of `krewire.yaml` with production defaults:
+Krewire mempertahankan pemisahan tanggung jawab (Separation of Concerns) yang ketat antara konfigurasi devtool dan logika runtime aplikasi:
+
+1. **Kontrol Devtool (`krewire.yaml`):** Menginstruksikan CLI `kiw` tentang cara membangun, menjalankan, menguji, dan memaketkan proyek.
+2. **Pengaturan Aplikasi:** Judul halaman web, layout, tag meta, dan styling komponen berada di dalam halaman, template, dan kode Go—tidak pernah diduplikasi di dalam YAML.
+3. **Toolchain Terpisah (Decoupled):** Proyek dapat dikompilasi secara bersih menggunakan perintah standar `go build` bahkan jika `krewire.yaml` tidak ada, dengan kembali ke konvensi standar Go.
+
+---
+
+## 2. Referensi Skema Lengkap
+
+Berikut adalah skema kanonikal lengkap dari `krewire.yaml` beserta nilai default produksinya:
 
 ```yaml
 # =============================================================================
-# Krewire Devtool Configuration (krewire.yaml)
+# Konfigurasi Devtool Krewire (krewire.yaml)
 # =============================================================================
 
-# Project Identity & Workload Kind
+# Identitas Proyek & Jenis Workload
 project:
-  name: "my-service"            # Project identifier (read by the site loader)
+  name: "my-service"            # Pengidentifikasi proyek (dibaca oleh site loader)
   kind: "site"                  # Workload: app | cli | site | book | worker | service | gateway | infra
-  version: "v0.1.0"             # Semantic version injected as `.Version` into pages
-  dirs:                         # Optional: Override canonical folder locations
-    web: "web"                  # Web handlers and templates
-    public: "public"            # Raw static assets
-    internal: "internal"        # Private domain packages
-    cmd: "cmd"                  # Executable entry points
+  version: "v0.1.0"             # Versi semantik yang diinjeksikan sebagai `.Version` ke dalam halaman
+  dirs:                         # Opsional: Menimpa lokasi direktori kanonikal
+    web: "web"                  # Handler dan template web
+    public: "public"            # Aset statis mentah
+    internal: "internal"        # Paket domain privat
+    cmd: "cmd"                  # Titik masuk executable
 
-# Content Input (top level)
-input: "content"                # Content directory consumed by the book pipeline
+# Input Konten (level teratas)
+input: "content"                # Direktori konten yang digunakan oleh pipeline book
 
-# Devtool Build Pipeline
+# Pipeline Build Devtool
 build:
-  output: ".krewire/build"      # Target compilation output directory
-  base: "/"                     # URL base the site is served under
-  include:                      # Glob patterns for content inclusion
+  output: ".krewire/build"      # Direktori target output kompilasi
+  base: "/"                     # URL dasar tempat situs disajikan
+  include:                      # Pola glob untuk penyertaan konten
     - "**/*.md"
-  exclude:                      # Glob patterns for exclusion
+  exclude:                      # Pola glob untuk pengecualian
     - "**/README.md"
     - "**/readme.md"
-  depends_on:                   # Shell commands run before the build
+  depends_on:                   # Perintah shell yang dijalankan sebelum build
     - "go generate ./..."
 
-# Automatic CSS/JS Injection (site kind; on by default)
+# Injeksi CSS/JS Otomatis (jenis site; aktif secara default)
 auto_assets:
-  enabled: true                 # Set false to link every asset by hand in layouts/
-  js_placement: "head"          # head (default, first-paint scripts) | body
-  exclude:                      # Never auto-inject these assets
+  enabled: true                 # Setel false untuk menautkan setiap aset secara manual di layouts/
+  js_placement: "head"          # head (default, skrip first-paint) | body
+  exclude:                      # Jangan pernah menginjeksi aset-aset ini secara otomatis
     - "*.min.css"
-  order:                        # Pin where a specific asset loads
+  order:                        # Menentukan urutan pemuatan aset tertentu
     "assets/theme.css":
       layer: "page"             # scoped | vendor | component | theme | book | page
-  bundle: false                 # true merges CSS/JS into assets/krewire.{css,js}
+  bundle: false                 # true menggabungkan CSS/JS ke dalam assets/krewire.{css,js}
 
-# Documentation Book Pipeline (pkg/book)
+# Pipeline Dokumentasi Book (pkg/book)
 book:
-  mount: "/docs/"               # Mount path in output URL space (hybrid mode)
-  toc: true                     # Generate root table-of-contents page
+  mount: "/docs/"               # Path mount dalam ruang URL output (mode hybrid)
+  toc: true                     # Menghasilkan halaman daftar isi (table of contents) utama
 
-# WebAssembly Client Runtime (KWF-T4X9P)
+# Runtime Klien WebAssembly (KWF-T4X9P)
 wasm:
-  entry: "./wasm"               # Main package entry point for GOOS=js
-  name: "runtime"               # Emitted wasm module filename
+  entry: "./wasm"               # Titik masuk paket utama untuk GOOS=js
+  name: "runtime"               # Nama berkas modul wasm yang dihasilkan
 
-# Custom Task Runner Scripts
+# Skrip Task Runner Kustom
 scripts:
   lint: "golangci-lint run ./..."
   fmt: "gofmt -s -w ."
@@ -88,62 +88,57 @@ scripts:
 
 ---
 
-## 3. Configuration Breakdown
+## 3. Rincian Konfigurasi
 
-### 3.1 Project Block (`project:`)
+### 3.1 Blok Proyek (`project:`)
 
-The `project:` section defines the identity and workload behavior:
+Bagian `project:` mendefinisikan identitas dan perilaku workload:
 
-- **`kind` (Required):** Pins the architectural workload. This instructs `kiw` which engine to invoke:
-  - `app`: Fullstack web monolith with embedded assets (`kiw run`)
-  - `cli`: Terminal command-line tool or TUI (`kiw run`)
-  - `site`: Scoped `.kiw` component static site generator (`kiw build`)
-  - `book`: Markdown documentation manuscript via `pkg/book` (`kiw build --target book`)
-  - `worker`: Asynchronous background task processor (`kiw worker`)
-  - `service`: High-throughput microservice (`kiw run`)
-  - `gateway`: Declarative reverse proxy with per-route middleware (`kiw gateway`)
-  - `infra`: Infrastructure as code in Go (`kiw deploy --target infra`)
+- **`kind` (Wajib):** Menetapkan jenis arsitektur workload. Konfigurasi ini menginstruksikan `kiw` mengenai engine mana yang harus dipanggil:
+  - `app`: Monolit web fullstack dengan aset tersemat (`kiw run`)
+  - `cli`: Alat command-line terminal atau TUI (`kiw run`)
+  - `site`: Generator situs statis berbasis komponen `.kiw` ber-scope (`kiw build`)
+  - `book`: Manuskrip dokumentasi Markdown melalui `pkg/book` (`kiw build --target book`)
+  - `worker`: Pemroses tugas latar belakang asinkron (`kiw worker`)
+  - `service`: Microservice dengan throughput tinggi (`kiw run`)
+  - `gateway`: Reverse proxy deklaratif dengan middleware per rute (`kiw gateway`)
+  - `infra`: Infrastruktur sebagai kode dalam Go (`kiw deploy --target infra`)
 
-  A pre-scaffold bootstrap project is **not** a kind: `kiw info` reports `none`
-  with the marker `pre-init` until `kiw init` equips a variant.
-- **`dirs` (Optional):** Allows customization of the default directory layout if integrating Krewire into an existing repository layout.
-
----
-
-### 3.2 Content Input (`input:`)
-
-- **`input`:** The content directory consumed by the book (`pkg/book`) pipeline. Defaults to `content`. With `i18n:` enabled, `kiw build` resolves `content/<locale>/docs/` per locale and only falls back to this value.
+  Proyek bootstrap sebelum perancangan kerangka (pre-scaffold) **bukanlah** suatu jenis kind: `kiw info` melaporkan `none` dengan penanda `pre-init` hingga `kiw init` melengkapi variannya.
+- **`dirs` (Opsional):** Memungkinkan penyesuaian tata letak direktori default jika mengintegrasikan Krewire ke dalam struktur repositori yang sudah ada.
 
 ---
 
-### 3.3 Build Block (`build:`)
+### 3.2 Input Konten (`input:`)
 
-Controls where artifacts land and which content files the pipeline processes:
-
-- **`output`:** The directory where compiled static files or assets are staged. Defaults to `.krewire/build`. A compiled `app`/`cli` binary lands in `<output>/bin/<project name>`.
-- **`base`:** The URL prefix under which assets and pages are served. Defaults to `/`. For sites hosted under subpaths (e.g. `https://example.com/blog/`), set `base: "/blog/"`.
-- **`include` & `exclude`:** Glob patterns controlling which Markdown manuscripts or content files are processed. Unset `include` defaults to `**/*.md`; unset `exclude` defaults to skipping `README.md`/`readme.md`. An empty list disables that filter.
-- **`depends_on`:** Shell commands run in order before the build.
-- **`outputs`:** Runtime name to output directory, for polyglot projects.
-
-The top-level `output:` and `base:` keys are legacy aliases. The nested
-`build.*` value wins when both are set, and the `--output` / `--base` flags win
-over both. Declare each value once — do not repeat it at both levels.
+- **`input`:** Direktori konten yang digunakan oleh pipeline buku dokumentasi (`pkg/book`). Nilai defaultnya adalah `content`. Dengan mengaktifkan `i18n:`, `kiw build` me-resolve `content/<locale>/docs/` per lokal dan hanya beralih ke nilai ini jika lokal tidak ditemukan.
 
 ---
 
-### 3.4 Dev Server Port (`dev:`)
+### 3.3 Blok Build (`build:`)
 
-The `dev:` block declares the local development port:
+Mengatur lokasi penempatan artefak dan berkas konten mana yang diproses oleh pipeline:
+
+- **`output`:** Direktori tempat penampungan berkas statis atau aset hasil kompilasi. Nilai defaultnya adalah `.krewire/build`. Binary `app`/`cli` yang dikompilasi ditempatkan di `<output>/bin/<nama proyek>`.
+- **`base`:** Awalan URL dasar tempat aset dan halaman disajikan. Nilai defaultnya adalah `/`. Untuk situs yang di-hosting di bawah sub-path (misalnya `https://example.com/blog/`), atur `base: "/blog/"`.
+- **`include` & `exclude`:** Pola glob yang mengatur manuskrip Markdown atau berkas konten mana yang diproses. Jika `include` tidak diatur, nilainya default ke `**/*.md`; jika `exclude` tidak diatur, defaultnya adalah mengabaikan `README.md`/`readme.md`. Daftar kosong akan menonaktifkan filter tersebut.
+- **`depends_on`:** Perintah shell yang dijalankan secara berurutan sebelum proses build dimulai.
+- **`outputs`:** Nama runtime ke direktori output, untuk proyek polyglot.
+
+Kunci level teratas `output:` dan `base:` adalah alias warisan (legacy). Nilai `build.*` bertingkat akan diprioritaskan jika keduanya disetel, dan flag `--output` / `--base` mengesampingkan keduanya. Deklarasikan setiap nilai sekali saja — jangan mengulanginya di kedua tingkatan.
+
+---
+
+### 3.4 Port Dev Server (`dev:`)
+
+Blok `dev:` mendeklarasikan port server pengembangan lokal:
 
 ```yaml
 dev:
   port: 8080
 ```
 
-The listen address resolves in this order: the `--addr` flag, then
-`runtime.port`, `dev.port`, `server.port`, and the first `services[].port`,
-then `:8080`:
+Alamat listen diselesaikan dengan urutan prioritas berikut: flag `--addr`, lalu `runtime.port`, `dev.port`, `server.port`, kemudian `services[].port` pertama, dan terakhir `:8080`:
 
 ```bash
 kiw dev --addr :3000
@@ -152,37 +147,26 @@ kiw serve --addr :3000
 
 ---
 
-### 3.5 Auto Assets Block (`auto_assets:`)
+### 3.5 Blok Auto Assets (`auto_assets:`)
 
-Applies to the `site` kind. By default the build injects a `<link
-rel="stylesheet">` into `<head>` and a `<script src>` into `<head>` for every
-`.css`/`.js` file under `public/assets/`, plus the generated scoped stylesheet
-`assets/style.css`. Layouts do not need to name them, and a tag you write by
-hand is never duplicated. Cache busting uses `?v=<project version>`.
+Berlaku untuk jenis workload `site`. Secara default, proses build menginjeksikan `<link rel="stylesheet">` ke dalam `<head>` dan `<script src>` ke dalam `<head>` untuk setiap berkas `.css`/`.js` di bawah `public/assets/`, ditambah stylesheet scoped yang dihasilkan `assets/style.css`. Layout tidak perlu mencantumkannya secara manual, dan tag yang Anda tulis sendiri tidak akan diduplikasi. Mekanisme cache busting menggunakan `?v=<versi proyek>`.
 
-- **`enabled`:** `false` restores fully manual asset tags.
-- **`js_placement`:** `head` (default) keeps theme scripts running before first
-  paint; `body` appends them at the end of `<body>` instead.
-- **`exclude`:** Asset names, base names, or globs that must never be injected.
-- **`order`:** Pins one asset to a cascade layer, when the default position is
-  wrong for your project. An unrecognized layer name is reported as a build
-  warning and the default order is kept, so a typo is visible without failing
-  the build.
-- **`bundle`:** `true` merges the eligible CSS and JS into `assets/krewire.css`
-  and `assets/krewire.js`, trading per-asset requests for one of each.
+- **`enabled`:** `false` mengembalikan ke tag aset yang sepenuhnya manual.
+- **`js_placement`:** `head` (default) menjaga agar skrip tema berjalan sebelum first paint; `body` menempatkannya di akhir elemen `<body>`.
+- **`exclude`:** Nama aset, nama dasar (base name), atau glob yang tidak boleh diinjeksikan.
+- **`order`:** Mengunci suatu aset ke layer cascade tertentu ketika posisi default tidak sesuai dengan proyek Anda. Nama layer yang tidak dikenali akan dilaporkan sebagai peringatan build (warning) dan urutan default tetap dipertahankan, sehingga kesalahan ketik dapat terlihat tanpa menggagalkan proses build.
+- **`bundle`:** `true` menggabungkan CSS dan JS yang memenuhi syarat ke dalam `assets/krewire.css` dan `assets/krewire.js`, mengubah permintaan per-aset menjadi satu berkas untuk masing-masing tipe.
 
-Assets are **not** injected alphabetically — alphabetical order silently loads
-book content before the utilities meant to override it. They load in cascade
-order, so each layer can win over the previous one:
+Aset **tidak** diinjeksikan secara alfabetis — urutan alfabetis dapat memuat konten buku sebelum utilitas yang seharusnya menimpanya. Aset dimuat berdasarkan urutan cascade, sehingga setiap layer dapat menimpa layer sebelumnya:
 
-| Layer         | Holds                                            |
-| ------------- | ------------------------------------------------ |
-| `scoped`      | styles generated from `<style>` in components/layouts |
-| `vendor`      | third-party output such as plugin CSS (Tailwind) |
-| `component`   | component-library styling (Krewire UI)           |
-| `theme`       | theme variables and last-mile design overrides   |
-| `book`        | content-pipeline styling (pkg/book)                |
-| `page`        | per-page overrides — always last                 |
+| Layer | Memuat |
+| :--- | :--- |
+| `scoped` | style yang dihasilkan dari `<style>` dalam komponen/layout |
+| `vendor` | output pihak ketiga seperti CSS plugin (Tailwind) |
+| `component` | styling pustaka komponen (Krewire UI) |
+| `theme` | variabel tema dan penimpaan desain last-mile |
+| `book` | styling pipeline konten (pkg/book) |
+| `page` | penimpaan spesifik per-halaman — selalu terakhir |
 
 ```yaml
 auto_assets:
@@ -192,14 +176,14 @@ auto_assets:
     - "vendor.js"
   order:
     "assets/theme.css":
-      layer: "page"   # move the theme to last-mile
+      layer: "page"   # memindahkan tema ke posisi last-mile
 ```
 
 ---
 
-### 3.6 Scripts Task Runner (`scripts:`)
+### 3.6 Task Runner Scripts (`scripts:`)
 
-Krewire includes an integrated task runner, eliminating the need for `Makefile` or external runners. Any task declared in `scripts:` can be executed directly via `kiw run <task>`:
+Krewire menyertakan task runner terintegrasi, menghilangkan kebutuhan akan `Makefile` atau alat eksternal tambahan. Setiap tugas yang dideklarasikan dalam `scripts:` dapat dieksekusi langsung melalui `kiw run <task>`:
 
 ```yaml
 scripts:
@@ -208,27 +192,27 @@ scripts:
   generate: "go generate ./..."
 ```
 
-Run named tasks:
+Menjalankan tugas tertentu:
 
 ```bash
 kiw run lint
 kiw run audit
 ```
 
-Tasks are executed using the native operating system shell (`sh -c` on Unix/macOS, `cmd /C` on Windows).
+Tugas dieksekusi menggunakan shell sistem operasi native (`sh -c` di Unix/macOS, `cmd /C` di Windows).
 
 ---
 
-## 4. Environment Variables
+## 4. Variabel Lingkungan (Environment Variables)
 
-Runtime configuration can be overridden using environment variables without modifying `krewire.yaml`:
+Konfigurasi runtime dapat ditimpa menggunakan variabel lingkungan tanpa perlu mengubah `krewire.yaml`:
 
-| Variable | Values | Description |
+| Variabel | Nilai | Deskripsi |
 | :--- | :--- | :--- |
-| `KIW_ENV` | `local`, `production`, `testing` | Sets active environment profile. |
-| `KIW_DEBUG` | `true`, `false`, `1`, `0` | Enables verbose debug logging and diagnostics. |
+| `KIW_ENV` | `local`, `production`, `testing` | Menetapkan profil lingkungan aktif. |
+| `KIW_DEBUG` | `true`, `false`, `1`, `0` | Mengaktifkan logging debug dan diagnostik terperinci. |
 
-Example:
+Contoh:
 
 ```bash
 KIW_ENV=production KIW_DEBUG=false kiw run
@@ -236,6 +220,6 @@ KIW_ENV=production KIW_DEBUG=false kiw run
 
 ---
 
-## Next Steps
+## Langkah Berikutnya
 
-With your configuration in place, proceed to [**2.3 Directory Structure →**](/getting-started/directory-structure) to explore the standard directory layouts for each workload.
+Setelah konfigurasi Anda siap, lanjutkan ke [**2.3 Struktur Direktori →**](/getting-started/directory-structure) untuk mempelajari tata letak direktori standar bagi setiap jenis workload.

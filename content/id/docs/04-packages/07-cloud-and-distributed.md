@@ -1,24 +1,24 @@
 ---
-title: "Cloud & Distributed Systems (cloud, worker, service, infra)"
-description: "Reference manual for Krewire Cloud libraries: async background worker queues, microservice registry and RPC, and declarative Infrastructure as Code."
+title: "Cloud & Sistem Terdistribusi (cloud, worker, service, infra)"
+description: "Manual referensi untuk pustaka Krewire Cloud: antrean worker latar belakang asinkron, registry microservices dan RPC, serta Infrastructure as Code deklaratif."
 date: "2026-10-10"
 ---
 
-# Cloud & Distributed Systems (`cloud`)
+# Cloud & Sistem Terdistribusi (`cloud`)
 
-Import path: `github.com/krewire/krewire/pkg/cloud`
+Jalur impor (*import path*): `github.com/krewire/krewire/pkg/cloud`
 
-The **`cloud`** suite equips Krewire applications with production-grade distributed systems primitives, background task scheduling, microservice routing, and declarative cloud infrastructure as code.
+Rangkaian paket **`cloud`** membekali aplikasi Krewire dengan primitif sistem terdistribusi kelas produksi, penjadwalan tugas latar belakang, perutean microservices, dan deklarasi infrastruktur cloud sebagai kode (*Infrastructure as Code*).
 
 ---
 
-## 1. Background Worker & Job Queues (`cloud/worker`)
+## 1. Worker Latar Belakang & Antrean Tugas (`cloud/worker`)
 
-Import path: `github.com/krewire/krewire/pkg/cloud/worker`
+Jalur impor (*import path*): `github.com/krewire/krewire/pkg/cloud/worker`
 
-The `worker` package provides asynchronous background job execution, scheduled cron jobs, configurable retry backoffs, and dead-letter queues (DLQ).
+Paket `worker` menyediakan eksekusi tugas latar belakang asinkron, penjadwalan cron periodik, kebijakan retry bertingkat, dan dead-letter queue (DLQ).
 
-### Job Processing Example
+### Contoh Pemrosesan Tugas
 
 ```go
 package main
@@ -37,50 +37,50 @@ type EmailPayload struct {
 }
 
 func main() {
-	// Initialize runner with concurrency pool and default retry policy
+	// Inisialisasi runner dengan worker pool konkuren dan kebijakan retry default
 	runner := worker.NewRunner(worker.Config{
 		Concurrency: 10,
 		MaxRetries:  3,
 		Backoff:     500 * time.Millisecond,
 	})
 
-	// Register job handler
+	// Mendaftarkan handler pekerjaan
 	runner.Handle("send_email", func(ctx context.Context, job worker.Job) error {
 		var payload EmailPayload
 		if err := job.Decode(&payload); err != nil {
 			return err
 		}
-		fmt.Printf("Sending email to %s: %s\n", payload.Recipient, payload.Subject)
+		fmt.Printf("Mengirim email ke %s: %s\n", payload.Recipient, payload.Subject)
 		return nil
 	})
 
-	// Dispatch job
+	// Mengirimkan pekerjaan ke antrean
 	jobID, err := runner.Dispatch(context.Background(), "send_email", EmailPayload{
 		Recipient: "user@example.com",
-		Subject:   "Welcome to Krewire!",
+		Subject:   "Selamat Datang di Krewire!",
 	})
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("Enqueued job: %s\n", jobID)
+	fmt.Printf("Pekerjaan berhasil masuk antrean: %s\n", jobID)
 }
 ```
 
 ---
 
-## 2. Microservice Mesh & Gateways (`cloud/service`)
+## 2. Mesh Microservice & Gateway (`cloud/service`)
 
-Import path: `github.com/krewire/krewire/pkg/cloud/service`
+Jalur impor (*import path*): `github.com/krewire/krewire/pkg/cloud/service`
 
-The `service` package provides cloud-native microservice routing, dynamic service discovery, configuration synchronization, and distributed tracing.
+Paket `service` menyediakan perutean microservice cloud-native, penemuan layanan dinamis (*dynamic service discovery*), sinkronisasi konfigurasi, dan tracing terdistribusi.
 
-### Subpackages:
-- **`service/registry`**: Service registration and health heartbeats with support for Consul, etcd, NATS, and DNS.
-- **`service/messaging`**: Event broker abstraction with publisher/subscriber semantics.
-- **`service/tracing`**: OpenTelemetry distributed context propagation across HTTP and gRPC boundaries.
-- **`service/resilience`**: Concurrency bulkheads, rate limiters, and circuit breakers.
+### Sub-paket Utama:
+- **`service/registry`**: Pendaftaran layanan dan heartbeat status kesehatan dengan dukungan untuk Consul, etcd, NATS, dan DNS.
+- **`service/messaging`**: Abstraksi event broker dengan semantik publisher/subscriber.
+- **`service/tracing`**: Propagasi konteks terdistribusi OpenTelemetry melintasi batas HTTP dan gRPC.
+- **`service/resilience`**: Concurrency bulkhead, rate limiter, dan circuit breaker.
 
-### Service Discovery Example
+### Contoh Penemuan Layanan (Service Discovery)
 
 ```go
 package main
@@ -94,7 +94,7 @@ import (
 func main() {
 	reg := registry.NewMemoryRegistry()
 
-	// Register instance
+	// Mendaftarkan instance layanan
 	instance := registry.Instance{
 		ID:      "auth-srv-01",
 		Name:    "auth-service",
@@ -103,23 +103,23 @@ func main() {
 	}
 	_ = reg.Register(context.Background(), instance)
 
-	// Discover service nodes
+	// Menemukan node layanan aktif
 	nodes, _ := reg.Lookup(context.Background(), "auth-service")
 	for _, node := range nodes {
-		println("Available node:", node.Address)
+		println("Node tersedia:", node.Address)
 	}
 }
 ```
 
 ---
 
-## 3. Infrastructure as Code (`cloud/infra`)
+## 3. Infrastruktur sebagai Kode (`cloud/infra`)
 
-Import path: `github.com/krewire/krewire/pkg/cloud/infra`
+Jalur impor (*import path*): `github.com/krewire/krewire/pkg/cloud/infra`
 
-The `infra` package enables developers to define cloud infrastructure declaratively in Go. It enforces deterministic dependency resolution and generates execution plans with zero side-effects prior to applying changes.
+Paket `infra` memungkinkan pengembang mendefinisikan infrastruktur cloud secara deklaratif menggunakan bahasa Go. Paket ini menegakkan resolusi dependensi deterministik dan menghasilkan rencana eksekusi (*execution plan*) bebas efek samping sebelum menerapkan perubahan nyata.
 
-### Declarative Schema & State
+### Skema & Status Deklaratif
 
 ```go
 package main
@@ -130,7 +130,7 @@ import (
 )
 
 func main() {
-	// Declare cloud resources
+	// Mendeklarasikan sumber daya cloud
 	vpc := schema.Resource{
 		Type: "aws_vpc",
 		Name: "production-vpc",
@@ -142,10 +142,10 @@ func main() {
 		},
 	}
 
-	// Verify plan before applying
+	// Memverifikasi rencana sebelum menerapkan perubahan
 	plan := schema.NewPlan([]schema.Resource{vpc})
 	if plan.HasChanges() {
-		println("Plan requires infrastructure changes:")
+		println("Rencana membutuhkan perubahan infrastruktur:")
 		println(plan.Summary())
 	}
 }

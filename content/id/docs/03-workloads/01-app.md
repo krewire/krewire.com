@@ -1,60 +1,60 @@
 ---
-title: "Fullstack Monolith (app)"
-description: "Architecture and implementation guide for the app workload: Go net/http foundation, embedded assets, SSR templating, dependency injection, and production operations."
+title: "Monolit Fullstack (app)"
+description: "Panduan arsitektur dan implementasi untuk workload app: fondasi Go net/http, embedded asset, template SSR, dependency injection, dan operasional produksi."
 date: "2026-10-08"
 ---
 
-# Fullstack Monolith (`app`)
+# Monolit Fullstack (`app`)
 
-The **`app`** workload is Krewire's foundation for building production web monoliths. It compiles the entire web surface—HTTP routing, server-rendered views, static assets, database access, background tasks, and API endpoints—into a **single, self-contained Go binary**.
+Workload **`app`** adalah fondasi Krewire untuk membangun monolit web tingkat produksi. Beban kerja ini mengompilasi seluruh permukaan web—perutean HTTP, tampilan yang dirender di sisi server (SSR), aset statis, akses basis data, tugas latar belakang, dan endpoint API—ke dalam **satu binary Go mandiri**.
 
-Built on standard Go primitives (`net/http`, `embed.FS`, `context`, `slog`), the `app` workload requires no external web servers like Nginx or Node.js runtimes for local development or basic deployment.
-
----
-
-## Architectural Characteristics
-
-1. **Zero Runtime Dependencies:** Everything needed to run the application is compiled into a single static executable.
-2. **Standard Library First:** The routing and middleware system implements Go's standard `http.Handler` and `http.HandlerFunc` interfaces.
-3. **Embedded Static Assets:** CSS, JavaScript, icons, and templates are compiled into the binary using Go's `embed` package, preventing missing-asset errors in production.
-4. **Clean Domain Boundaries:** Built around modular monolith patterns (`KWF-5ZHQV`), allowing future extraction into microservices or background workers without code rewrites.
+Dibangun di atas primitif standar Go (`net/http`, `embed.FS`, `context`, `slog`), workload `app` tidak memerlukan server web eksternal seperti Nginx atau runtime Node.js untuk pengembangan lokal maupun deployment dasar.
 
 ---
 
-## Scaffolding an `app` Project
+## Karakteristik Arsitektur
 
-Use the `kiw new` command with the `--app` flag:
+1. **Nol Dependensi Runtime:** Semua yang dibutuhkan untuk menjalankan aplikasi dikompilasi ke dalam satu file executable statis.
+2. **Utamakan Pustaka Standar:** Sistem perutean dan middleware mengimplementasikan antarmuka standar Go `http.Handler` dan `http.HandlerFunc`.
+3. **Embedded Static Assets:** File CSS, JavaScript, ikon, dan template dikompilasi langsung ke dalam binary menggunakan package `embed` bawaan Go, mencegah galat aset hilang (missing assets) di lingkungan produksi.
+4. **Batas Domain yang Rapi:** Dibangun di sekitar pola modular monolit (`KWF-5ZHQV`), memungkinkan ekstraksi masa depan ke dalam microservice atau worker latar belakang tanpa perlu menulis ulang kode.
+
+---
+
+## Scaffolding Proyek `app`
+
+Gunakan perintah `kiw new` dengan flag `--app`:
 
 ```bash
 kiw new storefront --app
 cd storefront
 ```
 
-The resulting directory tree follows the canonical Go layout:
+Struktur direktori yang dihasilkan mengikuti tata letak kanonikal Go:
 
 ```text
 storefront/
-├── krewire.yaml          # Project configuration
-├── go.mod                # Go module definition
+├── krewire.yaml          # Konfigurasi proyek
+├── go.mod                # Definisi modul Go
 ├── cmd/
 │   └── server/
-│       └── main.go       # Application entry point
+│       └── main.go       # Titik masuk aplikasi (entry point)
 ├── internal/
-│   ├── handlers/         # HTTP request handlers
-│   ├── models/           # Domain models & entities
-│   ├── services/         # Business logic & operations
-│   └── storage/          # Database migrations & repositories
-├── views/                # Server-rendered HTML templates
+│   ├── handlers/         # Handler permintaan HTTP
+│   ├── models/           # Model & entitas domain
+│   ├── services/         # Logika bisnis & operasi
+│   └── storage/          # Migrasi basis data & repositori
+├── views/                # Template HTML yang dirender server (SSR)
 │   ├── layouts/
 │   └── pages/
-└── public/               # Static assets (CSS, JS, images)
+└── public/               # Aset statis (CSS, JS, gambar)
 ```
 
 ---
 
-## Application Entry Point (`main.go`)
+## Titik Masuk Aplikasi (`main.go`)
 
-A minimal, production-grade `app` workload uses `pkg/app` for lifecycle supervision and `pkg/web` for HTTP routing:
+Workload `app` minimal berstandar produksi menggunakan `pkg/app` untuk supervisi daur hidup (lifecycle) dan `pkg/web` untuk perutean HTTP:
 
 ```go
 package main
@@ -74,21 +74,21 @@ import (
 var embeddedAssets embed.FS
 
 func main() {
-	// Initialize the Krewire application container
+	// Inisialisasi kontainer aplikasi Krewire
 	application := app.New(app.Config{
 		Name:    "storefront",
 		Version: "0.1.0",
 	})
 
-	// Create the web engine
+	// Buat web engine
 	router := web.NewRouter()
 
-	// Apply default security headers and middleware
+	// Terapkan header keamanan default dan middleware
 	router.Use(sec.SecurityHeaders())
 	router.Use(web.Recovery())
 	router.Use(web.Logger())
 
-	// Register routes
+	// Daftarkan route
 	router.Get("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
 		w.Write([]byte("<h1>Welcome to Storefront</h1>"))
@@ -101,10 +101,10 @@ func main() {
 		})
 	})
 
-	// Mount embedded static assets
+	// Mount aset statis yang di-embed
 	router.ServeFiles("/static/*", http.FS(embeddedAssets))
 
-	// Run with graceful shutdown
+	// Jalankan dengan graceful shutdown
 	if err := application.RunServer(":8080", router); err != nil {
 		os.Exit(1)
 	}
@@ -113,9 +113,9 @@ func main() {
 
 ---
 
-## Configuration (`krewire.yaml`)
+## Konfigurasi (`krewire.yaml`)
 
-Configure server port bindings, build outputs, and runtime flags in `krewire.yaml`:
+Konfigurasikan binding port server, output build, dan flag runtime di `krewire.yaml`:
 
 ```yaml
 project:
@@ -127,39 +127,39 @@ dev:
   port: 8080
 
 build:
-  output: ".krewire/build"      # binary lands at .krewire/build/bin/storefront
+  output: ".krewire/build"      # binary ditempatkan di .krewire/build/bin/storefront
   depends_on:
     - "go generate ./..."
 ```
 
-`--addr` overrides `dev.port` for a single invocation (`kiw run --addr :3000`).
+Flag `--addr` menimpa nilai `dev.port` untuk satu pemanggilan (`kiw run --addr :3000`).
 
 ---
 
-## Development & Operations
+## Pengembangan & Operasional
 
-### Local Development (`kiw dev`)
+### Pengembangan Lokal (`kiw dev`)
 
-Start the application in development mode with automatic file watching and recompilation:
+Jalankan aplikasi dalam mode pengembangan dengan pemantauan file otomatis (file watching) dan kompilasi ulang instan:
 
 ```bash
 kiw dev
 ```
 
-Whenever `.go`, `.html`, or asset files change, `kiw` automatically recompiles and restarts the server process within milliseconds.
+Setiap kali file `.go`, `.html`, atau aset berubah, `kiw` secara otomatis mengompilasi ulang dan me-restart proses server dalam hitungan milidetik.
 
-### Building for Production (`kiw build`)
+### Melakukan Build untuk Produksi (`kiw build`)
 
-Compile a production binary:
+Kompilasi binary siap produksi:
 
 ```bash
 kiw build
 ```
 
-To cross-compile for Linux servers:
+Untuk cross-compile ke server Linux:
 
 ```bash
 GOOS=linux GOARCH=amd64 kiw build
 ```
 
-The resulting binary in `bin/server` is completely standalone and ready for deployment on any Linux VPS or container environment.
+Binary yang dihasilkan di `bin/server` bersifat mandiri (standalone) dan siap di-deploy ke VPS Linux atau lingkungan kontainer apa pun.
