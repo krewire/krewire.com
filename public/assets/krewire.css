@@ -284,27 +284,55 @@ body {
   transform: translate(-1px, -1px);
 }
 
-.topbar .lang-switch {
-  border: var(--pop-border-thin);
-  box-shadow: var(--pop-shadow-sm);
-  border-radius: 8px;
+.topbar .lang-switch,
+.navbar .lang-switch,
+.lang-switch {
+  border: var(--pop-border-thin) !important;
+  box-shadow: var(--pop-shadow-sm) !important;
+  border-radius: 8px !important;
   background: var(--base-2);
   color: var(--ink);
-  padding: 0.35rem 0.65rem;
-  line-height: 1;
-  font-size: 0.75rem;
-  font-weight: 800;
+  height: 36px !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
+  padding: 0 0.65rem !important;
+  box-sizing: border-box !important;
+  line-height: 1 !important;
+  font-size: 0.75rem !important;
+  font-weight: 800 !important;
   cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.35rem !important;
   text-decoration: none;
   transition: all 0.15s ease;
+  user-select: none;
 }
 
-.topbar .lang-switch:hover {
+.topbar .lang-switch:hover,
+.navbar .lang-switch:hover,
+.lang-switch:hover {
   background: var(--base-3);
   transform: translate(-1px, -1px);
+}
+
+.topbar .lang-switch:active,
+.navbar .lang-switch:active,
+.lang-switch:active {
+  transform: translate(1px, 1px);
+}
+
+.lang-switch .lang-icon {
+  font-size: 0.85rem !important;
+  line-height: 1 !important;
+}
+
+.lang-switch .lang-code {
+  font-size: 0.75rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.05em !important;
+  line-height: 1 !important;
 }
 
 /* Sidebar Hamburger Toggle */
