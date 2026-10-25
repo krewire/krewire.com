@@ -1,14 +1,14 @@
 ---
-title: "Krewire Workloads"
-description: "In-depth guide to Krewire's 8 official workload kinds: app, cli, site, book, worker, service, gateway, and infra."
+title: "Workload Krewire"
+description: "Panduan mendalam tentang 8 jenis workload resmi Krewire: app, cli, site, book, worker, service, gateway, dan infra."
 date: "2026-09-29"
 ---
 
-# Krewire Workloads
+# Workload Krewire
 
-Krewire unifies eight distinct architectural workload kinds under one command-line interface (**`kiw`**) and one declarative devtool configuration (**`krewire.yaml`**).
+Krewire menyatukan delapan jenis arsitektur workload di bawah satu antarmuka baris perintah (**`kiw`**) dan satu berkas konfigurasi devtool deklaratif (**`krewire.yaml`**).
 
-The workload is declared in your project's `krewire.yaml` via the `project.kind` field. `kiw` uses this setting to drive the correct compiler, dev server, and deployment pipeline:
+Tipe workload dideklarasikan di dalam berkas `krewire.yaml` proyek Anda melalui kolom `project.kind`. `kiw` menggunakan konfigurasi ini untuk menjalankan kompiler, server pengembangan lokal, dan pipeline deployment yang tepat:
 
 ```yaml
 project:
@@ -19,33 +19,33 @@ project:
 
 ---
 
-## The 8 Workloads Matrix
+## Matriks 8 Jenis Workload
 
-| Workload | Kind Name | Primary Use Case | CLI Execution | Key Packages |
+| Workload | Nama Kind | Kasus Penggunaan Utama | Eksekusi CLI | Paket Kunci |
 | :--- | :--- | :--- | :--- | :--- |
-| **Fullstack Monolith** | `app` | Web applications, SSR, JSON APIs, sessions, database access | `kiw run`, `kiw dev` | `pkg/web`, `pkg/app`, `pkg/ui` |
-| **Terminal CLI & TUI** | `cli` | Command-line utilities, interactive developer TUIs | `kiw run`, `kiw new my-cli --cli` | `pkg/tui` |
-| **Static Site (SSG)** | `site` | Landing pages, marketing websites, blogs, portfolios | `kiw build`, `kiw dev` | `pkg/web/ssg`, `pkg/kiw` |
-| **Technical Book** | `book` | Multi-chapter documentation, books, software manuals | `kiw build --target book`, `kiw dev` | `pkg/book` |
-| **Background Worker** | `worker` | Asynchronous job queues, cron schedules, retries, DLQ | `kiw worker` | `pkg/cloud/worker` |
-| **Microservice** | `service` | Distributed RPC/HTTP APIs, service registry, gateways | `kiw run`, `kiw dashboard` | `pkg/cloud/service` |
-| **Cloud Infra (IaC)** | `infra` | Provider-agnostic cloud resource provisioning (AWS/K8s) | `kiw deploy --target infra` | `pkg/cloud/infra` |
-| **API Gateway** | `gateway` | Declarative reverse proxy, per-route middleware, service-discovery balancing | `kiw gateway`, `kiw run` | `pkg/web/gateway` |
+| **Monolit Fullstack** | `app` | Aplikasi web, SSR, API JSON, sesi, akses database | `kiw run`, `kiw dev` | `pkg/web`, `pkg/app`, `pkg/ui` |
+| **CLI & TUI Terminal** | `cli` | Utilitas baris perintah, TUI pengembang interaktif | `kiw run`, `kiw new my-cli --cli` | `pkg/tui` |
+| **Situs Statis (SSG)** | `site` | Landing page, situs pemasaran, blog, portofolio | `kiw build`, `kiw dev` | `pkg/web/ssg`, `pkg/kiw` |
+| **Buku Teknis & Dokumentasi** | `book` | Dokumentasi multi-bab, buku panduan, manual software | `kiw build --target book`, `kiw dev` | `pkg/book` |
+| **Worker Latar Belakang** | `worker` | Antrean tugas asinkron, jadwal cron, retry, DLQ | `kiw worker` | `pkg/cloud/worker` |
+| **Microservice** | `service` | API RPC/HTTP terdistribusi, registry layanan, gateway | `kiw run`, `kiw dashboard` | `pkg/cloud/service` |
+| **Infrastruktur Cloud (IaC)** | `infra` | Provisi sumber daya cloud multi-provider (AWS/K8s) | `kiw deploy --target infra` | `pkg/cloud/infra` |
+| **Gateway API** | `gateway` | Reverse proxy deklaratif, middleware per rute, load balancing | `kiw gateway`, `kiw run` | `pkg/web/gateway` |
 
 ---
 
-## 1. Fullstack Monolith (`app`)
+## 1. Monolit Fullstack (`app`)
 
-The `app` workload produces a single, self-contained static Go binary that embeds static assets, templates, database migrations, and HTTP routing:
+Workload `app` menghasilkan binary statis Go mandiri yang menyematkan aset web statis, template, migrasi database, dan routing HTTP:
 
-### Characteristics
+### Karakteristik
 
-- **Zero External Dependencies:** Built on Go's `net/http` and `embed.FS`. No external web servers (e.g. Apache, Nginx) required for local development or basic deployment.
-- **Integrated Template Engine:** Server-Side Rendering (SSR) via `html/template` or `.kiw` component compilation.
-- **REST & JSON APIs:** Expressive routing with groups, parameter binding, and RFC 7807 Problem Details.
-- **Modular Monolith Ready (`KWF-5ZHQV`):** Internal domain boundaries allow future extraction of services without code rewrites.
+- **Nol Dependensi Eksternal:** Dibangun di atas `net/http` dan `embed.FS` bawaan Go. Tidak memerlukan server web eksternal (seperti Apache atau Nginx) untuk pengembangan lokal maupun deployment dasar.
+- **Engine Template Terpadu:** Server-Side Rendering (SSR) via `html/template` atau kompilasi komponen `.kiw`.
+- **API REST & JSON:** Routing ekspresif dengan group, pengikatan parameter (binding), dan format standar RFC 7807 Problem Details.
+- **Siap Menjadi Monolit Modular (`KWF-5ZHQV`):** Batasan domain internal yang bersih memungkinkan ekstraksi service di masa depan tanpa penulisan ulang kode.
 
-### Scaffolding & Running
+### Pembuatan & Menjalankan
 
 ```bash
 kiw new my-app --app
@@ -55,150 +55,92 @@ kiw run
 
 ---
 
-## 2. Terminal CLI & TUI (`cli`)
+## 2. CLI & TUI Terminal (`cli`)
 
-The `cli` workload is tailored for building command-line utilities, developer tools, and rich interactive terminal user interfaces:
+Workload `cli` dirancang untuk membangun utilitas baris perintah, alat bantu pengembang, dan antarmuka pengguna terminal (TUI) yang interaktif:
 
-### Characteristics
+### Karakteristik
 
-- **Terminal Model:** Powered by `pkg/tui` with an Elm/Bubble Tea-inspired Model-Update-View architecture.
-- **Flag Parsing & Commands:** POSIX-compliant flag parser with automatic `--help` generation and exit-code discipline (`pkg/errs`).
-- **Structured Logging:** Integrated with Go's `log/slog` for structured, colorized terminal output.
-
-### Scaffolding & Running
-
-```bash
-kiw new my-cli --cli
-cd my-cli
-kiw run -- --verbose
-```
+- **Ditenagai `pkg/tui`:** Rendering TUI reaktif, komponen tabel interaktif, progress bar, dan penanganan input keyboard.
+- **Parsing Argumen Cepat:** Penanganan argumen, flag, dan sub-perintah yang intuitif dan cepat.
+- **Startup Cepat:** Waktu cold start instan (<2 milidetik) menjamin kenyamanan saat digunakan dalam skrip bash atau otomatisasi CI.
 
 ---
 
-## 3. Static Site Generator (`site`)
+## 3. Situs Statis / SSG (`site`)
 
-The `site` workload provides an ultra-fast static site generator powered by the `.kiw` component DSL:
+Workload `site` mengompilasi halaman dan komponen `.kiw` menjadi HTML, CSS, dan aset statis murni yang ramah mesin pencari (SEO) tanpa memerlukan JavaScript di sisi klien:
 
-### Characteristics
+### Karakteristik
 
-- **File-Based Routing:** `pages/index.kiw` serves `/`; `pages/about.kiw` serves `/about`.
-- **Zero Client-Side JS:** Emits pure semantic HTML and scoped CSS by default.
-- **Tailwind CSS Integration:** Automatically detects `tailwind.config.js` and compiles minified utility classes.
-- **Incremental Builds:** Fast rebuilds during development (`kiw dev`) with millisecond turnaround.
-
-### Scaffolding & Running
-
-```bash
-kiw new my-site --site
-cd my-site
-kiw dev # Starts dev server at localhost:8080 with live reload
-```
+- **Nol JavaScript di Client:** Menghasilkan dokumen web statis yang sangat ringan dengan skor performa Lighthouse 100/100.
+- **Komponen `.kiw` yang Kuat:** Menulis komponen file tunggal dengan scoped style dan desugaring komponen seperti JSX.
+- **Hot-Reloading Cepat:** Server pengembangan lokal `kiw dev` memantau perubahan berkas dan memuat ulang halaman secara otomatis dalam milidetik.
 
 ---
 
-## 4. Technical Book (`book`)
+## 4. Buku Dokumentasi (`book`)
 
-The `book` workload transforms Markdown manuscripts into responsive, reader-friendly documentation portals via the integrated `pkg/book` engine:
+Workload `book` mengompilasi direktori manuskrip Markdown multi-bab menjadi portal dokumentasi teknis yang indah dan responsif:
 
-### Characteristics
+### Karakteristik
 
-- **Automated Chapter Numbering:** Numbered directory and file prefixes (`01-overview.md`) map to `1. Overview`, `1.1 Subchapter`, etc.
-- **Responsive Navigation:** Interactive collapsible sidebar, chapter filter search input, and mobile drawer toggler.
-- **Dark/Light Theming:** Persistent theme switcher syncing with OS preferences via `localStorage`.
-- **Hybrid Site Coexistence:** A book can be mounted cleanly under `/docs/` while an SSG landing page owns `/` in the same output directory.
-
-### Scaffolding & Running
-
-```bash
-kiw new my-docs --book
-cd my-docs
-kiw dev
-```
+- **Struktur Bab Otomatis:** Menghasilkan daftar isi hierarkis (TOC), tautan bab sebelumnya/berikutnya (pager), dan pencarian instan.
+- **Dukungan Multibahasa (i18n):** Pemetaan konten terstruktur berdasarkan lokal (`content/en/docs/`, `content/id/docs/`).
+- **Tema Terang & Gelap:** Pemilihan tema otomatis yang menyesuaikan preferensi sistem pengguna atau toggle manual.
 
 ---
 
-## 5. Background Worker (`worker`)
+## 5. Worker Latar Belakang (`worker`)
 
-The `worker` workload runs background asynchronous job processors, distributed task queues, and scheduled cron jobs:
+Workload `worker` dirancang untuk memproses tugas-tugas berat di latar belakang secara asinkron:
 
-### Characteristics
+### Karakteristik
 
-- **Robust Retries & Backoff:** Configurable exponential backoff, jitter, and maximum retry attempts.
-- **Dead-Letter Queues (DLQ):** Failed jobs are safely quarantined for inspection and replay.
-- **Graceful Shutdown:** Respects OS signals (`SIGINT`, `SIGTERM`), draining active tasks before exit.
-
-### Running
-
-```bash
-kiw worker --queue memory
-```
+- **Antrean Tugas & Jadwal Cron:** Mendukung penjadwalan periodik dan penanganan antrean tugas dengan jaminan eksekusi.
+- **Penanganan Kegagalan yang Andal:** Dilengkapi mekanisme retry dengan exponential backoff dan Dead Letter Queue (DLQ).
+- **Driver Fleksibel:** Dapat menggunakan antrean in-memory lokal untuk pengembangan atau Redis/SQS di lingkungan produksi.
 
 ---
 
-## 6. Microservice (`service`)
+## 6. Microservices (`service`)
 
-The `service` workload equips high-throughput Go microservices with cloud-native distributed service patterns:
+Workload `service` memfasilitasi pembangunan layanan terdistribusi dengan tata kelola jaringan yang tangguh:
 
-### Characteristics
+### Karakteristik
 
-- **Service Registry & Discovery:** First-class integrations with Consul, etcd, NATS, and Kubernetes DNS.
-- **API Gateway Routing:** Path rewriting, weighted canary traffic shifting, and token bucket rate limiting.
-- **Resilience Primitives:** Circuit breakers, request timeouts, and concurrency bulkheads.
-- **Distributed Tracing:** Native OpenTelemetry (OTel) instrumentation with W3C `traceparent` propagation.
-
-### Running
-
-```bash
-kiw run
-```
+- **Penemuan Layanan Dinamis (Service Discovery):** Registrasi dan penemuan layanan otomatis tanpa konfigurasi manual yang rumit.
+- **Observabilitas Bawaan:** Tracing terdistribusi dan metrik performa terintegrasi menggunakan standar OpenTelemetry.
+- **Protokol Standar:** Komunikasi antar-layanan menggunakan HTTP/JSON atau gRPC berkinerja tinggi.
 
 ---
 
-## 7. Cloud Infrastructure as Code (`infra`)
+## 7. Infrastruktur Cloud (`infra`)
 
-The `infra` workload allows developers to declare cloud architecture directly in Go:
+Workload `infra` memungkinkan pendefinisian dan provisi sumber daya cloud secara deklaratif menggunakan bahasa Go:
 
-### Characteristics
+### Karakteristik
 
-- **Declarative Go Structs:** Define VPCs, databases, object storage, and compute clusters using typed Go declarations instead of HCL or YAML.
-- **Deterministic Planning:** `kiw deploy --target infra --plan` generates an execution graph with zero side-effects before applying.
-- **Provider Support:** Multi-cloud drivers covering AWS (ECS, Lambda, RDS, S3, CloudFront) and Kubernetes (Deployments, Services, Ingress).
-
-### Running
-
-```bash
-kiw deploy --target infra --plan
-kiw deploy --target infra
-```
+- **Penyedia Agnostik:** Mengelola infrastruktur di penyedia cloud publik terkemuka maupun klaster Kubernetes lokal.
+- **Rencana Eksekusi Aman:** Menghasilkan ringkasan rencana perubahan sumber daya sebelum dieksekusi secara nyata (`plan` dan `apply`).
+- **Penguncian Status:** Mengamankan file status infrastruktur untuk mencegah modifikasi konkuren yang merusak.
 
 ---
 
-## 8. API Gateway (`gateway`)
+## 8. Gateway API (`gateway`)
 
-The `gateway` workload is a standalone reverse proxy that fronts one or more upstream services with a declarative route table:
+Workload `gateway` bertindak sebagai pintu gerbang masuk terpadu untuk mengarahkan lalu lintas ke berbagai layanan backend:
 
-### Characteristics
+### Karakteristik
 
-- **Declarative Routing:** Exact and prefix routes, per-route method matching, and either a fixed `target_url` or a registry-resolved `service`.
-- **Per-Route Middleware:** CORS, tracing, timeout, rate limiting, and circuit breaking are registered by name and composed per route.
-- **Service Discovery:** Round-robin balancing over registered endpoints; an unavailable upstream returns `502` with a structured Problem JSON body.
-- **One Route Table, Two Runners:** `kiw run` executes the project binary; `kiw gateway` runs the identical `gateway:` block without a rebuild.
-
-### Running
-
-```bash
-kiw gateway --port 8080 --routes "/api=user-service"
-```
-
-> [!NOTE]
-> Client-side WebAssembly is a **library**, not a workload kind. `pkg/runtime`
-> compiles Go to WASM inside an `app` or `site` project via
-> `kiw build --target wasm` — see [Web Runtime & WASM](/packages/web-runtime).
+- **Reverse Proxy Deklaratif:** Konfigurasi rute, upstream backend, dan penyeimbangan beban (load balancing).
+- **Middleware Terpusat:** Penegakan autentikasi, rate limiting, logging audit, dan proteksi CORS di tingkat gerbang.
+- **Integrasi Service Mesh:** Terhubung langsung dengan registry penemuan layanan dari workload `service`.
 
 ---
 
-## Summary
+## Rangkuman
 
-By selecting a workload kind in `krewire.yaml`, developers access tailored ergonomics while retaining the universal benefits of the Go runtime and standard library.
+Kedelapan tipe workload ini berbagi satu filosofi desain yang sama: mereka dapat dikomposisikan secara bertahap tanpa perombakan arsitektur besar.
 
-Proceed to [**1.4 Upgrade Guide →**](/overview/upgrade-guide) to understand versioning, deprecations, and configuration migrations.
+Lanjutkan ke: [**1.4 Panduan Pembaruan →**](/overview/upgrade-guide) atau lompat ke bab [**2. Memulai (Getting Started) →**](/getting-started).

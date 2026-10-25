@@ -1,135 +1,83 @@
 ---
-title: "Upgrade Guide"
-description: "Versioning policies, CLI upgrade instructions, and configuration architecture for Krewire."
+title: "Panduan Pembaruan"
+description: "Kebijakan versi, instruksi pembaruan CLI kiw, dan arsitektur konfigurasi untuk Krewire."
 date: "2026-09-29"
 ---
 
-# Upgrade Guide
+# Panduan Pembaruan (Upgrade Guide)
 
-This guide details the versioning policies, upgrade procedures, and configuration standards across the Krewire ecosystem.
+Panduan ini merinci kebijakan penomoran versi, prosedur pembaruan perangkat, dan standar konfigurasi di seluruh ekosistem Krewire.
 
 ---
 
-## 1. Versioning Strategy & Compatibility Promise
+## 1. Strategi Versi & Janji Kompatibilitas
 
-Krewire strictly adheres to **Semantic Versioning (SemVer 2.0.0)** across the ecosystem:
+Krewire mematuhi standar **Semantic Versioning (SemVer 2.0.0)** secara ketat di seluruh ekosistem:
 
 $$\text{vMAJOR}.\text{MINOR}.\text{PATCH}$$
 
-- **`PATCH` releases (`v0.1.0` → `v0.1.1`):** Bug fixes, performance optimizations, and documentation updates. Guaranteed 100% backward compatible with zero breaking changes.
-- **`MINOR` releases (`v0.1.0` → `v0.2.0`):** New workload capabilities, additive packages, and new CLI flags. Per specification `KWF-META-CMBZJ` and `KWN-DEVTOOL-Z0VFC`:
-  > *"New capabilities are introduced as additive packages; breaking changes are not allowed in minor/patch releases."*
-- **`MAJOR` releases (`v1.0.0`):** Significant architectural evolutions. Any backward-incompatible changes will be preceded by deprecation warnings and automated migration helpers.
+- **Rilis `PATCH` (`v0.1.0` → `v0.1.1`):** Perbaikan bug, optimasi performa, dan pembaruan dokumentasi. Dijamin 100% kompatibel ke belakang tanpa perubahan yang merusak (*zero breaking changes*).
+- **Rilis `MINOR` (`v0.1.0` → `v0.2.0`):** Kapabilitas workload baru, paket tambahan, dan flag CLI baru. Sesuai spesifikasi `KWF-META-CMBZJ` dan `KWN-DEVTOOL-Z0VFC`:
+  > *"Kapabilitas baru diperkenalkan sebagai paket tambahan; perubahan yang merusak tidak diizinkan pada rilis minor maupun patch."*
+- **Rilis `MAJOR` (`v1.0.0`):** Evolusi arsitektur berskala besar. Setiap perubahan yang tidak kompatibel ke belakang akan didahului oleh peringatan depresiasi dan skrip migrasi otomatis.
 
 ---
 
-## 2. Upgrading the `kiw` CLI
+## 2. Memperbarui CLI `kiw`
 
-To upgrade your local installation of `kiw` to the latest release:
+Untuk memperbarui instalasi lokal `kiw` Anda ke versi rilis terbaru:
 
-### Option A: Shell Script (Linux & macOS)
+### Opsi A: Skrip Shell Otomatis (Linux & macOS)
 
-Re-run the automated installer:
+Jalankan kembali skrip installer resmi:
 
 ```bash
 curl -fsSL https://krewire.com/scripts/install.sh | sh
 ```
 
-The script automatically downloads the latest release matching your CPU architecture and replaces the binary in `/usr/local/bin/kiw` (or `~/.local/bin/kiw`).
+Skrip ini akan secara otomatis mendeteksi arsitektur CPU Anda, mengunduh rilis binary terbaru, dan mengganti file binary di direktori `/usr/local/bin/kiw` (atau `~/.local/bin/kiw`).
 
-### Option B: Via `go install`
+### Opsi B: Menggunakan `go install`
 
 ```bash
 go install github.com/krewire/krewire/tools/kiw/cmd/kiw@latest
 ```
 
-### Verify the Updated Version
+### Verifikasi Versi Terbaru
 
 ```bash
 kiw version
 ```
 
-Confirm that the CLI version matches the current release (`v0.1.0`+).
+Pastikan keluaran versi CLI telah sesuai dengan rilis terbaru yang dituju (`v0.1.0`+).
 
 ---
 
-## 3. Upgrading Go Dependencies
+## 3. Memperbarui Dependensi Go
 
-In your application repository, update Krewire packages:
+Di dalam repositori aplikasi Anda, perbarui paket-paket domain Krewire:
 
 ```bash
-# Update Krewire monorepo packages
 go get -u github.com/krewire/krewire@latest
-
-# Prune unused dependencies and sync go.sum
 go mod tidy
 ```
 
-Run your automated test suite to verify compatibility:
+---
+
+## 4. Memverifikasi Kompatibilitas Proyek
+
+Setelah melakukan pembaruan, jalankan perintah validator kompatibilitas bawaan:
 
 ```bash
-kiw test
-# Or standard go test
-go test ./...
+kiw compat
 ```
+
+Perintah `kiw compat` akan memvalidasi keharmonisan antara konfigurasi `krewire.yaml`, versi modul Go, dan dukungan kompiler.
 
 ---
 
-## 4. Configuration Architecture: `krewire.yaml`
+## Langkah Selanjutnya
 
-Krewire enforces strict **Separation of Concerns** in project configuration:
+Setelah memahami arsitektur dan strategi pembaruan Krewire, lanjutkan ke langkah onboarding praktis:
 
-`krewire.yaml` is dedicated solely to **`kiw` devtool and build pipeline configuration**:
-
-```yaml
-# Krewire Devtool Configuration (kiw)
-project:
-  name: "my-site"
-  kind: "site"
-  version: "v0.1.0"
-  author: "Krewire Contributors"
-
-build:
-  output: ".krewire/build"
-  base: "/"
-
-dev:
-  port: 8080
-```
-
-### Separation of Concerns Matrix
-
-| Setting / Data | Target Location | Rationale |
-| :--- | :--- | :--- |
-| **Project Identity & Kind** | `project.name`, `project.kind` in `krewire.yaml` | Declares workload and metadata for devtools |
-| **Build Output Directory** | `build.output:` in `krewire.yaml` | Configures target build destination |
-| **Dev Server Port** | `dev.port:` in `krewire.yaml` | Local development server port |
-| **Page Title & SEO** | YAML frontmatter in `.kiw` (`pages/*.kiw`) or Markdown | Content-specific metadata belongs with content |
-| **Navigation & Links** | Reusable layout shell (`layouts/Base.kiw` or `components/Nav.kiw`) | Presentation structure belongs in UI components |
-| **Footer & Copyright** | Layout footer section (`layouts/Base.kiw`) | UI components manage responsive layout display |
-| **Theme & Color Palettes** | CSS design tokens (`theme.css` / `pkg/book.css`) | Styling variables belong in stylesheets |
-| **Database & API Keys** | Standard environment variables (`.env`) | Sensitive credentials must never be committed |
-
----
-
-## 5. Clean Section Index Routing
-
-Technical manuscript builds export both `<section>.html` and `<section>/index.html` (for example, `.krewire/build/docs/index.html` and `.krewire/build/docs.html`).
-
-If you host your static site behind Nginx or a Docker container, configure your `try_files` directive to enable clean URLs without trailing-slash redirects:
-
-```nginx
-location / {
-    try_files $uri $uri.html $uri/index.html $uri/ /index.html =404;
-}
-```
-
----
-
-## Need Help Upgrading?
-
-If you encounter unexpected build behaviors or test failures:
-
-- Open a discussion on the [Krewire GitHub Forum](https://github.com/orgs/krewire/discussions).
-- Check the [issue tracker](https://github.com/krewire/krewire.com/issues) for known issues.
-- Return to [**Overview →**](/overview) or proceed to [**2. Getting Started →**](/getting-started).
+Lanjutkan ke [**2. Memulai (Getting Started) →**](/getting-started).

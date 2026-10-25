@@ -1,20 +1,18 @@
 ---
-title: "Workloads"
-description: "Comprehensive guide to Krewire's 8 official workload kinds: app, cli, site, book, worker, service, gateway, and infra. Learn architecture, execution models, and progressive scaling."
+title: "Workload Mendalam"
+description: "Panduan komprehensif untuk 8 jenis workload resmi Krewire: app, cli, site, book, worker, service, gateway, dan infra. Pelajari arsitektur dan model eksekusinya."
 date: "2026-10-08"
 ---
 
-# Workloads
+# Workload Mendalam
 
-Krewire provides a unified developer experience across eight first-class workload kinds. Rather than stitching together disjointed libraries and runtimes, every workload is defined in a single configuration file (**`krewire.yaml`**) and orchestrated through one developer tool (**`kiw`**).
+Krewire memberikan pengalaman pengembang yang terpadu di delapan jenis workload kelas satu. Alih-alih menyambungkan pustaka dan runtime yang berbeda secara terpisah-pisah, setiap workload didefinisikan dalam satu berkas konfigurasi (**`krewire.yaml`**) dan diorkestrasikan melalui satu developer tool (**`kiw`**).
 
-Workload kind selection informs the compiler, dev server, and deployment pipeline while preserving standard Go ergonomics and strict downward-only package dependencies.
+Pemilihan jenis workload memberi tahu kompiler, server dev lokal, dan pipeline deployment sembari tetap mempertahankan ergonomi Go standar dan dependensi menurun (*downward-only*) yang ketat.
 
 ---
 
-## What is in this Chapter?
-
-This chapter provides comprehensive architectural documentation, configuration guides, and code examples for each of the eight supported workloads:
+## Isi Bab Ini
 
 <div class="overview-grid">
 
@@ -22,11 +20,11 @@ This chapter provides comprehensive architectural documentation, configuration g
     <div class="chapter-card-head">
       <span class="chapter-card-num">3.1</span>
       <h3 class="chapter-card-title">
-        <a href="/workloads/app">Fullstack Monolith (app) <span class="arrow">→</span></a>
+        <a href="/workloads/app">Monolit Web &amp; API (app) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Single-binary web platforms with Go <code>net/http</code>, embedded static assets, SSR templates, session management, and integrated dependency injection.
+      Aplikasi web fullstack binary tunggal dengan Server-Side Rendering (SSR), API REST/JSON, autentikasi sesi, dan integrasi database langsung.
     </p>
   </div>
 
@@ -34,11 +32,11 @@ This chapter provides comprehensive architectural documentation, configuration g
     <div class="chapter-card-head">
       <span class="chapter-card-num">3.2</span>
       <h3 class="chapter-card-title">
-        <a href="/workloads/cli">Terminal CLI &amp; TUI (cli) <span class="arrow">→</span></a>
+        <a href="/workloads/cli">CLI &amp; TUI Terminal (cli) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Interactive terminal utilities and command trees powered by the lightweight <code>pkg/tui</code> toolkit and POSIX-compliant flag parser.
+      Membangun aplikasi baris perintah dan TUI terminal interaktif menggunakan <code>pkg/tui</code> dengan startup milidetik.
     </p>
   </div>
 
@@ -46,11 +44,11 @@ This chapter provides comprehensive architectural documentation, configuration g
     <div class="chapter-card-head">
       <span class="chapter-card-num">3.3</span>
       <h3 class="chapter-card-title">
-        <a href="/workloads/site">Static Site Generator (site) <span class="arrow">→</span></a>
+        <a href="/workloads/site">Situs Statis / SSG (site) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      High-speed marketing sites and landing pages with file-based routing, compile-time scoped <code>.kiw</code> components, and zero JavaScript overhead.
+      Situs web cepat, ramah SEO, dan hemat biaya komputasi yang dikompilasi dari template komponen <code>.kiw</code> tanpa dependensi Node.js.
     </p>
   </div>
 
@@ -58,11 +56,11 @@ This chapter provides comprehensive architectural documentation, configuration g
     <div class="chapter-card-head">
       <span class="chapter-card-num">3.4</span>
       <h3 class="chapter-card-title">
-        <a href="/workloads/book">Documentation Book (book) <span class="arrow">→</span></a>
+        <a href="/workloads/book">Buku Dokumentasi (book) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Multi-chapter documentation portals and manuals compiled from Markdown manuscripts using the zero-dependency <code>pkg/book</code> engine.
+      Engine kompilasi manuskrip Markdown menjadi portal buku teknis lengkap dengan TOC hierarkis, navigasi pager, dan dukungan i18n.
     </p>
   </div>
 
@@ -70,11 +68,11 @@ This chapter provides comprehensive architectural documentation, configuration g
     <div class="chapter-card-head">
       <span class="chapter-card-num">3.5</span>
       <h3 class="chapter-card-title">
-        <a href="/workloads/worker">Background Worker (worker) <span class="arrow">→</span></a>
+        <a href="/workloads/worker">Worker Latar Belakang (worker) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Asynchronous queue processing, scheduled cron tasks, retry policies, backoff timers, and dead-letter queues via <code>pkg/cloud/worker</code>.
+      Pemrosesan tugas latar belakang asinkron, antrean terdistribusi, penjadwal cron periodik, dan dead-letter queue.
     </p>
   </div>
 
@@ -86,7 +84,7 @@ This chapter provides comprehensive architectural documentation, configuration g
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Cloud-native microservices with service discovery, API gateway routing, rate limiting, circuit breaking, and OpenTelemetry distributed tracing.
+      Layanan terdistribusi dengan penemuan layanan dinamis (service discovery), observabilitas OTel, dan API RPC/HTTP.
     </p>
   </div>
 
@@ -94,11 +92,11 @@ This chapter provides comprehensive architectural documentation, configuration g
     <div class="chapter-card-head">
       <span class="chapter-card-num">3.7</span>
       <h3 class="chapter-card-title">
-        <a href="/workloads/infra">Cloud Infrastructure (infra) <span class="arrow">→</span></a>
+        <a href="/workloads/infra">Infrastruktur sebagai Kode (infra) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Declarative Infrastructure as Code (IaC) written in Go structs, supporting deterministic execution plans and multi-cloud provisioning.
+      Mendeklarasikan dan memprovisi sumber daya cloud modern dalam bahasa Go murni dengan rencana eksekusi dan verifikasi status.
     </p>
   </div>
 
@@ -106,57 +104,12 @@ This chapter provides comprehensive architectural documentation, configuration g
     <div class="chapter-card-head">
       <span class="chapter-card-num">3.8</span>
       <h3 class="chapter-card-title">
-        <a href="/workloads/gateway">API Gateway (gateway) <span class="arrow">→</span></a>
+        <a href="/workloads/gateway">Gateway API (gateway) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Declarative reverse proxies with per-route middleware, rate limiting, timeouts, and service-discovery load balancing.
+      Reverse proxy berkinerja tinggi dengan konfigurasi per rute, pembatasan kuota (rate limiting), dan load balancing dinamis.
     </p>
   </div>
 
 </div>
-
----
-
-## Workload Comparison Matrix
-
-| Workload Kind | Entry Point | Primary Packages | Output Artifact | Deployment Target |
-| :--- | :--- | :--- | :--- | :--- |
-| **`app`** | `cmd/server/main.go` or `main.go` | `web`, `app`, `ui`, `sec` | Single Go Binary | VPS, Docker, VM |
-| **`cli`** | `cmd/<name>/main.go` | `tui`, `term`, `kern/errs` | Standalone CLI Binary | User Terminal, PATH |
-| **`site`** | `pages/index.kiw` | `kiw`, `web/ssg`, `ui` | Static HTML / CSS / JS | GitHub Pages, S3, Nginx |
-| **`book`** | `content/` | `pkg/book`, `markdown` | Static Book Site | Documentation CDN |
-| **`worker`** | `cmd/worker/main.go` | `cloud/worker`, `resilience` | Long-running Daemon | Docker, K8s, Systemd |
-| **`service`** | `cmd/service/main.go` | `cloud/service`, `sec` | RPC/HTTP Service | Kubernetes, ECS, Bare Metal |
-| **`infra`** | `infra/main.go` | `cloud/infra` | Deployment Plan / State | AWS, GCP, Azure, K8s |
-| **`gateway`** | `main.go` | `web/gateway`, `cloud/service/registry` | Go Binary (reverse proxy) | Edge, Kubernetes, VM |
-
----
-
-## Declaring Workloads in `krewire.yaml`
-
-To set the workload for your project, configure the `project.kind` field:
-
-```yaml
-project:
-  name: "storefront"
-  kind: app # app, cli, site, book, worker, service, gateway, infra
-  version: "0.1.0"
-  author: "Acme Corp"
-```
-
-When `project.kind` is omitted, `kiw` automatically infers the kind using shape markers:
-- Directories containing `pages/` or an `ssg:` key are detected as **`site`**.
-- Directories containing `content/` are detected as **`book`**.
-- Directories containing a `worker:` key are detected as **`worker`**.
-- Directories containing a `service:` key are detected as **`service`**.
-- Directories containing a `gateway:` key are detected as **`gateway`**.
-- Directories containing an `infra:` key are detected as **`infra`**.
-- Repositories containing `main.go` or `cmd/` without specialized keys default to **`app`**.
-
-A pre-scaffold bootstrap project (only `go.mod`, `krewire.yaml`, and the starter
-`main.go`) is **not** a kind: `kiw info` reports `none` with the marker
-`pre-init` until `kiw init` equips a variant.
-
-> [!TIP]
-> Always declare `project.kind` explicitly in `krewire.yaml` to ensure deterministic CLI behavior across CI/CD and developer workstations.

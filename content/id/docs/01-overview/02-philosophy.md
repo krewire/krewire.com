@@ -1,122 +1,100 @@
 ---
-title: "Philosophy"
-description: "The core philosophy, three pillars, and foundational engineering tenets guiding Krewire's design and digital SDLC ecosystem."
+title: "Filosofi Inti"
+description: "Filosofi dasar, tiga pilar, dan prinsip rekayasa yang mendasari desain Krewire serta ekosistem SDLC digitalnya."
 date: "2026-10-14"
 ---
 
-# Philosophy
+# Filosofi Inti
 
-Krewire is guided by a fundamental belief: **make it nearly free — in financial cost, operational burden, and cognitive effort — for anyone to build, own, and operate digital products that are secure, sustainable, and scalable.**
+Krewire dipandu oleh sebuah keyakinan fundamental: **membuatnya mendekati gratis — baik dalam biaya finansial, beban operasional, maupun beban kognitif — bagi siapa pun untuk membangun, memiliki, dan mengoperasikan produk digital yang aman, berkelanjutan, dan berskala besar.**
 
-Software should turn builders into sovereign producers, not perpetual renters of proprietary platforms. Krewire is delivered as **Modular Libraries**: independent, single-purpose Go packages that you compose behind one configuration file (`krewire.yaml`) and one unified CLI (`kiw`).
+Perangkat lunak seharusnya mengubah pembangun menjadi produsen yang berdaulat, bukan penyewa abadi di atas platform kepemilikan tertutup (proprietary). Krewire dihadirkan sebagai **Pustaka Modular**: paket Go independen dengan satu tujuan yang Anda padukan di balik satu berkas konfigurasi (`krewire.yaml`) dan satu CLI terpadu (`kiw`).
 
 ---
 
-## 1. The Three Pillars
+## 1. Tiga Pilar
 
-Every architectural decision, package, and capability in the Krewire ecosystem must satisfy three non-negotiable pillars:
+Setiap keputusan arsitektur, paket pustaka, dan kapabilitas dalam ekosistem Krewire harus memenuhi tiga pilar tanpa kompromi:
 
-| Pillar | Principle | What it Looks Like in Krewire |
+| Pilar | Prinsip | Penerapan Nyata di Krewire |
 | :--- | :--- | :--- |
-| **Secure** | Safety is the default, not an enterprise add-on. | Standard library first, strict downward dependency graphs, secure-by-default HTTP primitives, OWASP/CWE alignment, sandboxed runtimes, and secrets referenced via `${env:NAME}` rather than committed. |
-| **Sustainable** | Software a single builder can read, run, and afford decades later. | Single static binaries with embedded templates and assets, zero runtime lock-in, opt-in batteries that cost nothing when unused, and a permanent MIT open-core foundation. |
-| **Scalable** | Growth is progressive and additive, never a rewrite. | Reversible provider contracts, standard workload kinds, and the progressive pipeline allowing products to scale from a $5 VPS to hyperscale without rewriting business logic. |
+| **Secure** | Keamanan adalah standar bawaan, bukan fitur berbayar tambahan. | Mengutamakan pustaka standar Go, grafik dependensi menurun (downward-only), primitif HTTP aman secara default, kepatuhan OWASP/CWE, runtime terisolasi (sandbox), dan rahasia yang direferensikan via `${env:NAME}` tanpa disimpan di kode. |
+| **Sustainable** | Perangkat lunak yang masih dapat dibaca, dijalankan, dan dibiayai pengembang puluhan tahun kemudian. | Binary statis tunggal dengan template dan aset tersemat, bebas lock-in runtime, baterai opsional tanpa beban saat tak terpakai, dan fondasi open-core berlisensi MIT permanen. |
+| **Scalable** | Pertumbuhan bertahap dan aditif, bukan perombakan arsitektur total. | Kontrak provider yang dapat dibalikkan, tipe workload terstandarisasi, dan alur progresif yang memungkinkan aplikasi tumbuh dari VPS $5 hingga hyperscale tanpa penulisan ulang logika bisnis. |
 
 ---
 
-## 2. The Seven Foundational Tenets
+## 2. Tujuh Prinsip Rekayasa Mendasar
 
-The three pillars are the outcomes; the following seven tenets are the engineering means through which those outcomes are achieved:
+Tiga pilar di atas adalah hasil akhir (outcomes); tujuh prinsip berikut adalah cara rekayasa teknis untuk mencapainya:
 
-### 1. Ownership is Power
+### 1. Kepemilikan Penuh adalah Kedaulatan (Ownership is Power)
 
-Software you rent eventually governs you. When third-party platforms control the build pipeline, the runtime environment, or the deployment targets, they dictate the margins, the pricing, and the rules.
+Perangkat lunak yang Anda sewa pada akhirnya akan mendikte Anda. Ketika platform pihak ketiga mengendalikan alur build, runtime, atau target deployment, mereka dapat menentukan margin harga, biaya, dan aturannya.
 
-Krewire builds tools whose output builders own outright:
-- **Single-Binary Deploys:** Applications compile down to self-contained, statically linked machine code.
-- **Embedded Assets:** Templates, migrations, and static assets reside inside the binary via Go's `embed` package.
-- **Self-Sovereign Data:** Databases, file storage, and cache providers are decoupled from vendor lock-in.
-- **Zero Runtime Dependencies:** No required external language interpreters, container runtimes, or proprietary cloud engines.
+Krewire merancang alat yang hasilnya dimiliki sepenuhnya oleh pembuatnya:
+- **Deployment Binary Tunggal:** Aplikasi dikompilasi menjadi kode mesin mandiri yang terhubung secara statis.
+- **Aset Tersemat:** Template, migrasi database, dan aset web berada di dalam binary via paket `embed` Go.
+- **Data Berdaulat Sendiri:** Database, penyimpanan objek, dan penyedia cache terlepas dari keterikatan vendor (vendor lock-in).
+- **Nol Dependensi Runtime:** Tidak memerlukan interpreter bahasa asing, runtime container berat, atau cloud engine tertutup.
 
-### 2. Cost is a Design Decision
+### 2. Biaya adalah Keputusan Desain (Cost is a Design Decision)
 
-Near-zero cost is engineered, never discounted. Every unnecessary dependency, indirection, and piece of cleverness charges interest forever — in hosting bills, maintenance overhead, security audits, and onboarding time.
+Biaya mendekati nol dirancang secara sadar, bukan dari potongan diskon sementara. Setiap dependensi yang tidak perlu, lapisan indireksi rumit, dan trik pemrograman yang berlebihan akan membebankan bunga selamanya — berupa tagihan hosting, beban pemeliharaan, audit keamanan, dan waktu onboarding.
 
-Krewire rejects stacks that silently exclude builders through prohibitive operational costs:
-- **Standard Library First:** Leverage Go's high-performance standard library (`net/http`, `html/template`, `log/slog`, `context`, `flag`) before introducing external third-party dependencies.
-- **Modular Packaging:** Projects import only what they use. If an app only needs static site generation, background queue packages are never linked into the build.
-- **Efficient Compute:** Lean memory footprints (10–30 MB) and millisecond boot times allow production workloads to run reliably on affordable hardware.
-- **Permanent Open Core:** The foundational tier remains MIT-licensed forever. No paid license is ever a prerequisite to build, deploy, or operate a complete system.
+Krewire menolak tumpukan teknologi yang secara diam-diam membebani pengembang dengan biaya operasional tinggi:
+- **Pustaka Standar Pertama (Stdlib First):** Maksimalkan pustaka bawaan Go yang berperforma tinggi (`net/http`, `html/template`, `log/slog`, `context`, `flag`) sebelum memasukkan dependensi eksternal pihak ketiga.
+- **Kemasan Modular:** Proyek hanya mengimpor apa yang digunakan. Jika aplikasi hanya memerlukan pembangkit situs statis, modul antrean worker tidak akan pernah ditautkan ke hasil kompilasi.
+- **Komputasi Efisien:** Penggunaan memori yang ramping (10–30 MB) dan waktu booting sub-milidetik memungkinkan aplikasi produksi berjalan stabil di perangkat keras ekonomis.
+- **Open Core Permanen:** Tingkat fondasi tetap berlisensi MIT selamanya. Tidak ada lisensi berbayar yang menjadi prasyarat wajib untuk membangun, men-deploy, atau mengoperasikan sistem lengkap.
 
-### 3. One Path Beats Many Choices
+### 3. Satu Jalur yang Jelas Melampaui Banyak Pilihan (One Path Beats Many Choices)
 
-Fragmentation taxes hardest those who can least afford it — early-stage teams, students, and independent developers. Infinite optionality creates decision fatigue and friction.
+Fragmentasi membebani paling berat mereka yang memiliki sumber daya terbatas — tim pemula, pelajar, dan pengembang independen. Pilihan yang tak terbatas menciptakan kelelahan dalam mengambil keputusan (decision fatigue).
 
-Committing to one coherent toolchain transforms fragmented exploration into compounding mastery:
-- **One Config:** `krewire.yaml` is the single source of truth for all workload definitions, environment bindings, and build targets.
-- **One CLI:** `kiw` handles project creation, local development, testing, compilation, and deployment across all workloads.
-- **One Language:** Go powers the entire stack — from backend services and worker queues to static sites and client-side WebAssembly runtimes.
-- **Universal Mental Model:** Eight workload kinds share identical directory semantics, configuration syntax, and lifecycle phases.
+Berkomitmen pada satu toolchain yang koheren mengubah eksplorasi yang terpecah menjadi penguasaan yang terakumulasi:
+- **Satu Konfigurasi:** `krewire.yaml` adalah satu-satunya sumber kebenaran (SSOT) untuk seluruh definisi workload, binding environment, dan target build.
+- **Satu CLI:** `kiw` menangani pembuatan proyek, pengembangan lokal, pengujian, kompilasi, dan deployment di seluruh tipe workload.
+- **Satu Bahasa:** Go mentenagai seluruh tumpukan — dari layanan backend dan antrean worker hingga situs statis dan runtime WebAssembly client-side.
+- **Model Mental Universal:** Delapan jenis workload berbagi semantik direktori, sintaks konfigurasi, dan fase siklus hidup yang identik.
 
-### 4. Simple Enough to Teach, Boring Enough to Trust
+### 4. Cukup Sederhana untuk Diajarkan, Cukup Kokoh untuk Dipercaya
 
-Security, sustainability, and reliability are outcomes of disciplined restraint, not features bolted on after the fact. Security comes from a minimal attack surface and sane defaults; sustainability comes from boring, battle-tested components; scalability comes from honest engineering rather than speculative abstraction.
+Keamanan, keberlanjutan, dan keandalan adalah hasil dari disiplin arsitektural, bukan fitur yang ditambahkan belakangan. Keamanan berasal dari permukaan serangan yang minimal dan pengaturan bawaan yang waras; keberlanjutan lahir dari komponen yang teruji; skalabilitas tercipta dari kejujuran rekayasa tanpa abstraksi spekulatif.
 
-- **Explicit Over Magic:** No hidden reflection magic, unreadable metaprogramming, or implicit global state.
-- **Legible Architecture:** Every package has a single responsibility (SRP) and clear cohesion boundaries.
-- **Auditability:** Codebases engineered with Krewire can be read, understood, and audited by a junior engineer or a third-party security reviewer without proprietary training.
+- **Eksplisit Melampaui Magis:** Tidak ada trik reflection tersembunyi, metaprogramming yang sulit dibaca, atau state global implisit.
+- **Arsitektur yang Terbaca:** Setiap paket memiliki tanggung jawab tunggal (SRP) dan batas kohesi yang terang.
+- **Kemudahan Audit:** Basis kode yang dibangun bersama Krewire dapat dibaca, dipahami, dan diaudit oleh insinyur junior maupun peninjau keamanan pihak ketiga tanpa perlu pelatihan platform tertutup.
 
-### 5. Learn by Shipping, Ship by Learning
+### 5. Belajar Sambil Merilis, Merilis Sambil Belajar (Learn by Shipping, Ship by Learning)
 
-True engineering competency is developed on production systems, not synthetic exercises. Learners should build software businesses actually run, and businesses should operate software learners can actually inspect and comprehend.
+Kemampuan rekayasa yang sesungguhnya dibentuk di atas sistem produksi nyata, bukan lewat latihan sintetis semata. Pembelajar harus membangun perangkat lunak yang benar-benar dijalankan oleh bisnis nyata, dan bisnis selayaknya mengoperasikan perangkat lunak yang dapat dibedah dan dipahami oleh pembelajar.
 
-- **Production-Grade Scaffolding:** `kiw new` scaffolds real architectural foundations with structured error handling, health checks, and logging from minute one.
-- **Documentation as a First-Class Product:** Comprehensive, version-controlled guides, architecture decision records (ADRs), and executable examples accompany every package.
-- **Community-Driven SDLC:** Fostering an inclusive developer ecosystem where open collaboration bridges the gap between education and industry.
+- **Scaffolding Kelas Produksi:** Perintah `kiw new` langsung menyediakan fondasi arsitektur nyata dengan penanganan error terstruktur, health check, dan logging sejak menit pertama.
+- **Dokumentasi sebagai Produk Kelas Utama:** Panduan komprehensif berversi, dokumen keputusan arsitektur (ADR), dan contoh yang dapat dieksekusi menyertai setiap paket.
+- **SDLC Berbasis Komunitas:** Membangun ekosistem pengembang inklusif tempat kolaborasi terbuka menjembatani dunia pendidikan dan industri nyata.
 
-### 6. Openness is How We Work, Not Just a License
+### 6. Keterbukaan adalah Cara Bekerja, Bukan Sekadar Lisensi
 
-Trust is earned in the open. Krewire commits to radical legibility across its codebase, roadmap, and development standards.
+Kepercayaan dibangun di ruang terbuka. Krewire berkomitmen pada transparansi penuh di seluruh basis kode, peta jalan (roadmap), dan standar rekayasanya.
 
-- **Transparent Evolution:** Decisions, architectural compromises, and design choices are documented publicly in version-controlled records.
-- **Honest Open-Core Ladder:** The license ladder (`free` → `pro` → `team` → `enterprise`) is strictly additive. Higher tiers may wrap, harden, or add compliance automation for enterprise teams, but free tier modules are never crippled or feature-gated to drive upgrades.
-- **Shared Standards:** Tools, linters, and quality gates run identically on a developer's local laptop and on centralized CI/CD pipelines.
+- **Evolusi Transparan:** Setiap keputusan, kompromi arsitektural, dan pilihan desain dicatat secara publik dalam catatan yang terkontrol versinya.
+- **Jenjang Open-Core yang Jujur:** Tangga lisensi (`free` → `pro` → `team` → `enterprise`) bersifat aditif secara ketat. Tingkat yang lebih tinggi dapat membungkus, memperkuat keamanan, atau menambahkan otomasi kepatuhan untuk enterprise, namun modul tingkat gratis tidak akan pernah dibatasi atau dipotong fiturnya demi memaksa upgrade.
+- **Standar yang Sama:** Seluruh pengujian, linter, dan gerbang mutu berjalan identik baik di laptop pengembang lokal maupun pada pipeline CI/CD terpusat.
 
-### 7. Modular Libraries over Monolithic Frameworks
+### 7. Pustaka Modular Melampaui Framework Monolitik
 
-Frameworks impose their conventions, lifecycle traps, and rigid class hierarchies onto your application. When requirements change, teams are forced into catastrophic rewrites.
+Framework memaksakan konvensi kaku, jebakan siklus hidup, dan hierarki kelas yang mengikat ke dalam aplikasi Anda. Saat kebutuhan bisnis berkembang, tim sering kali terjebak dalam perombakan kode besar-besaran.
 
-Krewire approaches architecture through composable, modular libraries:
-- **Inversion of Control Stays with You:** You compose Krewire packages into your application's `main.go`, rather than inheriting an opinionated runtime container.
-- **Progressive Evolution:** Start with a static documentation portal or landing page (`site`), add server-rendered routes and database models (`app`), extract intensive tasks into background workers (`worker`), and decompose into autonomous microservices (`service`) only when organizational scale demands it.
-- **Zero Rewrite Tax:** Components, domain business logic, and configuration carry forward intact across each stage of growth.
-
----
-
-## 3. Mapping Foundations to the Three Pillars
-
-Each of the seven tenets directly supports and reinforces the primary pillars:
-
-| Foundational Tenet | Secure | Sustainable | Scalable |
-| :--- | :---: | :---: | :---: |
-| **1. Ownership is Power** | ✓ | ✓ | |
-| **2. Cost is a Design Decision** | | ✓ | ✓ |
-| **3. One Path Beats Many Choices** | ✓ | ✓ | |
-| **4. Simple Enough to Teach, Boring Enough to Trust** | ✓ | ✓ | |
-| **5. Learn by Shipping, Ship by Learning** | | ✓ | |
-| **6. Openness is How We Work** | | ✓ | |
-| **7. Modular Libraries over Monolithic Frameworks** | | ✓ | ✓ |
-
-- **Security** is anchored in stack ownership (you control patch cycles), the single path (drastically smaller dependency surface), and boring, battle-tested components.
-- **Sustainability** is preserved through near-zero infrastructure costs, open-source longevity, teachable codebases, and perpetual MIT licensing.
-- **Scalability** is delivered through composable modules and the progressive pipeline, enabling teams to grow from a hobby server to global distribution without rewriting code.
+Krewire mendekati arsitektur melalui pustaka modular yang dapat dikomposisikan:
+- **Kendali Kontrol Tetap di Tangan Anda:** Anda merangkai paket-paket Krewire ke dalam `main.go` aplikasi Anda sendiri, bukan mewarisi wadah runtime beropini kaku.
+- **Evolusi Progresif:** Mulai dari situs dokumentasi statis atau landing page (`site`), tambahkan rute server dan model database (`app`), ekstrak komputasi berat ke worker latar belakang (`worker`), dan pecah menjadi microservices otonom (`service`) hanya ketika skala organisasi membutuhkannya.
+- **Nol Biaya Penulisan Ulang:** Seluruh komponen, logika domain, dan konfigurasi dapat digunakan kembali secara utuh di setiap tahapan ekspansi sistem.
 
 ---
 
-## 4. Next Steps
+## 3. Rangkuman Pemetaan
 
-With Krewire's philosophical foundations established, continue exploring the architecture:
+Ketujuh prinsip rekayasa di atas secara langsung menopang dan mewujudkan Tiga Pilar Krewire: **Secure**, **Sustainable**, dan **Scalable**.
 
-- Proceed to [**1.3 Krewire Workloads →**](/overview/krewire-workloads) to inspect the 8 execution models.
-- Review [**1.1 Why Krewire? ←**](/overview/why-krewire) to see how Krewire resolves toolchain fragmentation.
-- Or jump directly into [**2. Getting Started →**](/getting-started).
+Selanjutnya: telusuri [**1.3 Workload Krewire →**](/overview/krewire-workloads) atau pelajari [**1.4 Panduan Pembaruan →**](/overview/upgrade-guide).
