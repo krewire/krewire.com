@@ -41,7 +41,7 @@ layout: Landing
         <!-- CTAs: stacked on mobile, row on sm+ -->
         <div class="flex flex-col sm:flex-row gap-3 mb-4 w-full sm:w-auto">
           <Button Variant="primary" Size="lg" Href="/docs/getting-started"><span data-i18n="hero.cta_start">Get Started — 5 Min →</span></Button>
-          <Button Variant="outline" Size="lg" Href="#workloads"><span data-i18n="hero.cta_workloads">Explore 8 Workloads ↓</span></Button>
+          <Button Variant="outline" Size="lg" Href="https://open.krewire.com/"><span data-i18n="hero.cta_contribute">Contribute →</span></Button>
         </div>
 
         <p class="text-xs font-semibold text-muted dark:text-muted-dark" data-i18n="hero.meta">Go 1.27.1+ · Spec to Production · File-based routing · Scoped CSS · 100% Zero JS by default</p>

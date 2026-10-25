@@ -194,7 +194,7 @@ var translations = {
 "title_html": "Modular Go Libraries.<br class=\"hidden sm:inline\">Every Workload.",
 "lead_html": "Krewire is an end-to-end <b class=\"text-fg dark:text-fg-dark\">digital SDLC ecosystem</b> — from the first line of the spec to production operations — built on three pillars: <b class=\"text-fg dark:text-fg-dark\">secure</b>, <b class=\"text-fg dark:text-fg-dark\">sustainable</b>, and <b class=\"text-fg dark:text-fg-dark\">scalable</b>. From single-binary web monoliths to interactive TUIs, high-speed static sites, book pipelines, background workers, microservices, cloud infra, and Go WebAssembly runtimes — build everything in Go with one CLI <code class=\"code-inline\">kiw</code> and zero JS fatigue.",
 "cta_start": "Get Started — 5 Min →",
-"cta_workloads": "Explore 8 Workloads ↓",
+"cta_contribute": "Contribute →",
 "meta": "Go 1.27.1+ · Spec to Production · File-based routing · Scoped CSS · 100% Zero JS by default"
 },
 "trust": {
@@ -336,7 +336,7 @@ var translations = {
 "title_html": "Library Go Modular.<br class=\"hidden sm:inline\">Untuk Setiap Workload.",
 "lead_html": "Krewire adalah <b class=\"text-fg dark:text-fg-dark\">ekosistem SDLC digital</b> end-to-end — dari baris pertama spesifikasi hingga operasi produksi — dibangun di atas tiga pilar: <b class=\"text-fg dark:text-fg-dark\">secure</b>, <b class=\"text-fg dark:text-fg-dark\">sustainable</b>, dan <b class=\"text-fg dark:text-fg-dark\">scalable</b>. Dari monolit web binary tunggal hingga TUI interaktif, situs statis berkecepatan tinggi, pipeline buku, worker latar belakang, microservices, cloud infra, dan runtime Go WebAssembly — bangun semuanya dalam Go dengan satu CLI <code class=\"code-inline\">kiw</code> dan bebas kelelahan JS.",
 "cta_start": "Mulai Sekarang — 5 Menit →",
-"cta_workloads": "Jelajahi 8 Workload ↓",
+"cta_contribute": "Berkontribusi →",
 "meta": "Go 1.27.1+ · Dari Spek ke Produksi · Routing Berbasis Berkas · Scoped CSS · 100% Bebas JS secara Bawaan"
 },
 "trust": {
