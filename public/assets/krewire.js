@@ -479,11 +479,21 @@ return null;
 }
 return curr;
 }
+function isDocsRoute(pathname) {
+var p = pathname || (typeof window !== 'undefined' && window.location ? window.location.pathname : '');
+return p.indexOf('/docs') !== -1 || p.startsWith('/en/docs') || p.startsWith('/id/docs');
+}
 function initI18n() {
+var path = window.location.pathname;
+var inDocs = isDocsRoute(path) || !!document.querySelector('.docs-reader, .chapter, #sidebar-toc');
 var currentLang = 'en';
 try {
-if (window.location.pathname.startsWith('/id/') || window.location.pathname === '/id') {
+if (inDocs) {
+if (path.startsWith('/id/') || path === '/id') {
 currentLang = 'id';
+} else {
+currentLang = 'en';
+}
 } else {
 var saved = localStorage.getItem('krewire-lang');
 if (saved === 'id' || saved === 'en') {
@@ -541,23 +551,31 @@ document.addEventListener('click', function (e) {
 var btn = e.target && e.target.closest ? e.target.closest('[data-lang-toggle], .lang-switch') : null;
 if (btn) {
 e.preventDefault();
-var path = window.location.pathname;
-var isDocs = path.indexOf('/docs') !== -1;
-var next = currentLang === 'en' ? 'id' : 'en';
-try {
-localStorage.setItem('krewire-lang', next);
-} catch (_) {}
+var p = window.location.pathname;
+var isDocs = isDocsRoute(p) || !!document.querySelector('.docs-reader, .chapter, #sidebar-toc');
+
 if (isDocs) {
+// Mechanism 2: Docs URL Path-based routing for markdown content
+var isIdDocs = p.startsWith('/id/') || p === '/id';
+var nextLang = isIdDocs ? 'en' : 'id';
+try {
+localStorage.setItem('krewire-lang', nextLang);
+} catch (_) {}
+
 var target;
-if (next === 'id') {
-var clean = path.replace(/^\/en(\/|$)/, '/');
+if (nextLang === 'id') {
+var clean = p.replace(/^\/en(\/|$)/, '/');
 target = '/id' + (clean.startsWith('/') ? clean : '/' + clean);
 } else {
-target = path.replace(/^\/id(\/|$)/, '/') || '/docs';
+target = p.replace(/^\/id(\/|$)/, '/') || '/docs';
 }
-window.location.href = target;
+var searchAndHash = (window.location.search || '') + (window.location.hash || '');
+window.location.href = target + searchAndHash;
 return;
 }
+
+// Mechanism 1: Landing / Site shell in-place DOM translation (<locale>.json)
+var next = currentLang === 'en' ? 'id' : 'en';
 applyLanguage(next);
 }
 });
@@ -653,11 +671,18 @@ if (next && next.href) window.location.href = next.href;
 }
 function initDocsLangSwitch() {
 var path = window.location.pathname;
+var isDocs = (typeof isDocsRoute === 'function' ? isDocsRoute(path) : path.indexOf('/docs') !== -1) || !!document.querySelector('.docs-reader, .chapter, #sidebar-toc');
+if (!isDocs) {
+return;
+}
+
 var isIndonesian = path.startsWith('/id/') || path === '/id';
 var curLang = isIndonesian ? 'id' : 'en';
+
 document.querySelectorAll('.lang-switch .lang-code, [data-lang-toggle] .lang-code').forEach(function (el) {
 el.textContent = curLang.toUpperCase();
 });
+
 if (isIndonesian) {
 document.querySelectorAll('.topbar nav .nav-links a, .sidebar-mobile-nav a').forEach(function (a) {
 var href = a.getAttribute('href');
@@ -666,28 +691,10 @@ a.setAttribute('href', '/id' + href);
 }
 });
 }
-document.querySelectorAll('.lang-switch, [data-lang-toggle]').forEach(function (btn) {
-if (btn._docsLangBound) return;
-btn._docsLangBound = true;
-btn.addEventListener('click', function (e) {
-e.preventDefault();
-e.stopPropagation();
-var nextLang = curLang === 'en' ? 'id' : 'en';
-try {
-localStorage.setItem('krewire-lang', nextLang);
-} catch (_) {}
-var target;
-if (nextLang === 'id') {
-var clean = path.replace(/^\/en(\/|$)/, '/');
-target = '/id' + (clean.startsWith('/') ? clean : '/' + clean);
-} else {
-target = path.replace(/^\/id(\/|$)/, '/') || '/docs';
-}
-window.location.href = target;
-});
-});
+
 var nav = document.querySelector('.topbar nav');
 if (!nav || nav.querySelector('[data-lang-toggle], .lang-switch')) return;
+
 var btn = document.createElement('button');
 btn.type = 'button';
 btn.className = 'lang-switch';
@@ -695,22 +702,7 @@ btn.setAttribute('data-lang-toggle', '');
 btn.setAttribute('aria-label', 'Toggle language');
 btn.setAttribute('title', 'Switch language (EN/ID)');
 btn.innerHTML = '<span class="lang-icon" aria-hidden="true">🌐</span><span class="lang-code">' + curLang.toUpperCase() + '</span>';
-btn._docsLangBound = true;
-btn.addEventListener('click', function (e) {
-e.preventDefault();
-var nextLang = curLang === 'en' ? 'id' : 'en';
-try {
-localStorage.setItem('krewire-lang', nextLang);
-} catch (_) {}
-var target;
-if (nextLang === 'id') {
-var clean = path.replace(/^\/en(\/|$)/, '/');
-target = '/id' + (clean.startsWith('/') ? clean : '/' + clean);
-} else {
-target = path.replace(/^\/id(\/|$)/, '/') || '/docs';
-}
-window.location.href = target;
-});
+
 var themeToggle = nav.querySelector('[data-theme-toggle]');
 if (themeToggle && themeToggle.parentNode) {
 themeToggle.parentNode.insertBefore(btn, themeToggle);
