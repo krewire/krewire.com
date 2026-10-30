@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="{lang || 'en'}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>{title ? title + " — Krewire Docs" : "Krewire Documentation"}</title>
+  <link rel="canonical" href="https://krewire.com/docs">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/krewire.css">
+  <script src="/assets/krewire.js" defer></script>
+</head>
+<body class="docs-body">
+
+  <!-- TOPBAR NAVBAR -->
+  <header class="topbar">
+    <nav>
+      <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Open navigation">
+        <svg viewBox="0 0 16 16" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4h12M2 8h12M2 12h12"/></svg>
+      </button>
+      <a class="brand" href="/">
+        <span class="brand-mark">◈</span>
+        <span class="brand-text">Krewire</span>
+      </a>
+
+      <!-- VERSION PICKER DROPDOWN -->
+      <div class="version-picker" id="versionPicker">
+        <select id="docVersionSelect" onchange="switchDocVersion(this.value)" aria-label="Documentation Version">
+          <option value="v0.1.0" selected>v0.1.0 (latest)</option>
+          <option value="v0.0.9">v0.0.9 (legacy)</option>
+        </select>
+      </div>
+
+      <!-- SEARCH BUTTON TRIGGER (Cmd+K) -->
+      <button class="topbar-search-btn" onclick="openSearchModal()" aria-label="Search Documentation">
+        <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg>
+        <span>Search docs...</span>
+        <kbd>⌘K</kbd>
+      </button>
+
+      <div class="nav-links">
+        <a class="nav-link" href="/docs">Docs</a>
+        <a class="nav-link" href="/#workloads">Workloads</a>
+        <a class="nav-link nav-link-github" href="https://github.com/krewire/krewire" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+
+      <div class="topbar-actions">
+        <button type="button" class="lang-switch" data-lang-toggle aria-label="Toggle language"><span class="lang-code">EN</span></button>
+        <button type="button" class="theme-toggle" onclick="window.krewireTheme.toggle()" aria-label="Toggle theme">◐</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- LEGACY VERSION BANNER -->
+  <div id="legacyVersionBanner" class="legacy-banner" style="display:none">
+    ⚠️ You are viewing documentation for an older version (<span id="legacyVersionLabel"></span>). <a href="/docs" style="text-decoration:underline; font-weight:bold;">Click here to view latest docs.</a>
+  </div>
+
+  <div class="docs-layout">
+    <!-- LEFT SIDEBAR: HIERARCHICAL NAVIGATION -->
+    <aside class="sidebar" id="sidebar" aria-label="Documentation Sidebar">
+      <div class="sidebar-head">
+        <span class="sidebar-title">Documentation</span>
+      </div>
+      <nav class="toc" id="sidebar-toc">
+        <div class="toc-group open" data-group>
+          <div class="toc-parent-row">
+            <a href="/docs/overview" class="toc-link">Overview</a>
+          </div>
+          <div class="toc-subs">
+            <a href="/docs/overview/why-krewire" class="toc-sub">Why Krewire</a>
+            <a href="/docs/overview/philosophy" class="toc-sub">Philosophy</a>
+            <a href="/docs/overview/krewire-workloads" class="toc-sub">8 Workloads</a>
+          </div>
+        </div>
+
+        <div class="toc-group open" data-group>
+          <div class="toc-parent-row">
+            <a href="/docs/getting-started" class="toc-link">Getting Started</a>
+          </div>
+          <div class="toc-subs">
+            <a href="/docs/getting-started/installation" class="toc-sub">Installation</a>
+            <a href="/docs/getting-started/configuration" class="toc-sub">Configuration</a>
+            <a href="/docs/getting-started/directory-structure" class="toc-sub">Directory Structure</a>
+            <a href="/docs/getting-started/dsl" class="toc-sub">.kiw DSL</a>
+            <a href="/docs/getting-started/agentic-development" class="toc-sub">Agentic Development</a>
+          </div>
+        </div>
+
+        <div class="toc-group open" data-group>
+          <div class="toc-parent-row">
+            <a href="/docs/workloads" class="toc-link">Workloads</a>
+          </div>
+          <div class="toc-subs">
+            <a href="/docs/workloads/app" class="toc-sub">App</a>
+            <a href="/docs/workloads/cli" class="toc-sub">CLI</a>
+            <a href="/docs/workloads/site" class="toc-sub">Site</a>
+            <a href="/docs/workloads/book" class="toc-sub">Book</a>
+            <a href="/docs/workloads/worker" class="toc-sub">Worker</a>
+            <a href="/docs/workloads/service" class="toc-sub">Service</a>
+            <a href="/docs/workloads/gateway" class="toc-sub">Gateway</a>
+            <a href="/docs/workloads/infra" class="toc-sub">Infra</a>
+          </div>
+        </div>
+
+        <div class="toc-group open" data-group>
+          <div class="toc-parent-row">
+            <a href="/docs/cli-reference" class="toc-link">CLI Reference</a>
+          </div>
+          <div class="toc-subs">
+            <a href="/docs/cli-reference/commands" class="toc-sub">Commands</a>
+            <a href="/docs/cli-reference/configuration" class="toc-sub">Configuration</a>
+            <a href="/docs/cli-reference/scripting" class="toc-sub">Scripting & CI/CD</a>
+          </div>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- MAIN ARTICLE CONTENT -->
+    <main class="docs-main">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span class="sep">/</span> <a href="/docs">Docs</a> <span class="sep">/</span> <span class="current">{title || "Documentation"}</span>
+      </nav>
+
+      <article class="chapter" id="docContent">
+        {content}
+      </article>
+
+      <nav class="pager">
+        <a class="prev" id="pagerPrev" href="/docs" style="display:none">&larr; Previous</a>
+        <a class="next" id="pagerNext" href="/docs/getting-started" style="display:none">Next &rarr;</a>
+      </nav>
+    </main>
+
+    <!-- RIGHT RAIL: ON THIS PAGE (SCROLLSPY TOC) -->
+    <aside class="right-rail" aria-label="Table of contents">
+      <div class="right-rail-title">On This Page</div>
+      <nav class="right-rail-toc" id="rightRailTOC"></nav>
+    </aside>
+  </div>
+
+  <!-- SEARCH MODAL COMPONENT -->
+  <SearchModal />
+
+</body>
+</html>
+
+<style>
+.docs-body {
+  margin: 0;
+  background-color: var(--bg, #0B1F3B);
+  color: var(--fg, #FAF8F4);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+.version-picker select {
+  background: var(--bg-2, #112646);
+  color: var(--fg, #FAF8F4);
+  border: 1px solid var(--border-subtle, rgba(255,255,255,0.2));
+  border-radius: 6px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+  outline: none;
+}
+.topbar-search-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-2, #112646);
+  border: 1px solid var(--border-subtle, rgba(255,255,255,0.2));
+  color: var(--muted, #9ab0ce);
+  padding: 0.35rem 0.85rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  margin-left: 1rem;
+}
+.topbar-search-btn kbd {
+  background: rgba(0,0,0,0.2);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+}
+.legacy-banner {
+  background-color: #ffb703;
+  color: #0B1F3B;
+  padding: 0.6rem 1.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+}
+.docs-layout {
+  display: flex;
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: calc(100vh - 60px);
+}
+.sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--border-subtle, rgba(255,255,255,0.1));
+  padding: 1.5rem 1rem;
+}
+.docs-main {
+  flex: 1;
+  min-width: 0;
+  padding: 2rem 3rem;
+}
+.right-rail {
+  width: 240px;
+  flex-shrink: 0;
+  padding: 2rem 1.5rem;
+  position: sticky;
+  top: 60px;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+}
+.right-rail-title {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--muted, #9ab0ce);
+  margin-bottom: 0.75rem;
+}
+.right-rail-toc a {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--muted, #9ab0ce);
+  text-decoration: none;
+  padding: 0.3rem 0;
+  transition: color 0.15s ease;
+}
+.right-rail-toc a:hover, .right-rail-toc a.active {
+  color: var(--primary, #39D353);
+  font-weight: 600;
+}
+.right-rail-toc a.toc-h3 {
+  padding-left: 1rem;
+  font-size: 0.8rem;
+}
+/* Terminal prompt highlighting */
+.chapter pre code .terminal-prompt {
+  color: #39D353;
+  font-weight: bold;
+}
+</style>
+
+<script>
+function switchDocVersion(ver) {
+  if (ver.includes('legacy') || ver === 'v0.0.9') {
+    const banner = document.getElementById('legacyVersionBanner');
+    const label = document.getElementById('legacyVersionLabel');
+    if (banner && label) {
+      label.innerText = ver;
+      banner.style.display = 'block';
+    }
+  } else {
+    const banner = document.getElementById('legacyVersionBanner');
+    if (banner) banner.style.display = 'none';
+  }
+}
+
+// Right-Hand TOC Generator & Intersection Observer Scrollspy
+document.addEventListener('DOMContentLoaded', () => {
+  const article = document.getElementById('docContent');
+  const tocContainer = document.getElementById('rightRailTOC');
+  if (!article || !tocContainer) return;
+
+  const headings = article.querySelectorAll('h2, h3');
+  if (headings.length === 0) {
+    tocContainer.innerHTML = '<span style="font-size:0.8rem; color:var(--muted)">No sub-sections</span>';
+    return;
+  }
+
+  headings.forEach((h, i) => {
+    if (!h.id) {
+      h.id = 'heading-' + i + '-' + h.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    }
+    const a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.innerText = h.textContent.replace(/#/g, '').trim();
+    if (h.tagName.toLowerCase() === 'h3') {
+      a.className = 'toc-h3';
+    }
+    tocContainer.appendChild(a);
+  });
+
+  // Scrollspy via IntersectionObserver
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        tocContainer.querySelectorAll('a').forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '0px 0px -70% 0px' });
+
+  headings.forEach(h => observer.observe(h));
+
+  // Style terminal prompts ($) inside code blocks
+  document.querySelectorAll('pre code').forEach(code => {
+    if (code.innerText.includes('$ ')) {
+      code.innerHTML = code.innerHTML.replace(/(^|\n)(\$\s)/g, '$1<span class="terminal-prompt">$2</span>');
+    }
+  });
+});
+</script>

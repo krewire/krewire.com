@@ -1,0 +1,270 @@
+<dialog id="searchModal" class="search-modal" aria-label="Search Documentation">
+  <div class="search-modal-backdrop" onclick="closeSearchModal()"></div>
+  <div class="search-modal-dialog">
+    <div class="search-input-wrapper">
+      <svg class="search-icon" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg>
+      <input type="search" id="docSearchInput" class="doc-search-input" placeholder="Search docs, CLI commands, APIs... (Cmd+K)" autocomplete="off" spellcheck="false" />
+      <kbd class="search-esc-kbd" onclick="closeSearchModal()">ESC</kbd>
+    </div>
+    <div id="searchResults" class="search-results-list" role="listbox">
+      <div class="search-hint">Type a keyword (e.g. <code>kiw deploy</code>, <code>workloads</code>, <code>auth</code>) to search.</div>
+    </div>
+  </div>
+</dialog>
+
+<style>
+.search-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  border: none;
+  background: transparent;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+}
+.search-modal[open] {
+  display: flex;
+}
+.search-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 31, 59, 0.7);
+  backdrop-filter: blur(4px);
+}
+.search-modal-dialog {
+  position: relative;
+  z-index: 10000;
+  width: 100%;
+  max-width: 640px;
+  margin-top: 10vh;
+  background: var(--bg-2, #112646);
+  border: 2px solid var(--border, #39D353);
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  overflow: hidden;
+  color: var(--fg, #FAF8F4);
+  display: flex;
+  flex-direction: column;
+}
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.2rem;
+  border-bottom: 1px solid var(--border-subtle, rgba(255,255,255,0.1));
+}
+.doc-search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--fg, #FAF8F4);
+  font-size: 1.05rem;
+  outline: none;
+}
+.search-esc-kbd {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.5rem;
+  background: var(--bg, #0B1F3B);
+  border: 1px solid var(--border-subtle, rgba(255,255,255,0.2));
+  border-radius: 4px;
+  cursor: pointer;
+}
+.search-results-list {
+  max-height: 55vh;
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+.search-hint {
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--muted, #9ab0ce);
+  font-size: 0.9rem;
+}
+.search-result-item {
+  display: block;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.1s ease;
+}
+.search-result-item:hover, .search-result-item.selected {
+  background: rgba(57, 211, 83, 0.15);
+}
+.search-res-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--primary, #39D353);
+  margin-bottom: 0.25rem;
+}
+.search-res-snippet {
+  font-size: 0.82rem;
+  color: var(--muted, #9ab0ce);
+  line-height: 1.4;
+}
+.search-res-highlight {
+  background: rgba(255, 183, 3, 0.3);
+  color: #ffb703;
+  padding: 0 0.15rem;
+  border-radius: 2px;
+  font-weight: bold;
+}
+</style>
+
+<script>
+(function() {
+  let searchIndex = null;
+  let selectedIndex = -1;
+
+  async function loadSearchIndex() {
+    if (searchIndex) return searchIndex;
+    const isId = location.pathname.startsWith('/id/') || location.pathname === '/id';
+    const indexPath = isId ? '/id/docs/search-index.json' : '/docs/search-index.json';
+    try {
+      const res = await fetch(indexPath);
+      if (res.ok) {
+        searchIndex = await res.json();
+      }
+    } catch (e) {
+      console.warn('Failed to load search index', e);
+    }
+    return searchIndex;
+  }
+
+  window.openSearchModal = async function() {
+    const dialog = document.getElementById('searchModal');
+    if (!dialog) return;
+    dialog.setAttribute('open', '');
+    const input = document.getElementById('docSearchInput');
+    if (input) {
+      input.value = '';
+      input.focus();
+    }
+    await loadSearchIndex();
+  };
+
+  window.closeSearchModal = function() {
+    const dialog = document.getElementById('searchModal');
+    if (dialog) dialog.removeAttribute('open');
+  };
+
+  document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      const dialog = document.getElementById('searchModal');
+      if (dialog && dialog.hasAttribute('open')) {
+        closeSearchModal();
+      } else {
+        openSearchModal();
+      }
+    } else if (e.key === 'Escape') {
+      closeSearchModal();
+    }
+  });
+
+  const input = document.getElementById('docSearchInput');
+  const resultsContainer = document.getElementById('searchResults');
+
+  if (input) {
+    input.addEventListener('input', () => {
+      const query = input.value.trim().toLowerCase();
+      if (!query || !searchIndex || !searchIndex.docs) {
+        resultsContainer.innerHTML = '<div class="search-hint">Type a keyword to search...</div>';
+        selectedIndex = -1;
+        return;
+      }
+
+      const tokens = query.split(/\s+/);
+      const matches = [];
+
+      for (const doc of searchIndex.docs) {
+        let score = 0;
+        const titleLower = doc.title.toLowerCase();
+        const snippetLower = doc.snippet.toLowerCase();
+
+        for (const tok of tokens) {
+          if (titleLower.includes(tok)) score += 10;
+          if (snippetLower.includes(tok)) score += 3;
+          if (doc.tokens && doc.tokens.includes(tok)) score += 5;
+        }
+
+        if (score > 0) {
+          matches.push({ doc, score });
+        }
+      }
+
+      matches.sort((a, b) => b.score - a.score);
+      const topMatches = matches.slice(0, 10);
+
+      if (topMatches.length === 0) {
+        resultsContainer.innerHTML = `<div class="search-hint">No results found for "<strong>${escapeHtml(query)}</strong>"</div>`;
+        selectedIndex = -1;
+        return;
+      }
+
+      resultsContainer.innerHTML = topMatches.map(({ doc }, idx) => {
+        const highlightedTitle = highlight(doc.title, tokens);
+        const highlightedSnippet = highlight(doc.snippet, tokens);
+        return `
+          <a href="${doc.path}" class="search-result-item ${idx === 0 ? 'selected' : ''}" data-idx="${idx}" onclick="closeSearchModal()">
+            <div class="search-res-title">${highlightedTitle}</div>
+            <div class="search-res-snippet">${highlightedSnippet}</div>
+          </a>
+        `;
+      }).join('');
+      selectedIndex = 0;
+    });
+
+    input.addEventListener('keydown', (e) => {
+      const items = resultsContainer.querySelectorAll('.search-result-item');
+      if (items.length === 0) return;
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        selectedIndex = (selectedIndex + 1) % items.length;
+        updateSelection(items);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        selectedIndex = (selectedIndex - 1 + items.length) % items.length;
+        updateSelection(items);
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (selectedIndex >= 0 && selectedIndex < items.length) {
+          items[selectedIndex].click();
+        }
+      }
+    });
+  }
+
+  function updateSelection(items) {
+    items.forEach((item, i) => {
+      item.classList.toggle('selected', i === selectedIndex);
+      if (i === selectedIndex) {
+        item.scrollIntoView({ block: 'nearest' });
+      }
+    });
+  }
+
+  function highlight(text, tokens) {
+    if (!text) return '';
+    let esc = escapeHtml(text);
+    tokens.forEach(tok => {
+      if (!tok) return;
+      const re = new RegExp('(' + escapeRegex(tok) + ')', 'gi');
+      esc = esc.replace(re, '<span class="search-res-highlight">$1</span>');
+    });
+    return esc;
+  }
+
+  function escapeHtml(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function escapeRegex(s) {
+    return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+  }
+})();
+</script>
