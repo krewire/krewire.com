@@ -150,15 +150,32 @@ my-docs/
 my-app/
 ├── krewire.yaml
 ├── go.mod
-├── cmd/
-│   └── my-app/
-│       └── main.go
-├── web/
-│   ├── router.go
-│   └── handlers/
+├── main.go
 ├── internal/
-│   └── domain/
-└── public/
+│   ├── app/
+│   │   └── app.go
+│   ├── config/
+│   │   └── config.go
+│   └── http/
+│       └── http.go
+├── web/
+│   ├── layouts/
+│   │   └── shell.go
+│   ├── pages/
+│   │   └── pages.go
+│   ├── components/
+│   │   └── components.go
+│   └── theme/
+│       └── theme.go
+├── assets/
+│   ├── embed.go
+│   └── public/
+│       ├── app.css
+│       └── app.js
+├── README.md
+├── .gitignore
+├── .env.example
+└── .env
 ```
 
 ### 4. CLI Terminal (`kiw new my-cli --cli`)
