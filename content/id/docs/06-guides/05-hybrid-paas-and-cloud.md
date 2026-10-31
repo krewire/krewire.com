@@ -6,7 +6,7 @@ date: "2026-10-24"
 
 # PaaS Hibrida & Cloud Terkelola (`cloud`)
 
-Krewire Cloud mengadopsi **Model C (Open-Core PaaS Hibrida & Cloud SaaS Terkelola)** sesuai dengan [ADR-C9L2P](file:///home/reasvyn/workspace/krewire/internal/docs/adr/ADR-C9L2P-hybrid-paas-platform-architecture.md).
+Krewire Cloud mengadopsi **Model C (Open-Core PaaS Hibrida & Cloud SaaS Terkelola)** sesuai dengan `ADR-C9L2P`.
 
 ## 1. Mesin PaaS Open-Core Self-Hosted
 
@@ -25,7 +25,7 @@ go run ./cmd/cloud-server
 
 Bagi tim yang menginginkan deployment serverless instan tanpa repot mengelola VPS:
 
-- `kiw deploy --cloud`: Langsung membundel dan menyiapkan proyek ke lingkungan produksi.
+- `kiw deploy` + webhook Git push-to-deploy: membundel dan menyiapkan proyek secara lokal, lalu continuous deployment merilisnya ke produksi.
 - Streaming build real-time dan agregasi log terpusat.
 - Pembayaran lokal Indonesia melalui QRIS dan Virtual Account Bank.
 - Kepatuhan kedaulatan data penuh di bawah Undang-Undang Perlindungan Data Pribadi (UU PDP) Indonesia.

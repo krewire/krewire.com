@@ -104,5 +104,5 @@ Tingkatkan produktivitas pengembang dengan suite pengujian otomatis, pemformatan
 Skalakan aplikasi ke produksi, deploy ke PaaS hybrid mandiri atau terkelola, dan pelajari lisensi Open Core:
 
 1. [**Panduan Deployment & Operasi**](/guides/deployment-and-operations) — Kontainerisasi binary mandiri, rolling deploy tanpa downtime, dan reverse proxy TLS otomatis Let's Encrypt.
-2. **Krewire Cloud (`cloud`)** — Deploy ke engine PaaS Go-native mandiri atau SaaS terkelola (`kiw deploy --cloud`).
+2. **Krewire Cloud (`cloud`)** — Deploy ke engine PaaS Go-native mandiri atau SaaS terkelola (`kiw deploy --target infra` dengan `pkg/cloud/infra`).
 3. [**Model Open Core & Lisensi**](/guides/open-core-and-licensing) — Jenjang lisensi 4 tingkat (*free*, *pro*, *team*, *enterprise*) dan kepatuhan kedaulatan data UU PDP.

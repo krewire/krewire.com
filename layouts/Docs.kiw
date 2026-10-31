@@ -25,9 +25,8 @@
 
       <!-- VERSION PICKER DROPDOWN -->
       <div class="version-picker" id="versionPicker">
-        <select id="docVersionSelect" onchange="switchDocVersion(this.value)" aria-label="Documentation Version">
+        <select id="docVersionSelect" aria-label="Documentation Version">
           <option value="v0.1.0" selected>v0.1.0 (latest)</option>
-          <option value="v0.0.9">v0.0.9 (legacy)</option>
         </select>
       </div>
 
@@ -50,11 +49,6 @@
       </div>
     </nav>
   </header>
-
-  <!-- LEGACY VERSION BANNER -->
-  <div id="legacyVersionBanner" class="legacy-banner" style="display:none">
-    ⚠️ You are viewing documentation for an older version (<span id="legacyVersionLabel"></span>). <a href="/docs" style="text-decoration:underline; font-weight:bold;">Click here to view latest docs.</a>
-  </div>
 
   <div class="docs-layout">
     <!-- LEFT SIDEBAR: HIERARCHICAL NAVIGATION -->
@@ -181,13 +175,6 @@
   border-radius: 4px;
   font-size: 0.75rem;
 }
-.legacy-banner {
-  background-color: #ffb703;
-  color: #0B1F3B;
-  padding: 0.6rem 1.5rem;
-  text-align: center;
-  font-size: 0.85rem;
-}
 .docs-layout {
   display: flex;
   max-width: 1440px;
@@ -245,20 +232,6 @@
 </style>
 
 <script>
-function switchDocVersion(ver) {
-  if (ver.includes('legacy') || ver === 'v0.0.9') {
-    const banner = document.getElementById('legacyVersionBanner');
-    const label = document.getElementById('legacyVersionLabel');
-    if (banner && label) {
-      label.innerText = ver;
-      banner.style.display = 'block';
-    }
-  } else {
-    const banner = document.getElementById('legacyVersionBanner');
-    if (banner) banner.style.display = 'none';
-  }
-}
-
 // Right-Hand TOC Generator & Intersection Observer Scrollspy
 document.addEventListener('DOMContentLoaded', () => {
   const article = document.getElementById('docContent');

@@ -6,7 +6,7 @@ date: "2026-10-24"
 
 # Arsitektur & Disiplin Rekayasa
 
-Basis kode Krewire diatur oleh invarian arsitektur yang tidak dapat ditawar, sebagaimana didefinisikan dalam [ADR-6CAB8C](file:///home/reasvyn/workspace/krewire/internal/docs/adr/ADR-6CAB8C-ecosystem-architecture-baseline.md).
+Basis kode Krewire diatur oleh invarian arsitektur yang tidak dapat ditawar, sebagaimana didefinisikan dalam `ADR-6CAB8C`.
 
 ## 1. Dependensi Ketat Hanya ke Arah Bawah
 

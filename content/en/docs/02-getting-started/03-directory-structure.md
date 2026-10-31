@@ -142,8 +142,9 @@ my-docs/
 ├── krewire.yaml
 ├── go.mod
 └── content/
-    ├── index.md
-    └── 01-getting-started.md
+    └── docs/
+        ├── 01-introduction.md
+        └── 02-getting-started.md
 ```
 
 ### 3. Fullstack Monolith (`kiw new my-app --app`)

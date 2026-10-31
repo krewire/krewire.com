@@ -6,7 +6,7 @@ date: "2026-10-24"
 
 # Hybrid PaaS Platform (`github.com/krewire/cloud`)
 
-`krewire/cloud` powers both the self-hosted open-core PaaS engine and the multi-tenant managed SaaS platform (`cloud.krewire.com`), fulfilling [ADR-C9L2P](file:///home/reasvyn/workspace/krewire/internal/docs/adr/ADR-C9L2P-hybrid-paas-platform-architecture.md).
+`krewire/cloud` powers both the self-hosted open-core PaaS engine and the multi-tenant managed SaaS platform (`cloud.krewire.com`), fulfilling `ADR-C9L2P`.
 
 ## Subsystems
 

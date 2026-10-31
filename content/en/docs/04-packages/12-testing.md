@@ -19,14 +19,15 @@ package payment_test
 
 import (
 	"testing"
-	"github.com/krewire/krewire/pkg/testing/assert"
+
+	"github.com/krewire/krewire/pkg/testing"
 )
 
 func TestPayment_ChargesCardWithIdempotency(t *testing.T) {
 	charge, err := ProcessCharge("ch_123", 5000)
 
-	assert.NoError(t, err)
-	assert.Equal(t, "succeeded", charge.Status)
+	test.NoError(t, err)
+	test.Equal(t, "succeeded", charge.Status)
 }
 ```
 

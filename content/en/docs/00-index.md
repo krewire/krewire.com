@@ -104,5 +104,5 @@ Accelerate developer productivity with automated test suites, formatting, projec
 Scale workloads to production, deploy to self-hosted or managed PaaS, and leverage the Open Core business model:
 
 1. [**Deployment & Operations Guide**](/guides/deployment-and-operations) — Single-binary containerization, zero-downtime rolling deploys, and automated ACME SSL/TLS reverse proxies.
-2. **Krewire Cloud (`cloud`)** — Deploying to the Go-native hybrid PaaS engine or managed SaaS platform (`kiw deploy --cloud`).
+2. **Krewire Cloud (`cloud`)** — Deploying to the Go-native hybrid PaaS engine or managed SaaS platform (`kiw deploy --target infra` with `pkg/cloud/infra`).
 3. [**Open Core Model & Licensing**](/guides/open-core-and-licensing) — The four-tier ladder (*free*, *pro*, *team*, *enterprise*) and data sovereignty under UU PDP.

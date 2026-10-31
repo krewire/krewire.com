@@ -43,4 +43,4 @@ docker/                # nginx configuration for the production image
 
 ## Ecosystem
 
-Krewire consists of 8 repositories (`krewire`, `krew`, `cloud`, `auth`, `workspace`, `internal`, `krewire.com`, `krewire.github.io`). This site dogfoods `pkg/web/ssg` + `pkg/kiw` DSL (`<markdown>`, `dict` helper, optional frontmatter) and validates the `site` path end-to-end.
+Krewire consists of 8 repositories (`krewire`, `krew`, `cloud`, `auth`, `dash`, `internal`, `krewire.com`, `krewire.github.io`). This site dogfoods `pkg/web/ssg` + `pkg/kiw` DSL (`<markdown>`, `dict` helper, optional frontmatter) and validates the `site` path end-to-end.

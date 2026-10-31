@@ -184,6 +184,17 @@ kiw deploy [--target binary|systemd|gh-pages|infra] [--branch <name>] [--remote 
 - `--target gh-pages`: Commit and push the static output to GitHub Pages (`gh-pages` branch).
 - `--target infra`: Provision declared cloud resources via provider adapters.
 
+### `kiw bundle`
+
+Bundle all eligible CSS and JS assets into `assets/krewire.css` and `assets/krewire.js`:
+
+```bash
+kiw bundle [--minify] [--output <dir>]
+```
+
+- `--minify` / `-m`: enable CSS and JS minification.
+- `--output <dir>` / `-o`: target output directory (default: derived from `krewire.yaml` or `.krewire/build`).
+
 ---
 
 ## 4. Code Quality & Testing
@@ -193,20 +204,30 @@ kiw deploy [--target binary|systemd|gh-pages|infra] [--branch <name>] [--remote 
 Execute unit and integration tests across all Go packages:
 
 ```bash
-kiw test [--verbose] [--race] [--cover]
+kiw test [--filter <pattern>] [--watch] [--coverage] [--verbose] [--json]
 ```
 
 Spawns `go test ./...` with standardized colorized output and test summary reporting.
 
+- `--filter <pattern>` (alias `--run`): run only tests matching a name or file pattern.
+- `--watch` / `-w`: watch files and rerun tests on change.
+- `--coverage`: run with coverage (`go test -cover`); `--coverprofile <file>` writes the profile.
+- `--verbose` / `-v`, `--json`, `--reporter verbose|dot|json`: output control.
+- `--update` / `-u`: update snapshots/golden files; `--list`: list tests instead of running.
+- `--count <n>`: pass through `go test -count` (e.g. `1` to disable the test cache).
+
 ### `kiw vet`
 
-Run static code analysis:
+Run static code analysis and optional security audits:
 
 ```bash
-kiw vet
+kiw vet [--sec] [--vuln]
 ```
 
 Runs Go's official `go vet ./...` analyzer, catching potential defects, dead code, and invalid struct tags.
+
+- `--sec`: security posture checks — secrets scan, config hygiene, and `.gitignore` coverage.
+- `--vuln`: vulnerability audit via `govulncheck` and checksum verification.
 
 ### `kiw fmt`
 
@@ -255,6 +276,27 @@ Validate version compatibility across all module declarations in the workspace:
 ```bash
 kiw compat
 ```
+
+### `kiw tier`
+
+Inspect the project's open-core tier and validate open-core boundary invariants:
+
+```bash
+kiw tier [--json] [--check <tier>]
+```
+
+- `--json`: output tier posture in structured JSON.
+- `--check <tier>`: assert the project does not exceed the specified tier (e.g. `--check free`).
+
+### `kiw doctor`
+
+Diagnose the developer environment and project readiness:
+
+```bash
+kiw doctor [--json]
+```
+
+Checks toolchain prerequisites, workspace layout, and the prerequisites a project must meet before it can build. `--json` emits a machine-readable report for CI.
 
 ### `kiw ws <command>`
 

@@ -6,7 +6,7 @@ date: "2026-10-24"
 
 # Platform PaaS Hibrida (`github.com/krewire/cloud`)
 
-`krewire/cloud` mentenagai mesin PaaS open-core yang di-host mandiri (self-hosted) sekaligus platform SaaS multi-tenant terkelola (`cloud.krewire.com`), mengimplementasikan [ADR-C9L2P](file:///home/reasvyn/workspace/krewire/internal/docs/adr/ADR-C9L2P-hybrid-paas-platform-architecture.md).
+`krewire/cloud` mentenagai mesin PaaS open-core yang di-host mandiri (self-hosted) sekaligus platform SaaS multi-tenant terkelola (`cloud.krewire.com`), mengimplementasikan `ADR-C9L2P`.
 
 ## Subsistem
 

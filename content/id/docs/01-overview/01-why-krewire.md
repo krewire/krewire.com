@@ -47,7 +47,7 @@ Krewire menyatukan seluruh jenis workload ini di bawah payung **Go**, **`kiw`**,
 | **CLI & TUI** | Python Click / Node / Cobra | `kiw build --cli` (antarmuka reaktif `pkg/tui`) |
 | **Tugas Latar Belakang** | Celery + Python + Redis / Sidekiq | `kiw run --worker` (antrean & cron `pkg/cloud/worker`) |
 | **Microservices** | Spring Boot / Express / Go kit | `kiw run --service` (gateway & OTel `pkg/cloud/service`) |
-| **Infrastruktur Cloud** | Terraform / HCL / CloudFormation | `kiw infra apply` (deklarasi Go IaC `pkg/cloud/infra`) |
+| **Infrastruktur Cloud** | Terraform / HCL / CloudFormation | `kiw deploy --target infra` (deklarasi Go IaC `pkg/cloud/infra`) |
 | **Client Frontend** | React / Vue / Angular + bundler | `kiw build --wasm` (Go-ke-WASM `pkg/runtime`) |
 
 ---

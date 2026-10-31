@@ -6,7 +6,7 @@ date: "2026-10-24"
 
 # Hybrid PaaS & Managed Cloud (`cloud`)
 
-Krewire Cloud adopts **Model C (Hybrid Open-Core PaaS & Managed Cloud SaaS)** per [ADR-C9L2P](file:///home/reasvyn/workspace/krewire/internal/docs/adr/ADR-C9L2P-hybrid-paas-platform-architecture.md).
+Krewire Cloud adopts **Model C (Hybrid Open-Core PaaS & Managed Cloud SaaS)** per `ADR-C9L2P`.
 
 ## 1. Self-Hosted Open-Core PaaS Engine
 
@@ -25,7 +25,7 @@ go run ./cmd/cloud-server
 
 For teams that prefer instantaneous serverless deployments without VPS management:
 
-- `kiw deploy --cloud`: Directly bundles and stages projects into production.
+- `kiw deploy` + push-to-deploy Git webhook: bundles and stages projects locally, then continuous deployment rolls them out to production.
 - Real-time build streaming and centralized log aggregation.
 - Local Indonesian billing via QRIS and Bank Virtual Accounts.
 - Full data sovereignty compliance under Indonesia's Personal Data Protection Law (UU PDP).

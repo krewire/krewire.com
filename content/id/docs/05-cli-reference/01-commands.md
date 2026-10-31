@@ -185,6 +185,17 @@ kiw deploy [--target binary|systemd|gh-pages|infra] [--branch <name>] [--remote 
 - `--target gh-pages`: Melakukan commit dan push output statis ke GitHub Pages (branch `gh-pages`).
 - `--target infra`: Melakukan provisi sumber daya cloud yang dideklarasikan melalui adaptor penyedia (provider).
 
+### `kiw bundle`
+
+Membundel seluruh aset CSS dan JS yang memenuhi syarat menjadi `assets/krewire.css` dan `assets/krewire.js`:
+
+```bash
+kiw bundle [--minify] [--output <dir>]
+```
+
+- `--minify` / `-m`: mengaktifkan minifikasi CSS dan JS.
+- `--output <dir>` / `-o`: direktori output tujuan (bawaan: diambil dari `krewire.yaml` atau `.krewire/build`).
+
 ---
 
 ## 4. Kualitas Kode & Pengujian
@@ -194,20 +205,30 @@ kiw deploy [--target binary|systemd|gh-pages|infra] [--branch <name>] [--remote 
 Menjalankan unit test dan integration test di seluruh paket Go:
 
 ```bash
-kiw test [--verbose] [--race] [--cover]
+kiw test [--filter <pattern>] [--watch] [--coverage] [--verbose] [--json]
 ```
 
 Menjalankan `go test ./...` dengan output berwarna standar serta laporan ringkasan pengujian.
 
+- `--filter <pattern>` (alias `--run`): hanya menjalankan test yang cocok dengan pola nama atau berkas.
+- `--watch` / `-w`: memantau berkas dan menjalankan ulang test saat ada perubahan.
+- `--coverage`: menjalankan dengan coverage (`go test -cover`); `--coverprofile <file>` menulis profil coverage.
+- `--verbose` / `-v`, `--json`, `--reporter verbose|dot|json`: pengaturan output.
+- `--update` / `-u`: memperbarui snapshot/golden file; `--list`: hanya menampilkan daftar test.
+- `--count <n>`: meneruskan `go test -count` (mis. `1` untuk menonaktifkan cache test).
+
 ### `kiw vet`
 
-Menjalankan analisis kode statis:
+Menjalankan analisis kode statis dan audit keamanan opsional:
 
 ```bash
-kiw vet
+kiw vet [--sec] [--vuln]
 ```
 
 Menjalankan penganalisis resmi Go `go vet ./...`, mendeteksi potensi kerusakan kode, kode yang tidak terpakai (dead code), dan tag struct yang tidak valid.
+
+- `--sec`: pemeriksaan postur keamanan — pemindaian secrets, higiene konfigurasi, dan cakupan `.gitignore`.
+- `--vuln`: audit kerentanan melalui `govulncheck` dan verifikasi checksum.
 
 ### `kiw fmt`
 
@@ -256,6 +277,27 @@ Memvalidasi kompatibilitas versi di semua deklarasi modul dalam workspace:
 ```bash
 kiw compat
 ```
+
+### `kiw tier`
+
+Memeriksa tier open-core proyek dan memvalidasi invarian batas open-core:
+
+```bash
+kiw tier [--json] [--check <tier>]
+```
+
+- `--json`: menampilkan postur tier dalam JSON terstruktur.
+- `--check <tier>`: memastikan proyek tidak melebihi tier tertentu (mis. `--check free`).
+
+### `kiw doctor`
+
+Mendiagnosa lingkungan developer dan kesiapan proyek:
+
+```bash
+kiw doctor [--json]
+```
+
+Memeriksa prasyarat toolchain, tata letak workspace, dan prasyarat yang harus dipenuhi proyek sebelum dapat di-build. `--json` menghasilkan laporan siap-mesin untuk CI.
 
 ### `kiw ws <perintah>`
 

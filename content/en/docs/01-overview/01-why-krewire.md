@@ -47,7 +47,7 @@ Krewire unifies all of these workloads under **Go**, **`kiw`**, and **`krewire.y
 | **CLI & TUI** | Python Click / Node / Cobra | `kiw build --cli` (`pkg/tui` reactive terminal) |
 | **Background Jobs** | Celery + Python + Redis / Sidekiq | `kiw run --worker` (`pkg/cloud/worker` queues & cron) |
 | **Microservices** | Spring Boot / Express / Go kit | `kiw run --service` (`pkg/cloud/service` gateway & OTel) |
-| **Cloud Infra** | Terraform / HCL / CloudFormation | `kiw infra apply` (`pkg/cloud/infra` Go IaC declarations) |
+| **Cloud Infra** | Terraform / HCL / CloudFormation | `kiw deploy --target infra` (`pkg/cloud/infra` Go IaC declarations) |
 | **Client Frontend** | React / Vue / Angular + bundlers | `kiw build --wasm` (`pkg/runtime` Go-to-WASM) |
 
 ---

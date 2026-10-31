@@ -6,7 +6,7 @@ date: "2026-10-24"
 
 # Architecture & Engineering Discipline
 
-The Krewire codebase is governed by non-negotiable architectural invariants defined in [ADR-6CAB8C](file:///home/reasvyn/workspace/krewire/internal/docs/adr/ADR-6CAB8C-ecosystem-architecture-baseline.md).
+The Krewire codebase is governed by non-negotiable architectural invariants defined in `ADR-6CAB8C`.
 
 ## 1. Strict Downward-Only Dependencies
 

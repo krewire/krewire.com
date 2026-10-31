@@ -146,7 +146,7 @@ Kunci tingkat atas `output:` dan `base:` adalah alias lama (legacy); nilai bersa
 | `components` | Array | `[]` | Komponen bernama (`name`, `body`, `style`). |
 | `pages` | Array | `[]` | Halaman output (`path`, `title`, `layout`, `root`, `data`). |
 | `assets` | Map | `{}` | Jalur output ke isi berkas. |
-| `auto_assets` | Blok | on | Penyuntikan CSS/JS; lihat [Konfigurasi](/id/docs/01-getting-started/02-configuration). |
+| `auto_assets` | Blok | on | Penyuntikan CSS/JS; lihat [Konfigurasi](/id/docs/getting-started/configuration). |
 
 Proyek dengan direktori `pages/` otomatis di-build sebagai `site` tanpa memerlukan blok ini. Kunci `ssg:` hanya diperlukan untuk situs yang sepenuhnya deklaratif tanpa adanya berkas halaman di disk.
 
