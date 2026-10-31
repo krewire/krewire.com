@@ -125,3 +125,26 @@ func handleStream(w http.ResponseWriter, r *http.Request) {
 	_ = ai.ServeSSE(w, stream)
 }
 ```
+
+---
+
+## 6. Autonomous AI Agent Engine (`github.com/krewire/krew`)
+
+While `pkg/ai` provides low-level LLM abstractions, **`krew`** is Krewire's autonomous AI agent platform:
+
+- **Standalone CLI (`cmd/krew`):** Dedicated terminal binary (`krew run`, `krew session`, `krew exec`, `krew doctor`).
+- **HTTP/SSE Transport Daemon:** `transport.NewHTTPServer` secured with bearer tokens from `krewire/auth` and sandboxed tenant workspaces.
+- **Subagent Delegation:** Automated task decomposition with structured execution summaries.
+- **Tool-Level RBAC & Audit:** Integration with `krewire/auth` evaluating `ToolPermission` policies and generating forensic audit logs.
+- **MCP Integration:** Native support for the Model Context Protocol.
+
+---
+
+## 7. AI-Powered Virtual Workspace (`github.com/krewire/dash`)
+
+**`dash`** is the web application platform providing a cloud-deployable virtual IDE (`cmd/krewire-dash-server`):
+
+- **Monaco Code Editor:** Syntax highlighting and real-time buffer editing.
+- **Interactive PTY Terminal:** xterm.js terminal connected over secure WebSockets.
+- **Embedded AI Pair Programmer:** Connects to Krew via streaming SSE, performing AST semantic searches and generating interactive diff proposals with one-click Accept/Reject controls.
+- **Collaborative Presence:** Real-time presence roster and multi-user cursor sync.

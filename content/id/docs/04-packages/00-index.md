@@ -203,11 +203,11 @@ Setiap paket di dalam katalog `krewire/pkg` mematuhi batasan arsitektur yang ket
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.16</span>
       <h3 class="chapter-card-title">
-        <a href="/packages/ai-and-agents">AI & Agen Otonom (pkg/ai) <span class="arrow">→</span></a>
+        <a href="/packages/ai-and-agents">AI & Agen Otonom (pkg/ai, krew, dash) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Integrasi LLM multi-provider, adapter OpenAI/Anthropic/Gemini, penyelesaian streaming, dan template prompt.
+      SDK AI Go terpadu, integrasi multi-provider LLM, streaming completion, daemon agen otonom Krew, dan platform workspace virtual Krewire Dash.
     </p>
   </div>
 

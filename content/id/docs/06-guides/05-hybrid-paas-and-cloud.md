@@ -14,7 +14,7 @@ Jalankan platform privat native-Go Anda di Linux VPS mana pun (Ubuntu, Debian, A
 
 ```bash
 cd cloud
-go run ./cmd/cloud-server
+go run ./cmd/krewire-cloud-server
 ```
 
 - **Efisiensi RAM Ekstrem**: Workload Go berjalan hanya dalam 15–30MB RAM. Satu VPS seharga $5/bulan dapat menampung puluhan aplikasi aktif.

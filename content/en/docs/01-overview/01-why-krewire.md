@@ -44,11 +44,11 @@ Krewire unifies all of these workloads under **Go**, **`kiw`**, and **`krewire.y
 | **Static Site** | Node.js + Astro / Hugo / Next.js | `kiw build --site` (Go SSG, zero client JS) |
 | **Documentation** | Docusaurus / GitBook / MkDocs | `kiw build --book` (`pkg/book` markdown engine) |
 | **Web Monolith** | Laravel / Django / Next.js + Node | `kiw run` (`pkg/app` single Go binary) |
-| **CLI & TUI** | Python Click / Node / Cobra | `kiw build --cli` (`pkg/tui` reactive terminal) |
-| **Background Jobs** | Celery + Python + Redis / Sidekiq | `kiw run --worker` (`pkg/cloud/worker` queues & cron) |
-| **Microservices** | Spring Boot / Express / Go kit | `kiw run --service` (`pkg/cloud/service` gateway & OTel) |
+| **CLI & TUI** | Python Click / Node / Cobra | `kiw run` (`pkg/tui` reactive terminal) |
+| **Background Jobs** | Celery + Python + Redis / Sidekiq | `kiw worker` (`pkg/cloud/worker` queues & cron) |
+| **Microservices** | Spring Boot / Express / Go kit | `kiw run` (`pkg/cloud/service` gateway & OTel) |
 | **Cloud Infra** | Terraform / HCL / CloudFormation | `kiw deploy --target infra` (`pkg/cloud/infra` Go IaC declarations) |
-| **Client Frontend** | React / Vue / Angular + bundlers | `kiw build --wasm` (`pkg/runtime` Go-to-WASM) |
+| **Client Frontend** | React / Vue / Angular + bundlers | `kiw build --target wasm` (`pkg/runtime` Go-to-WASM) |
 
 ---
 

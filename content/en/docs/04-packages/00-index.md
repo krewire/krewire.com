@@ -203,11 +203,11 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.16</span>
       <h3 class="chapter-card-title">
-        <a href="/packages/ai-and-agents">AI & Agent Orchestration (pkg/ai) <span class="arrow">→</span></a>
+        <a href="/packages/ai-and-agents">AI & Autonomous Agents (pkg/ai, krew, dash) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Multi-provider LLM integrations, OpenAI/Anthropic/Gemini adapters, streaming completions, and prompt templates.
+      Unified Go AI SDK, multi-provider LLMs, streaming completions, standalone Krew agent daemon, and Krewire Dash virtual workspace platform.
     </p>
   </div>
 

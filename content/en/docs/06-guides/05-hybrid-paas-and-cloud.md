@@ -14,7 +14,7 @@ Run your private Go-native platform on any Linux VPS (Ubuntu, Debian, Alpine) wi
 
 ```bash
 cd cloud
-go run ./cmd/cloud-server
+go run ./cmd/krewire-cloud-server
 ```
 
 - **Extreme RAM Efficiency**: Go workloads run in 15–30MB RAM. A single $5/month VPS can host dozens of live applications.

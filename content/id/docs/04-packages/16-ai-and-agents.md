@@ -125,3 +125,26 @@ func handleStream(w http.ResponseWriter, r *http.Request) {
 	_ = ai.ServeSSE(w, stream)
 }
 ```
+
+---
+
+## 6. Mesin AI Agent Otonom (`github.com/krewire/krew`)
+
+Sementara `pkg/ai` menyediakan abstraksi tingkat rendah untuk LLM, **`krew`** adalah platform AI agent otonom Krewire:
+
+- **CLI Terdedikasi (`cmd/krew`):** Binary terminal mandiri (`krew run`, `krew session`, `krew exec`, `krew doctor`).
+- **Daemon HTTP/SSE Transport:** `transport.NewHTTPServer` yang diamankan token bearer dari `krewire/auth` dan isolasi workspace tenant (sandboxing).
+- **Delegasi Sub-Agen:** Dekomposisi tugas otomatis dengan ringkasan eksekusi terstruktur.
+- **RBAC & Audit Berbasis Tool:** Integrasi dengan `krewire/auth` yang mengevaluasi kebijakan `ToolPermission` dan menghasilkan audit log forensik.
+- **Integrasi MCP:** Dukungan penuh untuk Model Context Protocol.
+
+---
+
+## 7. Workspace Virtual Berbasis AI (`github.com/krewire/dash`)
+
+**`dash`** adalah platform aplikasi web yang menyediakan virtual IDE yang siap di-deploy ke cloud (`cmd/krewire-dash-server`):
+
+- **Editor Kode Monaco:** Penyorotan sintaks dan buffer editing real-time.
+- **Terminal PTY Interaktif:** Terminal xterm.js yang terhubung melalui WebSocket aman.
+- **AI Pair Programmer:** Terhubung dengan Krew melalui streaming SSE, melakukan pencarian semantik AST codebase, dan mengajukan proposal perubahan kode (diff) dengan tombol Accept/Reject interaktif.
+- **Presensi Kolaboratif:** Roster pengguna aktif dan sinkronisasi kursor multi-pengguna secara real-time.

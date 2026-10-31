@@ -44,11 +44,11 @@ Krewire menyatukan seluruh jenis workload ini di bawah payung **Go**, **`kiw`**,
 | **Situs Statis** | Node.js + Astro / Hugo / Next.js | `kiw build --site` (Go SSG, zero client JS) |
 | **Dokumentasi** | Docusaurus / GitBook / MkDocs | `kiw build --book` (engine markdown `pkg/book`) |
 | **Monolit Web** | Laravel / Django / Next.js + Node | `kiw run` (`pkg/app` single binary Go) |
-| **CLI & TUI** | Python Click / Node / Cobra | `kiw build --cli` (antarmuka reaktif `pkg/tui`) |
-| **Tugas Latar Belakang** | Celery + Python + Redis / Sidekiq | `kiw run --worker` (antrean & cron `pkg/cloud/worker`) |
-| **Microservices** | Spring Boot / Express / Go kit | `kiw run --service` (gateway & OTel `pkg/cloud/service`) |
+| **CLI & TUI** | Python Click / Node / Cobra | `kiw run` (antarmuka reaktif `pkg/tui`) |
+| **Tugas Latar Belakang** | Celery + Python + Redis / Sidekiq | `kiw worker` (antrean & cron `pkg/cloud/worker`) |
+| **Microservices** | Spring Boot / Express / Go kit | `kiw run` (gateway & OTel `pkg/cloud/service`) |
 | **Infrastruktur Cloud** | Terraform / HCL / CloudFormation | `kiw deploy --target infra` (deklarasi Go IaC `pkg/cloud/infra`) |
-| **Client Frontend** | React / Vue / Angular + bundler | `kiw build --wasm` (Go-ke-WASM `pkg/runtime`) |
+| **Client Frontend** | React / Vue / Angular + bundler | `kiw build --target wasm` (Go-ke-WASM `pkg/runtime`) |
 
 ---
 
