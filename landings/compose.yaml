@@ -1,0 +1,22 @@
+services:
+  landing-dash:
+    build:
+      context: .
+      args:
+        SITE: dash
+    image: krewire-landing-dash:latest
+    container_name: krewire-landing-dash
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8094:80"
+
+  landing-cloud:
+    build:
+      context: .
+      args:
+        SITE: cloud
+    image: krewire-landing-cloud:latest
+    container_name: krewire-landing-cloud
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8095:80"
