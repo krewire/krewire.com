@@ -113,9 +113,12 @@ Pelajari panduan lengkap untuk ekosistem Krewire:
 | **1.** | [**Ringkasan Ekosistem**](/) | Arsitektur ekosistem, prinsip inti, tiga pilar, dan gambaran umum workload. |
 | **2.** | [**Memulai (Getting Started)**](/getting-started) | Prasyarat, panduan kilat 5 menit, anatomi proyek, SDLC berbasis agen AI, dan DSL `.kiw`. |
 | **3.** | [**Workload Mendalam**](/workloads) | Arsitektur rinci untuk 8 jenis workload (`app`, `cli`, `site`, `book`, `worker`, `service`, `gateway`, `infra`). |
-| **4.** | [**Referensi CLI**](/cli-reference) | Katalog perintah `kiw`, spesifikasi skema `krewire.yaml`, dan otomasi tugas. |
-| **5.** | [**Paket & Pustaka**](/packages) | Katalog pustaka domain: `model`, `lifecycle`, `web`, `app`, `sec`, `auth`, `ui`, `tui`, `storage`, `resilience`, dan `testing`. |
-| **6.** | [**Panduan & Arsitektur**](/guides) | Desain arsitektur, ketentuan lisensi open-core, dan panduan deployment produksi. |
+| **4.** | [**Pustaka Inti & Fondasi**](/core-libraries) | Model domain dasar, supervisor siklus hidup kernel, konfigurasi, validasi, resiliensi, dan pengujian. |
+| **5.** | [**Framework Web & UI**](/web-ui) | Router radix HTTP, wadah aplikasi monolit, runtime WebAssembly, komponen .kiw UI, dan toolkit TUI. |
+| **6.** | [**Data, Penyimpanan & Layanan**](/data-services) | ORM multi-driver, penyimpanan objek, sistem berkas virtual, caching, email transaksional, dan pembayaran Indonesia. |
+| **7.** | [**Keamanan & Platform Ekosistem**](/security-platforms) | Kontrol keamanan, primitif auth, platform identitas enterprise, hybrid PaaS, dan agen AI otonom. |
+| **8.** | [**Referensi CLI**](/cli-reference) | Katalog perintah `kiw`, spesifikasi skema `krewire.yaml`, dan otomasi tugas. |
+| **9.** | [**Panduan & Arsitektur**](/guides) | Desain arsitektur, ketentuan lisensi open-core, dan panduan deployment produksi. |
 
 ---
 

@@ -67,31 +67,41 @@ Bangun aplikasi nyata dengan mendalami jenis workload yang sesuai dengan kebutuh
    - [**Microservices (`service`)**](/workloads/service) — Layanan tangguh dengan dynamic service discovery dan tracing.
    - [**Infrastruktur sebagai Kode (`infra`)**](/workloads/infra) — Provisi cloud deklaratif dengan rencana eksekusi dan penguncian status.
 
-### Tahap 4: Eksplorasi Paket Domain & Baterai
-Manfaatkan baterai modular mandiri Krewire untuk menangani kebutuhan inti aplikasi:
+### Tahap 4: Eksplorasi Mendalam Pustaka Domain Modular
+Manfaatkan baterai modular mandiri Krewire yang dikelompokkan ke dalam empat klasifikasi domain:
 
-- [**Model Workload & Primitif Domain (`pkg/model`, `pkg/errs`)**](/packages/model) — Jenis workload, metadata proyek, taksonomi error, dan kontrak versi.
-- [**Supervisi Siklus Hidup & Kernel (`pkg/lifecycle`)**](/packages/lifecycle) — Registri modul, pengurutan dependensi, dan graceful shutdown.
-- [**Web Engine & Perutean HTTP (`pkg/web`)**](/packages/web) — Router radix tree berkinerja tinggi, pipeline middleware, dan helper render.
-- [**Wadah Aplikasi & Monolit (`pkg/app`)**](/packages/app) — Wadah dependency injection, manajemen siklus hidup aplikasi, dan signal draining.
-- [**Kontrol Keamanan & Hardening (`pkg/sec`)**](/packages/security) — Header pertahanan standar OWASP, token CSRF, proteksi SSRF, dan redaksi PII.
-- [**Primitif Autentikasi (`pkg/auth`)**](/packages/auth) — Token JWT kriptografis, verifikasi claims, dan HTTP Basic Auth waktu konstan.
-- [**Komponen Web UI & Token Desain (`pkg/ui`)**](/packages/ui) — Komponen Single-File (.kiw), token desain CSS semantik, dan tema.
-- [**Toolkit Terminal UI (`pkg/tui`)**](/packages/tui) — Antarmuka pengguna terminal, arsitektur Elm/Bubble Tea, dan pewarnaan ANSI.
-- [**Penyimpanan Objek Multi-Driver (`pkg/storage`)**](/packages/storage) — Penyimpanan objek multi-driver (memori, disk lokal, S3 / MinIO).
-- [**Sistem Berkas Virtual & Penulisan Atomik (`pkg/fs`, `pkg/file`)**](/packages/filesystem) — Batas sistem berkas virtual yang dapat diuji dan penulisan atomik crash-safe.
-- [**Pola Resiliensi & Circuit Breaker (`pkg/resilience`)**](/packages/resilience) — Circuit breaker, retry backoff berjitter, dan isolasi kegagalan.
-- [**Utilitas Pengujian & Asersi (`pkg/testing`)**](/packages/testing) — Harness asersi pengujian, pembantu HTTP, dan fixture mock.
-- [**Konfigurasi Hierarkis (`pkg/config`)**](/packages/config) — Pemuatan konfigurasi terstruktur dari flag CLI, env vars, dan file .env.
-- [**Validasi Input Komposabel (`pkg/validation`)**](/packages/validation) — Validasi data komposabel tanpa refleksi untuk form dan API.
-- [**Cache Multi-Driver (`pkg/cache`, `pkg/redis`)**](/packages/caching) — Caching in-memory dan Redis terdistribusi dengan TTL dan pembersihan invalidasi.
-- [**Mailer Transaksional (`pkg/mail`)**](/packages/mail) — Pengiriman email transaksional multi-driver (SMTP, Resend, SendGrid, Postmark).
-- [**Database & Multi-Driver ORM (`pkg/orm`)**](/packages/database-and-orm) — ORM multi-driver (SQLite, MySQL, Postgres, MongoDB, Elasticsearch).
-- [**Commerce & Gateway Pembayaran Indonesia (`pkg/commerce`)**](/packages/commerce-and-payments) — Midtrans QRIS, Virtual Account (BCA, Mandiri, BRI, BNI), dan kartu kredit.
-- [**Platform Identitas & Autentikasi Enterprise (`krewire/auth`)**](/packages/identity-and-auth) — Manajemen identitas multi-tenant, PBKDF2, TOTP 2FA, SSO (OIDC/SAML2), dan RBAC.
-- [**Platform PaaS Hibrida (`krewire/cloud`)**](/packages/cloud-paas) — Mesin PaaS open-core self-hosted dan kontrol plane cloud SaaS terkelola.
-- [**Web Runtime & WASM (`pkg/runtime`)**](/packages/web-runtime) — Kompilasi Go ke WebAssembly di sisi klien, virtual DOM diffing, dan hidrasi SSR.
-- [**Orkestrasi AI (`pkg/ai`)**](/packages/ai-and-agents) — Integrasi LLM multi-provider dan engine template prompt.
+1. **Inti & Fondasi:**
+   - [**Model Workload & Primitif Domain (`pkg/model`, `pkg/errs`)**](/core-libraries/model) — Jenis workload, metadata proyek, taksonomi error, dan kontrak versi.
+   - [**Supervisi Siklus Hidup & Kernel (`pkg/lifecycle`)**](/core-libraries/lifecycle) — Registri modul, pengurutan dependensi, dan graceful shutdown.
+   - [**Konfigurasi Hierarkis (`pkg/config`)**](/core-libraries/config) — Pemuatan konfigurasi terstruktur dari flag CLI, env vars, dan file .env.
+   - [**Validasi Input Komposabel (`pkg/validation`)**](/core-libraries/validation) — Validasi data komposabel tanpa refleksi untuk form dan API.
+   - [**Pola Resiliensi & Circuit Breaker (`pkg/resilience`)**](/core-libraries/resilience) — Circuit breaker, retry backoff berjitter, dan isolasi kegagalan.
+   - [**Utilitas Pengujian & Asersi (`pkg/testing`)**](/core-libraries/testing) — Harness asersi pengujian, pembantu HTTP, dan fixture mock.
+
+2. **Framework Web & UI:**
+   - [**Web Engine & Perutean HTTP (`pkg/web`)**](/web-ui/web) — Router radix tree berkinerja tinggi, pipeline middleware, dan helper render.
+   - [**Wadah Aplikasi & Monolit (`pkg/app`)**](/web-ui/app) — Wadah dependency injection, manajemen siklus hidup aplikasi, dan signal draining.
+   - [**Web Runtime & WASM (`pkg/runtime`)**](/web-ui/web-runtime) — Kompilasi Go ke WebAssembly di sisi klien, virtual DOM diffing, dan hidrasi SSR.
+   - [**Komponen Web UI & Token Desain (`pkg/ui`)**](/web-ui/ui) — Komponen Single-File (.kiw), token desain CSS semantik, dan tema.
+   - [**Toolkit Terminal UI (`pkg/tui`)**](/web-ui/tui) — Antarmuka pengguna terminal, arsitektur Elm/Bubble Tea, dan pewarnaan ANSI.
+
+3. **Data, Penyimpanan & Layanan:**
+   - [**Database & Multi-Driver ORM (`pkg/orm`)**](/data-services/database-and-orm) — ORM multi-driver (SQLite, MySQL, Postgres, MongoDB, Elasticsearch).
+   - [**Penyimpanan Objek Multi-Driver (`pkg/storage`)**](/data-services/storage) — Penyimpanan objek multi-driver (memori, disk lokal, S3 / MinIO).
+   - [**Sistem Berkas Virtual & Penulisan Atomik (`pkg/fs`, `pkg/file`)**](/data-services/filesystem) — Batas sistem berkas virtual yang dapat diuji dan penulisan atomik crash-safe.
+   - [**Cache Multi-Driver (`pkg/cache`, `pkg/redis`)**](/data-services/caching) — Caching in-memory dan Redis terdistribusi dengan TTL dan pembersihan invalidasi.
+   - [**Mailer Transaksional (`pkg/mail`)**](/data-services/mail) — Pengiriman email transaksional multi-driver (SMTP, Resend, SendGrid, Postmark).
+   - [**Commerce & Gateway Pembayaran Indonesia (`pkg/commerce`)**](/data-services/commerce-and-payments) — Midtrans QRIS, Virtual Account (BCA, Mandiri, BRI, BNI), dan kartu kredit.
+
+4. **Keamanan & Platform Ekosistem:**
+   - [**Kontrol Keamanan & Hardening (`pkg/sec`)**](/security-platforms/security) — Header pertahanan standar OWASP, token CSRF, proteksi SSRF, dan redaksi PII.
+   - [**Primitif Autentikasi (`pkg/auth`)**](/security-platforms/auth) — Token JWT kriptografis, verifikasi claims, dan HTTP Basic Auth waktu konstan.
+   - [**Platform Identitas & Autentikasi Enterprise (`krewire/auth`)**](/security-platforms/identity-and-auth) — Manajemen identitas multi-tenant, PBKDF2, TOTP 2FA, SSO (OIDC/SAML2), dan RBAC.
+   - [**Cloud & Sistem Terdistribusi (`pkg/cloud`)**](/security-platforms/cloud-distributed) — Penemuan klaster, koordinasi node, kunci terdistribusi, dan telemetri.
+   - [**Platform PaaS Hibrida (`krewire/cloud`)**](/security-platforms/cloud-paas) — Mesin PaaS open-core self-hosted dan kontrol plane cloud SaaS terkelola.
+   - [**Orkestrasi AI & LLM (`pkg/ai`)**](/security-platforms/ai-and-agents) — Integrasi LLM multi-provider dan engine template prompt.
+   - [**Mesin Agen AI Otonom (`krew`)**](/security-platforms/autonomous-agent) — Runtime agen otonom mandiri maupun tersemat.
+   - [**Workspace Virtual Native AI (`dash`)**](/security-platforms/virtual-workspace) — Orkestrasi ruang kerja multi-agen dan engine integrasi terpadu.
 
 ### Tahap 5: Workflow Harian & Otomasi CLI `kiw`
 Tingkatkan produktivitas pengembang dengan suite pengujian otomatis, pemformatan, dan kustomisasi tugas kompilasi:

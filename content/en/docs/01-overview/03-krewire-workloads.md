@@ -193,7 +193,7 @@ kiw gateway --port 8080 --routes "/api=user-service"
 > [!NOTE]
 > Client-side WebAssembly is a **library**, not a workload kind. `pkg/runtime`
 > compiles Go to WASM inside an `app` or `site` project via
-> `kiw build --target wasm` — see [Web Runtime & WASM](/packages/web-runtime).
+> `kiw build --target wasm` — see [Web Runtime & WASM](/web-ui/web-runtime).
 
 ---
 
