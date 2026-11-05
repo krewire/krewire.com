@@ -603,10 +603,18 @@ return window.krewireI18n.t('docs_reader.copied_button') || '✓ Copied!';
 return '✓ Copied!';
 }
 function initCodeBlocks() {
-document.querySelectorAll('.chapter pre').forEach(function (pre) {
+document.querySelectorAll('.chapter pre, article pre, .docs-main pre').forEach(function (pre) {
+if (pre.closest('.terminal') || pre.closest('.code-window') || pre.closest('.code-block-wrapper')) return;
 if (pre.querySelector('.code-copy-btn')) return;
+
+var wrapper = document.createElement('div');
+wrapper.className = 'code-block-wrapper';
+pre.parentNode.insertBefore(wrapper, pre);
+wrapper.appendChild(pre);
+
 var btn = document.createElement('button');
 btn.className = 'code-copy-btn';
+btn.setAttribute('type', 'button');
 btn.setAttribute('aria-label', 'Copy code to clipboard');
 btn.innerHTML = '<span class="copy-txt">' + getCopyText() + '</span>';
 btn.addEventListener('click', function () {
@@ -634,7 +642,7 @@ markCopied();
 } catch (e) {}
 }
 });
-pre.appendChild(btn);
+wrapper.appendChild(btn);
 });
 }
 function initHeadingAnchors() {
@@ -728,7 +736,7 @@ if (window.krewireI18n && window.krewireI18n.setLocale) {
 window.krewireI18n.setLocale(window.krewireI18n.getLocale());
 }
 window.addEventListener('krewire:langchange', function () {
-document.querySelectorAll('.chapter pre .code-copy-btn .copy-txt:not(.copied)').forEach(function (span) {
+document.querySelectorAll('.code-copy-btn .copy-txt:not(.copied)').forEach(function (span) {
 span.textContent = getCopyText();
 });
 });
