@@ -113,9 +113,12 @@ Explore the comprehensive manual for the Krewire ecosystem:
 | **1.** | [**Overview**](/) | Ecosystem architecture, core tenets, three pillars, and workloads overview. |
 | **2.** | [**Getting Started**](/getting-started) | Prerequisites, 5-minute quickstart, project anatomy, agentic SDLC, and `.kiw` DSL. |
 | **3.** | [**Workloads in Depth**](/workloads) | Detailed architecture and guides for all 8 workloads (`app`, `cli`, `site`, `book`, `worker`, `service`, `gateway`, `infra`). |
-| **4.** | [**CLI Reference**](/cli-reference) | Complete `kiw` command catalog, `krewire.yaml` schema specification, and task automation. |
-| **5.** | [**Packages & Libraries**](/packages) | Domain libraries catalog: `model`, `lifecycle`, `web`, `app`, `sec`, `auth`, `ui`, `tui`, `storage`, `resilience`, and `testing`. |
-| **6.** | [**Architecture & Guides**](/guides) | Architectural design, open core licensing rules, and production deployment playbooks. |
+| **4.** | [**Core & Foundation Libraries**](/core-libraries) | Fundamental domain model, kernel lifecycle supervisor, config, validation, resilience, and testing. |
+| **5.** | [**Web & UI Framework**](/web-ui) | Radix HTTP router, application container, WebAssembly runtime, .kiw UI components, and TUI toolkit. |
+| **6.** | [**Data, Storage & Services**](/data-services) | Multi-driver ORM, object storage, virtual filesystem, caching, transactional mail, and Indonesian payments. |
+| **7.** | [**Security & Ecosystem Platforms**](/security-platforms) | Security controls, auth primitives, enterprise identity platform, hybrid PaaS, and autonomous AI agents. |
+| **8.** | [**CLI Reference**](/cli-reference) | Complete `kiw` command catalog, `krewire.yaml` schema specification, and task automation. |
+| **9.** | [**Architecture & Guides**](/guides) | Architectural design invariants, open core licensing rules, and production deployment playbooks. |
 
 ---
 

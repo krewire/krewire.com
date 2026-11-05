@@ -18,7 +18,7 @@ CLI **`kiw`** adalah pintu masuk tunggal yang menyatukan seluruh ekosistem Krewi
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">5.1</span>
+      <span class="chapter-card-num">8.1</span>
       <h3 class="chapter-card-title">
         <a href="/cli-reference/commands">Katalog Perintah <span class="arrow">→</span></a>
       </h3>
@@ -30,7 +30,7 @@ CLI **`kiw`** adalah pintu masuk tunggal yang menyatukan seluruh ekosistem Krewi
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">5.2</span>
+      <span class="chapter-card-num">8.2</span>
       <h3 class="chapter-card-title">
         <a href="/cli-reference/configuration">Skema Konfigurasi (krewire.yaml) <span class="arrow">→</span></a>
       </h3>
@@ -42,7 +42,7 @@ CLI **`kiw`** adalah pintu masuk tunggal yang menyatukan seluruh ekosistem Krewi
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">5.3</span>
+      <span class="chapter-card-num">8.3</span>
       <h3 class="chapter-card-title">
         <a href="/cli-reference/scripting">Otomasi Tugas &amp; Skrip <span class="arrow">→</span></a>
       </h3>

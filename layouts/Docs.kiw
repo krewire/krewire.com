@@ -99,12 +99,82 @@
 
         <div class="toc-group open" data-group>
           <div class="toc-parent-row">
+            <a href="/docs/core-libraries" class="toc-link">Core & Foundations</a>
+          </div>
+          <div class="toc-subs">
+            <a href="/docs/core-libraries/model" class="toc-sub">Model & Primitives</a>
+            <a href="/docs/core-libraries/lifecycle" class="toc-sub">Lifecycle Kernel</a>
+            <a href="/docs/core-libraries/config" class="toc-sub">Configuration</a>
+            <a href="/docs/core-libraries/validation" class="toc-sub">Validation</a>
+            <a href="/docs/core-libraries/resilience" class="toc-sub">Resilience</a>
+            <a href="/docs/core-libraries/testing" class="toc-sub">Testing Harness</a>
+          </div>
+        </div>
+
+        <div class="toc-group open" data-group>
+          <div class="toc-parent-row">
+            <a href="/docs/web-ui" class="toc-link">Web & UI Framework</a>
+          </div>
+          <div class="toc-subs">
+            <a href="/docs/web-ui/web" class="toc-sub">Web Engine</a>
+            <a href="/docs/web-ui/app" class="toc-sub">Application Monolith</a>
+            <a href="/docs/web-ui/web-runtime" class="toc-sub">Web Runtime & WASM</a>
+            <a href="/docs/web-ui/ui" class="toc-sub">UI Components</a>
+            <a href="/docs/web-ui/tui" class="toc-sub">Terminal UI</a>
+          </div>
+        </div>
+
+        <div class="toc-group open" data-group>
+          <div class="toc-parent-row">
+            <a href="/docs/data-services" class="toc-link">Data & Services</a>
+          </div>
+          <div class="toc-subs">
+            <a href="/docs/data-services/database-and-orm" class="toc-sub">Database & ORM</a>
+            <a href="/docs/data-services/storage" class="toc-sub">Object Storage</a>
+            <a href="/docs/data-services/filesystem" class="toc-sub">Virtual Filesystem</a>
+            <a href="/docs/data-services/caching" class="toc-sub">Caching</a>
+            <a href="/docs/data-services/mail" class="toc-sub">Transactional Mail</a>
+            <a href="/docs/data-services/commerce-and-payments" class="toc-sub">Commerce & Payments</a>
+          </div>
+        </div>
+
+        <div class="toc-group open" data-group>
+          <div class="toc-parent-row">
+            <a href="/docs/security-platforms" class="toc-link">Security & Platforms</a>
+          </div>
+          <div class="toc-subs">
+            <a href="/docs/security-platforms/security" class="toc-sub">Security Controls</a>
+            <a href="/docs/security-platforms/auth" class="toc-sub">Authentication</a>
+            <a href="/docs/security-platforms/identity-and-auth" class="toc-sub">Identity & SSO</a>
+            <a href="/docs/security-platforms/cloud-distributed" class="toc-sub">Distributed Systems</a>
+            <a href="/docs/security-platforms/cloud-paas" class="toc-sub">Hybrid PaaS</a>
+            <a href="/docs/security-platforms/ai-and-agents" class="toc-sub">AI Orchestration</a>
+            <a href="/docs/security-platforms/autonomous-agent" class="toc-sub">Autonomous Agents</a>
+            <a href="/docs/security-platforms/virtual-workspace" class="toc-sub">Virtual Workspace</a>
+          </div>
+        </div>
+
+        <div class="toc-group open" data-group>
+          <div class="toc-parent-row">
             <a href="/docs/cli-reference" class="toc-link">CLI Reference</a>
           </div>
           <div class="toc-subs">
             <a href="/docs/cli-reference/commands" class="toc-sub">Commands</a>
             <a href="/docs/cli-reference/configuration" class="toc-sub">Configuration</a>
             <a href="/docs/cli-reference/scripting" class="toc-sub">Scripting & CI/CD</a>
+          </div>
+        </div>
+
+        <div class="toc-group open" data-group>
+          <div class="toc-parent-row">
+            <a href="/docs/guides" class="toc-link">Guides & Architecture</a>
+          </div>
+          <div class="toc-subs">
+            <a href="/docs/guides/architecture-discipline" class="toc-sub">Architecture Invariants</a>
+            <a href="/docs/guides/agentic-development" class="toc-sub">Agentic Development</a>
+            <a href="/docs/guides/deployment-and-operations" class="toc-sub">Deployment & Operations</a>
+            <a href="/docs/guides/hybrid-paas-and-cloud" class="toc-sub">Hybrid PaaS & Cloud</a>
+            <a href="/docs/guides/open-core-and-licensing" class="toc-sub">Open Core & Licensing</a>
           </div>
         </div>
       </nav>
