@@ -295,6 +295,30 @@ Setiap paket di dalam katalog `krewire/pkg` mematuhi batasan arsitektur yang ket
     </p>
   </div>
 
+  <div class="chapter-card">
+    <div class="chapter-card-head">
+      <span class="chapter-card-num">4.24</span>
+      <h3 class="chapter-card-title">
+        <a href="/packages/autonomous-agent">Mesin Agen AI Otonom (krew) <span class="arrow">→</span></a>
+      </h3>
+    </div>
+    <p class="chapter-card-desc">
+      Monorepo agen AI mandiri dan agnostik platform: loop ReAct multi-langkah, sandboxed tools, memori sliding-window, protokol MCP, dan SDK embedding.
+    </p>
+  </div>
+
+  <div class="chapter-card">
+    <div class="chapter-card-head">
+      <span class="chapter-card-num">4.25</span>
+      <h3 class="chapter-card-title">
+        <a href="/packages/virtual-workspace">Workspace Virtual Native AI (dash) <span class="arrow">→</span></a>
+      </h3>
+    </div>
+    <p class="chapter-card-desc">
+      Mesin workspace virtual dan cloud IDE: isolasi sandbox mikro, terminal WebSocket PTY dua arah, editor Monaco, dan asisten pair programmer tersemat.
+    </p>
+  </div>
+
 </div>
 
 ---

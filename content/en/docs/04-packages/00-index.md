@@ -295,6 +295,30 @@ Every package in the `krewire/pkg` catalog adheres to strict architectural bound
     </p>
   </div>
 
+  <div class="chapter-card">
+    <div class="chapter-card-head">
+      <span class="chapter-card-num">4.24</span>
+      <h3 class="chapter-card-title">
+        <a href="/packages/autonomous-agent">Autonomous AI Agent Engine (krew) <span class="arrow">→</span></a>
+      </h3>
+    </div>
+    <p class="chapter-card-desc">
+      Standalone, platform-agnostic AI agent monorepo: multi-turn ReAct reasoning loop, sandboxed tools, sliding-window memory compaction, MCP protocol, and in-process embedding.
+    </p>
+  </div>
+
+  <div class="chapter-card">
+    <div class="chapter-card-head">
+      <span class="chapter-card-num">4.25</span>
+      <h3 class="chapter-card-title">
+        <a href="/packages/virtual-workspace">AI-Native Virtual Workspace (dash) <span class="arrow">→</span></a>
+      </h3>
+    </div>
+    <p class="chapter-card-desc">
+      Virtual workspace engine and cloud IDE: micro-isolated process sandboxes, bidirectional WebSocket PTY terminal, Monaco editor, and embedded AI pair programmer.
+    </p>
+  </div>
+
 </div>
 
 ---
