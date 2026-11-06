@@ -4,217 +4,480 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Krewire Cloud — Hybrid PaaS Control Plane</title>
-  <meta name="description" content="Krewire Cloud is the multi-tenant hybrid PaaS control plane: hermetic builds, a process supervisor with zero-downtime deploys, host-based routing, and metered quotas.">
+  <meta name="description" content="Krewire Cloud is the multi-tenant hybrid PaaS control plane for Go workloads: hermetic builds, process supervisor with zero-downtime blue/green swaps, host-based routing, and metered quotas.">
   <meta name="theme-color" content="#0B1F3B">
+  <meta name="color-scheme" content="light dark">
   <link rel="canonical" href="https://cloud.krewire.com/">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2339D353'/%3E%3Ctext x='32' y='45' font-family='system-ui,sans-serif' font-size='36' font-weight='900' text-anchor='middle' fill='%230B1F3B'%3EK%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2339D353'/%3E%3Ctext x='32' y='45' font-family='system-ui,sans-serif' font-size='36' font-weight='900' text-anchor='middle' fill='%230B1F3B'%3E◈%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="/shared/landing.css">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Krewire">
   <meta property="og:title" content="Krewire Cloud — Hybrid PaaS Control Plane">
-  <meta property="og:description" content="Build, supervise, route, and meter every Krewire workload from one control plane.">
+  <meta property="og:description" content="Ship any Go workload with hermetic builds, zero-downtime supervision, and host-based edge routing.">
   <meta property="og:url" content="https://cloud.krewire.com/">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Krewire Cloud — Hybrid PaaS Control Plane">
-  <meta name="twitter:description" content="Build, supervise, route, and meter every Krewire workload from one control plane.">
+  <meta name="twitter:description" content="Ship any Go workload with hermetic builds, zero-downtime supervision, and host-based edge routing.">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <!-- =====================================================================
+       NAVBAR
+       ===================================================================== -->
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="/" aria-label="Krewire Cloud home">
-        <span class="brand-mark" aria-hidden="true">K</span>
+        <span class="icon-box bg-primary" aria-hidden="true">◈</span>
         <span class="brand-text">
-          <strong>Krewire</strong>
-          <small>Cloud</small>
+          <span style="font-size:18px;font-weight:900;letter-spacing:-0.03em;">Krewire</span>
+          <small>Cloud Control Plane</small>
         </span>
+        <span class="badge badge-secondary" style="margin-left:4px">v0.1.0</span>
       </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="#features">Features</a>
+
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="#pillars">Pillars</a>
+        <a href="#workloads">Workloads</a>
+        <a href="#features">Capabilities</a>
         <a href="#pipeline">Pipeline</a>
+        <a href="#config">Config</a>
         <a href="https://krewire.com/docs">Docs</a>
-        <a href="https://github.com/krewire/cloud">GitHub</a>
+        <a href="https://github.com/krewire/cloud" target="_blank" rel="noopener">★ GitHub</a>
         <a class="btn btn-primary btn-sm" href="/console">Open Console →</a>
       </nav>
+
+      <!-- Pure CSS Mobile Navigation Menu (Zero JS) -->
+      <details class="mobile-nav">
+        <summary class="btn btn-outline btn-sm" aria-label="Toggle menu">☰</summary>
+        <div class="mobile-nav-panel">
+          <a href="#pillars">◈ Three Pillars</a>
+          <a href="#workloads">▦ Supported Workloads</a>
+          <a href="#features">⚙ Capabilities</a>
+          <a href="#pipeline">⚡ Pipeline</a>
+          <a href="#config">≡ Config &amp; CLI</a>
+          <a href="https://krewire.com/docs">Documentation</a>
+          <a href="https://github.com/krewire/cloud" target="_blank" rel="noopener">★ GitHub Repository</a>
+          <hr style="border:0;border-top:1px solid var(--border-subtle);margin:4px 0">
+          <a class="btn btn-primary btn-sm" href="/console" style="justify-content:center">Open Console →</a>
+        </div>
+      </details>
     </div>
   </header>
 
   <main id="main">
-    <section class="hero dots">
+    <!-- =====================================================================
+         HERO SECTION
+         ===================================================================== -->
+    <section class="hero bg-dots">
       <div class="container hero-grid">
         <div>
-          <span class="badge"><span class="badge-dot" aria-hidden="true"></span>Hybrid PaaS Control Plane · v0.1.0</span>
-          <h1>Ship any workload.<br><span class="accent">One control plane.</span></h1>
+          <div class="badge badge-primary" style="margin-bottom:14px">
+            <span aria-hidden="true">◈</span>
+            <span>Hybrid PaaS Control Plane · v0.1.0 · Open Core</span>
+          </div>
+
+          <h1>
+            Ship Any Workload.<br>
+            <span style="color:var(--primary)">Zero-Downtime Control Plane.</span>
+          </h1>
+
           <p class="hero-lead">
-            Krewire Cloud turns a Go repository into a running, routed, metered workload.
-            It builds hermetically, supervises the process, swaps releases with zero downtime,
-            and enforces per-tenant quotas — the same engine for apps, services, workers, and gateways.
+            <strong>Krewire Cloud</strong> turns any Go repository into a running, routed, and metered production service.
+            Hermetic builds, active process supervision, blue/green traffic swaps, and per-tenant quotas — with zero JS fatigue and 100% Go reliability.
           </p>
+
+          <!-- Quick Terminal Command Box -->
+          <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px;max-width:540px;">
+            <div class="quick-cmd">
+              <span class="prompt">$</span>
+              <span>curl -fsSL https://krewire.com/scripts/install.sh | sh</span>
+            </div>
+            <div class="quick-cmd">
+              <span class="prompt">$</span>
+              <span>kiw deploy --cloud --project acme-api</span>
+            </div>
+          </div>
+
           <div class="hero-actions">
             <a class="btn btn-primary" href="/console">Open Cloud Console →</a>
-            <a class="btn btn-outline" href="https://krewire.com/docs">Read the Docs</a>
+            <a class="btn btn-outline" href="https://krewire.com/docs">Read the Docs →</a>
+            <a class="btn btn-outline" href="https://github.com/krewire/cloud" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
-          <p class="hero-meta">Multi-tenant · Zero-downtime releases · Host-based routing · Metered quotas</p>
+
+          <p class="hero-meta">Go 1.27.1+ · CGO_ENABLED=0 · Port Allocation · Active Health Probes · Metered Quotas</p>
         </div>
 
-        <div class="terminal" role="img" aria-label="Terminal example: deploying acme-api to Krewire Cloud, with build, health probe, route registration, and drain steps.">
-          <div class="terminal-bar" aria-hidden="true">
-            <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
-            <span class="terminal-title">cloud — deploy</span>
+        <!-- Terminal Window Showcase -->
+        <div class="terminal" role="img" aria-label="Terminal example: deploying acme-api to Krewire Cloud with build, health probe, route registration, and drain steps.">
+          <div class="terminal-bar">
+            <span class="dot-r"></span>
+            <span class="dot-y"></span>
+            <span class="dot-g"></span>
+            <span class="terminal-title">kiw deploy --cloud (cloud-server runtime)</span>
           </div>
-          <pre><code><span class="prompt">$</span> kiw deploy --cloud --project acme-api
-<span class="comment">✓ build</span>   acme-api  linux/amd64  1.2s  <span class="kv">cgo</span>=0
-<span class="comment">✓ probe</span>   /healthz 200 in 84ms
-<span class="comment">✓ route</span>   acme-api → 127.0.0.1:20001
-<span class="comment">✓ drain</span>   previous release retired after 15s
+          <pre><code><span class="prompt">$</span> kiw deploy --cloud --project acme-api --env prod
+<span class="comment">◈ verify</span>    parsing krewire.yaml (kind=service, tenant=acme)
+<span class="comment">✓ build</span>     hermetic compile: linux/amd64 (<span class="kv">cgo</span>=0) in 1.1s
+<span class="comment">✓ artifact</span>  digest sha256:8f3c... (12.4 MB stripped)
+<span class="comment">✓ spawn</span>     process assigned to internal port :20005
+<span class="comment">✓ probe</span>     GET /healthz -> <span class="prompt">200 OK</span> in 1.2ms
+<span class="comment">✓ route</span>     gateway hot-swap: acme-api.krewire.cloud
+<span class="comment">✓ drain</span>     previous release (pid 14209) retired after 15s
 
-<span class="warn">● live</span>    releasing under tenant <span class="kv">acme</span>
-<span class="warn">● logs</span>    streaming to the Cloud console</code></pre>
+<span class="warn">● live</span>      release v1.4.2 healthy under tenant <span class="kv">acme</span>
+<span class="warn">● logs</span>      streaming to https://cloud.krewire.com/console</code></pre>
         </div>
       </div>
     </section>
 
-    <section class="section section-alt" aria-labelledby="platform-facts">
-      <div class="container">
-        <h2 id="platform-facts" class="sr-only">Platform facts</h2>
-        <div class="stats">
-          <div class="stat"><strong>8</strong><span>workload kinds</span></div>
-          <div class="stat"><strong>Zero</strong><span>downtime releases</span></div>
-          <div class="stat"><strong>Per-tenant</strong><span>quotas &amp; metering</span></div>
-          <div class="stat"><strong>Push</strong><span>to deploy webhooks</span></div>
+    <!-- =====================================================================
+         TRUST BAR / METRIC COUNTERS
+         ===================================================================== -->
+    <section class="trust-section">
+      <div class="container trust-bar">
+        <span class="badge badge-secondary shrink-0">Unified Go Control Plane</span>
+        <div class="trust-metrics">
+          <span><strong>100%</strong> Go Standard Library</span>
+          <span style="opacity:0.35">·</span>
+          <span><strong>0</strong> Downtime Releases</span>
+          <span style="opacity:0.35">·</span>
+          <span><strong>8</strong> Workloads in 1 Binary</span>
+          <span style="opacity:0.35">·</span>
+          <span><strong>&lt; 2ms</strong> Health Probes</span>
+          <span style="opacity:0.35">·</span>
+          <span>Single Config <code class="code-inline">krewire.yaml</code></span>
         </div>
       </div>
     </section>
 
-    <section class="section" id="features" aria-labelledby="features-title">
+    <!-- =====================================================================
+         THREE PILLARS
+         ===================================================================== -->
+    <section id="pillars" class="section section-alt bg-dots">
       <div class="container">
         <div class="section-head">
-          <span class="badge">Capabilities</span>
-          <h2 id="features-title">The boring parts of production, handled</h2>
-          <p>Build, supervision, routing, and quotas are separate packages with one job each — so failures stay contained and upgrades stay predictable.</p>
+          <span class="badge badge-primary" style="margin-bottom:12px">Three Pillars</span>
+          <h2>Secure. Sustainable. Scalable.</h2>
+          <p>Krewire Cloud brings the ecosystem's founding architectural contract directly to production operations. Every capability is verified against independent quality and security gates.</p>
+        </div>
+
+        <div class="grid grid-3">
+          <!-- Pillar 1: Secure -->
+          <article class="card">
+            <div class="card-header">
+              <span class="icon-box bg-primary">🛡</span>
+              <span class="badge badge-primary font-mono">Pillar 01</span>
+            </div>
+            <h3>Secure by Default</h3>
+            <p>Strict tenant isolation, zero root privileges, memory and process ceilings, encrypted secrets reference, and automated TLS termination keep the attack surface minimal and verifiable.</p>
+          </article>
+
+          <!-- Pillar 2: Sustainable -->
+          <article class="card">
+            <div class="card-header">
+              <span class="icon-box bg-secondary">🌱</span>
+              <span class="badge badge-secondary font-mono">Pillar 02</span>
+            </div>
+            <h3>Sustainable Operations</h3>
+            <p>Single static Go binaries with embedded assets, zero external daemon bloat, low-footprint supervisor, and instant rollback. Runs reliably on a $5 VPS or bare-metal servers.</p>
+          </article>
+
+          <!-- Pillar 3: Scalable -->
+          <article class="card">
+            <div class="card-header">
+              <span class="icon-box bg-primary">⚡</span>
+              <span class="badge badge-primary font-mono">Pillar 03</span>
+            </div>
+            <h3>Progressive Scalability</h3>
+            <p>Additive growth without rewriting. Host-based reverse proxying, dynamic port management, multi-node clustering, and per-tenant metered bandwidth from dev to enterprise.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         WORKLOADS ENGINE
+         ===================================================================== -->
+    <section id="workloads" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="badge badge-primary" style="margin-bottom:12px">Unified Workload Engine</span>
+          <h2>One Control Plane. Eight Workloads.</h2>
+          <p>Stop managing separate platforms for web services, APIs, worker queues, and gateways. Krewire Cloud runs every workload defined by the ecosystem contract.</p>
+        </div>
+
+        <div class="workload-grid">
+          <!-- 1. APP -->
+          <div class="workload-card">
+            <div class="card-header">
+              <span class="icon-box bg-secondary">▲</span>
+              <span class="badge badge-muted">Fullstack</span>
+            </div>
+            <h3>app</h3>
+            <p>Single-binary web monoliths. Static templates, handlers, and assets compiled together with zero runtime node dependencies.</p>
+            <div class="workload-badge-bar">
+              <code class="code-inline">kiw run / kiw dev</code>
+            </div>
+          </div>
+
+          <!-- 2. SERVICE -->
+          <div class="workload-card">
+            <div class="card-header">
+              <span class="icon-box bg-primary">⚡</span>
+              <span class="badge badge-primary">Backend</span>
+            </div>
+            <h3>service</h3>
+            <p>High-concurrency microservices, gRPC backends, and JSON APIs with active health probes and bounded restarts.</p>
+            <div class="workload-badge-bar">
+              <code class="code-inline">kiw run / kiw dev</code>
+            </div>
+          </div>
+
+          <!-- 3. WORKER -->
+          <div class="workload-card">
+            <div class="card-header">
+              <span class="icon-box bg-secondary">⚙</span>
+              <span class="badge badge-muted">Async</span>
+            </div>
+            <h3>worker</h3>
+            <p>Background job queues, event stream consumers, and scheduled cron workloads with crash loops backoff.</p>
+            <div class="workload-badge-bar">
+              <code class="code-inline">kiw worker / kiw dev</code>
+            </div>
+          </div>
+
+          <!-- 4. GATEWAY -->
+          <div class="workload-card">
+            <div class="card-header">
+              <span class="icon-box bg-primary">⬢</span>
+              <span class="badge badge-primary">Edge</span>
+            </div>
+            <h3>gateway</h3>
+            <p>Host-based edge reverse proxy with dynamic route hot-reloading, TLS certificate termination, and rate limiting.</p>
+            <div class="workload-badge-bar">
+              <code class="code-inline">kiw gateway / kiw dev</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CORE CAPABILITIES
+         ===================================================================== -->
+    <section id="features" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <span class="badge badge-primary" style="margin-bottom:12px">Platform Capabilities</span>
+          <h2>The Boring Parts of Production, Handled</h2>
+          <p>Build, supervision, routing, and quotas are decoupled modules with single responsibilities — ensuring failures stay strictly contained and upgrades stay predictable.</p>
         </div>
 
         <div class="grid grid-3">
           <article class="card">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
-            </span>
-            <h3>Multi-tenant control plane</h3>
-            <p>Tenants, projects, environments, and deployment history live in one store with tenant-scoped reads and quota enforcement.</p>
+            <span class="icon-box bg-primary" style="margin-bottom:14px">🏢</span>
+            <h3>Multi-Tenant Control Plane</h3>
+            <p>Tenants, projects, environments (<code class="code-inline">dev</code>, <code class="code-inline">prod</code>), and deployment histories live in one store with tenant-scoped isolation and quota enforcement.</p>
           </article>
 
           <article class="card">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.2 5.6L20 11l-5.8 2.4L12 19l-2.2-5.6L4 11l5.8-2.4z"/></svg>
-            </span>
-            <h3>Hermetic builds</h3>
-            <p>Every release is compiled with <code>CGO_ENABLED=0</code>, trimmed, and stripped — a static binary with no host toolchain surprises.</p>
+            <span class="icon-box bg-secondary" style="margin-bottom:14px">📦</span>
+            <h3>Hermetic Builds</h3>
+            <p>Every release is compiled with <code class="code-inline">CGO_ENABLED=0</code>, trimmed, and stripped into an immutable binary artifact with zero host toolchain surprises.</p>
           </article>
 
           <article class="card">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
-            </span>
-            <h3>Supervised processes</h3>
-            <p>Port allocation, active health probes, crash detection, bounded restarts, and memory ceilings for every workload.</p>
+            <span class="icon-box bg-primary" style="margin-bottom:14px">🔍</span>
+            <h3>Process Supervisor</h3>
+            <p>Automatic port allocation, active health probes (<code class="code-inline">/healthz</code>), crash loops detection, bounded restarts, and memory ceilings for every workload.</p>
           </article>
 
           <article class="card">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h6l2-5 3 10 2-5h3"/><circle cx="4" cy="12" r="1.2"/><circle cx="20" cy="12" r="1.2"/></svg>
-            </span>
-            <h3>Zero-downtime releases</h3>
-            <p>Blue/green swap: the new release must pass its health probe before routing changes, then the old one drains with SIGTERM.</p>
+            <span class="icon-box bg-secondary" style="margin-bottom:14px">🔄</span>
+            <h3>Zero-Downtime Blue/Green</h3>
+            <p>Traffic only switches after the new instance passes live health checks. The retired instance drains gracefully with <code class="code-inline">SIGTERM</code> without dropping requests.</p>
           </article>
 
           <article class="card">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3z"/></svg>
-            </span>
-            <h3>Host-based gateway</h3>
-            <p>Register a hostname and internal port at deploy time. The edge proxy hot-reloads routes and owns TLS termination.</p>
+            <span class="icon-box bg-primary" style="margin-bottom:14px">🌐</span>
+            <h3>Host-Based Gateway</h3>
+            <p>Register a hostname and internal port at deploy time. The edge proxy hot-reloads routes dynamically and owns TLS termination with automated renewal.</p>
           </article>
 
           <article class="card">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg>
-            </span>
-            <h3>Quotas &amp; metering</h3>
-            <p>Plan limits for projects, memory, and bandwidth are evaluated per tenant, with usage records ready for billing.</p>
+            <span class="icon-box bg-secondary" style="margin-bottom:14px">📊</span>
+            <h3>Quotas &amp; Metering</h3>
+            <p>Plan limits for projects, memory, CPU time, and bandwidth are evaluated per tenant in real time, with usage records ready for audit and billing.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section section-alt" id="pipeline" aria-labelledby="pipeline-title">
+    <!-- =====================================================================
+         DEPLOYMENT PIPELINE
+         ===================================================================== -->
+    <section id="pipeline" class="section bg-dots">
       <div class="container split">
         <div>
-          <span class="badge">Pipeline</span>
-          <h2 id="pipeline-title" class="section-head" style="margin-bottom:12px">A release is a sequence you can read</h2>
-          <p style="color:var(--muted);margin:0 0 8px">
-            Nothing is hidden behind a black box. Each stage writes a log line and a deployment status you can query.
+          <span class="badge badge-primary" style="margin-bottom:12px">Deterministic Pipeline</span>
+          <h2 style="font-size:clamp(26px,3.8vw,38px);font-weight:900;letter-spacing:-0.035em;margin:12px 0">A release is a sequence you can read</h2>
+          <p style="color:var(--muted);margin-bottom:20px;font-size:16px;">
+            Nothing is hidden behind opaque black boxes. Every lifecycle stage writes a structured event line and a deployment status you can inspect.
           </p>
           <ul class="checklist">
-            <li>Builds and releases are recorded per commit, per tenant.</li>
-            <li>Failed health probes never receive traffic.</li>
-            <li>Logs stream live to the console and persist for later inspection.</li>
+            <li>Builds and releases are tracked per commit and per tenant.</li>
+            <li>Failed health probes never receive ingress production traffic.</li>
+            <li>Live log streaming via WebSocket and persistent journal.</li>
+            <li>Instant rollback to the last verified stable release.</li>
           </ul>
         </div>
 
         <ol class="steps">
           <li>
-            <strong>Connect</strong>
-            <span>Point a project at a repository, or trigger a deploy from the CLI, API, or a signed git push.</span>
+            <strong>01 · Connect &amp; Push</strong>
+            <span>Point a project at a Git repository or trigger a release directly via <code class="code-inline">kiw deploy --cloud</code>, API, or webhook.</span>
           </li>
           <li>
-            <strong>Build</strong>
-            <span>The runner compiles a static binary and streams every line back to the deployment record.</span>
+            <strong>02 · Hermetic Compile</strong>
+            <span>The runner compiles a stripped static binary with <code class="code-inline">CGO_ENABLED=0</code> and captures the immutable SHA-256 digest.</span>
           </li>
           <li>
-            <strong>Swap</strong>
-            <span>A fresh port is probed before the gateway is updated, so in-flight traffic never hits a cold process.</span>
+            <strong>03 · Supervise &amp; Probe</strong>
+            <span>The process boots on an isolated port; the supervisor polls <code class="code-inline">/healthz</code> until green.</span>
           </li>
           <li>
-            <strong>Observe</strong>
-            <span>Status, logs, and resource usage stay queryable; the previous release drains gracefully.</span>
+            <strong>04 · Route Hot-Swap &amp; Drain</strong>
+            <span>The gateway switches edge traffic with zero dropped packets, while the retired instance drains gracefully.</span>
           </li>
         </ol>
       </div>
     </section>
 
-    <section class="cta" aria-labelledby="cta-title">
+    <!-- =====================================================================
+         CONFIG & CLI SECTION
+         ===================================================================== -->
+    <section id="config" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <span class="badge badge-primary" style="margin-bottom:12px">Unified Ergonomics</span>
+          <h2>Configured in krewire.yaml. Managed with kiw.</h2>
+          <p>No scattered Dockerfiles, Helm charts, or obscure CI scripts. Your entire cloud configuration lives in the same file as your local development environment.</p>
+        </div>
+
+        <div class="grid grid-2">
+          <!-- Config file -->
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+              <span class="terminal-title">krewire.yaml</span>
+            </div>
+            <pre><code><span class="comment"># Single source of truth for cloud deployments</span>
+<span class="prompt">project:</span>
+  <span class="kv">name:</span> payment-service
+  <span class="kv">kind:</span> service
+
+<span class="prompt">cloud:</span>
+  <span class="kv">tenant:</span> acme-corp
+  <span class="kv">env:</span> production
+  <span class="kv">port:</span> auto
+  <span class="kv">health:</span>
+    <span class="kv">path:</span> /healthz
+    <span class="kv">interval:</span> 5s
+  <span class="kv">limits:</span>
+    <span class="kv">memory:</span> 512MB
+    <span class="kv">max_restarts:</span> 5</code></pre>
+          </div>
+
+          <!-- CLI execution -->
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+              <span class="terminal-title">kiw CLI operations</span>
+            </div>
+            <pre><code><span class="prompt">$</span> kiw info --cloud
+<span class="comment">Tenant:</span>      acme-corp
+<span class="comment">Projects:</span>    payment-service (service), web-ui (app)
+<span class="comment">Status:</span>      running (2 instances healthy)
+<span class="comment">Quota:</span>       2 / 10 projects · 1.2GB / 4GB RAM
+
+<span class="prompt">$</span> kiw deploy --cloud
+<span class="comment">✓</span> verified local configuration
+<span class="comment">✓</span> uploaded release v1.4.2
+<span class="comment">✓</span> live route: https://payment.acme.cloud</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         BOTTOM CTA BOX
+         ===================================================================== -->
+    <section class="cta bg-dots" aria-labelledby="cta-title">
       <div class="container">
         <div class="cta-box">
-          <span class="badge">Deploy in minutes</span>
+          <div class="badge badge-primary" style="margin-bottom:12px">Deploy in Minutes</div>
           <h2 id="cta-title">Put your workload on the wire.</h2>
-          <p>Open the console to create a tenant and project, then deploy your first release from the Krewire CLI or a git webhook.</p>
+          <p>Open the console to create your tenant, register a project, and deploy your first Go release in under 60 seconds.</p>
           <div class="hero-actions" style="margin-bottom:0">
             <a class="btn btn-primary" href="/console">Open Cloud Console →</a>
             <a class="btn btn-outline" href="https://krewire.com/docs">Browse Documentation</a>
+            <a class="btn btn-outline" href="https://github.com/krewire/cloud" target="_blank" rel="noopener">★ Star on GitHub</a>
           </div>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- =====================================================================
+       FOOTER
+       ===================================================================== -->
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-grid">
-        <a class="brand" href="https://krewire.com" aria-label="Krewire home">
-          <span class="brand-mark" aria-hidden="true">K</span>
-          <span class="brand-text">
-            <strong>Krewire</strong>
-            <small>Open source · Indonesia</small>
-          </span>
-        </a>
-        <nav aria-label="Footer">
+      <div class="footer-columns">
+        <!-- Brand & Mission -->
+        <div>
+          <a class="brand" href="https://krewire.com" aria-label="Krewire home" style="margin-bottom:14px">
+            <span class="icon-box bg-primary">◈</span>
+            <span class="brand-text">
+              <span style="font-size:18px;font-weight:900;letter-spacing:-0.03em;">Krewire</span>
+              <small>Open Source · Indonesia</small>
+            </span>
+          </a>
+          <p style="color:var(--muted);font-size:13.5px;line-height:1.6;margin:12px 0 0;max-width:320px;">
+            End-to-end digital SDLC ecosystem in Go. Secure, sustainable, and scalable modular libraries for every workload.
+          </p>
+        </div>
+
+        <!-- Col 1: Platform -->
+        <div class="footer-nav-col">
+          <h4>Platform</h4>
+          <a href="#pillars">Three Pillars</a>
+          <a href="#workloads">8 Workloads</a>
+          <a href="#features">Capabilities</a>
+          <a href="#pipeline">Deployment Pipeline</a>
+          <a href="/console">Cloud Console</a>
+        </div>
+
+        <!-- Col 2: Documentation -->
+        <div class="footer-nav-col">
+          <h4>Documentation</h4>
+          <a href="https://krewire.com/docs/getting-started">Getting Started</a>
+          <a href="https://krewire.com/docs/architecture">Architecture</a>
+          <a href="https://krewire.com/docs/workloads">Workloads Guide</a>
+          <a href="https://krewire.com/docs/tools/kiw">CLI Reference</a>
+        </div>
+
+        <!-- Col 3: Ecosystem -->
+        <div class="footer-nav-col">
+          <h4>Ecosystem</h4>
           <a href="https://krewire.com">krewire.com</a>
-          <a href="https://krewire.com/docs">Documentation</a>
-          <a href="https://github.com/krewire/cloud">GitHub</a>
-          <a href="https://krewire.com/#ecosystem">Ecosystem</a>
-        </nav>
+          <a href="https://dash.krewire.com">Krewire Dash</a>
+          <a href="https://github.com/krewire/cloud" target="_blank" rel="noopener">GitHub: cloud</a>
+          <a href="https://github.com/krewire/krewire" target="_blank" rel="noopener">GitHub: krewire</a>
+        </div>
       </div>
+
       <p class="footer-note">© 2026 Krewire Contributors. Krewire Cloud v0.1.0 — modular Go libraries for every workload.</p>
     </div>
   </footer>
