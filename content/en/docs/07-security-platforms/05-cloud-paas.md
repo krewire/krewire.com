@@ -1,12 +1,12 @@
 ---
 title: "Hybrid PaaS Platform"
-description: "Architecture, runner, process supervisor, WebAuth console UI, Git push webhooks, and dynamic reverse proxy edge router in krewire/cloud."
+description: "Architecture, runner, process supervisor, WebAuth console UI, Git push webhooks, and dynamic reverse proxy edge router in Krewire Cloud."
 date: "2026-10-31"
 ---
 
-# Hybrid PaaS Platform (`github.com/krewire/cloud`)
+# Hybrid PaaS Platform (Krewire Cloud)
 
-`krewire/cloud` powers both the self-hosted open-core PaaS engine and the multi-tenant managed SaaS platform (`cloud.krewire.com`), fulfilling `ADR-C9L2P`.
+Krewire Cloud powers both the hybrid PaaS engine and the multi-tenant managed SaaS platform (`cloud.krewire.com`).
 
 ---
 

@@ -4,17 +4,20 @@ description: "Mengoperasikan Krewire Cloud: mesin PaaS binary tunggal self-hoste
 date: "2026-10-24"
 ---
 
-# PaaS Hibrida & Cloud Terkelola (`cloud`)
+# PaaS Hibrida & Cloud Terkelola (Krewire Cloud)
 
-Krewire Cloud mengadopsi **Model C (Open-Core PaaS Hibrida & Cloud SaaS Terkelola)** sesuai dengan `ADR-C9L2P`.
+Krewire Cloud menyediakan mesin PaaS hibrida mandiri untuk hosting VPS privat serta platform cloud multi-tenant terkelola.
 
-## 1. Mesin PaaS Open-Core Self-Hosted
+## 1. Mesin PaaS Hibrida Self-Hosted
 
-Jalankan platform privat native-Go Anda di Linux VPS mana pun (Ubuntu, Debian, Alpine) hanya dengan satu perintah:
+Rilis workload native-Go privat Anda di Linux VPS mana pun (Ubuntu, Debian, Alpine) menggunakan perkakas standar:
 
 ```bash
-cd cloud
-go run ./cmd/krewire-cloud-server
+# Kemas binary produksi dengan aset tersemat
+kiw deploy --target binary
+
+# Hasilkan unit supervisor systemd untuk pengelolaan layanan tanpa downtime
+kiw deploy --target systemd
 ```
 
 - **Efisiensi RAM Ekstrem**: Workload Go berjalan hanya dalam 15–30MB RAM. Satu VPS seharga $5/bulan dapat menampung puluhan aplikasi aktif.

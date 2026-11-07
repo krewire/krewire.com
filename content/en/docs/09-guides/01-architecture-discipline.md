@@ -6,7 +6,7 @@ date: "2026-11-07"
 
 # Architecture & Engineering Discipline
 
-The Krewire codebase is governed by non-negotiable architectural invariants defined in `ADR-6CAB8C` and `ADR-E8P9D`.
+The Krewire codebase is governed by non-negotiable architectural invariants across all packages and workloads.
 
 ## 1. The Architectural Pyramid (Strict Downward Dependencies)
 

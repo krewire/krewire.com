@@ -15,7 +15,7 @@ github.com/krewire/krewire/pkg/env
 github.com/krewire/krewire/pkg/version
 ```
 
-Sesuai ADR `ADR-B7D3A`, `pkg/model` **hanya boleh bergantung pada pustaka standar Go** dan saudara internalnya `errs` — tidak boleh bergantung pada paket tingkat lebih tinggi dan tidak boleh mengimpor `kiw`.
+Sebagai paket fondasi inti, `pkg/model` **hanya boleh bergantung pada pustaka standar Go** dan saudara internalnya `errs` — tidak boleh bergantung pada paket tingkat lebih tinggi dan tidak boleh mengimpor `kiw`.
 
 ---
 

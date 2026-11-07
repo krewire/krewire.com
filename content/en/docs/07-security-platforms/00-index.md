@@ -9,9 +9,9 @@ date: "2026-10-25"
 Security and distributed intelligence are foundational pillars of the Krewire ecosystem. This chapter covers low-level security controls, multi-tenant enterprise platforms, and native AI runtimes:
 
 - **Defense-in-Depth:** Zero-trust architecture with OWASP Top 10 mitigations, strict constant-time cryptographic primitives, and automated CSRF/SSRF protections.
-- **Enterprise Identity & Multi-Tenancy:** Centralized identity platform (`krewire/auth`) providing SSO via OIDC/SAML2, TOTP multi-factor authentication, and RBAC authorization.
-- **Hybrid Cloud PaaS:** Self-hosted and managed cloud control plane (`krewire/cloud`) providing container orchestration, supervisor daemons, and zero-downtime rolling deployments.
-- **Autonomous AI Intelligence:** In-process LLM agent engines (`krewire/krew`) and collaborative virtual workspaces (`krewire/dash`).
+- **Enterprise Identity & Multi-Tenancy:** Centralized identity platform (Krewire Auth) providing SSO via OIDC/SAML2, TOTP multi-factor authentication, and RBAC authorization.
+- **Hybrid Cloud PaaS:** Self-hosted and managed cloud control plane (Krewire Cloud) providing container orchestration, supervisor daemons, and zero-downtime rolling deployments.
+- **Autonomous AI Intelligence:** In-process LLM agent engines (`krew`) and collaborative virtual workspaces (Krewire Dash).
 
 ---
 
@@ -47,11 +47,11 @@ Security and distributed intelligence are foundational pillars of the Krewire ec
     <div class="chapter-card-head">
       <span class="chapter-card-num">7.3</span>
       <h3 class="chapter-card-title">
-        <a href="/security-platforms/identity-and-auth">Enterprise Identity & Auth Platform (krewire/auth) <span class="arrow">→</span></a>
+        <a href="/security-platforms/identity-and-auth">Enterprise Identity & Auth Platform (Krewire Auth) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Private enterprise identity monorepo: multi-tenant organization boundaries, SSO (OIDC/SAML2), MFA (TOTP), and fine-grained RBAC permission matrix.
+      Enterprise identity platform: multi-tenant organization boundaries, SSO (OIDC/SAML2), MFA (TOTP), and fine-grained RBAC permission matrix.
     </p>
   </div>
 
@@ -71,11 +71,11 @@ Security and distributed intelligence are foundational pillars of the Krewire ec
     <div class="chapter-card-head">
       <span class="chapter-card-num">7.5</span>
       <h3 class="chapter-card-title">
-        <a href="/security-platforms/cloud-paas">Hybrid PaaS Platform (krewire/cloud) <span class="arrow">→</span></a>
+        <a href="/security-platforms/cloud-paas">Hybrid PaaS Platform (Krewire Cloud) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Private enterprise hybrid PaaS engine: multi-tenant cloud control plane, autonomous runner, process supervisor, and container gateway.
+      Enterprise hybrid PaaS engine: multi-tenant cloud control plane, autonomous runner, process supervisor, and container gateway.
     </p>
   </div>
 
@@ -107,7 +107,7 @@ Security and distributed intelligence are foundational pillars of the Krewire ec
     <div class="chapter-card-head">
       <span class="chapter-card-num">7.8</span>
       <h3 class="chapter-card-title">
-        <a href="/security-platforms/virtual-workspace">AI-Native Virtual Workspace (dash) <span class="arrow">→</span></a>
+        <a href="/security-platforms/virtual-workspace">AI-Native Virtual Workspace (Krewire Dash) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">

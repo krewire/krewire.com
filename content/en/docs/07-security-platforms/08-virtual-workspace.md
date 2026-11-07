@@ -1,12 +1,12 @@
 ---
 title: "AI-Native Virtual Workspace"
-description: "Architecture, sandbox process isolation, WebSocket PTY terminal, pair programmer assistant, collaborative session hub, and daemon in krewire/dash."
+description: "Architecture, sandbox process isolation, WebSocket PTY terminal, pair programmer assistant, collaborative session hub, and daemon in Krewire Dash."
 date: "2026-11-05"
 ---
 
-# AI-Native Virtual Workspace (`github.com/krewire/dash`)
+# AI-Native Virtual Workspace (Krewire Dash)
 
-`krewire/dash` provides an AI-powered virtual workspace engine and cloud IDE platform. It combines hermetic process isolation, bidirectional terminal streaming, Monaco-based web editing, and an embedded `krew` pair programmer into a single-binary server.
+Krewire Dash provides an AI-powered virtual workspace engine and cloud IDE platform. It combines hermetic process isolation, bidirectional terminal streaming, Monaco-based web editing, and an embedded `krew` pair programmer into a single-binary server.
 
 ---
 

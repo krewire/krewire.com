@@ -1,12 +1,12 @@
 ---
 title: "Platform Identitas & Autentikasi Enterprise"
-description: "Arsitektur, hashing PBKDF2, TOTP 2FA RFC 6238, SSO enterprise (OIDC/SAML2), RBAC, session store, proteksi CSRF, dan deployment server di krewire/auth."
+description: "Arsitektur, hashing PBKDF2, TOTP 2FA RFC 6238, SSO enterprise (OIDC/SAML2), RBAC, session store, proteksi CSRF, dan integrasi di Krewire Auth."
 date: "2026-10-31"
 ---
 
-# Platform Identitas & Autentikasi Enterprise (`github.com/krewire/auth`)
+# Platform Identitas & Autentikasi Enterprise (Krewire Auth)
 
-`krewire/auth` adalah monorepo enterprise terdedikasi yang menyediakan spektrum penuh manajemen identitas, Single Sign-On (SSO), autentikasi multifaktor (MFA), tata kelola hak akses berbasis peran (RBAC), dan batas keamanan agen otonom di seluruh ekosistem Krewire.
+Krewire Auth adalah platform identitas enterprise terdedikasi yang menyediakan spektrum penuh manajemen identitas, Single Sign-On (SSO), autentikasi multifaktor (MFA), tata kelola hak akses berbasis peran (RBAC), dan batas keamanan agen otonom di seluruh ekosistem Krewire.
 
 ---
 
@@ -32,7 +32,7 @@ date: "2026-10-31"
 - **Audit Trail Keamanan:** `AuditLogger` terstruktur yang mencatat seluruh aksi autentikasi, otorisasi, dan administratif beserta konteks IP dan pengguna.
 
 ### 4. `pkg/middleware`
-- **Double-Submit CSRF Cookie:** Verifikasi token kriptografis cookie-ke-header sesuai ADR-D1F3N.
+- **Double-Submit CSRF Cookie:** Verifikasi token kriptografis cookie-ke-header sesuai standar keamanan berlapis (defense-in-depth).
 - **Konteks Sesi:** Helper ekstraksi sesi yang aman (`WithSession`, `SessionFromContext`) terintegrasi langsung dengan siklus permintaan HTTP.
 
 ### 5. `pkg/webauth`

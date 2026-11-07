@@ -4,17 +4,20 @@ description: "Operating Krewire Cloud: self-hosted single-binary PaaS engine on 
 date: "2026-10-24"
 ---
 
-# Hybrid PaaS & Managed Cloud (`cloud`)
+# Hybrid PaaS & Managed Cloud (Krewire Cloud)
 
-Krewire Cloud adopts **Model C (Hybrid Open-Core PaaS & Managed Cloud SaaS)** per `ADR-C9L2P`.
+Krewire Cloud delivers both a self-hosted hybrid PaaS engine for private VPS hosting and a managed multi-tenant cloud platform.
 
-## 1. Self-Hosted Open-Core PaaS Engine
+## 1. Self-Hosted Hybrid PaaS Engine
 
-Run your private Go-native platform on any Linux VPS (Ubuntu, Debian, Alpine) with a single command:
+Deploy your private Go-native workloads on any Linux VPS (Ubuntu, Debian, Alpine) using standard tooling:
 
 ```bash
-cd cloud
-go run ./cmd/krewire-cloud-server
+# Package production binaries with embedded assets
+kiw deploy --target binary
+
+# Generate systemd supervisor units for zero-downtime service management
+kiw deploy --target systemd
 ```
 
 - **Extreme RAM Efficiency**: Go workloads run in 15–30MB RAM. A single $5/month VPS can host dozens of live applications.

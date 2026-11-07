@@ -96,12 +96,12 @@ Leverage Krewire's modular, independent batteries grouped into four domain tiers
 4. **Security & Ecosystem Platforms:**
    - [**Security Controls & Hardening (`pkg/sec`)**](/security-platforms/security) — Hardened OWASP defense headers, CSRF tokens, SSRF protection, and PII redaction.
    - [**Authentication Primitives (`pkg/auth`)**](/security-platforms/auth) — Cryptographic JWT tokens, claims verification, and constant-time HTTP Basic Auth.
-   - [**Enterprise Identity & Auth Platform (`krewire/auth`)**](/security-platforms/identity-and-auth) — Multi-tenant identity, PBKDF2, TOTP 2FA, SSO (OIDC/SAML2), and RBAC.
+   - [**Enterprise Identity & Auth Platform (Krewire Auth)**](/security-platforms/identity-and-auth) — Multi-tenant identity, PBKDF2, TOTP 2FA, SSO (OIDC/SAML2), and RBAC.
    - [**Cloud & Distributed Systems (`pkg/cloud`)**](/security-platforms/cloud-distributed) — Cluster discovery, distributed locks, health checks, and telemetry.
-   - [**Hybrid PaaS Platform (`krewire/cloud`)**](/security-platforms/cloud-paas) — Go-native self-hosted PaaS engine and managed cloud control plane.
+   - [**Hybrid PaaS Platform (Krewire Cloud)**](/security-platforms/cloud-paas) — Go-native self-hosted PaaS engine and managed cloud control plane.
    - [**AI Orchestration & LLMs (`pkg/ai`)**](/security-platforms/ai-and-agents) — Multi-provider LLM integrations and prompt engines.
    - [**Autonomous AI Agent Engine (`krew`)**](/security-platforms/autonomous-agent) — Standalone and embedded autonomous agent runtime.
-   - [**AI-Native Virtual Workspace (`dash`)**](/security-platforms/virtual-workspace) — Multi-agent virtual workspace and autonomous integration engine.
+   - [**AI-Native Virtual Workspace (Krewire Dash)**](/security-platforms/virtual-workspace) — Multi-agent virtual workspace and autonomous integration engine.
 
 ### Stage 5: Daily Developer Workflows & CLI Tooling
 Accelerate developer productivity with automated test suites, formatting, project introspection, and custom build tasks:

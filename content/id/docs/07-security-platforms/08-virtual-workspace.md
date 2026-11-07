@@ -1,12 +1,12 @@
 ---
 title: "Workspace Virtual Native AI"
-description: "Arsitektur, isolasi proses sandbox, terminal WebSocket PTY, asisten pair programmer, hub kolaborasi sesi, dan daemon di krewire/dash."
+description: "Arsitektur, isolasi proses sandbox, terminal WebSocket PTY, asisten pair programmer, hub kolaborasi sesi, dan daemon di Krewire Dash."
 date: "2026-11-05"
 ---
 
-# Workspace Virtual Native AI (`github.com/krewire/dash`)
+# Workspace Virtual Native AI (Krewire Dash)
 
-`krewire/dash` menyediakan mesin workspace virtual berbasis AI dan platform cloud IDE. Paket ini menggabungkan isolasi proses yang hermetis, streaming terminal dua arah, editor web berbasis Monaco, dan asisten pair programmer `krew` tersemat ke dalam satu daemon server tunggal.
+Krewire Dash menyediakan mesin workspace virtual berbasis AI dan platform cloud IDE. Paket ini menggabungkan isolasi proses yang hermetis, streaming terminal dua arah, editor web berbasis Monaco, dan asisten pair programmer `krew` tersemat ke dalam satu daemon server tunggal.
 
 ---
 
