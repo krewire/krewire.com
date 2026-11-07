@@ -17,8 +17,8 @@
   },
   "products": {
     "badge": "Core Products",
-    "title": "Three Pillars of the Krewire Cloud",
-    "lead": "Everything you need to build, run, and scale modern applications — powered by AI, unified authentication, and resilient infrastructure.",
+    "title": "Core Products of the Krewire Platform",
+    "lead": "Everything you need to build, run, and scale modern applications — powered by AI, unified authentication, server administration, and resilient infrastructure.",
     "workspace_title": "Krewire Workspace",
     "workspace_badge": "AI-Powered",
     "workspace_desc": "Virtual workspace & autonomous integration engine. Web terminal, sandboxed runtimes, real-time code collaboration, and deep AI agent automation.",
@@ -39,7 +39,14 @@
     "auth_feature1": "Single Sign-On across all subdomains",
     "auth_feature2": "TOTP two-factor authentication & recovery",
     "auth_feature3": "Tenant isolation & fine-grained RBAC",
-    "auth_cta": "Manage Identity →"
+    "auth_cta": "Manage Identity →",
+    "panel_title": "Krewire Panel",
+    "panel_badge": "Server & Admin",
+    "panel_desc": "Self-hosted server and admin control panel. Manage bare-metal & VPS hosts, systemd daemons, vHosts, databases, and firewall with zero external bloat.",
+    "panel_feature1": "Host service & daemon supervision (systemd)",
+    "panel_feature2": "Automated vHosts (Caddy/Nginx) & database provisioning",
+    "panel_feature3": "Integrated firewall, streaming file manager & web console",
+    "panel_cta": "Open Panel →"
   },
   "trust": {
     "label": "Unified Go Toolchain",
@@ -144,6 +151,8 @@
     "auth_desc": "Multi-tenant identity, Single Sign-On (OIDC/SAML2), MFA (TOTP), reset password, and hierarchical RBAC.",
     "dash_badge": "Virtual Workspace",
     "dash_desc": "AI-powered virtual workspace for integration, automation, sandboxed cloud runtimes, and collaborative engineering.",
+    "panel_badge": "Server Admin",
+    "panel_desc": "Self-hosted server & admin control panel for bare-metal VPS, vHosts, systemd daemons, databases, and firewall.",
     "internal_badge": "Docs Hub",
     "internal_desc": "Private documentation hub: architecture decision records, roadmaps, contributor guides, and research notes.",
     "portal_badge": "Portal Site",

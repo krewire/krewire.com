@@ -17,8 +17,8 @@
   },
   "products": {
     "badge": "Produk Utama",
-    "title": "Tiga Pilar Krewire Cloud",
-    "lead": "Segala kebutuhan Anda untuk membangun, menjalankan, dan menskalakan aplikasi modern — didukung AI, autentikasi terpusat, dan infrastruktur tangguh.",
+    "title": "Produk Utama Platform Krewire",
+    "lead": "Segala kebutuhan Anda untuk membangun, menjalankan, dan menskalakan aplikasi modern — didukung AI, autentikasi terpusat, administrasi server, dan infrastruktur tangguh.",
     "workspace_title": "Krewire Workspace",
     "workspace_badge": "Bertenaga AI",
     "workspace_desc": "Virtual workspace & mesin integrasi otonom. Terminal web, runtime dalam sandbox, kolaborasi kode real-time, dan otomatisasi agen AI mendalam.",
@@ -39,7 +39,14 @@
     "auth_feature1": "Single Sign-On di seluruh subdomain",
     "auth_feature2": "Autentikasi dua faktor TOTP & pemulihan",
     "auth_feature3": "Isolasi tenant & RBAC berbutir halus",
-    "auth_cta": "Kelola Identitas →"
+    "auth_cta": "Kelola Identitas →",
+    "panel_title": "Krewire Panel",
+    "panel_badge": "Server & Admin",
+    "panel_desc": "Control panel server dan admin mandiri (self-hosted). Kelola host bare-metal & VPS, daemon systemd, vHost, database, dan firewall tanpa dependensi runtime pihak ketiga.",
+    "panel_feature1": "Supervisi servis host & daemon (systemd)",
+    "panel_feature2": "Provisioning vHost otomatis (Caddy/Nginx) & database",
+    "panel_feature3": "Firewall terintegrasi, file manager streaming & konsol web",
+    "panel_cta": "Buka Panel →"
   },
   "trust": {
     "label": "Toolchain Go Terpadu",
@@ -144,6 +151,8 @@
     "auth_desc": "Identitas multi-tenant, Single Sign-On (OIDC/SAML2), MFA (TOTP), reset password, dan hierarki RBAC.",
     "dash_badge": "Virtual Workspace",
     "dash_desc": "Virtual workspace bertenaga AI untuk integrasi, otomatisasi, runtime cloud ter-sandbox, dan rekayasa kolaboratif.",
+    "panel_badge": "Admin Server",
+    "panel_desc": "Control panel server dan admin mandiri untuk VPS bare-metal, vHost, daemon systemd, database, dan firewall.",
     "internal_badge": "Pusat Dokumen",
     "internal_desc": "Pusat dokumentasi privat: catatan keputusan arsitektur (ADR), roadmap, panduan kontributor, dan riset.",
     "portal_badge": "Situs Portal",

@@ -82,12 +82,12 @@ layout: Landing
   <div class="container-site">
     <div class="section-head text-center max-w-3xl mx-auto mb-10">
       <span class="badge badge-secondary mb-3" data-i18n="products.badge">Core Products</span>
-      <h2 class="text-3xl sm:text-4xl font-black tracking-tight mb-4 text-fg dark:text-fg-dark" data-i18n="products.title">Three Pillars of the Krewire Cloud</h2>
-      <p class="text-sm sm:text-base text-muted dark:text-muted-dark leading-relaxed" data-i18n="products.lead">Everything you need to build, run, and scale modern applications — powered by AI, unified authentication, and resilient infrastructure.</p>
+      <h2 class="text-3xl sm:text-4xl font-black tracking-tight mb-4 text-fg dark:text-fg-dark" data-i18n="products.title">Core Products of the Krewire Platform</h2>
+      <p class="text-sm sm:text-base text-muted dark:text-muted-dark leading-relaxed" data-i18n="products.lead">Everything you need to build, run, and scale modern applications — powered by AI, unified authentication, server administration, and resilient infrastructure.</p>
     </div>
 
-    <!-- Product Cards Grid: 1 col on mobile -> 3 col on md+ -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Product Cards Grid: 1 col on mobile -> 2 col on md -> 4 col on lg -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
       <!-- Product 1: Krewire Workspace -->
       <div class="card flex flex-col justify-between hover:-translate-y-1 transition-transform duration-200">
@@ -184,6 +184,39 @@ layout: Landing
         <div>
           <a href="https://auth.krewire.com" target="_blank" rel="noopener" class="btn btn-outline w-full text-center flex items-center justify-center gap-2">
             <span data-i18n="products.auth_cta">Manage Identity →</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Product 4: Krewire Panel -->
+      <div class="card flex flex-col justify-between hover:-translate-y-1 transition-transform duration-200">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="icon-box bg-[#00D1C1] text-[#0B1F3B] text-2xl w-12 h-12 flex items-center justify-center font-bold">🎛</span>
+            <span class="badge badge-secondary text-2xs font-mono" data-i18n="products.panel_badge">Server &amp; Admin</span>
+          </div>
+          <h3 class="text-xl font-black tracking-tight mb-2 text-fg dark:text-fg-dark" data-i18n="products.panel_title">Krewire Panel</h3>
+          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-6" data-i18n="products.panel_desc">
+            Self-hosted server and admin control panel. Manage bare-metal &amp; VPS hosts, systemd daemons, vHosts, databases, and firewall with zero external bloat.
+          </p>
+          <ul class="flex flex-col gap-2.5 text-xs font-semibold text-fg dark:text-fg-dark mb-6">
+            <li class="flex items-center gap-2">
+              <span class="text-primary font-bold">✓</span>
+              <span data-i18n="products.panel_feature1">Host service &amp; daemon supervision (systemd)</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-primary font-bold">✓</span>
+              <span data-i18n="products.panel_feature2">Automated vHosts (Caddy/Nginx) &amp; database provisioning</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-primary font-bold">✓</span>
+              <span data-i18n="products.panel_feature3">Integrated firewall, streaming file manager &amp; web console</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <a href="https://panel.krewire.com" target="_blank" rel="noopener" class="btn btn-outline w-full text-center flex items-center justify-center gap-2">
+            <span data-i18n="products.panel_cta">Open Panel →</span>
           </a>
         </div>
       </div>
