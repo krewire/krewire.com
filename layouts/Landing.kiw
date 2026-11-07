@@ -37,7 +37,7 @@
   <main id="main" class="w-full min-w-0 flex-1 max-w-none">{content}</main>
 
   <!-- FOOTER -->
-  <Footer variant="full" version={version} />
+  <Footer variant="full" version={version} showEcosystemFooter=true />
 </body>
 </html>
 
