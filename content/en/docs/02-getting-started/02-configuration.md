@@ -34,8 +34,9 @@ Below is the complete, canonical schema of `krewire.yaml` with production defaul
 # Project Identity & Workload Kind
 project:
   name: "my-service"            # Project identifier (read by the site loader)
-  kind: "site"                  # Workload: app | cli | site | book | worker | service | gateway | infra
-  version: "v0.1.0"             # Semantic version injected as `.Version` into pages
+  # kind: "site"                # Optional override (app | cli | site | book | worker | service | gateway | infra).
+                                # When omitted, kiw auto-detects kind from filesystem markers (pages/, main.go, etc.)
+  version: "v0.2.0"             # Semantic version injected as `.Version` into pages
   dirs:                         # Optional: Override canonical folder locations
     web: "web"                  # Web handlers and templates
     public: "public"            # Raw static assets
@@ -94,18 +95,20 @@ scripts:
 
 The `project:` section defines the identity and workload behavior:
 
-- **`kind` (Required):** Pins the architectural workload. This instructs `kiw` which engine to invoke:
-  - `app`: Fullstack web monolith with embedded assets (`kiw run`)
-  - `cli`: Terminal command-line tool or TUI (`kiw run`)
-  - `site`: Scoped `.kiw` component static site generator (`kiw build`)
-  - `book`: Markdown documentation manuscript via `pkg/book` (`kiw build --target book`)
-  - `worker`: Asynchronous background task processor (`kiw worker`)
-  - `service`: High-throughput microservice (`kiw run`)
-  - `gateway`: Declarative reverse proxy with per-route middleware (`kiw gateway`)
-  - `infra`: Infrastructure as code in Go (`kiw deploy --target infra`)
+- **`kind` (Optional):** Explicitly pins the architectural workload. When omitted, `kiw` automatically infers the workload kind from filesystem markers via `shape.Detect`:
+  - `site`: Inferred from `pages/` directory or `ssg:` key in `krewire.yaml`.
+  - `app`: Inferred from root `main.go` or `cmd/` with `func main()`.
+  - `book`: Inferred from `content/` directory.
+  - `worker`: Inferred from `worker:` configuration key.
+  - `service`: Inferred from `service:` configuration key.
+  - `gateway`: Inferred from `gateway:` configuration key.
+  - `infra`: Inferred from `infra:` configuration key.
+  - `cli`: Inferred or declared for terminal utilities.
 
   A pre-scaffold bootstrap project is **not** a kind: `kiw info` reports `none`
   with the marker `pre-init` until `kiw init` equips a variant.
+
+  **Progressive Pipeline (`KWF-ARCH-P7L2Q`):** Workloads in Krewire are additive rather than rigid siloes. A static site (`site`) can evolve into a fullstack SSR backend (`app`) simply by adding a `main.go` entry point—without rewriting `.kiw` templates, layouts, or component hierarchies.
 - **`dirs` (Optional):** Allows customization of the default directory layout if integrating Krewire into an existing repository layout.
 
 ---

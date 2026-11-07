@@ -1509,3 +1509,29 @@ html[lang="id"] nav.pager a.prev::before {
 html[lang="id"] nav.pager a.next::before {
   content: "Bab Selanjutnya";
 }
+
+/* Navigation Dropdown Menu System */
+details.dropdown-container summary::-webkit-details-marker,
+details.dropdown-container summary::marker {
+  display: none !important;
+}
+details.dropdown-container summary {
+  list-style: none !important;
+}
+details.dropdown-container:not([open]) .dropdown-menu {
+  display: none !important;
+}
+details.dropdown-container[open] .dropdown-menu {
+  display: block !important;
+}
+details.dropdown-container[open] .dropdown-chevron {
+  transform: rotate(180deg);
+}
+@media (hover: hover) and (pointer: fine) {
+  details.dropdown-container:hover .dropdown-menu {
+    display: block !important;
+  }
+  details.dropdown-container:hover .dropdown-chevron {
+    transform: rotate(180deg);
+  }
+}

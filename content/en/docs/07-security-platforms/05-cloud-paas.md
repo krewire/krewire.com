@@ -38,17 +38,24 @@ date: "2026-10-31"
 
 ---
 
-## Daemon & Deployment (`cmd/krewire-cloud-server`)
+## Enterprise Platform & Public Deployment
 
-The single-binary daemon runs on any Linux VPS (Ubuntu, Debian, Alpine):
+Krewire Cloud is accessed via the managed control plane (`https://cloud.krewire.com`) or deployed on self-hosted enterprise infrastructure using the official container image:
+
+### Deploying from CLI
+
+Deploy any Krewire project directly to Krewire Cloud:
 
 ```bash
-cd cloud
-go run ./cmd/krewire-cloud-server
+kiw deploy --target cloud
 ```
 
-Or deploy as a container using the production multi-stage Dockerfile:
+### Self-Hosted Enterprise Container
 
 ```bash
-docker build -t krewire-cloud-server ./cloud
+docker run -d -p 8443:8443 \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -e PORT=8443 \
+  -e CLOUD_DOMAIN="cloud.example.com" \
+  ghcr.io/krewire/cloud-server:latest
 ```

@@ -4,7 +4,6 @@
 
 project:
   name: "krewire"
-  kind: site
   version: "v0.2.0"
   author: "Krewire Contributors"
 
@@ -13,8 +12,8 @@ title: "Krewire"
 nav:
   - text: "Get Started"
     url: "/docs/getting-started"
-  - text: "Workloads"
-    url: "/docs/workloads"
+  - text: "Products"
+    url: "/#products"
   - text: "DSL"
     url: "/docs/getting-started/dsl"
   - text: "Docs"

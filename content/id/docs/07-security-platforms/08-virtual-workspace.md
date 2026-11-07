@@ -43,16 +43,23 @@ date: "2026-11-05"
 
 ---
 
-## Daemon & Deployment (`cmd/krewire-dash-server`)
+## Akses Cloud Workspace & Deployment Enterprise
 
-Jalankan daemon workspace virtual secara lokal maupun di server produksi:
+Krewire Workspace disediakan sebagai layanan cloud terkelola di `https://dash.krewire.com` dan dapat di-host mandiri pada lingkungan enterprise melalui kontainer:
+
+### Akses Web Workspace Publik
+
+Buka dan gunakan ruang kerja virtual Anda langsung melalui browser:
+- **Portal Cloud:** `https://dash.krewire.com`
+- **Autentikasi:** Single Sign-On terintegrasi via Krewire Auth (`auth.krewire.com`)
+
+### Menjalankan Kontainer Enterprise Self-Hosted
 
 ```bash
-cd dash
-go run ./cmd/krewire-dash-server
+docker run -d -p 9000:9000 \
+  -e PORT=9000 \
+  -e DASH_DATA_DIR="/data/workspaces" \
+  -e AUTH_URL="https://auth.krewire.com" \
+  -v /var/data/dash:/data/workspaces \
+  ghcr.io/krewire/dash-server:latest
 ```
-
-Konfigurasi via environment variables:
-- `PORT`: Port listen HTTP (default: `9000`).
-- `DASH_DATA_DIR`: Direktori penyimpanan data workspace tenant (default: `$TMPDIR/krewire-dash`).
-- `AUTH_URL`: URL server Krewire Auth eksternal untuk verifikasi SSO/RBAC di lingkungan produksi.

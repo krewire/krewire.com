@@ -43,16 +43,23 @@ date: "2026-11-05"
 
 ---
 
-## Daemon & Deployment (`cmd/krewire-dash-server`)
+## Cloud Workspace Access & Enterprise Deployment
 
-Run the standalone virtual workspace daemon locally or in production:
+Krewire Workspace is hosted as a managed cloud service at `https://dash.krewire.com` and can be self-hosted in enterprise environments via container image:
+
+### Public Web Workspace
+
+Access your collaborative workspace directly in browser:
+- **Cloud Portal:** `https://dash.krewire.com`
+- **Authentication:** Integrated Single Sign-On via Krewire Auth (`auth.krewire.com`)
+
+### Self-Hosted Enterprise Container
 
 ```bash
-cd dash
-go run ./cmd/krewire-dash-server
+docker run -d -p 9000:9000 \
+  -e PORT=9000 \
+  -e DASH_DATA_DIR="/data/workspaces" \
+  -e AUTH_URL="https://auth.krewire.com" \
+  -v /var/data/dash:/data/workspaces \
+  ghcr.io/krewire/dash-server:latest
 ```
-
-Configuration via environment variables:
-- `PORT`: HTTP listen port (default: `9000`).
-- `DASH_DATA_DIR`: Directory where tenant workspace files are stored (default: `$TMPDIR/krewire-dash`).
-- `AUTH_URL`: External Krewire Auth daemon URL for production SSO/RBAC verification.

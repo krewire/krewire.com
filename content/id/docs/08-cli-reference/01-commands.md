@@ -340,3 +340,34 @@ Menghapus paket atau menonaktifkan plugin pilihan:
 ```bash
 kiw remove twcss
 ```
+
+### `kiw update [packages...] [flags]`
+
+Memperbarui dependensi proyek ke versi kompatibel terbaru. Jika dijalankan tanpa argumen, akan memperbarui seluruh dependensi langsung maupun transitif di `go.mod` serta merapikan file modul:
+
+```bash
+kiw update                      # Perbarui seluruh dependensi di proyek
+kiw update --dry-run            # Tinjau pembaruan yang tersedia tanpa mengubah file
+kiw update krewire ui           # Perbarui paket ekosistem ke @latest
+kiw update github.com/foo/bar   # Perbarui dependensi eksternal tertentu
+```
+
+- `--dry-run`: Melihat versi pembaruan yang tersedia tanpa menyentuh disk.
+- `--tidy`: Menjalankan `go mod tidy` secara otomatis setelah unduhan selesai (default `true`).
+- Otomatis memperbarui dependensi `package.json` melalui `npm update` jika terdapat integrasi plugin frontend.
+
+### `kiw self-update [flags]`
+
+Memeriksa dan memperbarui binary devtool `kiw` ke rilis stabil terbaru:
+
+```bash
+kiw self-update          # Perbarui binary kiw ke versi stabil terbaru
+kiw self-update --check  # Cek ketersediaan pembaruan tanpa mengunduh
+kiw self-update --force  # Paksa instalasi ulang versi terbaru
+kiw self-update --dry-run # Simulasikan proses pembaruan
+```
+
+- `--check`: Memeriksa GitHub Releases untuk mendeteksi rilis stabil baru.
+- `--force`: Memasang ulang atau memperbarui meskipun sudah berada di versi terbaru.
+- `--version <ver>`: Memasang versi target semver tertentu.
+- Melakukan penggantian binary secara atomik pada Linux, macOS, dan Windows dengan fallback otomatis ke toolchain Go.
