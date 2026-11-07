@@ -38,6 +38,7 @@
       </button>
 
       <div class="nav-links">
+        <a class="nav-link" href="/#products" data-i18n="nav.products">Products</a>
         <a class="nav-link" href="/docs">Docs</a>
         <a class="nav-link" href="/#workloads">Workloads</a>
         <a class="nav-link nav-link-github" href="https://github.com/krewire/krewire" target="_blank" rel="noopener">GitHub ↗</a>

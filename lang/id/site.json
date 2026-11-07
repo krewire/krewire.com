@@ -1,5 +1,6 @@
 {
   "nav": {
+    "products": "Produk",
     "get_started": "Mulai Cepat",
     "workloads": "8 Workload",
     "dsl": "DSL Komponen",
@@ -13,6 +14,32 @@
     "cta_start": "Mulai Sekarang — 5 Menit →",
     "cta_contribute": "Berkontribusi →",
     "meta": "Go 1.27.1+ · Dari Spek ke Produksi · Routing Berbasis Berkas · Scoped CSS · 100% Bebas JS secara Bawaan"
+  },
+  "products": {
+    "badge": "Produk Utama",
+    "title": "Tiga Pilar Krewire Cloud",
+    "lead": "Segala kebutuhan Anda untuk membangun, menjalankan, dan menskalakan aplikasi modern — didukung AI, autentikasi terpusat, dan infrastruktur tangguh.",
+    "workspace_title": "Krewire Workspace",
+    "workspace_badge": "Bertenaga AI",
+    "workspace_desc": "Virtual workspace & mesin integrasi otonom. Terminal web, runtime dalam sandbox, kolaborasi kode real-time, dan otomatisasi agen AI mendalam.",
+    "workspace_feature1": "Terminal interaktif berbasis peramban & PTY",
+    "workspace_feature2": "Ruang kerja sandbox & penjelajah berkas",
+    "workspace_feature3": "Agen AI otonom Krew terintegrasi",
+    "workspace_cta": "Buka Workspace →",
+    "cloud_title": "Krewire Cloud",
+    "cloud_badge": "PaaS Hibrida",
+    "cloud_desc": "Engine hybrid PaaS enterprise dan control plane multi-tenant. Build hermetik, deployment deklaratif, supervisi proses, dan gateway edge.",
+    "cloud_feature1": "Manajemen kontainer & proses multi-tenant",
+    "cloud_feature2": "Deployment blue-green tanpa downtime",
+    "cloud_feature3": "Telemetri metrik, log & kesehatan real-time",
+    "cloud_cta": "Buka Console →",
+    "auth_title": "Krewire Auth",
+    "auth_badge": "Identitas & SSO",
+    "auth_desc": "Manajemen identitas dan akses terpusat multi-tenant. Single Sign-On (OIDC/SAML2), MFA (TOTP), federasi sesi, dan RBAC hierarkis.",
+    "auth_feature1": "Single Sign-On di seluruh subdomain",
+    "auth_feature2": "Autentikasi dua faktor TOTP & pemulihan",
+    "auth_feature3": "Isolasi tenant & RBAC berbutir halus",
+    "auth_cta": "Kelola Identitas →"
   },
   "trust": {
     "label": "Toolchain Go Terpadu",
@@ -132,6 +159,7 @@
     "star": "★ Star di GitHub"
   },
   "footer": {
+    "products_title": "Produk",
     "workloads_title": "8 Workload",
     "docs_title": "Dokumentasi",
     "ecosystem_title": "Ekosistem",
