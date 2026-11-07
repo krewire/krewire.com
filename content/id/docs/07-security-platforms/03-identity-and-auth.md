@@ -47,17 +47,24 @@ Handler HTTP siap pasang dengan antarmuka web responsif dark/light:
 
 ---
 
-## Daemon & Deployment (`cmd/krewire-auth-server`)
+## Platform Enterprise & Integrasi Publik
 
-Daemon mandiri berjalan sebagai server autentikasi terisolasi:
+Krewire Auth disediakan sebagai platform identitas cloud terkelola (`https://auth.krewire.com`) serta image container enterprise (`ghcr.io/krewire/auth-server`):
 
-```bash
-cd auth
-go run ./cmd/krewire-auth-server
-```
-
-Atau lakukan build dan deployment menggunakan Dockerfile multi-stage produksi:
+### Deployment Container
 
 ```bash
-docker build -t krewire-auth-server ./auth
+docker run -d -p 8081:8081 \
+  -e PORT=8081 \
+  -e DATABASE_URL="postgres://user:pass@localhost:5432/krewire_auth" \
+  -e SESSION_SECRET="${SESSION_SECRET}" \
+  ghcr.io/krewire/auth-server:latest
 ```
+
+### Integrasi Standar OIDC & OAuth2
+
+Setiap `app`, `gateway`, atau microservice Krewire dapat terhubung ke Krewire Auth melalui protokol standar industri:
+- **Discovery Endpoint:** `https://auth.krewire.com/.well-known/openid-configuration`
+- **JWKS Key Set:** `https://auth.krewire.com/.well-known/jwks.json`
+- **Authorization Endpoint:** `https://auth.krewire.com/oauth/authorize`
+- **Token Endpoint:** `https://auth.krewire.com/oauth/token`

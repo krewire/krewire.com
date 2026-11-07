@@ -339,3 +339,34 @@ Uninstall a package or deactivate an opt-in plugin:
 ```bash
 kiw remove twcss
 ```
+
+### `kiw update [packages...] [flags]`
+
+Update project dependencies to their latest compatible versions. When run without arguments, updates all direct and indirect dependencies in `go.mod` and tidies the module files:
+
+```bash
+kiw update                      # Update all dependencies in project
+kiw update --dry-run            # Preview available updates without modifying files
+kiw update krewire ui           # Update specific ecosystem packages to @latest
+kiw update github.com/foo/bar   # Update specific external dependency
+```
+
+- `--dry-run`: Previews available dependency updates without touching disk.
+- `--tidy`: Runs `go mod tidy` automatically after updating (default `true`).
+- Automatically updates `package.json` dependencies via `npm update` if frontend plugins are configured.
+
+### `kiw self-update [flags]`
+
+Check for and install the latest stable release of the `kiw` devtool binary:
+
+```bash
+kiw self-update          # Update kiw binary to latest stable release
+kiw self-update --check  # Check if an update is available without downloading
+kiw self-update --force  # Force reinstall the latest version
+kiw self-update --dry-run # Simulate update process
+```
+
+- `--check`: Inspects GitHub Releases for a newer stable version.
+- `--force`: Reinstalls or updates even if already on the latest version.
+- `--version <ver>`: Installs a specific target version.
+- Performs atomic binary replacement on Linux, macOS, and Windows with automatic Go toolchain fallback.

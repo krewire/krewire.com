@@ -39,7 +39,7 @@ The ecosystem organizes modules into four distinct rungs:
 
 ## 2. Inviolable Architectural Rules
 
-As documented in `internal/docs/open-core.md`, three rules protect the integrity of the open-source core:
+Under Krewire's canonical Open Core governance specification, three rules protect the integrity of the open-source core:
 
 ### Rule 1: Zero Runtime Lock-in
 A project referencing only `free` packages must **build, deploy, and run with zero license keys or cloud call-homes**. There is never a trial expiration or hidden limit on the free tier.

@@ -39,7 +39,7 @@ Ekosistem ini mengorganisasikan modul ke dalam empat tingkatan yang jelas:
 
 ## 2. Aturan Arsitektur yang Tidak Dapat Dilanggar
 
-Sebagaimana didokumentasikan dalam `internal/docs/open-core.md`, tiga aturan berikut melindungi integritas inti open-source:
+Berdasarkan spesifikasi tata kelola kanonikal Open Core Krewire, tiga aturan berikut melindungi integritas inti open-source:
 
 ### Aturan 1: Nol Ketergantungan Runtime (Zero Runtime Lock-in)
 Proyek yang hanya merujuk pada paket `free` harus **dapat di-build, di-deploy, dan dijalankan tanpa lisensi kunci atau panggilan verifikasi cloud (call-homes)**. Tidak pernah ada masa uji coba (trial expiration) atau batasan tersembunyi pada tingkat free.

@@ -47,16 +47,27 @@ Ready-to-mount HTTP handlers with clean, responsive dark/light UI:
 
 ---
 
-## Daemon & Deployment (`cmd/krewire-auth-server`)
+## Enterprise Platform & Public Integration
 
-The standalone daemon runs as a hardened authentication server:
+Krewire Auth is provided as a managed cloud identity platform (`https://auth.krewire.com`) and enterprise container image (`ghcr.io/krewire/auth-server`):
+
+### Container Deployment
 
 ```bash
-cd auth
-go run ./cmd/krewire-auth-server
+docker run -d -p 8081:8081 \
+  -e PORT=8081 \
+  -e DATABASE_URL="postgres://user:pass@localhost:5432/krewire_auth" \
+  -e SESSION_SECRET="${SESSION_SECRET}" \
+  ghcr.io/krewire/auth-server:latest
 ```
 
-Or build and deploy using the production multi-stage Dockerfile:
+### Standard OIDC & OAuth2 Integration
+
+Any Krewire `app`, `gateway`, or microservice connects to Krewire Auth via standard protocols:
+- **Discovery Endpoint:** `https://auth.krewire.com/.well-known/openid-configuration`
+- **JWKS Key Set:** `https://auth.krewire.com/.well-known/jwks.json`
+- **Authorization Endpoint:** `https://auth.krewire.com/oauth/authorize`
+- **Token Endpoint:** `https://auth.krewire.com/oauth/token`
 
 ```bash
 docker build -t krewire-auth-server ./auth

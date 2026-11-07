@@ -34,8 +34,9 @@ Berikut adalah skema kanonikal lengkap dari `krewire.yaml` beserta nilai default
 # Identitas Proyek & Jenis Workload
 project:
   name: "my-service"            # Pengidentifikasi proyek (dibaca oleh site loader)
-  kind: "site"                  # Workload: app | cli | site | book | worker | service | gateway | infra
-  version: "v0.1.0"             # Versi semantik yang diinjeksikan sebagai `.Version` ke dalam halaman
+  # kind: "site"                # Opsional (app | cli | site | book | worker | service | gateway | infra).
+                                # Jika tidak diisi, kiw otomatis mendeteksi tipe proyek dari marker direktori.
+  version: "v0.2.0"             # Versi semantik yang diinjeksikan sebagai `.Version` ke dalam halaman
   dirs:                         # Opsional: Menimpa lokasi direktori kanonikal
     web: "web"                  # Handler dan template web
     public: "public"            # Aset statis mentah
@@ -94,17 +95,19 @@ scripts:
 
 Bagian `project:` mendefinisikan identitas dan perilaku workload:
 
-- **`kind` (Wajib):** Menetapkan jenis arsitektur workload. Konfigurasi ini menginstruksikan `kiw` mengenai engine mana yang harus dipanggil:
-  - `app`: Monolit web fullstack dengan aset tersemat (`kiw run`)
-  - `cli`: Alat command-line terminal atau TUI (`kiw run`)
-  - `site`: Generator situs statis berbasis komponen `.kiw` ber-scope (`kiw build`)
-  - `book`: Manuskrip dokumentasi Markdown melalui `pkg/book` (`kiw build --target book`)
-  - `worker`: Pemroses tugas latar belakang asinkron (`kiw worker`)
-  - `service`: Microservice dengan throughput tinggi (`kiw run`)
-  - `gateway`: Reverse proxy deklaratif dengan middleware per rute (`kiw gateway`)
-  - `infra`: Infrastruktur sebagai kode dalam Go (`kiw deploy --target infra`)
+- **`kind` (Opsional):** Menetapkan jenis arsitektur workload secara eksplisit. Jika dikosongkan/dihapus, `kiw` otomatis mendeteksi tipe proyek dari struktur direktori melalui `shape.Detect`:
+  - `site`: Terdeteksi dari adanya direktori `pages/` atau blok `ssg:` di `krewire.yaml`.
+  - `app`: Terdeteksi dari adanya berkas `main.go` atau folder `cmd/` dengan `func main()`.
+  - `book`: Terdeteksi dari adanya direktori `content/`.
+  - `worker`: Terdeteksi dari adanya blok konfigurasi `worker:`.
+  - `service`: Terdeteksi dari adanya blok konfigurasi `service:`.
+  - `gateway`: Terdeteksi dari adanya blok konfigurasi `gateway:`.
+  - `infra`: Terdeteksi dari adanya blok konfigurasi `infra:`.
+  - `cli`: Terdeteksi atau dideklarasikan untuk perkakas terminal / TUI.
 
   Proyek bootstrap sebelum perancangan kerangka (pre-scaffold) **bukanlah** suatu jenis kind: `kiw info` melaporkan `none` dengan penanda `pre-init` hingga `kiw init` melengkapi variannya.
+
+  **Progressive Pipeline (`KWF-ARCH-P7L2Q`):** Workload di Krewire bersifat aditif dan tidak membatasi evolusi proyek. Situs statis (`site`) dapat berkembang menjadi backend SSR (`app`) hanya dengan menambahkan berkas `main.go`—tanpa perlu menulis ulang komponen atau layout `.kiw` yang telah dibuat.
 - **`dirs` (Opsional):** Memungkinkan penyesuaian tata letak direktori default jika mengintegrasikan Krewire ke dalam struktur repositori yang sudah ada.
 
 ---
