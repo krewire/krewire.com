@@ -74,7 +74,7 @@ book:
   mount: "/docs/"               # Mount path in output URL space (hybrid mode)
   toc: true                     # Generate root table-of-contents page
 
-# WebAssembly Client Runtime (KWF-T4X9P)
+# WebAssembly Client Runtime
 wasm:
   entry: "./wasm"               # Main package entry point for GOOS=js
   name: "runtime"               # Emitted wasm module filename
@@ -108,7 +108,7 @@ The `project:` section defines the identity and workload behavior:
   A pre-scaffold bootstrap project is **not** a kind: `kiw info` reports `none`
   with the marker `pre-init` until `kiw init` equips a variant.
 
-  **Progressive Pipeline (`KWF-ARCH-P7L2Q`):** Workloads in Krewire are additive rather than rigid siloes. A static site (`site`) can evolve into a fullstack SSR backend (`app`) simply by adding a `main.go` entry point—without rewriting `.kiw` templates, layouts, or component hierarchies.
+  **Progressive Pipeline:** Workloads in Krewire are additive rather than rigid siloes. A static site (`site`) can evolve into a fullstack SSR backend (`app`) simply by adding a `main.go` entry point—without rewriting `.kiw` templates, layouts, or component hierarchies.
 - **`dirs` (Optional):** Allows customization of the default directory layout if integrating Krewire into an existing repository layout.
 
 ---

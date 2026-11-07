@@ -83,7 +83,7 @@ Pemilihan bahasa Go adalah keputusan **arsitektural, bukan sekadar preferensi pr
 
 ---
 
-## 5. Alur Progresif (Progressive Pipeline - `KWF-ARCH-P7L2Q`)
+## 5. Alur Progresif (Progressive Pipeline)
 
 Di Krewire, ekspansi sistem adalah **peningkatan bertahap yang mulus**, bukan penulisan ulang. Produk Anda berevolusi secara alami melalui tahapan standar:
 
@@ -97,7 +97,7 @@ Di Krewire, ekspansi sistem adalah **peningkatan bertahap yang mulus**, bukan pe
 [P2] Monolit Web (Single Binary App)
        │
        ▼ (Refaktor ke paket domain internal)
-[P3] Monolit Modular (KWF-5ZHQV)
+[P3] Monolit Modular
        │
        ▼ (Opsional: Ekstrak modul dengan beban tinggi)
 [P4/P5] Worker Latar Belakang & Microservices

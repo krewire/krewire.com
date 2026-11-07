@@ -74,7 +74,7 @@ book:
   mount: "/docs/"               # Path mount dalam ruang URL output (mode hybrid)
   toc: true                     # Menghasilkan halaman daftar isi (table of contents) utama
 
-# Runtime Klien WebAssembly (KWF-T4X9P)
+# Runtime Klien WebAssembly
 wasm:
   entry: "./wasm"               # Titik masuk paket utama untuk GOOS=js
   name: "runtime"               # Nama berkas modul wasm yang dihasilkan
@@ -107,7 +107,7 @@ Bagian `project:` mendefinisikan identitas dan perilaku workload:
 
   Proyek bootstrap sebelum perancangan kerangka (pre-scaffold) **bukanlah** suatu jenis kind: `kiw info` melaporkan `none` dengan penanda `pre-init` hingga `kiw init` melengkapi variannya.
 
-  **Progressive Pipeline (`KWF-ARCH-P7L2Q`):** Workload di Krewire bersifat aditif dan tidak membatasi evolusi proyek. Situs statis (`site`) dapat berkembang menjadi backend SSR (`app`) hanya dengan menambahkan berkas `main.go`—tanpa perlu menulis ulang komponen atau layout `.kiw` yang telah dibuat.
+  **Progressive Pipeline:** Workload di Krewire bersifat aditif dan tidak membatasi evolusi proyek. Situs statis (`site`) dapat berkembang menjadi backend SSR (`app`) hanya dengan menambahkan berkas `main.go`—tanpa perlu menulis ulang komponen atau layout `.kiw` yang telah dibuat.
 - **`dirs` (Opsional):** Memungkinkan penyesuaian tata letak direktori default jika mengintegrasikan Krewire ke dalam struktur repositori yang sudah ada.
 
 ---

@@ -88,7 +88,7 @@ Choosing Go is **architectural, not preferential**:
 
 ---
 
-## 5. The Progressive Pipeline (`KWF-ARCH-P7L2Q`)
+## 5. The Progressive Pipeline
 
 In Krewire, system growth is an **incremental upgrade**, not a rewrite. Your product evolves naturally through standardized pipeline stages:
 
@@ -102,7 +102,7 @@ In Krewire, system growth is an **incremental upgrade**, not a rewrite. Your pro
 [P2] Web Monolith (Single Binary App)
        │
        ▼ (Refactor into internal domain packages)
-[P3] Modular Monolith (KWF-5ZHQV)
+[P3] Modular Monolith
        │
        ▼ (Optional: Extract high-traffic modules)
 [P4/P5] Extracted Workers & Microservices

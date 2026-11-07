@@ -18,7 +18,7 @@ Dibangun di atas primitif standar Go (`net/http`, `embed.FS`, `context`, `slog`)
 2. **Utamakan Pustaka Standar:** Sistem perutean, middleware, dan handler terintegrasi langsung dengan ekosistem antarmuka standar Go `net/http`.
 3. **Embedded Static Assets:** File CSS, JavaScript, dan template dikompilasi langsung ke dalam binary menggunakan package `embed` bawaan Go, mencegah galat aset hilang (missing assets) di lingkungan produksi.
 4. **Perakitan Dependensi Deterministik:** Memanfaatkan `pkg/app` untuk typed dependency injection, registrasi penyedia (`Register` dan `Boot`), serta siklus hidup yang terpantau (observable).
-5. **Batas Domain yang Rapi:** Dibangun di sekitar pola modular monolit (`KWF-5ZHQV`), memisahkan konfigurasi, handler HTTP, presentasi SSR, dan logika domain secara bersih.
+5. **Batas Domain yang Rapi:** Dibangun di sekitar pola modular monolit, memisahkan konfigurasi, handler HTTP, presentasi SSR, dan logika domain secara bersih.
 
 ---
 

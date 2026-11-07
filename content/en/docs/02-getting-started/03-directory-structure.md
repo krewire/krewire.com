@@ -108,7 +108,7 @@ Files inside `public/` are served verbatim without preprocessing:
 
 ### `cmd/` & `internal/` (Go Application Core)
 - **`cmd/<name>/main.go`:** Main entry points for fullstack monoliths (`app`), CLI utilities (`cli`), or background workers (`worker`).
-- **`internal/`:** Go compiler-enforced private packages. Code inside `internal/` cannot be imported by external modules, preserving clean architectural encapsulation (`KWF-5ZHQV`).
+- **`internal/`:** Go compiler-enforced private packages. Code inside `internal/` cannot be imported by external modules, preserving clean architectural encapsulation.
 
 ---
 

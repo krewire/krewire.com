@@ -4,7 +4,7 @@ description: "Panduan komprehensif untuk berkolaborasi dengan AI coding agent di
 date: "2026-10-18"
 ---
 
-# Pengembangan Berbasis Agen Otonom (KWN-AGI-001)
+# Pengembangan Berbasis Agen Otonom
 
 Krewire dirancang sejak awal sebagai **Ekosistem Web & Cloud Native-Agen (Agent-Native)**.
 
@@ -21,13 +21,13 @@ flowchart TD
         CUR["Cursor / Claude Desktop"]
     end
 
-    subgraph Inbound ["Telemetri & Kontrol Agen Masuk (KWN-MCP-001)"]
+    subgraph Inbound ["Telemetri & Kontrol Agen Masuk"]
         STDIO["kiw mcp --stdio"]
         SSE["kiw dashboard (/mcp/sse)"]
         SRV["Native MCP Server"]
     end
 
-    subgraph Outbound ["Kecerdasan Aplikasi Keluar (KWN-AI-001)"]
+    subgraph Outbound ["Kecerdasan Aplikasi Keluar"]
         AISDK["pkg/ai"]
         PROV["Providers (Gemini, Claude, OpenAI, Ollama)"]
     end

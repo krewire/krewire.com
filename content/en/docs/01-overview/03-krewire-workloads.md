@@ -43,7 +43,7 @@ The `app` workload produces a single, self-contained static Go binary that embed
 - **Zero External Dependencies:** Built on Go's `net/http` and `embed.FS`. No external web servers (e.g. Apache, Nginx) required for local development or basic deployment.
 - **Integrated Template Engine:** Server-Side Rendering (SSR) via `html/template` or `.kiw` component compilation.
 - **REST & JSON APIs:** Expressive routing with groups, parameter binding, and RFC 7807 Problem Details.
-- **Modular Monolith Ready (`KWF-5ZHQV`):** Internal domain boundaries allow future extraction of services without code rewrites.
+- **Modular Monolith Ready:** Internal domain boundaries allow future extraction of services without code rewrites.
 
 ### Scaffolding & Running
 

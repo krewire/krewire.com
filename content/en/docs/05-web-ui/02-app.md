@@ -8,7 +8,7 @@ date: "2026-10-31"
 
 Import path: `github.com/krewire/krewire/pkg/app`
 
-The `pkg/app` package provides Krewire's typed dependency container, provider assembly system, and graceful process supervision (`KWF-D1CNT`). It serves as the single composition root of an application—every dependency is declared with strict Go type safety, resolved in deterministic order, and observable via structured logging and tracer hooks.
+The `pkg/app` package provides Krewire's typed dependency container, provider assembly system, and graceful process supervision. It serves as the single composition root of an application—every dependency is declared with strict Go type safety, resolved in deterministic order, and observable via structured logging and tracer hooks.
 
 ---
 

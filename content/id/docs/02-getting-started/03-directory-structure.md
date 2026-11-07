@@ -106,7 +106,7 @@ Berkas di dalam `public/` disajikan apa adanya tanpa pra-pemrosesan:
 
 ### `cmd/` & `internal/` (Inti Aplikasi Go)
 - **`cmd/<name>/main.go`:** Titik masuk utama untuk monolit fullstack (`app`), utilitas baris perintah (`cli`), atau worker latar belakang (`worker`).
-- **`internal/`:** Paket privat yang ditegakkan langsung oleh compiler Go. Kode di dalam `internal/` tidak dapat diimpor oleh modul eksternal, menjaga enkapsulasi arsitektur yang bersih (`KWF-5ZHQV`).
+- **`internal/`:** Paket privat yang ditegakkan langsung oleh compiler Go. Kode di dalam `internal/` tidak dapat diimpor oleh modul eksternal, menjaga enkapsulasi arsitektur yang bersih.
 
 ---
 

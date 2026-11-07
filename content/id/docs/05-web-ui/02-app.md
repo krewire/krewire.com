@@ -8,7 +8,7 @@ date: "2026-10-31"
 
 Jalur impor: `github.com/krewire/krewire/pkg/app`
 
-Paket `pkg/app` menyediakan kontainer dependensi bertipe (typed dependency container), sistem perakitan penyedia (provider assembly), dan supervisi proses dengan graceful shutdown (`KWF-D1CNT`). Paket ini berfungsi sebagai akar komposisi tunggal (single composition root) aplikasi—setiap dependensi dideklarasikan dengan keamanan tipe statis Go, diselesaikan secara deterministik, dan dapat diobservasi melalui log terstruktur serta hook tracer.
+Paket `pkg/app` menyediakan kontainer dependensi bertipe (typed dependency container), sistem perakitan penyedia (provider assembly), dan supervisi proses dengan graceful shutdown. Paket ini berfungsi sebagai akar komposisi tunggal (single composition root) aplikasi—setiap dependensi dideklarasikan dengan keamanan tipe statis Go, diselesaikan secara deterministik, dan dapat diobservasi melalui log terstruktur serta hook tracer.
 
 ---
 

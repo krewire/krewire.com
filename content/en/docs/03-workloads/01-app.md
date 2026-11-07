@@ -18,7 +18,7 @@ Built on standard Go primitives (`net/http`, `embed.FS`, `context`, `slog`), the
 2. **Standard Library First:** The routing, middleware, and handler interfaces integrate directly with Go's `net/http` ecosystem.
 3. **Embedded Static Assets:** CSS, JavaScript, and templates are compiled into the binary using Go's `embed` package, preventing missing-asset errors in production.
 4. **Deterministic Dependency Assembly:** Leverages `pkg/app` for typed dependency injection, provider registration (`Register` and `Boot`), and observable lifecycles.
-5. **Clean Domain Boundaries:** Built around modular monolith patterns (`KWF-5ZHQV`), separating configuration, HTTP handlers, SSR presentation, and domain logic.
+5. **Clean Domain Boundaries:** Built around modular monolith patterns, separating configuration, HTTP handlers, SSR presentation, and domain logic.
 
 ---
 
