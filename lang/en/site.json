@@ -5,7 +5,17 @@
     "workloads": "8 Workloads",
     "dsl": "Component DSL",
     "docs": "Documentation",
-    "ecosystem": "Ecosystem"
+    "ecosystem": "Ecosystem",
+    "view_all_products": "View all Core Products →",
+    "view_all_workloads": "Explore all 8 Workloads →",
+    "badge_ai": "AI",
+    "badge_paas": "PaaS",
+    "badge_id": "ID",
+    "badge_host": "Host",
+    "workspace_desc": "Virtual workspaces & autonomous agents",
+    "cloud_desc": "Hybrid PaaS control plane & zero-downtime",
+    "auth_desc": "Multi-tenant SSO, MFA & OIDC identity",
+    "panel_desc": "Self-hosted server & admin control panel"
   },
   "hero": {
     "eyebrow": "End-to-End Digital SDLC Ecosystem · v0.2.0 · Open Source",
@@ -65,7 +75,10 @@
     "sustainable_title": "Sustainable",
     "sustainable_desc": "Software a single builder can still read, run, and afford a decade from now. Single static binaries with embedded assets, opt-in batteries that cost nothing when unused, boring proven parts, and no license fees — ever.",
     "scalable_title": "Scalable",
-    "scalable_desc": "Growth is additive, not a rewrite. The progressive pipeline takes a product from static site to monolith to workers, services, and infra — each stage an opt-in, reversible battery, from a $5 VPS to hyperscale."
+    "scalable_desc": "Growth is additive, not a rewrite. The progressive pipeline takes a product from static site to monolith to workers, services, and infra — each stage an opt-in, reversible battery, from a $5 VPS to hyperscale.",
+    "pillar1_badge": "Pillar 01",
+    "pillar2_badge": "Pillar 02",
+    "pillar3_badge": "Pillar 03"
   },
   "workloads": {
     "badge": "Unified Workload Engine",
@@ -78,7 +91,16 @@
     "worker_desc": "Asynchronous background queues, scheduled recurring tasks, and durable workers with graceful shutdowns.",
     "service_desc": "Headless microservices, JSON REST APIs, and gRPC endpoints engineered for high concurrency and low latency.",
     "infra_desc": "Automated bare-metal and VPS provisioning, TLS certificate issuance, and zero-downtime blue-green deployments.",
-    "gateway_desc": "Declarative reverse proxy fronting upstream services with per-route middleware, rate limiting, timeouts, and service-discovery balancing."
+    "gateway_desc": "Declarative reverse proxy fronting upstream services with per-route middleware, rate limiting, timeouts, and service-discovery balancing.",
+    "app_badge": "Fullstack",
+    "cli_badge": "Terminal",
+    "site_badge": "SSG",
+    "book_badge": "Publishing",
+    "worker_badge": "Async",
+    "service_badge": "Microservice",
+    "infra_badge": "Cloud IaC",
+    "gateway_badge": "Reverse Proxy",
+    "docs_link": "Docs →"
   },
   "steps": {
     "badge": "Developer Experience",
@@ -87,7 +109,11 @@
     "s1_desc": "Install the standalone kiw CLI tool via a single-line shell script or Go install.",
     "s2_desc": "Generate a production-ready project template for any workload in under one second.",
     "s3_desc": "Instant hot-reload local development server with file-based routing and scoped CSS updates.",
-    "s4_desc": "Compile into a single static binary or static asset bundle and ship to GitHub Pages or Docker."
+    "s4_desc": "Compile into a single static binary or static asset bundle and ship to GitHub Pages or Docker.",
+    "s1_badge": "Install",
+    "s2_badge": "Scaffold",
+    "s3_badge": "Develop",
+    "s4_badge": "Deploy"
   },
   "why": {
     "badge": "Architecture & Philosophy",
@@ -109,7 +135,12 @@
     "f1_html": "<b>Scoped by Default:</b> Styles remain strictly isolated to the component.",
     "f2_html": "<b>Global CSS via <code class=\"code-inline\">:root</code>:</b> Theme tokens cascade cleanly across layouts.",
     "f3_html": "<b>Built into <code class=\"code-inline\">kiw</code>:</b> Compiled natively via <code class=\"code-inline\">kiw/dsl</code> with zero npm or external bundler dependencies.",
-    "f4_html": "<b>Light & Dark Mode:</b> Native token switching via <code class=\"code-inline\">data-theme</code>."
+    "f4_html": "<b>Light & Dark Mode:</b> Native token switching via <code class=\"code-inline\">data-theme</code>.",
+    "scoping_badge": "Scoping",
+    "scoping_title": "Why Scoped CSS in Go?",
+    "scoping_desc": "Every <code class=\"code-inline\">.kiw</code> component receives automatic <code class=\"code-inline\">data-kiw-component</code> scope hashing at build time. No CSS collisions, no naming gymnastics, zero runtime cost.",
+    "cta_explore": "Explore DSL Syntax →",
+    "cta_docs": "Read the Docs"
   },
   "matrix": {
     "badge": "Stack Comparison",
@@ -158,14 +189,16 @@
     "portal_badge": "Portal Site",
     "portal_desc": "Official production website and documentation portal built with site kind & .kiw DSL.",
     "community_badge": "Community",
-    "community_desc": "Community portal for contributors, releases, guides, and sponsorships."
+    "community_desc": "Community portal for contributors, releases, guides, and sponsorships.",
+    "ui_badge": "UI Library",
+    "ui_desc": "Composable, zero-dependency .kiw component library and styling system (shadcn model for Go)."
   },
   "cta": {
     "badge": "Ready to Build",
     "title": "Start Building with Krewire Today",
     "lead": "Start with a lightweight static site, scale to a web monolith, then to distributed cloud services — one repository, one CLI, one configuration.",
     "button": "Get Started — 5 Min →",
-    "star": "★ Star on GitHub"
+    "star": "Star on GitHub"
   },
   "footer": {
     "products_title": "Products",

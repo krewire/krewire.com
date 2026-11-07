@@ -5,7 +5,17 @@
     "workloads": "8 Workload",
     "dsl": "DSL Komponen",
     "docs": "Dokumentasi",
-    "ecosystem": "Ekosistem"
+    "ecosystem": "Ekosistem",
+    "view_all_products": "Lihat semua Produk Utama →",
+    "view_all_workloads": "Jelajahi seluruh 8 Workload →",
+    "badge_ai": "AI",
+    "badge_paas": "PaaS",
+    "badge_id": "ID",
+    "badge_host": "Host",
+    "workspace_desc": "Workspace virtual & agen otonom",
+    "cloud_desc": "Control plane hybrid PaaS & tanpa downtime",
+    "auth_desc": "SSO multi-tenant, MFA & identitas OIDC",
+    "panel_desc": "Panel kontrol server mandiri & admin"
   },
   "hero": {
     "eyebrow": "Ekosistem SDLC Digital End-to-End · v0.2.0 · Open Source",
@@ -65,7 +75,10 @@
     "sustainable_title": "Sustainable",
     "sustainable_desc": "Perangkat lunak yang dapat dibaca, dijalankan, dan dijangkau oleh satu pengembang bahkan satu dekade mendatang. Binary statis tunggal dengan aset tersemat, baterai opsional tanpa beban saat tak digunakan, komponen teruji yang stabil, dan bebas biaya lisensi — selamanya.",
     "scalable_title": "Scalable",
-    "scalable_desc": "Pertumbuhan bersifat aditif, bukan penulisan ulang. Pipeline progresif membawa produk dari situs statis ke monolit hingga worker, service, dan infra — setiap tahap adalah modul opsional dan terbalikkan, dari VPS $5 hingga hyperscale."
+    "scalable_desc": "Pertumbuhan bersifat aditif, bukan penulisan ulang. Pipeline progresif membawa produk dari situs statis ke monolit hingga worker, service, dan infra — setiap tahap adalah modul opsional dan terbalikkan, dari VPS $5 hingga hyperscale.",
+    "pillar1_badge": "Pilar 01",
+    "pillar2_badge": "Pilar 02",
+    "pillar3_badge": "Pilar 03"
   },
   "workloads": {
     "badge": "Engine Workload Terpadu",
@@ -78,7 +91,16 @@
     "worker_desc": "Antrean background asinkron, penjadwalan tugas berkala, dan worker tangguh dengan penghentian anggun (graceful shutdown).",
     "service_desc": "Microservice headless, REST API JSON, dan endpoint gRPC yang dirancang untuk konkurensi tinggi dan latensi rendah.",
     "infra_desc": "Penyediaan otomatis bare-metal & VPS, penerbitan sertifikat TLS, dan deployment blue-green tanpa downtime.",
-    "gateway_desc": "Reverse proxy deklaratif yang membentengi layanan upstream dengan middleware per rute, rate limiting, timeout, dan penyeimbangan service discovery."
+    "gateway_desc": "Reverse proxy deklaratif yang membentengi layanan upstream dengan middleware per rute, rate limiting, timeout, dan penyeimbangan service discovery.",
+    "app_badge": "Fullstack",
+    "cli_badge": "Terminal",
+    "site_badge": "SSG",
+    "book_badge": "Publikasi",
+    "worker_badge": "Asinkron",
+    "service_badge": "Microservice",
+    "infra_badge": "IaC Cloud",
+    "gateway_badge": "Reverse Proxy",
+    "docs_link": "Dokumentasi →"
   },
   "steps": {
     "badge": "Pengalaman Pengembang",
@@ -87,7 +109,11 @@
     "s1_desc": "Pasang tool CLI kiw mandiri lewat skrip satu baris atau go install.",
     "s2_desc": "Buat template proyek siap produksi untuk workload apa pun dalam waktu kurang dari satu detik.",
     "s3_desc": "Server pengembangan lokal hot-reload instan dengan perutean berbasis berkas dan pembaruan scoped CSS.",
-    "s4_desc": "Kompilasi ke binary statis tunggal atau bundle aset statis dan rilis ke GitHub Pages atau Docker."
+    "s4_desc": "Kompilasi ke binary statis tunggal atau bundle aset statis dan rilis ke GitHub Pages atau Docker.",
+    "s1_badge": "Instal",
+    "s2_badge": "Scaffold",
+    "s3_badge": "Kembangkan",
+    "s4_badge": "Deploy"
   },
   "why": {
     "badge": "Arsitektur & Filosofi",
@@ -109,7 +135,12 @@
     "f1_html": "<b>Terisolasi secara Bawaan:</b> Gaya tetap terisolasi ketat di dalam komponen.",
     "f2_html": "<b>CSS Global via <code class=\"code-inline\">:root</code>:</b> Token tema mengalir secara rapi di seluruh layout.",
     "f3_html": "<b>Bawaan dari <code class=\"code-inline\">kiw</code>:</b> Dikompilasi secara native melalui <code class=\"code-inline\">kiw/dsl</code> tanpa npm atau dependensi bundler eksternal.",
-    "f4_html": "<b>Mode Terang & Gelap:</b> Pergantian token tema native melalui atribut <code class=\"code-inline\">data-theme</code>."
+    "f4_html": "<b>Mode Terang & Gelap:</b> Pergantian token tema native melalui atribut <code class=\"code-inline\">data-theme</code>.",
+    "scoping_badge": "Isolasi",
+    "scoping_title": "Mengapa Scoped CSS di Go?",
+    "scoping_desc": "Setiap komponen <code class=\"code-inline\">.kiw</code> menerima hashing scope <code class=\"code-inline\">data-kiw-component</code> otomatis saat build. Bebas tabrakan CSS, bebas penamaan rumit, tanpa biaya runtime.",
+    "cta_explore": "Pelajari Sintaks DSL →",
+    "cta_docs": "Baca Dokumentasi"
   },
   "matrix": {
     "badge": "Perbandingan Stack",
@@ -158,14 +189,16 @@
     "portal_badge": "Situs Portal",
     "portal_desc": "Situs produksi resmi dan portal dokumentasi yang dibangun dengan workload site & DSL .kiw.",
     "community_badge": "Komunitas",
-    "community_desc": "Portal komunitas untuk kontributor, rilis, panduan, dan sponsorship."
+    "community_desc": "Portal komunitas untuk kontributor, rilis, panduan, dan sponsorship.",
+    "ui_badge": "Pustaka UI",
+    "ui_desc": "Pustaka komponen .kiw zero-dependency dan sistem styling (model shadcn untuk Go)."
   },
   "cta": {
     "badge": "Siap Membangun",
     "title": "Mulai Bangun dengan Krewire Hari Ini",
     "lead": "Mulai dari situs statis ringan, skalakan ke monolit web, lalu ke layanan cloud terdistribusi — satu repositori, satu CLI, satu konfigurasi.",
     "button": "Mulai Sekarang — 5 Menit →",
-    "star": "★ Star di GitHub"
+    "star": "Star di GitHub"
   },
   "footer": {
     "products_title": "Produk",
