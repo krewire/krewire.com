@@ -43,23 +43,24 @@ date: "2026-11-05"
 
 ---
 
-## Cloud Workspace Access & Enterprise Deployment
+## Workspace Access & Platform Integration
 
-Krewire Workspace is hosted as a managed cloud service at `https://dash.krewire.com` and can be self-hosted in enterprise environments via container image:
+Krewire Workspace is hosted as a collaborative cloud service at [dash.krewire.com](https://dash.krewire.com).
 
-### Public Web Workspace
+### Cloud Workspace Portal
 
-Access your collaborative workspace directly in browser:
-- **Cloud Portal:** `https://dash.krewire.com`
-- **Authentication:** Integrated Single Sign-On via Krewire Auth (`auth.krewire.com`)
+Developers can spin up on-demand development environments directly from their browser:
+- **Web Portal:** `https://dash.krewire.com`
+- **Features:** In-browser VS Code / Monaco editor, bidirectional terminal streaming, and embedded `krew` AI assistant.
+- **Single Sign-On:** Integrated with Krewire Auth (`auth.krewire.com`).
 
-### Self-Hosted Enterprise Container
+### Local Development Alternatives
 
-```bash
-docker run -d -p 9000:9000 \
-  -e PORT=9000 \
-  -e DASH_DATA_DIR="/data/workspaces" \
-  -e AUTH_URL="https://auth.krewire.com" \
-  -v /var/data/dash:/data/workspaces \
-  ghcr.io/krewire/dash-server:latest
-```
+For local development without cloud dependencies, developers use the native `kiw` CLI tools:
+- `kiw dev`: Run applications locally with auto-restart and hot reload.
+- `kiw dashboard`: Run a local observability dashboard at `http://127.0.0.1:4000`.
+- `kiw mcp --stdio`: Connect AI coding assistants (such as Antigravity or Cursor) directly to your project via the Model Context Protocol.
+
+### Enterprise On-Premise Edition
+
+Enterprise workspaces with custom VPC peering, air-gapped sandboxes, and centralized audit logging are available under enterprise contract. Contact `enterprise@krewire.com`.
