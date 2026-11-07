@@ -38,24 +38,46 @@ date: "2026-10-31"
 
 ---
 
-## Platform Enterprise & Deployment Publik
+## Akses Platform & Deployment
 
-Krewire Cloud dapat diakses langsung melalui control plane terkelola (`https://cloud.krewire.com`) atau dideploy pada server enterprise mandiri (self-hosted) menggunakan image container resmi:
+Krewire Cloud disediakan sebagai control plane PaaS multi-tenant terkelola di [cloud.krewire.com](https://cloud.krewire.com), dengan edisi on-premise khusus yang tersedia untuk pelanggan enterprise.
 
-### Deployment langsung via CLI
+### Men-deploy Aplikasi Anda
 
-Kirim dan terapkan proyek Krewire Anda langsung ke Krewire Cloud:
-
-```bash
-kiw deploy --target cloud
-```
-
-### Menjalankan Kontainer Enterprise Self-Hosted
+Anda dapat men-deploy proyek Krewire apa pun secara langsung menggunakan CLI `kiw`:
 
 ```bash
-docker run -d -p 8443:8443 \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  -e PORT=8443 \
-  -e CLOUD_DOMAIN="cloud.example.com" \
-  ghcr.io/krewire/cloud-server:latest
+# Menyiapkan binary produksi dan artefak siap rilis
+kiw deploy --target binary
+
+# Membuat definisi layanan systemd untuk server Linux
+kiw deploy --target systemd
+
+# Untuk situs statis dan buku dokumentasi (GitHub Pages)
+kiw deploy --target gh-pages
 ```
+
+### Kontainer Docker Produksi
+
+Untuk mengemas aplikasi Krewire ke dalam kontainer mandiri yang sangat ringan (<15MB) untuk dideploy ke VPS, host Docker, atau cluster Kubernetes:
+
+```dockerfile
+# Build multi-stage untuk workload Krewire
+FROM golang:1.27-alpine AS builder
+WORKDIR /app
+COPY go.mod go.sum ./
+RUN go mod download
+COPY . .
+RUN CGO_ENABLED=0 GOOS=linux go build -trimpath -ldflags="-s -w" -o /app/server .
+
+FROM alpine:3.20
+RUN apk --no-cache add ca-certificates tzdata
+WORKDIR /app
+COPY --from=builder /app/server /app/server
+EXPOSE 8080
+ENTRYPOINT ["/app/server"]
+```
+
+### PaaS Enterprise On-Premise
+
+Bagi organisasi yang membutuhkan hosting privat air-gapped atau control plane mandiri di infrastruktur internal, Krewire Cloud disediakan melalui langganan enterprise. Hubungi tim enterprise melalui `enterprise@krewire.com` untuk akses registri privat dan panduan provisi.

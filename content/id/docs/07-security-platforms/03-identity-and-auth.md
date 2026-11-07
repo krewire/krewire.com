@@ -47,24 +47,31 @@ Handler HTTP siap pasang dengan antarmuka web responsif dark/light:
 
 ---
 
-## Platform Enterprise & Integrasi Publik
+## Akses Platform & Integrasi
 
-Krewire Auth disediakan sebagai platform identitas cloud terkelola (`https://auth.krewire.com`) serta image container enterprise (`ghcr.io/krewire/auth-server`):
-
-### Deployment Container
-
-```bash
-docker run -d -p 8081:8081 \
-  -e PORT=8081 \
-  -e DATABASE_URL="postgres://user:pass@localhost:5432/krewire_auth" \
-  -e SESSION_SECRET="${SESSION_SECRET}" \
-  ghcr.io/krewire/auth-server:latest
-```
+Krewire Auth tersedia sebagai platform identitas terkelola di [auth.krewire.com](https://auth.krewire.com), dengan edisi on-premise privat yang tersedia di bawah lisensi enterprise.
 
 ### Integrasi Standar OIDC & OAuth2
 
-Setiap `app`, `gateway`, atau microservice Krewire dapat terhubung ke Krewire Auth melalui protokol standar industri:
+Setiap aplikasi, API gateway, atau layanan Krewire dapat terhubung secara mulus ke Krewire Auth melalui protokol standar industri:
 - **Discovery Endpoint:** `https://auth.krewire.com/.well-known/openid-configuration`
 - **JWKS Key Set:** `https://auth.krewire.com/.well-known/jwks.json`
 - **Authorization Endpoint:** `https://auth.krewire.com/oauth/authorize`
 - **Token Endpoint:** `https://auth.krewire.com/oauth/token`
+
+### Keamanan Lokal untuk Workload Open-Source
+
+Bagi proyek open-source yang berjalan mandiri tanpa layanan cloud, Krewire menyediakan library autentikasi dan keamanan native tanpa dependensi di monorepo inti:
+- `pkg/sec`: Perbandingan constant-time, header keamanan OWASP, validasi token CSRF, dan pencegahan SSRF.
+- `pkg/auth`: Token JWT stateless, hashing password PBKDF2, dan middleware HTTP Basic Auth.
+
+```go
+import (
+    "github.com/krewire/krewire/pkg/auth"
+    "github.com/krewire/krewire/pkg/sec"
+)
+```
+
+### Autentikasi Enterprise On-Premise
+
+Organisasi yang membutuhkan isolasi identitas di server lokal, federasi SAML 2.0 dengan Active Directory internal, atau audit kepatuhan khusus dapat melisensikan server Krewire Auth mandiri melalui `enterprise@krewire.com`.

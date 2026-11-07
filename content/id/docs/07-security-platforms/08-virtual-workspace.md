@@ -43,23 +43,24 @@ date: "2026-11-05"
 
 ---
 
-## Akses Cloud Workspace & Deployment Enterprise
+## Akses Workspace & Integrasi Platform
 
-Krewire Workspace disediakan sebagai layanan cloud terkelola di `https://dash.krewire.com` dan dapat di-host mandiri pada lingkungan enterprise melalui kontainer:
+Krewire Workspace di-host sebagai layanan cloud kolaboratif di [dash.krewire.com](https://dash.krewire.com).
 
-### Akses Web Workspace Publik
+### Portal Workspace Cloud
 
-Buka dan gunakan ruang kerja virtual Anda langsung melalui browser:
-- **Portal Cloud:** `https://dash.krewire.com`
-- **Autentikasi:** Single Sign-On terintegrasi via Krewire Auth (`auth.krewire.com`)
+Developer dapat menyalakan lingkungan pengembangan instan langsung dari browser:
+- **Portal Web:** `https://dash.krewire.com`
+- **Fitur:** Editor web berbasis VS Code / Monaco, streaming terminal dua arah, dan asisten AI `krew` tersemat.
+- **Single Sign-On:** Terintegrasi penuh dengan Krewire Auth (`auth.krewire.com`).
 
-### Menjalankan Kontainer Enterprise Self-Hosted
+### Alternatif Pengembangan Lokal
 
-```bash
-docker run -d -p 9000:9000 \
-  -e PORT=9000 \
-  -e DASH_DATA_DIR="/data/workspaces" \
-  -e AUTH_URL="https://auth.krewire.com" \
-  -v /var/data/dash:/data/workspaces \
-  ghcr.io/krewire/dash-server:latest
-```
+Untuk alur kerja pengembangan lokal tanpa dependensi cloud, developer dapat memanfaatkan perkakas native CLI `kiw`:
+- `kiw dev`: Menjalankan aplikasi secara lokal dengan auto-restart dan hot reload.
+- `kiw dashboard`: Menjalankan dashboard observabilitas lokal di `http://127.0.0.1:4000`.
+- `kiw mcp --stdio`: Menghubungkan asisten coding AI (seperti Antigravity atau Cursor) langsung ke proyek melalui Model Context Protocol (MCP).
+
+### Edisi Enterprise On-Premise
+
+Workspace enterprise dengan VPC peering privat, sandbox air-gapped, dan audit log terpusat tersedia melalui kontrak enterprise. Hubungi `enterprise@krewire.com`.

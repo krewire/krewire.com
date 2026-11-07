@@ -38,24 +38,46 @@ date: "2026-10-31"
 
 ---
 
-## Enterprise Platform & Public Deployment
+## Platform Access & Deployment
 
-Krewire Cloud is accessed via the managed control plane (`https://cloud.krewire.com`) or deployed on self-hosted enterprise infrastructure using the official container image:
+Krewire Cloud is delivered as a managed multi-tenant PaaS control plane at [cloud.krewire.com](https://cloud.krewire.com), with dedicated on-premise editions available for enterprise customers.
 
-### Deploying from CLI
+### Deploying Your Application
 
-Deploy any Krewire project directly to Krewire Cloud:
-
-```bash
-kiw deploy --target cloud
-```
-
-### Self-Hosted Enterprise Container
+You can deploy any Krewire project directly using the `kiw` CLI:
 
 ```bash
-docker run -d -p 8443:8443 \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  -e PORT=8443 \
-  -e CLOUD_DOMAIN="cloud.example.com" \
-  ghcr.io/krewire/cloud-server:latest
+# Stage production binary and deployable artifacts
+kiw deploy --target binary
+
+# Generate production systemd service definition
+kiw deploy --target systemd
+
+# For static and documentation sites (GitHub Pages)
+kiw deploy --target gh-pages
 ```
+
+### Production Docker Container
+
+To package any Krewire application into an ultra-lightweight (<15MB) standalone container for deployment to any VPS, Docker host, or cloud Kubernetes cluster:
+
+```dockerfile
+# Multi-stage build for Krewire workloads
+FROM golang:1.27-alpine AS builder
+WORKDIR /app
+COPY go.mod go.sum ./
+RUN go mod download
+COPY . .
+RUN CGO_ENABLED=0 GOOS=linux go build -trimpath -ldflags="-s -w" -o /app/server .
+
+FROM alpine:3.20
+RUN apk --no-cache add ca-certificates tzdata
+WORKDIR /app
+COPY --from=builder /app/server /app/server
+EXPOSE 8080
+ENTRYPOINT ["/app/server"]
+```
+
+### Enterprise On-Premise PaaS
+
+For organizations requiring private air-gapped hosting or self-hosted control planes, Krewire Cloud is provided under an enterprise subscription. Contact the enterprise team at `enterprise@krewire.com` for private registry access and provisioning guides.

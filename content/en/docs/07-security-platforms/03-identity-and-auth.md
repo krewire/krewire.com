@@ -47,27 +47,34 @@ Ready-to-mount HTTP handlers with clean, responsive dark/light UI:
 
 ---
 
-## Enterprise Platform & Public Integration
+## Platform Access & Integration
 
-Krewire Auth is provided as a managed cloud identity platform (`https://auth.krewire.com`) and enterprise container image (`ghcr.io/krewire/auth-server`):
+Krewire Auth is available as a managed identity platform at [auth.krewire.com](https://auth.krewire.com), with private on-premise editions available under enterprise licensing.
 
-### Container Deployment
+### Public OIDC & OAuth2 Integration
 
-```bash
-docker run -d -p 8081:8081 \
-  -e PORT=8081 \
-  -e DATABASE_URL="postgres://user:pass@localhost:5432/krewire_auth" \
-  -e SESSION_SECRET="${SESSION_SECRET}" \
-  ghcr.io/krewire/auth-server:latest
-```
-
-### Standard OIDC & OAuth2 Integration
-
-Any Krewire `app`, `gateway`, or microservice connects to Krewire Auth via standard protocols:
+Any Krewire application, API gateway, or third-party service integrates seamlessly with Krewire Auth via standard protocols:
 - **Discovery Endpoint:** `https://auth.krewire.com/.well-known/openid-configuration`
 - **JWKS Key Set:** `https://auth.krewire.com/.well-known/jwks.json`
 - **Authorization Endpoint:** `https://auth.krewire.com/oauth/authorize`
 - **Token Endpoint:** `https://auth.krewire.com/oauth/token`
+
+### Securing Open-Source Workloads Locally
+
+For open-source projects operating independently of the cloud service, Krewire provides native, zero-dependency authentication and security libraries directly in the core monorepo:
+- `pkg/sec`: Constant-time comparisons, OWASP security headers, CSRF token validation, and SSRF guards.
+- `pkg/auth`: Stateless JWT tokens, PBKDF2 password hashing, and HTTP Basic Auth middleware.
+
+```go
+import (
+    "github.com/krewire/krewire/pkg/auth"
+    "github.com/krewire/krewire/pkg/sec"
+)
+```
+
+### Enterprise On-Premise Authentication
+
+Organizations requiring on-premise identity isolation, SAML 2.0 federation with internal Active Directory, or custom compliance auditing can license the standalone Krewire Auth server. Inquire via `enterprise@krewire.com`.
 
 ```bash
 docker build -t krewire-auth-server ./auth
