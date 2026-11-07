@@ -4,7 +4,7 @@ description: "A comprehensive guide to pairing with AI coding agents in Krewire 
 date: "2026-10-18"
 ---
 
-# Autonomous Agentic Development (KWN-AGI-001)
+# Autonomous Agentic Development
 
 Krewire is designed from first principles as an **Agent-Native Web & Cloud Ecosystem**. 
 
@@ -21,13 +21,13 @@ flowchart TD
         CUR["Cursor / Claude Desktop"]
     end
 
-    subgraph Inbound ["Inbound Agent Telemetry & Control (KWN-MCP-001)"]
+    subgraph Inbound ["Inbound Agent Telemetry & Control"]
         STDIO["kiw mcp --stdio"]
         SSE["kiw dashboard (/mcp/sse)"]
         SRV["Native MCP Server"]
     end
 
-    subgraph Outbound ["Outbound Application Intelligence (KWN-AI-001)"]
+    subgraph Outbound ["Outbound Application Intelligence"]
         AISDK["pkg/ai"]
         PROV["Providers (Gemini, Claude, OpenAI, Ollama)"]
     end

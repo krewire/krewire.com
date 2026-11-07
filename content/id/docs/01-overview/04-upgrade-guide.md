@@ -17,7 +17,7 @@ Krewire mematuhi standar **Semantic Versioning (SemVer 2.0.0)** secara ketat di 
 $$\text{vMAJOR}.\text{MINOR}.\text{PATCH}$$
 
 - **Rilis `PATCH` (`v0.1.0` → `v0.1.1`):** Perbaikan bug, optimasi performa, dan pembaruan dokumentasi. Dijamin 100% kompatibel ke belakang tanpa perubahan yang merusak (*zero breaking changes*).
-- **Rilis `MINOR` (`v0.1.0` → `v0.2.0`):** Kapabilitas workload baru, paket tambahan, dan flag CLI baru. Sesuai spesifikasi `KWF-META-CMBZJ` dan `KWN-DEVTOOL-Z0VFC`:
+- **Rilis `MINOR` (`v0.1.0` → `v0.2.0`):** Kapabilitas workload baru, paket tambahan, dan flag CLI baru:
   > *"Kapabilitas baru diperkenalkan sebagai paket tambahan; perubahan yang merusak tidak diizinkan pada rilis minor maupun patch."*
 - **Rilis `MAJOR` (`v1.0.0`):** Evolusi arsitektur berskala besar. Setiap perubahan yang tidak kompatibel ke belakang akan didahului oleh peringatan depresiasi dan skrip migrasi otomatis.
 

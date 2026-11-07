@@ -96,7 +96,7 @@ Krewire is engineered around four guiding tenets:
 1. **Go as the Architectural Foundation**  
    Standard Go (`net/http`, `html/template`, `embed`, `context`, `slog`, `flag`) powers every layer. Single-binary deployments with embedded static assets ensure near-instant startups, negligible RAM usage, and zero runtime dependencies.
 2. **Modular at Every Scope (SRP & SoC)**  
-   Engineered using strict Single Responsibility and High Cohesion principles (`KWF-5ZHQV`). Start with a simple modular monolith and cleanly extract services or background workers as your traffic scales — without restructuring your business logic.
+   Engineered using strict Single Responsibility and High Cohesion principles. Start with a simple modular monolith and cleanly extract services or background workers as your traffic scales — without restructuring your business logic.
 3. **Zero JavaScript Fatigue**  
    Generate lightning-fast static sites, documentation portals, and fullstack applications with `.kiw` component files without requiring Node.js, `npm`, webpack, or fragile `node_modules` dependency trees.
 4. **Unified Developer Experience**  

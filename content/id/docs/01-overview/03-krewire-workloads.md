@@ -43,7 +43,7 @@ Workload `app` menghasilkan binary statis Go mandiri yang menyematkan aset web s
 - **Nol Dependensi Eksternal:** Dibangun di atas `net/http` dan `embed.FS` bawaan Go. Tidak memerlukan server web eksternal (seperti Apache atau Nginx) untuk pengembangan lokal maupun deployment dasar.
 - **Engine Template Terpadu:** Server-Side Rendering (SSR) via `html/template` atau kompilasi komponen `.kiw`.
 - **API REST & JSON:** Routing ekspresif dengan group, pengikatan parameter (binding), dan format standar RFC 7807 Problem Details.
-- **Siap Menjadi Monolit Modular (`KWF-5ZHQV`):** Batasan domain internal yang bersih memungkinkan ekstraksi service di masa depan tanpa penulisan ulang kode.
+- **Siap Menjadi Monolit Modular:** Batasan domain internal yang bersih memungkinkan ekstraksi service di masa depan tanpa penulisan ulang kode.
 
 ### Pembuatan & Menjalankan
 

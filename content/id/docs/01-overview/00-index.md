@@ -96,7 +96,7 @@ Krewire dibangun berlandaskan empat prinsip rekayasa utama:
 1. **Go sebagai Fondasi Arsitektural**  
    Standar Go (`net/http`, `html/template`, `embed`, `context`, `slog`, `flag`) mentenagai setiap lapisan. Deployment binary tunggal dengan aset statis tersemat menjamin startup instan, penggunaan RAM sangat rendah (~15MB), dan bebas dependensi runtime eksternal.
 2. **Modular di Setiap Cakupan (SRP & SoC)**  
-   Dirancang menggunakan prinsip Tanggung Jawab Tunggal (*Single Responsibility Principle*) dan Kohesi Tinggi (`KWF-5ZHQV`). Mulailah dari monolit modular sederhana, lalu ekstrak worker atau microservice secara bersih saat lalu lintas meningkat tanpa merombak logika bisnis.
+   Dirancang menggunakan prinsip Tanggung Jawab Tunggal (*Single Responsibility Principle*) dan Kohesi Tinggi. Mulailah dari monolit modular sederhana, lalu ekstrak worker atau microservice secara bersih saat lalu lintas meningkat tanpa merombak logika bisnis.
 3. **Bebas Kelelahan JavaScript (Zero JS Fatigue)**  
    Hasilkan situs statis, portal dokumentasi, dan aplikasi fullstack super cepat menggunakan berkas komponen `.kiw` tanpa memerlukan Node.js, `npm`, webpack, atau pohon dependensi `node_modules` yang rentan rusak.
 4. **Pengalaman Pengembang Terpadu**  
