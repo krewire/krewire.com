@@ -1074,6 +1074,37 @@ searchInput.blur();
 });
 }
 }
+
+function initNavDropdowns() {
+  document.addEventListener('click', function(e) {
+    var isInsideDropdown = e.target.closest('.dropdown-container');
+    var isDropdownLink = e.target.closest('.dropdown-menu a');
+    document.querySelectorAll('details.dropdown-container[open]').forEach(function(detail) {
+      if (!isInsideDropdown || isDropdownLink) {
+        detail.removeAttribute('open');
+      }
+    });
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('details.dropdown-container[open]').forEach(function(detail) {
+        detail.removeAttribute('open');
+      });
+    }
+  });
+
+  window.toggleNavDropdown = function(el) {
+    var container = el.closest('.dropdown-container');
+    if (!container) return;
+    if (container.tagName.toLowerCase() === 'details') {
+      container.open = !container.open;
+    } else {
+      container.classList.toggle('is-open');
+    }
+  };
+}
+
 function initAll() {
 initCodeBlocks();
 initHeadingAnchors();
@@ -1081,6 +1112,7 @@ initKeyboardNav();
 initDocsLangSwitch();
 initDocsReaderI18n();
 initDocsSidebarDrawer();
+initNavDropdowns();
 }
 if (document.readyState === 'loading') {
 document.addEventListener('DOMContentLoaded', initAll);
