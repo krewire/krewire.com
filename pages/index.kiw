@@ -34,13 +34,13 @@ layout: Landing
           </p>
 
           <!-- Quick terminal: install first -->
-          <VStack gap="xs" align="start" class="w-full max-w-xl lg:max-w-2xl xl:max-w-none">
-            <Terminal Command="curl -fsSL https://krewire.com/scripts/install.sh | sh" />
-            <Terminal Command="kiw new my-app --site && cd my-app && kiw dev" PromptColor="muted" />
+          <VStack gap="sm" class="w-full max-w-xl lg:max-w-2xl xl:max-w-none my-2 sm:my-3">
+            <Terminal Command="curl -fsSL https://krewire.com/scripts/install.sh | sh" Class="w-full" />
+            <Terminal Command="kiw new my-app --site && cd my-app && kiw dev" PromptColor="muted" Class="w-full" />
           </VStack>
 
           <!-- CTAs: stacked on mobile, row on sm+ -->
-          <HStack gap="sm" wrap=true class="w-full sm:w-auto">
+          <HStack gap="sm" wrap=true class="w-full sm:w-auto mt-2 sm:mt-3">
             <Button Variant="primary" Size="lg" Href="/docs/getting-started"><span data-i18n="hero.cta_start">Get Started — 5 Min →</span></Button>
             <Button Variant="outline" Size="lg" Href="https://open.krewire.com/"><span data-i18n="hero.cta_contribute">Contribute →</span></Button>
           </HStack>
