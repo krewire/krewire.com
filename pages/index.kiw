@@ -276,7 +276,7 @@ layout: Landing
       <div class="card">
         <div class="flex items-center justify-between gap-2 mb-3">
           <span class="icon-box bg-primary text-primary-content text-xl">🛡</span>
-          <span class="badge badge-primary text-2xs font-mono">Pillar 01</span>
+          <span class="badge badge-primary text-2xs font-mono" data-i18n="pillars.pillar1_badge">Pillar 01</span>
         </div>
         <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark" data-i18n="pillars.secure_title">Secure</h3>
         <p class="text-sm text-muted dark:text-muted-dark leading-relaxed" data-i18n="pillars.secure_desc">Security is a default, not a feature. A stdlib-first dependency graph, secure-by-default HTTP primitives, OWASP/CWE-aligned controls, secrets referenced — never stored — and WASM sandboxing keep the attack surface small and auditable.</p>
@@ -286,7 +286,7 @@ layout: Landing
       <div class="card">
         <div class="flex items-center justify-between gap-2 mb-3">
           <span class="icon-box bg-primary text-primary-content text-xl">🌱</span>
-          <span class="badge badge-primary text-2xs font-mono">Pillar 02</span>
+          <span class="badge badge-primary text-2xs font-mono" data-i18n="pillars.pillar2_badge">Pillar 02</span>
         </div>
         <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark" data-i18n="pillars.sustainable_title">Sustainable</h3>
         <p class="text-sm text-muted dark:text-muted-dark leading-relaxed" data-i18n="pillars.sustainable_desc">Software a single builder can still read, run, and afford a decade from now. Single static binaries with embedded assets, opt-in batteries that cost nothing when unused, boring proven parts, and no license fees — ever.</p>
@@ -296,7 +296,7 @@ layout: Landing
       <div class="card sm:col-span-2 md:col-span-1">
         <div class="flex items-center justify-between gap-2 mb-3">
           <span class="icon-box bg-primary text-primary-content text-xl">⚡</span>
-          <span class="badge badge-primary text-2xs font-mono">Pillar 03</span>
+          <span class="badge badge-primary text-2xs font-mono" data-i18n="pillars.pillar3_badge">Pillar 03</span>
         </div>
         <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark" data-i18n="pillars.scalable_title">Scalable</h3>
         <p class="text-sm text-muted dark:text-muted-dark leading-relaxed" data-i18n="pillars.scalable_desc">Growth is additive, not a rewrite. The progressive pipeline takes a product from static site to monolith to workers, services, and infra — each stage an opt-in, reversible battery, from a $5 VPS to hyperscale.</p>
@@ -324,7 +324,7 @@ layout: Landing
       <a href="/docs/workloads/app" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
         <div class="flex items-center justify-between gap-2 mb-3">
           <span class="icon-box bg-primary text-primary-content">▲</span>
-          <span class="badge badge-muted text-2xs font-mono">Fullstack</span>
+          <span class="badge badge-muted text-2xs font-mono" data-i18n="workloads.app_badge">Fullstack</span>
         </div>
         <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark group-hover:text-primary transition-colors">app</h3>
         <p class="text-sm text-muted dark:text-muted-dark leading-relaxed flex-1 mb-3" data-i18n="workloads.app_desc">Fullstack web monolith — compile your web interface, HTTP routing, and API handlers into a single static Go binary.</p>
@@ -332,7 +332,7 @@ layout: Landing
           <div class="px-2.5 py-1.5 rounded-md w-fit bg-bg-2 dark:bg-bg-dark-2" style="border:1.5px solid var(--border); box-shadow:1.5px 1.5px 0 var(--border)">
             <code class="font-mono text-xs font-extrabold text-fg dark:text-fg-dark">kiw run</code>
           </div>
-          <span class="text-xs font-bold text-muted dark:text-muted-dark group-hover:text-primary transition-colors">Docs →</span>
+          <span class="text-xs font-bold text-muted dark:text-muted-dark group-hover:text-primary transition-colors" data-i18n="workloads.docs_link">Docs →</span>
         </div>
       </a>
 
@@ -340,7 +340,7 @@ layout: Landing
       <a href="/docs/workloads/cli" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
         <div class="flex items-center justify-between gap-2 mb-3">
           <span class="icon-box bg-primary text-primary-content">›_</span>
-          <span class="badge badge-muted text-2xs font-mono">Terminal</span>
+          <span class="badge badge-muted text-2xs font-mono" data-i18n="workloads.cli_badge">Terminal</span>
         </div>
         <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark group-hover:text-primary transition-colors">cli</h3>
         <p class="text-sm text-muted dark:text-muted-dark leading-relaxed flex-1 mb-3" data-i18n="workloads.cli_desc">Developer command-line tools & rich terminal interfaces powered by the lightweight TUI library with zero dependencies.</p>
@@ -348,7 +348,7 @@ layout: Landing
           <div class="px-2.5 py-1.5 rounded-md w-fit bg-bg-2 dark:bg-bg-dark-2" style="border:1.5px solid var(--border); box-shadow:1.5px 1.5px 0 var(--border)">
             <code class="font-mono text-xs font-extrabold text-fg dark:text-fg-dark">kiw run</code>
           </div>
-          <span class="text-xs font-bold text-muted dark:text-muted-dark group-hover:text-primary transition-colors">Docs →</span>
+          <span class="text-xs font-bold text-muted dark:text-muted-dark group-hover:text-primary transition-colors" data-i18n="workloads.docs_link">Docs →</span>
         </div>
       </a>
 
@@ -356,7 +356,7 @@ layout: Landing
       <a href="/docs/workloads/site" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
         <div class="flex items-center justify-between gap-2 mb-3">
           <span class="icon-box bg-primary text-primary-content">◧</span>
-          <span class="badge badge-muted text-2xs font-mono">SSG</span>
+          <span class="badge badge-muted text-2xs font-mono" data-i18n="workloads.site_badge">SSG</span>
         </div>
         <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark group-hover:text-primary transition-colors">site</h3>
         <p class="text-sm text-muted dark:text-muted-dark leading-relaxed flex-1 mb-3" data-i18n="workloads.site_desc">High-performance static site generator with file-based routing, scoped <code class="code-inline">.kiw</code> components, and zero client-side JS.</p>
@@ -364,7 +364,7 @@ layout: Landing
           <div class="px-2.5 py-1.5 rounded-md w-fit bg-bg-2 dark:bg-bg-dark-2" style="border:1.5px solid var(--border); box-shadow:1.5px 1.5px 0 var(--border)">
             <code class="font-mono text-xs font-extrabold text-fg dark:text-fg-dark">kiw build</code>
           </div>
-          <span class="text-xs font-bold text-muted dark:text-muted-dark group-hover:text-primary transition-colors">Docs →</span>
+          <span class="text-xs font-bold text-muted dark:text-muted-dark group-hover:text-primary transition-colors" data-i18n="workloads.docs_link">Docs →</span>
         </div>
       </a>
 
@@ -372,7 +372,7 @@ layout: Landing
       <a href="/docs/workloads/book" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
         <div class="flex items-center justify-between gap-2 mb-3">
           <span class="icon-box bg-primary text-primary-content">≡</span>
-          <span class="badge badge-muted text-2xs font-mono">Publishing</span>
+          <span class="badge badge-muted text-2xs font-mono" data-i18n="workloads.book_badge">Publishing</span>
         </div>
         <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark group-hover:text-primary transition-colors">book</h3>
         <p class="text-sm text-muted dark:text-muted-dark leading-relaxed flex-1 mb-3" data-i18n="workloads.book_desc">Turn markdown manuscripts into structured documentation books with automatic indexing via <code class="code-inline">pkg/book</code>.</p>
@@ -380,7 +380,7 @@ layout: Landing
           <div class="px-2.5 py-1.5 rounded-md w-fit bg-bg-2 dark:bg-bg-dark-2" style="border:1.5px solid var(--border); box-shadow:1.5px 1.5px 0 var(--border)">
             <code class="font-mono text-xs font-extrabold text-fg dark:text-fg-dark">kiw build --target book</code>
           </div>
-          <span class="text-xs font-bold text-muted dark:text-muted-dark group-hover:text-primary transition-colors">Docs →</span>
+          <span class="text-xs font-bold text-muted dark:text-muted-dark group-hover:text-primary transition-colors" data-i18n="workloads.docs_link">Docs →</span>
         </div>
       </a>
 
@@ -388,7 +388,7 @@ layout: Landing
       <a href="/docs/workloads/worker" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
         <div class="flex items-center justify-between gap-2 mb-3">
           <span class="icon-box bg-primary text-primary-content">⚙</span>
-          <span class="badge badge-muted text-2xs font-mono">Async</span>
+          <span class="badge badge-muted text-2xs font-mono" data-i18n="workloads.worker_badge">Async</span>
         </div>
         <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark group-hover:text-primary transition-colors">worker</h3>
         <p class="text-sm text-muted dark:text-muted-dark leading-relaxed flex-1 mb-3" data-i18n="workloads.worker_desc">Asynchronous job queues, scheduled cron tasks, retry policies, backoff timers, and dead-letter queues via <code class="code-inline">pkg/cloud/worker</code>.</p>
@@ -396,7 +396,7 @@ layout: Landing
           <div class="px-2.5 py-1.5 rounded-md w-fit bg-bg-2 dark:bg-bg-dark-2" style="border:1.5px solid var(--border); box-shadow:1.5px 1.5px 0 var(--border)">
             <code class="font-mono text-xs font-extrabold text-fg dark:text-fg-dark">kiw worker</code>
           </div>
-          <span class="text-xs font-bold text-muted dark:text-muted-dark group-hover:text-primary transition-colors">Docs →</span>
+          <span class="text-xs font-bold text-muted dark:text-muted-dark group-hover:text-primary transition-colors" data-i18n="workloads.docs_link">Docs →</span>
         </div>
       </a>
 
@@ -404,7 +404,7 @@ layout: Landing
       <a href="/docs/workloads/service" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
         <div class="flex items-center justify-between gap-2 mb-3">
           <span class="icon-box bg-primary text-primary-content">⬢</span>
-          <span class="badge badge-muted text-2xs font-mono">Microservice</span>
+          <span class="badge badge-muted text-2xs font-mono" data-i18n="workloads.service_badge">Microservice</span>
         </div>
         <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark group-hover:text-primary transition-colors">service</h3>
         <p class="text-sm text-muted dark:text-muted-dark leading-relaxed flex-1 mb-3" data-i18n="workloads.service_desc">Distributed microservice architecture with service discovery, API gateway routing, rate limiting, and OpenTelemetry tracing.</p>
@@ -412,7 +412,7 @@ layout: Landing
           <div class="px-2.5 py-1.5 rounded-md w-fit bg-bg-2 dark:bg-bg-dark-2" style="border:1.5px solid var(--border); box-shadow:1.5px 1.5px 0 var(--border)">
             <code class="font-mono text-xs font-extrabold text-fg dark:text-fg-dark">kiw run</code>
           </div>
-          <span class="text-xs font-bold text-muted dark:text-muted-dark group-hover:text-primary transition-colors">Docs →</span>
+          <span class="text-xs font-bold text-muted dark:text-muted-dark group-hover:text-primary transition-colors" data-i18n="workloads.docs_link">Docs →</span>
         </div>
       </a>
 
@@ -420,7 +420,7 @@ layout: Landing
       <a href="/docs/workloads/infra" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
         <div class="flex items-center justify-between gap-2 mb-3">
           <span class="icon-box bg-primary text-primary-content">☁</span>
-          <span class="badge badge-muted text-2xs font-mono">Cloud IaC</span>
+          <span class="badge badge-muted text-2xs font-mono" data-i18n="workloads.infra_badge">Cloud IaC</span>
         </div>
         <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark group-hover:text-primary transition-colors">infra</h3>
         <p class="text-sm text-muted dark:text-muted-dark leading-relaxed flex-1 mb-3" data-i18n="workloads.infra_desc">Provider-agnostic infrastructure-as-code compiling directly to AWS, GCP, or Kubernetes specifications from Go declarations.</p>
@@ -428,7 +428,7 @@ layout: Landing
           <div class="px-2.5 py-1.5 rounded-md w-fit bg-bg-2 dark:bg-bg-dark-2" style="border:1.5px solid var(--border); box-shadow:1.5px 1.5px 0 var(--border)">
             <code class="font-mono text-xs font-extrabold text-fg dark:text-fg-dark">kiw deploy --target infra</code>
           </div>
-          <span class="text-xs font-bold text-muted dark:text-muted-dark group-hover:text-primary transition-colors">Docs →</span>
+          <span class="text-xs font-bold text-muted dark:text-muted-dark group-hover:text-primary transition-colors" data-i18n="workloads.docs_link">Docs →</span>
         </div>
       </a>
 
@@ -436,7 +436,7 @@ layout: Landing
       <a href="/docs/workloads/gateway" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
         <div class="flex items-center justify-between gap-2 mb-3">
           <span class="icon-box bg-primary text-primary-content">◈</span>
-          <span class="badge badge-muted text-2xs font-mono">Reverse Proxy</span>
+          <span class="badge badge-muted text-2xs font-mono" data-i18n="workloads.gateway_badge">Reverse Proxy</span>
         </div>
         <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark group-hover:text-primary transition-colors">gateway</h3>
         <p class="text-sm text-muted dark:text-muted-dark leading-relaxed flex-1 mb-3" data-i18n="workloads.gateway_desc">Front upstream services with a declarative route table, per-route middleware, rate limiting, and service-discovery balancing.</p>
@@ -444,7 +444,7 @@ layout: Landing
           <div class="px-2.5 py-1.5 rounded-md w-fit bg-bg-2 dark:bg-bg-dark-2" style="border:1.5px solid var(--border); box-shadow:1.5px 1.5px 0 var(--border)">
             <code class="font-mono text-xs font-extrabold text-fg dark:text-fg-dark">kiw gateway --port 8080</code>
           </div>
-          <span class="text-xs font-bold text-muted dark:text-muted-dark group-hover:text-primary transition-colors">Docs →</span>
+          <span class="text-xs font-bold text-muted dark:text-muted-dark group-hover:text-primary transition-colors" data-i18n="workloads.docs_link">Docs →</span>
         </div>
       </a>
 
@@ -471,7 +471,7 @@ layout: Landing
         <div>
           <div class="flex items-center justify-between gap-2 mb-3">
             <span class="icon-box bg-primary text-primary-content text-base font-black">1</span>
-            <span class="badge badge-primary text-2xs font-mono">Install</span>
+            <span class="badge badge-primary text-2xs font-mono" data-i18n="steps.s1_badge">Install</span>
           </div>
           <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark">install.sh</h3>
           <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="steps.s1_desc">One command installs the <code class="code-inline">kiw</code> CLI on Linux or macOS. No package manager needed.</p>
@@ -484,7 +484,7 @@ layout: Landing
         <div>
           <div class="flex items-center justify-between gap-2 mb-3">
             <span class="icon-box bg-primary text-primary-content text-base font-black">2</span>
-            <span class="badge badge-primary text-2xs font-mono">Scaffold</span>
+            <span class="badge badge-primary text-2xs font-mono" data-i18n="steps.s2_badge">Scaffold</span>
           </div>
           <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark">kiw new</h3>
           <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="steps.s2_desc">Generate a production-ready project template for any workload in under one second.</p>
@@ -497,7 +497,7 @@ layout: Landing
         <div>
           <div class="flex items-center justify-between gap-2 mb-3">
             <span class="icon-box bg-primary text-primary-content text-base font-black">3</span>
-            <span class="badge badge-primary text-2xs font-mono">Develop</span>
+            <span class="badge badge-primary text-2xs font-mono" data-i18n="steps.s3_badge">Develop</span>
           </div>
           <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark">kiw dev</h3>
           <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="steps.s3_desc">Instant hot-reload local development server with file-based routing and scoped CSS updates.</p>
@@ -510,7 +510,7 @@ layout: Landing
         <div>
           <div class="flex items-center justify-between gap-2 mb-3">
             <span class="icon-box bg-primary text-primary-content text-base font-black">4</span>
-            <span class="badge badge-primary text-2xs font-mono">Deploy</span>
+            <span class="badge badge-primary text-2xs font-mono" data-i18n="steps.s4_badge">Deploy</span>
           </div>
           <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark">kiw deploy</h3>
           <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="steps.s4_desc">Compile into a single static binary or static asset bundle and ship to GitHub Pages or Docker.</p>
@@ -609,18 +609,18 @@ p  { font-size: 15px; color: var(--muted); }
 <span style="color:#39D353;font-weight:700">&lt;/style&gt;</span></code></pre>
         <!-- Panel footer -->
         <div class="flex flex-wrap gap-2.5 px-4 py-4" style="background:#071426; border-top:1.5px solid rgba(255,255,255,0.1)">
-          <Button Variant="primary" Size="sm" Href="/docs/getting-started/dsl">Explore DSL Syntax →</Button>
-          <Button Variant="outline" Size="sm" Href="/docs/getting-started">Read the Docs</Button>
+          <Button Variant="primary" Size="sm" Href="/docs/getting-started/dsl"><span data-i18n="dsl.cta_explore">Explore DSL Syntax →</span></Button>
+          <Button Variant="outline" Size="sm" Href="/docs/getting-started"><span data-i18n="dsl.cta_docs">Read the Docs</span></Button>
         </div>
       </div>
 
       <!-- Feature panel -->
       <div class="card">
         <div class="mb-4">
-          <span class="badge badge-primary mb-2">Scoping</span>
-          <h3 class="text-xl font-black tracking-tight mt-2 text-fg dark:text-fg-dark">Why Scoped CSS in Go?</h3>
+          <span class="badge badge-primary mb-2" data-i18n="dsl.scoping_badge">Scoping</span>
+          <h3 class="text-xl font-black tracking-tight mt-2 text-fg dark:text-fg-dark" data-i18n="dsl.scoping_title">Why Scoped CSS in Go?</h3>
         </div>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-5">
+        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-5" data-i18n-html="dsl.scoping_desc">
           Every <code class="code-inline">.kiw</code> component receives automatic <code class="code-inline">data-kiw-component</code> scope hashing at build time. No CSS collisions, no naming gymnastics, zero runtime cost.
         </p>
         <ul class="flex flex-col gap-3 p-0 m-0 list-none">
