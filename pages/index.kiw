@@ -51,7 +51,36 @@ layout: Landing
 
       <!-- Art / Code window -->
       <div class="min-w-0 w-full mt-4 md:mt-0">
-        <CodeWindow />
+        <CodeWindow title="main.go">
+<span class="c">// One unified Go platform for 8 workloads</span>
+<span class="k">package</span> main
+
+<span class="k">import</span> (
+    <span class="s">"github.com/krewire/krewire/pkg/web"</span>
+    <span class="s">"github.com/krewire/krewire/pkg/model"</span>
+)
+
+<span class="k">func</span> <span class="f">main</span>() {
+    app := web.New()
+
+    <span class="c">// High-speed routing, auto-escaping &amp; CSRF defaults</span>
+    app.Get(<span class="s">"/"</span>, <span class="k">func</span>(c *web.Context) error {
+        <span class="k">return</span> c.JSON(<span class="n">200</span>, web.Map{
+            <span class="s">"status"</span>:     <span class="s">"running"</span>,
+            <span class="s">"platform"</span>:   <span class="s">"Krewire"</span>,
+            <span class="s">"workload"</span>:   model.KindApp,
+            <span class="s">"cold_start"</span>: <span class="s">"&lt; 1ms"</span>,
+            <span class="s">"pillars"</span>: []string{
+                <span class="s">"secure"</span>,
+                <span class="s">"sustainable"</span>,
+                <span class="s">"scalable"</span>,
+            },
+        })
+    })
+
+    app.Run(<span class="s">":8080"</span>)
+}
+        </CodeWindow>
       </div>
     </div>
   </div>
@@ -438,47 +467,55 @@ layout: Landing
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-4 md:gap-5 lg:gap-5">
 
       <!-- Step 1: Install -->
-      <div class="card">
-        <div class="flex items-center justify-between gap-2 mb-3">
-          <span class="icon-box bg-primary text-primary-content text-base font-black">1</span>
-          <span class="badge badge-primary text-2xs font-mono">Install</span>
+      <div class="card flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="icon-box bg-primary text-primary-content text-base font-black">1</span>
+            <span class="badge badge-primary text-2xs font-mono">Install</span>
+          </div>
+          <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark">install.sh</h3>
+          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="steps.s1_desc">One command installs the <code class="code-inline">kiw</code> CLI on Linux or macOS. No package manager needed.</p>
         </div>
-        <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark">install.sh</h3>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-3" data-i18n="steps.s1_desc">One command installs the <code class="code-inline">kiw</code> CLI on Linux or macOS. No package manager needed.</p>
-        <Terminal Command="curl -fsSL https://krewire.com/scripts/install.sh | sh" Class="mt-auto" />
+        <Terminal Command="curl -fsSL https://krewire.com/scripts/install.sh | sh" Class="mt-auto w-full" />
       </div>
 
       <!-- Step 2: Scaffold -->
-      <div class="card">
-        <div class="flex items-center justify-between gap-2 mb-3">
-          <span class="icon-box bg-primary text-primary-content text-base font-black">2</span>
-          <span class="badge badge-secondary text-2xs font-mono">Scaffold</span>
+      <div class="card flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="icon-box bg-primary text-primary-content text-base font-black">2</span>
+            <span class="badge badge-secondary text-2xs font-mono">Scaffold</span>
+          </div>
+          <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark">kiw new</h3>
+          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="steps.s2_desc">Generate a production-ready project template for any workload in under one second.</p>
         </div>
-        <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark">kiw new</h3>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-3" data-i18n="steps.s2_desc">Generate a production-ready project template for any workload in under one second.</p>
-        <Terminal Command="kiw new my-site --site && cd my-site" Class="mt-auto" />
+        <Terminal Command="kiw new my-site --site && cd my-site" Class="mt-auto w-full" />
       </div>
 
       <!-- Step 3: Develop -->
-      <div class="card">
-        <div class="flex items-center justify-between gap-2 mb-3">
-          <span class="icon-box bg-primary text-primary-content text-base font-black">3</span>
-          <span class="badge badge-secondary text-2xs font-mono">Develop</span>
+      <div class="card flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="icon-box bg-primary text-primary-content text-base font-black">3</span>
+            <span class="badge badge-secondary text-2xs font-mono">Develop</span>
+          </div>
+          <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark">kiw dev</h3>
+          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="steps.s3_desc">Instant hot-reload local development server with file-based routing and scoped CSS updates.</p>
         </div>
-        <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark">kiw dev</h3>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-3" data-i18n="steps.s3_desc">Instant hot-reload local development server with file-based routing and scoped CSS updates.</p>
-        <Terminal Command="kiw dev" Class="mt-auto" />
+        <Terminal Command="kiw dev" Class="mt-auto w-full" />
       </div>
 
       <!-- Step 4: Deploy -->
-      <div class="card">
-        <div class="flex items-center justify-between gap-2 mb-3">
-          <span class="icon-box bg-primary text-primary-content text-base font-black">4</span>
-          <span class="badge badge-secondary text-2xs font-mono">Deploy</span>
+      <div class="card flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="icon-box bg-primary text-primary-content text-base font-black">4</span>
+            <span class="badge badge-secondary text-2xs font-mono">Deploy</span>
+          </div>
+          <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark">kiw deploy</h3>
+          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="steps.s4_desc">Compile into a single static binary or static asset bundle and ship to GitHub Pages or Docker.</p>
         </div>
-        <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark">kiw deploy</h3>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-3" data-i18n="steps.s4_desc">Compile into a single static binary or static asset bundle and ship to GitHub Pages or Docker.</p>
-        <Terminal Command="kiw deploy --target gh-pages" Class="mt-auto" />
+        <Terminal Command="kiw deploy --target gh-pages" Class="mt-auto w-full" />
       </div>
 
     </div>
@@ -543,7 +580,7 @@ layout: Landing
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-10 items-start">
 
       <!-- Code panel -->
-      <div class="w-full rounded-xl overflow-hidden min-w-0" style="background:#0B1F3B; border:var(--pop-border); box-shadow:var(--pop-shadow-lg)">
+      <div class="code-window w-full rounded-xl overflow-hidden min-w-0" style="background:#0B1F3B; border:var(--pop-border); box-shadow:var(--pop-shadow-lg)" data-kiw-component="CodeWindow">
         <!-- Panel header -->
         <div class="flex items-center gap-2.5 px-4 py-3" style="background:#071426; border-bottom:var(--pop-border-thin)">
           <div class="flex gap-1.5">
@@ -551,10 +588,11 @@ layout: Landing
             <span class="w-3 h-3 rounded-full bg-[#ffbd2e]" style="border:1.5px solid #000"></span>
             <span class="w-3 h-3 rounded-full bg-primary" style="border:1.5px solid #000"></span>
           </div>
-          <span class="ml-auto font-mono text-xs font-extrabold text-slate-400 tracking-widest uppercase">pages/index.kiw</span>
+          <span class="ml-2 font-mono text-xs font-extrabold text-slate-400 tracking-widest uppercase">pages/index.kiw</span>
+          <button type="button" class="btn-copy-code ml-auto font-mono text-[11px] font-extrabold px-2.5 py-1 rounded-md bg-white/10 text-white border border-white/20 hover:bg-primary hover:text-[#0B1F3B] hover:border-primary transition-all duration-150 cursor-pointer" onclick="copyCodeWindow(this)">Copy</button>
         </div>
         <!-- Code -->
-        <pre class="m-0 px-4 sm:px-5 py-4 sm:py-5 overflow-x-auto font-mono text-xs sm:text-sm leading-relaxed" style="color:#FAF8F4"><code><span style="color:#64748b;font-style:italic">---</span>
+        <pre class="code-window-pre m-0 px-4 sm:px-5 py-4 sm:py-5 overflow-x-auto font-mono text-xs sm:text-sm leading-relaxed" style="color:#FAF8F4"><code class="code-window-code"><span style="color:#64748b;font-style:italic">---</span>
 <span style="color:#00D1C1;font-weight:700">title:</span> "Welcome to Krewire"
 <span style="color:#00D1C1;font-weight:700">layout:</span> Landing
 <span style="color:#64748b;font-style:italic">---</span>
@@ -630,35 +668,35 @@ p  { font-size: 15px; color: var(--muted); }
           </tr>
         </thead>
         <tbody class="divide-y" style="border-color:var(--border-subtle)">
-          <tr>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row1_dim">Toolchain & Runtime</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row1_trad">2–3 Languages (Go + Node.js/TS + Python/HCL)</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row1_krewire">100% Pure Go across all workloads</td>
+          <tr class="hover:bg-primary/5 transition-colors">
+            <td class="py-3 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row1_dim">Toolchain &amp; Runtime</td>
+            <td class="py-3 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row1_trad">2–3 Languages (Go + Node.js/TS + Python/HCL)</td>
+            <td class="py-3 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row1_krewire">✓ 100% Pure Go across all workloads</td>
           </tr>
-          <tr>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row2_dim">Package Management</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row2_trad">go.mod + package.json + npm/pnpm trees</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row2_krewire">Single go.mod (Zero npm / Zero JS)</td>
+          <tr class="hover:bg-primary/5 transition-colors">
+            <td class="py-3 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row2_dim">Package Management</td>
+            <td class="py-3 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row2_trad">go.mod + package.json + npm/pnpm trees</td>
+            <td class="py-3 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row2_krewire">✓ Single go.mod (Zero npm / Zero JS)</td>
           </tr>
-          <tr>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row3_dim">Developer CLI</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row3_trad">Multiple: Air + npm + Cobra + Terraform</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row3_krewire">One binary CLI: kiw</td>
+          <tr class="hover:bg-primary/5 transition-colors">
+            <td class="py-3 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row3_dim">Developer CLI</td>
+            <td class="py-3 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row3_trad">Multiple: Air + npm + Cobra + Terraform</td>
+            <td class="py-3 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row3_krewire">✓ One binary CLI: kiw</td>
           </tr>
-          <tr>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row4_dim">Configuration</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row4_trad">Scattered (.air.toml, vite.config, tsconfig, Dockerfile)</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row4_krewire">Single unified krewire.yaml</td>
+          <tr class="hover:bg-primary/5 transition-colors">
+            <td class="py-3 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row4_dim">Configuration</td>
+            <td class="py-3 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row4_trad">Scattered (.air.toml, vite.config, tsconfig, Dockerfile)</td>
+            <td class="py-3 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row4_krewire">✓ Single unified krewire.yaml</td>
           </tr>
-          <tr>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row5_dim">Component Styling</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row5_trad">Tailwind CLI / PostCSS bundler pipeline</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row5_krewire">Native scoped .kiw components</td>
+          <tr class="hover:bg-primary/5 transition-colors">
+            <td class="py-3 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row5_dim">Component Styling</td>
+            <td class="py-3 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row5_trad">Tailwind CLI / PostCSS bundler pipeline</td>
+            <td class="py-3 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row5_krewire">✓ Native scoped .kiw components</td>
           </tr>
-          <tr>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row6_dim">Production Deployment</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row6_trad">Heavy multi-stage Docker containers with Node layers</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row6_krewire">Single self-contained Go binary or static assets</td>
+          <tr class="hover:bg-primary/5 transition-colors">
+            <td class="py-3 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row6_dim">Production Deployment</td>
+            <td class="py-3 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row6_trad">Heavy multi-stage Docker containers with Node layers</td>
+            <td class="py-3 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row6_krewire">✓ Single self-contained Go binary or static assets</td>
           </tr>
         </tbody>
       </table>

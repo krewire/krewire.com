@@ -1011,6 +1011,14 @@ nav.crumbs .current {
   box-sizing: border-box;
 }
 
+@media (max-width: 640px) {
+  .code-block-wrapper pre {
+    padding: 1rem 0.85rem !important;
+    padding-right: 4rem !important;
+    font-size: 12px !important;
+  }
+}
+
 .code-block-wrapper pre code {
   color: var(--code-fg, #FAF8F4);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -1100,18 +1108,23 @@ pre > .code-copy-btn {
 .terminal {
   position: relative !important;
 }
-.terminal .btn-copy {
-  position: absolute !important;
-  right: 0.625rem !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-  z-index: 10 !important;
+.terminal .btn-copy,
+.terminal-copy-btn {
+  transition: all 0.15s ease !important;
 }
-.terminal .btn-copy:hover {
-  transform: translateY(-50%) translate(-1px, -1px) !important;
+.terminal .btn-copy:hover,
+.terminal-copy-btn:hover {
+  transform: translate(-1px, -1px) !important;
 }
-.terminal .btn-copy:active {
-  transform: translateY(-50%) translate(0px, 0px) !important;
+.terminal .btn-copy:active,
+.terminal-copy-btn:active {
+  transform: translate(0px, 0px) !important;
+}
+.terminal .btn-copy.copied,
+.terminal-copy-btn.copied {
+  background: var(--primary, #39D353) !important;
+  color: var(--primary-content, #0B1F3B) !important;
+  border-color: var(--primary, #39D353) !important;
 }
 
 /* Blockquotes / Callout Boxes */
