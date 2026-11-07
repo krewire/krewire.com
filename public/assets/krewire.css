@@ -1104,9 +1104,26 @@ pre > .code-copy-btn {
   font-weight: 900;
 }
 
-/* Terminal Copy Button Fallback */
+/* Terminal Copy Button Fallback & Scrollbar Suppression */
 .terminal {
   position: relative !important;
+}
+.terminal,
+.terminal-body,
+.terminal-code,
+.terminal pre,
+.terminal code {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+.terminal::-webkit-scrollbar,
+.terminal-body::-webkit-scrollbar,
+.terminal-code::-webkit-scrollbar,
+.terminal pre::-webkit-scrollbar,
+.terminal code::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 .terminal .btn-copy,
 .terminal-copy-btn {

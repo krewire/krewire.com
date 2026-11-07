@@ -16,7 +16,7 @@
   <Navbar showSidebarToggle=true showLangToggle=true gitHubURL="https://github.com/krewire/krewire">
     <div class="version-picker" id="versionPicker">
       <select id="docVersionSelect" aria-label="Documentation Version">
-        <option value="v0.1.0" selected>v0.1.0 (latest)</option>
+        <option value="v0.2.0" selected>v0.2.0 (latest)</option>
       </select>
     </div>
 
