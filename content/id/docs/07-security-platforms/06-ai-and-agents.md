@@ -133,16 +133,16 @@ func handleStream(w http.ResponseWriter, r *http.Request) {
 Sementara `pkg/ai` menyediakan abstraksi tingkat rendah untuk LLM, **`krew`** adalah platform AI agent otonom Krewire:
 
 - **CLI Terdedikasi (`cmd/krew`):** Binary terminal mandiri (`krew run`, `krew session`, `krew exec`, `krew doctor`).
-- **Daemon HTTP/SSE Transport:** `transport.NewHTTPServer` yang diamankan token bearer dari `krewire/auth` dan isolasi workspace tenant (sandboxing).
+- **Daemon HTTP/SSE Transport:** `transport.NewHTTPServer` yang diamankan token bearer dari Krewire Auth dan isolasi workspace tenant (sandboxing).
 - **Delegasi Sub-Agen:** Dekomposisi tugas otomatis dengan ringkasan eksekusi terstruktur.
-- **RBAC & Audit Berbasis Tool:** Integrasi dengan `krewire/auth` yang mengevaluasi kebijakan `ToolPermission` dan menghasilkan audit log forensik.
+- **RBAC & Audit Berbasis Tool:** Integrasi dengan Krewire Auth yang mengevaluasi kebijakan `ToolPermission` dan menghasilkan audit log forensik.
 - **Integrasi MCP:** Dukungan penuh untuk Model Context Protocol.
 
 ---
 
-## 7. Workspace Virtual Berbasis AI (`github.com/krewire/dash`)
+## 7. Workspace Virtual Berbasis AI (Krewire Dash)
 
-**`dash`** adalah platform aplikasi web yang menyediakan virtual IDE yang siap di-deploy ke cloud (`cmd/krewire-dash-server`):
+**Krewire Dash** adalah platform aplikasi web yang menyediakan ruang kerja virtual AI (tersedia di [dash.krewire.com](https://dash.krewire.com)):
 
 - **Editor Kode Monaco:** Penyorotan sintaks dan buffer editing real-time.
 - **Terminal PTY Interaktif:** Terminal xterm.js yang terhubung melalui WebSocket aman.

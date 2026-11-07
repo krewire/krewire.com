@@ -1,12 +1,12 @@
 ---
 title: "Platform Hybrid PaaS"
-description: "Arsitektur, runner, supervisi proses, WebAuth console UI, webhook Git push, dan reverse proxy edge router di krewire/cloud."
+description: "Arsitektur, runner, supervisi proses, WebAuth console UI, webhook Git push, dan reverse proxy edge router di Krewire Cloud."
 date: "2026-10-31"
 ---
 
-# Platform Hybrid PaaS (`github.com/krewire/cloud`)
+# Platform Hybrid PaaS (Krewire Cloud)
 
-`krewire/cloud` menenagai mesin PaaS open-core mandiri (self-hosted) sekaligus platform SaaS cloud multi-tenant terkelola (`cloud.krewire.com`), mengimplementasikan `ADR-C9L2P`.
+Krewire Cloud menenagai mesin PaaS hibrida mandiri (self-hosted) sekaligus platform SaaS cloud multi-tenant terkelola (`cloud.krewire.com`).
 
 ---
 

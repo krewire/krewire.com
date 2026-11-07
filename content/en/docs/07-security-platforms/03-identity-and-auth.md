@@ -1,12 +1,12 @@
 ---
 title: "Enterprise Identity & Auth Platform"
-description: "Architecture, PBKDF2 hashing, RFC 6238 TOTP 2FA, enterprise SSO (OIDC/SAML2), RBAC, session stores, CSRF protection, and server deployment in krewire/auth."
+description: "Architecture, PBKDF2 hashing, RFC 6238 TOTP 2FA, enterprise SSO (OIDC/SAML2), RBAC, session stores, CSRF protection, and integration in Krewire Auth."
 date: "2026-10-31"
 ---
 
-# Enterprise Identity & Auth Platform (`github.com/krewire/auth`)
+# Enterprise Identity & Auth Platform (Krewire Auth)
 
-`krewire/auth` is the dedicated enterprise monorepo providing full-spectrum identity, Single Sign-On (SSO), multi-factor authentication (MFA), role-based access governance, and agent-level security boundaries across the Krewire ecosystem.
+Krewire Auth is the enterprise identity platform providing full-spectrum identity, Single Sign-On (SSO), multi-factor authentication (MFA), role-based access governance, and agent-level security boundaries across the Krewire ecosystem.
 
 ---
 
@@ -32,7 +32,7 @@ date: "2026-10-31"
 - **Security Audit Trail:** Structured `AuditLogger` capturing all authentication, authorization, and administrative actions with IP and user context.
 
 ### 4. `pkg/middleware`
-- **Double-Submit CSRF Cookie:** Cryptographic cookie-to-header token verification adhering to ADR-D1F3N.
+- **Double-Submit CSRF Cookie:** Cryptographic cookie-to-header token verification adhering to defense-in-depth security standards.
 - **Session Context:** Safe extraction helpers (`WithSession`, `SessionFromContext`) integrating seamlessly with HTTP request lifecycles.
 
 ### 5. `pkg/webauth`
@@ -74,8 +74,4 @@ import (
 
 ### Enterprise On-Premise Authentication
 
-Organizations requiring on-premise identity isolation, SAML 2.0 federation with internal Active Directory, or custom compliance auditing can license the standalone Krewire Auth server. Inquire via `enterprise@krewire.com`.
-
-```bash
-docker build -t krewire-auth-server ./auth
-```
+Organizations requiring on-premise identity isolation, SAML 2.0 federation with internal Active Directory, or custom compliance auditing can license the standalone Krewire Auth server. Inquire via `enterprise@krewire.com`. Standalone binaries and verified container distributions are provided with enterprise licenses.

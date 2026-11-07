@@ -96,12 +96,12 @@ Manfaatkan baterai modular mandiri Krewire yang dikelompokkan ke dalam empat kla
 4. **Keamanan & Platform Ekosistem:**
    - [**Kontrol Keamanan & Hardening (`pkg/sec`)**](/security-platforms/security) — Header pertahanan standar OWASP, token CSRF, proteksi SSRF, dan redaksi PII.
    - [**Primitif Autentikasi (`pkg/auth`)**](/security-platforms/auth) — Token JWT kriptografis, verifikasi claims, dan HTTP Basic Auth waktu konstan.
-   - [**Platform Identitas & Autentikasi Enterprise (`krewire/auth`)**](/security-platforms/identity-and-auth) — Manajemen identitas multi-tenant, PBKDF2, TOTP 2FA, SSO (OIDC/SAML2), dan RBAC.
+   - [**Platform Identitas & Autentikasi Enterprise (Krewire Auth)**](/security-platforms/identity-and-auth) — Manajemen identitas multi-tenant, PBKDF2, TOTP 2FA, SSO (OIDC/SAML2), dan RBAC.
    - [**Cloud & Sistem Terdistribusi (`pkg/cloud`)**](/security-platforms/cloud-distributed) — Penemuan klaster, koordinasi node, kunci terdistribusi, dan telemetri.
-   - [**Platform PaaS Hibrida (`krewire/cloud`)**](/security-platforms/cloud-paas) — Mesin PaaS open-core self-hosted dan kontrol plane cloud SaaS terkelola.
+   - [**Platform PaaS Hibrida (Krewire Cloud)**](/security-platforms/cloud-paas) — Mesin PaaS open-core self-hosted dan kontrol plane cloud SaaS terkelola.
    - [**Orkestrasi AI & LLM (`pkg/ai`)**](/security-platforms/ai-and-agents) — Integrasi LLM multi-provider dan engine template prompt.
    - [**Mesin Agen AI Otonom (`krew`)**](/security-platforms/autonomous-agent) — Runtime agen otonom mandiri maupun tersemat.
-   - [**Workspace Virtual Native AI (`dash`)**](/security-platforms/virtual-workspace) — Orkestrasi ruang kerja multi-agen dan engine integrasi terpadu.
+   - [**Workspace Virtual Native AI (Krewire Dash)**](/security-platforms/virtual-workspace) — Orkestrasi ruang kerja multi-agen dan engine integrasi terpadu.
 
 ### Tahap 5: Workflow Harian & Otomasi CLI `kiw`
 Tingkatkan produktivitas pengembang dengan suite pengujian otomatis, pemformatan, dan kustomisasi tugas kompilasi:

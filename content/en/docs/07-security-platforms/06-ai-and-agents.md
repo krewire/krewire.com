@@ -133,16 +133,16 @@ func handleStream(w http.ResponseWriter, r *http.Request) {
 While `pkg/ai` provides low-level LLM abstractions, **`krew`** is Krewire's autonomous AI agent platform:
 
 - **Standalone CLI (`cmd/krew`):** Dedicated terminal binary (`krew run`, `krew session`, `krew exec`, `krew doctor`).
-- **HTTP/SSE Transport Daemon:** `transport.NewHTTPServer` secured with bearer tokens from `krewire/auth` and sandboxed tenant workspaces.
+- **HTTP/SSE Transport Daemon:** `transport.NewHTTPServer` secured with bearer tokens from Krewire Auth and sandboxed tenant workspaces.
 - **Subagent Delegation:** Automated task decomposition with structured execution summaries.
-- **Tool-Level RBAC & Audit:** Integration with `krewire/auth` evaluating `ToolPermission` policies and generating forensic audit logs.
+- **Tool-Level RBAC & Audit:** Integration with Krewire Auth evaluating `ToolPermission` policies and generating forensic audit logs.
 - **MCP Integration:** Native support for the Model Context Protocol.
 
 ---
 
-## 7. AI-Powered Virtual Workspace (`github.com/krewire/dash`)
+## 7. AI-Powered Virtual Workspace (Krewire Dash)
 
-**`dash`** is the web application platform providing a cloud-deployable virtual IDE (`cmd/krewire-dash-server`):
+**Krewire Dash** is the web application platform providing an AI-native virtual workspace (available at [dash.krewire.com](https://dash.krewire.com)):
 
 - **Monaco Code Editor:** Syntax highlighting and real-time buffer editing.
 - **Interactive PTY Terminal:** xterm.js terminal connected over secure WebSockets.
