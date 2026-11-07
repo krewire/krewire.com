@@ -27,36 +27,47 @@ window.krewireTheme.set(nxt);
 };
 })();
 function copyCmd(btn, text) {
-if (!btn) return;
-var orig = btn.innerText;
-function showCopied() {
-btn.innerText = '✓ Copied!';
-setTimeout(function () { btn.innerText = orig; }, 2000);
-}
-if (navigator.clipboard && window.isSecureContext) {
-navigator.clipboard.writeText(text).then(showCopied).catch(function () {
-fallbackCopy(text, showCopied);
-});
-} else {
-fallbackCopy(text, showCopied);
-}
+  if (!btn) return;
+  if (!text) {
+    var term = btn.closest('.terminal');
+    var code = term ? term.querySelector('.terminal-code, code') : null;
+    text = (code ? code.innerText : '').trim();
+  }
+  if (!text) return;
+  var orig = btn.innerText;
+  function showCopied() {
+    btn.innerText = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(function () {
+      btn.innerText = orig;
+      btn.classList.remove('copied');
+    }, 2000);
+  }
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(showCopied).catch(function () {
+      fallbackCopy(text, showCopied);
+    });
+  } else {
+    fallbackCopy(text, showCopied);
+  }
 }
 function fallbackCopy(text, cb) {
-try {
-var ta = document.createElement('textarea');
-ta.value = text;
-ta.style.position = 'fixed';
-ta.style.left = '-9999px';
-ta.style.top = '-9999px';
-document.body.appendChild(ta);
-ta.focus();
-ta.select();
-document.execCommand('copy');
-document.body.removeChild(ta);
-if (cb) cb();
-} catch (err) {}
+  try {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    ta.style.top = '-9999px';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    if (cb) cb();
+  } catch (err) {}
 }
 window.copyCmd = copyCmd;
+window.copyTerminal = copyCmd;
 (function () {
 'use strict';
 function getDrawerElements(id) {

@@ -12,43 +12,39 @@
 </head>
 <body class="docs-body">
 
-  <!-- TOPBAR NAVBAR -->
-  <header class="topbar">
-    <nav>
-      <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Open navigation">
-        <svg viewBox="0 0 16 16" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4h12M2 8h12M2 12h12"/></svg>
-      </button>
-      <a class="brand" href="/">
-        <span class="brand-mark">◈</span>
-        <span class="brand-text">Krewire</span>
-      </a>
+  <!-- NAVBAR (Krewire UI) -->
+  <Navbar showSidebarToggle=true showLangToggle=true gitHubURL="https://github.com/krewire/krewire">
+    <div class="version-picker" id="versionPicker">
+      <select id="docVersionSelect" aria-label="Documentation Version">
+        <option value="v0.1.0" selected>v0.1.0 (latest)</option>
+      </select>
+    </div>
 
-      <!-- VERSION PICKER DROPDOWN -->
-      <div class="version-picker" id="versionPicker">
-        <select id="docVersionSelect" aria-label="Documentation Version">
-          <option value="v0.1.0" selected>v0.1.0 (latest)</option>
-        </select>
-      </div>
+    <button class="topbar-search-btn" onclick="openSearchModal()" aria-label="Search Documentation">
+      <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg>
+      <span>Search docs...</span>
+      <kbd>⌘K</kbd>
+    </button>
 
-      <!-- SEARCH BUTTON TRIGGER (Cmd+K) -->
-      <button class="topbar-search-btn" onclick="openSearchModal()" aria-label="Search Documentation">
+    <a class="nav-link" href="/#products" data-i18n="nav.products">Products</a>
+    <a class="nav-link font-bold text-primary" href="/docs">Docs</a>
+    <a class="nav-link" href="/#workloads">Workloads</a>
+
+    <div slot="drawer">
+      <button class="topbar-search-btn w-full mb-3" onclick="openSearchModal()" aria-label="Search Documentation">
         <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg>
         <span>Search docs...</span>
         <kbd>⌘K</kbd>
       </button>
-
-      <div class="nav-links">
-        <a class="nav-link" href="/docs">Docs</a>
-        <a class="nav-link" href="/#workloads">Workloads</a>
-        <a class="nav-link nav-link-github" href="https://github.com/krewire/krewire" target="_blank" rel="noopener">GitHub ↗</a>
-      </div>
-
-      <div class="topbar-actions">
-        <button type="button" class="lang-switch" data-lang-toggle aria-label="Toggle language"><span class="lang-code">EN</span></button>
-        <button type="button" class="theme-toggle" onclick="window.krewireTheme.toggle()" aria-label="Toggle theme">◐</button>
-      </div>
-    </nav>
-  </header>
+      <a class="mobile-link flex items-center gap-2 px-3 py-2.5 rounded-lg font-bold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all" href="/#products" data-i18n="nav.products">Products</a>
+      <a class="mobile-link flex items-center gap-2 px-3 py-2.5 rounded-lg font-bold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all text-primary" href="/docs">Documentation</a>
+      <a class="mobile-link flex items-center gap-2 px-3 py-2.5 rounded-lg font-bold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all" href="/#workloads">Workloads</a>
+      <hr class="my-2" style="border-color:var(--pop-border); border-width:1.5px">
+      <a class="mobile-link gh-mobile flex items-center gap-2 px-3 py-2.5 rounded-lg font-bold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all" href="https://github.com/krewire/krewire" target="_blank" rel="noopener">
+        <span>GitHub ↗</span>
+      </a>
+    </div>
+  </Navbar>
 
   <div class="docs-layout">
     <!-- LEFT SIDEBAR: HIERARCHICAL NAVIGATION -->

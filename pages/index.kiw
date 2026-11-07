@@ -13,43 +13,74 @@ layout: Landing
 
       <!-- Copy -->
       <div class="min-w-0 w-full">
-        <!-- Eyebrow -->
-        <div class="badge badge-primary mb-3 sm:mb-4">
-          <span>◈</span>
-          <span data-i18n="hero.eyebrow">End-to-End Digital SDLC Ecosystem · v0.1.0 · Open Source</span>
-        </div>
+        <VStack gap="md" align="start">
+          <!-- Eyebrow -->
+          <HStack gap="xs" class="badge badge-primary">
+            <span>◈</span>
+            <span data-i18n="hero.eyebrow">End-to-End Digital SDLC Ecosystem · v0.1.0 · Open Source</span>
+          </HStack>
 
-        <!-- Headline -->
-        <h1 class="font-black tracking-tighter leading-tight mb-3 sm:mb-4 text-fg dark:text-fg-dark break-words"
-            style="font-size:clamp(30px,6.5vw,56px); letter-spacing:-0.04em"
-            data-i18n-html="hero.title_html">
-          Modular Go Libraries.<br class="hidden sm:inline">Every Workload.
-        </h1>
+          <!-- Headline -->
+          <h1 class="font-black tracking-tighter leading-tight text-fg dark:text-fg-dark break-words"
+              style="font-size:clamp(30px,6.5vw,56px); letter-spacing:-0.04em"
+              data-i18n-html="hero.title_html">
+            Modular Go Libraries.<br class="hidden sm:inline">Every Workload.
+          </h1>
 
-        <!-- Lead -->
-        <p class="text-sm sm:text-base md:text-lg text-muted dark:text-muted-dark leading-relaxed mb-5 max-w-xl lg:max-w-2xl xl:max-w-none"
-           data-i18n-html="hero.lead_html">
-          Krewire is an end-to-end <b class="text-fg dark:text-fg-dark">digital SDLC ecosystem</b> — from the first line of the spec to production operations — built on three pillars: <b class="text-fg dark:text-fg-dark">secure</b>, <b class="text-fg dark:text-fg-dark">sustainable</b>, and <b class="text-fg dark:text-fg-dark">scalable</b>. From single-binary web monoliths to interactive TUIs, high-speed static sites, book pipelines, background workers, microservices, cloud infra, and API gateways — build everything in Go with one CLI <code class="code-inline">kiw</code> and zero JS fatigue.
-        </p>
+          <!-- Lead -->
+          <p class="text-sm sm:text-base md:text-lg text-muted dark:text-muted-dark leading-relaxed max-w-xl lg:max-w-2xl xl:max-w-none"
+             data-i18n-html="hero.lead_html">
+            Krewire is an end-to-end <b class="text-fg dark:text-fg-dark">digital SDLC ecosystem</b> — from the first line of the spec to production operations — built on three pillars: <b class="text-fg dark:text-fg-dark">secure</b>, <b class="text-fg dark:text-fg-dark">sustainable</b>, and <b class="text-fg dark:text-fg-dark">scalable</b>. From single-binary web monoliths to interactive TUIs, high-speed static sites, book pipelines, background workers, microservices, cloud infra, and API gateways — build everything in Go with one CLI <code class="code-inline">kiw</code> and zero JS fatigue.
+          </p>
 
-        <!-- Quick terminal: install first -->
-        <div class="mb-5 w-full max-w-xl lg:max-w-2xl xl:max-w-none flex flex-col gap-2">
-          <Terminal Command="curl -fsSL https://krewire.com/scripts/install.sh | sh" />
-          <Terminal Command="kiw new my-app --site && cd my-app && kiw dev" PromptColor="muted" />
-        </div>
+          <!-- Quick terminal: install first -->
+          <VStack gap="xs" align="start" class="w-full max-w-xl lg:max-w-2xl xl:max-w-none">
+            <Terminal Command="curl -fsSL https://krewire.com/scripts/install.sh | sh" />
+            <Terminal Command="kiw new my-app --site && cd my-app && kiw dev" PromptColor="muted" />
+          </VStack>
 
-        <!-- CTAs: stacked on mobile, row on sm+ -->
-        <div class="flex flex-col sm:flex-row gap-3 mb-4 w-full sm:w-auto">
-          <Button Variant="primary" Size="lg" Href="/docs/getting-started"><span data-i18n="hero.cta_start">Get Started — 5 Min →</span></Button>
-          <Button Variant="outline" Size="lg" Href="https://open.krewire.com/"><span data-i18n="hero.cta_contribute">Contribute →</span></Button>
-        </div>
+          <!-- CTAs: stacked on mobile, row on sm+ -->
+          <HStack gap="sm" wrap=true class="w-full sm:w-auto">
+            <Button Variant="primary" Size="lg" Href="/docs/getting-started"><span data-i18n="hero.cta_start">Get Started — 5 Min →</span></Button>
+            <Button Variant="outline" Size="lg" Href="https://open.krewire.com/"><span data-i18n="hero.cta_contribute">Contribute →</span></Button>
+          </HStack>
 
-        <p class="text-xs font-semibold text-muted dark:text-muted-dark" data-i18n="hero.meta">Go 1.27.1+ · Spec to Production · File-based routing · Scoped CSS · 100% Zero JS by default</p>
+          <p class="text-xs font-semibold text-muted dark:text-muted-dark" data-i18n="hero.meta">Go 1.27.1+ · Spec to Production · File-based routing · Scoped CSS · 100% Zero JS by default</p>
+        </VStack>
       </div>
 
       <!-- Art / Code window -->
       <div class="min-w-0 w-full mt-4 md:mt-0">
-        <CodeWindow />
+        <CodeWindow title="main.go">
+<span class="c">// One unified Go platform for 8 workloads</span>
+<span class="k">package</span> main
+
+<span class="k">import</span> (
+    <span class="s">"github.com/krewire/krewire/pkg/web"</span>
+    <span class="s">"github.com/krewire/krewire/pkg/model"</span>
+)
+
+<span class="k">func</span> <span class="f">main</span>() {
+    app := web.New()
+
+    <span class="c">// High-speed routing, auto-escaping &amp; CSRF defaults</span>
+    app.Get(<span class="s">"/"</span>, <span class="k">func</span>(c *web.Context) error {
+        <span class="k">return</span> c.JSON(<span class="n">200</span>, web.Map{
+            <span class="s">"status"</span>:     <span class="s">"running"</span>,
+            <span class="s">"platform"</span>:   <span class="s">"Krewire"</span>,
+            <span class="s">"workload"</span>:   model.KindApp,
+            <span class="s">"cold_start"</span>: <span class="s">"&lt; 1ms"</span>,
+            <span class="s">"pillars"</span>: []string{
+                <span class="s">"secure"</span>,
+                <span class="s">"sustainable"</span>,
+                <span class="s">"scalable"</span>,
+            },
+        })
+    })
+
+    app.Run(<span class="s">":8080"</span>)
+}
+        </CodeWindow>
       </div>
     </div>
   </div>
@@ -59,18 +90,170 @@ layout: Landing
      TRUST BAR
      ===================================================================== -->
 <section class="w-full bg-bg-2 dark:bg-bg-dark-2 py-3 sm:py-3.5 md:py-4" style="border-bottom:var(--pop-border)">
-  <div class="container-site flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 md:gap-6">
-    <span class="badge badge-secondary shrink-0" data-i18n="trust.label">Unified Go Toolchain</span>
-    <div class="flex flex-wrap items-center gap-x-2.5 sm:gap-x-3.5 md:gap-x-4 gap-y-1 text-xs sm:text-xs md:text-sm font-semibold text-muted dark:text-muted-dark">
-      <span data-i18n="trust.stdlib"><b class="text-fg dark:text-fg-dark">100%</b> Go Standard Library</span>
-      <span class="hidden sm:inline opacity-40">·</span>
-      <span data-i18n="trust.npm"><b class="text-fg dark:text-fg-dark">0</b> npm / 0 Bundlers</span>
-      <span class="hidden sm:inline opacity-40">·</span>
-      <span data-i18n="trust.workloads"><b class="text-fg dark:text-fg-dark">8</b> Workloads in 1 Binary</span>
-      <span class="hidden sm:inline opacity-40">·</span>
-      <span data-i18n="trust.coldstart"><b class="text-fg dark:text-fg-dark">&lt; 1ms</b> Cold Starts</span>
-      <span class="hidden sm:inline opacity-40">·</span>
-      <span data-i18n="trust.config">Single Config <code class="code-inline">krewire.yaml</code></span>
+  <div class="container-site">
+    <HStack gap="md" wrap=true justify="between">
+      <span class="badge badge-secondary shrink-0" data-i18n="trust.label">Unified Go Toolchain</span>
+      <HStack gap="sm" wrap=true class="text-xs sm:text-xs md:text-sm font-semibold text-muted dark:text-muted-dark">
+        <span data-i18n="trust.stdlib"><b class="text-fg dark:text-fg-dark">100%</b> Go Standard Library</span>
+        <span class="hidden sm:inline opacity-40">·</span>
+        <span data-i18n="trust.npm"><b class="text-fg dark:text-fg-dark">0</b> npm / 0 Bundlers</span>
+        <span class="hidden sm:inline opacity-40">·</span>
+        <span data-i18n="trust.workloads"><b class="text-fg dark:text-fg-dark">8</b> Workloads in 1 Binary</span>
+        <span class="hidden sm:inline opacity-40">·</span>
+        <span data-i18n="trust.coldstart"><b class="text-fg dark:text-fg-dark">&lt; 1ms</b> Cold Starts</span>
+        <span class="hidden sm:inline opacity-40">·</span>
+        <span data-i18n="trust.config">Single Config <code class="code-inline">krewire.yaml</code></span>
+      </HStack>
+    </HStack>
+  </div>
+</section>
+
+<!-- =====================================================================
+     PRODUCTS SHOWCASE
+     ===================================================================== -->
+<section id="products" class="w-full bg-bg dark:bg-bg-dark py-12 sm:py-14 md:py-16 lg:py-20" style="border-bottom:var(--pop-border)">
+  <div class="container-site">
+    <div class="section-head text-center max-w-3xl mx-auto mb-10">
+      <span class="badge badge-secondary mb-3" data-i18n="products.badge">Core Products</span>
+      <h2 class="text-3xl sm:text-4xl font-black tracking-tight mb-4 text-fg dark:text-fg-dark" data-i18n="products.title">Core Products of the Krewire Platform</h2>
+      <p class="text-sm sm:text-base text-muted dark:text-muted-dark leading-relaxed" data-i18n="products.lead">Everything you need to build, run, and scale modern applications — powered by AI, unified authentication, server administration, and resilient infrastructure.</p>
+    </div>
+
+    <!-- Product Cards Grid: 1 col on mobile -> 2 col on md -> 4 col on lg -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- Product 1: Krewire Workspace -->
+      <div class="card flex flex-col justify-between hover:-translate-y-1 transition-transform duration-200">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="icon-box bg-secondary text-secondary-content text-2xl w-12 h-12 flex items-center justify-center">⚡</span>
+            <span class="badge badge-secondary text-2xs font-mono" data-i18n="products.workspace_badge">AI-Powered</span>
+          </div>
+          <h3 class="text-xl font-black tracking-tight mb-2 text-fg dark:text-fg-dark" data-i18n="products.workspace_title">Krewire Workspace</h3>
+          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-6" data-i18n="products.workspace_desc">
+            Virtual workspace &amp; autonomous integration engine. Web terminal, sandboxed runtimes, real-time code collaboration, and deep AI agent automation.
+          </p>
+          <ul class="flex flex-col gap-2.5 text-xs font-semibold text-fg dark:text-fg-dark mb-6">
+            <li class="flex items-center gap-2">
+              <span class="text-primary font-bold">✓</span>
+              <span data-i18n="products.workspace_feature1">Browser-based interactive terminal &amp; PTY</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-primary font-bold">✓</span>
+              <span data-i18n="products.workspace_feature2">Sandboxed project workspaces &amp; file explorer</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-primary font-bold">✓</span>
+              <span data-i18n="products.workspace_feature3">Integrated Krew autonomous AI agents</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <a href="https://dash.krewire.com" target="_blank" rel="noopener" class="btn btn-primary w-full text-center flex items-center justify-center gap-2">
+            <span data-i18n="products.workspace_cta">Open Workspace →</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Product 2: Krewire Cloud -->
+      <div class="card flex flex-col justify-between hover:-translate-y-1 transition-transform duration-200">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="icon-box bg-primary text-primary-content text-2xl w-12 h-12 flex items-center justify-center">◈</span>
+            <span class="badge badge-primary text-2xs font-mono" data-i18n="products.cloud_badge">Hybrid PaaS</span>
+          </div>
+          <h3 class="text-xl font-black tracking-tight mb-2 text-fg dark:text-fg-dark" data-i18n="products.cloud_title">Krewire Cloud</h3>
+          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-6" data-i18n="products.cloud_desc">
+            Enterprise hybrid PaaS engine and multi-tenant control plane. Hermetic builds, declarative deployments, process supervision, and edge gateways.
+          </p>
+          <ul class="flex flex-col gap-2.5 text-xs font-semibold text-fg dark:text-fg-dark mb-6">
+            <li class="flex items-center gap-2">
+              <span class="text-primary font-bold">✓</span>
+              <span data-i18n="products.cloud_feature1">Multi-tenant container &amp; process management</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-primary font-bold">✓</span>
+              <span data-i18n="products.cloud_feature2">Zero-downtime blue-green deployments</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-primary font-bold">✓</span>
+              <span data-i18n="products.cloud_feature3">Real-time metrics, logs &amp; health telemetry</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <a href="https://cloud.krewire.com" target="_blank" rel="noopener" class="btn btn-primary w-full text-center flex items-center justify-center gap-2">
+            <span data-i18n="products.cloud_cta">Open Console →</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Product 3: Krewire Auth -->
+      <div class="card flex flex-col justify-between hover:-translate-y-1 transition-transform duration-200">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="icon-box bg-[#FFD000] text-[#0B1F3B] text-2xl w-12 h-12 flex items-center justify-center font-bold">🛡</span>
+            <span class="badge badge-muted text-2xs font-mono" data-i18n="products.auth_badge">Identity &amp; SSO</span>
+          </div>
+          <h3 class="text-xl font-black tracking-tight mb-2 text-fg dark:text-fg-dark" data-i18n="products.auth_title">Krewire Auth</h3>
+          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-6" data-i18n="products.auth_desc">
+            Centralized multi-tenant identity and access management. Single Sign-On (OIDC/SAML2), MFA (TOTP), session federation, and hierarchical RBAC.
+          </p>
+          <ul class="flex flex-col gap-2.5 text-xs font-semibold text-fg dark:text-fg-dark mb-6">
+            <li class="flex items-center gap-2">
+              <span class="text-primary font-bold">✓</span>
+              <span data-i18n="products.auth_feature1">Single Sign-On across all subdomains</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-primary font-bold">✓</span>
+              <span data-i18n="products.auth_feature2">TOTP two-factor authentication &amp; recovery</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-primary font-bold">✓</span>
+              <span data-i18n="products.auth_feature3">Tenant isolation &amp; fine-grained RBAC</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <a href="https://auth.krewire.com" target="_blank" rel="noopener" class="btn btn-outline w-full text-center flex items-center justify-center gap-2">
+            <span data-i18n="products.auth_cta">Manage Identity →</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Product 4: Krewire Panel -->
+      <div class="card flex flex-col justify-between hover:-translate-y-1 transition-transform duration-200">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="icon-box bg-[#00D1C1] text-[#0B1F3B] text-2xl w-12 h-12 flex items-center justify-center font-bold">🎛</span>
+            <span class="badge badge-secondary text-2xs font-mono" data-i18n="products.panel_badge">Server &amp; Admin</span>
+          </div>
+          <h3 class="text-xl font-black tracking-tight mb-2 text-fg dark:text-fg-dark" data-i18n="products.panel_title">Krewire Panel</h3>
+          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-6" data-i18n="products.panel_desc">
+            Self-hosted server and admin control panel. Manage bare-metal &amp; VPS hosts, systemd daemons, vHosts, databases, and firewall with zero external bloat.
+          </p>
+          <ul class="flex flex-col gap-2.5 text-xs font-semibold text-fg dark:text-fg-dark mb-6">
+            <li class="flex items-center gap-2">
+              <span class="text-primary font-bold">✓</span>
+              <span data-i18n="products.panel_feature1">Host service &amp; daemon supervision (systemd)</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-primary font-bold">✓</span>
+              <span data-i18n="products.panel_feature2">Automated vHosts (Caddy/Nginx) &amp; database provisioning</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-primary font-bold">✓</span>
+              <span data-i18n="products.panel_feature3">Integrated firewall, streaming file manager &amp; web console</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <a href="https://panel.krewire.com" target="_blank" rel="noopener" class="btn btn-outline w-full text-center flex items-center justify-center gap-2">
+            <span data-i18n="products.panel_cta">Open Panel →</span>
+          </a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -284,47 +467,55 @@ layout: Landing
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-4 md:gap-5 lg:gap-5">
 
       <!-- Step 1: Install -->
-      <div class="card">
-        <div class="flex items-center justify-between gap-2 mb-3">
-          <span class="icon-box bg-primary text-primary-content text-base font-black">1</span>
-          <span class="badge badge-primary text-2xs font-mono">Install</span>
+      <div class="card flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="icon-box bg-primary text-primary-content text-base font-black">1</span>
+            <span class="badge badge-primary text-2xs font-mono">Install</span>
+          </div>
+          <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark">install.sh</h3>
+          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="steps.s1_desc">One command installs the <code class="code-inline">kiw</code> CLI on Linux or macOS. No package manager needed.</p>
         </div>
-        <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark">install.sh</h3>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-3" data-i18n="steps.s1_desc">One command installs the <code class="code-inline">kiw</code> CLI on Linux or macOS. No package manager needed.</p>
-        <Terminal Command="curl -fsSL https://krewire.com/scripts/install.sh | sh" Class="mt-auto" />
+        <Terminal Command="curl -fsSL https://krewire.com/scripts/install.sh | sh" Class="mt-auto w-full" />
       </div>
 
       <!-- Step 2: Scaffold -->
-      <div class="card">
-        <div class="flex items-center justify-between gap-2 mb-3">
-          <span class="icon-box bg-primary text-primary-content text-base font-black">2</span>
-          <span class="badge badge-secondary text-2xs font-mono">Scaffold</span>
+      <div class="card flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="icon-box bg-primary text-primary-content text-base font-black">2</span>
+            <span class="badge badge-secondary text-2xs font-mono">Scaffold</span>
+          </div>
+          <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark">kiw new</h3>
+          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="steps.s2_desc">Generate a production-ready project template for any workload in under one second.</p>
         </div>
-        <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark">kiw new</h3>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-3" data-i18n="steps.s2_desc">Generate a production-ready project template for any workload in under one second.</p>
-        <Terminal Command="kiw new my-site --site && cd my-site" Class="mt-auto" />
+        <Terminal Command="kiw new my-site --site && cd my-site" Class="mt-auto w-full" />
       </div>
 
       <!-- Step 3: Develop -->
-      <div class="card">
-        <div class="flex items-center justify-between gap-2 mb-3">
-          <span class="icon-box bg-primary text-primary-content text-base font-black">3</span>
-          <span class="badge badge-secondary text-2xs font-mono">Develop</span>
+      <div class="card flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="icon-box bg-primary text-primary-content text-base font-black">3</span>
+            <span class="badge badge-secondary text-2xs font-mono">Develop</span>
+          </div>
+          <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark">kiw dev</h3>
+          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="steps.s3_desc">Instant hot-reload local development server with file-based routing and scoped CSS updates.</p>
         </div>
-        <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark">kiw dev</h3>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-3" data-i18n="steps.s3_desc">Instant hot-reload local development server with file-based routing and scoped CSS updates.</p>
-        <Terminal Command="kiw dev" Class="mt-auto" />
+        <Terminal Command="kiw dev" Class="mt-auto w-full" />
       </div>
 
       <!-- Step 4: Deploy -->
-      <div class="card">
-        <div class="flex items-center justify-between gap-2 mb-3">
-          <span class="icon-box bg-primary text-primary-content text-base font-black">4</span>
-          <span class="badge badge-secondary text-2xs font-mono">Deploy</span>
+      <div class="card flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="icon-box bg-primary text-primary-content text-base font-black">4</span>
+            <span class="badge badge-secondary text-2xs font-mono">Deploy</span>
+          </div>
+          <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark">kiw deploy</h3>
+          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="steps.s4_desc">Compile into a single static binary or static asset bundle and ship to GitHub Pages or Docker.</p>
         </div>
-        <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark">kiw deploy</h3>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-3" data-i18n="steps.s4_desc">Compile into a single static binary or static asset bundle and ship to GitHub Pages or Docker.</p>
-        <Terminal Command="kiw deploy --target gh-pages" Class="mt-auto" />
+        <Terminal Command="kiw deploy --target gh-pages" Class="mt-auto w-full" />
       </div>
 
     </div>
@@ -389,7 +580,7 @@ layout: Landing
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-10 items-start">
 
       <!-- Code panel -->
-      <div class="w-full rounded-xl overflow-hidden min-w-0" style="background:#0B1F3B; border:var(--pop-border); box-shadow:var(--pop-shadow-lg)">
+      <div class="code-window w-full rounded-xl overflow-hidden min-w-0" style="background:#0B1F3B; border:var(--pop-border); box-shadow:var(--pop-shadow-lg)" data-kiw-component="CodeWindow">
         <!-- Panel header -->
         <div class="flex items-center gap-2.5 px-4 py-3" style="background:#071426; border-bottom:var(--pop-border-thin)">
           <div class="flex gap-1.5">
@@ -397,10 +588,11 @@ layout: Landing
             <span class="w-3 h-3 rounded-full bg-[#ffbd2e]" style="border:1.5px solid #000"></span>
             <span class="w-3 h-3 rounded-full bg-primary" style="border:1.5px solid #000"></span>
           </div>
-          <span class="ml-auto font-mono text-xs font-extrabold text-slate-400 tracking-widest uppercase">pages/index.kiw</span>
+          <span class="ml-2 font-mono text-xs font-extrabold text-slate-400 tracking-widest uppercase">pages/index.kiw</span>
+          <button type="button" class="btn-copy-code ml-auto font-mono text-[11px] font-extrabold px-2.5 py-1 rounded-md bg-white/10 text-white border border-white/20 hover:bg-primary hover:text-[#0B1F3B] hover:border-primary transition-all duration-150 cursor-pointer" onclick="copyCodeWindow(this)">Copy</button>
         </div>
         <!-- Code -->
-        <pre class="m-0 px-4 sm:px-5 py-4 sm:py-5 overflow-x-auto font-mono text-xs sm:text-sm leading-relaxed" style="color:#FAF8F4"><code><span style="color:#64748b;font-style:italic">---</span>
+        <pre class="code-window-pre m-0 px-4 sm:px-5 py-4 sm:py-5 overflow-x-auto font-mono text-xs sm:text-sm leading-relaxed" style="color:#FAF8F4"><code class="code-window-code"><span style="color:#64748b;font-style:italic">---</span>
 <span style="color:#00D1C1;font-weight:700">title:</span> "Welcome to Krewire"
 <span style="color:#00D1C1;font-weight:700">layout:</span> Landing
 <span style="color:#64748b;font-style:italic">---</span>
@@ -476,35 +668,35 @@ p  { font-size: 15px; color: var(--muted); }
           </tr>
         </thead>
         <tbody class="divide-y" style="border-color:var(--border-subtle)">
-          <tr>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row1_dim">Toolchain & Runtime</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row1_trad">2–3 Languages (Go + Node.js/TS + Python/HCL)</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row1_krewire">100% Pure Go across all workloads</td>
+          <tr class="hover:bg-primary/5 transition-colors">
+            <td class="py-3 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row1_dim">Toolchain &amp; Runtime</td>
+            <td class="py-3 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row1_trad">2–3 Languages (Go + Node.js/TS + Python/HCL)</td>
+            <td class="py-3 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row1_krewire">✓ 100% Pure Go across all workloads</td>
           </tr>
-          <tr>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row2_dim">Package Management</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row2_trad">go.mod + package.json + npm/pnpm trees</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row2_krewire">Single go.mod (Zero npm / Zero JS)</td>
+          <tr class="hover:bg-primary/5 transition-colors">
+            <td class="py-3 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row2_dim">Package Management</td>
+            <td class="py-3 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row2_trad">go.mod + package.json + npm/pnpm trees</td>
+            <td class="py-3 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row2_krewire">✓ Single go.mod (Zero npm / Zero JS)</td>
           </tr>
-          <tr>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row3_dim">Developer CLI</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row3_trad">Multiple: Air + npm + Cobra + Terraform</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row3_krewire">One binary CLI: kiw</td>
+          <tr class="hover:bg-primary/5 transition-colors">
+            <td class="py-3 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row3_dim">Developer CLI</td>
+            <td class="py-3 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row3_trad">Multiple: Air + npm + Cobra + Terraform</td>
+            <td class="py-3 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row3_krewire">✓ One binary CLI: kiw</td>
           </tr>
-          <tr>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row4_dim">Configuration</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row4_trad">Scattered (.air.toml, vite.config, tsconfig, Dockerfile)</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row4_krewire">Single unified krewire.yaml</td>
+          <tr class="hover:bg-primary/5 transition-colors">
+            <td class="py-3 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row4_dim">Configuration</td>
+            <td class="py-3 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row4_trad">Scattered (.air.toml, vite.config, tsconfig, Dockerfile)</td>
+            <td class="py-3 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row4_krewire">✓ Single unified krewire.yaml</td>
           </tr>
-          <tr>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row5_dim">Component Styling</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row5_trad">Tailwind CLI / PostCSS bundler pipeline</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row5_krewire">Native scoped .kiw components</td>
+          <tr class="hover:bg-primary/5 transition-colors">
+            <td class="py-3 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row5_dim">Component Styling</td>
+            <td class="py-3 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row5_trad">Tailwind CLI / PostCSS bundler pipeline</td>
+            <td class="py-3 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row5_krewire">✓ Native scoped .kiw components</td>
           </tr>
-          <tr>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row6_dim">Production Deployment</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row6_trad">Heavy multi-stage Docker containers with Node layers</td>
-            <td class="py-2.5 sm:py-3.5 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row6_krewire">Single self-contained Go binary or static assets</td>
+          <tr class="hover:bg-primary/5 transition-colors">
+            <td class="py-3 px-3 sm:px-4 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row6_dim">Production Deployment</td>
+            <td class="py-3 px-3 sm:px-4 text-muted dark:text-muted-dark" data-i18n="matrix.row6_trad">Heavy multi-stage Docker containers with Node layers</td>
+            <td class="py-3 px-3 sm:px-4 font-bold text-primary" data-i18n="matrix.row6_krewire">✓ Single self-contained Go binary or static assets</td>
           </tr>
         </tbody>
       </table>
@@ -524,23 +716,25 @@ p  { font-size: 15px; color: var(--muted); }
   <div class="container-site">
     <div class="rounded-2xl text-center bg-bg-2 dark:bg-bg-dark-2 bg-dots px-4 py-8 sm:px-8 sm:py-10 md:px-12 md:py-14 lg:px-16 lg:py-16 flex flex-col items-center justify-center w-full"
          style="border:var(--pop-border); box-shadow:var(--pop-shadow-lg)">
-      <span class="badge badge-primary mb-3 sm:mb-4" data-i18n="cta.badge">Ready to Build</span>
-      <h2 class="w-full max-w-2xl mx-auto font-black tracking-tight mb-2.5 sm:mb-3 text-fg dark:text-fg-dark text-center"
-          style="font-size:clamp(22px,5vw,36px); letter-spacing:-0.03em"
-          data-i18n="cta.title">
-        Start Building with Krewire Today
-      </h2>
-      <p class="w-full max-w-xl mx-auto text-sm sm:text-base text-muted dark:text-muted-dark leading-relaxed mb-6 sm:mb-7 text-center"
-         data-i18n="cta.lead">
-        Start with a lightweight static site, scale to a web monolith, then to distributed cloud services — one repository, one CLI, one configuration.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-3 justify-center mb-6 w-full sm:w-auto">
-        <Button Variant="primary" Size="lg" Href="/docs/getting-started"><span data-i18n="cta.button">Get Started — 5 Min →</span></Button>
-        <Button Variant="outline" Size="lg" Href="https://github.com/krewire/krewire" Target="_blank"><span>★</span> <span data-i18n="cta.star">Star on GitHub</span></Button>
-      </div>
-      <div class="w-full max-w-md sm:max-w-lg md:max-w-xl mx-auto text-left">
-        <Terminal Command="kiw new my-app --site && cd my-app && kiw dev" Class="bg-bg dark:bg-bg-dark" />
-      </div>
+      <VStack gap="md" align="center" class="w-full max-w-2xl mx-auto">
+        <span class="badge badge-primary" data-i18n="cta.badge">Ready to Build</span>
+        <h2 class="font-black tracking-tight text-fg dark:text-fg-dark text-center"
+            style="font-size:clamp(22px,5vw,36px); letter-spacing:-0.03em"
+            data-i18n="cta.title">
+          Start Building with Krewire Today
+        </h2>
+        <p class="text-sm sm:text-base text-muted dark:text-muted-dark leading-relaxed max-w-xl text-center"
+           data-i18n="cta.lead">
+          Start with a lightweight static site, scale to a web monolith, then to distributed cloud services — one repository, one CLI, one configuration.
+        </p>
+        <HStack gap="sm" wrap=true justify="center" class="w-full sm:w-auto">
+          <Button Variant="primary" Size="lg" Href="/docs/getting-started"><span data-i18n="cta.button">Get Started — 5 Min →</span></Button>
+          <Button Variant="outline" Size="lg" Href="https://github.com/krewire/krewire" Target="_blank"><span>★</span> <span data-i18n="cta.star">Star on GitHub</span></Button>
+        </HStack>
+        <div class="w-full max-w-md sm:max-w-lg md:max-w-xl mx-auto text-left mt-2">
+          <Terminal Command="kiw new my-app --site && cd my-app && kiw dev" Class="bg-bg dark:bg-bg-dark" />
+        </div>
+      </VStack>
     </div>
   </div>
 </section>
