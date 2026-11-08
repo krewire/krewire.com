@@ -8,7 +8,7 @@
         <div class="flex items-center gap-2.5 font-black text-xl mb-3">
           <span class="icon-box bg-primary text-primary-content w-8 h-8 text-base flex items-center justify-center font-bold">◈</span>
           <span class="tracking-tight text-fg dark:text-fg-dark">Krewire</span>
-          <span class="badge badge-secondary font-mono text-2xs ml-1">{#if version}{version}{:else}v0.2.2{/if}</span>
+          <Badge Variant="secondary" Size="sm" Class="ml-1 font-mono">{#if version}{version}{:else}v0.2.3{/if}</Badge>
         </div>
         <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-5" data-i18n-html="footer.tagline_html">
           The Complete Go SDLC Platform.<br>
@@ -68,19 +68,19 @@
       <div class="lg:col-span-3 flex flex-col gap-2.5">
         <strong class="text-2xs font-mono font-bold uppercase tracking-wider text-fg dark:text-fg-dark mb-1" data-i18n="footer.products_title">Ecosystem Platforms</strong>
         <a href="https://dash.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
-          <span>Krewire Workspace</span> <span class="text-2xs badge badge-primary py-0 px-1 font-mono">AI</span>
+          <span>Krewire Workspace</span> <Badge Variant="primary" Size="sm" Class="font-mono">AI</Badge>
         </a>
         <a href="https://cloud.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
-          <span>Krewire Cloud</span> <span class="text-2xs badge badge-primary py-0 px-1 font-mono">PaaS</span>
+          <span>Krewire Cloud</span> <Badge Variant="primary" Size="sm" Class="font-mono">PaaS</Badge>
         </a>
         <a href="https://auth.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
-          <span>Krewire Auth</span> <span class="text-2xs badge badge-primary py-0 px-1 font-mono">SSO</span>
+          <span>Krewire Auth</span> <Badge Variant="primary" Size="sm" Class="font-mono">SSO</Badge>
         </a>
         <a href="https://panel.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
-          <span>Krewire Panel</span> <span class="text-2xs badge badge-primary py-0 px-1 font-mono">Host</span>
+          <span>Krewire Panel</span> <Badge Variant="primary" Size="sm" Class="font-mono">Host</Badge>
         </a>
         <a href="https://github.com/krewire/krew" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
-          <span>Krew AI Engine</span> <span class="text-2xs badge badge-secondary py-0 px-1 font-mono">Agent</span>
+          <span>Krew AI Engine</span> <Badge Variant="secondary" Size="sm" Class="font-mono">Agent</Badge>
         </a>
         <a href="https://github.com/krewire/krewire" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">
           <span>Core Monorepo</span>

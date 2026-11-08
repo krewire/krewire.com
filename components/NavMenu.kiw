@@ -16,7 +16,7 @@
             <!-- Header Strip -->
             <div class="flex items-center justify-between pb-3 mb-4 border-b border-border-subtle">
               <div class="flex items-center gap-2">
-                <span class="badge badge-primary text-2xs font-extrabold uppercase tracking-wider" data-i18n="nav.products_badge">Krewire Ecosystem</span>
+                <Badge Variant="primary" Size="sm" Class="uppercase font-mono tracking-wider"><span data-i18n="nav.products_badge">Krewire Ecosystem</span></Badge>
                 <span class="text-xs text-muted dark:text-muted-dark font-semibold hidden sm:inline" data-i18n="nav.products_tagline">One Ecosystem. Every Workload.</span>
               </div>
               <a href="/#ecosystem" class="text-xs font-bold text-fg dark:text-fg-dark hover:text-primary transition-colors flex items-center gap-1" data-i18n="nav.view_ecosystem_map">
@@ -32,7 +32,7 @@
               <a href="https://dash.krewire.com" target="_blank" rel="noopener" class="dropdown-product-card block p-4 rounded-xl no-underline group">
                 <div class="flex items-center justify-between gap-2 mb-2">
                   <span class="icon-box bg-primary text-primary-content text-base shrink-0 w-8 h-8 flex items-center justify-center font-black">⚡</span>
-                  <span class="text-[10px] badge badge-primary py-0.5 px-1.5 font-mono" data-i18n="nav.badge_ai">AI</span>
+                  <Badge Variant="primary" Size="sm" Class="font-mono"><span data-i18n="nav.badge_ai">AI</span></Badge>
                 </div>
                 <div class="text-sm font-black text-fg dark:text-fg-dark group-hover:text-primary transition-colors flex items-center gap-1.5" data-i18n="products.workspace_title">
                   Krewire Workspace
@@ -47,7 +47,7 @@
               <a href="https://cloud.krewire.com" target="_blank" rel="noopener" class="dropdown-product-card block p-4 rounded-xl no-underline group">
                 <div class="flex items-center justify-between gap-2 mb-2">
                   <span class="icon-box bg-primary text-primary-content text-base shrink-0 w-8 h-8 flex items-center justify-center font-black">◈</span>
-                  <span class="text-[10px] badge badge-primary py-0.5 px-1.5 font-mono" data-i18n="nav.badge_paas">PaaS</span>
+                  <Badge Variant="primary" Size="sm" Class="font-mono"><span data-i18n="nav.badge_paas">PaaS</span></Badge>
                 </div>
                 <div class="text-sm font-black text-fg dark:text-fg-dark group-hover:text-primary transition-colors flex items-center gap-1.5" data-i18n="products.cloud_title">
                   Krewire Cloud
@@ -62,7 +62,7 @@
               <a href="https://auth.krewire.com" target="_blank" rel="noopener" class="dropdown-product-card block p-4 rounded-xl no-underline group">
                 <div class="flex items-center justify-between gap-2 mb-2">
                   <span class="icon-box bg-primary text-primary-content text-base shrink-0 w-8 h-8 flex items-center justify-center font-bold">🛡</span>
-                  <span class="text-[10px] badge badge-primary py-0.5 px-1.5 font-mono" data-i18n="nav.badge_id">ID</span>
+                  <Badge Variant="primary" Size="sm" Class="font-mono"><span data-i18n="nav.badge_id">ID</span></Badge>
                 </div>
                 <div class="text-sm font-black text-fg dark:text-fg-dark group-hover:text-primary transition-colors flex items-center gap-1.5" data-i18n="products.auth_title">
                   Krewire Auth
@@ -77,7 +77,7 @@
               <a href="https://panel.krewire.com" target="_blank" rel="noopener" class="dropdown-product-card block p-4 rounded-xl no-underline group">
                 <div class="flex items-center justify-between gap-2 mb-2">
                   <span class="icon-box bg-primary text-primary-content text-base shrink-0 w-8 h-8 flex items-center justify-center font-bold">🎛</span>
-                  <span class="text-[10px] badge badge-primary py-0.5 px-1.5 font-mono" data-i18n="nav.badge_host">Host</span>
+                  <Badge Variant="primary" Size="sm" Class="font-mono"><span data-i18n="nav.badge_host">Host</span></Badge>
                 </div>
                 <div class="text-sm font-black text-fg dark:text-fg-dark group-hover:text-primary transition-colors flex items-center gap-1.5" data-i18n="products.panel_title">
                   Krewire Panel

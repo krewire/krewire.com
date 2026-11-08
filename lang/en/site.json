@@ -21,7 +21,7 @@
     "panel_desc": "Self-hosted server & admin control panel"
   },
   "hero": {
-    "eyebrow": "GO-FIRST SOFTWARE ENGINEERING ECOSYSTEM · v0.2.2",
+    "eyebrow": "GO-FIRST SOFTWARE ENGINEERING ECOSYSTEM · v0.2.3",
     "title_html": "The Go-First Software Engineering Ecosystem.<br class=\"hidden sm:inline\"><span class=\"text-primary\">One Ecosystem. Every Workload.</span>",
     "lead_html": "Krewire is an end-to-end <b class=\"text-fg dark:text-fg-dark\">digital SDLC platform and application ecosystem</b> in Go — spanning the entire software lifecycle from specification, autonomous AI agents, enterprise SSO &amp; RBAC, hybrid PaaS, virtual dev workspaces, to production server operations. Far beyond modular Go libraries, Krewire delivers a cohesive, unified platform driven by a single CLI <code class=\"code-inline\">kiw</code>. Built on three immutable pillars: <b class=\"text-fg dark:text-fg-dark\">secure</b>, <b class=\"text-fg dark:text-fg-dark\">sustainable</b>, and <b class=\"text-fg dark:text-fg-dark\">scalable</b>.",
     "cta_start": "Get Started — 5 Min →",

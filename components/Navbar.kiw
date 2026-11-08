@@ -81,7 +81,7 @@
                     <div class="text-[10px] text-muted dark:text-muted-dark leading-tight truncate" data-i18n="nav.workspace_desc">Virtual workspaces &amp; AI agents</div>
                   </div>
                 </div>
-                <span class="text-2xs badge badge-primary py-0 px-1 font-mono shrink-0 ml-2" data-i18n="nav.badge_ai">AI</span>
+                <Badge Variant="primary" Size="sm" Class="font-mono shrink-0 ml-2"><span data-i18n="nav.badge_ai">AI</span></Badge>
               </a>
 
               <a href="https://cloud.krewire.com" target="_blank" rel="noopener" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
@@ -92,7 +92,7 @@
                     <div class="text-[10px] text-muted dark:text-muted-dark leading-tight truncate" data-i18n="nav.cloud_desc">Hybrid PaaS control plane</div>
                   </div>
                 </div>
-                <span class="text-2xs badge badge-primary py-0 px-1 font-mono shrink-0 ml-2" data-i18n="nav.badge_paas">PaaS</span>
+                <Badge Variant="primary" Size="sm" Class="font-mono shrink-0 ml-2"><span data-i18n="nav.badge_paas">PaaS</span></Badge>
               </a>
 
               <a href="https://auth.krewire.com" target="_blank" rel="noopener" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
@@ -103,7 +103,7 @@
                     <div class="text-[10px] text-muted dark:text-muted-dark leading-tight truncate" data-i18n="nav.auth_desc">SSO, MFA &amp; OIDC identity</div>
                   </div>
                 </div>
-                <span class="text-2xs badge badge-primary py-0 px-1 font-mono shrink-0 ml-2" data-i18n="nav.badge_id">ID</span>
+                <Badge Variant="primary" Size="sm" Class="font-mono shrink-0 ml-2"><span data-i18n="nav.badge_id">ID</span></Badge>
               </a>
 
               <a href="https://panel.krewire.com" target="_blank" rel="noopener" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
@@ -114,7 +114,7 @@
                     <div class="text-[10px] text-muted dark:text-muted-dark leading-tight truncate" data-i18n="nav.panel_desc">Bare-metal server control panel</div>
                   </div>
                 </div>
-                <span class="text-2xs badge badge-primary py-0 px-1 font-mono shrink-0 ml-2" data-i18n="nav.badge_host">Host</span>
+                <Badge Variant="primary" Size="sm" Class="font-mono shrink-0 ml-2"><span data-i18n="nav.badge_host">Host</span></Badge>
               </a>
             </div>
 
