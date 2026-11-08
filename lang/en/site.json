@@ -12,13 +12,16 @@
     "badge_paas": "PaaS",
     "badge_id": "ID",
     "badge_host": "Host",
+    "products_badge": "Core Platforms",
+    "products_tagline": "One Ecosystem. Every Workload.",
+    "view_ecosystem_map": "Architecture Map →",
     "workspace_desc": "Virtual workspaces & autonomous agents",
     "cloud_desc": "Hybrid PaaS control plane & zero-downtime",
     "auth_desc": "Multi-tenant SSO, MFA & OIDC identity",
     "panel_desc": "Self-hosted server & admin control panel"
   },
   "hero": {
-    "eyebrow": "End-to-End Digital SDLC Ecosystem · v0.2.1 · Open Source",
+    "eyebrow": "End-to-End Digital SDLC Ecosystem · v0.2.2 · Open Source",
     "title_html": "The Complete Go SDLC Platform.<br class=\"hidden sm:inline\"><span class=\"text-primary\">One Ecosystem. Every Workload.</span>",
     "lead_html": "Krewire is an end-to-end <b class=\"text-fg dark:text-fg-dark\">digital SDLC platform and application ecosystem</b> in Go — spanning the entire software lifecycle from specification, autonomous AI agents, enterprise SSO &amp; RBAC, hybrid PaaS, virtual dev workspaces, to production server operations. Far beyond modular Go libraries, Krewire delivers a cohesive, unified platform driven by a single CLI <code class=\"code-inline\">kiw</code>. Built on three immutable pillars: <b class=\"text-fg dark:text-fg-dark\">secure</b>, <b class=\"text-fg dark:text-fg-dark\">sustainable</b>, and <b class=\"text-fg dark:text-fg-dark\">scalable</b>.",
     "cta_start": "Get Started — 5 Min →",

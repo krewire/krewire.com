@@ -12,13 +12,16 @@
     "badge_paas": "PaaS",
     "badge_id": "ID",
     "badge_host": "Host",
+    "products_badge": "Platform Utama",
+    "products_tagline": "Satu Ekosistem. Semua Workload.",
+    "view_ecosystem_map": "Peta Arsitektur →",
     "workspace_desc": "Workspace virtual & agen otonom",
     "cloud_desc": "Control plane hybrid PaaS & tanpa downtime",
     "auth_desc": "SSO multi-tenant, MFA & identitas OIDC",
     "panel_desc": "Panel kontrol server mandiri & admin"
   },
   "hero": {
-    "eyebrow": "Ekosistem SDLC Digital End-to-End · v0.2.1 · Open Source",
+    "eyebrow": "Ekosistem SDLC Digital End-to-End · v0.2.2 · Open Source",
     "title_html": "Platform SDLC Digital Terpadu dalam Go.<br class=\"hidden sm:inline\"><span class=\"text-primary\">One Ecosystem. Every Workload.</span>",
     "lead_html": "Krewire adalah <b class=\"text-fg dark:text-fg-dark\">platform SDLC digital terpadu dan ekosistem aplikasi</b> berbasis Go — mencakup seluruh siklus pengembangan software dari spesifikasi, agen AI otonom, identitas SSO &amp; RBAC, hybrid PaaS, workspace virtual, hingga manajemen server produksi. Krewire bukan sekadar pustaka Go modular, melainkan ekosistem terpadu yang digerakkan oleh satu CLI <code class=\"code-inline\">kiw</code>. Dibangun kokoh di atas tiga pilar: <b class=\"text-fg dark:text-fg-dark\">secure</b>, <b class=\"text-fg dark:text-fg-dark\">sustainable</b>, dan <b class=\"text-fg dark:text-fg-dark\">scalable</b>.",
     "cta_start": "Mulai Sekarang — 5 Menit →",

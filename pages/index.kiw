@@ -109,146 +109,175 @@ layout: Landing
 <!-- =====================================================================
      PRODUCTS SHOWCASE
      ===================================================================== -->
-<section id="products" class="w-full bg-bg dark:bg-bg-dark py-12 sm:py-14 md:py-16 lg:py-20" style="border-bottom:var(--pop-border)">
+<section id="products" class="w-full bg-bg dark:bg-bg-dark py-12 sm:py-16 md:py-20 lg:py-24" style="border-bottom:var(--pop-border)">
   <div class="container-site">
-    <div class="section-head text-center max-w-3xl mx-auto mb-10">
+    <div class="section-head text-center max-w-3xl mx-auto mb-10 md:mb-14">
       <span class="badge badge-primary mb-3" data-i18n="products.badge">Core Products</span>
-      <h2 class="text-3xl sm:text-4xl font-black tracking-tight mb-4 text-fg dark:text-fg-dark" data-i18n="products.title">Core Products of the Krewire Platform</h2>
-      <p class="text-sm sm:text-base text-muted dark:text-muted-dark leading-relaxed" data-i18n="products.lead">Everything you need to build, run, and scale modern applications — powered by AI, unified authentication, server administration, and resilient infrastructure.</p>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4 text-fg dark:text-fg-dark" data-i18n="products.title">Core Products of the Krewire Platform</h2>
+      <p class="text-sm sm:text-base md:text-lg text-muted dark:text-muted-dark leading-relaxed" data-i18n="products.lead">Everything you need to build, run, and scale modern applications — powered by AI, unified authentication, server administration, and resilient infrastructure.</p>
     </div>
 
-    <!-- Product Cards Grid: 1 col on mobile -> 2 col on md -> 4 col on lg -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <!-- Bento Grid Container -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
-      <!-- Product 1: Krewire Workspace -->
-      <div class="card flex flex-col justify-between hover:-translate-y-1 transition-transform duration-200">
+      <!-- Bento 1 (Large Spotlight, spans 7 cols on lg): Krewire Workspace -->
+      <div class="lg:col-span-7 card flex flex-col justify-between p-6 sm:p-8 bg-bg-2 dark:bg-bg-dark-2 relative overflow-hidden group hover:-translate-y-1 transition-all duration-200">
         <div>
-          <div class="flex items-center justify-between gap-2 mb-4">
-            <span class="icon-box bg-primary text-primary-content text-2xl w-12 h-12 flex items-center justify-center">⚡</span>
-            <span class="badge badge-primary text-2xs font-mono" data-i18n="products.workspace_badge">AI-Powered</span>
+          <div class="flex items-center justify-between gap-3 mb-6">
+            <div class="flex items-center gap-3">
+              <span class="icon-box bg-primary text-primary-content text-2xl w-12 h-12 flex items-center justify-center font-black">⚡</span>
+              <div>
+                <span class="badge badge-primary text-2xs font-mono uppercase" data-i18n="products.workspace_badge">AI-Powered</span>
+                <h3 class="text-2xl sm:text-3xl font-black tracking-tight text-fg dark:text-fg-dark mt-1" data-i18n="products.workspace_title">Krewire Workspace</h3>
+              </div>
+            </div>
           </div>
-          <h3 class="text-xl font-black tracking-tight mb-2 text-fg dark:text-fg-dark" data-i18n="products.workspace_title">Krewire Workspace</h3>
-          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-6" data-i18n="products.workspace_desc">
+          <p class="text-sm sm:text-base text-muted dark:text-muted-dark leading-relaxed mb-6" data-i18n="products.workspace_desc">
             Virtual workspace &amp; autonomous integration engine. Web terminal, sandboxed runtimes, real-time code collaboration, and deep AI agent automation.
           </p>
-          <ul class="flex flex-col gap-2.5 text-xs font-semibold text-fg dark:text-fg-dark mb-6">
-            <li class="flex items-center gap-2">
-              <span class="text-primary font-bold">✓</span>
-              <span data-i18n="products.workspace_feature1">Browser-based interactive terminal &amp; PTY</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-primary font-bold">✓</span>
-              <span data-i18n="products.workspace_feature2">Sandboxed project workspaces &amp; file explorer</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-primary font-bold">✓</span>
-              <span data-i18n="products.workspace_feature3">Integrated Krew autonomous AI agents</span>
-            </li>
-          </ul>
+
+          <!-- Interactive preview window inside card -->
+          <div class="w-full rounded-xl overflow-hidden mb-6" style="background:#071426; border:var(--pop-border-thin); box-shadow:var(--pop-shadow-sm)">
+            <div class="flex items-center justify-between px-3 py-2 bg-[#040d1a] border-b border-white/10">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-accent"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+                <span class="font-mono text-[11px] text-slate-400 font-bold ml-2">workspace // dash.krewire.com</span>
+              </div>
+              <span class="badge badge-primary text-[10px] py-0 px-1.5 font-mono">● LIVE</span>
+            </div>
+            <div class="p-3.5 sm:p-4 font-mono text-xs leading-relaxed text-slate-300">
+              <div class="text-emerald-400 font-bold">$ kiw workspace start --sandbox=go-1.27</div>
+              <div class="text-slate-400">✓ Isolated micro-container mounted (14ms)</div>
+              <div class="text-slate-400">✓ PTY terminal attached on ws://dash.krewire.com/pty</div>
+              <div class="text-cyan-400 mt-1.5">⚡ Autonomous ReAct Agent active (krew engine)</div>
+              <div class="text-slate-400 pl-3">└─ Goal: Refactor auth routes &amp; generate tests [3/3 tasks done]</div>
+            </div>
+          </div>
+
+          <!-- Features pill tags -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mb-6">
+            <div class="flex items-center gap-2 text-xs font-bold text-fg dark:text-fg-dark bg-bg dark:bg-bg-dark p-2.5 rounded-lg border border-border-subtle">
+              <span class="text-primary font-black">✓</span>
+              <span data-i18n="products.workspace_feature1">Browser PTY Terminal</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs font-bold text-fg dark:text-fg-dark bg-bg dark:bg-bg-dark p-2.5 rounded-lg border border-border-subtle">
+              <span class="text-primary font-black">✓</span>
+              <span data-i18n="products.workspace_feature2">Sandboxed Workspaces</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs font-bold text-fg dark:text-fg-dark bg-bg dark:bg-bg-dark p-2.5 rounded-lg border border-border-subtle">
+              <span class="text-primary font-black">✓</span>
+              <span data-i18n="products.workspace_feature3">Autonomous Agents</span>
+            </div>
+          </div>
         </div>
-        <div>
-          <a href="https://dash.krewire.com" target="_blank" rel="noopener" class="btn btn-primary w-full text-center flex items-center justify-center gap-2">
-            <span data-i18n="products.workspace_cta">Learn Workspace →</span>
+
+        <div class="flex items-center justify-between pt-2">
+          <a href="https://dash.krewire.com" target="_blank" rel="noopener" class="btn btn-primary px-6 py-2.5 text-sm font-extrabold flex items-center gap-2">
+            <span data-i18n="products.workspace_cta">Launch Workspace →</span>
           </a>
+          <span class="text-xs font-mono font-bold text-muted dark:text-muted-dark">dash.krewire.com</span>
         </div>
       </div>
 
-      <!-- Product 2: Krewire Cloud -->
-      <div class="card flex flex-col justify-between hover:-translate-y-1 transition-transform duration-200">
-        <div>
-          <div class="flex items-center justify-between gap-2 mb-4">
-            <span class="icon-box bg-primary text-primary-content text-2xl w-12 h-12 flex items-center justify-center">◈</span>
-            <span class="badge badge-primary text-2xs font-mono" data-i18n="products.cloud_badge">Hybrid PaaS</span>
+      <!-- Bento 2 & 3 (Stacked Duo, spans 5 cols on lg): Cloud & Auth -->
+      <div class="lg:col-span-5 flex flex-col gap-6">
+
+        <!-- Card: Krewire Cloud -->
+        <div class="card flex-1 flex flex-col justify-between p-6 bg-bg-2 dark:bg-bg-dark-2 hover:-translate-y-1 transition-all duration-200">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <div class="flex items-center gap-2.5">
+                <span class="icon-box bg-primary text-primary-content text-xl w-10 h-10 flex items-center justify-center font-bold">◈</span>
+                <div>
+                  <span class="badge badge-primary text-2xs font-mono uppercase" data-i18n="products.cloud_badge">Hybrid PaaS</span>
+                  <h3 class="text-xl font-black tracking-tight text-fg dark:text-fg-dark" data-i18n="products.cloud_title">Krewire Cloud</h3>
+                </div>
+              </div>
+            </div>
+            <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="products.cloud_desc">
+              Enterprise hybrid PaaS engine and multi-tenant control plane. Hermetic builds, declarative deployments, process supervision, and edge gateways.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="badge badge-outline text-[11px] font-semibold">Zero-downtime Blue-Green</span>
+              <span class="badge badge-outline text-[11px] font-semibold">Edge Gateways</span>
+              <span class="badge badge-outline text-[11px] font-semibold">Multi-tenant</span>
+            </div>
           </div>
-          <h3 class="text-xl font-black tracking-tight mb-2 text-fg dark:text-fg-dark" data-i18n="products.cloud_title">Krewire Cloud</h3>
-          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-6" data-i18n="products.cloud_desc">
-            Enterprise hybrid PaaS engine and multi-tenant control plane. Hermetic builds, declarative deployments, process supervision, and edge gateways.
-          </p>
-          <ul class="flex flex-col gap-2.5 text-xs font-semibold text-fg dark:text-fg-dark mb-6">
-            <li class="flex items-center gap-2">
-              <span class="text-primary font-bold">✓</span>
-              <span data-i18n="products.cloud_feature1">Multi-tenant container &amp; process management</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-primary font-bold">✓</span>
-              <span data-i18n="products.cloud_feature2">Zero-downtime blue-green deployments</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-primary font-bold">✓</span>
-              <span data-i18n="products.cloud_feature3">Real-time metrics, logs &amp; health telemetry</span>
-            </li>
-          </ul>
+          <div class="flex items-center justify-between pt-2 border-t border-border-subtle">
+            <a href="https://cloud.krewire.com" target="_blank" rel="noopener" class="text-xs font-extrabold text-primary hover:underline flex items-center gap-1.5" data-i18n="products.cloud_cta">
+              <span>Learn Cloud</span>
+              <span>→</span>
+            </a>
+            <span class="text-[11px] font-mono text-muted dark:text-muted-dark">cloud.krewire.com</span>
+          </div>
         </div>
-        <div>
-          <a href="https://cloud.krewire.com" target="_blank" rel="noopener" class="btn btn-primary w-full text-center flex items-center justify-center gap-2">
-            <span data-i18n="products.cloud_cta">Learn Cloud →</span>
-          </a>
+
+        <!-- Card: Krewire Auth -->
+        <div class="card flex-1 flex flex-col justify-between p-6 bg-bg-2 dark:bg-bg-dark-2 hover:-translate-y-1 transition-all duration-200">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <div class="flex items-center gap-2.5">
+                <span class="icon-box bg-primary text-primary-content text-xl w-10 h-10 flex items-center justify-center font-bold">🛡</span>
+                <div>
+                  <span class="badge badge-primary text-2xs font-mono uppercase" data-i18n="products.auth_badge">Identity &amp; SSO</span>
+                  <h3 class="text-xl font-black tracking-tight text-fg dark:text-fg-dark" data-i18n="products.auth_title">Krewire Auth</h3>
+                </div>
+              </div>
+            </div>
+            <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="products.auth_desc">
+              Centralized multi-tenant identity and access management. Single Sign-On (OIDC/SAML2), MFA (TOTP), session federation, and hierarchical RBAC.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="badge badge-outline text-[11px] font-semibold">OIDC Discovery &amp; SAML 2.0</span>
+              <span class="badge badge-outline text-[11px] font-semibold">TOTP 2FA</span>
+              <span class="badge badge-outline text-[11px] font-semibold">PBKDF2-SHA256</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-2 border-t border-border-subtle">
+            <a href="https://auth.krewire.com" target="_blank" rel="noopener" class="text-xs font-extrabold text-primary hover:underline flex items-center gap-1.5" data-i18n="products.auth_cta">
+              <span>Learn Auth</span>
+              <span>→</span>
+            </a>
+            <span class="text-[11px] font-mono text-muted dark:text-muted-dark">auth.krewire.com</span>
+          </div>
         </div>
+
       </div>
 
-      <!-- Product 3: Krewire Auth -->
-      <div class="card flex flex-col justify-between hover:-translate-y-1 transition-transform duration-200">
-        <div>
-          <div class="flex items-center justify-between gap-2 mb-4">
-            <span class="icon-box bg-primary text-primary-content text-2xl w-12 h-12 flex items-center justify-center font-bold">🛡</span>
-            <span class="badge badge-primary text-2xs font-mono" data-i18n="products.auth_badge">Identity &amp; SSO</span>
+      <!-- Bento 4 (Panoramic Banner, spans full 12 cols): Krewire Panel -->
+      <div class="lg:col-span-12 card p-6 sm:p-8 bg-bg dark:bg-bg-dark hover:-translate-y-1 transition-all duration-200">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div class="max-w-2xl">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="icon-box bg-primary text-primary-content text-2xl w-11 h-11 flex items-center justify-center font-black">🎛</span>
+              <div>
+                <span class="badge badge-primary text-2xs font-mono uppercase" data-i18n="products.panel_badge">Server &amp; Admin</span>
+                <h3 class="text-2xl font-black tracking-tight text-fg dark:text-fg-dark" data-i18n="products.panel_title">Krewire Panel</h3>
+              </div>
+            </div>
+            <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="products.panel_desc">
+              Self-hosted server and admin control panel. Manage bare-metal &amp; VPS hosts, systemd daemons, vHosts (Caddy/Nginx), databases, firewall, and SSL certificates with zero external bloat.
+            </p>
+            <div class="flex flex-wrap items-center gap-4 text-xs font-bold text-fg dark:text-fg-dark">
+              <span class="flex items-center gap-1.5"><span class="text-primary font-black">✓</span> <span data-i18n="products.panel_feature1">Host systemd supervision</span></span>
+              <span class="flex items-center gap-1.5"><span class="text-primary font-black">✓</span> <span data-i18n="products.panel_feature2">Automated vHosts &amp; databases</span></span>
+              <span class="flex items-center gap-1.5"><span class="text-primary font-black">✓</span> <span data-i18n="products.panel_feature3">Firewall &amp; web console</span></span>
+            </div>
           </div>
-          <h3 class="text-xl font-black tracking-tight mb-2 text-fg dark:text-fg-dark" data-i18n="products.auth_title">Krewire Auth</h3>
-          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-6" data-i18n="products.auth_desc">
-            Centralized multi-tenant identity and access management. Single Sign-On (OIDC/SAML2), MFA (TOTP), session federation, and hierarchical RBAC.
-          </p>
-          <ul class="flex flex-col gap-2.5 text-xs font-semibold text-fg dark:text-fg-dark mb-6">
-            <li class="flex items-center gap-2">
-              <span class="text-primary font-bold">✓</span>
-              <span data-i18n="products.auth_feature1">Single Sign-On across all subdomains</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-primary font-bold">✓</span>
-              <span data-i18n="products.auth_feature2">TOTP two-factor authentication &amp; recovery</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-primary font-bold">✓</span>
-              <span data-i18n="products.auth_feature3">Tenant isolation &amp; fine-grained RBAC</span>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <a href="https://auth.krewire.com" target="_blank" rel="noopener" class="btn btn-primary w-full text-center flex items-center justify-center gap-2">
-            <span data-i18n="products.auth_cta">Learn Auth →</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Product 4: Krewire Panel -->
-      <div class="card flex flex-col justify-between hover:-translate-y-1 transition-transform duration-200">
-        <div>
-          <div class="flex items-center justify-between gap-2 mb-4">
-            <span class="icon-box bg-primary text-primary-content text-2xl w-12 h-12 flex items-center justify-center font-bold">🎛</span>
-            <span class="badge badge-primary text-2xs font-mono" data-i18n="products.panel_badge">Server &amp; Admin</span>
+          <div class="shrink-0 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <div class="bg-bg-2 dark:bg-bg-dark-2 p-3 rounded-xl border border-border-subtle flex items-center gap-4 text-xs font-mono">
+              <div class="flex flex-col"><span class="text-muted text-[10px]">DAEMONS</span><span class="font-extrabold text-primary">12 ACTIVE</span></div>
+              <div class="w-px h-6 bg-border-subtle"></div>
+              <div class="flex flex-col"><span class="text-muted text-[10px]">MEMORY</span><span class="font-extrabold text-fg dark:text-fg-dark">18.4 MB</span></div>
+              <div class="w-px h-6 bg-border-subtle"></div>
+              <div class="flex flex-col"><span class="text-muted text-[10px]">SSL ACME</span><span class="font-extrabold text-primary">AUTO-RENEW</span></div>
+            </div>
+            <a href="https://panel.krewire.com" target="_blank" rel="noopener" class="btn btn-primary px-6 py-3 text-sm font-extrabold flex items-center justify-center gap-2 whitespace-nowrap">
+              <span data-i18n="products.panel_cta">Launch Panel →</span>
+            </a>
           </div>
-          <h3 class="text-xl font-black tracking-tight mb-2 text-fg dark:text-fg-dark" data-i18n="products.panel_title">Krewire Panel</h3>
-          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-6" data-i18n="products.panel_desc">
-            Self-hosted server and admin control panel. Manage bare-metal &amp; VPS hosts, systemd daemons, vHosts, databases, and firewall with zero external bloat.
-          </p>
-          <ul class="flex flex-col gap-2.5 text-xs font-semibold text-fg dark:text-fg-dark mb-6">
-            <li class="flex items-center gap-2">
-              <span class="text-primary font-bold">✓</span>
-              <span data-i18n="products.panel_feature1">Host service &amp; daemon supervision (systemd)</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-primary font-bold">✓</span>
-              <span data-i18n="products.panel_feature2">Automated vHosts (Caddy/Nginx) &amp; database provisioning</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-primary font-bold">✓</span>
-              <span data-i18n="products.panel_feature3">Integrated firewall, streaming file manager &amp; web console</span>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <a href="https://panel.krewire.com" target="_blank" rel="noopener" class="btn btn-primary w-full text-center flex items-center justify-center gap-2">
-            <span data-i18n="products.panel_cta">Learn Panel →</span>
-          </a>
         </div>
       </div>
 
@@ -259,45 +288,88 @@ layout: Landing
 <!-- =====================================================================
      THREE PILLARS
      ===================================================================== -->
-<section id="pillars" class="w-full bg-bg-2 dark:bg-bg-dark-2 bg-dots py-10 sm:py-12 md:py-14 lg:py-16" style="border-bottom:var(--pop-border)">
+<section id="pillars" class="w-full bg-bg-2 dark:bg-bg-dark-2 bg-dots py-12 sm:py-16 md:py-20" style="border-bottom:var(--pop-border)">
   <div class="container-site">
-    <div class="section-head">
-      <span class="badge badge-primary mb-3" data-i18n="pillars.badge">Three Pillars</span>
-      <h2 data-i18n="pillars.title">Secure. Sustainable. Scalable.</h2>
-      <p data-i18n="pillars.lead">Krewire is an end-to-end digital SDLC ecosystem — from the first line of the specification to running production. Every capability must pass all three pillars before it ships, and each claim traces to a spec, a test, or a gate.</p>
-    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
 
-    <!-- Grid: 1 col on mobile → 2 col on sm → 3 col on md/lg -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 md:gap-5 lg:gap-6">
-
-      <!-- Secure -->
-      <div class="card">
-        <div class="flex items-center justify-between gap-2 mb-3">
-          <span class="icon-box bg-primary text-primary-content text-xl">🛡</span>
-          <span class="badge badge-primary text-2xs font-mono" data-i18n="pillars.pillar1_badge">Pillar 01</span>
+      <!-- Left: Sticky Philosophy Column (4 cols) -->
+      <div class="lg:col-span-4 lg:sticky lg:top-24">
+        <span class="badge badge-primary mb-3" data-i18n="pillars.badge">Three Pillars</span>
+        <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-fg dark:text-fg-dark mb-4" data-i18n="pillars.title">Secure. Sustainable. Scalable.</h2>
+        <p class="text-sm sm:text-base text-muted dark:text-muted-dark leading-relaxed mb-6" data-i18n="pillars.lead">
+          Krewire is an end-to-end digital SDLC ecosystem — from the first line of the specification to running production. Every capability must pass all three pillars before it ships, and each claim traces to a spec, a test, or a gate.
+        </p>
+        <div class="card p-4 bg-bg dark:bg-bg-dark border-l-4 border-l-primary mb-4">
+          <p class="text-xs italic text-muted dark:text-muted-dark leading-relaxed m-0">
+            "Safety by default, near-zero cost is engineered, and growth is additive rather than a rewrite."
+          </p>
+          <div class="mt-2 text-[11px] font-mono font-bold text-fg dark:text-fg-dark">— ADR-3S001 Engineering Filter</div>
         </div>
-        <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark" data-i18n="pillars.secure_title">Secure</h3>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed" data-i18n="pillars.secure_desc">Security is a default, not a feature. A stdlib-first dependency graph, secure-by-default HTTP primitives, OWASP/CWE-aligned controls, secrets referenced — never stored — and WASM sandboxing keep the attack surface small and auditable.</p>
       </div>
 
-      <!-- Sustainable -->
-      <div class="card">
-        <div class="flex items-center justify-between gap-2 mb-3">
-          <span class="icon-box bg-primary text-primary-content text-xl">🌱</span>
-          <span class="badge badge-primary text-2xs font-mono" data-i18n="pillars.pillar2_badge">Pillar 02</span>
-        </div>
-        <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark" data-i18n="pillars.sustainable_title">Sustainable</h3>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed" data-i18n="pillars.sustainable_desc">Software a single builder can still read, run, and afford a decade from now. Single static binaries with embedded assets, opt-in batteries that cost nothing when unused, boring proven parts, and no license fees — ever.</p>
-      </div>
+      <!-- Right: Stack of 3 Horizontal Architecture Feature Blocks (8 cols) -->
+      <div class="lg:col-span-8 flex flex-col gap-5">
 
-      <!-- Scalable -->
-      <div class="card sm:col-span-2 md:col-span-1">
-        <div class="flex items-center justify-between gap-2 mb-3">
-          <span class="icon-box bg-primary text-primary-content text-xl">⚡</span>
-          <span class="badge badge-primary text-2xs font-mono" data-i18n="pillars.pillar3_badge">Pillar 03</span>
+        <!-- Pillar 1: Secure -->
+        <div class="card p-6 sm:p-7 bg-bg dark:bg-bg-dark hover:-translate-y-1 transition-all duration-200" style="border-left: 6px solid #39D353">
+          <div class="flex items-center justify-between gap-3 mb-3">
+            <div class="flex items-center gap-3">
+              <span class="icon-box bg-primary text-primary-content text-xl w-10 h-10 flex items-center justify-center font-bold">🛡</span>
+              <h3 class="text-xl sm:text-2xl font-black tracking-tight text-fg dark:text-fg-dark" data-i18n="pillars.secure_title">Secure</h3>
+            </div>
+            <span class="badge badge-primary text-2xs font-mono" data-i18n="pillars.pillar1_badge">Pillar 01</span>
+          </div>
+          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-5" data-i18n="pillars.secure_desc">
+            Security is a default, not a feature. A stdlib-first dependency graph, secure-by-default HTTP primitives, OWASP/CWE-aligned controls, secrets referenced — never stored — and WASM sandboxing keep the attack surface small and auditable.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="badge badge-outline text-[11px] font-mono">0 CGO</span>
+            <span class="badge badge-outline text-[11px] font-mono">SafePath Traversal Guards</span>
+            <span class="badge badge-outline text-[11px] font-mono">Auto-Escaped HTML</span>
+            <span class="badge badge-outline text-[11px] font-mono">Zero Committed Secrets</span>
+          </div>
         </div>
-        <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark" data-i18n="pillars.scalable_title">Scalable</h3>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed" data-i18n="pillars.scalable_desc">Growth is additive, not a rewrite. The progressive pipeline takes a product from static site to monolith to workers, services, and infra — each stage an opt-in, reversible battery, from a $5 VPS to hyperscale.</p>
+
+        <!-- Pillar 2: Sustainable -->
+        <div class="card p-6 sm:p-7 bg-bg dark:bg-bg-dark hover:-translate-y-1 transition-all duration-200" style="border-left: 6px solid #00D1C1">
+          <div class="flex items-center justify-between gap-3 mb-3">
+            <div class="flex items-center gap-3">
+              <span class="icon-box bg-primary text-primary-content text-xl w-10 h-10 flex items-center justify-center font-bold">🌱</span>
+              <h3 class="text-xl sm:text-2xl font-black tracking-tight text-fg dark:text-fg-dark" data-i18n="pillars.sustainable_title">Sustainable</h3>
+            </div>
+            <span class="badge badge-primary text-2xs font-mono" data-i18n="pillars.pillar2_badge">Pillar 02</span>
+          </div>
+          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-5" data-i18n="pillars.sustainable_desc">
+            Software a single builder can still read, run, and afford a decade from now. Single static binaries with embedded assets, opt-in batteries that cost nothing when unused, boring proven parts, and no license fees — ever.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="badge badge-outline text-[11px] font-mono">10–30 MB Lean RAM</span>
+            <span class="badge badge-outline text-[11px] font-mono">Single Static Binary</span>
+            <span class="badge badge-outline text-[11px] font-mono">Zero npm / Zero Bundlers</span>
+            <span class="badge badge-outline text-[11px] font-mono">Permanent MIT Open Core</span>
+          </div>
+        </div>
+
+        <!-- Pillar 3: Scalable -->
+        <div class="card p-6 sm:p-7 bg-bg dark:bg-bg-dark hover:-translate-y-1 transition-all duration-200" style="border-left: 6px solid #ffbd2e">
+          <div class="flex items-center justify-between gap-3 mb-3">
+            <div class="flex items-center gap-3">
+              <span class="icon-box bg-primary text-primary-content text-xl w-10 h-10 flex items-center justify-center font-bold">⚡</span>
+              <h3 class="text-xl sm:text-2xl font-black tracking-tight text-fg dark:text-fg-dark" data-i18n="pillars.scalable_title">Scalable</h3>
+            </div>
+            <span class="badge badge-primary text-2xs font-mono" data-i18n="pillars.pillar3_badge">Pillar 03</span>
+          </div>
+          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-5" data-i18n="pillars.scalable_desc">
+            Growth is additive, not a rewrite. The progressive pipeline takes a product from static site to monolith to workers, services, and infra — each stage an opt-in, reversible battery, from a $5 VPS to hyperscale.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="badge badge-outline text-[11px] font-mono">7-Stage Pipeline (P0-P6)</span>
+            <span class="badge badge-outline text-[11px] font-mono">Reversible Provider Swaps</span>
+            <span class="badge badge-outline text-[11px] font-mono">Zero Lateral Peer Coupling</span>
+            <span class="badge badge-outline text-[11px] font-mono">$5 VPS to Hyperscale</span>
+          </div>
+        </div>
+
       </div>
 
     </div>
@@ -307,211 +379,212 @@ layout: Landing
 <!-- =====================================================================
      8 WORKLOADS
      ===================================================================== -->
-<section id="workloads" class="w-full bg-bg dark:bg-bg-dark py-10 sm:py-12 md:py-14 lg:py-16" style="border-bottom:var(--pop-border)">
+<section id="workloads" class="w-full bg-bg dark:bg-bg-dark py-12 sm:py-16 md:py-20" style="border-bottom:var(--pop-border)">
   <div class="container-site">
-    <div class="section-head">
+    <div class="section-head text-center max-w-3xl mx-auto mb-10 md:mb-14">
       <span class="badge badge-primary mb-3" data-i18n="workloads.badge">Unified Workload Engine</span>
-      <h2 data-i18n="workloads.title">One Unified Architecture. Eight Workloads.</h2>
-      <p data-i18n="workloads.lead">Stop assembling disparate frameworks for web, CLI, background queues, and infra. Krewire provides unified ergonomics, shared configuration, and zero context switching.</p>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4 text-fg dark:text-fg-dark" data-i18n="workloads.title">One Unified Architecture. Eight Workloads.</h2>
+      <p class="text-sm sm:text-base md:text-lg text-muted dark:text-muted-dark leading-relaxed" data-i18n="workloads.lead">Stop assembling disparate frameworks for web, CLI, background queues, and infra. Krewire provides unified ergonomics, shared configuration, and zero context switching.</p>
     </div>
 
-    <!-- Grid: 1 col on mobile → 2 col on sm/md → 4 col on lg -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-4 md:gap-5 lg:gap-5">
-
-      <!-- 1. APP -->
-      <a href="/docs/workloads/app" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
-        <div class="flex items-center justify-between gap-2 mb-3">
-          <span class="icon-box bg-primary text-primary-content">▲</span>
-          <span class="badge badge-muted text-2xs font-mono" data-i18n="workloads.app_badge">Fullstack</span>
-        </div>
-        <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark group-hover:text-primary transition-colors">app</h3>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed flex-1 mb-3" data-i18n="workloads.app_desc">Fullstack web monolith — compile your web interface, HTTP routing, and API handlers into a single static Go binary.</p>
-        <div class="mt-auto flex items-center justify-between gap-2 pt-2">
-          <div class="px-2.5 py-1.5 rounded-md w-fit bg-bg-2 dark:bg-bg-dark-2" style="border:1.5px solid var(--border); box-shadow:1.5px 1.5px 0 var(--border)">
-            <code class="font-mono text-xs font-extrabold text-fg dark:text-fg-dark">kiw run</code>
+    <!-- Group 1: Web & Application Tier -->
+    <div class="mb-8">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="badge badge-outline text-xs font-mono font-bold uppercase tracking-wider">Tier 1: Web &amp; Applications</span>
+        <div class="h-px bg-border-subtle flex-1"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <!-- 1. APP -->
+        <a href="/docs/workloads/app" class="card block no-underline group hover:-translate-y-1 transition-all duration-150 p-6 bg-bg-2 dark:bg-bg-dark-2">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <div class="flex items-center gap-3">
+              <span class="icon-box bg-primary text-primary-content text-lg w-9 h-9 flex items-center justify-center font-bold">▲</span>
+              <h3 class="text-xl font-black tracking-tight text-fg dark:text-fg-dark group-hover:text-primary transition-colors">app</h3>
+            </div>
+            <span class="badge badge-primary text-2xs font-mono" data-i18n="workloads.app_badge">Fullstack</span>
           </div>
-          <span class="text-xs font-bold text-muted dark:text-muted-dark group-hover:text-primary transition-colors" data-i18n="workloads.docs_link">Docs →</span>
-        </div>
-      </a>
-
-      <!-- 2. CLI -->
-      <a href="/docs/workloads/cli" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
-        <div class="flex items-center justify-between gap-2 mb-3">
-          <span class="icon-box bg-primary text-primary-content">›_</span>
-          <span class="badge badge-muted text-2xs font-mono" data-i18n="workloads.cli_badge">Terminal</span>
-        </div>
-        <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark group-hover:text-primary transition-colors">cli</h3>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed flex-1 mb-3" data-i18n="workloads.cli_desc">Developer command-line tools & rich terminal interfaces powered by the lightweight TUI library with zero dependencies.</p>
-        <div class="mt-auto flex items-center justify-between gap-2 pt-2">
-          <div class="px-2.5 py-1.5 rounded-md w-fit bg-bg-2 dark:bg-bg-dark-2" style="border:1.5px solid var(--border); box-shadow:1.5px 1.5px 0 var(--border)">
-            <code class="font-mono text-xs font-extrabold text-fg dark:text-fg-dark">kiw run</code>
+          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="workloads.app_desc">Fullstack web monolith — compile your web interface, HTTP routing, and API handlers into a single static Go binary.</p>
+          <div class="flex items-center justify-between pt-2 border-t border-border-subtle">
+            <code class="px-2.5 py-1 rounded-md font-mono text-xs font-extrabold bg-bg dark:bg-bg-dark border border-border-subtle text-fg dark:text-fg-dark">kiw run</code>
+            <span class="text-xs font-bold text-primary flex items-center gap-1" data-i18n="workloads.docs_link">Docs →</span>
           </div>
-          <span class="text-xs font-bold text-muted dark:text-muted-dark group-hover:text-primary transition-colors" data-i18n="workloads.docs_link">Docs →</span>
-        </div>
-      </a>
+        </a>
 
-      <!-- 3. SITE -->
-      <a href="/docs/workloads/site" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
-        <div class="flex items-center justify-between gap-2 mb-3">
-          <span class="icon-box bg-primary text-primary-content">◧</span>
-          <span class="badge badge-muted text-2xs font-mono" data-i18n="workloads.site_badge">SSG</span>
-        </div>
-        <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark group-hover:text-primary transition-colors">site</h3>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed flex-1 mb-3" data-i18n="workloads.site_desc">High-performance static site generator with file-based routing, scoped <code class="code-inline">.kiw</code> components, and zero client-side JS.</p>
-        <div class="mt-auto flex items-center justify-between gap-2 pt-2">
-          <div class="px-2.5 py-1.5 rounded-md w-fit bg-bg-2 dark:bg-bg-dark-2" style="border:1.5px solid var(--border); box-shadow:1.5px 1.5px 0 var(--border)">
-            <code class="font-mono text-xs font-extrabold text-fg dark:text-fg-dark">kiw build</code>
+        <!-- 2. SITE & BOOK -->
+        <a href="/docs/workloads/site" class="card block no-underline group hover:-translate-y-1 transition-all duration-150 p-6 bg-bg-2 dark:bg-bg-dark-2">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <div class="flex items-center gap-3">
+              <span class="icon-box bg-primary text-primary-content text-lg w-9 h-9 flex items-center justify-center font-bold">◧</span>
+              <h3 class="text-xl font-black tracking-tight text-fg dark:text-fg-dark group-hover:text-primary transition-colors">site &amp; book</h3>
+            </div>
+            <span class="badge badge-primary text-2xs font-mono" data-i18n="workloads.site_badge">SSG</span>
           </div>
-          <span class="text-xs font-bold text-muted dark:text-muted-dark group-hover:text-primary transition-colors" data-i18n="workloads.docs_link">Docs →</span>
-        </div>
-      </a>
-
-      <!-- 4. BOOK -->
-      <a href="/docs/workloads/book" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
-        <div class="flex items-center justify-between gap-2 mb-3">
-          <span class="icon-box bg-primary text-primary-content">≡</span>
-          <span class="badge badge-muted text-2xs font-mono" data-i18n="workloads.book_badge">Publishing</span>
-        </div>
-        <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark group-hover:text-primary transition-colors">book</h3>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed flex-1 mb-3" data-i18n="workloads.book_desc">Turn markdown manuscripts into structured documentation books with automatic indexing via <code class="code-inline">pkg/book</code>.</p>
-        <div class="mt-auto flex items-center justify-between gap-2 pt-2">
-          <div class="px-2.5 py-1.5 rounded-md w-fit bg-bg-2 dark:bg-bg-dark-2" style="border:1.5px solid var(--border); box-shadow:1.5px 1.5px 0 var(--border)">
-            <code class="font-mono text-xs font-extrabold text-fg dark:text-fg-dark">kiw build --target book</code>
+          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="workloads.site_desc">High-performance static site generator with file-based routing, scoped <code class="code-inline">.kiw</code> components, and technical books with auto-indexing.</p>
+          <div class="flex items-center justify-between pt-2 border-t border-border-subtle">
+            <code class="px-2.5 py-1 rounded-md font-mono text-xs font-extrabold bg-bg dark:bg-bg-dark border border-border-subtle text-fg dark:text-fg-dark">kiw build</code>
+            <span class="text-xs font-bold text-primary flex items-center gap-1" data-i18n="workloads.docs_link">Docs →</span>
           </div>
-          <span class="text-xs font-bold text-muted dark:text-muted-dark group-hover:text-primary transition-colors" data-i18n="workloads.docs_link">Docs →</span>
-        </div>
-      </a>
-
-      <!-- 5. WORKER -->
-      <a href="/docs/workloads/worker" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
-        <div class="flex items-center justify-between gap-2 mb-3">
-          <span class="icon-box bg-primary text-primary-content">⚙</span>
-          <span class="badge badge-muted text-2xs font-mono" data-i18n="workloads.worker_badge">Async</span>
-        </div>
-        <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark group-hover:text-primary transition-colors">worker</h3>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed flex-1 mb-3" data-i18n="workloads.worker_desc">Asynchronous job queues, scheduled cron tasks, retry policies, backoff timers, and dead-letter queues via <code class="code-inline">pkg/cloud/worker</code>.</p>
-        <div class="mt-auto flex items-center justify-between gap-2 pt-2">
-          <div class="px-2.5 py-1.5 rounded-md w-fit bg-bg-2 dark:bg-bg-dark-2" style="border:1.5px solid var(--border); box-shadow:1.5px 1.5px 0 var(--border)">
-            <code class="font-mono text-xs font-extrabold text-fg dark:text-fg-dark">kiw worker</code>
-          </div>
-          <span class="text-xs font-bold text-muted dark:text-muted-dark group-hover:text-primary transition-colors" data-i18n="workloads.docs_link">Docs →</span>
-        </div>
-      </a>
-
-      <!-- 6. SERVICE -->
-      <a href="/docs/workloads/service" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
-        <div class="flex items-center justify-between gap-2 mb-3">
-          <span class="icon-box bg-primary text-primary-content">⬢</span>
-          <span class="badge badge-muted text-2xs font-mono" data-i18n="workloads.service_badge">Microservice</span>
-        </div>
-        <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark group-hover:text-primary transition-colors">service</h3>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed flex-1 mb-3" data-i18n="workloads.service_desc">Distributed microservice architecture with service discovery, API gateway routing, rate limiting, and OpenTelemetry tracing.</p>
-        <div class="mt-auto flex items-center justify-between gap-2 pt-2">
-          <div class="px-2.5 py-1.5 rounded-md w-fit bg-bg-2 dark:bg-bg-dark-2" style="border:1.5px solid var(--border); box-shadow:1.5px 1.5px 0 var(--border)">
-            <code class="font-mono text-xs font-extrabold text-fg dark:text-fg-dark">kiw run</code>
-          </div>
-          <span class="text-xs font-bold text-muted dark:text-muted-dark group-hover:text-primary transition-colors" data-i18n="workloads.docs_link">Docs →</span>
-        </div>
-      </a>
-
-      <!-- 7. INFRA -->
-      <a href="/docs/workloads/infra" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
-        <div class="flex items-center justify-between gap-2 mb-3">
-          <span class="icon-box bg-primary text-primary-content">☁</span>
-          <span class="badge badge-muted text-2xs font-mono" data-i18n="workloads.infra_badge">Cloud IaC</span>
-        </div>
-        <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark group-hover:text-primary transition-colors">infra</h3>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed flex-1 mb-3" data-i18n="workloads.infra_desc">Provider-agnostic infrastructure-as-code compiling directly to AWS, GCP, or Kubernetes specifications from Go declarations.</p>
-        <div class="mt-auto flex items-center justify-between gap-2 pt-2">
-          <div class="px-2.5 py-1.5 rounded-md w-fit bg-bg-2 dark:bg-bg-dark-2" style="border:1.5px solid var(--border); box-shadow:1.5px 1.5px 0 var(--border)">
-            <code class="font-mono text-xs font-extrabold text-fg dark:text-fg-dark">kiw deploy --target infra</code>
-          </div>
-          <span class="text-xs font-bold text-muted dark:text-muted-dark group-hover:text-primary transition-colors" data-i18n="workloads.docs_link">Docs →</span>
-        </div>
-      </a>
-
-      <!-- 8. GATEWAY -->
-      <a href="/docs/workloads/gateway" class="card block no-underline group hover:-translate-y-1 transition-all duration-150">
-        <div class="flex items-center justify-between gap-2 mb-3">
-          <span class="icon-box bg-primary text-primary-content">◈</span>
-          <span class="badge badge-muted text-2xs font-mono" data-i18n="workloads.gateway_badge">Reverse Proxy</span>
-        </div>
-        <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark group-hover:text-primary transition-colors">gateway</h3>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed flex-1 mb-3" data-i18n="workloads.gateway_desc">Front upstream services with a declarative route table, per-route middleware, rate limiting, and service-discovery balancing.</p>
-        <div class="mt-auto flex items-center justify-between gap-2 pt-2">
-          <div class="px-2.5 py-1.5 rounded-md w-fit bg-bg-2 dark:bg-bg-dark-2" style="border:1.5px solid var(--border); box-shadow:1.5px 1.5px 0 var(--border)">
-            <code class="font-mono text-xs font-extrabold text-fg dark:text-fg-dark">kiw gateway --port 8080</code>
-          </div>
-          <span class="text-xs font-bold text-muted dark:text-muted-dark group-hover:text-primary transition-colors" data-i18n="workloads.docs_link">Docs →</span>
-        </div>
-      </a>
-
+        </a>
+      </div>
     </div>
+
+    <!-- Group 2: Async & Distributed Systems -->
+    <div class="mb-8">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="badge badge-outline text-xs font-mono font-bold uppercase tracking-wider">Tier 2: Async &amp; Distributed Infrastructure</span>
+        <div class="h-px bg-border-subtle flex-1"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <!-- 3. WORKER -->
+        <a href="/docs/workloads/worker" class="card block no-underline group hover:-translate-y-1 transition-all duration-150 p-5 bg-bg-2 dark:bg-bg-dark-2">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="icon-box bg-primary text-primary-content text-base w-8 h-8 flex items-center justify-center">⚙</span>
+            <span class="badge badge-muted text-2xs font-mono" data-i18n="workloads.worker_badge">Async</span>
+          </div>
+          <h3 class="text-lg font-black tracking-tight mb-1 text-fg dark:text-fg-dark group-hover:text-primary transition-colors">worker</h3>
+          <p class="text-xs text-muted dark:text-muted-dark leading-relaxed mb-4 flex-1" data-i18n="workloads.worker_desc">Asynchronous job queues, scheduled cron tasks, retry policies, backoff timers, and dead-letter queues via <code class="code-inline">pkg/cloud/worker</code>.</p>
+          <div class="flex items-center justify-between pt-2 border-t border-border-subtle">
+            <code class="px-2 py-0.5 rounded font-mono text-[11px] font-bold bg-bg dark:bg-bg-dark border border-border-subtle">kiw worker</code>
+            <span class="text-xs font-bold text-primary" data-i18n="workloads.docs_link">Docs →</span>
+          </div>
+        </a>
+
+        <!-- 4. SERVICE -->
+        <a href="/docs/workloads/service" class="card block no-underline group hover:-translate-y-1 transition-all duration-150 p-5 bg-bg-2 dark:bg-bg-dark-2">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="icon-box bg-primary text-primary-content text-base w-8 h-8 flex items-center justify-center">⬢</span>
+            <span class="badge badge-muted text-2xs font-mono" data-i18n="workloads.service_badge">Microservice</span>
+          </div>
+          <h3 class="text-lg font-black tracking-tight mb-1 text-fg dark:text-fg-dark group-hover:text-primary transition-colors">service</h3>
+          <p class="text-xs text-muted dark:text-muted-dark leading-relaxed mb-4 flex-1" data-i18n="workloads.service_desc">Distributed microservice architecture with service discovery, API gateway routing, rate limiting, and OpenTelemetry tracing.</p>
+          <div class="flex items-center justify-between pt-2 border-t border-border-subtle">
+            <code class="px-2 py-0.5 rounded font-mono text-[11px] font-bold bg-bg dark:bg-bg-dark border border-border-subtle">kiw run</code>
+            <span class="text-xs font-bold text-primary" data-i18n="workloads.docs_link">Docs →</span>
+          </div>
+        </a>
+
+        <!-- 5. GATEWAY -->
+        <a href="/docs/workloads/gateway" class="card block no-underline group hover:-translate-y-1 transition-all duration-150 p-5 bg-bg-2 dark:bg-bg-dark-2">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="icon-box bg-primary text-primary-content text-base w-8 h-8 flex items-center justify-center">◈</span>
+            <span class="badge badge-muted text-2xs font-mono" data-i18n="workloads.gateway_badge">Reverse Proxy</span>
+          </div>
+          <h3 class="text-lg font-black tracking-tight mb-1 text-fg dark:text-fg-dark group-hover:text-primary transition-colors">gateway</h3>
+          <p class="text-xs text-muted dark:text-muted-dark leading-relaxed mb-4 flex-1" data-i18n="workloads.gateway_desc">Front upstream services with a declarative route table, per-route middleware, rate limiting, and service-discovery balancing.</p>
+          <div class="flex items-center justify-between pt-2 border-t border-border-subtle">
+            <code class="px-2 py-0.5 rounded font-mono text-[11px] font-bold bg-bg dark:bg-bg-dark border border-border-subtle">kiw gateway</code>
+            <span class="text-xs font-bold text-primary" data-i18n="workloads.docs_link">Docs →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Group 3: CLI & Cloud IaC -->
+    <div>
+      <div class="flex items-center gap-2 mb-4">
+        <span class="badge badge-outline text-xs font-mono font-bold uppercase tracking-wider">Tier 3: Developer Tools &amp; Cloud IaC</span>
+        <div class="h-px bg-border-subtle flex-1"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <!-- 6. CLI -->
+        <a href="/docs/workloads/cli" class="card block no-underline group hover:-translate-y-1 transition-all duration-150 p-5 bg-bg-2 dark:bg-bg-dark-2">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <div class="flex items-center gap-2.5">
+              <span class="icon-box bg-primary text-primary-content text-base w-8 h-8 flex items-center justify-center font-mono">›_</span>
+              <h3 class="text-lg font-black tracking-tight text-fg dark:text-fg-dark group-hover:text-primary transition-colors">cli</h3>
+            </div>
+            <span class="badge badge-muted text-2xs font-mono" data-i18n="workloads.cli_badge">Terminal</span>
+          </div>
+          <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed mb-3" data-i18n="workloads.cli_desc">Developer command-line tools &amp; rich terminal interfaces powered by the lightweight TUI library with zero dependencies.</p>
+          <div class="flex items-center justify-between pt-2 border-t border-border-subtle">
+            <code class="px-2 py-0.5 rounded font-mono text-[11px] font-bold bg-bg dark:bg-bg-dark border border-border-subtle">kiw run</code>
+            <span class="text-xs font-bold text-primary" data-i18n="workloads.docs_link">Docs →</span>
+          </div>
+        </a>
+
+        <!-- 7. INFRA -->
+        <a href="/docs/workloads/infra" class="card block no-underline group hover:-translate-y-1 transition-all duration-150 p-5 bg-bg-2 dark:bg-bg-dark-2">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <div class="flex items-center gap-2.5">
+              <span class="icon-box bg-primary text-primary-content text-base w-8 h-8 flex items-center justify-center">☁</span>
+              <h3 class="text-lg font-black tracking-tight text-fg dark:text-fg-dark group-hover:text-primary transition-colors">infra</h3>
+            </div>
+            <span class="badge badge-muted text-2xs font-mono" data-i18n="workloads.infra_badge">Cloud IaC</span>
+          </div>
+          <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed mb-3" data-i18n="workloads.infra_desc">Provider-agnostic infrastructure-as-code compiling directly to AWS, GCP, or Kubernetes specifications from Go declarations.</p>
+          <div class="flex items-center justify-between pt-2 border-t border-border-subtle">
+            <code class="px-2 py-0.5 rounded font-mono text-[11px] font-bold bg-bg dark:bg-bg-dark border border-border-subtle">kiw deploy --target infra</code>
+            <span class="text-xs font-bold text-primary" data-i18n="workloads.docs_link">Docs →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <!-- =====================================================================
      FOUR STEPS
      ===================================================================== -->
-<section class="w-full bg-bg-2 dark:bg-bg-dark-2 bg-dots py-10 sm:py-12 md:py-14 lg:py-16" style="border-bottom:var(--pop-border)">
+<section class="w-full bg-bg-2 dark:bg-bg-dark-2 bg-dots py-12 sm:py-16 md:py-20" style="border-bottom:var(--pop-border)">
   <div class="container-site">
-    <div class="section-head">
+    <div class="section-head text-center max-w-2xl mx-auto mb-12">
       <span class="badge badge-primary mb-3" data-i18n="steps.badge">Developer Workflow</span>
-      <h2 data-i18n="steps.title">From Zero to Production in 4 Steps</h2>
-      <p data-i18n="steps.lead">Install once, then scaffold, develop, and deploy — no toolchain fatigue, no breaking dependency trees.</p>
+      <h2 class="text-3xl sm:text-4xl font-black tracking-tight mb-4 text-fg dark:text-fg-dark" data-i18n="steps.title">From Zero to Production in 4 Steps</h2>
+      <p class="text-sm sm:text-base text-muted dark:text-muted-dark leading-relaxed" data-i18n="steps.lead">Install once, then scaffold, develop, and deploy — no toolchain fatigue, no breaking dependency trees.</p>
     </div>
 
-    <!-- Grid: 1 col on mobile → 2 col on sm/md → 4 col on lg -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-4 md:gap-5 lg:gap-5">
+    <!-- Pipeline Timeline Container -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
 
       <!-- Step 1: Install -->
-      <div class="card flex flex-col justify-between">
+      <div class="card flex flex-col justify-between p-5 sm:p-6 bg-bg dark:bg-bg-dark relative hover:-translate-y-1 transition-all duration-150">
         <div>
-          <div class="flex items-center justify-between gap-2 mb-3">
-            <span class="icon-box bg-primary text-primary-content text-base font-black">1</span>
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="w-9 h-9 rounded-xl bg-primary text-primary-content flex items-center justify-center font-black text-sm border-2 border-border shadow-[2px_2px_0px_var(--border)]">01</span>
             <span class="badge badge-primary text-2xs font-mono" data-i18n="steps.s1_badge">Install</span>
           </div>
           <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark">install.sh</h3>
-          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="steps.s1_desc">One command installs the <code class="code-inline">kiw</code> CLI on Linux or macOS. No package manager needed.</p>
+          <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="steps.s1_desc">One command installs the <code class="code-inline">kiw</code> CLI on Linux or macOS. No package manager needed.</p>
         </div>
         <Terminal Command="curl -fsSL https://krewire.com/scripts/install.sh | sh" Class="mt-auto w-full" />
       </div>
 
       <!-- Step 2: Scaffold -->
-      <div class="card flex flex-col justify-between">
+      <div class="card flex flex-col justify-between p-5 sm:p-6 bg-bg dark:bg-bg-dark relative hover:-translate-y-1 transition-all duration-150">
         <div>
-          <div class="flex items-center justify-between gap-2 mb-3">
-            <span class="icon-box bg-primary text-primary-content text-base font-black">2</span>
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="w-9 h-9 rounded-xl bg-primary text-primary-content flex items-center justify-center font-black text-sm border-2 border-border shadow-[2px_2px_0px_var(--border)]">02</span>
             <span class="badge badge-primary text-2xs font-mono" data-i18n="steps.s2_badge">Scaffold</span>
           </div>
           <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark">kiw new</h3>
-          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="steps.s2_desc">Generate a production-ready project template for any workload in under one second.</p>
+          <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="steps.s2_desc">Generate a production-ready project template for any workload in under one second.</p>
         </div>
         <Terminal Command="kiw new my-site --site && cd my-site" Class="mt-auto w-full" />
       </div>
 
       <!-- Step 3: Develop -->
-      <div class="card flex flex-col justify-between">
+      <div class="card flex flex-col justify-between p-5 sm:p-6 bg-bg dark:bg-bg-dark relative hover:-translate-y-1 transition-all duration-150">
         <div>
-          <div class="flex items-center justify-between gap-2 mb-3">
-            <span class="icon-box bg-primary text-primary-content text-base font-black">3</span>
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="w-9 h-9 rounded-xl bg-primary text-primary-content flex items-center justify-center font-black text-sm border-2 border-border shadow-[2px_2px_0px_var(--border)]">03</span>
             <span class="badge badge-primary text-2xs font-mono" data-i18n="steps.s3_badge">Develop</span>
           </div>
           <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark">kiw dev</h3>
-          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="steps.s3_desc">Instant hot-reload local development server with file-based routing and scoped CSS updates.</p>
+          <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="steps.s3_desc">Instant hot-reload local development server with file-based routing and scoped CSS updates.</p>
         </div>
         <Terminal Command="kiw dev" Class="mt-auto w-full" />
       </div>
 
       <!-- Step 4: Deploy -->
-      <div class="card flex flex-col justify-between">
+      <div class="card flex flex-col justify-between p-5 sm:p-6 bg-bg dark:bg-bg-dark relative hover:-translate-y-1 transition-all duration-150">
         <div>
-          <div class="flex items-center justify-between gap-2 mb-3">
-            <span class="icon-box bg-primary text-primary-content text-base font-black">4</span>
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="w-9 h-9 rounded-xl bg-primary text-primary-content flex items-center justify-center font-black text-sm border-2 border-border shadow-[2px_2px_0px_var(--border)]">04</span>
             <span class="badge badge-primary text-2xs font-mono" data-i18n="steps.s4_badge">Deploy</span>
           </div>
           <h3 class="text-lg font-black tracking-tight mb-2 text-fg dark:text-fg-dark">kiw deploy</h3>
-          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="steps.s4_desc">Compile into a single static binary or static asset bundle and ship to GitHub Pages or Docker.</p>
+          <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="steps.s4_desc">Compile into a single static binary or static asset bundle and ship to GitHub Pages or Docker.</p>
         </div>
         <Terminal Command="kiw deploy --target gh-pages" Class="mt-auto w-full" />
       </div>
@@ -520,43 +593,81 @@ layout: Landing
   </div>
 </section>
 
-
 <!-- =====================================================================
      WHY KREWIRE
      ===================================================================== -->
-<section class="w-full bg-bg dark:bg-bg-dark py-10 sm:py-12 md:py-14 lg:py-16" style="border-bottom:var(--pop-border)">
+<section class="w-full bg-bg dark:bg-bg-dark py-12 sm:py-16 md:py-20" style="border-bottom:var(--pop-border)">
   <div class="container-site">
-    <div class="section-head">
-      <span class="badge badge-primary mb-3" data-i18n="why.badge">Architecture & Philosophy</span>
-      <h2 data-i18n="why.title">Go-First. Progressive. Zero Bloat.</h2>
-      <p data-i18n="why.lead">Built for engineers who value compilation speed, predictable deployments, and maintainable software architecture.</p>
-    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
 
-    <!-- Grid: 1 col on mobile → 2 col on sm/md → 4 col on lg -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-4 md:gap-5 lg:gap-5">
+      <!-- Left Column: Metrics & Philosophy (5 cols) -->
+      <div class="lg:col-span-5">
+        <span class="badge badge-primary mb-3" data-i18n="why.badge">Architecture &amp; Philosophy</span>
+        <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-fg dark:text-fg-dark mb-4" data-i18n="why.title">Go-First. Progressive. Zero Bloat.</h2>
+        <p class="text-sm sm:text-base text-muted dark:text-muted-dark leading-relaxed mb-6" data-i18n="why.lead">
+          Built for engineers who value compilation speed, predictable deployments, and maintainable software architecture. One unified toolchain eliminates JavaScript fatigue entirely.
+        </p>
 
-      <div class="card">
-        <span class="icon-box bg-primary text-primary-content mb-4 text-xl">◈</span>
-        <h3 class="text-base font-black tracking-tight mb-2 text-fg dark:text-fg-dark" data-i18n="why.w1_title">Pure Go Toolchain</h3>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed" data-i18n="why.w1_desc">No Node.js, no npm dependencies, and no bundler configuration. Your entire application compiles with standard Go tooling into clean, self-contained binaries.</p>
+        <!-- 2x2 Metric Matrix -->
+        <div class="grid grid-cols-2 gap-3 mb-4">
+          <div class="card p-3.5 bg-bg-2 dark:bg-bg-dark-2 flex flex-col">
+            <span class="text-2xl sm:text-3xl font-black text-primary">0</span>
+            <span class="text-xs font-bold text-fg dark:text-fg-dark mt-0.5">npm Dependencies</span>
+            <span class="text-[11px] text-muted dark:text-muted-dark">Zero Node runtime</span>
+          </div>
+          <div class="card p-3.5 bg-bg-2 dark:bg-bg-dark-2 flex flex-col">
+            <span class="text-2xl sm:text-3xl font-black text-primary">&lt; 1ms</span>
+            <span class="text-xs font-bold text-fg dark:text-fg-dark mt-0.5">Cold Starts</span>
+            <span class="text-[11px] text-muted dark:text-muted-dark">Instant response</span>
+          </div>
+          <div class="card p-3.5 bg-bg-2 dark:bg-bg-dark-2 flex flex-col">
+            <span class="text-2xl sm:text-3xl font-black text-primary">10–30 MB</span>
+            <span class="text-xs font-bold text-fg dark:text-fg-dark mt-0.5">RAM Footprint</span>
+            <span class="text-[11px] text-muted dark:text-muted-dark">Runs on $5 VPS</span>
+          </div>
+          <div class="card p-3.5 bg-bg-2 dark:bg-bg-dark-2 flex flex-col">
+            <span class="text-2xl sm:text-3xl font-black text-primary">100%</span>
+            <span class="text-xs font-bold text-fg dark:text-fg-dark mt-0.5">Pure Go</span>
+            <span class="text-[11px] text-muted dark:text-muted-dark">Zero CGO required</span>
+          </div>
+        </div>
       </div>
 
-      <div class="card">
-        <span class="icon-box bg-primary text-primary-content mb-4 text-xl">◧</span>
-        <h3 class="text-base font-black tracking-tight mb-2 text-fg dark:text-fg-dark" data-i18n="why.w2_title">Scoped .kiw Components</h3>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed" data-i18n="why.w2_desc">Combines YAML frontmatter, standard Go HTML templates, and scoped <code class="code-inline">&lt;style&gt;</code> blocks. CSS classes never leak outside their component boundary.</p>
-      </div>
+      <!-- Right Column: Numbered Architectural Feature Stack (7 cols) -->
+      <div class="lg:col-span-7 flex flex-col gap-4">
 
-      <div class="card">
-        <span class="icon-box bg-primary text-primary-content mb-4 text-xl">⚡</span>
-        <h3 class="text-base font-black tracking-tight mb-2 text-fg dark:text-fg-dark" data-i18n="why.w3_title">Progressive Scaling</h3>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed" data-i18n="why.w3_desc">Start as a lightweight static site, grow into a fullstack web monolith, then seamlessly extract background workers and microservices — all within the same ecosystem.</p>
-      </div>
+        <div class="card p-5 bg-bg-2 dark:bg-bg-dark-2 flex items-start gap-4 hover:-translate-y-1 transition-all duration-150">
+          <span class="icon-box bg-primary text-primary-content text-base w-9 h-9 shrink-0 flex items-center justify-center font-bold">◈</span>
+          <div>
+            <h3 class="text-base font-black tracking-tight mb-1 text-fg dark:text-fg-dark" data-i18n="why.w1_title">Pure Go Toolchain</h3>
+            <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed m-0" data-i18n="why.w1_desc">No Node.js, no npm dependencies, and no bundler configuration. Your entire application compiles with standard Go tooling into clean, self-contained binaries.</p>
+          </div>
+        </div>
 
-      <div class="card">
-        <span class="icon-box bg-primary text-primary-content mb-4 text-xl">🛡</span>
-        <h3 class="text-base font-black tracking-tight mb-2 text-fg dark:text-fg-dark" data-i18n="why.w4_title">Enterprise Resilience</h3>
-        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed" data-i18n="why.w4_desc">Engineered with production defaults: structured JSON logging, distributed tracing, health checks, circuit breakers, and graceful shutdown out of the box.</p>
+        <div class="card p-5 bg-bg-2 dark:bg-bg-dark-2 flex items-start gap-4 hover:-translate-y-1 transition-all duration-150">
+          <span class="icon-box bg-primary text-primary-content text-base w-9 h-9 shrink-0 flex items-center justify-center font-bold">◧</span>
+          <div>
+            <h3 class="text-base font-black tracking-tight mb-1 text-fg dark:text-fg-dark" data-i18n="why.w2_title">Scoped .kiw Components</h3>
+            <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed m-0" data-i18n="why.w2_desc">Combines YAML frontmatter, standard Go HTML templates, and scoped <code class="code-inline">&lt;style&gt;</code> blocks. CSS classes never leak outside their component boundary.</p>
+          </div>
+        </div>
+
+        <div class="card p-5 bg-bg-2 dark:bg-bg-dark-2 flex items-start gap-4 hover:-translate-y-1 transition-all duration-150">
+          <span class="icon-box bg-primary text-primary-content text-base w-9 h-9 shrink-0 flex items-center justify-center font-bold">⚡</span>
+          <div>
+            <h3 class="text-base font-black tracking-tight mb-1 text-fg dark:text-fg-dark" data-i18n="why.w3_title">Progressive Scaling</h3>
+            <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed m-0" data-i18n="why.w3_desc">Start as a lightweight static site, grow into a fullstack web monolith, then seamlessly extract background workers and microservices — all within the same ecosystem.</p>
+          </div>
+        </div>
+
+        <div class="card p-5 bg-bg-2 dark:bg-bg-dark-2 flex items-start gap-4 hover:-translate-y-1 transition-all duration-150">
+          <span class="icon-box bg-primary text-primary-content text-base w-9 h-9 shrink-0 flex items-center justify-center font-bold">🛡</span>
+          <div>
+            <h3 class="text-base font-black tracking-tight mb-1 text-fg dark:text-fg-dark" data-i18n="why.w4_title">Enterprise Resilience</h3>
+            <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed m-0" data-i18n="why.w4_desc">Engineered with production defaults: structured JSON logging, distributed tracing, health checks, circuit breakers, and graceful shutdown out of the box.</p>
+          </div>
+        </div>
+
       </div>
 
     </div>

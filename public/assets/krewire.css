@@ -1518,20 +1518,62 @@ details.dropdown-container summary::marker {
 details.dropdown-container summary {
   list-style: none !important;
 }
-details.dropdown-container:not([open]) .dropdown-menu {
+details.dropdown-container:not([open]) .dropdown-menu,
+details.dropdown-container:not([open]) .dropdown-menu-fullwidth {
   display: none !important;
 }
-details.dropdown-container[open] .dropdown-menu {
+details.dropdown-container[open] .dropdown-menu,
+details.dropdown-container[open] .dropdown-menu-fullwidth {
   display: block !important;
 }
 details.dropdown-container[open] .dropdown-chevron {
   transform: rotate(180deg);
 }
 @media (hover: hover) and (pointer: fine) {
-  details.dropdown-container:hover .dropdown-menu {
+  details.dropdown-container:hover .dropdown-menu,
+  details.dropdown-container:hover .dropdown-menu-fullwidth {
     display: block !important;
   }
   details.dropdown-container:hover .dropdown-chevron {
     transform: rotate(180deg);
   }
+}
+
+/* Full-Width Mega Menu Dropdown */
+.dropdown-menu-fullwidth {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: var(--bg, #FAF8F4);
+  border-bottom: var(--pop-border, 2.5px solid #0B1F3B);
+  box-shadow: 0 10px 30px -5px rgba(11, 31, 59, 0.15), var(--pop-shadow-lg, 6px 6px 0px #0B1F3B);
+  z-index: 100;
+}
+
+:root[data-theme="dark"] .dropdown-menu-fullwidth,
+html[data-theme="dark"] .dropdown-menu-fullwidth,
+.dark .dropdown-menu-fullwidth {
+  background: var(--bg-dark, #0B1F3B);
+  border-bottom: var(--pop-border, 2.5px solid #FAF8F4);
+  box-shadow: 0 14px 32px -4px rgba(0, 0, 0, 0.65), var(--pop-shadow-lg, 6px 6px 0px #39D353);
+}
+
+.dropdown-product-card {
+  border: 1.5px solid var(--border-subtle, rgba(11, 31, 59, 0.18));
+  background: var(--bg-2, #f2ede4);
+  transition: all 0.15s ease;
+}
+:root[data-theme="dark"] .dropdown-product-card,
+html[data-theme="dark"] .dropdown-product-card,
+.dark .dropdown-product-card {
+  background: var(--bg-dark-2, #112646);
+  border: 1.5px solid var(--border-subtle, rgba(250, 248, 244, 0.2));
+}
+.dropdown-product-card:hover {
+  border-color: var(--primary, #39D353);
+  transform: translateY(-2px);
+  box-shadow: var(--pop-shadow-sm, 2px 2px 0px var(--border, #0B1F3B));
 }
