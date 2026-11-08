@@ -391,10 +391,10 @@ layout: Landing
       <p class="text-sm sm:text-base md:text-lg text-muted dark:text-muted-dark leading-relaxed" data-i18n="workloads.lead">Stop assembling disparate frameworks for web, CLI, background queues, and infra. Krewire provides unified ergonomics, shared configuration, and zero context switching.</p>
     </div>
 
-    <!-- Group 1: Web & Application Tier -->
+    <!-- Group 1: Web & Application Workloads -->
     <div class="mb-10 sm:mb-14">
       <div class="flex items-center gap-3 mb-5">
-        <Badge Variant="neutral" Class="text-xs font-mono font-bold uppercase tracking-wider">Tier 1: Web &amp; Applications</Badge>
+        <Badge Variant="neutral" Class="text-xs font-mono font-bold uppercase tracking-wider">Web &amp; Applications</Badge>
         <div class="h-px bg-border-subtle flex-1"></div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
@@ -432,10 +432,10 @@ layout: Landing
       </div>
     </div>
 
-    <!-- Group 2: Async & Distributed Systems -->
+    <!-- Group 2: Async & Distributed Workloads -->
     <div class="mb-10 sm:mb-14">
       <div class="flex items-center gap-3 mb-5">
-        <Badge Variant="neutral" Class="text-xs font-mono font-bold uppercase tracking-wider">Tier 2: Async &amp; Distributed Infrastructure</Badge>
+        <Badge Variant="neutral" Class="text-xs font-mono font-bold uppercase tracking-wider">Async &amp; Distributed Infrastructure</Badge>
         <div class="h-px bg-border-subtle flex-1"></div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
@@ -489,10 +489,10 @@ layout: Landing
       </div>
     </div>
 
-    <!-- Group 3: CLI & Cloud IaC -->
+    <!-- Group 3: Developer Tools & Cloud IaC -->
     <div>
       <div class="flex items-center gap-3 mb-5">
-        <Badge Variant="neutral" Class="text-xs font-mono font-bold uppercase tracking-wider">Tier 3: Developer Tools &amp; Cloud IaC</Badge>
+        <Badge Variant="neutral" Class="text-xs font-mono font-bold uppercase tracking-wider">Developer Tools &amp; Cloud IaC</Badge>
         <div class="h-px bg-border-subtle flex-1"></div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
