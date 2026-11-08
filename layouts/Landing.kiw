@@ -153,48 +153,60 @@
 
 .landing-section {
   width: 100%;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: 6rem !important;
+  padding-bottom: 6rem !important;
   box-sizing: border-box;
 }
 @media (min-width: 640px) {
   .landing-section {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+    padding-top: 7rem !important;
+    padding-bottom: 7rem !important;
+  }
+}
+@media (min-width: 768px) {
+  .landing-section {
+    padding-top: 8rem !important;
+    padding-bottom: 8rem !important;
   }
 }
 @media (min-width: 1024px) {
   .landing-section {
-    padding-top: 7.5rem;
-    padding-bottom: 7.5rem;
+    padding-top: 9rem !important;
+    padding-bottom: 9rem !important;
   }
 }
 
 .landing-hero {
-  padding-top: 4.5rem;
-  padding-bottom: 5rem;
+  padding-top: 5rem !important;
+  padding-bottom: 6rem !important;
 }
 @media (min-width: 640px) {
   .landing-hero {
-    padding-top: 5.5rem;
-    padding-bottom: 6.5rem;
+    padding-top: 6.5rem !important;
+    padding-bottom: 7.5rem !important;
+  }
+}
+@media (min-width: 768px) {
+  .landing-hero {
+    padding-top: 7.5rem !important;
+    padding-bottom: 8.5rem !important;
   }
 }
 @media (min-width: 1024px) {
   .landing-hero {
-    padding-top: 6.5rem;
-    padding-bottom: 7.5rem;
+    padding-top: 8.5rem !important;
+    padding-bottom: 9.5rem !important;
   }
 }
 
 .landing-trust {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
+  padding-top: 1.75rem !important;
+  padding-bottom: 1.75rem !important;
 }
 @media (min-width: 640px) {
   .landing-trust {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    padding-top: 2.25rem !important;
+    padding-bottom: 2.25rem !important;
   }
 }
 

@@ -1695,17 +1695,20 @@ html[data-theme="dark"] .dropdown-product-card,
 .py-24 { padding-top: 6rem; padding-bottom: 6rem; }
 .py-28 { padding-top: 7rem; padding-bottom: 7rem; }
 .py-32 { padding-top: 8rem; padding-bottom: 8rem; }
+.py-36 { padding-top: 9rem; padding-bottom: 9rem; }
 
 @media (min-width: 640px) {
   .sm\:py-3\.5 { padding-top: 0.875rem; padding-bottom: 0.875rem; }
   .sm\:py-4 { padding-top: 1rem; padding-bottom: 1rem; }
   .sm\:py-5 { padding-top: 1.25rem; padding-bottom: 1.25rem; }
   .sm\:py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+  .sm\:py-8 { padding-top: 2rem; padding-bottom: 2rem; }
   .sm\:py-12 { padding-top: 3rem; padding-bottom: 3rem; }
   .sm\:py-16 { padding-top: 4rem; padding-bottom: 4rem; }
   .sm\:py-20 { padding-top: 5rem; padding-bottom: 5rem; }
   .sm\:py-24 { padding-top: 6rem; padding-bottom: 6rem; }
   .sm\:py-28 { padding-top: 7rem; padding-bottom: 7rem; }
+  .sm\:py-32 { padding-top: 8rem; padding-bottom: 8rem; }
 }
 
 @media (min-width: 768px) {
@@ -1713,6 +1716,8 @@ html[data-theme="dark"] .dropdown-product-card,
   .md\:py-20 { padding-top: 5rem; padding-bottom: 5rem; }
   .md\:py-24 { padding-top: 6rem; padding-bottom: 6rem; }
   .md\:py-28 { padding-top: 7rem; padding-bottom: 7rem; }
+  .md\:py-32 { padding-top: 8rem; padding-bottom: 8rem; }
+  .md\:py-36 { padding-top: 9rem; padding-bottom: 9rem; }
 }
 
 @media (min-width: 1024px) {
@@ -1720,6 +1725,7 @@ html[data-theme="dark"] .dropdown-product-card,
   .lg\:py-24 { padding-top: 6rem; padding-bottom: 6rem; }
   .lg\:py-28 { padding-top: 7rem; padding-bottom: 7rem; }
   .lg\:py-32 { padding-top: 8rem; padding-bottom: 8rem; }
+  .lg\:py-36 { padding-top: 9rem; padding-bottom: 9rem; }
 }
 
 /* 5. Padding Utilities (Horizontal) */
