@@ -11,7 +11,7 @@ name: Emergency Hotfix Deploy to krewire.com (Protocol Bypass with Stable Fallba
 # SAFETY GUARANTEE:
 # If the emergency hotfix fails to boot, fails container health checks, or
 # fails live smoke tests, the workflow IMMEDIATELY rolls back to the last known
-# STABLE production version (krewire-web:stable / v*.*.*).
+# STABLE production version (krewire-app:stable / v*.*.*).
 # ─────────────────────────────────────────────────────────────────────────────
 on:
   push:
@@ -121,14 +121,14 @@ jobs:
           push: false
           load: true
           tags: |
-            krewire-web:hotfix-${{ github.sha }}
-            krewire-web:latest
+            krewire-app:hotfix-${{ github.sha }}
+            krewire-app:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
       - name: Export Docker image (with checksum)
         run: |
-          docker save krewire-web:hotfix-${{ github.sha }} | gzip > /tmp/krewire-hotfix.tar.gz
+          docker save krewire-app:hotfix-${{ github.sha }} | gzip > /tmp/krewire-hotfix.tar.gz
           sha256sum /tmp/krewire-hotfix.tar.gz > /tmp/krewire-hotfix.tar.gz.sha256
           echo "Hotfix image checksum:"
           cat /tmp/krewire-hotfix.tar.gz.sha256
@@ -168,14 +168,14 @@ jobs:
 
             echo "▶ [HOTFIX] Identifying current STABLE version as safe fallback target..."
             STABLE_IMAGE=""
-            if docker inspect --type=image krewire-web:stable >/dev/null 2>&1; then
-              STABLE_IMAGE="krewire-web:stable"
-            elif STABLE_TAG=$(docker images --format '{{.Repository}}:{{.Tag}}' | grep '^krewire-web:v[0-9]' | sort -V | tail -n 1) && [ -n "$STABLE_TAG" ]; then
+            if docker inspect --type=image krewire-app:stable >/dev/null 2>&1; then
+              STABLE_IMAGE="krewire-app:stable"
+            elif STABLE_TAG=$(docker images --format '{{.Repository}}:{{.Tag}}' | grep '^krewire-app:v[0-9]' | sort -V | tail -n 1) && [ -n "$STABLE_TAG" ]; then
               STABLE_IMAGE="$STABLE_TAG"
-            elif docker inspect --type=image krewire-web:previous >/dev/null 2>&1; then
-              STABLE_IMAGE="krewire-web:previous"
-            elif docker inspect --type=image krewire-web:latest >/dev/null 2>&1; then
-              STABLE_IMAGE="krewire-web:latest"
+            elif docker inspect --type=image krewire-app:previous >/dev/null 2>&1; then
+              STABLE_IMAGE="krewire-app:previous"
+            elif docker inspect --type=image krewire-app:latest >/dev/null 2>&1; then
+              STABLE_IMAGE="krewire-app:latest"
             fi
             echo "✓ Pinned STABLE fallback baseline: ${STABLE_IMAGE:-none}"
 
@@ -188,17 +188,17 @@ jobs:
             docker load < /tmp/krewire-hotfix.tar.gz
 
             echo "▶ [HOTFIX] Tagging image as latest and hotfix-${SHA}..."
-            docker tag "krewire-web:hotfix-${SHA}" krewire-web:latest
+            docker tag "krewire-app:hotfix-${SHA}" krewire-app:latest
 
             echo "▶ [HOTFIX] Restarting container with emergency patch..."
             cd ~/workspace/krewire/krewire.com
-            docker rm -f krewire-web 2>/dev/null || true
+            docker rm -f krewire-app 2>/dev/null || true
             docker compose up -d --no-build
 
             echo "▶ [HOTFIX] Verifying container health..."
             HEALTHY=false
             for i in $(seq 1 15); do
-              STATUS="$(docker inspect --format='{{.State.Health.Status}}' krewire-web 2>/dev/null || echo 'unknown')"
+              STATUS="$(docker inspect --format='{{.State.Health.Status}}' krewire-app 2>/dev/null || echo 'unknown')"
               printf "  [%2d/15] Health: %s\n" "$i" "$STATUS"
               if [ "$STATUS" = "healthy" ]; then
                 HEALTHY=true
@@ -214,8 +214,8 @@ jobs:
             if [ "$HEALTHY" = "false" ]; then
               echo "🚨 EMERGENCY HOTFIX FAILED HEALTHCHECK! Executing automatic fallback to STABLE VERSION: ${STABLE_IMAGE}"
               if [ -n "$STABLE_IMAGE" ]; then
-                docker tag "$STABLE_IMAGE" krewire-web:latest
-                docker rm -f krewire-web 2>/dev/null || true
+                docker tag "$STABLE_IMAGE" krewire-app:latest
+                docker rm -f krewire-app 2>/dev/null || true
                 docker compose up -d --no-build
                 echo "✓ Automatic fallback to stable version (${STABLE_IMAGE}) completed. VPS restored."
               else
@@ -273,19 +273,19 @@ jobs:
             set -euo pipefail
             cd ~/workspace/krewire/krewire.com
             # Find stable image
-            if docker inspect --type=image krewire-web:stable >/dev/null 2>&1; then
-              FALLBACK="krewire-web:stable"
-            elif STABLE_TAG=$(docker images --format '{{.Repository}}:{{.Tag}}' | grep '^krewire-web:v[0-9]' | sort -V | tail -n 1) && [ -n "$STABLE_TAG" ]; then
+            if docker inspect --type=image krewire-app:stable >/dev/null 2>&1; then
+              FALLBACK="krewire-app:stable"
+            elif STABLE_TAG=$(docker images --format '{{.Repository}}:{{.Tag}}' | grep '^krewire-app:v[0-9]' | sort -V | tail -n 1) && [ -n "$STABLE_TAG" ]; then
               FALLBACK="$STABLE_TAG"
-            elif docker inspect --type=image krewire-web:previous >/dev/null 2>&1; then
-              FALLBACK="krewire-web:previous"
+            elif docker inspect --type=image krewire-app:previous >/dev/null 2>&1; then
+              FALLBACK="krewire-app:previous"
             else
               echo "⚠ No fallback image found."
               exit 1
             fi
             echo "▶ Fallback target: ${FALLBACK}"
-            docker tag "$FALLBACK" krewire-web:latest
-            docker rm -f krewire-web 2>/dev/null || true
+            docker tag "$FALLBACK" krewire-app:latest
+            docker rm -f krewire-app 2>/dev/null || true
             docker compose up -d --no-build
             echo "✓ Emergency fallback to stable image (${FALLBACK}) executed successfully."
             echo "[$(date -u +%Y-%m-%dT%H:%M:%SZ)] ⚠️ SMOKE TEST FAILED: Emergency fallback restored ${FALLBACK}" >> ~/workspace/krewire/deploy.log

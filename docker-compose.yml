@@ -1,7 +1,10 @@
 services:
-  web:
-    image: krewire-web:latest
-    container_name: krewire-web
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: krewire-app:latest
+    container_name: krewire-app
     restart: unless-stopped
     ports:
       - "127.0.0.1:8090:80"
