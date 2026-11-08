@@ -98,6 +98,27 @@
   width: 100% !important;
   max-width: 100% !important;
   min-width: 0 !important;
+  overflow: clip;
+}
+
+#main h1,
+#main h2,
+#main h3 {
+  text-wrap: balance;
+}
+
+#main p {
+  text-wrap: pretty;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #main *,
+  #main *::before,
+  #main *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }
 
 /* Container & Spacing System */

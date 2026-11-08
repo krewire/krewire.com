@@ -1,5 +1,5 @@
 ---
-title: "Krewire — The Complete Go SDLC Platform · One Ecosystem. Every Workload."
+title: "Krewire — The Go-First Software Engineering Ecosystem · One Ecosystem. Every Workload."
 description: "End-to-end digital SDLC ecosystem in Go — secure, sustainable, scalable. One CLI kiw, one config krewire.yaml, every workload: app, cli, site, book, worker, service, gateway, infra."
 layout: Landing
 ---
@@ -17,14 +17,14 @@ layout: Landing
           <!-- Eyebrow -->
           <div class="badge badge-primary inline-flex items-center gap-1.5 mb-4 sm:mb-6">
             <span>◈</span>
-            <span data-i18n="hero.eyebrow">End-to-End Digital SDLC Ecosystem · {#if version}{version}{:else}v0.2.0{/if} · Open Source</span>
+            <span data-i18n="hero.eyebrow">GO-FIRST SOFTWARE ENGINEERING ECOSYSTEM · {#if version}{version}{:else}v0.2.2{/if}</span>
           </div>
 
           <!-- Headline -->
           <h1 class="font-black tracking-tighter leading-tight text-fg dark:text-fg-dark break-words mb-5 sm:mb-6"
               style="font-size:clamp(30px,6.5vw,56px); letter-spacing:-0.04em"
               data-i18n-html="hero.title_html">
-            The Complete Go SDLC Platform.<br class="hidden sm:inline">
+            The Go-First Software Engineering Ecosystem.<br class="hidden sm:inline">
             <span class="text-primary">One Ecosystem. Every Workload.</span>
           </h1>
 
@@ -46,7 +46,7 @@ layout: Landing
             <Button Variant="outline" Size="lg" Href="https://open.krewire.com/"><span data-i18n="hero.cta_contribute">Contribute →</span></Button>
           </div>
 
-          <p class="text-xs font-semibold text-muted dark:text-muted-dark mt-1" data-i18n="hero.meta">Go 1.27.1+ · Spec to Production · File-based routing · Scoped CSS · 100% Zero JS by default</p>
+          <p class="text-xs font-semibold text-muted dark:text-muted-dark mt-1" data-i18n="hero.meta">Go 1.27.1+ · Spec to Production · File-based routing · Scoped CSS · Progressive by design</p>
         </div>
       </div>
 
@@ -92,15 +92,15 @@ layout: Landing
     <HStack gap="md" wrap=true justify="between" class="gap-y-3">
       <span class="badge badge-primary shrink-0" data-i18n="trust.label">Unified Go Toolchain</span>
       <HStack gap="sm" wrap=true class="text-xs sm:text-xs md:text-sm font-semibold text-muted dark:text-muted-dark gap-y-2 gap-x-3 sm:gap-x-4">
-        <span data-i18n="trust.stdlib"><b class="text-fg dark:text-fg-dark">100%</b> Go Standard Library</span>
+        <span><b class="text-fg dark:text-fg-dark">Go-first</b> Toolchain</span>
         <span class="hidden sm:inline opacity-40">·</span>
-        <span data-i18n="trust.npm"><b class="text-fg dark:text-fg-dark">0</b> npm / 0 Bundlers</span>
+        <span><b class="text-fg dark:text-fg-dark">1</b> CLI · kiw</span>
         <span class="hidden sm:inline opacity-40">·</span>
-        <span data-i18n="trust.workloads"><b class="text-fg dark:text-fg-dark">8</b> Workloads in 1 Binary</span>
+        <span><b class="text-fg dark:text-fg-dark">8</b> Workload Types</span>
         <span class="hidden sm:inline opacity-40">·</span>
-        <span data-i18n="trust.coldstart"><b class="text-fg dark:text-fg-dark">&lt; 1ms</b> Cold Starts</span>
+        <span><b class="text-fg dark:text-fg-dark">1</b> Project Config</span>
         <span class="hidden sm:inline opacity-40">·</span>
-        <span data-i18n="trust.config">Single Config <code class="code-inline">krewire.yaml</code></span>
+        <span data-i18n="trust.opensource">Open Source</span>
       </HStack>
     </HStack>
   </div>
