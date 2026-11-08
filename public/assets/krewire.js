@@ -212,9 +212,9 @@ var translations = {
       "panel_desc": "Self-hosted server & admin control panel"
     },
     "hero": {
-      "eyebrow": "End-to-End Digital SDLC Ecosystem · v0.2.0 · Open Source",
-      "title_html": "One Ecosystem.<br class=\"hidden sm:inline\">Every Workload.",
-      "lead_html": "Krewire is an end-to-end <b class=\"text-fg dark:text-fg-dark\">digital SDLC platform and application ecosystem</b> in Go — unifying the entire software lifecycle from specification to production operations. Beyond modular Go libraries, Krewire integrates autonomous AI agents, enterprise SSO &amp; RBAC, hybrid PaaS, cloud dev sandboxes, server control panels, and a zero-npm design system into one seamless stack with a single CLI <code class=\"code-inline\">kiw</code>. Built on three immutable pillars: <b class=\"text-fg dark:text-fg-dark\">secure</b>, <b class=\"text-fg dark:text-fg-dark\">sustainable</b>, and <b class=\"text-fg dark:text-fg-dark\">scalable</b>.",
+      "eyebrow": "End-to-End Digital SDLC Ecosystem · v0.2.1 · Open Source",
+      "title_html": "The Complete Go SDLC Platform.<br class=\"hidden sm:inline\"><span class=\"text-primary\">One Ecosystem. Every Workload.</span>",
+      "lead_html": "Krewire is an end-to-end <b class=\"text-fg dark:text-fg-dark\">digital SDLC platform and application ecosystem</b> in Go — spanning the entire software lifecycle from specification, autonomous AI agents, enterprise SSO &amp; RBAC, hybrid PaaS, virtual dev workspaces, to production server operations. Far beyond modular Go libraries, Krewire delivers a cohesive, unified platform driven by a single CLI <code class=\"code-inline\">kiw</code>. Built on three immutable pillars: <b class=\"text-fg dark:text-fg-dark\">secure</b>, <b class=\"text-fg dark:text-fg-dark\">sustainable</b>, and <b class=\"text-fg dark:text-fg-dark\">scalable</b>.",
       "cta_start": "Get Started — 5 Min →",
       "cta_contribute": "Contribute →",
       "meta": "Go 1.27.1+ · Spec to Production · File-based routing · Scoped CSS · 100% Zero JS by default"
@@ -276,7 +276,7 @@ var translations = {
     },
     "workloads": {
       "badge": "Unified Workload Engine",
-      "title": "Modular Libraries. Eight Workloads.",
+      "title": "One Unified Architecture. Eight Workloads.",
       "lead": "Stop assembling disparate tools for web, CLI, background queues, and infra. Krewire provides unified ergonomics, shared configuration, and zero context switching.",
       "app_desc": "Fullstack web monolith — compile your web interface, HTTP routing, and API handlers into a single static Go binary.",
       "cli_desc": "Developer command-line tools & rich terminal interfaces powered by the lightweight TUI library with zero dependencies.",
@@ -432,9 +432,9 @@ var translations = {
       "panel_desc": "Panel kontrol server mandiri & admin"
     },
     "hero": {
-      "eyebrow": "Ekosistem SDLC Digital End-to-End · v0.2.0 · Open Source",
-      "title_html": "One Ecosystem.<br class=\"hidden sm:inline\">Every Workload.",
-      "lead_html": "Krewire adalah <b class=\"text-fg dark:text-fg-dark\">platform SDLC digital dan ekosistem aplikasi</b> end-to-end dalam Go — menghubungkan seluruh siklus hidup perangkat lunak dari spesifikasi hingga operasi produksi. Lebih dari sekadar pustaka Go modular, Krewire menyatukan agen AI otonom, sistem identitas SSO &amp; RBAC, hybrid PaaS, sandbox developer, panel server, dan design system bebas npm ke dalam satu alur kerja terpadu dengan satu CLI <code class=\"code-inline\">kiw</code>. Dibangun di atas tiga pilar utama: <b class=\"text-fg dark:text-fg-dark\">secure</b>, <b class=\"text-fg dark:text-fg-dark\">sustainable</b>, dan <b class=\"text-fg dark:text-fg-dark\">scalable</b>.",
+      "eyebrow": "Ekosistem SDLC Digital End-to-End · v0.2.1 · Open Source",
+      "title_html": "Platform SDLC Digital Terpadu dalam Go.<br class=\"hidden sm:inline\"><span class=\"text-primary\">One Ecosystem. Every Workload.</span>",
+      "lead_html": "Krewire adalah <b class=\"text-fg dark:text-fg-dark\">platform SDLC digital terpadu dan ekosistem aplikasi</b> berbasis Go — mencakup seluruh siklus pengembangan software dari spesifikasi, agen AI otonom, identitas SSO &amp; RBAC, hybrid PaaS, workspace virtual, hingga manajemen server produksi. Krewire bukan sekadar pustaka Go modular, melainkan ekosistem terpadu yang digerakkan oleh satu CLI <code class=\"code-inline\">kiw</code>. Dibangun kokoh di atas tiga pilar: <b class=\"text-fg dark:text-fg-dark\">secure</b>, <b class=\"text-fg dark:text-fg-dark\">sustainable</b>, dan <b class=\"text-fg dark:text-fg-dark\">scalable</b>.",
       "cta_start": "Mulai Sekarang — 5 Menit →",
       "cta_contribute": "Berkontribusi →",
       "meta": "Go 1.27.1+ · Dari Spek ke Produksi · Routing Berbasis Berkas · Scoped CSS · 100% Bebas JS secara Bawaan"
@@ -496,7 +496,7 @@ var translations = {
     },
     "workloads": {
       "badge": "Engine Workload Terpadu",
-      "title": "Library Modular. Delapan Workload.",
+      "title": "Satu Arsitektur Terpadu. Delapan Workload.",
       "lead": "Berhenti merakit berbagai perkakas terpisah untuk web, CLI, antrean latar belakang, dan infra. Krewire menghadirkan ergonomi terpadu, konfigurasi bersama, dan tanpa peralihan konteks.",
       "app_desc": "Monolit web fullstack — kompilasi antarmuka web, routing HTTP, dan handler API menjadi satu binary statis Go mandiri.",
       "cli_desc": "Tool command-line pengembang & antarmuka terminal interaktif didukung pustaka TUI ringan tanpa dependensi luar.",

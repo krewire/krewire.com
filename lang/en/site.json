@@ -18,9 +18,9 @@
     "panel_desc": "Self-hosted server & admin control panel"
   },
   "hero": {
-    "eyebrow": "End-to-End Digital SDLC Ecosystem · v0.2.0 · Open Source",
-    "title_html": "One Ecosystem.<br class=\"hidden sm:inline\">Every Workload.",
-    "lead_html": "Krewire is an end-to-end <b class=\"text-fg dark:text-fg-dark\">digital SDLC platform and application ecosystem</b> in Go — unifying the entire software lifecycle from specification to production operations. Beyond modular Go libraries, Krewire integrates autonomous AI agents, enterprise SSO &amp; RBAC, hybrid PaaS, cloud dev sandboxes, server control panels, and a zero-npm design system into one seamless stack with a single CLI <code class=\"code-inline\">kiw</code>. Built on three immutable pillars: <b class=\"text-fg dark:text-fg-dark\">secure</b>, <b class=\"text-fg dark:text-fg-dark\">sustainable</b>, and <b class=\"text-fg dark:text-fg-dark\">scalable</b>.",
+    "eyebrow": "End-to-End Digital SDLC Ecosystem · v0.2.1 · Open Source",
+    "title_html": "The Complete Go SDLC Platform.<br class=\"hidden sm:inline\"><span class=\"text-primary\">One Ecosystem. Every Workload.</span>",
+    "lead_html": "Krewire is an end-to-end <b class=\"text-fg dark:text-fg-dark\">digital SDLC platform and application ecosystem</b> in Go — spanning the entire software lifecycle from specification, autonomous AI agents, enterprise SSO &amp; RBAC, hybrid PaaS, virtual dev workspaces, to production server operations. Far beyond modular Go libraries, Krewire delivers a cohesive, unified platform driven by a single CLI <code class=\"code-inline\">kiw</code>. Built on three immutable pillars: <b class=\"text-fg dark:text-fg-dark\">secure</b>, <b class=\"text-fg dark:text-fg-dark\">sustainable</b>, and <b class=\"text-fg dark:text-fg-dark\">scalable</b>.",
     "cta_start": "Get Started — 5 Min →",
     "cta_contribute": "Contribute →",
     "meta": "Go 1.27.1+ · Spec to Production · File-based routing · Scoped CSS · 100% Zero JS by default"
@@ -82,7 +82,7 @@
   },
   "workloads": {
     "badge": "Unified Workload Engine",
-    "title": "Modular Libraries. Eight Workloads.",
+    "title": "One Unified Architecture. Eight Workloads.",
     "lead": "Stop assembling disparate tools for web, CLI, background queues, and infra. Krewire provides unified ergonomics, shared configuration, and zero context switching.",
     "app_desc": "Fullstack web monolith — compile your web interface, HTTP routing, and API handlers into a single static Go binary.",
     "cli_desc": "Developer command-line tools & rich terminal interfaces powered by the lightweight TUI library with zero dependencies.",

@@ -1,5 +1,5 @@
 ---
-title: "Krewire — One Ecosystem. Every Workload."
+title: "Krewire — The Complete Go SDLC Platform · One Ecosystem. Every Workload."
 description: "End-to-end digital SDLC ecosystem in Go — secure, sustainable, scalable. One CLI kiw, one config krewire.yaml, every workload: app, cli, site, book, worker, service, gateway, infra."
 layout: Landing
 ---
@@ -24,13 +24,14 @@ layout: Landing
           <h1 class="font-black tracking-tighter leading-tight text-fg dark:text-fg-dark break-words mb-4 sm:mb-5"
               style="font-size:clamp(30px,6.5vw,56px); letter-spacing:-0.04em"
               data-i18n-html="hero.title_html">
-            One Ecosystem.<br class="hidden sm:inline">Every Workload.
+            The Complete Go SDLC Platform.<br class="hidden sm:inline">
+            <span class="text-primary">One Ecosystem. Every Workload.</span>
           </h1>
 
           <!-- Lead -->
           <p class="text-sm sm:text-base md:text-lg text-muted dark:text-muted-dark leading-relaxed max-w-xl lg:max-w-2xl xl:max-w-none mb-6 sm:mb-8"
              data-i18n-html="hero.lead_html">
-            Krewire is an end-to-end <b class="text-fg dark:text-fg-dark">digital SDLC platform and application ecosystem</b> in Go — unifying the entire software lifecycle from specification to production operations. Beyond modular Go libraries, Krewire integrates autonomous AI agents, enterprise SSO &amp; RBAC, hybrid PaaS, cloud dev sandboxes, server control panels, and a zero-npm design system into one seamless stack with a single CLI <code class="code-inline">kiw</code>. Built on three immutable pillars: <b class="text-fg dark:text-fg-dark">secure</b>, <b class="text-fg dark:text-fg-dark">sustainable</b>, and <b class="text-fg dark:text-fg-dark">scalable</b>.
+            Krewire is an end-to-end <b class="text-fg dark:text-fg-dark">digital SDLC platform and application ecosystem</b> in Go — spanning the entire software lifecycle from specification, autonomous AI agents, enterprise SSO &amp; RBAC, hybrid PaaS, virtual dev workspaces, to production server operations. Far beyond modular Go libraries, Krewire delivers a cohesive, unified platform driven by a single CLI <code class="code-inline">kiw</code>. Built on three immutable pillars: <b class="text-fg dark:text-fg-dark">secure</b>, <b class="text-fg dark:text-fg-dark">sustainable</b>, and <b class="text-fg dark:text-fg-dark">scalable</b>.
           </p>
 
           <!-- Quick terminal: install first -->
@@ -310,7 +311,7 @@ layout: Landing
   <div class="container-site">
     <div class="section-head">
       <span class="badge badge-primary mb-3" data-i18n="workloads.badge">Unified Workload Engine</span>
-      <h2 data-i18n="workloads.title">Modular Libraries. Eight Workloads.</h2>
+      <h2 data-i18n="workloads.title">One Unified Architecture. Eight Workloads.</h2>
       <p data-i18n="workloads.lead">Stop assembling disparate frameworks for web, CLI, background queues, and infra. Krewire provides unified ergonomics, shared configuration, and zero context switching.</p>
     </div>
 
