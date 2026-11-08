@@ -28,19 +28,10 @@ layout: Landing
           </h1>
 
           <!-- Lead -->
-          <p class="text-sm sm:text-base md:text-lg text-muted dark:text-muted-dark leading-relaxed max-w-xl lg:max-w-2xl xl:max-w-none mb-6 sm:mb-7"
+          <p class="text-sm sm:text-base md:text-lg text-muted dark:text-muted-dark leading-relaxed max-w-xl lg:max-w-2xl xl:max-w-none mb-6 sm:mb-8"
              data-i18n-html="hero.lead_html">
             Krewire is an end-to-end <b class="text-fg dark:text-fg-dark">digital SDLC platform and application ecosystem</b> in Go — unifying the entire software lifecycle from specification to production operations. Beyond modular Go libraries, Krewire integrates autonomous AI agents, enterprise SSO &amp; RBAC, hybrid PaaS, cloud dev sandboxes, server control panels, and a zero-npm design system into one seamless stack with a single CLI <code class="code-inline">kiw</code>. Built on three immutable pillars: <b class="text-fg dark:text-fg-dark">secure</b>, <b class="text-fg dark:text-fg-dark">sustainable</b>, and <b class="text-fg dark:text-fg-dark">scalable</b>.
           </p>
-
-          <!-- Integrated Ecosystem Layers -->
-          <div class="flex flex-wrap items-center gap-2 mb-6 sm:mb-8">
-            <span class="badge badge-primary text-xs font-mono font-bold">🤖 Krew (AI Agents)</span>
-            <span class="badge badge-primary text-xs font-mono font-bold">🛡️ Auth (IAM &amp; SSO)</span>
-            <span class="badge badge-primary text-xs font-mono font-bold">⚡ Cloud (Hybrid PaaS)</span>
-            <span class="badge badge-primary text-xs font-mono font-bold">🖥️ Panel (VPS Admin)</span>
-            <span class="badge badge-primary text-xs font-mono font-bold">📦 8 Go Workloads</span>
-          </div>
 
           <!-- Quick terminal: install first -->
           <div class="w-full max-w-xl lg:max-w-2xl xl:max-w-none flex flex-col gap-3 mb-8 sm:mb-10">
