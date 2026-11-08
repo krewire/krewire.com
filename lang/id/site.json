@@ -19,8 +19,8 @@
   },
   "hero": {
     "eyebrow": "Ekosistem SDLC Digital End-to-End · v0.2.0 · Open Source",
-    "title_html": "Library Go Modular.<br class=\"hidden sm:inline\">Untuk Setiap Workload.",
-    "lead_html": "Krewire adalah <b class=\"text-fg dark:text-fg-dark\">ekosistem SDLC digital</b> end-to-end — dari baris pertama spesifikasi hingga operasi produksi — dibangun di atas tiga pilar: <b class=\"text-fg dark:text-fg-dark\">secure</b>, <b class=\"text-fg dark:text-fg-dark\">sustainable</b>, dan <b class=\"text-fg dark:text-fg-dark\">scalable</b>. Dari monolit web binary tunggal hingga TUI interaktif, situs statis berkecepatan tinggi, pipeline buku, worker latar belakang, microservices, cloud infra, dan gateway API — bangun semuanya dalam Go dengan satu CLI <code class=\"code-inline\">kiw</code> dan bebas kelelahan JS.",
+    "title_html": "One Ecosystem.<br class=\"hidden sm:inline\">Every Workload.",
+    "lead_html": "Krewire adalah <b class=\"text-fg dark:text-fg-dark\">platform SDLC digital dan ekosistem aplikasi</b> end-to-end dalam Go — menghubungkan seluruh siklus hidup perangkat lunak dari spesifikasi hingga operasi produksi. Lebih dari sekadar pustaka Go modular, Krewire menyatukan agen AI otonom, sistem identitas SSO &amp; RBAC, hybrid PaaS, sandbox developer, panel server, dan design system bebas npm ke dalam satu alur kerja terpadu dengan satu CLI <code class=\"code-inline\">kiw</code>. Dibangun di atas tiga pilar utama: <b class=\"text-fg dark:text-fg-dark\">secure</b>, <b class=\"text-fg dark:text-fg-dark\">sustainable</b>, dan <b class=\"text-fg dark:text-fg-dark\">scalable</b>.",
     "cta_start": "Mulai Sekarang — 5 Menit →",
     "cta_contribute": "Berkontribusi →",
     "meta": "Go 1.27.1+ · Dari Spek ke Produksi · Routing Berbasis Berkas · Scoped CSS · 100% Bebas JS secara Bawaan"
@@ -205,7 +205,7 @@
     "workloads_title": "8 Workload",
     "docs_title": "Dokumentasi",
     "ecosystem_title": "Ekosistem",
-    "tagline_html": "Library Go Modular untuk Setiap Workload.<br>Satu CLI <code class=\"code-inline\">kiw</code>, satu konfigurasi <code class=\"code-inline\">krewire.yaml</code>.",
+    "tagline_html": "One Ecosystem. Every Workload.<br>Satu CLI <code class=\"code-inline\">kiw</code>, satu konfigurasi <code class=\"code-inline\">krewire.yaml</code>.",
     "badge": "Go Terkompilasi · Bebas Kembung",
     "copyright_html": "© 2026 Kontributor Krewire — 100% dibangun dengan workload <code class=\"code-inline\">site</code> Krewire."
   },

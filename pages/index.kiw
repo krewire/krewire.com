@@ -1,5 +1,5 @@
 ---
-title: "Krewire — Modular Go Libraries for Every Workload"
+title: "Krewire — One Ecosystem. Every Workload."
 description: "End-to-end digital SDLC ecosystem in Go — secure, sustainable, scalable. One CLI kiw, one config krewire.yaml, every workload: app, cli, site, book, worker, service, gateway, infra."
 layout: Landing
 ---
@@ -24,14 +24,23 @@ layout: Landing
           <h1 class="font-black tracking-tighter leading-tight text-fg dark:text-fg-dark break-words mb-4 sm:mb-5"
               style="font-size:clamp(30px,6.5vw,56px); letter-spacing:-0.04em"
               data-i18n-html="hero.title_html">
-            Modular Go Libraries.<br class="hidden sm:inline">Every Workload.
+            One Ecosystem.<br class="hidden sm:inline">Every Workload.
           </h1>
 
           <!-- Lead -->
-          <p class="text-sm sm:text-base md:text-lg text-muted dark:text-muted-dark leading-relaxed max-w-xl lg:max-w-2xl xl:max-w-none mb-6 sm:mb-8"
+          <p class="text-sm sm:text-base md:text-lg text-muted dark:text-muted-dark leading-relaxed max-w-xl lg:max-w-2xl xl:max-w-none mb-6 sm:mb-7"
              data-i18n-html="hero.lead_html">
-            Krewire is an end-to-end <b class="text-fg dark:text-fg-dark">digital SDLC ecosystem</b> — from the first line of the spec to production operations — built on three pillars: <b class="text-fg dark:text-fg-dark">secure</b>, <b class="text-fg dark:text-fg-dark">sustainable</b>, and <b class="text-fg dark:text-fg-dark">scalable</b>. From single-binary web monoliths to interactive TUIs, high-speed static sites, book pipelines, background workers, microservices, cloud infra, and API gateways — build everything in Go with one CLI <code class="code-inline">kiw</code> and zero JS fatigue.
+            Krewire is an end-to-end <b class="text-fg dark:text-fg-dark">digital SDLC platform and application ecosystem</b> in Go — unifying the entire software lifecycle from specification to production operations. Beyond modular Go libraries, Krewire integrates autonomous AI agents, enterprise SSO &amp; RBAC, hybrid PaaS, cloud dev sandboxes, server control panels, and a zero-npm design system into one seamless stack with a single CLI <code class="code-inline">kiw</code>. Built on three immutable pillars: <b class="text-fg dark:text-fg-dark">secure</b>, <b class="text-fg dark:text-fg-dark">sustainable</b>, and <b class="text-fg dark:text-fg-dark">scalable</b>.
           </p>
+
+          <!-- Integrated Ecosystem Layers -->
+          <div class="flex flex-wrap items-center gap-2 mb-6 sm:mb-8">
+            <span class="badge badge-primary text-xs font-mono font-bold">🤖 Krew (AI Agents)</span>
+            <span class="badge badge-primary text-xs font-mono font-bold">🛡️ Auth (IAM &amp; SSO)</span>
+            <span class="badge badge-primary text-xs font-mono font-bold">⚡ Cloud (Hybrid PaaS)</span>
+            <span class="badge badge-primary text-xs font-mono font-bold">🖥️ Panel (VPS Admin)</span>
+            <span class="badge badge-primary text-xs font-mono font-bold">📦 8 Go Workloads</span>
+          </div>
 
           <!-- Quick terminal: install first -->
           <div class="w-full max-w-xl lg:max-w-2xl xl:max-w-none flex flex-col gap-3 mb-8 sm:mb-10">
@@ -52,7 +61,7 @@ layout: Landing
       <!-- Art / Code window -->
       <div class="min-w-0 w-full mt-4 md:mt-0">
         <CodeWindow title="main.go">
-<span class="c">// One unified Go platform for 8 workloads</span>
+<span class="c">// One Ecosystem. Every Workload.</span>
 <span class="k">package</span> main
 
 <span class="k">import</span> (
@@ -63,18 +72,15 @@ layout: Landing
 <span class="k">func</span> <span class="f">main</span>() {
     app := web.New()
 
-    <span class="c">// High-speed routing, auto-escaping &amp; CSRF defaults</span>
+    <span class="c">// End-to-end SDLC platform in pure Go</span>
     app.Get(<span class="s">"/"</span>, <span class="k">func</span>(c *web.Context) error {
         <span class="k">return</span> c.JSON(<span class="n">200</span>, web.Map{
-            <span class="s">"status"</span>:     <span class="s">"running"</span>,
-            <span class="s">"platform"</span>:   <span class="s">"Krewire"</span>,
+            <span class="s">"ecosystem"</span>:  <span class="s">"Krewire"</span>,
             <span class="s">"workload"</span>:   model.KindApp,
+            <span class="s">"pillars"</span>:    []string{<span class="s">"secure"</span>, <span class="s">"sustainable"</span>, <span class="s">"scalable"</span>},
+            <span class="s">"platforms"</span>:  []string{<span class="s">"krew"</span>, <span class="s">"auth"</span>, <span class="s">"cloud"</span>, <span class="s">"dash"</span>, <span class="s">"panel"</span>},
+            <span class="s">"footprint"</span>:  <span class="s">"10-30 MB RAM"</span>,
             <span class="s">"cold_start"</span>: <span class="s">"&lt; 1ms"</span>,
-            <span class="s">"pillars"</span>: []string{
-                <span class="s">"secure"</span>,
-                <span class="s">"sustainable"</span>,
-                <span class="s">"scalable"</span>,
-            },
         })
     })
 
