@@ -87,7 +87,7 @@ project:
   name: "my-site"
   kind: "site"
   version: "v0.1.0"
-  author: "Krewire Contributors"
+  author: "Krewire Team"
 
 build:
   output: ".krewire/build"

@@ -223,9 +223,9 @@ var translations = {
       "meta": "Go 1.27.1+ · Spec to Production · File-based routing · Scoped CSS · 100% Zero JS by default"
     },
     "products": {
-      "badge": "Core Products",
-      "title": "Core Products of the Krewire Platform",
-      "lead": "Everything you need to build, run, and scale modern applications — powered by AI, unified authentication, server administration, and resilient infrastructure.",
+      "badge": "Krewire Ecosystem",
+      "title": "The Krewire Ecosystem",
+      "lead": "One unified architecture and digital SDLC ecosystem — from autonomous AI workspaces and enterprise IAM to hybrid PaaS and server management.",
       "workspace_title": "Krewire Workspace",
       "workspace_badge": "AI-Powered",
       "workspace_desc": "Virtual workspace & autonomous integration engine. Web terminal, sandboxed runtimes, real-time code collaboration, and deep AI agent automation.",
@@ -404,7 +404,7 @@ var translations = {
       "ecosystem_title": "Ecosystem",
       "tagline_html": "One Ecosystem. Every Workload.<br>One CLI <code class=\"code-inline\">kiw</code>, one config <code class=\"code-inline\">krewire.yaml</code>.",
       "badge": "Compiled Go · Zero Bloat",
-      "copyright_html": "© 2026 Krewire Contributors — 100% built with Krewire <code class=\"code-inline\">site</code> workload."
+      "copyright_html": "© 2026 Krewire Team — Built with Krewire <code class=\"code-inline\">site</code> workload."
     },
     "docs_reader": {
       "toc_title": "Contents",
@@ -446,9 +446,9 @@ var translations = {
       "meta": "Go 1.27.1+ · Dari Spek ke Produksi · Routing Berbasis Berkas · Scoped CSS · 100% Bebas JS secara Bawaan"
     },
     "products": {
-      "badge": "Produk Utama",
-      "title": "Produk Utama Platform Krewire",
-      "lead": "Segala kebutuhan Anda untuk membangun, menjalankan, dan menskalakan aplikasi modern — didukung AI, autentikasi terpusat, administrasi server, dan infrastruktur tangguh.",
+      "badge": "Ekosistem Krewire",
+      "title": "Ekosistem Krewire",
+      "lead": "Satu arsitektur terpadu dan ekosistem SDLC digital — dari ruang kerja AI otonom dan IAM enterprise hingga hybrid PaaS dan manajemen server.",
       "workspace_title": "Krewire Workspace",
       "workspace_badge": "Bertenaga AI",
       "workspace_desc": "Virtual workspace & mesin integrasi otonom. Terminal web, runtime dalam sandbox, kolaborasi kode real-time, dan otomatisasi agen AI mendalam.",
@@ -627,7 +627,7 @@ var translations = {
       "ecosystem_title": "Ekosistem",
       "tagline_html": "One Ecosystem. Every Workload.<br>Satu CLI <code class=\"code-inline\">kiw</code>, satu konfigurasi <code class=\"code-inline\">krewire.yaml</code>.",
       "badge": "Go Terkompilasi · Bebas Kembung",
-      "copyright_html": "© 2026 Kontributor Krewire — 100% dibangun dengan workload <code class=\"code-inline\">site</code> Krewire."
+      "copyright_html": "© 2026 Krewire Team — Dibangun dengan workload <code class=\"code-inline\">site</code> Krewire."
     },
     "docs_reader": {
       "toc_title": "Daftar Isi",
