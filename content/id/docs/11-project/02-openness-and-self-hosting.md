@@ -19,7 +19,7 @@ Halaman ini memungkinkan Anda memeriksa — tanpa harus memercayai materi pemasa
 | [`krewire/ui`](https://github.com/krewire/ui) | Design system dan komponen UI `.kiw`. | Publik | [MIT](https://github.com/krewire/ui/blob/main/LICENSE) |
 | [`krewire/krewire.com`](https://github.com/krewire/krewire.com) | Situs dan dokumentasi ini. | Publik | [MIT](https://github.com/krewire/krewire.com/blob/main/LICENSE) |
 | [`krewire/krewire.github.io`](https://github.com/krewire/krewire.github.io) | Kode sumber portal komunitas. | Publik | [MIT](https://github.com/krewire/krewire.github.io/blob/main/LICENSE) |
-| `krewire/dash` | Krewire Workspace (Dash) — server workspace virtual. | **Privat** | Kode sumber tidak tersedia untuk publik; tidak ada pemberian lisensi publik. |
+| `krewire/dash` | Krewire Dash — server workspace virtual. | **Privat** | Kode sumber tidak tersedia untuk publik; tidak ada pemberian lisensi publik. |
 | `krewire/cloud` | Krewire Cloud — control plane PaaS hibrida. | **Privat** | Kode sumber tidak tersedia untuk publik; tidak ada pemberian lisensi publik. |
 | `krewire/auth` | Krewire Auth — server identitas, SSO, MFA, RBAC. | **Privat** | Kode sumber tidak tersedia untuk publik; tidak ada pemberian lisensi publik. |
 | `krewire/panel` | Krewire Panel — panel administrasi server. | **Privat** | Kode sumber tidak tersedia untuk publik; tidak ada pemberian lisensi publik. |
@@ -75,7 +75,7 @@ Lihat [Deployment & Operasi](/guides/deployment-and-operations) untuk panduan la
 
 ## Layanan ter-hosting opsional
 
-Krewire Workspace (Dash), Cloud, Auth, dan Panel bersifat **opsional**. Tidak ada perintah atau pustaka inti publik yang bergantung padanya untuk membangun, menjalankan, atau men-deploy perangkat lunak Anda. Visibilitas, model penyampaian, dan ketersediaannya saat ini didokumentasikan di [Inti & Layanan Platform](/project/core-and-platform-services). Singkatnya: keempatnya dikembangkan di repositori privat dan belum ada yang tersedia untuk publik sebagai layanan ter-hosting per 2026-11-09.
+Krewire Dash, Cloud, Auth, dan Panel bersifat **opsional**. Tidak ada perintah atau pustaka inti publik yang bergantung padanya untuk membangun, menjalankan, atau men-deploy perangkat lunak Anda. Visibilitas, model penyampaian, dan ketersediaannya saat ini didokumentasikan di [Inti & Layanan Platform](/project/core-and-platform-services). Singkatnya: keempatnya dikembangkan di repositori privat dan belum ada yang tersedia untuk publik sebagai layanan ter-hosting per 2026-11-09.
 
 ---
 

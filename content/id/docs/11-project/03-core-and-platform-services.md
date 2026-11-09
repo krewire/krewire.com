@@ -9,7 +9,7 @@ date: "2026-11-09"
 Krewire memiliki dua lapisan:
 
 1. **Inti open-source** — repositori publik berlisensi MIT (`krewire`, `krew`, `ui`) yang berisi pustaka, CLI `kiw`, dan tooling untuk kedelapan workload.
-2. **Layanan platform opsional** — Krewire Workspace (Dash), Cloud, Auth, dan Panel, yang dikembangkan di repositori **privat**.
+2. **Layanan platform opsional** — Krewire Dash, Cloud, Auth, dan Panel, yang dikembangkan di repositori **privat**.
 
 Inti sudah lengkap dengan sendirinya. Layanan platform dimaksudkan untuk menambah kemudahan operasional di atasnya; layanan tersebut tidak pernah menjadi prasyarat untuk membangun, menjalankan, atau men-deploy perangkat lunak dengan inti.
 
@@ -24,7 +24,7 @@ Inti sudah lengkap dengan sendirinya. Layanan platform dimaksudkan untuk menamba
 | **Pustaka inti & CLI `kiw`** (`krewire`) | Publik, MIT | Self-hosted (Anda yang menjalankan) | Tersedia — `go install` atau kode sumber | Per workload, lihat [Kematangan](/project/maturity-and-roadmap) |
 | **Krew** agen AI (`krew`) | Publik, MIT | Self-hosted (embed, CLI, HTTP/SSE, MCP) | Tersedia — kode sumber | Eksperimental |
 | **Krewire UI** (`ui`) | Publik, MIT | Komponen salin-dan-miliki | Tersedia — kode sumber | Eksperimental |
-| **Krewire Workspace** (Dash) | Privat | Rencana: layanan ter-hosting | Belum tersedia untuk publik | Eksperimental |
+| **Krewire Dash** | Privat | Rencana: layanan ter-hosting | Belum tersedia untuk publik | Eksperimental |
 | **Krewire Cloud** | Privat | Rencana: hibrida — SaaS terkelola dan engine self-hosted | Belum tersedia untuk publik | Eksperimental |
 | **Krewire Auth** | Privat | Rencana: layanan identitas ter-hosting dan server mandiri | Belum tersedia untuk publik | Eksperimental |
 | **Krewire Panel** | Privat | Rencana: binary tunggal self-hosted | Belum tersedia untuk publik | Eksperimental |
@@ -50,7 +50,7 @@ Nilai layanan ter-hosting adalah **mengoperasikan** perangkat lunak, bukan akses
 
 - menjalankan, memperbarui, dan memantau layanan sehingga Anda tidak perlu melakukannya;
 - isolasi multi-tenant, backup, dan TLS yang dikelola;
-- integrasi antar-layanan (misalnya single sign-on dari Auth ke Workspace dan Cloud).
+- integrasi antar-layanan (misalnya single sign-on dari Auth ke Dash dan Cloud).
 
 Semua ini belum ditawarkan hari ini. Sampai saat itu, jalur yang setara adalah meng-host sendiri keluaran Anda dengan inti (lihat [Deployment & Operasi](/guides/deployment-and-operations)).
 
@@ -60,7 +60,7 @@ Semua ini belum ditawarkan hari ini. Sampai saat itu, jalur yang setara adalah m
 
 Deskripsi di bawah merangkum README setiap repositori privat. Fungsionalitasnya tidak dapat diperiksa publik selama kode sumbernya privat.
 
-### Krewire Workspace (Dash)
+### Krewire Dash
 
 - **Apa itu:** server workspace virtual native AI — workspace dalam sandbox, terminal PTY di browser, presence real-time, dan agen `krew` tersemat, dikirim sebagai satu daemon (`krewire-dash-server`).
 - **Bergantung pada:** `krewire` (inti), `krew`, dan `auth` (versi minimum dideklarasikan di `version.go`-nya).

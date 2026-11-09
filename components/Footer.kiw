@@ -68,7 +68,7 @@
       <div class="lg:col-span-2 flex flex-col gap-2.5">
         <strong class="text-2xs font-mono font-bold uppercase tracking-wider text-fg dark:text-fg-dark mb-1" data-i18n="footer.products_title">Ecosystem Platforms</strong>
         <a href="/docs/security-platforms/virtual-workspace" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
-          <span>Krewire Workspace</span> <Badge Variant="primary" Size="sm" Class="font-mono">AI</Badge>
+          <span>Krewire Dash</span> <Badge Variant="primary" Size="sm" Class="font-mono">AI</Badge>
         </a>
         <a href="/docs/security-platforms/cloud-paas" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
           <span>Krewire Cloud</span> <Badge Variant="primary" Size="sm" Class="font-mono">PaaS</Badge>

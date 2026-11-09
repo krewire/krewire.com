@@ -107,7 +107,7 @@ Keamanan dan kecerdasan terdistribusi adalah pilar fundamental dari ekosistem Kr
     <div class="chapter-card-head">
       <span class="chapter-card-num">7.8</span>
       <h3 class="chapter-card-title">
-        <a href="/security-platforms/virtual-workspace">Workspace Virtual Native AI (Krewire Dash) <span class="arrow">→</span></a>
+        <a href="/security-platforms/virtual-workspace">Krewire Dash (Workspace Virtual Native AI) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">

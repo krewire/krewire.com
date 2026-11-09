@@ -19,7 +19,7 @@ This page lets you check — without trusting marketing copy — what you can **
 | [`krewire/ui`](https://github.com/krewire/ui) | `.kiw` design system and UI components. | Public | [MIT](https://github.com/krewire/ui/blob/main/LICENSE) |
 | [`krewire/krewire.com`](https://github.com/krewire/krewire.com) | This website and documentation. | Public | [MIT](https://github.com/krewire/krewire.com/blob/main/LICENSE) |
 | [`krewire/krewire.github.io`](https://github.com/krewire/krewire.github.io) | Community portal source. | Public | [MIT](https://github.com/krewire/krewire.github.io/blob/main/LICENSE) |
-| `krewire/dash` | Krewire Workspace (Dash) — virtual workspace server. | **Private** | Source not publicly available; no public license grant. |
+| `krewire/dash` | Krewire Dash — virtual workspace server. | **Private** | Source not publicly available; no public license grant. |
 | `krewire/cloud` | Krewire Cloud — hybrid PaaS control plane. | **Private** | Source not publicly available; no public license grant. |
 | `krewire/auth` | Krewire Auth — identity, SSO, MFA, RBAC server. | **Private** | Source not publicly available; no public license grant. |
 | `krewire/panel` | Krewire Panel — server administration panel. | **Private** | Source not publicly available; no public license grant. |
@@ -75,7 +75,7 @@ See [Deployment & Operations](/guides/deployment-and-operations) for step-by-ste
 
 ## Optional hosted services
 
-Krewire Workspace (Dash), Cloud, Auth, and Panel are **optional**. No public core command or library depends on them to build, run, or deploy your software. Their visibility, delivery model, and current availability are documented in [Core & Platform Services](/project/core-and-platform-services). In short: all four are developed in private repositories and none is publicly available as a hosted service as of 2026-11-09.
+Krewire Dash, Cloud, Auth, and Panel are **optional**. No public core command or library depends on them to build, run, or deploy your software. Their visibility, delivery model, and current availability are documented in [Core & Platform Services](/project/core-and-platform-services). In short: all four are developed in private repositories and none is publicly available as a hosted service as of 2026-11-09.
 
 ---
 

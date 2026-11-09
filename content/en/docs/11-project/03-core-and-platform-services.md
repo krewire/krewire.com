@@ -9,7 +9,7 @@ date: "2026-11-09"
 Krewire has two layers:
 
 1. **The open-source core** — the public, MIT-licensed repositories (`krewire`, `krew`, `ui`) that contain the libraries, the `kiw` CLI, and the tooling for all eight workloads.
-2. **Optional platform services** — Krewire Workspace (Dash), Cloud, Auth, and Panel, developed in **private** repositories.
+2. **Optional platform services** — Krewire Dash, Cloud, Auth, and Panel, developed in **private** repositories.
 
 The core is complete on its own. Platform services are meant to add operational convenience on top of it; they are never a prerequisite for building, running, or deploying software with the core.
 
@@ -24,7 +24,7 @@ The core is complete on its own. Platform services are meant to add operational 
 | **Core libraries & `kiw` CLI** (`krewire`) | Public, MIT | Self-hosted (you run it) | Available — `go install` or source | Per workload, see [Maturity](/project/maturity-and-roadmap) |
 | **Krew** AI agent (`krew`) | Public, MIT | Self-hosted (embed, CLI, HTTP/SSE, MCP) | Available — source | Experimental |
 | **Krewire UI** (`ui`) | Public, MIT | Copy-and-own components | Available — source | Experimental |
-| **Krewire Workspace** (Dash) | Private | Intended: hosted service | Not publicly available | Experimental |
+| **Krewire Dash** | Private | Intended: hosted service | Not publicly available | Experimental |
 | **Krewire Cloud** | Private | Intended: hybrid — managed SaaS and self-hosted engine | Not publicly available | Experimental |
 | **Krewire Auth** | Private | Intended: hosted identity service and standalone server | Not publicly available | Experimental |
 | **Krewire Panel** | Private | Intended: self-hosted single binary | Not publicly available | Experimental |
@@ -50,7 +50,7 @@ The value of a hosted service is **operating** software, not access to it. When 
 
 - running, upgrading, and monitoring the service so you do not have to;
 - managed multi-tenant isolation, backups, and TLS;
-- integration across services (for example, single sign-on from Auth into Workspace and Cloud).
+- integration across services (for example, single sign-on from Auth into Dash and Cloud).
 
 None of this is offered today. Until it is, the equivalent path is to self-host your own output with the core (see [Deployment & Operations](/guides/deployment-and-operations)).
 
@@ -60,7 +60,7 @@ None of this is offered today. Until it is, the equivalent path is to self-host 
 
 Descriptions below summarise each private repository's README. Functionality cannot be inspected publicly while the source is private.
 
-### Krewire Workspace (Dash)
+### Krewire Dash
 
 - **What it is:** an AI-native virtual workspace server — sandboxed workspaces, a browser PTY terminal, real-time presence, and an embedded `krew` agent, shipped as one daemon (`krewire-dash-server`).
 - **Depends on:** `krewire` (core), `krew`, and `auth` (minimum versions declared in its `version.go`).

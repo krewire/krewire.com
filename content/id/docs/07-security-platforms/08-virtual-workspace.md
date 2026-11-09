@@ -45,7 +45,7 @@ Krewire Dash menyediakan mesin workspace virtual berbasis AI dan platform cloud 
 
 ## Akses Workspace & Integrasi Platform
 
-> **Ketersediaan (2026-11-09):** Krewire Workspace (Dash) dikembangkan di repositori privat dan **belum tersedia untuk publik** — tidak ada pendaftaran publik, unduhan, ataupun endpoint ter-hosting, dan `dash.krewire.com` saat ini menyajikan situs utama krewire.com. Belum ada harga, paket, atau lisensi komersial yang dipublikasikan. Lihat [Inti & Layanan Platform](/project/core-and-platform-services) untuk model penyampaian, kematangan, dan proses pembaruan.
+> **Ketersediaan (2026-11-09):** Krewire Dash dikembangkan di repositori privat dan **belum tersedia untuk publik** — tidak ada pendaftaran publik, unduhan, ataupun endpoint ter-hosting, dan `dash.krewire.com` saat ini menyajikan situs utama krewire.com. Belum ada harga, paket, atau lisensi komersial yang dipublikasikan. Lihat [Inti & Layanan Platform](/project/core-and-platform-services) untuk model penyampaian, kematangan, dan proses pembaruan.
 
 ### Rencana Portal Workspace Cloud
 

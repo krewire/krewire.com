@@ -196,7 +196,7 @@ layout: Landing
     <!-- Bento Grid Container -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
 
-      <!-- Bento 1 (Large Spotlight, spans 7 cols on lg): Krewire Workspace -->
+      <!-- Bento 1 (Large Spotlight, spans 7 cols on lg): Krewire Dash -->
       <div class="lg:col-span-7 card flex flex-col justify-between p-7 sm:p-9 md:p-10 bg-bg-2 dark:bg-bg-dark-2 relative overflow-hidden group hover:-translate-y-1 transition-all duration-200">
         <div>
           <div class="flex items-center justify-between gap-3 mb-6 sm:mb-8">
@@ -204,7 +204,7 @@ layout: Landing
               <span class="icon-box bg-primary text-primary-content text-2xl w-12 h-12 flex items-center justify-center font-black">⚡</span>
               <div>
                 <Badge Variant="primary" Size="sm" Class="uppercase font-mono"><span data-i18n="products.workspace_badge">AI-Powered</span></Badge>
-                <h3 class="text-2xl sm:text-3xl font-black tracking-tight text-fg dark:text-fg-dark mt-1" data-i18n="products.workspace_title">Krewire Workspace</h3>
+                <h3 class="text-2xl sm:text-3xl font-black tracking-tight text-fg dark:text-fg-dark mt-1" data-i18n="products.workspace_title">Krewire Dash</h3>
               </div>
             </div>
           </div>
@@ -219,7 +219,7 @@ layout: Landing
                 <span class="w-2.5 h-2.5 rounded-full bg-accent"></span>
                 <span class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></span>
                 <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
-                <span class="font-mono text-[11px] text-slate-400 font-bold ml-2">workspace // dash.krewire.com</span>
+                <span class="font-mono text-[11px] text-slate-400 font-bold ml-2">dash // dash.krewire.com</span>
               </div>
               <Badge Variant="neutral" Size="sm"><span data-i18n="products.mockup">Illustration</span></Badge>
             </div>
@@ -251,7 +251,7 @@ layout: Landing
 
         <div class="flex items-center justify-between pt-5 border-t border-border-subtle mt-auto">
           <Button Variant="primary" Size="md" Href="/docs/security-platforms/virtual-workspace">
-            <span data-i18n="products.workspace_cta">Learn Workspace →</span>
+            <span data-i18n="products.workspace_cta">Learn Dash →</span>
           </Button>
           <span class="text-xs font-mono font-bold text-muted dark:text-muted-dark" data-i18n="products.status_private">Private · not publicly available yet</span>
         </div>

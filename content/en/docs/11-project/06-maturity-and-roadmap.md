@@ -47,7 +47,7 @@ One set of labels is used for workloads **and** products. The first three defini
 | `kiw` CLI & core libraries | Per workload (above) | Public source, tag `v0.2.0`. |
 | Krew (`krew`) | Experimental | Public source, tag `v0.2.0`; no public production deployment cited. |
 | Krewire UI (`ui`) | Experimental | Public source, no tag yet; used by this website's components. |
-| Workspace (Dash), Cloud, Auth | Experimental | Private source, tag `v0.2.0`; not publicly available. |
+| Krewire Dash, Cloud, Auth | Experimental | Private source, tag `v0.2.0`; not publicly available. |
 | Panel | Experimental | Private source; `version.go` declares 0.2.0, no tag yet; not publicly available. |
 
 Delivery models and availability are on [Core & Platform Services](/project/core-and-platform-services).
@@ -80,7 +80,7 @@ Status definitions:
 
 - **Core implementation gaps** (from the [maturity matrix](https://github.com/krewire/krewire/blob/main/docs/workloads/maturity-matrix.md)): zero-configuration build success for all eight starters (P0); distributed worker coordination (P1); standard Prometheus endpoints for `service` and `gateway` (P1).
 - **Krew** ([README roadmap](https://github.com/krewire/krew#readme)): hierarchical memory, OpenTelemetry step tracing, and agent identity (stated for 2027); agent-to-agent mesh and `v1.0.0` LTS (stated for 2028).
-- **Workspace (Dash)** (private README roadmap): MicroVM isolation and snapshots (stated for 2027); collaborative editing and `v1.0.0` LTS (stated for 2028).
+- **Krewire Dash** (private README roadmap): MicroVM isolation and snapshots (stated for 2027); collaborative editing and `v1.0.0` LTS (stated for 2028).
 
 Years in the proposed items are the targets stated in those READMEs, not commitments made by this page.
 
