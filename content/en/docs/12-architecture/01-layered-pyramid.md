@@ -19,30 +19,41 @@ date: "2026-11-09"
 
 The Krewire codebase is governed by non-negotiable architectural invariants across all packages and workloads. They are enforced by tests, not by convention.
 
-## 1. The Ecosystem Pyramid (Strict Downward Dependencies)
+## 1. The Ecosystem Architectural Battery
+
+The entire Krewire ecosystem flows through a unified architectural battery progression:
+
+```text
+Go Stdlib ──► Krewire Libraries ──► Krewire UI | Krewire Auth | Krewire Krew ──► Krewire Forge | Krewire Cloud ──► Krewire Dash
+                                                                                                               (Unified Workspace)
+```
+
+Every stage in this progression is driven and composed through the `kiw` developer CLI and configured declaratively via `krewire.yaml`.
+
+## 2. The Ecosystem Pyramid (Strict Downward Dependencies)
 
 Seen from the whole ecosystem, every repository sits on one layer of a pyramid (source: `krewire/docs/foundation/ecosystem-dag.md`):
 
 ```text
-Layer 5: Applications & Portals            krewire.com · krewire.github.io
+Layer 5: Unified Studio & Apex Portals     Dash (virtual workspace) · krewire.com · krewire.github.io
    ↓
-Layer 4: Platform Engines & Products       Dash (workspace) ∥ Panel (server admin)
-                                           Cloud (PaaS) ∥ Auth (IAM / SSO)   ← horizontal capabilities
+Layer 4: Platform Engines & Builders       Forge (web, form & panel builder) ∥ Cloud (PaaS)
+                                           Auth (IAM / SSO) ∥ Krew (AI agent)
    ↓
-Layer 3: Developer Driver & CLI            tools/kiw (kiw)
+Layer 3: Universal Developer Driver & CLI  tools/kiw (kiw) driven by krewire.yaml
    ↓
 Layer 2: UI Foundation & Domain Libraries  kui (.kiw components) · pkg/* (web, orm, sec, …)
    ↓
 Layer 1: Core Foundation & Kernel          pkg/model · pkg/errs · pkg/version · pkg/lifecycle
    ↓
-Layer 0: Go Standard Library & OS
+Layer 0: Go Standard Library & OS Primitives
 ```
 
 - **Strict downward-only:** a layer may import only layers below it (`Layer N → Layer < N`). Upward imports are forbidden and caught by `layering_test.go`.
 - **Kernel isolation:** `pkg/model` depends only on the standard library and `pkg/errs`.
 - **CLI encapsulation:** no library or platform package may import `kiw` (`tools/kiw`). Generated user projects depend on Krewire libraries, never on the CLI.
 
-## 2. Inside the Core Repository
+## 3. Inside the Core Repository
 
 Zooming into `github.com/krewire/krewire`, the same idea is applied as a ranked ladder of packages (source: `krewire/docs/foundation/architecture.md`):
 
@@ -66,20 +77,20 @@ Six invariants keep this ladder honest:
 | 5 | **Tooling isolation** — nothing under `pkg/` or `templates/` imports `tools/kiw`. | `TestPackagesNeverImportKiw` |
 | 6 | **Opt-in batteries** — workload-specific packages (`cloud/worker`, `web/ssg`, …) cannot be imported by other kinds unless opted in. | `ViolatesOptIn` in `pkg/model/project.go` |
 
-## 3. Peer Decoupling & the Bridge/Gateway Pattern
+## 4. Peer Decoupling & the Bridge/Gateway Pattern
 
 Components on the same layer are **peers** and stay laterally independent:
 
-- **Zero peer coupling:** parallel products (`dash` and `panel`) never import each other's Go packages or private source trees.
+- **Zero peer coupling:** parallel products (`dash`, `forge`, `cloud`) never import each other's Go packages or private source trees.
 - **Bridge & gateway mediation:** communication between peers, or with the horizontal capabilities, goes through standard interfaces:
   - **API gateway / reverse proxy** for HTTP and gRPC traffic with per-route authorization and rate limiting.
   - **Federated identity** — OpenID Connect, OAuth 2.0 bearer tokens, and public JWKS validation, with no shared database credentials.
   - **Event bus / SSE streams** for asynchronous notifications.
-- **No mandatory coupling:** hosted `cloud` and `auth` are never prerequisites; `dash` and `panel` run self-hosted without them.
+- **No mandatory coupling:** hosted `cloud` and `auth` are never prerequisites; `dash` and `forge` run self-hosted without them.
 
 The [Ecosystem DAG](/architecture/ecosystem-dag) page lists the module edges that actually exist between the repositories today.
 
-## 4. Single Source of Truth (SSOT)
+## 5. Single Source of Truth (SSOT)
 
 A value the ecosystem must agree on is declared **once**, in the package that owns it:
 
@@ -88,7 +99,7 @@ A value the ecosystem must agree on is declared **once**, in the package that ow
 - **Banned:** duplicating version strings in Markdown when they are declared in code.
 - **Required:** one owner per fact; export the resolver instead of re-implementing it in consumers.
 
-## 5. Pure Go (`CGO_ENABLED=0`)
+## 6. Pure Go (`CGO_ENABLED=0`)
 
 Every library and workload binary must cross-compile to Linux, macOS (`darwin/arm64`), and Windows (`windows/amd64`) without a C toolchain. CI checks this with `CGO_ENABLED=0 go build ./...`. When an application needs a database driver, choose a pure-Go one — the [fullstack tutorial](/getting-started/fullstack-app-tutorial) uses `modernc.org/sqlite` for exactly this reason.
 

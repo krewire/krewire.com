@@ -19,7 +19,16 @@ date: "2026-11-09"
 
 Krewire bukan satu repositori. Pustaka inti dan CLI, katalog UI, engine agen, layanan platform, dan situs web berada di repositori terpisah yang saling bergantung sebagai **directed acyclic graph (DAG)**. Halaman ini menampilkan grafik tersebut beserta aturan yang menjaganya tetap asiklik.
 
-## 1. Sisi Waktu Kompilasi (Impor Modul Go)
+## 1. Baterai Arsitektur Ekosistem
+
+Seluruh komponen, platform, dan workload berjalan di atas progresi baterai arsitektur terpadu, dikelola penuh oleh CLI `kiw` dan skema deklaratif `krewire.yaml`:
+
+```text
+Go Stdlib ──► Krewire Libraries ──► Krewire UI | Krewire Auth | Krewire Krew ──► Krewire Forge | Krewire Cloud ──► Krewire Dash
+                                                                                                               (Workspace Terpadu)
+```
+
+## 2. Sisi Waktu Kompilasi (Impor Modul Go)
 
 Sisi-sisi ini adalah dependensi modul Go: sebuah panah berarti "mengimpor paket dari". Data ini dibaca dari `go.mod` dan pernyataan impor setiap repositori pada 9 November 2026.
 
@@ -30,7 +39,7 @@ Sisi-sisi ini adalah dependensi modul Go: sebuah panah berarti "mengimpor paket 
                                ▼
      dash ──────┐        cloud ─────┐                    (Layer 4 — products & platform services)
       │  │      │         │  │      │
-      │  └──► auth ◄──────┘  │      │        panel
+      │  └──► auth ◄──────┘  │      │        forge
       │         │            │      │          │
       └──► krew ◄────────────┘      │          │
             │   │                   │          │
@@ -50,17 +59,17 @@ Sisi-sisi ini adalah dependensi modul Go: sebuah panah berarti "mengimpor paket 
 | `krewire` (inti + `kiw`) | `github.com/krewire/krewire` | `ui` (`pkg/ui/components` mengekspor ulang `embed.FS` milik kui) |
 | `krew` (engine agen) | `github.com/krewire/krew` | `krewire` |
 | `auth` | `github.com/krewire/auth` | `krewire` |
-| `panel` | `github.com/krewire/panel` | `krewire` |
+| `panel` (Forge) | `github.com/krewire/panel` | `krewire` |
 | `cloud` | `github.com/krewire/cloud` | `krewire`, `auth`, `krew` |
 | `dash` | `github.com/krewire/dash` | `krewire`, `auth`, `krew` |
 | `krewire.com`, `krewire.github.io` | — | tidak ada di Go; di-build dengan `kiw build`, yang merender komponen kui |
 
 Dua sifat yang penting:
 
-- **Grafiknya asiklik.** `kui` tidak mengimpor apa pun, inti hanya mengimpor `kui`, dan setiap produk mengimpor ke arah bawah. Tidak ada produk yang mengimpor produk lain: `dash` dan `panel` tidak berbagi kode Go.
+- **Grafiknya asiklik.** `kui` tidak mengimpor apa pun, inti hanya mengimpor `kui`, dan setiap produk mengimpor ke arah bawah. Tidak ada produk yang mengimpor produk lain: `dash` dan `panel` (Forge) tidak berbagi kode Go.
 - **CLI adalah daun bagi konsumen.** Produk mengimpor paket `pkg/*`; tidak ada yang mengimpor `tools/kiw`.
 
-## 2. Integrasi Runtime (Protokol Terpisah)
+## 3. Integrasi Runtime (Protokol Terpisah)
 
 Impor saat kompilasi dibatasi pada pustaka bersama. Sebagai gantinya, produk berkomunikasi dengan kapabilitas platform melalui protokol standar:
 
@@ -68,18 +77,18 @@ Impor saat kompilasi dibatasi pada pustaka bersama. Sebagai gantinya, produk ber
 - **API HTTP:** REST di balik reverse proxy edge atau [workload gateway](/workloads/gateway).
 - **Event:** event bus asinkron atau stream Server-Sent Events.
 
-`cloud` dan `auth` versi hosted bersifat opsional. `panel` dan `dash` berjalan sepenuhnya self-hosted; lihat [Inti & Layanan Platform](/project/core-and-platform-services) untuk mengetahui apa saja yang tersedia untuk publik saat ini.
+`cloud` dan `auth` versi hosted bersifat opsional. `forge` dan `dash` berjalan sepenuhnya self-hosted; lihat [Inti & Layanan Platform](/project/core-and-platform-services) untuk mengetahui apa saja yang tersedia untuk publik saat ini.
 
-## 3. Paralelisme Produk
+## 4. Paralelisme Produk
 
 | Produk | Tanggung Jawab | Bergantung pada yang lain? |
 | :--- | :--- | :--- |
-| **Panel** | Administrasi server, database, vHost, dan layanan secara self-hosted di bare metal atau VPS. | Tidak |
-| **Dash** | Workspace pengembang virtual, sandbox eksekusi, dan konsol kolaborasi. | Tidak |
+| **Krewire Forge** | Web, form, resource, dan panel builder deklaratif untuk Go dan `.kiw`. | Tidak |
+| **Krewire Dash** | Workspace pengembang virtual berbasis AI, sandbox eksekusi, dan konsol kolaborasi. | Tidak |
 
 Keduanya tidak saling bergantung, baik saat kompilasi maupun saat deployment, sehingga masing-masing dapat dirilis, di-fork, atau diganti secara mandiri.
 
-## 4. Cara Grafik Dijaga Tetap Konsisten
+## 5. Cara Grafik Dijaga Tetap Konsisten
 
 | Pemeriksaan | Lokasi |
 | :--- | :--- |

@@ -22,7 +22,7 @@ Halaman ini memungkinkan Anda memeriksa — tanpa harus memercayai materi pemasa
 | `krewire/dash` | Krewire Dash — server workspace virtual. | **Privat** | Kode sumber tidak tersedia untuk publik; tidak ada pemberian lisensi publik. |
 | `krewire/cloud` | Krewire Cloud — control plane PaaS hibrida. | **Privat** | Kode sumber tidak tersedia untuk publik; tidak ada pemberian lisensi publik. |
 | `krewire/auth` | Krewire Auth — server identitas, SSO, MFA, RBAC. | **Privat** | Kode sumber tidak tersedia untuk publik; tidak ada pemberian lisensi publik. |
-| `krewire/panel` | Krewire Panel — panel administrasi server. | **Privat** | Kode sumber tidak tersedia untuk publik; tidak ada pemberian lisensi publik. |
+| `krewire/panel` | Krewire Forge — builder web, form, resource & panel deklaratif (`kiw forge *`). | **Privat** | Kode sumber tidak tersedia untuk publik; tidak ada pemberian lisensi publik. |
 | `krewire/internal` | Pusat dokumentasi internal (ADR, roadmap). | **Privat** | Tidak tersedia untuk publik. |
 
 Inti open-source adalah semua yang berada di baris **publik**. Jalur kontribusi untuk setiap repositori publik dijelaskan di [Kontribusi & Komunitas](/project/contributing).

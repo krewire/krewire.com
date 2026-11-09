@@ -22,7 +22,7 @@ This page lets you check — without trusting marketing copy — what you can **
 | `krewire/dash` | Krewire Dash — virtual workspace server. | **Private** | Source not publicly available; no public license grant. |
 | `krewire/cloud` | Krewire Cloud — hybrid PaaS control plane. | **Private** | Source not publicly available; no public license grant. |
 | `krewire/auth` | Krewire Auth — identity, SSO, MFA, RBAC server. | **Private** | Source not publicly available; no public license grant. |
-| `krewire/panel` | Krewire Panel — server administration panel. | **Private** | Source not publicly available; no public license grant. |
+| `krewire/panel` | Krewire Forge — declarative web, form, resource & admin panel builder (`kiw forge *`). | **Private** | Source not publicly available; no public license grant. |
 | `krewire/internal` | Internal documentation hub (ADRs, roadmaps). | **Private** | Not publicly available. |
 
 The open-source core is everything in the **public** rows. Contribution routes for each public repository are described in [Contributing & Community](/project/contributing).

@@ -27,7 +27,7 @@ The core is complete on its own. Platform services are meant to add operational 
 | **Krewire Dash** | Private | Intended: hosted service | Not publicly available | Experimental |
 | **Krewire Cloud** | Private | Intended: hybrid — managed SaaS and self-hosted engine | Not publicly available | Experimental |
 | **Krewire Auth** | Private | Intended: hosted identity service and standalone server | Not publicly available | Experimental |
-| **Krewire Panel** | Private | Intended: self-hosted single binary | Not publicly available | Experimental |
+| **Krewire Forge** | Private | Intended: self-hosted engine & visual studio | Not publicly available | Experimental |
 
 Maturity labels use the shared definitions in [Maturity, Roadmap & Support](/project/maturity-and-roadmap). "Intended" delivery models come from each private repository's README; they describe design intent, not a service you can use today.
 
@@ -84,11 +84,11 @@ Descriptions below summarise each private repository's README. Functionality can
 - **Version:** v0.2.0 (git tag in the private repository).
 - **Docs:** [Enterprise Identity & Auth Platform](/security-platforms/identity-and-auth). For independent use, the public `pkg/auth` and `pkg/sec` primitives need no server.
 
-### Krewire Panel
+### Krewire Forge
 
-- **What it is:** a self-hosted server administration panel — host telemetry, systemd services, Nginx virtual hosts, ACME TLS, databases, firewall, cron, and Docker — as one binary (`krewire-panel-server`).
+- **What it is:** a declarative web, form, resource, and admin panel builder for Go and `.kiw` — scaffolds CRUD handlers, forms, tabular resources, and admin panels via `kiw forge` CLI with optional visual studio support.
 - **Depends on:** `krewire` (core) and `auth`.
-- **Delivery model:** intended as self-hosted software you install on your own server. Not publicly distributed.
+- **Delivery model:** intended as self-hosted tooling and visual studio daemon (`kiw forge studio`). Not publicly distributed.
 - **Version:** `version.go` declares 0.2.0; no release tag exists yet.
 - **Docs:** no dedicated documentation page yet.
 
@@ -100,7 +100,7 @@ When platform services become available, each is designed to be adopted on its o
 
 - You can use the core without any platform service — today this is the only option.
 - Platform services are separate repositories and binaries; using one does not require moving your code into it.
-- Shared identity (Auth) is a declared dependency of Workspace, Cloud, and Panel; that dependency will be documented here before any of them is offered.
+- Shared identity (Auth) is a declared dependency of Dash, Cloud, and Forge; that dependency will be documented here before any of them is offered.
 
 ---
 

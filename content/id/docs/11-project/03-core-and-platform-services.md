@@ -27,7 +27,7 @@ Inti sudah lengkap dengan sendirinya. Layanan platform dimaksudkan untuk menamba
 | **Krewire Dash** | Privat | Rencana: layanan ter-hosting | Belum tersedia untuk publik | Eksperimental |
 | **Krewire Cloud** | Privat | Rencana: hibrida — SaaS terkelola dan engine self-hosted | Belum tersedia untuk publik | Eksperimental |
 | **Krewire Auth** | Privat | Rencana: layanan identitas ter-hosting dan server mandiri | Belum tersedia untuk publik | Eksperimental |
-| **Krewire Panel** | Privat | Rencana: binary tunggal self-hosted | Belum tersedia untuk publik | Eksperimental |
+| **Krewire Forge** | Privat | Rencana: engine self-hosted & visual studio | Belum tersedia untuk publik | Eksperimental |
 
 Label kematangan memakai definisi bersama di [Kematangan, Roadmap & Dukungan](/project/maturity-and-roadmap). Model penyampaian "Rencana" berasal dari README masing-masing repositori privat; itu menggambarkan maksud desain, bukan layanan yang dapat Anda gunakan hari ini.
 
@@ -84,11 +84,11 @@ Deskripsi di bawah merangkum README setiap repositori privat. Fungsionalitasnya 
 - **Versi:** v0.2.0 (git tag di repositori privat).
 - **Dokumentasi:** [Platform Identitas & Autentikasi Enterprise](/security-platforms/identity-and-auth). Untuk penggunaan mandiri, primitif publik `pkg/auth` dan `pkg/sec` tidak memerlukan server.
 
-### Krewire Panel
+### Krewire Forge
 
-- **Apa itu:** panel administrasi server self-hosted — telemetri host, layanan systemd, virtual host Nginx, TLS ACME, database, firewall, cron, dan Docker — sebagai satu binary (`krewire-panel-server`).
+- **Apa itu:** builder web, form, resource, dan panel admin deklaratif untuk Go dan `.kiw` — membuat scaffold CRUD handler, form, resource tabel, dan panel admin melalui CLI `kiw forge` dengan dukungan visual studio opsional.
 - **Bergantung pada:** `krewire` (inti) dan `auth`.
-- **Model penyampaian:** direncanakan sebagai perangkat lunak self-hosted yang Anda pasang di server sendiri. Belum didistribusikan untuk publik.
+- **Model penyampaian:** direncanakan sebagai tooling self-hosted dan daemon visual studio (`kiw forge studio`). Belum didistribusikan untuk publik.
 - **Versi:** `version.go` mendeklarasikan 0.2.0; belum ada tag rilis.
 - **Dokumentasi:** belum ada halaman dokumentasi khusus.
 
@@ -100,7 +100,7 @@ Ketika layanan platform tersedia, masing-masing dirancang untuk diadopsi secara 
 
 - Anda dapat memakai inti tanpa layanan platform apa pun — saat ini itulah satu-satunya pilihan.
 - Layanan platform adalah repositori dan binary terpisah; memakai salah satunya tidak mengharuskan Anda memindahkan kode ke dalamnya.
-- Identitas bersama (Auth) adalah dependensi yang dideklarasikan oleh Workspace, Cloud, dan Panel; dependensi itu akan didokumentasikan di sini sebelum salah satunya ditawarkan.
+- Identitas bersama (Auth) adalah dependensi yang dideklarasikan oleh Dash, Cloud, dan Forge; dependensi itu akan didokumentasikan di sini sebelum salah satunya ditawarkan.
 
 ---
 

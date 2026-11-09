@@ -19,7 +19,16 @@ date: "2026-11-09"
 
 Krewire is not one repository. The core libraries and CLI, the UI catalog, the agent engine, the platform services, and the websites live in separate repositories that depend on each other as a **directed acyclic graph (DAG)**. This page shows that graph and the rules that keep it acyclic.
 
-## 1. Compile-Time Edges (Go Module Imports)
+## 1. The Ecosystem Architectural Battery
+
+All components, platforms, and workloads advance along a progressive architectural battery, driven entirely by the `kiw` devtool CLI and declarative `krewire.yaml` schema:
+
+```text
+Go Stdlib ──► Krewire Libraries ──► Krewire UI | Krewire Auth | Krewire Krew ──► Krewire Forge | Krewire Cloud ──► Krewire Dash
+                                                                                                               (Unified Workspace)
+```
+
+## 2. Compile-Time Edges (Go Module Imports)
 
 These edges are Go module dependencies: an arrow means "imports packages from". They were read from each repository's `go.mod` and import statements on 9 November 2026.
 
@@ -30,7 +39,7 @@ These edges are Go module dependencies: an arrow means "imports packages from". 
                                ▼
      dash ──────┐        cloud ─────┐                    (Layer 4 — products & platform services)
       │  │      │         │  │      │
-      │  └──► auth ◄──────┘  │      │        panel
+      │  └──► auth ◄──────┘  │      │        forge
       │         │            │      │          │
       └──► krew ◄────────────┘      │          │
             │   │                   │          │
@@ -50,17 +59,17 @@ These edges are Go module dependencies: an arrow means "imports packages from". 
 | `krewire` (core + `kiw`) | `github.com/krewire/krewire` | `ui` (`pkg/ui/components` re-exports the kui `embed.FS`) |
 | `krew` (agent engine) | `github.com/krewire/krew` | `krewire` |
 | `auth` | `github.com/krewire/auth` | `krewire` |
-| `panel` | `github.com/krewire/panel` | `krewire` |
+| `panel` (Forge) | `github.com/krewire/panel` | `krewire` |
 | `cloud` | `github.com/krewire/cloud` | `krewire`, `auth`, `krew` |
 | `dash` | `github.com/krewire/dash` | `krewire`, `auth`, `krew` |
 | `krewire.com`, `krewire.github.io` | — | none in Go; built with `kiw build`, which renders kui components |
 
 Two properties matter:
 
-- **The graph is acyclic.** `kui` imports nothing, the core imports only `kui`, and every product imports downward. No product imports another product: `dash` and `panel` share no Go code.
+- **The graph is acyclic.** `kui` imports nothing, the core imports only `kui`, and every product imports downward. No product imports another product: `dash` and `panel` (Forge) share no Go code.
 - **The CLI is a leaf for consumers.** Products import `pkg/*` packages; none imports `tools/kiw`.
 
-## 2. Runtime Integrations (Decoupled Protocols)
+## 3. Runtime Integrations (Decoupled Protocols)
 
 Compile-time imports are kept to shared libraries. Products talk to platform capabilities over standard protocols instead:
 
@@ -68,18 +77,18 @@ Compile-time imports are kept to shared libraries. Products talk to platform cap
 - **HTTP APIs:** REST behind an edge reverse proxy or a [gateway workload](/workloads/gateway).
 - **Events:** an asynchronous event bus or Server-Sent Events streams.
 
-Hosted `cloud` and `auth` are optional. `panel` and `dash` run completely self-hosted; see [Core & Platform Services](/project/core-and-platform-services) for what is publicly available today.
+Hosted `cloud` and `auth` are optional. `forge` and `dash` run completely self-hosted; see [Core & Platform Services](/project/core-and-platform-services) for what is publicly available today.
 
-## 3. Product Parallelism
+## 4. Product Parallelism
 
 | Product | Responsibility | Depends on the other? |
 | :--- | :--- | :--- |
-| **Panel** | Self-hosted server, database, vHost, and service administration on bare metal or a VPS. | No |
-| **Dash** | Virtual developer workspace, execution sandboxes, and collaboration console. | No |
+| **Krewire Forge** | Declarative web, form, resource, and admin panel builder for Go and `.kiw`. | No |
+| **Krewire Dash** | AI-native virtual developer workspace, execution sandboxes, and collaboration console. | No |
 
 Neither depends on the other at compile time or deployment time, so each can be released, forked, or replaced on its own.
 
-## 4. How the Graph Is Kept Honest
+## 5. How the Graph Is Kept Honest
 
 | Check | Where |
 | :--- | :--- |
