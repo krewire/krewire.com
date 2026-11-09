@@ -17,6 +17,12 @@ All components follow the **shadcn/ui "Copy & Own"** philosophy: you copy `.kiw`
 
 ---
 
+## Live Previews
+
+Seven core components have an interactive preview: [`Button`](/docs/ui/components/button), [`Badge`](/docs/ui/components/badge), [`Input`](/docs/ui/components/input), [`Card`](/docs/ui/components/card), [`Modal`](/docs/ui/components/modal), [`Tabs`](/docs/ui/components/tabs), and [`Alert`](/docs/ui/components/alert). Each page shows the real component in light and dark themes with variant and size toggles, and the [component playground](https://krewire.com/ui/playground) shows all seven together.
+
+---
+
 ## Component Categories
 
 ### Navigation & Structure

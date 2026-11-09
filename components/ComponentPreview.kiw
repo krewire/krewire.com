@@ -1,0 +1,47 @@
+<section class="cpv-section {class}" id="{slug}" data-kiw-component="ComponentPreview">
+  <div class="cpv-head">
+    <h2 class="cpv-title"><code>&lt;{name} /&gt;</code></h2>
+    {#if description}<p class="cpv-desc" {#if i18n}data-i18n="{i18n}"{/if}>{description}</p>{/if}
+    {#if docs}<a class="cpv-docs" href="{docs}" data-i18n="playground.docs_link">Component docs →</a>{/if}
+  </div>
+  <div data-component-preview="{name}" data-slug="{slug}">
+    <p class="cpv-fallback" data-i18n-html="playground.noscript_html">The live preview needs JavaScript. You can still open the static preview page linked from the component docs.</p>
+  </div>
+</section>
+
+<style>
+.cpv-section {
+  scroll-margin-top: 5rem;
+  padding: 1.5rem 0;
+  border-top: 2px dashed var(--border-subtle, rgba(11, 31, 59, 0.18));
+}
+.cpv-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 1rem;
+}
+.cpv-title {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 900;
+}
+.cpv-title code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  background: none;
+  padding: 0;
+}
+.cpv-desc {
+  flex: 1 1 100%;
+  order: 3;
+  margin: 0;
+  color: var(--muted, #57677d);
+  font-size: 0.95rem;
+}
+.cpv-docs {
+  margin-left: auto;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--fg, #0B1F3B);
+}
+</style>

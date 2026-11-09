@@ -194,4 +194,4 @@ Agen akan menghasilkan rencana persyaratan dan implementasi terstruktur yang men
 
 Sekarang setelah Anda mengetahui cara mempercepat pengembangan menggunakan agen AI, saatnya mempelajari bahasa templating komponen:
 
-Lanjutkan ke [**2.5 DSL (.kiw) →**](/getting-started/dsl) untuk mempelajari arsitektur komponen Krewire.
+Lanjutkan ke [**2.7 DSL (.kiw) →**](/getting-started/dsl) untuk mempelajari arsitektur komponen Krewire.

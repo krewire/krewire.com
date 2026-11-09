@@ -1,0 +1,65 @@
+/* Reading-track breadcrumbs for the docs (Beginner track, Architecture
+   Deep-Dive). Markup, written as raw HTML in the Markdown pages:
+   <nav class="track-crumbs" aria-label="…">
+   <span class="track-crumbs-label">…</span>
+   <ol><li><a href="…">…</a></li><li aria-current="step"><span>…</span></li></ol>
+   </nav> */
+.track-crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin: 0 0 1.75rem;
+  padding: 0.6rem 0.8rem;
+  border: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
+  border-radius: 10px;
+  background: var(--base-2, #f0ede5);
+  box-shadow: var(--pop-shadow-sm, 2px 2px 0 var(--border, #0B1F3B));
+}
+.track-crumbs-label {
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: var(--primary, #39D353);
+  color: var(--primary-content, #0B1F3B);
+  border: 1.5px solid var(--border, #0B1F3B);
+}
+.track-crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+.track-crumbs li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 !important;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+.track-crumbs li + li::before {
+  content: "→";
+  color: var(--muted, #57677d);
+  font-weight: 900;
+}
+.track-crumbs a {
+  color: var(--muted, #57677d) !important;
+  text-decoration: none !important;
+}
+.track-crumbs a:hover {
+  color: var(--primary, #39D353) !important;
+}
+.track-crumbs li[aria-current="step"] span {
+  padding: 0.1rem 0.45rem;
+  border-radius: 6px;
+  background: var(--base-1, #FAF8F4);
+  border: 1.5px solid var(--border, #0B1F3B);
+  color: var(--base-1-content, #0B1F3B);
+}

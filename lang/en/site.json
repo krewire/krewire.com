@@ -261,5 +261,19 @@
     "copied_button": "✓ Copied!",
     "prev_label": "Previous",
     "next_label": "Next"
+  },
+  "playground": {
+    "eyebrow": "KREWIRE UI · LIVE PREVIEW",
+    "title": "Component Playground",
+    "lead_html": "Every preview below is a real <code class=\"code-inline\">.kiw</code> component from <code class=\"code-inline\">github.com/krewire/ui</code>, rendered by <code class=\"code-inline\">kiw build</code> for each variant and size. Toggle the options, compare the light and dark themes side by side, then copy the component source or the exact usage snippet. Nothing is fetched from the network.",
+    "docs_link": "Component docs →",
+    "noscript_html": "The live preview needs JavaScript. You can still open the static preview page linked from the component docs.",
+    "button_desc": "Primary interactive element. Variants map to intent; sizes follow the sm / md / lg scale.",
+    "badge_desc": "Compact status or category label in seven semantic colours and two sizes.",
+    "input_desc": "Labelled text field with help text, validation error, and disabled states.",
+    "card_desc": "Surface container with a title block and a body slot, in four emphasis variants.",
+    "modal_desc": "Native dialog element. Press the button inside the preview to open it; Esc or the buttons close it.",
+    "tabs_desc": "Accessible tab list. Click a tab inside the preview to move the active state.",
+    "alert_desc": "Inline feedback banner for info, success, warning, and error messages."
   }
 }

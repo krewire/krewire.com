@@ -49,7 +49,7 @@ Audiens berikut mendapat manfaat dari fondasi terbuka yang sama, tetapi situs in
 
 | Audiens | Contoh kasus penggunaan | Titik awal |
 | :--- | :--- | :--- |
-| **Pelajar & pendidik** | Membaca dan mengajarkan basis kode Go lengkap berlisensi MIT yang mencakup web, CLI, worker, dan infrastruktur. | [Filosofi](/overview/philosophy), [Disiplin Arsitektur](/guides/architecture-discipline), kode sumber di [github.com/krewire/krewire](https://github.com/krewire/krewire) |
+| **Pelajar & pendidik** | Membaca dan mengajarkan basis kode Go lengkap berlisensi MIT yang mencakup web, CLI, worker, dan infrastruktur. | [Filosofi](/overview/philosophy), [Disiplin Arsitektur](/architecture/layered-pyramid), kode sumber di [github.com/krewire/krewire](https://github.com/krewire/krewire) |
 | **Maintainer open-source** | Membangun situs dokumentasi proyek dengan `site` atau `book`, seperti situs ini. | [Situs Statis (`site`)](/workloads/site), [Kontribusi & Komunitas](/project/contributing) |
 | **Organisasi** | Mengevaluasi keluaran binary tunggal yang dapat di-host sendiri serta batas open-core sebelum berkomitmen. | [Keterbukaan & Self-Hosting](/project/openness-and-self-hosting), [Inti & Layanan Platform](/project/core-and-platform-services) |
 

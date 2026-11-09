@@ -307,7 +307,7 @@
             <a href="/docs/guides" class="toc-link">Guides & Architecture</a>
           </div>
           <div class="toc-subs">
-            <a href="/docs/guides/architecture-discipline" class="toc-sub">Architecture Invariants</a>
+            <a href="/docs/architecture" class="toc-sub">Architecture Deep-Dive</a>
             <a href="/docs/guides/agentic-development" class="toc-sub">Agentic Development</a>
             <a href="/docs/guides/deployment-and-operations" class="toc-sub">Deployment & Operations</a>
             <a href="/docs/guides/hybrid-paas-and-cloud" class="toc-sub">Hybrid PaaS & Cloud</a>

@@ -17,6 +17,12 @@ Seluruh komponen mengikuti filosofi **shadcn/ui "Copy & Own"**: Anda menyalin be
 
 ---
 
+## Pratinjau Langsung
+
+Tujuh komponen inti memiliki pratinjau interaktif: [`Button`](/id/docs/ui/components/button), [`Badge`](/id/docs/ui/components/badge), [`Input`](/id/docs/ui/components/input), [`Card`](/id/docs/ui/components/card), [`Modal`](/id/docs/ui/components/modal), [`Tabs`](/id/docs/ui/components/tabs), dan [`Alert`](/id/docs/ui/components/alert). Setiap halaman menampilkan komponen asli dalam tema terang dan gelap dengan pilihan varian dan ukuran, dan [playground komponen](https://krewire.com/ui/playground) menampilkan ketujuhnya sekaligus.
+
+---
+
 ## Kategori Komponen
 
 ### Navigasi & Struktur

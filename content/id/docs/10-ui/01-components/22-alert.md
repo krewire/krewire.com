@@ -14,6 +14,14 @@ Banner pemberitahuan kontekstual dengan status info, success, warning, dan error
 
 ---
 
+## Pratinjau Langsung
+
+<div data-component-preview="Alert" data-slug="alert"></div>
+
+Bingkai di atas memuat `Alert.kiw` asli dari Krewire UI, yang sudah di-render oleh `kiw build` untuk setiap varian, dalam tema terang dan gelap secara berdampingan. Gunakan tombol pilihan untuk mengganti varian, lalu salin kode sumber komponen atau contoh penggunaannya. **Buka di playground** menampilkannya bersama komponen inti lainnya.
+
+---
+
 ## 1. Instalasi (Model Copy & Own)
 
 Salin berkas komponen `Alert.kiw` langsung ke direktori `./components` proyek Anda:

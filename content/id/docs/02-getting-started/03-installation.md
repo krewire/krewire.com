@@ -161,4 +161,4 @@ rm -f "$(go env GOPATH)/bin/kiw"
 
 ## Langkah Berikutnya
 
-Sekarang toolchain Anda telah terinstal, lanjutkan ke [**2.2 Konfigurasi →**](/getting-started/configuration) untuk mempelajari cara mengonfigurasi proyek menggunakan `krewire.yaml`.
+Sekarang toolchain Anda telah terinstal, lanjutkan ke [**2.4 Konfigurasi →**](/getting-started/configuration) untuk mempelajari cara mengonfigurasi proyek menggunakan `krewire.yaml`.
