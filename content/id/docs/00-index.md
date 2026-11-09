@@ -83,6 +83,7 @@ Manfaatkan baterai modular mandiri Krewire yang dikelompokkan ke dalam empat kla
    - [**Wadah Aplikasi & Monolit (`pkg/app`)**](/web-ui/app) — Wadah dependency injection, manajemen siklus hidup aplikasi, dan signal draining.
    - [**Web Runtime & WASM (`pkg/runtime`)**](/web-ui/web-runtime) — Kompilasi Go ke WebAssembly di sisi klien, virtual DOM diffing, dan hidrasi SSR.
    - [**Komponen Web UI & Token Desain (`pkg/ui`)**](/web-ui/ui) — Komponen Single-File (.kiw), token desain CSS semantik, dan tema.
+   - [**Katalog Komponen Krewire UI (66 Komponen)**](/ui/components) — Dokumentasi lengkap per komponen, tabel properti, slot, dan contoh interaktif.
    - [**Toolkit Terminal UI (`pkg/tui`)**](/web-ui/tui) — Antarmuka pengguna terminal, arsitektur Elm/Bubble Tea, dan pewarnaan ANSI.
 
 3. **Data, Penyimpanan & Layanan:**

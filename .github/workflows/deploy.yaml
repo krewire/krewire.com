@@ -133,10 +133,10 @@ jobs:
           RELEASE_TAG="${GITHUB_REF#refs/tags/}"
           if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
             echo "version_tag=${RELEASE_TAG}" >> "$GITHUB_OUTPUT"
-            echo "image_tags=krewire-web:${{ github.sha }},krewire-web:${RELEASE_TAG},krewire-web:latest" >> "$GITHUB_OUTPUT"
+            echo "image_tags=krewire-app:${{ github.sha }},krewire-app:${RELEASE_TAG},krewire-app:latest" >> "$GITHUB_OUTPUT"
           else
             echo "version_tag=manual-${{ github.sha }}" >> "$GITHUB_OUTPUT"
-            echo "image_tags=krewire-web:${{ github.sha }},krewire-web:latest" >> "$GITHUB_OUTPUT"
+            echo "image_tags=krewire-app:${{ github.sha }},krewire-app:latest" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Build Docker image
@@ -152,10 +152,10 @@ jobs:
 
       - name: Export Docker image (with integrity checksum)
         run: |
-          docker save krewire-web:${{ github.sha }} | gzip > /tmp/krewire-web.tar.gz
-          sha256sum /tmp/krewire-web.tar.gz > /tmp/krewire-web.tar.gz.sha256
+          docker save krewire-app:${{ github.sha }} | gzip > /tmp/krewire-app.tar.gz
+          sha256sum /tmp/krewire-app.tar.gz > /tmp/krewire-app.tar.gz.sha256
           echo "Image checksum:"
-          cat /tmp/krewire-web.tar.gz.sha256
+          cat /tmp/krewire-app.tar.gz.sha256
 
       - name: Configure SSH (strict host key verification)
         run: |
@@ -173,8 +173,8 @@ jobs:
           scp -i ~/.ssh/deploy_key \
               -o StrictHostKeyChecking=yes \
               -o BatchMode=yes \
-              /tmp/krewire-web.tar.gz \
-              /tmp/krewire-web.tar.gz.sha256 \
+              /tmp/krewire-app.tar.gz \
+              /tmp/krewire-app.tar.gz.sha256 \
               ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/tmp/
 
       - name: Deploy on VPS
@@ -191,31 +191,31 @@ jobs:
             VERSION="$2"
 
             echo "▶ Verifying image checksum on VPS..."
-            sha256sum -c /tmp/krewire-web.tar.gz.sha256 \
+            sha256sum -c /tmp/krewire-app.tar.gz.sha256 \
               || { echo "✗ Checksum mismatch — aborting deploy."; exit 1; }
             echo "✓ Checksum verified."
 
             echo "▶ Loading Docker image..."
-            docker load < /tmp/krewire-web.tar.gz
+            docker load < /tmp/krewire-app.tar.gz
 
             echo "▶ Tagging image..."
-            docker tag "krewire-web:${SHA}" krewire-web:latest
+            docker tag "krewire-app:${SHA}" krewire-app:latest
             if [ -n "${VERSION}" ]; then
-              docker tag "krewire-web:${SHA}" "krewire-web:${VERSION}"
+              docker tag "krewire-app:${SHA}" "krewire-app:${VERSION}"
             fi
 
             echo "▶ Saving previous image tag for rollback..."
-            PREV_ID="$(docker inspect --format='{{.Id}}' krewire-web:previous 2>/dev/null || true)"
+            PREV_ID="$(docker inspect --format='{{.Id}}' krewire-app:previous 2>/dev/null || true)"
 
             echo "▶ Restarting container..."
             cd ~/workspace/krewire/krewire.com
-            docker rm -f krewire-web 2>/dev/null || true
+            docker rm -f krewire-app 2>/dev/null || true
             docker compose up -d --no-build
 
             echo "▶ Waiting for container to become healthy..."
             HEALTHY=false
             for i in $(seq 1 20); do
-              STATUS="$(docker inspect --format='{{.State.Health.Status}}' krewire-web 2>/dev/null || echo 'unknown')"
+              STATUS="$(docker inspect --format='{{.State.Health.Status}}' krewire-app 2>/dev/null || echo 'unknown')"
               printf "  [%2d/20] Health: %s\n" "$i" "$STATUS"
               if [ "$STATUS" = "healthy" ]; then
                 HEALTHY=true
@@ -231,8 +231,8 @@ jobs:
             if [ "$HEALTHY" = "false" ]; then
               echo "✗ Health check failed — rolling back to previous image."
               if [ -n "$PREV_ID" ]; then
-                docker tag "$PREV_ID" krewire-web:latest
-                docker rm -f krewire-web 2>/dev/null || true
+                docker tag "$PREV_ID" krewire-app:latest
+                docker rm -f krewire-app 2>/dev/null || true
                 docker compose up -d --no-build
                 echo "✓ Rollback complete."
               else
@@ -242,14 +242,14 @@ jobs:
             fi
 
             echo "▶ Tagging deployed image as :previous and :stable for rollback baseline..."
-            docker tag krewire-web:latest krewire-web:previous
-            docker tag krewire-web:latest krewire-web:stable
+            docker tag krewire-app:latest krewire-app:previous
+            docker tag krewire-app:latest krewire-app:stable
             if [ -n "${VERSION}" ]; then
-              docker tag krewire-web:latest "krewire-web:${VERSION}"
+              docker tag krewire-app:latest "krewire-app:${VERSION}"
             fi
 
             echo "▶ Cleaning up transfer files..."
-            rm -f /tmp/krewire-web.tar.gz /tmp/krewire-web.tar.gz.sha256
+            rm -f /tmp/krewire-app.tar.gz /tmp/krewire-app.tar.gz.sha256
 
             echo "▶ Pruning dangling images (not removing tagged images)..."
             docker image prune -f --filter "label!=com.krewire.keep=true"

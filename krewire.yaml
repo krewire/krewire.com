@@ -4,22 +4,20 @@
 
 project:
   name: "krewire"
-  version: "v0.2.0"
-  author: "Krewire Contributors"
+  version: "v0.2.3"
+  author: "Krewire Team"
 
 title: "Krewire"
 
 nav:
   - text: "Get Started"
     url: "/docs/getting-started"
-  - text: "Products"
-    url: "/#products"
+  - text: "Ecosystem"
+    url: "/#ecosystem"
   - text: "DSL"
     url: "/docs/getting-started/dsl"
   - text: "Docs"
     url: "/docs"
-  - text: "Ecosystem"
-    url: "/#ecosystem"
   - text: "GitHub"
     url: "https://github.com/krewire/krewire"
 

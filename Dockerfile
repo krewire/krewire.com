@@ -3,7 +3,7 @@
 # To update: run `docker pull nginx:alpine` then update the digest below.
 FROM nginx:alpine@sha256:df221db836e1754089190208cee7eeda94f233197056426eda74a43ab1abeac2
 
-LABEL org.opencontainers.image.title="krewire-web" \
+LABEL org.opencontainers.image.title="krewire-app" \
       org.opencontainers.image.description="Krewire static documentation and landing site" \
       org.opencontainers.image.source="https://github.com/krewire/krewire.com" \
       org.opencontainers.image.version="v0.2.0" \

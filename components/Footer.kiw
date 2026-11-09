@@ -1,0 +1,104 @@
+<footer class="bg-bg-2 dark:bg-bg-dark-2 w-full footer-site {class}" style="border-top:var(--pop-border)" data-kiw-component="Footer">
+  <div class="container-site pt-14 pb-10">
+    <!-- Top 4-column Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 pb-10" style="border-bottom:var(--pop-border-thin)">
+      
+      <!-- Col 1: Brand & Social Media (4 cols on lg) -->
+      <div class="sm:col-span-2 lg:col-span-4 flex flex-col items-start pr-0 lg:pr-6">
+        <div class="flex items-center gap-2.5 font-black text-xl mb-3">
+          <span class="icon-box bg-primary text-primary-content w-8 h-8 text-base flex items-center justify-center font-bold">◈</span>
+          <span class="tracking-tight text-fg dark:text-fg-dark">Krewire</span>
+          <Badge Variant="secondary" Size="sm" Class="ml-1 font-mono">{#if version}{version}{:else}v0.2.3{/if}</Badge>
+        </div>
+        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-5" data-i18n-html="footer.tagline_html">
+          The Complete Go SDLC Platform.<br>
+          <span class="text-fg dark:text-fg-dark font-bold">One Ecosystem. Every Workload.</span>
+        </p>
+
+        <!-- Social Media Channels with Icons -->
+        <div class="flex flex-col gap-2.5 w-full">
+          <span class="text-2xs font-mono font-bold uppercase tracking-wider text-muted dark:text-muted-dark">Connect &amp; Social</span>
+          <div class="flex items-center gap-2.5">
+            <!-- Email -->
+            <a href="mailto:hello@krewire.com" class="social-icon-btn flex items-center justify-center w-10 h-10 rounded-xl border-2 border-border bg-bg dark:bg-bg-dark text-fg dark:text-fg-dark hover:bg-primary hover:text-primary-content transition-all shadow-[2px_2px_0px_var(--border)] hover:-translate-y-0.5" title="Email: hello@krewire.com" aria-label="Email hello@krewire.com">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </a>
+            <!-- GitHub -->
+            <a href="https://github.com/krewire" target="_blank" rel="noopener" class="social-icon-btn flex items-center justify-center w-10 h-10 rounded-xl border-2 border-border bg-bg dark:bg-bg-dark text-fg dark:text-fg-dark hover:bg-primary hover:text-primary-content transition-all shadow-[2px_2px_0px_var(--border)] hover:-translate-y-0.5" title="GitHub: @krewire" aria-label="GitHub Profile">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+            <!-- Instagram -->
+            <a href="https://instagram.com/krewire" target="_blank" rel="noopener" class="social-icon-btn flex items-center justify-center w-10 h-10 rounded-xl border-2 border-border bg-bg dark:bg-bg-dark text-fg dark:text-fg-dark hover:bg-primary hover:text-primary-content transition-all shadow-[2px_2px_0px_var(--border)] hover:-translate-y-0.5" title="Instagram: @krewire" aria-label="Instagram Profile">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            </a>
+          </div>
+          <div class="flex flex-col gap-1 text-xs font-semibold text-muted dark:text-muted-dark mt-2">
+            <a href="mailto:hello@krewire.com" class="hover:text-primary transition-colors flex items-center gap-1.5">
+              <span>✉</span> <span>hello@krewire.com</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Col 2: 8 Workloads (3 cols on lg) -->
+      <div class="lg:col-span-3 flex flex-col gap-2.5">
+        <strong class="text-2xs font-mono font-bold uppercase tracking-wider text-fg dark:text-fg-dark mb-1" data-i18n="footer.workloads_title">8 Workloads</strong>
+        <a href="/docs/workloads/app" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">app — Fullstack Monolith</a>
+        <a href="/docs/workloads/cli" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">cli — Terminal TUI</a>
+        <a href="/docs/workloads/site" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">site — Scoped SSG</a>
+        <a href="/docs/workloads/book" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">book — Technical Books</a>
+        <a href="/docs/workloads/worker" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">worker — Async Queues</a>
+        <a href="/docs/workloads/service" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">service — Microservices</a>
+        <a href="/docs/workloads/infra" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">infra — Cloud IaC</a>
+        <a href="/docs/workloads/gateway" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">gateway — Reverse Proxy</a>
+      </div>
+
+      <!-- Col 3: Documentation (2 cols on lg) -->
+      <div class="lg:col-span-2 flex flex-col gap-2.5">
+        <strong class="text-2xs font-mono font-bold uppercase tracking-wider text-fg dark:text-fg-dark mb-1" data-i18n="footer.docs_title">Documentation</strong>
+        <a href="/docs/overview" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">Overview</a>
+        <a href="/docs/getting-started" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">Getting Started</a>
+        <a href="/docs/getting-started/dsl" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">Component DSL</a>
+        <a href="/docs/workloads" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">Workloads</a>
+        <a href="/docs/cli-reference" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">CLI Reference</a>
+        <a href="/docs/guides" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">Architecture Guides</a>
+      </div>
+
+      <!-- Col 4: Ecosystem & Products (3 cols on lg) -->
+      <div class="lg:col-span-3 flex flex-col gap-2.5">
+        <strong class="text-2xs font-mono font-bold uppercase tracking-wider text-fg dark:text-fg-dark mb-1" data-i18n="footer.products_title">Ecosystem Platforms</strong>
+        <a href="https://dash.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
+          <span>Krewire Workspace</span> <Badge Variant="primary" Size="sm" Class="font-mono">AI</Badge>
+        </a>
+        <a href="https://cloud.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
+          <span>Krewire Cloud</span> <Badge Variant="primary" Size="sm" Class="font-mono">PaaS</Badge>
+        </a>
+        <a href="https://auth.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
+          <span>Krewire Auth</span> <Badge Variant="primary" Size="sm" Class="font-mono">SSO</Badge>
+        </a>
+        <a href="https://panel.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
+          <span>Krewire Panel</span> <Badge Variant="primary" Size="sm" Class="font-mono">Host</Badge>
+        </a>
+        <a href="https://github.com/krewire/krew" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
+          <span>Krew AI Engine</span> <Badge Variant="secondary" Size="sm" Class="font-mono">Agent</Badge>
+        </a>
+        <a href="https://github.com/krewire/krewire" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">
+          <span>Core Monorepo</span>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar: Credit & Secondary Links -->
+    <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-semibold text-muted dark:text-muted-dark">
+      <span data-i18n-html="footer.copyright_html">© 2026 Krewire Team — Built with Krewire <code class="code-inline">site</code> workload.</span>
+      <div class="flex items-center gap-4">
+        <a href="mailto:hello@krewire.com" class="hover:text-primary transition-colors">hello@krewire.com</a>
+        <span>·</span>
+        <a href="https://github.com/krewire" target="_blank" rel="noopener" class="hover:text-primary transition-colors">GitHub</a>
+        <span>·</span>
+        <a href="https://instagram.com/krewire" target="_blank" rel="noopener" class="hover:text-primary transition-colors">Instagram</a>
+      </div>
+    </div>
+  </div>
+</footer>
