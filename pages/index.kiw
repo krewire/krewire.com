@@ -322,37 +322,37 @@ layout: Landing
 
       </div>
 
-      <!-- Bento 4 (Panoramic Banner, spans full 12 cols): Krewire Panel -->
+      <!-- Bento 4 (Panoramic Banner, spans full 12 cols): Krewire Forge -->
       <div class="lg:col-span-12 card p-7 sm:p-9 md:p-10 bg-bg dark:bg-bg-dark hover:-translate-y-1 transition-all duration-200">
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8 lg:gap-12">
           <div class="max-w-2xl">
             <div class="flex items-center gap-3.5 mb-4">
-              <span class="icon-box bg-primary text-primary-content text-2xl w-11 h-11 flex items-center justify-center font-black">🎛</span>
+              <span class="icon-box bg-primary text-primary-content text-2xl w-11 h-11 flex items-center justify-center font-black">🛠</span>
               <div>
-                <Badge Variant="primary" Size="sm" Class="uppercase font-mono"><span data-i18n="products.panel_badge">Server &amp; Admin</span></Badge>
-                <h3 class="text-2xl font-black tracking-tight text-fg dark:text-fg-dark mt-0.5" data-i18n="products.panel_title">Krewire Panel</h3>
+                <Badge Variant="primary" Size="sm" Class="uppercase font-mono"><span data-i18n="products.panel_badge">Web, Form &amp; Panel</span></Badge>
+                <h3 class="text-2xl font-black tracking-tight text-fg dark:text-fg-dark mt-0.5" data-i18n="products.panel_title">Krewire Forge</h3>
               </div>
             </div>
             <p class="text-sm sm:text-base text-muted dark:text-muted-dark leading-relaxed mb-5" data-i18n="products.panel_desc">
-              Self-hosted server and admin control panel. Manage bare-metal &amp; VPS hosts, systemd daemons, vHosts (Caddy/Nginx), databases, firewall, and SSL certificates with zero external bloat.
+              Declarative web, form, and admin panel builder for Go and .kiw. Schema-driven form engine, tabular CRUD resources, and interactive dashboard studio with CLI integration.
             </p>
             <div class="flex flex-wrap items-center gap-4 sm:gap-6 text-xs font-bold text-fg dark:text-fg-dark">
-              <span class="flex items-center gap-2"><span class="text-primary font-black">✓</span> <span data-i18n="products.panel_feature1">Host systemd supervision</span></span>
-              <span class="flex items-center gap-2"><span class="text-primary font-black">✓</span> <span data-i18n="products.panel_feature2">Automated vHosts &amp; databases</span></span>
-              <span class="flex items-center gap-2"><span class="text-primary font-black">✓</span> <span data-i18n="products.panel_feature3">Firewall &amp; web console</span></span>
+              <span class="flex items-center gap-2"><span class="text-primary font-black">✓</span> <span data-i18n="products.panel_feature1">Declarative schema &amp; forms</span></span>
+              <span class="flex items-center gap-2"><span class="text-primary font-black">✓</span> <span data-i18n="products.panel_feature2">Tabular CRUD &amp; resource tables</span></span>
+              <span class="flex items-center gap-2"><span class="text-primary font-black">✓</span> <span data-i18n="products.panel_feature3">Admin studio (kiw forge studio)</span></span>
             </div>
           </div>
           <div class="shrink-0 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5">
             <div class="bg-bg-2 dark:bg-bg-dark-2 p-4 rounded-xl border border-border-subtle flex items-center gap-4 sm:gap-6 text-xs font-mono" title="Illustration">
-              <div class="flex flex-col"><span class="text-muted text-[10px]">DAEMONS</span><span class="font-extrabold text-primary">12 ACTIVE</span></div>
+              <div class="flex flex-col"><span class="text-muted text-[10px]">CLI DRIVER</span><span class="font-extrabold text-primary">kiw forge</span></div>
               <div class="w-px h-7 bg-border-subtle"></div>
               <div class="flex flex-col"><span class="text-muted text-[10px]">MEMORY</span><span class="font-extrabold text-fg dark:text-fg-dark">18.4 MB</span></div>
               <div class="w-px h-7 bg-border-subtle"></div>
-              <div class="flex flex-col"><span class="text-muted text-[10px]">SSL ACME</span><span class="font-extrabold text-primary">AUTO-RENEW</span></div>
+              <div class="flex flex-col"><span class="text-muted text-[10px]">STUDIO</span><span class="font-extrabold text-primary">PORT 8089</span></div>
             </div>
             <div class="flex flex-col items-start gap-2">
-              <Button Variant="primary" Size="lg" Href="/docs/project/core-and-platform-services#krewire-panel">
-                <span data-i18n="products.panel_cta">Learn Panel →</span>
+              <Button Variant="primary" Size="lg" Href="/docs/project/core-and-platform-services#krewire-forge">
+                <span data-i18n="products.panel_cta">Learn Forge →</span>
               </Button>
               <span class="text-[11px] font-mono text-muted dark:text-muted-dark" data-i18n="products.status_private">Private · not publicly available yet</span>
             </div>
@@ -363,7 +363,7 @@ layout: Landing
     </div>
 
     <div class="card p-5 sm:p-6 bg-bg-2 dark:bg-bg-dark-2 mt-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
-      <p class="text-sm text-muted dark:text-muted-dark leading-relaxed m-0" data-i18n="products.boundary_note">The open-source core (kiw CLI, libraries, krew, ui) is MIT-licensed and needs none of these services. Workspace, Cloud, Auth, and Panel are optional platform services developed in private repositories; none is publicly available yet and no pricing is published.</p>
+      <p class="text-sm text-muted dark:text-muted-dark leading-relaxed m-0" data-i18n="products.boundary_note">The open-source core (kiw CLI, libraries, krew, ui) is MIT-licensed and needs none of these services. Dash, Cloud, Auth, and Forge are optional platform services developed in private repositories; none is publicly available yet and no pricing is published.</p>
       <Button Variant="outline" Size="md" Href="/docs/project/core-and-platform-services" Class="shrink-0"><span data-i18n="products.boundary_cta">Core vs. platform services →</span></Button>
     </div>
   </div>
