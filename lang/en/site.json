@@ -78,6 +78,24 @@
     "vision": "Long-term aspiration: a single builder can still read, run, and afford what they built with Krewire a decade from now.",
     "cta_about": "About Krewire →"
   },
+  "audiences": {
+    "badge": "Who Krewire Is For",
+    "title": "Built for Independent Developers and Small Teams",
+    "lead": "Adopt one workload at a time, next to the stack you already have. No full migration required.",
+    "primary_badge": "Primary",
+    "indie_title": "Independent developers",
+    "indie_desc": "One language, one CLI, and one config file instead of a separate bundler, backend framework, docs generator, and deploy scripts.",
+    "indie_uc1": "Publish a landing page or blog → site",
+    "indie_uc2": "Publish product documentation → book",
+    "indie_uc3": "Ship a small web app or API as one binary → app",
+    "team_title": "Small engineering teams",
+    "team_desc": "Shared conventions and lifecycle commands across services, so moving between them does not mean switching mental models.",
+    "team_uc1": "Move slow work out of the request path → worker",
+    "team_uc2": "Add a headless service next to an existing app → service",
+    "team_uc3": "Deploy to a VPS with systemd → kiw deploy",
+    "secondary": "Also relevant to learners and educators, open-source maintainers, and organizations evaluating self-hostable tooling.",
+    "cta": "All audiences & use cases →"
+  },
   "pillars": {
     "badge": "Three Pillars",
     "title": "Secure. Sustainable. Scalable.",

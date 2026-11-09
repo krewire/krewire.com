@@ -142,6 +142,47 @@ layout: Landing
 </section>
 
 <!-- =====================================================================
+     AUDIENCES & USE CASES
+     ===================================================================== -->
+<section id="audiences" class="w-full bg-bg-2 dark:bg-bg-dark-2 bg-dots py-24 sm:py-28 md:py-32 border-b-2 border-border">
+  <div class="container-site">
+    <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+      <Badge Variant="primary" Class="mb-3 sm:mb-4"><span data-i18n="audiences.badge">Who Krewire Is For</span></Badge>
+      <h2 class="text-3xl sm:text-4xl font-black tracking-tight mb-4 sm:mb-5 text-fg dark:text-fg-dark" data-i18n="audiences.title">Built for Independent Developers and Small Teams</h2>
+      <p class="text-sm sm:text-base md:text-lg text-muted dark:text-muted-dark leading-relaxed" data-i18n="audiences.lead">Adopt one workload at a time, next to the stack you already have. No full migration required.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8">
+      <div class="card p-7 sm:p-8 bg-bg dark:bg-bg-dark">
+        <Badge Variant="primary" Size="sm" Class="font-mono mb-3"><span data-i18n="audiences.primary_badge">Primary</span></Badge>
+        <h3 class="text-xl font-black tracking-tight mb-2.5 text-fg dark:text-fg-dark" data-i18n="audiences.indie_title">Independent developers</h3>
+        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="audiences.indie_desc">One language, one CLI, and one config file instead of a separate bundler, backend framework, docs generator, and deploy scripts.</p>
+        <ul class="flex flex-col gap-2 p-0 m-0 list-none text-sm">
+          <li><a href="/docs/workloads/site" class="font-bold text-primary hover:underline" data-i18n="audiences.indie_uc1">Publish a landing page or blog → site</a></li>
+          <li><a href="/docs/workloads/book" class="font-bold text-primary hover:underline" data-i18n="audiences.indie_uc2">Publish product documentation → book</a></li>
+          <li><a href="/docs/workloads/app" class="font-bold text-primary hover:underline" data-i18n="audiences.indie_uc3">Ship a small web app or API as one binary → app</a></li>
+        </ul>
+      </div>
+      <div class="card p-7 sm:p-8 bg-bg dark:bg-bg-dark">
+        <Badge Variant="primary" Size="sm" Class="font-mono mb-3"><span data-i18n="audiences.primary_badge">Primary</span></Badge>
+        <h3 class="text-xl font-black tracking-tight mb-2.5 text-fg dark:text-fg-dark" data-i18n="audiences.team_title">Small engineering teams</h3>
+        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="audiences.team_desc">Shared conventions and lifecycle commands across services, so moving between them does not mean switching mental models.</p>
+        <ul class="flex flex-col gap-2 p-0 m-0 list-none text-sm">
+          <li><a href="/docs/workloads/worker" class="font-bold text-primary hover:underline" data-i18n="audiences.team_uc1">Move slow work out of the request path → worker</a></li>
+          <li><a href="/docs/workloads/service" class="font-bold text-primary hover:underline" data-i18n="audiences.team_uc2">Add a headless service next to an existing app → service</a></li>
+          <li><a href="/docs/guides/deployment-and-operations" class="font-bold text-primary hover:underline" data-i18n="audiences.team_uc3">Deploy to a VPS with systemd → kiw deploy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed text-center max-w-3xl mx-auto mb-6" data-i18n="audiences.secondary">Also relevant to learners and educators, open-source maintainers, and organizations evaluating self-hostable tooling.</p>
+    <div class="flex justify-center">
+      <Button Variant="outline" Size="md" Href="/docs/project/audiences-and-use-cases"><span data-i18n="audiences.cta">All audiences &amp; use cases →</span></Button>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
      KREWIRE ECOSYSTEM SHOWCASE
      ===================================================================== -->
 <section id="ecosystem" class="w-full bg-bg dark:bg-bg-dark py-28 sm:py-36 md:py-40 lg:py-44 border-b-2 border-border">

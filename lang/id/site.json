@@ -78,6 +78,24 @@
     "vision": "Aspirasi jangka panjang: satu pembangun masih dapat membaca, menjalankan, dan membiayai apa yang ia bangun dengan Krewire sepuluh tahun dari sekarang.",
     "cta_about": "Tentang Krewire →"
   },
+  "audiences": {
+    "badge": "Untuk Siapa Krewire",
+    "title": "Dibuat untuk Pengembang Independen dan Tim Kecil",
+    "lead": "Adopsi satu workload demi satu workload, berdampingan dengan stack yang sudah Anda miliki. Tanpa migrasi menyeluruh.",
+    "primary_badge": "Utama",
+    "indie_title": "Pengembang independen",
+    "indie_desc": "Satu bahasa, satu CLI, dan satu berkas konfigurasi sebagai ganti bundler, framework backend, generator dokumentasi, dan skrip deploy yang terpisah-pisah.",
+    "indie_uc1": "Terbitkan landing page atau blog → site",
+    "indie_uc2": "Terbitkan dokumentasi produk → book",
+    "indie_uc3": "Rilis aplikasi web kecil atau API sebagai satu binary → app",
+    "team_title": "Tim engineering kecil",
+    "team_desc": "Konvensi dan perintah siklus hidup yang sama di semua layanan, sehingga berpindah antar-layanan tidak berarti berganti model mental.",
+    "team_uc1": "Pindahkan pekerjaan lambat keluar dari jalur request → worker",
+    "team_uc2": "Tambahkan layanan headless di samping aplikasi yang ada → service",
+    "team_uc3": "Deploy ke VPS dengan systemd → kiw deploy",
+    "secondary": "Juga relevan bagi pelajar dan pendidik, maintainer open-source, serta organisasi yang mengevaluasi tooling yang dapat di-host sendiri.",
+    "cta": "Semua audiens & kasus penggunaan →"
+  },
   "pillars": {
     "badge": "Tiga Pilar",
     "title": "Secure. Sustainable. Scalable.",
