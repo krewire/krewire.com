@@ -1,0 +1,54 @@
+---
+title: "Krewire UI Playground — Live Component Previews"
+description: "Switch variants and sizes of real Krewire UI components, compare light and dark themes, and copy the .kiw source or a usage example."
+layout: Landing
+---
+
+<section class="w-full bg-bg dark:bg-bg-dark bg-dots py-12 sm:py-16 border-b-2 border-border">
+  <div class="container-site">
+    <div class="max-w-3xl">
+      <div class="mb-4">
+        <Badge Variant="primary" dot=true><span data-i18n="playground.eyebrow">KREWIRE UI · LIVE PREVIEW</span></Badge>
+      </div>
+      <h1 class="font-black tracking-tighter leading-tight text-fg dark:text-fg-dark mb-4" style="font-size:clamp(28px,5vw,48px); letter-spacing:-0.03em" data-i18n="playground.title">Component Playground</h1>
+      <p class="text-sm sm:text-base text-muted dark:text-muted-dark leading-relaxed mb-5" data-i18n-html="playground.lead_html">Every preview below is a real <code class="code-inline">.kiw</code> component from <code class="code-inline">github.com/krewire/ui</code>, rendered by <code class="code-inline">kiw build</code> for each variant and size. Toggle the options, compare the light and dark themes side by side, then copy the component source or the exact usage snippet. Nothing is fetched from the network.</p>
+      <nav class="cpv-index flex flex-wrap gap-2" aria-label="Components">
+        <a class="cpv-chip" href="#button">Button</a>
+        <a class="cpv-chip" href="#badge">Badge</a>
+        <a class="cpv-chip" href="#input">Input</a>
+        <a class="cpv-chip" href="#card">Card</a>
+        <a class="cpv-chip" href="#modal">Modal</a>
+        <a class="cpv-chip" href="#tabs">Tabs</a>
+        <a class="cpv-chip" href="#alert">Alert</a>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<section class="w-full bg-bg dark:bg-bg-dark py-8 sm:py-12">
+  <div class="container-site cpv-page">
+    <ComponentPreview name="Button" slug="button" docs="/docs/ui/components/button" i18n="playground.button_desc" description="Primary interactive element. Variants map to intent; sizes follow the sm / md / lg scale." />
+    <ComponentPreview name="Badge" slug="badge" docs="/docs/ui/components/badge" i18n="playground.badge_desc" description="Compact status or category label in seven semantic colours and two sizes." />
+    <ComponentPreview name="Input" slug="input" docs="/docs/ui/components/input" i18n="playground.input_desc" description="Labelled text field with help text, validation error, and disabled states." />
+    <ComponentPreview name="Card" slug="card" docs="/docs/ui/components/card" i18n="playground.card_desc" description="Surface container with a title block and a body slot, in four emphasis variants." />
+    <ComponentPreview name="Modal" slug="modal" docs="/docs/ui/components/modal" i18n="playground.modal_desc" description="Native dialog element. Press the button inside the preview to open it; Esc or the buttons close it." />
+    <ComponentPreview name="Tabs" slug="tabs" docs="/docs/ui/components/tabs" i18n="playground.tabs_desc" description="Accessible tab list. Click a tab inside the preview to move the active state." />
+    <ComponentPreview name="Alert" slug="alert" docs="/docs/ui/components/alert" i18n="playground.alert_desc" description="Inline feedback banner for info, success, warning, and error messages." />
+  </div>
+</section>
+
+<style>
+.cpv-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  border: 2px solid var(--border, #0B1F3B);
+  background: var(--bg-2, #f2ede4);
+  color: var(--fg, #0B1F3B);
+  font-weight: 800;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+.cpv-chip:hover { background: var(--primary, #39D353); color: var(--primary-content, #0B1F3B); }
+</style>

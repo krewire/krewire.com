@@ -455,6 +455,20 @@ var translations = {
       "copied_button": "✓ Copied!",
       "prev_label": "Previous",
       "next_label": "Next"
+    },
+    "playground": {
+      "eyebrow": "KREWIRE UI · LIVE PREVIEW",
+      "title": "Component Playground",
+      "lead_html": "Every preview below is a real <code class=\"code-inline\">.kiw</code> component from <code class=\"code-inline\">github.com/krewire/ui</code>, rendered by <code class=\"code-inline\">kiw build</code> for each variant and size. Toggle the options, compare the light and dark themes side by side, then copy the component source or the exact usage snippet. Nothing is fetched from the network.",
+      "docs_link": "Component docs →",
+      "noscript_html": "The live preview needs JavaScript. You can still open the static preview page linked from the component docs.",
+      "button_desc": "Primary interactive element. Variants map to intent; sizes follow the sm / md / lg scale.",
+      "badge_desc": "Compact status or category label in seven semantic colours and two sizes.",
+      "input_desc": "Labelled text field with help text, validation error, and disabled states.",
+      "card_desc": "Surface container with a title block and a body slot, in four emphasis variants.",
+      "modal_desc": "Native dialog element. Press the button inside the preview to open it; Esc or the buttons close it.",
+      "tabs_desc": "Accessible tab list. Click a tab inside the preview to move the active state.",
+      "alert_desc": "Inline feedback banner for info, success, warning, and error messages."
     }
   },
   "id": {
@@ -720,6 +734,20 @@ var translations = {
       "copied_button": "✓ Tersalin!",
       "prev_label": "Sebelumnya",
       "next_label": "Selanjutnya"
+    },
+    "playground": {
+      "eyebrow": "KREWIRE UI · PRATINJAU LANGSUNG",
+      "title": "Playground Komponen",
+      "lead_html": "Setiap pratinjau di bawah adalah komponen <code class=\"code-inline\">.kiw</code> asli dari <code class=\"code-inline\">github.com/krewire/ui</code> yang di-render oleh <code class=\"code-inline\">kiw build</code> untuk setiap varian dan ukuran. Ganti opsi, bandingkan tema terang dan gelap berdampingan, lalu salin kode sumber komponen atau contoh penggunaannya. Tidak ada yang diambil dari jaringan.",
+      "docs_link": "Dokumentasi komponen →",
+      "noscript_html": "Pratinjau langsung membutuhkan JavaScript. Anda tetap dapat membuka halaman pratinjau statis yang ditautkan dari dokumentasi komponen.",
+      "button_desc": "Elemen interaktif utama. Varian menunjukkan maksud aksi; ukuran mengikuti skala sm / md / lg.",
+      "badge_desc": "Label status atau kategori ringkas dalam tujuh warna semantik dan dua ukuran.",
+      "input_desc": "Kolom teks berlabel dengan teks bantuan, galat validasi, dan status nonaktif.",
+      "card_desc": "Wadah permukaan dengan blok judul dan slot isi, dalam empat varian penekanan.",
+      "modal_desc": "Elemen dialog native. Tekan tombol di dalam pratinjau untuk membukanya; Esc atau tombol di dalamnya menutupnya.",
+      "tabs_desc": "Daftar tab yang aksesibel. Klik tab di dalam pratinjau untuk memindahkan status aktif.",
+      "alert_desc": "Banner umpan balik untuk pesan info, sukses, peringatan, dan galat."
     }
   }
 };

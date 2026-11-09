@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="robots" content="noindex">
+  <title>{title}</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+</head>
+<body class="pv-body">
+  <main class="pv-main">{content}</main>
+</body>
+</html>
+
+<!-- Frame behaviour (forced theme, variant switching, clickable tabs) lives in
+     public/assets/ui-playground.js, which the bundler ships on every page. -->
+<style>
+/* Live-preview frame for the Krewire UI playground (see components/ComponentPreview.kiw).
+   One page holds every prebuilt variant; only the active one is shown. */
+html, body.pv-body {
+  margin: 0;
+  min-height: 0;
+  background: var(--bg, #FAF8F4);
+  color: var(--fg, #0B1F3B);
+}
+.pv-main {
+  padding: 1.25rem;
+}
+.pv { display: none; }
+.pv.is-active { display: block; }
+html:not(.pv-ready) .pv[data-default] { display: block; }
+.pv-stage {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 3rem;
+}
+.pv-stage > [data-kiw-component="Card"],
+.pv-stage > [data-kiw-component="Alert"],
+.pv-stage > [data-kiw-component="Input"],
+.pv-stage > [data-kiw-component="Tabs"] {
+  flex: 1 1 100%;
+  max-width: 32rem;
+}
+</style>
