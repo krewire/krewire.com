@@ -59,14 +59,14 @@ These edges are Go module dependencies: an arrow means "imports packages from". 
 | `krewire` (core + `kiw`) | `github.com/krewire/krewire` | `ui` (`pkg/ui/components` re-exports the kui `embed.FS`) |
 | `krew` (agent engine) | `github.com/krewire/krew` | `krewire` |
 | `auth` | `github.com/krewire/auth` | `krewire` |
-| `panel` (Forge) | `github.com/krewire/panel` | `krewire` |
+| `forge` | `github.com/krewire/forge` | `krewire` |
 | `cloud` | `github.com/krewire/cloud` | `krewire`, `auth`, `krew` |
 | `dash` | `github.com/krewire/dash` | `krewire`, `auth`, `krew` |
 | `krewire.com`, `krewire.github.io` | — | none in Go; built with `kiw build`, which renders kui components |
 
 Two properties matter:
 
-- **The graph is acyclic.** `kui` imports nothing, the core imports only `kui`, and every product imports downward. No product imports another product: `dash` and `panel` (Forge) share no Go code.
+- **The graph is acyclic.** `kui` imports nothing, the core imports only `kui`, and every product imports downward. No product imports another product: `dash` and `forge` share no Go code.
 - **The CLI is a leaf for consumers.** Products import `pkg/*` packages; none imports `tools/kiw`.
 
 ## 3. Runtime Integrations (Decoupled Protocols)

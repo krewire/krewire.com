@@ -59,14 +59,14 @@ Sisi-sisi ini adalah dependensi modul Go: sebuah panah berarti "mengimpor paket 
 | `krewire` (inti + `kiw`) | `github.com/krewire/krewire` | `ui` (`pkg/ui/components` mengekspor ulang `embed.FS` milik kui) |
 | `krew` (engine agen) | `github.com/krewire/krew` | `krewire` |
 | `auth` | `github.com/krewire/auth` | `krewire` |
-| `panel` (Forge) | `github.com/krewire/panel` | `krewire` |
+| `forge` | `github.com/krewire/forge` | `krewire` |
 | `cloud` | `github.com/krewire/cloud` | `krewire`, `auth`, `krew` |
 | `dash` | `github.com/krewire/dash` | `krewire`, `auth`, `krew` |
 | `krewire.com`, `krewire.github.io` | — | tidak ada di Go; di-build dengan `kiw build`, yang merender komponen kui |
 
 Dua sifat yang penting:
 
-- **Grafiknya asiklik.** `kui` tidak mengimpor apa pun, inti hanya mengimpor `kui`, dan setiap produk mengimpor ke arah bawah. Tidak ada produk yang mengimpor produk lain: `dash` dan `panel` (Forge) tidak berbagi kode Go.
+- **Grafiknya asiklik.** `kui` tidak mengimpor apa pun, inti hanya mengimpor `kui`, dan setiap produk mengimpor ke arah bawah. Tidak ada produk yang mengimpor produk lain: `dash` dan `forge` tidak berbagi kode Go.
 - **CLI adalah daun bagi konsumen.** Produk mengimpor paket `pkg/*`; tidak ada yang mengimpor `tools/kiw`.
 
 ## 3. Integrasi Runtime (Protokol Terpisah)
