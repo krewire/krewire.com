@@ -101,7 +101,7 @@ layout: Landing
         <span class="hidden sm:inline opacity-40">·</span>
         <span><b class="text-fg dark:text-fg-dark">1</b> Project Config</span>
         <span class="hidden sm:inline opacity-40">·</span>
-        <span data-i18n="trust.opensource">Open Source</span>
+        <a href="/docs/project/openness-and-self-hosting" class="font-bold text-fg dark:text-fg-dark hover:text-primary underline decoration-dotted underline-offset-4" data-i18n="trust.opensource">Open Source · MIT · Self-Hostable</a>
       </div>
     </div>
   </div>

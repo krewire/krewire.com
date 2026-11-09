@@ -257,7 +257,7 @@ var translations = {
     },
     "trust": {
       "label": "Unified Go Toolchain",
-      "opensource": "Open Source"
+      "opensource": "Open Source · MIT · Self-Hostable"
     },
     "mission": {
       "badge": "Our Mission",
@@ -507,7 +507,7 @@ var translations = {
     },
     "trust": {
       "label": "Toolchain Go Terpadu",
-      "opensource": "Open Source"
+      "opensource": "Open Source · MIT · Dapat Di-host Sendiri"
     },
     "mission": {
       "badge": "Misi Kami",
