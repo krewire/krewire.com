@@ -327,7 +327,7 @@ Menambahkan modul Go atau plugin ekosistem pilihan (seperti Tailwind CSS):
 ```bash
 kiw add twcss@latest
 kiw add tailwindcss
-kiw add github.com/krewire/krewire@v0.1.0
+kiw add github.com/krewire/krewire@v0.2.0
 ```
 
 - **Nol JS secara Default**: Krewire secara default tidak memerlukan JavaScript serta menggunakan token CSS mandiri.
@@ -368,6 +368,9 @@ kiw self-update --dry-run # Simulasikan proses pembaruan
 ```
 
 - `--check`: Memeriksa GitHub Releases untuk mendeteksi rilis stabil baru.
+
+> **Catatan (2026-11-09):** belum ada GitHub Release yang dipublikasikan untuk `krewire/krewire`, sehingga `kiw self-update` saat ini mengandalkan fallback toolchain Go (Go 1.27.1+).
+
 - `--force`: Memasang ulang atau memperbarui meskipun sudah berada di versi terbaru.
 - `--version <ver>`: Memasang versi target semver tertentu.
 - Melakukan penggantian binary secara atomik pada Linux, macOS, dan Windows dengan fallback otomatis ke toolchain Go.

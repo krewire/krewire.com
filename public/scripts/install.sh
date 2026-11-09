@@ -205,15 +205,16 @@ else
   if ! command -v go >/dev/null 2>&1; then
     printf "\n"
     warn "No precompiled binary available for ${OS}/${ARCH}."
-    die "Go 1.22+ is required to install from source. Get it at https://go.dev/dl/ then re-run this script."
+    die "Go 1.27.1+ is required to install from source. Get it at https://go.dev/dl/ then re-run this script."
   fi
 
-  # Enforce minimum Go version 1.22+
+  # Enforce minimum Go version 1.27+ (the module declares go 1.27.1;
+  # the go command fetches the exact patch toolchain itself when needed)
   _go_ver="$(go version 2>/dev/null | grep -oE 'go[0-9]+\.[0-9]+' | head -1 || true)"
   _go_minor="$(printf '%s' "${_go_ver}" | grep -oE '[0-9]+\.[0-9]+' | cut -d. -f2 || echo 0)"
   _go_major="$(printf '%s' "${_go_ver}" | grep -oE '[0-9]+\.[0-9]+' | cut -d. -f1 || echo 0)"
-  if [ "${_go_major}" -lt 1 ] || { [ "${_go_major}" -eq 1 ] && [ "${_go_minor}" -lt 22 ]; }; then
-    die "Go 1.22+ required (found ${_go_ver:-unknown}). Upgrade at https://go.dev/dl/"
+  if [ "${_go_major}" -lt 1 ] || { [ "${_go_major}" -eq 1 ] && [ "${_go_minor}" -lt 27 ]; }; then
+    die "Go 1.27.1+ required (found ${_go_ver:-unknown}). Upgrade at https://go.dev/dl/"
   fi
 
   info "Found $(go version)"

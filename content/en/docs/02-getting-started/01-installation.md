@@ -46,7 +46,7 @@ curl -fsSL https://krewire.com/scripts/install.sh | sh
 
 #### How the Installer Works:
 1. **Platform Detection:** Inspects your kernel (`Linux`/`Darwin`) and CPU architecture (`x86_64`/`arm64`).
-2. **Tag Resolution:** Resolves the latest official stable release (e.g. `v0.1.0`) from the GitHub release registry.
+2. **Tag Resolution:** Queries GitHub Releases for the latest release of `krewire/krewire`. **No GitHub Release has been published yet** (the latest tag is `v0.2.0`), so the installer currently falls back to `go install` from source, which requires **Go 1.27.1+**. Steps 3–4 apply once pre-built release archives exist.
 3. **Checksum Verification:** Downloads the official `kiw_checksums.txt` manifest and cryptographically validates the SHA256 hash of the downloaded archive before extraction.
 4. **Atomic Placement:** Places the binary into `/usr/local/bin` using `install -m 755`. If run without root permissions, it automatically falls back to `~/.local/bin`.
 5. **Secure Cleanup:** Traps exit signals (`INT`, `TERM`, `EXIT`) to guarantee temporary extraction directories are safely erased.
@@ -67,10 +67,10 @@ If you already have Go installed and `$GOPATH/bin` configured in your system `PA
 go install github.com/krewire/krewire/tools/kiw/cmd/kiw@latest
 ```
 
-To pin a specific version (e.g. `v0.1.0`):
+To pin a specific version (e.g. `v0.2.0`):
 
 ```bash
-go install github.com/krewire/krewire/tools/kiw/cmd/kiw@v0.1.0
+go install github.com/krewire/krewire/tools/kiw/cmd/kiw@v0.2.0
 ```
 
 #### Configuring Your PATH:
@@ -104,7 +104,7 @@ provenance):
 
 ```text
 kiw Krewire Devtool
-  Krewire Ecosystem  v0.1.0
+  Krewire Ecosystem  v0.2.0
   Signature          build with krewire
   Go                 go1.27.1 (linux/amd64)
   Commit             a1b2c3d4
