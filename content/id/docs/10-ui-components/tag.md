@@ -1,0 +1,60 @@
+---
+title: "Tag"
+description: "Label kata kunci yang dapat dihapus atau diklik dengan varian warna."
+date: "2026-11-09"
+---
+
+# Tag
+
+Kategori: **Umpan Balik & Status**  
+Berkas Komponen: `components/Tag.kiw`  
+Sumber: `github.com/krewire/ui/components/Tag.kiw`
+
+Label kata kunci yang dapat dihapus atau diklik dengan varian warna.
+
+---
+
+## 1. Instalasi (Model Copy & Own)
+
+Salin berkas komponen `Tag.kiw` langsung ke direktori `./components` proyek Anda:
+
+```bash
+mkdir -p ./components
+cp path/to/krewire/ui/components/Tag.kiw ./components/
+```
+
+Setelah disalin, proyek Anda memiliki berkas komponen ini sepenuhnya. Anda bebas menyesuaikan markup HTML, logika, dan styling tanpa khawatir pembaruan upstream merusak aplikasi Anda.
+
+---
+
+## 2. Contoh Penggunaan Dasar
+
+Gunakan `<Tag />` langsung di dalam halaman `.kiw` atau template tata letak:
+
+```html
+<Tag class="kustom-tag">
+  <!-- Konten slot atau properti -->
+</Tag>
+```
+
+---
+
+## 3. Properti & Atribut yang Didukung
+
+- `icon`: Mengonfigurasi atribut atau perilaku `icon`.
+- `id`: Mengonfigurasi atribut atau perilaku `id`.
+- `removable`: Mengonfigurasi atribut atau perilaku `removable`.
+- `selected`: Mengonfigurasi atribut atau perilaku `selected`.
+- `size`: Mengonfigurasi atribut atau perilaku `size`.
+- `text`: Mengonfigurasi atribut atau perilaku `text`.
+- `variant`: Mengonfigurasi atribut atau perilaku `variant`.
+
+- `class`: Kelas CSS kustom tambahan yang ingin ditambahkan pada elemen utama komponen.
+
+---
+
+## 4. Token Visual & Aksesibilitas
+
+- **Stylesheet Design System**: Mewarisi token CSS terpusat dari `krewire-ui.css` (`--border`, `--radius`, `--pop-shadow`).
+- **Mode Gelap (Dark Mode)**: Warna permukaan dan teks otomatis dibalik saat `data-theme="dark"` atau class `.dark` diterapkan pada `:root`.
+- **Zero-Bloat**: Dibangun secara native menggunakan elemen primitif HTML standar tanpa ketergantungan npm atau JavaScript berat.

@@ -83,6 +83,7 @@ Leverage Krewire's modular, independent batteries grouped into four domain tiers
    - [**Application Container & Monolith (`pkg/app`)**](/web-ui/app) — Dependency injection container, application lifecycle management, and signal draining.
    - [**Web Runtime & WASM (`pkg/runtime`)**](/web-ui/web-runtime) — Client-side Go WebAssembly, virtual DOM diffing, and SSR hydration.
    - [**Web UI Components & Tokens (`pkg/ui`)**](/web-ui/ui) — Reusable Single-File Components (.kiw), semantic CSS design tokens, and themes.
+   - [**Krewire UI Components Catalog (66 Components)**](/ui-components) — Complete component-by-component documentation, props, slots, and interactive examples.
    - [**Terminal UI Toolkit (`pkg/tui`)**](/web-ui/tui) — Terminal user interfaces, Elm/Bubble Tea architecture, and ANSI styling.
 
 3. **Data, Storage & Services:**
