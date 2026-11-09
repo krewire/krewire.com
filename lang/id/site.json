@@ -65,6 +65,19 @@
     "label": "Toolchain Go Terpadu",
     "opensource": "Open Source"
   },
+  "mission": {
+    "badge": "Misi Kami",
+    "title": "Dampak Lebih Dulu. Berkelanjutan Sejak Desain.",
+    "statement": "Misi Krewire adalah membuatnya mendekati gratis — baik dalam biaya finansial, beban operasional, maupun beban kognitif — bagi siapa pun untuk membangun, memiliki, dan mengoperasikan produk digital yang aman, berkelanjutan, dan berskala besar.",
+    "who_title": "Untuk siapa",
+    "who_desc": "Pengembang independen dan tim engineering kecil lebih dulu. Pelajar dan pendidik, maintainer open-source, serta organisasi mendapat manfaat dari fondasi terbuka yang sama.",
+    "impact_title": "Dampak adalah ukurannya",
+    "impact_desc": "Keberhasilan diukur dari dampak jangka panjang pada cara perangkat lunak dibangun, bukan pendapatan. Inti open-source tidak memerlukan akun, kunci lisensi, ataupun layanan yang di-host Krewire.",
+    "sustain_title": "Keberlanjutan melayani misi",
+    "sustain_desc": "Layanan platform opsional mungkin ditawarkan secara komersial di masa depan untuk mendanai pemeliharaan. Tidak semua layanan harus gratis — tetapi tooling inti tidak pernah berbayar. Saat ini belum ada harga yang dipublikasikan.",
+    "vision": "Aspirasi jangka panjang: satu pembangun masih dapat membaca, menjalankan, dan membiayai apa yang ia bangun dengan Krewire sepuluh tahun dari sekarang.",
+    "cta_about": "Tentang Krewire →"
+  },
   "pillars": {
     "badge": "Tiga Pilar",
     "title": "Secure. Sustainable. Scalable.",

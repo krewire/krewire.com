@@ -65,6 +65,19 @@
     "label": "Unified Go Toolchain",
     "opensource": "Open Source"
   },
+  "mission": {
+    "badge": "Our Mission",
+    "title": "Impact First. Sustainable by Design.",
+    "statement": "Krewire's mission is to make it nearly free — in financial cost, operational burden, and cognitive effort — for anyone to build, own, and operate digital products that are secure, sustainable, and scalable.",
+    "who_title": "Who it serves",
+    "who_desc": "Independent developers and small engineering teams first. Learners and educators, open-source maintainers, and organizations benefit from the same open foundation.",
+    "impact_title": "Impact is the measure",
+    "impact_desc": "Success is long-term impact on how software is built, not revenue. The open-source core needs no account, license key, or Krewire-hosted service.",
+    "sustain_title": "Sustainability serves the mission",
+    "sustain_desc": "Optional platform services may be offered commercially in the future to fund maintenance. Not every service must be free — but the core tooling is never paywalled. No pricing is published today.",
+    "vision": "Long-term aspiration: a single builder can still read, run, and afford what they built with Krewire a decade from now.",
+    "cta_about": "About Krewire →"
+  },
   "pillars": {
     "badge": "Three Pillars",
     "title": "Secure. Sustainable. Scalable.",

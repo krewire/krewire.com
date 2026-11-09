@@ -8,6 +8,8 @@ date: "2026-10-24"
 
 Selamat datang di **Dokumentasi Krewire**.
 
+> **Misi:** Misi Krewire adalah membuatnya mendekati gratis — baik dalam biaya finansial, beban operasional, maupun beban kognitif — bagi siapa pun untuk membangun, memiliki, dan mengoperasikan produk digital yang aman, berkelanjutan, dan berskala besar. Baca selengkapnya di [Tentang Krewire](/project).
+
 **Krewire** adalah ekosistem **SDLC digital menyeluruh** open-source yang disajikan sebagai **Pustaka Modular**: paket Go independen, satu tujuan yang Anda komposisi di balik satu CLI (**`kiw`**) dan satu konfigurasi terpadu (**`krewire.yaml`**) untuk membangun, menguji, dan men-deploy **delapan workload berbeda**:
 
 1. **Monolit Web Fullstack (`app`)**

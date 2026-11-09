@@ -215,12 +215,12 @@ var translations = {
       "panel_desc": "Self-hosted server & admin control panel"
     },
     "hero": {
-      "eyebrow": "End-to-End Digital SDLC Ecosystem · v0.2.2 · Open Source",
-      "title_html": "The Complete Go SDLC Platform.<br class=\"hidden sm:inline\"><span class=\"text-primary\">One Ecosystem. Every Workload.</span>",
+      "eyebrow": "GO-FIRST SOFTWARE ENGINEERING ECOSYSTEM · v0.2.3",
+      "title_html": "The Go-First Software Engineering Ecosystem.<br class=\"hidden sm:inline\"><span class=\"text-primary\">One Ecosystem. Every Workload.</span>",
       "lead_html": "Krewire is an end-to-end <b class=\"text-fg dark:text-fg-dark\">digital SDLC platform and application ecosystem</b> in Go — spanning the entire software lifecycle from specification, autonomous AI agents, enterprise SSO &amp; RBAC, hybrid PaaS, virtual dev workspaces, to production server operations. Far beyond modular Go libraries, Krewire delivers a cohesive, unified platform driven by a single CLI <code class=\"code-inline\">kiw</code>. Built on three immutable pillars: <b class=\"text-fg dark:text-fg-dark\">secure</b>, <b class=\"text-fg dark:text-fg-dark\">sustainable</b>, and <b class=\"text-fg dark:text-fg-dark\">scalable</b>.",
       "cta_start": "Get Started — 5 Min →",
       "cta_contribute": "Contribute →",
-      "meta": "Go 1.27.1+ · Spec to Production · File-based routing · Scoped CSS · 100% Zero JS by default"
+      "meta": "Go 1.27.1+ · Spec to Production · File-based routing · Scoped CSS · Progressive by design"
     },
     "products": {
       "badge": "Krewire Ecosystem",
@@ -257,11 +257,20 @@ var translations = {
     },
     "trust": {
       "label": "Unified Go Toolchain",
-      "stdlib": "100% Go Standard Library",
-      "npm": "0 npm / 0 Bundlers",
-      "workloads": "8 Workloads in 1 Binary",
-      "coldstart": "< 1ms Cold Starts",
-      "config": "Single Config krewire.yaml"
+      "opensource": "Open Source"
+    },
+    "mission": {
+      "badge": "Our Mission",
+      "title": "Impact First. Sustainable by Design.",
+      "statement": "Krewire's mission is to make it nearly free — in financial cost, operational burden, and cognitive effort — for anyone to build, own, and operate digital products that are secure, sustainable, and scalable.",
+      "who_title": "Who it serves",
+      "who_desc": "Independent developers and small engineering teams first. Learners and educators, open-source maintainers, and organizations benefit from the same open foundation.",
+      "impact_title": "Impact is the measure",
+      "impact_desc": "Success is long-term impact on how software is built, not revenue. The open-source core needs no account, license key, or Krewire-hosted service.",
+      "sustain_title": "Sustainability serves the mission",
+      "sustain_desc": "Optional platform services may be offered commercially in the future to fund maintenance. Not every service must be free — but the core tooling is never paywalled. No pricing is published today.",
+      "vision": "Long-term aspiration: a single builder can still read, run, and afford what they built with Krewire a decade from now.",
+      "cta_about": "About Krewire →"
     },
     "pillars": {
       "badge": "Three Pillars",
@@ -438,12 +447,12 @@ var translations = {
       "panel_desc": "Panel kontrol server mandiri & admin"
     },
     "hero": {
-      "eyebrow": "Ekosistem SDLC Digital End-to-End · v0.2.2 · Open Source",
-      "title_html": "Platform SDLC Digital Terpadu dalam Go.<br class=\"hidden sm:inline\"><span class=\"text-primary\">One Ecosystem. Every Workload.</span>",
+      "eyebrow": "GO-FIRST SOFTWARE ENGINEERING ECOSYSTEM · v0.2.3",
+      "title_html": "Ekosistem Rekayasa Perangkat Lunak Berbasis Go.<br class=\"hidden sm:inline\"><span class=\"text-primary\">One Ecosystem. Every Workload.</span>",
       "lead_html": "Krewire adalah <b class=\"text-fg dark:text-fg-dark\">platform SDLC digital terpadu dan ekosistem aplikasi</b> berbasis Go — mencakup seluruh siklus pengembangan software dari spesifikasi, agen AI otonom, identitas SSO &amp; RBAC, hybrid PaaS, workspace virtual, hingga manajemen server produksi. Krewire bukan sekadar pustaka Go modular, melainkan ekosistem terpadu yang digerakkan oleh satu CLI <code class=\"code-inline\">kiw</code>. Dibangun kokoh di atas tiga pilar: <b class=\"text-fg dark:text-fg-dark\">secure</b>, <b class=\"text-fg dark:text-fg-dark\">sustainable</b>, dan <b class=\"text-fg dark:text-fg-dark\">scalable</b>.",
       "cta_start": "Mulai Sekarang — 5 Menit →",
       "cta_contribute": "Berkontribusi →",
-      "meta": "Go 1.27.1+ · Dari Spek ke Produksi · Routing Berbasis Berkas · Scoped CSS · 100% Bebas JS secara Bawaan"
+      "meta": "Go 1.27.1+ · Dari Spek ke Produksi · Routing Berbasis Berkas · Scoped CSS · Progresif secara Bawaan"
     },
     "products": {
       "badge": "Ekosistem Krewire",
@@ -480,11 +489,20 @@ var translations = {
     },
     "trust": {
       "label": "Toolchain Go Terpadu",
-      "stdlib": "100% Standard Library Go",
-      "npm": "0 npm / 0 Bundler",
-      "workloads": "8 Workload dalam 1 Binary",
-      "coldstart": "< 1ms Cold Start",
-      "config": "Satu Konfigurasi krewire.yaml"
+      "opensource": "Open Source"
+    },
+    "mission": {
+      "badge": "Misi Kami",
+      "title": "Dampak Lebih Dulu. Berkelanjutan Sejak Desain.",
+      "statement": "Misi Krewire adalah membuatnya mendekati gratis — baik dalam biaya finansial, beban operasional, maupun beban kognitif — bagi siapa pun untuk membangun, memiliki, dan mengoperasikan produk digital yang aman, berkelanjutan, dan berskala besar.",
+      "who_title": "Untuk siapa",
+      "who_desc": "Pengembang independen dan tim engineering kecil lebih dulu. Pelajar dan pendidik, maintainer open-source, serta organisasi mendapat manfaat dari fondasi terbuka yang sama.",
+      "impact_title": "Dampak adalah ukurannya",
+      "impact_desc": "Keberhasilan diukur dari dampak jangka panjang pada cara perangkat lunak dibangun, bukan pendapatan. Inti open-source tidak memerlukan akun, kunci lisensi, ataupun layanan yang di-host Krewire.",
+      "sustain_title": "Keberlanjutan melayani misi",
+      "sustain_desc": "Layanan platform opsional mungkin ditawarkan secara komersial di masa depan untuk mendanai pemeliharaan. Tidak semua layanan harus gratis — tetapi tooling inti tidak pernah berbayar. Saat ini belum ada harga yang dipublikasikan.",
+      "vision": "Aspirasi jangka panjang: satu pembangun masih dapat membaca, menjalankan, dan membiayai apa yang ia bangun dengan Krewire sepuluh tahun dari sekarang.",
+      "cta_about": "Tentang Krewire →"
     },
     "pillars": {
       "badge": "Tiga Pilar",

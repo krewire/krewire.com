@@ -6,7 +6,7 @@ date: "2026-10-14"
 
 # Philosophy
 
-Krewire is guided by a fundamental belief: **make it nearly free — in financial cost, operational burden, and cognitive effort — for anyone to build, own, and operate digital products that are secure, sustainable, and scalable.**
+Krewire is guided by a fundamental belief — stated as its [mission](/project): **make it nearly free — in financial cost, operational burden, and cognitive effort — for anyone to build, own, and operate digital products that are secure, sustainable, and scalable.**
 
 Software should turn builders into sovereign producers, not perpetual renters of proprietary platforms. Krewire is delivered as **Modular Libraries**: independent, single-purpose Go packages that you compose behind one configuration file (`krewire.yaml`) and one unified CLI (`kiw`).
 

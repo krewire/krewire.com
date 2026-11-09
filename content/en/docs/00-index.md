@@ -8,6 +8,8 @@ date: "2026-10-24"
 
 Welcome to the **Krewire Documentation**.
 
+> **Mission:** Krewire's mission is to make it nearly free — in financial cost, operational burden, and cognitive effort — for anyone to build, own, and operate digital products that are secure, sustainable, and scalable. Read more in [About Krewire](/project).
+
 **Krewire** is an open-source, end-to-end **digital SDLC ecosystem** delivered as **Modular Libraries**: independent, single-purpose Go packages you compose behind one CLI (**`kiw`**) and one unified configuration (**`krewire.yaml`**) to build, test, and deploy **eight distinct workloads**:
 
 1. **Fullstack Web Monoliths (`app`)**

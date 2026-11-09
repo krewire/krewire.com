@@ -108,6 +108,40 @@ layout: Landing
 </section>
 
 <!-- =====================================================================
+     MISSION (impact-first)
+     ===================================================================== -->
+<section id="mission" class="w-full bg-bg dark:bg-bg-dark py-24 sm:py-28 md:py-32 border-b-2 border-border">
+  <div class="container-site">
+    <div class="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
+      <Badge Variant="primary" Class="mb-3 sm:mb-4"><span data-i18n="mission.badge">Our Mission</span></Badge>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4 sm:mb-5 text-fg dark:text-fg-dark" data-i18n="mission.title">Impact First. Sustainable by Design.</h2>
+      <p class="text-base sm:text-lg md:text-xl text-fg dark:text-fg-dark leading-relaxed font-semibold" data-i18n="mission.statement">Krewire's mission is to make it nearly free — in financial cost, operational burden, and cognitive effort — for anyone to build, own, and operate digital products that are secure, sustainable, and scalable.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+      <div class="card p-6 sm:p-7 bg-bg-2 dark:bg-bg-dark-2">
+        <h3 class="text-lg font-black tracking-tight mb-2.5 text-fg dark:text-fg-dark" data-i18n="mission.who_title">Who it serves</h3>
+        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed m-0" data-i18n="mission.who_desc">Independent developers and small engineering teams first. Learners and educators, open-source maintainers, and organizations benefit from the same open foundation.</p>
+      </div>
+      <div class="card p-6 sm:p-7 bg-bg-2 dark:bg-bg-dark-2">
+        <h3 class="text-lg font-black tracking-tight mb-2.5 text-fg dark:text-fg-dark" data-i18n="mission.impact_title">Impact is the measure</h3>
+        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed m-0" data-i18n="mission.impact_desc">Success is long-term impact on how software is built, not revenue. The open-source core needs no account, license key, or Krewire-hosted service.</p>
+      </div>
+      <div class="card p-6 sm:p-7 bg-bg-2 dark:bg-bg-dark-2">
+        <h3 class="text-lg font-black tracking-tight mb-2.5 text-fg dark:text-fg-dark" data-i18n="mission.sustain_title">Sustainability serves the mission</h3>
+        <p class="text-sm text-muted dark:text-muted-dark leading-relaxed m-0" data-i18n="mission.sustain_desc">Optional platform services may be offered commercially in the future to fund maintenance. Not every service must be free — but the core tooling is never paywalled. No pricing is published today.</p>
+      </div>
+    </div>
+
+    <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed text-center max-w-2xl mx-auto mt-10 sm:mt-12" data-i18n="mission.vision">Long-term aspiration: a single builder can still read, run, and afford what they built with Krewire a decade from now.</p>
+
+    <div class="flex flex-wrap items-center justify-center gap-4 mt-6">
+      <Button Variant="outline" Size="md" Href="/docs/project"><span data-i18n="mission.cta_about">About Krewire →</span></Button>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
      KREWIRE ECOSYSTEM SHOWCASE
      ===================================================================== -->
 <section id="ecosystem" class="w-full bg-bg dark:bg-bg-dark py-28 sm:py-36 md:py-40 lg:py-44 border-b-2 border-border">
