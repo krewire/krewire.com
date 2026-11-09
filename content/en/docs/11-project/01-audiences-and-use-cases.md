@@ -49,7 +49,7 @@ These audiences benefit from the same open foundation, but the website does not 
 
 | Audience | Representative use case | Where to start |
 | :--- | :--- | :--- |
-| **Learners & educators** | Read and teach a complete, MIT-licensed Go codebase that spans web, CLI, workers, and infrastructure. | [Philosophy](/overview/philosophy), [Architecture Discipline](/guides/architecture-discipline), source at [github.com/krewire/krewire](https://github.com/krewire/krewire) |
+| **Learners & educators** | Read and teach a complete, MIT-licensed Go codebase that spans web, CLI, workers, and infrastructure. | [Philosophy](/overview/philosophy), [Architecture Discipline](/architecture/layered-pyramid), source at [github.com/krewire/krewire](https://github.com/krewire/krewire) |
 | **Open-source maintainers** | Build a project's documentation site with `site` or `book`, as this website does. | [Static Sites (`site`)](/workloads/site), [Contributing & Community](/project/contributing) |
 | **Organizations** | Evaluate self-hostable, single-binary output and the open-core boundary before committing. | [Openness & Self-Hosting](/project/openness-and-self-hosting), [Core & Platform Services](/project/core-and-platform-services) |
 

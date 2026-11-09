@@ -225,4 +225,4 @@ KIW_ENV=production KIW_DEBUG=false kiw run
 
 ## Langkah Berikutnya
 
-Setelah konfigurasi Anda siap, lanjutkan ke [**2.3 Struktur Direktori →**](/getting-started/directory-structure) untuk mempelajari tata letak direktori standar bagi setiap jenis workload.
+Setelah konfigurasi Anda siap, lanjutkan ke [**2.5 Struktur Direktori →**](/getting-started/directory-structure) untuk mempelajari tata letak direktori standar bagi setiap jenis workload.

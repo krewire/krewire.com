@@ -111,7 +111,7 @@ Pelajari panduan lengkap untuk ekosistem Krewire:
 | Bab | Judul | Fokus |
 | :--- | :--- | :--- |
 | **1.** | [**Ringkasan Ekosistem**](/) | Arsitektur ekosistem, prinsip inti, tiga pilar, dan gambaran umum workload. |
-| **2.** | [**Memulai (Getting Started)**](/getting-started) | Prasyarat, panduan kilat 5 menit, anatomi proyek, SDLC berbasis agen AI, dan DSL `.kiw`. |
+| **2.** | [**Memulai (Getting Started)**](/getting-started) | Jalur pemula: quickstart, tutorial aplikasi fullstack, instalasi, konfigurasi, dan DSL `.kiw`. |
 | **3.** | [**Workload Mendalam**](/workloads) | Arsitektur rinci untuk 8 jenis workload (`app`, `cli`, `site`, `book`, `worker`, `service`, `gateway`, `infra`). |
 | **4.** | [**Pustaka Inti & Fondasi**](/core-libraries) | Model domain dasar, supervisor siklus hidup kernel, konfigurasi, validasi, resiliensi, dan pengujian. |
 | **5.** | [**Framework Web & UI**](/web-ui) | Router radix HTTP, wadah aplikasi monolit, runtime WebAssembly, komponen .kiw UI, dan toolkit TUI. |
@@ -119,6 +119,9 @@ Pelajari panduan lengkap untuk ekosistem Krewire:
 | **7.** | [**Keamanan & Platform Ekosistem**](/security-platforms) | Kontrol keamanan, primitif auth, platform identitas enterprise, hybrid PaaS, dan agen AI otonom. |
 | **8.** | [**Referensi CLI**](/cli-reference) | Katalog perintah `kiw`, spesifikasi skema `krewire.yaml`, dan otomasi tugas. |
 | **9.** | [**Panduan & Arsitektur**](/guides) | Desain arsitektur, ketentuan lisensi open-core, dan panduan deployment produksi. |
+| **10.** | [**Krewire UI**](/ui) | Design system dan seluruh 66 komponen `.kiw`, dengan pratinjau langsung untuk komponen inti. |
+| **11.** | [**Proyek**](/project) | Audiens, keterbukaan, kontribusi, laporan dampak, kematangan dan peta jalan. |
+| **12.** | [**Pendalaman Arsitektur**](/architecture) | Platform engineering: piramida berlapis, DAG ekosistem, level cakupan, dan alur data. |
 
 ---
 

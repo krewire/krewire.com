@@ -10,6 +10,8 @@ This chapter collects deep-dive engineering guides, architectural invariants, an
 
 Whether you are contributing to core packages or authoring mission-critical applications on top of Krewire, these guides ensure your codebase remains maintainable, secure, and sustainable over long horizons.
 
+> **Note:** The architectural invariants (layered pyramid, ecosystem DAG, scope levels) moved to the dedicated [Architecture Deep-Dive](/architecture) chapter, so that this chapter stays focused on practical guides.
+
 ---
 
 ## What is in this Chapter?
@@ -19,18 +21,6 @@ Whether you are contributing to core packages or authoring mission-critical appl
   <div class="chapter-card">
     <div class="chapter-card-head">
       <span class="chapter-card-num">9.1</span>
-      <h3 class="chapter-card-title">
-        <a href="/guides/architecture-discipline">Architecture &amp; Invariants <span class="arrow">→</span></a>
-      </h3>
-    </div>
-    <p class="chapter-card-desc">
-      Core engineering discipline: strict downward-only dependencies, Single Source of Truth (SSOT), and Pure Go invariants.
-    </p>
-  </div>
-
-  <div class="chapter-card">
-    <div class="chapter-card-head">
-      <span class="chapter-card-num">9.2</span>
       <h3 class="chapter-card-title">
         <a href="/guides/agentic-development">Agentic Development <span class="arrow">→</span></a>
       </h3>
@@ -42,7 +32,7 @@ Whether you are contributing to core packages or authoring mission-critical appl
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">9.3</span>
+      <span class="chapter-card-num">9.2</span>
       <h3 class="chapter-card-title">
         <a href="/guides/deployment-and-operations">Deployment &amp; Operations <span class="arrow">→</span></a>
       </h3>
@@ -54,7 +44,7 @@ Whether you are contributing to core packages or authoring mission-critical appl
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">9.4</span>
+      <span class="chapter-card-num">9.3</span>
       <h3 class="chapter-card-title">
         <a href="/guides/hybrid-paas-and-cloud">Hybrid PaaS &amp; Managed Cloud <span class="arrow">→</span></a>
       </h3>
@@ -66,7 +56,7 @@ Whether you are contributing to core packages or authoring mission-critical appl
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">9.5</span>
+      <span class="chapter-card-num">9.4</span>
       <h3 class="chapter-card-title">
         <a href="/guides/open-core-and-licensing">Open Core &amp; Licensing <span class="arrow">→</span></a>
       </h3>

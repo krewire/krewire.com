@@ -215,4 +215,4 @@ Kompiler `kiw` akan me-resolve semua path terhadap pemetaan ini secara otomatis.
 
 Dengan pemahaman mengenai instalasi, konfigurasi, dan tata letak direktori, Anda siap membangun aplikasi yang tangguh di seluruh varian workload Krewire.
 
-Lanjutkan ke [**2.4 Pengembangan Agentik →**](/getting-started/agentic-development) untuk melengkapi proyek Anda dengan agen coding AI otonom.
+Lanjutkan ke [**2.6 Pengembangan Agentik →**](/getting-started/agentic-development) untuk melengkapi proyek Anda dengan agen coding AI otonom.

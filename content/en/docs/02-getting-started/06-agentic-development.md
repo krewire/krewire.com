@@ -194,4 +194,4 @@ The agent generates a structured requirements and implementation plan outlining 
 
 Now that you know how to supercharge development with AI agents, explore the component templating language:
 
-Proceed to [**2.5 DSL (.kiw) →**](/getting-started/dsl) to learn the component architecture of Krewire.
+Proceed to [**2.7 DSL (.kiw) →**](/getting-started/dsl) to learn the component architecture of Krewire.

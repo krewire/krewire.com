@@ -8,6 +8,8 @@ date: "2026-10-08"
 
 Bab ini menyediakan panduan operasional praktis dan prinsip desain arsitektural untuk membangun, mengoperasikan, dan menskalakan perangkat lunak menggunakan Krewire.
 
+> **Catatan:** Invarian arsitektur (piramida berlapis, DAG ekosistem, level cakupan) telah dipindahkan ke bab khusus [Pendalaman Arsitektur](/architecture), sehingga bab ini tetap fokus pada panduan praktis.
+
 ---
 
 ## Isi Bab Ini
@@ -17,18 +19,6 @@ Bab ini menyediakan panduan operasional praktis dan prinsip desain arsitektural 
   <div class="chapter-card">
     <div class="chapter-card-head">
       <span class="chapter-card-num">9.1</span>
-      <h3 class="chapter-card-title">
-        <a href="/guides/architecture-discipline">Disiplin Arsitektur <span class="arrow">→</span></a>
-      </h3>
-    </div>
-    <p class="chapter-card-desc">
-      Menegakkan aturan dependensi menurun (downward-only), invarian satu sumber kebenaran (SSOT), dan prinsip tanggung jawab tunggal (SRP).
-    </p>
-  </div>
-
-  <div class="chapter-card">
-    <div class="chapter-card-head">
-      <span class="chapter-card-num">9.2</span>
       <h3 class="chapter-card-title">
         <a href="/guides/open-core-and-licensing">Model Open Core &amp; Lisensi <span class="arrow">→</span></a>
       </h3>
@@ -40,7 +30,7 @@ Bab ini menyediakan panduan operasional praktis dan prinsip desain arsitektural 
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">9.3</span>
+      <span class="chapter-card-num">9.2</span>
       <h3 class="chapter-card-title">
         <a href="/guides/deployment-and-operations">Deployment &amp; Operasi <span class="arrow">→</span></a>
       </h3>
@@ -52,7 +42,7 @@ Bab ini menyediakan panduan operasional praktis dan prinsip desain arsitektural 
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">9.4</span>
+      <span class="chapter-card-num">9.3</span>
       <h3 class="chapter-card-title">
         <a href="/guides/agentic-development">Pengembangan Berbantuan AI <span class="arrow">→</span></a>
       </h3>
@@ -64,7 +54,7 @@ Bab ini menyediakan panduan operasional praktis dan prinsip desain arsitektural 
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">9.5</span>
+      <span class="chapter-card-num">9.4</span>
       <h3 class="chapter-card-title">
         <a href="/guides/hybrid-paas-and-cloud">Hybrid PaaS &amp; Cloud <span class="arrow">→</span></a>
       </h3>
