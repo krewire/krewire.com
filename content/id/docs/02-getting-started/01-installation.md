@@ -46,7 +46,7 @@ curl -fsSL https://krewire.com/scripts/install.sh | sh
 
 #### Cara Kerja Penginstal:
 1. **Deteksi Platform:** Memeriksa kernel Anda (`Linux`/`Darwin`) dan arsitektur CPU (`x86_64`/`arm64`).
-2. **Resolusi Tag:** Menemukan rilis stabil resmi terbaru (misalnya `v0.1.0`) dari registry rilis GitHub.
+2. **Resolusi Tag:** Meminta data rilis terbaru `krewire/krewire` dari GitHub Releases. **Belum ada GitHub Release yang dipublikasikan** (tag terbaru adalah `v0.2.0`), sehingga installer saat ini beralih ke `go install` dari kode sumber, yang memerlukan **Go 1.27.1+**. Langkah 3–4 berlaku setelah arsip rilis siap pakai tersedia.
 3. **Verifikasi Checksum:** Mengunduh manifes resmi `kiw_checksums.txt` dan memvalidasi hash SHA256 dari arsip yang diunduh secara kriptografis sebelum ekstraksi.
 4. **Penempatan Atomik:** Menempatkan binary ke `/usr/local/bin` menggunakan `install -m 755`. Jika dijalankan tanpa izin root, secara otomatis beralih ke `~/.local/bin`.
 5. **Pembersihan Aman:** Menangkap sinyal keluar (`INT`, `TERM`, `EXIT`) untuk menjamin direktori ekstraksi sementara dihapus secara aman.
@@ -67,10 +67,10 @@ Jika Anda sudah menginstal Go dan mengonfigurasi `$GOPATH/bin` dalam `PATH` sist
 go install github.com/krewire/krewire/tools/kiw/cmd/kiw@latest
 ```
 
-Untuk mengunci versi tertentu (misalnya `v0.1.0`):
+Untuk mengunci versi tertentu (misalnya `v0.2.0`):
 
 ```bash
-go install github.com/krewire/krewire/tools/kiw/cmd/kiw@v0.1.0
+go install github.com/krewire/krewire/tools/kiw/cmd/kiw@v0.2.0
 ```
 
 #### Mengonfigurasi PATH Anda:
@@ -103,7 +103,7 @@ Output yang diharapkan (baris `Commit` hanya dicetak untuk build dengan informas
 
 ```text
 kiw Krewire Devtool
-  Krewire Ecosystem  v0.1.0
+  Krewire Ecosystem  v0.2.0
   Signature          build with krewire
   Go                 go1.27.1 (linux/amd64)
   Commit             a1b2c3d4

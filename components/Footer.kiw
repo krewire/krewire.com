@@ -4,7 +4,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 pb-6 sm:pb-8" style="border-bottom:var(--pop-border-thin)">
       
       <!-- Col 1: Brand & Social Media (4 cols on lg) -->
-      <div class="sm:col-span-2 lg:col-span-4 flex flex-col items-start pr-0 lg:pr-6">
+      <div class="sm:col-span-2 lg:col-span-3 flex flex-col items-start pr-0 lg:pr-6">
         <div class="flex items-center gap-2.5 font-black text-xl mb-3">
           <span class="icon-box bg-primary text-primary-content w-8 h-8 text-base flex items-center justify-center font-bold">◈</span>
           <span class="tracking-tight text-fg dark:text-fg-dark">Krewire</span>
@@ -40,8 +40,8 @@
         </div>
       </div>
 
-      <!-- Col 2: 8 Workloads (3 cols on lg) -->
-      <div class="lg:col-span-3 flex flex-col gap-2.5">
+      <!-- Col 2: 8 Workloads (2 cols on lg) -->
+      <div class="lg:col-span-2 flex flex-col gap-2.5">
         <strong class="text-2xs font-mono font-bold uppercase tracking-wider text-fg dark:text-fg-dark mb-1" data-i18n="footer.workloads_title">8 Workloads</strong>
         <a href="/docs/workloads/app" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">app — Fullstack Monolith</a>
         <a href="/docs/workloads/cli" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">cli — Terminal TUI</a>
@@ -64,19 +64,19 @@
         <a href="/docs/guides" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">Architecture Guides</a>
       </div>
 
-      <!-- Col 4: Ecosystem & Products (3 cols on lg) -->
-      <div class="lg:col-span-3 flex flex-col gap-2.5">
+      <!-- Col 4: Ecosystem & Products (2 cols on lg) -->
+      <div class="lg:col-span-2 flex flex-col gap-2.5">
         <strong class="text-2xs font-mono font-bold uppercase tracking-wider text-fg dark:text-fg-dark mb-1" data-i18n="footer.products_title">Ecosystem Platforms</strong>
-        <a href="https://dash.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
+        <a href="/docs/security-platforms/virtual-workspace" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
           <span>Krewire Workspace</span> <Badge Variant="primary" Size="sm" Class="font-mono">AI</Badge>
         </a>
-        <a href="https://cloud.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
+        <a href="/docs/security-platforms/cloud-paas" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
           <span>Krewire Cloud</span> <Badge Variant="primary" Size="sm" Class="font-mono">PaaS</Badge>
         </a>
-        <a href="https://auth.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
+        <a href="/docs/security-platforms/identity-and-auth" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
           <span>Krewire Auth</span> <Badge Variant="primary" Size="sm" Class="font-mono">SSO</Badge>
         </a>
-        <a href="https://panel.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
+        <a href="/docs/project/core-and-platform-services#krewire-panel" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
           <span>Krewire Panel</span> <Badge Variant="primary" Size="sm" Class="font-mono">Host</Badge>
         </a>
         <a href="https://github.com/krewire/krew" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
@@ -85,6 +85,19 @@
         <a href="https://github.com/krewire/krewire" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">
           <span>Core Monorepo</span>
         </a>
+      </div>
+
+      <!-- Col 5: Project (3 cols on lg) -->
+      <div class="lg:col-span-3 flex flex-col gap-2.5">
+        <strong class="text-2xs font-mono font-bold uppercase tracking-wider text-fg dark:text-fg-dark mb-1" data-i18n="footer.project_title">Project</strong>
+        <a href="/docs/project" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors" data-i18n="footer.about">About Krewire</a>
+        <a href="/docs/project/audiences-and-use-cases" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors" data-i18n="footer.audiences">Who It's For</a>
+        <a href="/docs/project/openness-and-self-hosting" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors" data-i18n="footer.openness">Openness &amp; Self-Hosting</a>
+        <a href="/docs/project/core-and-platform-services" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors" data-i18n="footer.services">Core vs. Platform Services</a>
+        <a href="/docs/project/contributing" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors" data-i18n="footer.contribute">Contribute</a>
+        <a href="/docs/project/impact-report" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors" data-i18n="footer.impact">Impact Report</a>
+        <a href="/docs/project/maturity-and-roadmap" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors" data-i18n="footer.roadmap">Maturity &amp; Roadmap</a>
+        <a href="/docs/project/maturity-and-roadmap#reporting-security-issues" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors" data-i18n="footer.security">Report a Security Issue</a>
       </div>
 
     </div>

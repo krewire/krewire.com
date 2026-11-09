@@ -49,11 +49,11 @@ Ready-to-mount HTTP handlers with clean, responsive dark/light UI:
 
 ## Platform Access & Integration
 
-Krewire Auth is available as a managed identity platform at [auth.krewire.com](https://auth.krewire.com), with private on-premise editions available under enterprise licensing.
+> **Availability (2026-11-09):** Krewire Auth is developed in a private repository and is **not publicly available** — there is no public sign-up, download, or hosted endpoint, and `auth.krewire.com` currently serves the main krewire.com website. No pricing, plans, or commercial licenses are published. See [Core & Platform Services](/project/core-and-platform-services) for the delivery model, maturity, and update process.
 
 ### Public OIDC & OAuth2 Integration
 
-Any Krewire application, API gateway, or third-party service integrates seamlessly with Krewire Auth via standard protocols:
+Krewire Auth is designed to integrate through standard protocols. The server answers OIDC discovery at `/.well-known/openid-configuration`. The hosted addresses below are **planned** and are not live:
 - **Discovery Endpoint:** `https://auth.krewire.com/.well-known/openid-configuration`
 - **JWKS Key Set:** `https://auth.krewire.com/.well-known/jwks.json`
 - **Authorization Endpoint:** `https://auth.krewire.com/oauth/authorize`
@@ -72,6 +72,6 @@ import (
 )
 ```
 
-### Enterprise On-Premise Authentication
+### Standalone Server
 
-Organizations requiring on-premise identity isolation, SAML 2.0 federation with internal Active Directory, or custom compliance auditing can license the standalone Krewire Auth server. Inquire via `enterprise@krewire.com`. Standalone binaries and verified container distributions are provided with enterprise licenses.
+The standalone Krewire Auth server (`krewire-auth-server`) is not publicly distributed, and no enterprise licensing terms or pricing are published. Any future availability will be announced on [Core & Platform Services](/project/core-and-platform-services).

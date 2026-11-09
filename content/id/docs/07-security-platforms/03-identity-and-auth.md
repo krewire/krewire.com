@@ -49,11 +49,11 @@ Handler HTTP siap pasang dengan antarmuka web responsif dark/light:
 
 ## Akses Platform & Integrasi
 
-Krewire Auth tersedia sebagai platform identitas terkelola di [auth.krewire.com](https://auth.krewire.com), dengan edisi on-premise privat yang tersedia di bawah lisensi enterprise.
+> **Ketersediaan (2026-11-09):** Krewire Auth dikembangkan di repositori privat dan **belum tersedia untuk publik** — tidak ada pendaftaran publik, unduhan, ataupun endpoint ter-hosting, dan `auth.krewire.com` saat ini menyajikan situs utama krewire.com. Belum ada harga, paket, atau lisensi komersial yang dipublikasikan. Lihat [Inti & Layanan Platform](/project/core-and-platform-services) untuk model penyampaian, kematangan, dan proses pembaruan.
 
 ### Integrasi Standar OIDC & OAuth2
 
-Setiap aplikasi, API gateway, atau layanan Krewire dapat terhubung secara mulus ke Krewire Auth melalui protokol standar industri:
+Krewire Auth dirancang untuk berintegrasi melalui protokol standar. Server menjawab OIDC discovery di `/.well-known/openid-configuration`. Alamat ter-hosting di bawah masih **direncanakan** dan belum aktif:
 - **Discovery Endpoint:** `https://auth.krewire.com/.well-known/openid-configuration`
 - **JWKS Key Set:** `https://auth.krewire.com/.well-known/jwks.json`
 - **Authorization Endpoint:** `https://auth.krewire.com/oauth/authorize`
@@ -72,6 +72,6 @@ import (
 )
 ```
 
-### Autentikasi Enterprise On-Premise
+### Server Mandiri
 
-Organisasi yang membutuhkan isolasi identitas di server lokal, federasi SAML 2.0 dengan Active Directory internal, atau audit kepatuhan khusus dapat melisensikan server Krewire Auth mandiri melalui `enterprise@krewire.com`.
+Server Krewire Auth mandiri (`krewire-auth-server`) belum didistribusikan untuk publik, dan belum ada ketentuan lisensi enterprise maupun harga yang dipublikasikan. Ketersediaan di masa depan akan diumumkan di [Inti & Layanan Platform](/project/core-and-platform-services).

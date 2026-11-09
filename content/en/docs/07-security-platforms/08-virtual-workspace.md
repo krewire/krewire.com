@@ -45,11 +45,11 @@ Krewire Dash provides an AI-powered virtual workspace engine and cloud IDE platf
 
 ## Workspace Access & Platform Integration
 
-Krewire Workspace is hosted as a collaborative cloud service at [dash.krewire.com](https://dash.krewire.com).
+> **Availability (2026-11-09):** Krewire Workspace (Dash) is developed in a private repository and is **not publicly available** — there is no public sign-up, download, or hosted endpoint, and `dash.krewire.com` currently serves the main krewire.com website. No pricing, plans, or commercial licenses are published. See [Core & Platform Services](/project/core-and-platform-services) for the delivery model, maturity, and update process.
 
-### Cloud Workspace Portal
+### Planned Cloud Workspace Portal
 
-Developers can spin up on-demand development environments directly from their browser:
+The hosted portal is **planned, not live**. As designed, developers would spin up development environments directly from the browser:
 - **Web Portal:** `https://dash.krewire.com`
 - **Features:** In-browser VS Code / Monaco editor, bidirectional terminal streaming, and embedded `krew` AI assistant.
 - **Single Sign-On:** Integrated with Krewire Auth (`auth.krewire.com`).
@@ -61,6 +61,6 @@ For local development without cloud dependencies, developers use the native `kiw
 - `kiw dashboard`: Run a local observability dashboard at `http://127.0.0.1:4000`.
 - `kiw mcp --stdio`: Connect AI coding assistants (such as Antigravity or Cursor) directly to your project via the Model Context Protocol.
 
-### Enterprise On-Premise Edition
+### Self-Hosted and Enterprise Editions
 
-Enterprise workspaces with custom VPC peering, air-gapped sandboxes, and centralized audit logging are available under enterprise contract. Contact `enterprise@krewire.com`.
+No self-hosted or enterprise edition is offered publicly, and no contract terms or pricing are published. Any future availability will be announced on [Core & Platform Services](/project/core-and-platform-services).

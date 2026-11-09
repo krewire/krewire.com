@@ -6,7 +6,9 @@ date: "2026-10-24"
 
 # Hybrid PaaS & Managed Cloud (Krewire Cloud)
 
-Krewire Cloud delivers both a self-hosted hybrid PaaS engine for private VPS hosting and a managed multi-tenant cloud platform.
+Krewire Cloud is designed as both a self-hosted hybrid PaaS engine for private VPS hosting and a managed multi-tenant cloud platform.
+
+> **Availability (2026-11-09):** Krewire Cloud is developed in a private repository and neither edition is publicly available; no pricing is published. The `kiw deploy` commands in section 1 are part of the open-source core and work today without Krewire Cloud. See [Core & Platform Services](/project/core-and-platform-services).
 
 ## 1. Self-Hosted Hybrid PaaS Engine
 
@@ -24,9 +26,9 @@ kiw deploy --target systemd
 - **Zero-Downtime Rolling Deploys**: Supervised process pool binds new instances to dynamic ports, validates health checks, and dynamically updates the reverse proxy.
 - **Automatic Let's Encrypt TLS**: Automated ACME certificates for wildcard subdomains and custom domains.
 
-## 2. Managed Multi-Tenant Cloud Platform (`cloud.krewire.com`)
+## 2. Managed Multi-Tenant Cloud Platform (planned)
 
-For teams that prefer instantaneous serverless deployments without VPS management:
+**Planned, not live.** As designed, the managed platform would serve teams that prefer deployments without VPS management:
 
 - `kiw deploy` + push-to-deploy Git webhook: bundles and stages projects locally, then continuous deployment rolls them out to production.
 - Real-time build streaming and centralized log aggregation.

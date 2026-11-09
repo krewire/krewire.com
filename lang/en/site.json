@@ -18,7 +18,8 @@
     "workspace_desc": "Virtual workspaces & autonomous agents",
     "cloud_desc": "Hybrid PaaS control plane & zero-downtime",
     "auth_desc": "Multi-tenant SSO, MFA & OIDC identity",
-    "panel_desc": "Self-hosted server & admin control panel"
+    "panel_desc": "Self-hosted server & admin control panel",
+    "contribute": "Contribute"
   },
   "hero": {
     "eyebrow": "GO-FIRST SOFTWARE ENGINEERING ECOSYSTEM · v0.2.3",
@@ -59,11 +60,46 @@
     "panel_feature1": "Host service & daemon supervision (systemd)",
     "panel_feature2": "Automated vHosts (Caddy/Nginx) & database provisioning",
     "panel_feature3": "Integrated firewall, streaming file manager & web console",
-    "panel_cta": "Learn Panel →"
+    "panel_cta": "Learn Panel →",
+    "mockup": "Illustration",
+    "status_private": "Private · not publicly available yet",
+    "boundary_note": "The open-source core (kiw CLI, libraries, krew, ui) is MIT-licensed and needs none of these services. Workspace, Cloud, Auth, and Panel are optional platform services developed in private repositories; none is publicly available yet and no pricing is published.",
+    "boundary_cta": "Core vs. platform services →"
   },
   "trust": {
     "label": "Unified Go Toolchain",
-    "opensource": "Open Source"
+    "opensource": "Open Source · MIT · Self-Hostable"
+  },
+  "mission": {
+    "badge": "Our Mission",
+    "title": "Impact First. Sustainable by Design.",
+    "statement": "Krewire's mission is to make it nearly free — in financial cost, operational burden, and cognitive effort — for anyone to build, own, and operate digital products that are secure, sustainable, and scalable.",
+    "who_title": "Who it serves",
+    "who_desc": "Independent developers and small engineering teams first. Learners and educators, open-source maintainers, and organizations benefit from the same open foundation.",
+    "impact_title": "Impact is the measure",
+    "impact_desc": "Success is long-term impact on how software is built, not revenue. The open-source core needs no account, license key, or Krewire-hosted service.",
+    "sustain_title": "Sustainability serves the mission",
+    "sustain_desc": "Optional platform services may be offered commercially in the future to fund maintenance. Not every service must be free — but the core tooling is never paywalled. No pricing is published today.",
+    "vision": "Long-term aspiration: a single builder can still read, run, and afford what they built with Krewire a decade from now.",
+    "cta_about": "About Krewire →"
+  },
+  "audiences": {
+    "badge": "Who Krewire Is For",
+    "title": "Built for Independent Developers and Small Teams",
+    "lead": "Adopt one workload at a time, next to the stack you already have. No full migration required.",
+    "primary_badge": "Primary",
+    "indie_title": "Independent developers",
+    "indie_desc": "One language, one CLI, and one config file instead of a separate bundler, backend framework, docs generator, and deploy scripts.",
+    "indie_uc1": "Publish a landing page or blog → site",
+    "indie_uc2": "Publish product documentation → book",
+    "indie_uc3": "Ship a small web app or API as one binary → app",
+    "team_title": "Small engineering teams",
+    "team_desc": "Shared conventions and lifecycle commands across services, so moving between them does not mean switching mental models.",
+    "team_uc1": "Move slow work out of the request path → worker",
+    "team_uc2": "Add a headless service next to an existing app → service",
+    "team_uc3": "Deploy to a VPS with systemd → kiw deploy",
+    "secondary": "Also relevant to learners and educators, open-source maintainers, and organizations evaluating self-hostable tooling.",
+    "cta": "All audiences & use cases →"
   },
   "pillars": {
     "badge": "Three Pillars",
@@ -197,7 +233,8 @@
     "title": "Start Building with Krewire Today",
     "lead": "Start with a lightweight static site, scale to a web monolith, then to distributed cloud services — one repository, one CLI, one configuration.",
     "button": "Get Started — 5 Min →",
-    "star": "Star on GitHub"
+    "star": "Star on GitHub",
+    "contribute": "Contribute →"
   },
   "footer": {
     "products_title": "Products",
@@ -206,7 +243,16 @@
     "ecosystem_title": "Ecosystem",
     "tagline_html": "One Ecosystem. Every Workload.<br>One CLI <code class=\"code-inline\">kiw</code>, one config <code class=\"code-inline\">krewire.yaml</code>.",
     "badge": "Compiled Go · Zero Bloat",
-    "copyright_html": "© 2026 Krewire Team — Built with Krewire <code class=\"code-inline\">site</code> workload."
+    "copyright_html": "© 2026 Krewire Team — Built with Krewire <code class=\"code-inline\">site</code> workload.",
+    "project_title": "Project",
+    "about": "About Krewire",
+    "audiences": "Who It's For",
+    "openness": "Openness & Self-Hosting",
+    "services": "Core vs. Platform Services",
+    "contribute": "Contribute",
+    "impact": "Impact Report",
+    "roadmap": "Maturity & Roadmap",
+    "security": "Report a Security Issue"
   },
   "docs_reader": {
     "toc_title": "Contents",

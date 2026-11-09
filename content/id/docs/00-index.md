@@ -8,6 +8,8 @@ date: "2026-10-24"
 
 Selamat datang di **Dokumentasi Krewire**.
 
+> **Misi:** Misi Krewire adalah membuatnya mendekati gratis — baik dalam biaya finansial, beban operasional, maupun beban kognitif — bagi siapa pun untuk membangun, memiliki, dan mengoperasikan produk digital yang aman, berkelanjutan, dan berskala besar. Baca selengkapnya di [Tentang Krewire](/project).
+
 **Krewire** adalah ekosistem **SDLC digital menyeluruh** open-source yang disajikan sebagai **Pustaka Modular**: paket Go independen, satu tujuan yang Anda komposisi di balik satu CLI (**`kiw`**) dan satu konfigurasi terpadu (**`krewire.yaml`**) untuk membangun, menguji, dan men-deploy **delapan workload berbeda**:
 
 1. **Monolit Web Fullstack (`app`)**
@@ -111,9 +113,9 @@ Tingkatkan produktivitas pengembang dengan suite pengujian otomatis, pemformatan
 2. [**Skema Konfigurasi**](/cli-reference/configuration) — Spesifikasi parameter lengkap berkas `krewire.yaml`.
 3. [**Skrip Kustom & Otomasi**](/cli-reference/scripting) — Menentukan tugas pra-build dan hook otomatis.
 
-### Tahap 6: Operasi Cloud, Produksi & Skala Enterprise
-Skalakan aplikasi ke produksi, deploy ke PaaS hybrid mandiri atau terkelola, dan pelajari lisensi Open Core:
+### Tahap 6: Operasi, Cloud & Batas Open-Core
+Skalakan aplikasi ke produksi di infrastruktur yang Anda kendalikan, dan pahami batas open-core:
 
 1. [**Panduan Deployment & Operasi**](/guides/deployment-and-operations) — Kontainerisasi binary mandiri, rolling deploy tanpa downtime, dan reverse proxy TLS otomatis Let's Encrypt.
-2. **Krewire Cloud (`cloud`)** — Deploy ke engine PaaS Go-native mandiri atau SaaS terkelola (`kiw deploy --target infra` dengan `pkg/cloud/infra`).
-3. [**Model Open Core & Lisensi**](/guides/open-core-and-licensing) — Jenjang lisensi 4 tingkat (*free*, *pro*, *team*, *enterprise*) dan kepatuhan kedaulatan data UU PDP.
+2. [**Inti & Layanan Platform**](/project/core-and-platform-services) — Apa yang open-source, apa yang merupakan layanan platform opsional, dan ketersediaan Krewire Cloud, Auth, Workspace, dan Panel saat ini (belum ada yang tersedia untuk publik).
+3. [**Model Open Core & Lisensi**](/guides/open-core-and-licensing) — Inti berlisensi MIT, klasifikasi tier di `pkg/model`, dan aturan desain yang menjaga inti gratis tetap gratis.

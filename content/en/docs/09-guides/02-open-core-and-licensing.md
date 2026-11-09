@@ -1,54 +1,64 @@
 ---
 title: "Open Core & Licensing"
-description: "The four-rung open core ladder: free, pro, team, and enterprise. Architecture rules, commercial boundaries, and zero runtime lock-in."
-date: "2026-10-08"
+description: "How Krewire's open-core boundary works today: MIT-licensed public repositories, the tier classification in pkg/model, the design rules that protect the free core, and what is not yet defined."
+date: "2026-11-09"
 ---
 
 # Open Core & Licensing
 
-Krewire is an open-source community based in Indonesia, operating under a transparent **Open Core** business model.
-
-Our licensing framework guarantees complete freedom for builders while offering advanced operational, compliance, and enterprise features through commercial tiers.
+Krewire is an open-source ecosystem with an **open-core** design: the public core is MIT-licensed, and optional platform services are developed separately. This guide describes the licensing boundary **as it exists today** and separates it from what is not yet defined.
 
 ---
 
-## 1. The Four-Rung Tier Ladder
+## 1. What is licensed today
 
-The ecosystem organizes modules into four distinct rungs:
+| Layer | Repositories | License |
+| :--- | :--- | :--- |
+| Open-source core | `krewire`, `krew`, `ui`, `krewire.com`, `krewire.github.io` | MIT (public) |
+| Optional platform services | `dash`, `cloud`, `auth`, `panel` | Private repositories; not publicly distributed, no public license grant |
+
+See [Openness & Self-Hosting](/project/openness-and-self-hosting) for links to each `LICENSE` file.
+
+---
+
+## 2. The tier classification (`pkg/model`)
+
+`pkg/model` defines four ordered tiers — `free` → `pro` → `team` → `enterprise` — and `kiw tier [--json] [--check <tier>]` reports a project's tier posture and can assert that it stays within a tier (for example `kiw tier --check free`).
 
 ```text
-┌──────────────────────────────────────────────┐
-│  4. Enterprise (B2B, air-gapped, custom SLA)  │
-├──────────────────────────────────────────────┤
-│  3. Team (Multi-tenant governance, audits)   │
-├──────────────────────────────────────────────┤
-│  2. Pro (Advanced telemetry, high throughput)│
-├──────────────────────────────────────────────┤
-│  1. Free (Core libraries, CLI, full SDLC)    │
-└──────────────────────────────────────────────┘
+┌──────────────────────────────┐
+│  4. enterprise               │
+├──────────────────────────────┤
+│  3. team                     │
+├──────────────────────────────┤
+│  2. pro                      │
+├──────────────────────────────┤
+│  1. free  ← the entire core  │
+└──────────────────────────────┘
 ```
 
-| Tier | License Model | Pricing | Target Audience |
-| :--- | :--- | :--- | :--- |
-| **`free`** | Permissive Open Source (MIT) | $0 Forever | Individual developers, startups, open-source projects. |
-| **`pro`** | Commercial Source-Available | Published Self-Serve | Growing teams needing hardened drivers and metrics. |
-| **`team`** | Commercial License | Published Organization | Mid-market companies needing SSO, RBAC, and multi-tenant policies. |
-| **`enterprise`** | Negotiated B2B Contract | Custom Quote | Air-gapped deployments, custom compliance, and dedicated 24/7 SLAs. |
+Current state (verifiable in [`version.go`](https://github.com/krewire/krewire/blob/main/version.go)): the core monorepo declares `Tier = model.TierFree` — *"All code in krewire/krewire is 100% open source; all packages are currently free-tier by default."*
+
+| Tier | Status |
+| :--- | :--- |
+| **`free`** | The whole public core. MIT-licensed. |
+| **`pro`** | Defined as a classification only. No packages, license, or price are published. |
+| **`team`** | Defined as a classification only. No packages, license, or price are published. |
+| **`enterprise`** | Defined as a classification only. No packages, license, contract terms, or price are published. |
+
+Pricing, commercial license models, and support terms for higher tiers are **not yet defined**. Any future definition will be published, with an owner and date, on [Core & Platform Services](/project/core-and-platform-services).
 
 ---
 
-## 2. Inviolable Architectural Rules
+## 3. Design rules that protect the free core
 
-Under Krewire's canonical Open Core governance specification, three rules protect the integrity of the open-source core:
+These rules are Krewire's stated design commitments for the open-core boundary:
 
 ### Rule 1: Zero Runtime Lock-in
-A project referencing only `free` packages must **build, deploy, and run with zero license keys or cloud call-homes**. There is never a trial expiration or hidden limit on the free tier.
+A project referencing only `free` packages must **build, deploy, and run with zero license keys or cloud call-homes**. There is no trial expiration or hidden limit on the free tier. The network calls that the core CLI does make are listed in [Openness & Self-Hosting](/project/openness-and-self-hosting).
 
 ### Rule 2: Additive Wrapper Boundaries
-Paid modules may wrap, harden, or optimize a `free` module, but a paid module must **never be a prerequisite for a free module**.
+Any future paid module may wrap, harden, or optimize a `free` module, but must **never be a prerequisite for a free module**.
 
 ### Rule 3: Strict Hierarchy Subsets
-Each rung is a strict superset of the rung below it:
-- `pro` includes all of `free`.
-- `team` includes all of `pro` and `free`.
-- `enterprise` is negotiated per organization and is never a published fixed price.
+Each tier is a superset of the tier below it: `pro` includes all of `free`, `team` includes all of `pro` and `free`, and `enterprise` includes all lower tiers.

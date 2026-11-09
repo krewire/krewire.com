@@ -8,6 +8,8 @@ date: "2026-10-24"
 
 Welcome to the **Krewire Documentation**.
 
+> **Mission:** Krewire's mission is to make it nearly free — in financial cost, operational burden, and cognitive effort — for anyone to build, own, and operate digital products that are secure, sustainable, and scalable. Read more in [About Krewire](/project).
+
 **Krewire** is an open-source, end-to-end **digital SDLC ecosystem** delivered as **Modular Libraries**: independent, single-purpose Go packages you compose behind one CLI (**`kiw`**) and one unified configuration (**`krewire.yaml`**) to build, test, and deploy **eight distinct workloads**:
 
 1. **Fullstack Web Monoliths (`app`)**
@@ -111,9 +113,9 @@ Accelerate developer productivity with automated test suites, formatting, projec
 2. [**Configuration Schema Reference**](/cli-reference/configuration) — Full field specification for `krewire.yaml`.
 3. [**Custom Scripting & Automation**](/cli-reference/scripting) — Defining pre-build tasks and automated hooks.
 
-### Stage 6: Enterprise Operations, Cloud & Monetization
-Scale workloads to production, deploy to self-hosted or managed PaaS, and leverage the Open Core business model:
+### Stage 6: Operations, Cloud & the Open-Core Boundary
+Scale workloads to production on infrastructure you control, and understand the open-core boundary:
 
 1. [**Deployment & Operations Guide**](/guides/deployment-and-operations) — Single-binary containerization, zero-downtime rolling deploys, and automated ACME SSL/TLS reverse proxies.
-2. **Krewire Cloud (`cloud`)** — Deploying to the Go-native hybrid PaaS engine or managed SaaS platform (`kiw deploy --target infra` with `pkg/cloud/infra`).
-3. [**Open Core Model & Licensing**](/guides/open-core-and-licensing) — The four-tier ladder (*free*, *pro*, *team*, *enterprise*) and data sovereignty under UU PDP.
+2. [**Core & Platform Services**](/project/core-and-platform-services) — What is open source, what is an optional platform service, and the current availability of Krewire Cloud, Auth, Workspace, and Panel (none is publicly available yet).
+3. [**Open Core Model & Licensing**](/guides/open-core-and-licensing) — MIT-licensed core, the tier classification in `pkg/model`, and the design rules that keep the free core free.

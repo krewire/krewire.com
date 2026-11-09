@@ -18,7 +18,8 @@
     "workspace_desc": "Workspace virtual & agen otonom",
     "cloud_desc": "Control plane hybrid PaaS & tanpa downtime",
     "auth_desc": "SSO multi-tenant, MFA & identitas OIDC",
-    "panel_desc": "Panel kontrol server mandiri & admin"
+    "panel_desc": "Panel kontrol server mandiri & admin",
+    "contribute": "Kontribusi"
   },
   "hero": {
     "eyebrow": "GO-FIRST SOFTWARE ENGINEERING ECOSYSTEM · v0.2.3",
@@ -59,11 +60,46 @@
     "panel_feature1": "Supervisi servis host & daemon (systemd)",
     "panel_feature2": "Provisioning vHost otomatis (Caddy/Nginx) & database",
     "panel_feature3": "Firewall terintegrasi, file manager streaming & konsol web",
-    "panel_cta": "Pelajari Panel →"
+    "panel_cta": "Pelajari Panel →",
+    "mockup": "Ilustrasi",
+    "status_private": "Privat · belum tersedia untuk publik",
+    "boundary_note": "Inti open-source (CLI kiw, pustaka, krew, ui) berlisensi MIT dan tidak memerlukan layanan-layanan ini. Workspace, Cloud, Auth, dan Panel adalah layanan platform opsional yang dikembangkan di repositori privat; belum ada yang tersedia untuk publik dan belum ada harga yang dipublikasikan.",
+    "boundary_cta": "Inti vs. layanan platform →"
   },
   "trust": {
     "label": "Toolchain Go Terpadu",
-    "opensource": "Open Source"
+    "opensource": "Open Source · MIT · Dapat Di-host Sendiri"
+  },
+  "mission": {
+    "badge": "Misi Kami",
+    "title": "Dampak Lebih Dulu. Berkelanjutan Sejak Desain.",
+    "statement": "Misi Krewire adalah membuatnya mendekati gratis — baik dalam biaya finansial, beban operasional, maupun beban kognitif — bagi siapa pun untuk membangun, memiliki, dan mengoperasikan produk digital yang aman, berkelanjutan, dan berskala besar.",
+    "who_title": "Untuk siapa",
+    "who_desc": "Pengembang independen dan tim engineering kecil lebih dulu. Pelajar dan pendidik, maintainer open-source, serta organisasi mendapat manfaat dari fondasi terbuka yang sama.",
+    "impact_title": "Dampak adalah ukurannya",
+    "impact_desc": "Keberhasilan diukur dari dampak jangka panjang pada cara perangkat lunak dibangun, bukan pendapatan. Inti open-source tidak memerlukan akun, kunci lisensi, ataupun layanan yang di-host Krewire.",
+    "sustain_title": "Keberlanjutan melayani misi",
+    "sustain_desc": "Layanan platform opsional mungkin ditawarkan secara komersial di masa depan untuk mendanai pemeliharaan. Tidak semua layanan harus gratis — tetapi tooling inti tidak pernah berbayar. Saat ini belum ada harga yang dipublikasikan.",
+    "vision": "Aspirasi jangka panjang: satu pembangun masih dapat membaca, menjalankan, dan membiayai apa yang ia bangun dengan Krewire sepuluh tahun dari sekarang.",
+    "cta_about": "Tentang Krewire →"
+  },
+  "audiences": {
+    "badge": "Untuk Siapa Krewire",
+    "title": "Dibuat untuk Pengembang Independen dan Tim Kecil",
+    "lead": "Adopsi satu workload demi satu workload, berdampingan dengan stack yang sudah Anda miliki. Tanpa migrasi menyeluruh.",
+    "primary_badge": "Utama",
+    "indie_title": "Pengembang independen",
+    "indie_desc": "Satu bahasa, satu CLI, dan satu berkas konfigurasi sebagai ganti bundler, framework backend, generator dokumentasi, dan skrip deploy yang terpisah-pisah.",
+    "indie_uc1": "Terbitkan landing page atau blog → site",
+    "indie_uc2": "Terbitkan dokumentasi produk → book",
+    "indie_uc3": "Rilis aplikasi web kecil atau API sebagai satu binary → app",
+    "team_title": "Tim engineering kecil",
+    "team_desc": "Konvensi dan perintah siklus hidup yang sama di semua layanan, sehingga berpindah antar-layanan tidak berarti berganti model mental.",
+    "team_uc1": "Pindahkan pekerjaan lambat keluar dari jalur request → worker",
+    "team_uc2": "Tambahkan layanan headless di samping aplikasi yang ada → service",
+    "team_uc3": "Deploy ke VPS dengan systemd → kiw deploy",
+    "secondary": "Juga relevan bagi pelajar dan pendidik, maintainer open-source, serta organisasi yang mengevaluasi tooling yang dapat di-host sendiri.",
+    "cta": "Semua audiens & kasus penggunaan →"
   },
   "pillars": {
     "badge": "Tiga Pilar",
@@ -197,7 +233,8 @@
     "title": "Mulai Bangun dengan Krewire Hari Ini",
     "lead": "Mulai dari situs statis ringan, skalakan ke monolit web, lalu ke layanan cloud terdistribusi — satu repositori, satu CLI, satu konfigurasi.",
     "button": "Mulai Sekarang — 5 Menit →",
-    "star": "Star di GitHub"
+    "star": "Star di GitHub",
+    "contribute": "Berkontribusi →"
   },
   "footer": {
     "products_title": "Produk",
@@ -206,7 +243,16 @@
     "ecosystem_title": "Ekosistem",
     "tagline_html": "One Ecosystem. Every Workload.<br>Satu CLI <code class=\"code-inline\">kiw</code>, satu konfigurasi <code class=\"code-inline\">krewire.yaml</code>.",
     "badge": "Go Terkompilasi · Bebas Kembung",
-    "copyright_html": "© 2026 Krewire Team — Dibangun dengan workload <code class=\"code-inline\">site</code> Krewire."
+    "copyright_html": "© 2026 Krewire Team — Dibangun dengan workload <code class=\"code-inline\">site</code> Krewire.",
+    "project_title": "Proyek",
+    "about": "Tentang Krewire",
+    "audiences": "Untuk Siapa",
+    "openness": "Keterbukaan & Self-Hosting",
+    "services": "Inti vs. Layanan Platform",
+    "contribute": "Berkontribusi",
+    "impact": "Laporan Dampak",
+    "roadmap": "Kematangan & Roadmap",
+    "security": "Laporkan Masalah Keamanan"
   },
   "docs_reader": {
     "toc_title": "Daftar Isi",

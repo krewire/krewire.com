@@ -326,7 +326,7 @@ Add a Go module or an opt-in ecosystem plugin (such as Tailwind CSS):
 ```bash
 kiw add twcss@latest
 kiw add tailwindcss
-kiw add github.com/krewire/krewire@v0.1.0
+kiw add github.com/krewire/krewire@v0.2.0
 ```
 
 - **Zero JS by Default**: Krewire defaults to zero JavaScript and standalone CSS tokens.
@@ -367,6 +367,9 @@ kiw self-update --dry-run # Simulate update process
 ```
 
 - `--check`: Inspects GitHub Releases for a newer stable version.
+
+> **Note (2026-11-09):** no GitHub Release has been published for `krewire/krewire` yet, so `kiw self-update` currently relies on the Go toolchain fallback (Go 1.27.1+).
+
 - `--force`: Reinstalls or updates even if already on the latest version.
 - `--version <ver>`: Installs a specific target version.
 - Performs atomic binary replacement on Linux, macOS, and Windows with automatic Go toolchain fallback.

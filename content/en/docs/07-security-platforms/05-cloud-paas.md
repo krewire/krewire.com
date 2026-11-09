@@ -6,7 +6,9 @@ date: "2026-10-31"
 
 # Hybrid PaaS Platform (Krewire Cloud)
 
-Krewire Cloud powers both the hybrid PaaS engine and the multi-tenant managed SaaS platform (`cloud.krewire.com`).
+Krewire Cloud is designed as both a hybrid PaaS engine and a multi-tenant managed platform.
+
+> **Availability (2026-11-09):** Krewire Cloud is developed in a private repository and is **not publicly available** — there is no public sign-up, download, or hosted endpoint, and `cloud.krewire.com` currently serves the main krewire.com website. No pricing, plans, or commercial licenses are published. See [Core & Platform Services](/project/core-and-platform-services) for the delivery model, maturity, and update process.
 
 ---
 
@@ -40,7 +42,7 @@ Krewire Cloud powers both the hybrid PaaS engine and the multi-tenant managed Sa
 
 ## Platform Access & Deployment
 
-Krewire Cloud is delivered as a managed multi-tenant PaaS control plane at [cloud.krewire.com](https://cloud.krewire.com), with dedicated on-premise editions available for enterprise customers.
+Krewire Cloud is intended to be delivered as a managed multi-tenant control plane and as a self-hosted engine; neither is publicly available yet. You can deploy any Krewire project to your own infrastructure today with the open-source `kiw` CLI:
 
 ### Deploying Your Application
 
@@ -78,6 +80,6 @@ EXPOSE 8080
 ENTRYPOINT ["/app/server"]
 ```
 
-### Enterprise On-Premise PaaS
+### Self-Hosted and Managed Editions
 
-For organizations requiring private air-gapped hosting or self-hosted control planes, Krewire Cloud is provided under an enterprise subscription. Contact the enterprise team at `enterprise@krewire.com` for private registry access and provisioning guides.
+No self-hosted or managed edition of Krewire Cloud is offered publicly, and no enterprise subscription, pricing, or licensing terms are published. Any future availability will be announced on [Core & Platform Services](/project/core-and-platform-services).
