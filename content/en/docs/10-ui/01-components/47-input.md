@@ -14,6 +14,14 @@ Standard text input with floating label, error states, and helper text.
 
 ---
 
+## Live Preview
+
+<div data-component-preview="Input" data-slug="input"></div>
+
+The frames above load the real `Input.kiw` from Krewire UI, prebuilt by `kiw build` for every variant, in the light and dark themes side by side. Use the toggles to switch variants, then copy the component source or the usage snippet. **Open in playground** shows it next to the other core components.
+
+---
+
 ## 1. Copy & Own Installation
 
 Copy the `Input.kiw` component directly into your project's `./components` directory:

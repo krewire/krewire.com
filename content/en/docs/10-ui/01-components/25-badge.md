@@ -14,6 +14,14 @@ Compact pill badge with color variants for tags, counts, and status indicators.
 
 ---
 
+## Live Preview
+
+<div data-component-preview="Badge" data-slug="badge"></div>
+
+The frames above load the real `Badge.kiw` from Krewire UI, prebuilt by `kiw build` for every variant, in the light and dark themes side by side. Use the toggles to switch variants, then copy the component source or the usage snippet. **Open in playground** shows it next to the other core components.
+
+---
+
 ## 1. Copy & Own Installation
 
 Copy the `Badge.kiw` component directly into your project's `./components` directory:

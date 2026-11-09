@@ -14,6 +14,14 @@ Lencana mikro pil dengan varian warna untuk tag, jumlah, dan status indikator.
 
 ---
 
+## Pratinjau Langsung
+
+<div data-component-preview="Badge" data-slug="badge"></div>
+
+Bingkai di atas memuat `Badge.kiw` asli dari Krewire UI, yang sudah di-render oleh `kiw build` untuk setiap varian, dalam tema terang dan gelap secara berdampingan. Gunakan tombol pilihan untuk mengganti varian, lalu salin kode sumber komponen atau contoh penggunaannya. **Buka di playground** menampilkannya bersama komponen inti lainnya.
+
+---
+
 ## 1. Instalasi (Model Copy & Own)
 
 Salin berkas komponen `Badge.kiw` langsung ke direktori `./components` proyek Anda:

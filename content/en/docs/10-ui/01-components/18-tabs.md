@@ -14,6 +14,14 @@ Accessible tabbed content switcher supporting persistent active states.
 
 ---
 
+## Live Preview
+
+<div data-component-preview="Tabs" data-slug="tabs"></div>
+
+The frames above load the real `Tabs.kiw` from Krewire UI, prebuilt by `kiw build` for every variant, in the light and dark themes side by side. Use the toggles to switch variants, then copy the component source or the usage snippet. **Open in playground** shows it next to the other core components.
+
+---
+
 ## 1. Copy & Own Installation
 
 Copy the `Tabs.kiw` component directly into your project's `./components` directory:
