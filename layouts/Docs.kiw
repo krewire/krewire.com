@@ -189,6 +189,7 @@
     <aside class="sidebar" id="sidebar" aria-label="Documentation Sidebar">
       <div class="sidebar-head">
         <span class="sidebar-title">Documentation</span>
+        <button class="sidebar-close" id="sidebar-close" aria-label="Close navigation" onclick="document.documentElement.classList.remove('sidebar-open')">✕</button>
       </div>
       <nav class="toc" id="sidebar-toc">
         <div class="toc-group open" data-group>
@@ -313,6 +314,7 @@
         </div>
       </nav>
     </aside>
+    <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true" onclick="document.documentElement.classList.remove('sidebar-open')"></div>
 
     <!-- MAIN ARTICLE CONTENT -->
     <main class="docs-main">
@@ -381,29 +383,141 @@
 }
 .docs-layout {
   display: flex;
+  flex-direction: column;
   max-width: 1440px;
   margin: 0 auto;
   min-height: calc(100vh - 60px);
 }
 .sidebar {
-  width: 280px;
-  flex-shrink: 0;
-  border-right: 1px solid var(--border-subtle, rgba(255,255,255,0.1));
-  padding: 1.5rem 1rem;
+  display: none;
+}
+.sidebar-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-subtle, rgba(255,255,255,0.15));
+}
+.sidebar-close {
+  display: none;
+}
+.sidebar-overlay {
+  display: none;
 }
 .docs-main {
   flex: 1;
   min-width: 0;
-  padding: 2rem 3rem;
+  padding: 1.25rem 1rem;
 }
 .right-rail {
-  width: 240px;
-  flex-shrink: 0;
-  padding: 2rem 1.5rem;
-  position: sticky;
-  top: 60px;
-  height: calc(100vh - 60px);
-  overflow-y: auto;
+  display: none;
+}
+
+/* Tablet & Mobile Slide-Out Drawer when sidebar is toggled open (< 1024px) */
+@media (max-width: 1023px) {
+  html.sidebar-open .sidebar {
+    display: block !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: min(85vw, 20rem);
+    max-width: 20rem;
+    padding: 1.25rem 1.15rem 2.5rem;
+    background: var(--bg, #0B1F3B);
+    border-right: 2px solid var(--border-subtle, rgba(255,255,255,0.18));
+    box-shadow: 4px 0 24px rgba(0,0,0,0.35);
+    z-index: 100;
+    overflow-y: auto;
+    transform: translateX(0);
+  }
+  html.sidebar-open .sidebar-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(3px);
+    z-index: 95;
+  }
+  .sidebar-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    border: 1px solid var(--border-subtle, rgba(255,255,255,0.2));
+    background: var(--bg-2, #112646);
+    color: var(--fg, #FAF8F4);
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+  }
+  .sidebar-close:hover {
+    background: var(--error, #FF3B2E);
+    color: #fff;
+  }
+}
+
+/* Tablet Layout (768px - 1023px) */
+@media (min-width: 768px) {
+  .docs-layout {
+    flex-direction: row;
+  }
+  .sidebar {
+    display: block;
+    width: 240px;
+    flex-shrink: 0;
+    border-right: 1px solid var(--border-subtle, rgba(255,255,255,0.1));
+    padding: 1.5rem 0.85rem;
+    position: sticky;
+    top: 60px;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+  }
+  .sidebar-close {
+    display: none !important;
+  }
+  .docs-main {
+    padding: 1.75rem 2rem;
+  }
+}
+
+/* Desktop Layout (1024px - 1279px) */
+@media (min-width: 1024px) {
+  .sidebar {
+    width: 265px;
+    padding: 1.75rem 1.15rem;
+  }
+  .docs-main {
+    padding: 2rem 2.75rem;
+  }
+  .right-rail {
+    display: block;
+    width: 220px;
+    flex-shrink: 0;
+    padding: 2rem 1rem;
+    position: sticky;
+    top: 60px;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+  }
+}
+
+/* Wide Desktop Layout (1280px+) */
+@media (min-width: 1280px) {
+  .sidebar {
+    width: 290px;
+    padding: 2.25rem 1.35rem;
+  }
+  .docs-main {
+    padding: 2.25rem 3.5rem;
+  }
+  .right-rail {
+    width: 250px;
+    padding: 2.25rem 1.5rem;
+  }
 }
 .right-rail-title {
   font-size: 0.8rem;

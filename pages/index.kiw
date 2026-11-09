@@ -7,7 +7,7 @@ layout: Landing
 <!-- =====================================================================
      HERO
      ===================================================================== -->
-<section class="w-full bg-bg dark:bg-bg-dark bg-dots py-24 sm:py-28 md:py-32 lg:py-36 border-b-2 border-border">
+<section class="w-full bg-bg dark:bg-bg-dark bg-dots py-14 sm:py-18 md:py-24 lg:py-28 border-b-2 border-border">
   <div class="container-site">
     <div class="flex flex-col md:grid md:grid-cols-2 md:items-center gap-8 sm:gap-10 md:gap-12 lg:gap-16">
 
@@ -110,7 +110,7 @@ layout: Landing
 <!-- =====================================================================
      KREWIRE ECOSYSTEM SHOWCASE
      ===================================================================== -->
-<section id="ecosystem" class="w-full bg-bg dark:bg-bg-dark py-28 sm:py-36 md:py-40 lg:py-44 border-b-2 border-border">
+<section id="ecosystem" class="w-full bg-bg dark:bg-bg-dark py-14 sm:py-18 md:py-22 lg:py-26 border-b-2 border-border">
   <div class="container-site">
     <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
       <Badge Variant="primary" Class="mb-3 sm:mb-4"><span data-i18n="products.badge">Krewire Ecosystem</span></Badge>
@@ -289,7 +289,7 @@ layout: Landing
 <!-- =====================================================================
      THREE PILLARS
      ===================================================================== -->
-<section id="pillars" class="w-full bg-bg-2 dark:bg-bg-dark-2 bg-dots py-28 sm:py-36 md:py-40 lg:py-44 border-b-2 border-border">
+<section id="pillars" class="w-full bg-bg-2 dark:bg-bg-dark-2 bg-dots py-14 sm:py-18 md:py-22 lg:py-26 border-b-2 border-border">
   <div class="container-site">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
 
@@ -383,7 +383,7 @@ layout: Landing
 <!-- =====================================================================
      8 WORKLOADS
      ===================================================================== -->
-<section id="workloads" class="w-full bg-bg dark:bg-bg-dark py-28 sm:py-36 md:py-40 lg:py-44 border-b-2 border-border">
+<section id="workloads" class="w-full bg-bg dark:bg-bg-dark py-14 sm:py-18 md:py-22 lg:py-26 border-b-2 border-border">
   <div class="container-site">
     <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
       <Badge Variant="primary" Class="mb-3 sm:mb-4"><span data-i18n="workloads.badge">Unified Workload Engine</span></Badge>
@@ -540,7 +540,7 @@ layout: Landing
 <!-- =====================================================================
      FOUR STEPS
      ===================================================================== -->
-<section class="w-full bg-bg-2 dark:bg-bg-dark-2 bg-dots py-28 sm:py-36 md:py-40 lg:py-44 border-b-2 border-border">
+<section class="w-full bg-bg-2 dark:bg-bg-dark-2 bg-dots py-14 sm:py-18 md:py-22 lg:py-26 border-b-2 border-border">
   <div class="container-site">
     <div class="text-center max-w-2xl mx-auto mb-14 sm:mb-20">
       <Badge Variant="primary" Class="mb-3 sm:mb-4"><span data-i18n="steps.badge">Developer Workflow</span></Badge>
@@ -610,7 +610,7 @@ layout: Landing
 <!-- =====================================================================
      WHY KREWIRE
      ===================================================================== -->
-<section class="w-full bg-bg dark:bg-bg-dark py-28 sm:py-36 md:py-40 lg:py-44 border-b-2 border-border">
+<section class="w-full bg-bg dark:bg-bg-dark py-14 sm:py-18 md:py-22 lg:py-26 border-b-2 border-border">
   <div class="container-site">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 xl:gap-16 items-start">
 
@@ -675,7 +675,7 @@ layout: Landing
 <!-- =====================================================================
      DSL SHOWCASE
      ===================================================================== -->
-<section class="w-full bg-bg-2 dark:bg-bg-dark-2 bg-dots py-28 sm:py-36 md:py-40 lg:py-44 border-b-2 border-border">
+<section class="w-full bg-bg-2 dark:bg-bg-dark-2 bg-dots py-14 sm:py-18 md:py-22 lg:py-26 border-b-2 border-border">
   <div class="container-site">
     <div class="text-center max-w-2xl mx-auto mb-14 sm:mb-20">
       <Badge Variant="primary" Class="mb-3 sm:mb-4"><span data-i18n="dsl.badge">Component DSL</span></Badge>
@@ -754,7 +754,7 @@ p  { font-size: 15px; color: var(--muted); }
 <!-- =====================================================================
      COMPARISON MATRIX
      ===================================================================== -->
-<section class="w-full bg-bg dark:bg-bg-dark py-28 sm:py-36 md:py-40 lg:py-44 border-b-2 border-border">
+<section class="w-full bg-bg dark:bg-bg-dark py-14 sm:py-18 md:py-22 lg:py-26 border-b-2 border-border">
   <div class="container-site">
     <div class="text-center max-w-2xl mx-auto mb-14 sm:mb-20">
       <Badge Variant="primary" Class="mb-3 sm:mb-4"><span data-i18n="matrix.badge">Stack Comparison</span></Badge>
@@ -811,9 +811,9 @@ p  { font-size: 15px; color: var(--muted); }
 <!-- =====================================================================
      FINAL CTA
      ===================================================================== -->
-<section class="w-full bg-bg-2 dark:bg-bg-dark-2 bg-dots py-28 sm:py-36 md:py-40 lg:py-44">
+<section class="w-full bg-bg-2 dark:bg-bg-dark-2 bg-dots py-14 sm:py-18 md:py-22 lg:py-26">
   <div class="container-site">
-    <div class="rounded-2xl text-center bg-bg-2 dark:bg-bg-dark-2 bg-dots px-6 py-12 sm:px-12 sm:py-16 md:px-16 md:py-20 lg:px-20 lg:py-24 flex flex-col items-center justify-center w-full"
+    <div class="rounded-2xl text-center bg-bg-2 dark:bg-bg-dark-2 bg-dots px-5 py-8 sm:px-8 sm:py-12 md:px-12 md:py-14 lg:px-16 lg:py-16 flex flex-col items-center justify-center w-full"
          style="border:var(--pop-border); box-shadow:var(--pop-shadow-lg)">
       <VStack gap="md" align="center" class="w-full max-w-2xl mx-auto">
         <Badge Variant="primary" Class="mb-2"><span data-i18n="cta.badge">Ready to Build</span></Badge>
