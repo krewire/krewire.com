@@ -1,7 +1,7 @@
 <footer class="bg-bg-2 dark:bg-bg-dark-2 w-full footer-site {class}" style="border-top:var(--pop-border)" data-kiw-component="Footer">
-  <div class="container-site pt-14 pb-10">
+  <div class="container-site pt-8 pb-6 sm:pt-10 sm:pb-8 lg:pt-12 lg:pb-10">
     <!-- Top 4-column Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 pb-10" style="border-bottom:var(--pop-border-thin)">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 pb-6 sm:pb-8" style="border-bottom:var(--pop-border-thin)">
       
       <!-- Col 1: Brand & Social Media (4 cols on lg) -->
       <div class="sm:col-span-2 lg:col-span-4 flex flex-col items-start pr-0 lg:pr-6">
