@@ -123,6 +123,7 @@
     </details>
 
     <a class="nav-link font-bold text-primary" href="/docs">Docs</a>
+    <a class="nav-link font-bold" href="/docs/project/contributing" data-i18n="nav.contribute">Contribute</a>
 
     <div slot="drawer">
       <button class="topbar-search-btn w-full mb-3" onclick="openSearchModal()" aria-label="Search Documentation">
@@ -177,6 +178,7 @@
         </a>
       </div>
       <a class="mobile-link flex items-center gap-2 px-3 py-2.5 rounded-lg font-bold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all text-primary" href="/docs">Documentation</a>
+      <a class="mobile-link flex items-center gap-2 px-3 py-2.5 rounded-lg font-bold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all" href="/docs/project/contributing" data-i18n="nav.contribute">Contribute</a>
       <hr class="my-2" style="border-color:var(--pop-border); border-width:1.5px">
       <a class="mobile-link gh-mobile flex items-center gap-2 px-3 py-2.5 rounded-lg font-bold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all" href="https://github.com/krewire/krewire" target="_blank" rel="noopener">
         <span>GitHub ↗</span>

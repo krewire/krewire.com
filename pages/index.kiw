@@ -44,7 +44,7 @@ layout: Landing
           <!-- CTAs: stacked on mobile, row on sm+ -->
           <div class="w-full sm:w-auto flex flex-wrap items-center gap-4 sm:gap-5 mb-5 sm:mb-6">
             <Button Variant="primary" Size="lg" Href="/docs/getting-started"><span data-i18n="hero.cta_start">Get Started — 5 Min →</span></Button>
-            <Button Variant="outline" Size="lg" Href="https://open.krewire.com/"><span data-i18n="hero.cta_contribute">Contribute →</span></Button>
+            <Button Variant="outline" Size="lg" Href="/docs/project/contributing"><span data-i18n="hero.cta_contribute">Contribute →</span></Button>
           </div>
 
           <p class="text-xs font-semibold text-muted dark:text-muted-dark mt-1" data-i18n="hero.meta">Go 1.27.1+ · Spec to Production · File-based routing · Scoped CSS · Progressive by design</p>
@@ -912,6 +912,7 @@ p  { font-size: 15px; color: var(--muted); }
         <HStack gap="sm" wrap=true justify="center" class="w-full sm:w-auto gap-4">
           <Button Variant="primary" Size="lg" Href="/docs/getting-started"><span data-i18n="cta.button">Get Started — 5 Min →</span></Button>
           <Button Variant="outline" Size="lg" Href="https://github.com/krewire/krewire" Target="_blank"><span>★</span> <span data-i18n="cta.star">Star on GitHub</span></Button>
+          <Button Variant="outline" Size="lg" Href="/docs/project/contributing"><span data-i18n="cta.contribute">Contribute →</span></Button>
         </HStack>
         <div class="w-full max-w-md sm:max-w-lg md:max-w-xl mx-auto text-left mt-6 sm:mt-8">
           <Terminal Command="kiw new my-app --site && cd my-app && kiw dev" Class="bg-bg dark:bg-bg-dark" />

@@ -212,7 +212,8 @@ var translations = {
       "workspace_desc": "Virtual workspaces & autonomous agents",
       "cloud_desc": "Hybrid PaaS control plane & zero-downtime",
       "auth_desc": "Multi-tenant SSO, MFA & OIDC identity",
-      "panel_desc": "Self-hosted server & admin control panel"
+      "panel_desc": "Self-hosted server & admin control panel",
+      "contribute": "Contribute"
     },
     "hero": {
       "eyebrow": "GO-FIRST SOFTWARE ENGINEERING ECOSYSTEM · v0.2.3",
@@ -426,7 +427,8 @@ var translations = {
       "title": "Start Building with Krewire Today",
       "lead": "Start with a lightweight static site, scale to a web monolith, then to distributed cloud services — one repository, one CLI, one configuration.",
       "button": "Get Started — 5 Min →",
-      "star": "Star on GitHub"
+      "star": "Star on GitHub",
+      "contribute": "Contribute →"
     },
     "footer": {
       "products_title": "Products",
@@ -435,7 +437,16 @@ var translations = {
       "ecosystem_title": "Ecosystem",
       "tagline_html": "One Ecosystem. Every Workload.<br>One CLI <code class=\"code-inline\">kiw</code>, one config <code class=\"code-inline\">krewire.yaml</code>.",
       "badge": "Compiled Go · Zero Bloat",
-      "copyright_html": "© 2026 Krewire Team — Built with Krewire <code class=\"code-inline\">site</code> workload."
+      "copyright_html": "© 2026 Krewire Team — Built with Krewire <code class=\"code-inline\">site</code> workload.",
+      "project_title": "Project",
+      "about": "About Krewire",
+      "audiences": "Who It's For",
+      "openness": "Openness & Self-Hosting",
+      "services": "Core vs. Platform Services",
+      "contribute": "Contribute",
+      "impact": "Impact Report",
+      "roadmap": "Maturity & Roadmap",
+      "security": "Report a Security Issue"
     },
     "docs_reader": {
       "toc_title": "Contents",
@@ -466,7 +477,8 @@ var translations = {
       "workspace_desc": "Workspace virtual & agen otonom",
       "cloud_desc": "Control plane hybrid PaaS & tanpa downtime",
       "auth_desc": "SSO multi-tenant, MFA & identitas OIDC",
-      "panel_desc": "Panel kontrol server mandiri & admin"
+      "panel_desc": "Panel kontrol server mandiri & admin",
+      "contribute": "Kontribusi"
     },
     "hero": {
       "eyebrow": "GO-FIRST SOFTWARE ENGINEERING ECOSYSTEM · v0.2.3",
@@ -680,7 +692,8 @@ var translations = {
       "title": "Mulai Bangun dengan Krewire Hari Ini",
       "lead": "Mulai dari situs statis ringan, skalakan ke monolit web, lalu ke layanan cloud terdistribusi — satu repositori, satu CLI, satu konfigurasi.",
       "button": "Mulai Sekarang — 5 Menit →",
-      "star": "Star di GitHub"
+      "star": "Star di GitHub",
+      "contribute": "Berkontribusi →"
     },
     "footer": {
       "products_title": "Produk",
@@ -689,7 +702,16 @@ var translations = {
       "ecosystem_title": "Ekosistem",
       "tagline_html": "One Ecosystem. Every Workload.<br>Satu CLI <code class=\"code-inline\">kiw</code>, satu konfigurasi <code class=\"code-inline\">krewire.yaml</code>.",
       "badge": "Go Terkompilasi · Bebas Kembung",
-      "copyright_html": "© 2026 Krewire Team — Dibangun dengan workload <code class=\"code-inline\">site</code> Krewire."
+      "copyright_html": "© 2026 Krewire Team — Dibangun dengan workload <code class=\"code-inline\">site</code> Krewire.",
+      "project_title": "Proyek",
+      "about": "Tentang Krewire",
+      "audiences": "Untuk Siapa",
+      "openness": "Keterbukaan & Self-Hosting",
+      "services": "Inti vs. Layanan Platform",
+      "contribute": "Berkontribusi",
+      "impact": "Laporan Dampak",
+      "roadmap": "Kematangan & Roadmap",
+      "security": "Laporkan Masalah Keamanan"
     },
     "docs_reader": {
       "toc_title": "Daftar Isi",

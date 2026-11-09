@@ -18,7 +18,8 @@
     "workspace_desc": "Virtual workspaces & autonomous agents",
     "cloud_desc": "Hybrid PaaS control plane & zero-downtime",
     "auth_desc": "Multi-tenant SSO, MFA & OIDC identity",
-    "panel_desc": "Self-hosted server & admin control panel"
+    "panel_desc": "Self-hosted server & admin control panel",
+    "contribute": "Contribute"
   },
   "hero": {
     "eyebrow": "GO-FIRST SOFTWARE ENGINEERING ECOSYSTEM · v0.2.3",
@@ -232,7 +233,8 @@
     "title": "Start Building with Krewire Today",
     "lead": "Start with a lightweight static site, scale to a web monolith, then to distributed cloud services — one repository, one CLI, one configuration.",
     "button": "Get Started — 5 Min →",
-    "star": "Star on GitHub"
+    "star": "Star on GitHub",
+    "contribute": "Contribute →"
   },
   "footer": {
     "products_title": "Products",
@@ -241,7 +243,16 @@
     "ecosystem_title": "Ecosystem",
     "tagline_html": "One Ecosystem. Every Workload.<br>One CLI <code class=\"code-inline\">kiw</code>, one config <code class=\"code-inline\">krewire.yaml</code>.",
     "badge": "Compiled Go · Zero Bloat",
-    "copyright_html": "© 2026 Krewire Team — Built with Krewire <code class=\"code-inline\">site</code> workload."
+    "copyright_html": "© 2026 Krewire Team — Built with Krewire <code class=\"code-inline\">site</code> workload.",
+    "project_title": "Project",
+    "about": "About Krewire",
+    "audiences": "Who It's For",
+    "openness": "Openness & Self-Hosting",
+    "services": "Core vs. Platform Services",
+    "contribute": "Contribute",
+    "impact": "Impact Report",
+    "roadmap": "Maturity & Roadmap",
+    "security": "Report a Security Issue"
   },
   "docs_reader": {
     "toc_title": "Contents",
