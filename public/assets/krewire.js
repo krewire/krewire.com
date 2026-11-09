@@ -253,7 +253,11 @@ var translations = {
       "panel_feature1": "Host service & daemon supervision (systemd)",
       "panel_feature2": "Automated vHosts (Caddy/Nginx) & database provisioning",
       "panel_feature3": "Integrated firewall, streaming file manager & web console",
-      "panel_cta": "Learn Panel →"
+      "panel_cta": "Learn Panel →",
+      "mockup": "Illustration",
+      "status_private": "Private · not publicly available yet",
+      "boundary_note": "The open-source core (kiw CLI, libraries, krew, ui) is MIT-licensed and needs none of these services. Workspace, Cloud, Auth, and Panel are optional platform services developed in private repositories; none is publicly available yet and no pricing is published.",
+      "boundary_cta": "Core vs. platform services →"
     },
     "trust": {
       "label": "Unified Go Toolchain",
@@ -503,7 +507,11 @@ var translations = {
       "panel_feature1": "Supervisi servis host & daemon (systemd)",
       "panel_feature2": "Provisioning vHost otomatis (Caddy/Nginx) & database",
       "panel_feature3": "Firewall terintegrasi, file manager streaming & konsol web",
-      "panel_cta": "Pelajari Panel →"
+      "panel_cta": "Pelajari Panel →",
+      "mockup": "Ilustrasi",
+      "status_private": "Privat · belum tersedia untuk publik",
+      "boundary_note": "Inti open-source (CLI kiw, pustaka, krew, ui) berlisensi MIT dan tidak memerlukan layanan-layanan ini. Workspace, Cloud, Auth, dan Panel adalah layanan platform opsional yang dikembangkan di repositori privat; belum ada yang tersedia untuk publik dan belum ada harga yang dipublikasikan.",
+      "boundary_cta": "Inti vs. layanan platform →"
     },
     "trust": {
       "label": "Toolchain Go Terpadu",

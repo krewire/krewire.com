@@ -221,7 +221,7 @@ layout: Landing
                 <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
                 <span class="font-mono text-[11px] text-slate-400 font-bold ml-2">workspace // dash.krewire.com</span>
               </div>
-              <Badge Variant="primary" Size="sm" dot=true>LIVE</Badge>
+              <Badge Variant="neutral" Size="sm"><span data-i18n="products.mockup">Illustration</span></Badge>
             </div>
             <div class="p-4 sm:p-5 font-mono text-xs leading-relaxed text-slate-300">
               <div class="text-emerald-400 font-bold">$ kiw workspace start --sandbox=go-1.27</div>
@@ -250,10 +250,10 @@ layout: Landing
         </div>
 
         <div class="flex items-center justify-between pt-5 border-t border-border-subtle mt-auto">
-          <Button Variant="primary" Size="md" Href="https://dash.krewire.com" Target="_blank">
-            <span data-i18n="products.workspace_cta">Launch Workspace →</span>
+          <Button Variant="primary" Size="md" Href="/docs/security-platforms/virtual-workspace">
+            <span data-i18n="products.workspace_cta">Learn Workspace →</span>
           </Button>
-          <span class="text-xs font-mono font-bold text-muted dark:text-muted-dark">dash.krewire.com</span>
+          <span class="text-xs font-mono font-bold text-muted dark:text-muted-dark" data-i18n="products.status_private">Private · not publicly available yet</span>
         </div>
       </div>
 
@@ -282,11 +282,11 @@ layout: Landing
             </div>
           </div>
           <div class="flex items-center justify-between pt-4 mt-auto border-t border-border-subtle">
-            <a href="https://cloud.krewire.com" target="_blank" rel="noopener" class="text-xs font-extrabold text-primary hover:underline flex items-center gap-1.5" data-i18n="products.cloud_cta">
+            <a href="/docs/security-platforms/cloud-paas" class="text-xs font-extrabold text-primary hover:underline flex items-center gap-1.5" data-i18n="products.cloud_cta">
               <span>Learn Cloud</span>
               <span>→</span>
             </a>
-            <span class="text-[11px] font-mono text-muted dark:text-muted-dark">cloud.krewire.com</span>
+            <span class="text-[11px] font-mono text-muted dark:text-muted-dark" data-i18n="products.status_private">Private · not publicly available yet</span>
           </div>
         </div>
 
@@ -312,11 +312,11 @@ layout: Landing
             </div>
           </div>
           <div class="flex items-center justify-between pt-4 mt-auto border-t border-border-subtle">
-            <a href="https://auth.krewire.com" target="_blank" rel="noopener" class="text-xs font-extrabold text-primary hover:underline flex items-center gap-1.5" data-i18n="products.auth_cta">
+            <a href="/docs/security-platforms/identity-and-auth" class="text-xs font-extrabold text-primary hover:underline flex items-center gap-1.5" data-i18n="products.auth_cta">
               <span>Learn Auth</span>
               <span>→</span>
             </a>
-            <span class="text-[11px] font-mono text-muted dark:text-muted-dark">auth.krewire.com</span>
+            <span class="text-[11px] font-mono text-muted dark:text-muted-dark" data-i18n="products.status_private">Private · not publicly available yet</span>
           </div>
         </div>
 
@@ -343,20 +343,28 @@ layout: Landing
             </div>
           </div>
           <div class="shrink-0 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5">
-            <div class="bg-bg-2 dark:bg-bg-dark-2 p-4 rounded-xl border border-border-subtle flex items-center gap-4 sm:gap-6 text-xs font-mono">
+            <div class="bg-bg-2 dark:bg-bg-dark-2 p-4 rounded-xl border border-border-subtle flex items-center gap-4 sm:gap-6 text-xs font-mono" title="Illustration">
               <div class="flex flex-col"><span class="text-muted text-[10px]">DAEMONS</span><span class="font-extrabold text-primary">12 ACTIVE</span></div>
               <div class="w-px h-7 bg-border-subtle"></div>
               <div class="flex flex-col"><span class="text-muted text-[10px]">MEMORY</span><span class="font-extrabold text-fg dark:text-fg-dark">18.4 MB</span></div>
               <div class="w-px h-7 bg-border-subtle"></div>
               <div class="flex flex-col"><span class="text-muted text-[10px]">SSL ACME</span><span class="font-extrabold text-primary">AUTO-RENEW</span></div>
             </div>
-            <Button Variant="primary" Size="lg" Href="https://panel.krewire.com" Target="_blank">
-              <span data-i18n="products.panel_cta">Launch Panel →</span>
-            </Button>
+            <div class="flex flex-col items-start gap-2">
+              <Button Variant="primary" Size="lg" Href="/docs/project/core-and-platform-services#krewire-panel">
+                <span data-i18n="products.panel_cta">Learn Panel →</span>
+              </Button>
+              <span class="text-[11px] font-mono text-muted dark:text-muted-dark" data-i18n="products.status_private">Private · not publicly available yet</span>
+            </div>
           </div>
         </div>
       </div>
 
+    </div>
+
+    <div class="card p-5 sm:p-6 bg-bg-2 dark:bg-bg-dark-2 mt-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <p class="text-sm text-muted dark:text-muted-dark leading-relaxed m-0" data-i18n="products.boundary_note">The open-source core (kiw CLI, libraries, krew, ui) is MIT-licensed and needs none of these services. Workspace, Cloud, Auth, and Panel are optional platform services developed in private repositories; none is publicly available yet and no pricing is published.</p>
+      <Button Variant="outline" Size="md" Href="/docs/project/core-and-platform-services" Class="shrink-0"><span data-i18n="products.boundary_cta">Core vs. platform services →</span></Button>
     </div>
   </div>
 </section>

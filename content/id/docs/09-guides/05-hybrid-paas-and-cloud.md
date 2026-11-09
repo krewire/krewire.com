@@ -6,7 +6,9 @@ date: "2026-10-24"
 
 # PaaS Hibrida & Cloud Terkelola (Krewire Cloud)
 
-Krewire Cloud menyediakan mesin PaaS hibrida mandiri untuk hosting VPS privat serta platform cloud multi-tenant terkelola.
+Krewire Cloud dirancang sebagai mesin PaaS hibrida mandiri untuk hosting VPS privat sekaligus platform cloud multi-tenant terkelola.
+
+> **Ketersediaan (2026-11-09):** Krewire Cloud dikembangkan di repositori privat dan belum ada edisi yang tersedia untuk publik; belum ada harga yang dipublikasikan. Perintah `kiw deploy` di bagian 1 adalah bagian dari inti open-source dan sudah berfungsi hari ini tanpa Krewire Cloud. Lihat [Inti & Layanan Platform](/project/core-and-platform-services).
 
 ## 1. Mesin PaaS Hibrida Self-Hosted
 
@@ -24,9 +26,9 @@ kiw deploy --target systemd
 - **Rolling Deployment Tanpa Downtime (Zero-Downtime)**: Pool proses tersupervisi mengikat instance baru ke port dinamis, memvalidasi health check, dan secara dinamis memperbarui reverse proxy.
 - **TLS Otomatis Let's Encrypt**: Sertifikat ACME otomatis untuk wildcard subdomain dan domain kustom.
 
-## 2. Platform Cloud Multi-Tenant Terkelola (`cloud.krewire.com`)
+## 2. Platform Cloud Multi-Tenant Terkelola (direncanakan)
 
-Bagi tim yang menginginkan deployment serverless instan tanpa repot mengelola VPS:
+**Masih direncanakan, belum aktif.** Sesuai desainnya, platform terkelola ini akan melayani tim yang menginginkan deployment tanpa repot mengelola VPS:
 
 - `kiw deploy` + webhook Git push-to-deploy: membundel dan menyiapkan proyek secara lokal, lalu continuous deployment merilisnya ke produksi.
 - Streaming build real-time dan agregasi log terpusat.

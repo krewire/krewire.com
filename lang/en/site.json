@@ -59,7 +59,11 @@
     "panel_feature1": "Host service & daemon supervision (systemd)",
     "panel_feature2": "Automated vHosts (Caddy/Nginx) & database provisioning",
     "panel_feature3": "Integrated firewall, streaming file manager & web console",
-    "panel_cta": "Learn Panel →"
+    "panel_cta": "Learn Panel →",
+    "mockup": "Illustration",
+    "status_private": "Private · not publicly available yet",
+    "boundary_note": "The open-source core (kiw CLI, libraries, krew, ui) is MIT-licensed and needs none of these services. Workspace, Cloud, Auth, and Panel are optional platform services developed in private repositories; none is publicly available yet and no pricing is published.",
+    "boundary_cta": "Core vs. platform services →"
   },
   "trust": {
     "label": "Unified Go Toolchain",

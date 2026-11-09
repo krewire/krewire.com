@@ -67,16 +67,16 @@
       <!-- Col 4: Ecosystem & Products (3 cols on lg) -->
       <div class="lg:col-span-3 flex flex-col gap-2.5">
         <strong class="text-2xs font-mono font-bold uppercase tracking-wider text-fg dark:text-fg-dark mb-1" data-i18n="footer.products_title">Ecosystem Platforms</strong>
-        <a href="https://dash.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
+        <a href="/docs/security-platforms/virtual-workspace" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
           <span>Krewire Workspace</span> <Badge Variant="primary" Size="sm" Class="font-mono">AI</Badge>
         </a>
-        <a href="https://cloud.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
+        <a href="/docs/security-platforms/cloud-paas" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
           <span>Krewire Cloud</span> <Badge Variant="primary" Size="sm" Class="font-mono">PaaS</Badge>
         </a>
-        <a href="https://auth.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
+        <a href="/docs/security-platforms/identity-and-auth" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
           <span>Krewire Auth</span> <Badge Variant="primary" Size="sm" Class="font-mono">SSO</Badge>
         </a>
-        <a href="https://panel.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
+        <a href="/docs/project/core-and-platform-services#krewire-panel" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
           <span>Krewire Panel</span> <Badge Variant="primary" Size="sm" Class="font-mono">Host</Badge>
         </a>
         <a href="https://github.com/krewire/krew" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">

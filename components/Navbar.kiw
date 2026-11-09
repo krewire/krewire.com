@@ -73,7 +73,7 @@
             </div>
 
             <div class="flex flex-col gap-1.5 mb-2">
-              <a href="https://dash.krewire.com" target="_blank" rel="noopener" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
+              <a href="/docs/security-platforms/virtual-workspace" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
                 <div class="flex items-center gap-2.5 min-w-0">
                   <span class="icon-box bg-primary text-primary-content text-xs w-7 h-7 shrink-0 flex items-center justify-center font-bold">⚡</span>
                   <div class="min-w-0">
@@ -84,7 +84,7 @@
                 <Badge Variant="primary" Size="sm" Class="font-mono shrink-0 ml-2"><span data-i18n="nav.badge_ai">AI</span></Badge>
               </a>
 
-              <a href="https://cloud.krewire.com" target="_blank" rel="noopener" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
+              <a href="/docs/security-platforms/cloud-paas" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
                 <div class="flex items-center gap-2.5 min-w-0">
                   <span class="icon-box bg-primary text-primary-content text-xs w-7 h-7 shrink-0 flex items-center justify-center font-bold">◈</span>
                   <div class="min-w-0">
@@ -95,7 +95,7 @@
                 <Badge Variant="primary" Size="sm" Class="font-mono shrink-0 ml-2"><span data-i18n="nav.badge_paas">PaaS</span></Badge>
               </a>
 
-              <a href="https://auth.krewire.com" target="_blank" rel="noopener" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
+              <a href="/docs/security-platforms/identity-and-auth" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
                 <div class="flex items-center gap-2.5 min-w-0">
                   <span class="icon-box bg-primary text-primary-content text-xs w-7 h-7 shrink-0 flex items-center justify-center font-bold">🛡</span>
                   <div class="min-w-0">
@@ -106,7 +106,7 @@
                 <Badge Variant="primary" Size="sm" Class="font-mono shrink-0 ml-2"><span data-i18n="nav.badge_id">ID</span></Badge>
               </a>
 
-              <a href="https://panel.krewire.com" target="_blank" rel="noopener" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
+              <a href="/docs/project/core-and-platform-services#krewire-panel" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
                 <div class="flex items-center gap-2.5 min-w-0">
                   <span class="icon-box bg-primary text-primary-content text-xs w-7 h-7 shrink-0 flex items-center justify-center font-bold">🎛</span>
                   <div class="min-w-0">

@@ -29,7 +29,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
 
               <!-- 1. Krewire Workspace -->
-              <a href="https://dash.krewire.com" target="_blank" rel="noopener" class="dropdown-product-card block p-4 rounded-xl no-underline group">
+              <a href="/docs/security-platforms/virtual-workspace" class="dropdown-product-card block p-4 rounded-xl no-underline group">
                 <div class="flex items-center justify-between gap-2 mb-2">
                   <span class="icon-box bg-primary text-primary-content text-base shrink-0 w-8 h-8 flex items-center justify-center font-black">⚡</span>
                   <Badge Variant="primary" Size="sm" Class="font-mono"><span data-i18n="nav.badge_ai">AI</span></Badge>
@@ -44,7 +44,7 @@
               </a>
 
               <!-- 2. Krewire Cloud -->
-              <a href="https://cloud.krewire.com" target="_blank" rel="noopener" class="dropdown-product-card block p-4 rounded-xl no-underline group">
+              <a href="/docs/security-platforms/cloud-paas" class="dropdown-product-card block p-4 rounded-xl no-underline group">
                 <div class="flex items-center justify-between gap-2 mb-2">
                   <span class="icon-box bg-primary text-primary-content text-base shrink-0 w-8 h-8 flex items-center justify-center font-black">◈</span>
                   <Badge Variant="primary" Size="sm" Class="font-mono"><span data-i18n="nav.badge_paas">PaaS</span></Badge>
@@ -59,7 +59,7 @@
               </a>
 
               <!-- 3. Krewire Auth -->
-              <a href="https://auth.krewire.com" target="_blank" rel="noopener" class="dropdown-product-card block p-4 rounded-xl no-underline group">
+              <a href="/docs/security-platforms/identity-and-auth" class="dropdown-product-card block p-4 rounded-xl no-underline group">
                 <div class="flex items-center justify-between gap-2 mb-2">
                   <span class="icon-box bg-primary text-primary-content text-base shrink-0 w-8 h-8 flex items-center justify-center font-bold">🛡</span>
                   <Badge Variant="primary" Size="sm" Class="font-mono"><span data-i18n="nav.badge_id">ID</span></Badge>
@@ -74,7 +74,7 @@
               </a>
 
               <!-- 4. Krewire Panel -->
-              <a href="https://panel.krewire.com" target="_blank" rel="noopener" class="dropdown-product-card block p-4 rounded-xl no-underline group">
+              <a href="/docs/project/core-and-platform-services#krewire-panel" class="dropdown-product-card block p-4 rounded-xl no-underline group">
                 <div class="flex items-center justify-between gap-2 mb-2">
                   <span class="icon-box bg-primary text-primary-content text-base shrink-0 w-8 h-8 flex items-center justify-center font-bold">🎛</span>
                   <Badge Variant="primary" Size="sm" Class="font-mono"><span data-i18n="nav.badge_host">Host</span></Badge>

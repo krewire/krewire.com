@@ -113,9 +113,9 @@ Accelerate developer productivity with automated test suites, formatting, projec
 2. [**Configuration Schema Reference**](/cli-reference/configuration) — Full field specification for `krewire.yaml`.
 3. [**Custom Scripting & Automation**](/cli-reference/scripting) — Defining pre-build tasks and automated hooks.
 
-### Stage 6: Enterprise Operations, Cloud & Monetization
-Scale workloads to production, deploy to self-hosted or managed PaaS, and leverage the Open Core business model:
+### Stage 6: Operations, Cloud & the Open-Core Boundary
+Scale workloads to production on infrastructure you control, and understand the open-core boundary:
 
 1. [**Deployment & Operations Guide**](/guides/deployment-and-operations) — Single-binary containerization, zero-downtime rolling deploys, and automated ACME SSL/TLS reverse proxies.
-2. **Krewire Cloud (`cloud`)** — Deploying to the Go-native hybrid PaaS engine or managed SaaS platform (`kiw deploy --target infra` with `pkg/cloud/infra`).
-3. [**Open Core Model & Licensing**](/guides/open-core-and-licensing) — The four-tier ladder (*free*, *pro*, *team*, *enterprise*) and data sovereignty under UU PDP.
+2. [**Core & Platform Services**](/project/core-and-platform-services) — What is open source, what is an optional platform service, and the current availability of Krewire Cloud, Auth, Workspace, and Panel (none is publicly available yet).
+3. [**Open Core Model & Licensing**](/guides/open-core-and-licensing) — MIT-licensed core, the tier classification in `pkg/model`, and the design rules that keep the free core free.
