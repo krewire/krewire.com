@@ -8,7 +8,7 @@ date: "2026-10-24"
 
 Krewire Cloud dirancang sebagai mesin PaaS hibrida mandiri untuk hosting VPS privat sekaligus platform cloud multi-tenant terkelola.
 
-> **Ketersediaan (2026-11-09):** Krewire Cloud dikembangkan di repositori privat dan belum ada edisi yang tersedia untuk publik; belum ada harga yang dipublikasikan. Perintah `kiw deploy` di bagian 1 adalah bagian dari inti open-source dan sudah berfungsi hari ini tanpa Krewire Cloud. Lihat [Inti & Layanan Platform](/project/core-and-platform-services).
+> **Portal Live:** Krewire Cloud tersedia di [cloud.krewire.com](https://cloud.krewire.com). Perintah `kiw deploy` di bagian 1 adalah bagian dari inti open-source dan sudah berfungsi mandiri di infrastruktur Anda sendiri tanpa Krewire Cloud. Lihat [Inti & Layanan Platform](/project/core-and-platform-services).
 
 ## 1. Mesin PaaS Hibrida Self-Hosted
 
@@ -23,12 +23,12 @@ kiw deploy --target systemd
 ```
 
 - **Efisiensi RAM Ekstrem**: Workload Go berjalan hanya dalam 15–30MB RAM. Satu VPS seharga $5/bulan dapat menampung puluhan aplikasi aktif.
-- **Rolling Deployment Tanpa Downtime (Zero-Downtime)**: Pool proses tersupervisi mengikat instance baru ke port dinamis, memvalidasi health check, dan secara dinamis memperbarui reverse proxy.
+- **Rolling Deployment Tanpa Downtime (Zero-Downtime)**: Pool proses tersupervisi menjalankan instance baru di sandbox eksekusi terisolasi, memvalidasi health check, dan secara dinamis memperbarui reverse proxy.
 - **TLS Otomatis Let's Encrypt**: Sertifikat ACME otomatis untuk wildcard subdomain dan domain kustom.
 
-## 2. Platform Cloud Multi-Tenant Terkelola (direncanakan)
+## 2. Platform Cloud Multi-Tenant Terkelola
 
-**Masih direncanakan, belum aktif.** Sesuai desainnya, platform terkelola ini akan melayani tim yang menginginkan deployment tanpa repot mengelola VPS:
+Platform terkelola ini melayani tim yang menginginkan deployment tanpa repot mengelola VPS:
 
 - `kiw deploy` + webhook Git push-to-deploy: membundel dan menyiapkan proyek secara lokal, lalu continuous deployment merilisnya ke produksi.
 - Streaming build real-time dan agregasi log terpusat.

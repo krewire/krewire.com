@@ -49,11 +49,12 @@ Ready-to-mount HTTP handlers with clean, responsive dark/light UI:
 
 ## Platform Access & Integration
 
-> **Availability (2026-11-09):** Krewire Auth is developed in a private repository and is **not publicly available** — there is no public sign-up, download, or hosted endpoint, and `auth.krewire.com` currently serves the main krewire.com website. No pricing, plans, or commercial licenses are published. See [Core & Platform Services](/project/core-and-platform-services) for the delivery model, maturity, and update process.
+> **Live Portal:** Krewire Auth is available at [auth.krewire.com](https://auth.krewire.com) providing enterprise identity, SSO, MFA, and hierarchical RBAC across the ecosystem. See [Core & Platform Services](/project/core-and-platform-services) for architectural details.
 
-### Public OIDC & OAuth2 Integration
+### OIDC & OAuth2 Federation Endpoints
 
-Krewire Auth is designed to integrate through standard protocols. The server answers OIDC discovery at `/.well-known/openid-configuration`. The hosted addresses below are **planned** and are not live:
+Krewire Auth integrates with web services through standard OIDC protocols:
+- **Web Portal:** [https://auth.krewire.com](https://auth.krewire.com)
 - **Discovery Endpoint:** `https://auth.krewire.com/.well-known/openid-configuration`
 - **JWKS Key Set:** `https://auth.krewire.com/.well-known/jwks.json`
 - **Authorization Endpoint:** `https://auth.krewire.com/oauth/authorize`

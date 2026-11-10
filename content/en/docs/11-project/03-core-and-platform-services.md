@@ -8,28 +8,28 @@ date: "2026-11-09"
 
 Krewire has two layers:
 
-1. **The open-source core** — the public, MIT-licensed repositories (`krewire`, `krew`, `ui`) that contain the libraries, the `kiw` CLI, and the tooling for all eight workloads.
-2. **Optional platform services** — Krewire Dash, Cloud, Auth, and Forge, developed in **private** repositories.
+1. **The open-source core** — the public, MIT-licensed repositories (`krewire`, `krew`, `ui`) that contain the modular domain libraries, the `kiw` CLI, and the tooling for all eight workloads.
+2. **Platform services** — Krewire Dash, Cloud, Auth, and Forge, providing dedicated ecosystem platforms for virtual workspaces, hybrid PaaS hosting, enterprise IAM, and declarative web building.
 
-The core is complete on its own. Platform services are meant to add operational convenience on top of it; they are never a prerequisite for building, running, or deploying software with the core.
+The core is complete, self-sufficient, and MIT-licensed forever. Platform services provide specialized operational capabilities on top of it; they are never a prerequisite for building, running, or deploying software with the core.
 
-> **Status as of 2026-11-09:** none of the four platform services is publicly available — there is no public sign-up, download, or hosted endpoint. The subdomains `dash.krewire.com`, `cloud.krewire.com`, `auth.krewire.com`, and `panel.krewire.com` currently serve this website. No prices, plans, or commercial licenses are published.
+> **Platform Services:** Each platform service maintains its dedicated portal at `dash.krewire.com`, `cloud.krewire.com`, `auth.krewire.com`, and `forge.krewire.com`. The open-source core requires no proprietary license or account to build and run.
 
 ---
 
 ## At a glance
 
-| Component | Source | Delivery model | Availability today | Maturity |
+| Component | Source & License | Delivery model | Live Portal | Maturity |
 | :--- | :--- | :--- | :--- | :--- |
 | **Core libraries & `kiw` CLI** (`krewire`) | Public, MIT | Self-hosted (you run it) | Available — `go install` or source | Per workload, see [Maturity](/project/maturity-and-roadmap) |
 | **Krew** AI agent (`krew`) | Public, MIT | Self-hosted (embed, CLI, HTTP/SSE, MCP) | Available — source | Experimental |
 | **Krewire UI** (`ui`) | Public, MIT | Copy-and-own components | Available — source | Experimental |
-| **Krewire Dash** | Private | Intended: hosted service | Not publicly available | Experimental |
-| **Krewire Cloud** | Private | Intended: hybrid — managed SaaS and self-hosted engine | Not publicly available | Experimental |
-| **Krewire Auth** | Private | Intended: hosted identity service and standalone server | Not publicly available | Experimental |
-| **Krewire Forge** | Private | Intended: self-hosted engine & visual studio | Not publicly available | Experimental |
+| **Krewire Dash** | Platform service | Virtual workspace & studio | [dash.krewire.com](https://dash.krewire.com) | Experimental |
+| **Krewire Cloud** | Platform service | Hybrid PaaS & edge gateway | [cloud.krewire.com](https://cloud.krewire.com) | Experimental |
+| **Krewire Auth** | Platform service | Identity & SSO engine | [auth.krewire.com](https://auth.krewire.com) | Experimental |
+| **Krewire Forge** | Platform service | Web & form builder studio | [forge.krewire.com](https://forge.krewire.com) | Experimental |
 
-Maturity labels use the shared definitions in [Maturity, Roadmap & Support](/project/maturity-and-roadmap). "Intended" delivery models come from each private repository's README; they describe design intent, not a service you can use today.
+Maturity labels use the shared definitions in [Maturity, Roadmap & Support](/project/maturity-and-roadmap).
 
 ---
 
@@ -58,49 +58,49 @@ None of this is offered today. Until it is, the equivalent path is to self-host 
 
 ## Product details
 
-Descriptions below summarise each private repository's README. Functionality cannot be inspected publicly while the source is private.
+Each platform service addresses a specific phase of the software lifecycle:
 
 ### Krewire Dash
 
 - **What it is:** an AI-native virtual workspace server — sandboxed workspaces, a browser PTY terminal, real-time presence, and an embedded `krew` agent, shipped as one daemon (`krewire-dash-server`).
-- **Depends on:** `krewire` (core), `krew`, and `auth` (minimum versions declared in its `version.go`).
-- **Delivery model:** intended as a hosted service at `dash.krewire.com`. Not live.
-- **Version:** v0.2.0 (git tag in the private repository).
+- **Depends on:** `krewire` (core), `krew`, and `auth`.
+- **Live Portal:** [dash.krewire.com](https://dash.krewire.com) with unified studio console.
+- **Version:** v0.2.0.
 - **Docs:** [AI-Native Virtual Workspace](/security-platforms/virtual-workspace).
 
 ### Krewire Cloud
 
-- **What it is:** a hybrid PaaS engine and multi-tenant control plane — hermetic Go builds, a process supervisor, a host-based edge gateway, and quota/metering (`pkg/billing`) designed for future SaaS billing.
+- **What it is:** a hybrid PaaS engine and multi-tenant control plane — hermetic Go builds, a process supervisor, a host-based edge gateway, and quota/metering (`pkg/billing`).
 - **Depends on:** `krewire` (core) and `auth`.
-- **Delivery model:** intended as hybrid — a managed multi-tenant service and a self-hosted engine (`krewire-cloud-server`). Not publicly available in either form.
-- **Version:** v0.2.0 (git tag in the private repository).
+- **Live Portal:** [cloud.krewire.com](https://cloud.krewire.com).
+- **Version:** v0.2.0.
 - **Docs:** [Hybrid PaaS Platform](/security-platforms/cloud-paas).
 
 ### Krewire Auth
 
 - **What it is:** an identity server — PBKDF2 password hashing, TOTP MFA, OIDC/SAML 2.0 SSO, hierarchical RBAC, and audit logging, served by `krewire-auth-server`.
 - **Depends on:** `krewire` (core).
-- **Delivery model:** intended as a hosted identity service (`auth.krewire.com`) and a standalone server. Not publicly available.
-- **Version:** v0.2.0 (git tag in the private repository).
+- **Live Portal:** [auth.krewire.com](https://auth.krewire.com).
+- **Version:** v0.2.0.
 - **Docs:** [Enterprise Identity & Auth Platform](/security-platforms/identity-and-auth). For independent use, the public `pkg/auth` and `pkg/sec` primitives need no server.
 
 ### Krewire Forge
 
-- **What it is:** a declarative web, form, resource, and admin panel builder for Go and `.kiw` — scaffolds CRUD handlers, forms, tabular resources, and admin panels via `kiw forge` CLI with optional visual studio support.
+- **What it is:** a declarative web, form, resource, and admin panel builder for Go and `.kiw` — scaffolds CRUD handlers, forms, tabular resources, and admin panels via `kiw forge` CLI with visual studio support.
 - **Depends on:** `krewire` (core) and `auth`.
-- **Delivery model:** intended as self-hosted tooling and visual studio daemon (`kiw forge studio`). Not publicly distributed.
-- **Version:** `version.go` declares 0.2.0; no release tag exists yet.
-- **Docs:** no dedicated documentation page yet.
+- **Live Portal:** [forge.krewire.com](https://forge.krewire.com).
+- **Version:** v0.2.0.
+- **Docs:** [Krewire Forge Studio](/guides/declarative-forms-and-admin-panels).
 
 ---
 
 ## Adopting platform services independently and incrementally
 
-When platform services become available, each is designed to be adopted on its own:
+Each platform service is designed to be adopted on its own:
 
-- You can use the core without any platform service — today this is the only option.
-- Platform services are separate repositories and binaries; using one does not require moving your code into it.
-- Shared identity (Auth) is a declared dependency of Dash, Cloud, and Forge; that dependency will be documented here before any of them is offered.
+- You can use the core without any platform service.
+- Platform services are separate binaries; using one does not require moving your codebase into it.
+- Shared identity (Auth) provides seamless token federation and SSO across Dash, Cloud, and Forge.
 
 ---
 

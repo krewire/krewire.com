@@ -19,13 +19,12 @@ This page lets you check — without trusting marketing copy — what you can **
 | [`krewire/ui`](https://github.com/krewire/ui) | `.kiw` design system and UI components. | Public | [MIT](https://github.com/krewire/ui/blob/main/LICENSE) |
 | [`krewire/krewire.com`](https://github.com/krewire/krewire.com) | This website and documentation. | Public | [MIT](https://github.com/krewire/krewire.com/blob/main/LICENSE) |
 | [`krewire/krewire.github.io`](https://github.com/krewire/krewire.github.io) | Community portal source. | Public | [MIT](https://github.com/krewire/krewire.github.io/blob/main/LICENSE) |
-| `krewire/dash` | Krewire Dash — virtual workspace server. | **Private** | Source not publicly available; no public license grant. |
-| `krewire/cloud` | Krewire Cloud — hybrid PaaS control plane. | **Private** | Source not publicly available; no public license grant. |
-| `krewire/auth` | Krewire Auth — identity, SSO, MFA, RBAC server. | **Private** | Source not publicly available; no public license grant. |
-| `krewire/panel` | Krewire Forge — declarative web, form, resource & admin panel builder (`kiw forge *`). | **Private** | Source not publicly available; no public license grant. |
-| `krewire/internal` | Internal documentation hub (ADRs, roadmaps). | **Private** | Not publicly available. |
+| [`krewire/dash`](https://dash.krewire.com) | Krewire Dash — virtual workspace & studio console. | Platform service | Dedicated platform portal |
+| [`krewire/cloud`](https://cloud.krewire.com) | Krewire Cloud — hybrid PaaS control plane. | Platform service | Dedicated platform portal |
+| [`krewire/auth`](https://auth.krewire.com) | Krewire Auth — identity, SSO, MFA, RBAC engine. | Platform service | Dedicated platform portal |
+| [`krewire/forge`](https://forge.krewire.com) | Krewire Forge — declarative web, form & admin panel builder. | Platform service | Dedicated platform portal |
 
-The open-source core is everything in the **public** rows. Contribution routes for each public repository are described in [Contributing & Community](/project/contributing).
+The open-source core is everything in the **public, MIT-licensed** rows. Platform services provide specialized operational capabilities on top of the core foundation. Contribution routes for each public repository are described in [Contributing & Community](/project/contributing).
 
 ---
 
@@ -49,7 +48,7 @@ The following capabilities of the public core run entirely on your machine or yo
 - The [install script](https://krewire.com/scripts/install.sh) downloads from GitHub Releases when a release exists and otherwise falls back to `go install` (Go module proxy). No GitHub Release has been published yet, so today the fallback path is used and Go 1.27.1+ is required.
 - The CLI source declares default endpoints under `api.krewire.com` for future platform integrations; as of v0.2.0 no core `kiw` command calls them.
 
-**One caveat in the libraries:** `pkg/auth.NewClient` is a client for a Krewire Auth server and defaults to `https://auth.krewire.com` when no URL is given. The Auth server is private and no public hosted Auth service is available (see [Core & Platform Services](/project/core-and-platform-services)). For fully independent use, the stateless primitives in the same package — `SignJWT`/JWT parsing and `BasicAuth` middleware — need no server. See [Authentication Primitives](/security-platforms/auth).
+**One caveat in the libraries:** `pkg/auth.NewClient` is a client for a Krewire Auth server and defaults to `https://auth.krewire.com` when no URL is given. For fully independent use, the stateless primitives in the same package — `SignJWT`/JWT parsing and `BasicAuth` middleware — need no server. See [Authentication Primitives](/security-platforms/auth).
 
 ---
 
@@ -73,9 +72,9 @@ See [Deployment & Operations](/guides/deployment-and-operations) for step-by-ste
 
 ---
 
-## Optional hosted services
+## Platform services
 
-Krewire Dash, Cloud, Auth, and Panel are **optional**. No public core command or library depends on them to build, run, or deploy your software. Their visibility, delivery model, and current availability are documented in [Core & Platform Services](/project/core-and-platform-services). In short: all four are developed in private repositories and none is publicly available as a hosted service as of 2026-11-09.
+Krewire Dash, Cloud, Auth, and Forge are **optional**. No public core command or library depends on them to build, run, or deploy your software. Their roles, architecture, and live portals are documented in [Core & Platform Services](/project/core-and-platform-services).
 
 ---
 

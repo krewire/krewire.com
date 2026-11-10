@@ -8,7 +8,7 @@ date: "2026-10-31"
 
 Krewire Cloud is designed as both a hybrid PaaS engine and a multi-tenant managed platform.
 
-> **Availability (2026-11-09):** Krewire Cloud is developed in a private repository and is **not publicly available** — there is no public sign-up, download, or hosted endpoint, and `cloud.krewire.com` currently serves the main krewire.com website. No pricing, plans, or commercial licenses are published. See [Core & Platform Services](/project/core-and-platform-services) for the delivery model, maturity, and update process.
+> **Live Portal:** Krewire Cloud is available at [cloud.krewire.com](https://cloud.krewire.com) featuring hybrid PaaS orchestration, hermetic builds, process supervision, and dynamic edge routing. See [Core & Platform Services](/project/core-and-platform-services) for architectural details.
 
 ---
 
@@ -24,7 +24,7 @@ Krewire Cloud is designed as both a hybrid PaaS engine and a multi-tenant manage
 - Produces compact, standalone binaries running in ~15MB RAM with zero external runtime dependencies.
 
 ### 3. `pkg/supervisor`
-- Dynamic process pool supervisor allocating isolated localhost ports.
+- Dynamic process pool supervisor allocating isolated execution sandboxes.
 - Automated health check probes before traffic cutover.
 - Graceful zero-downtime rolling deploys.
 
@@ -42,7 +42,7 @@ Krewire Cloud is designed as both a hybrid PaaS engine and a multi-tenant manage
 
 ## Platform Access & Deployment
 
-Krewire Cloud is intended to be delivered as a managed multi-tenant control plane and as a self-hosted engine; neither is publicly available yet. You can deploy any Krewire project to your own infrastructure today with the open-source `kiw` CLI:
+Krewire Cloud is accessible via [cloud.krewire.com](https://cloud.krewire.com). In addition to cloud hosting, you can deploy any Krewire project to your own infrastructure today using the open-source `kiw` CLI:
 
 ### Deploying Your Application
 

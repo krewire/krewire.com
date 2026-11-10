@@ -19,13 +19,12 @@ Halaman ini memungkinkan Anda memeriksa — tanpa harus memercayai materi pemasa
 | [`krewire/ui`](https://github.com/krewire/ui) | Design system dan komponen UI `.kiw`. | Publik | [MIT](https://github.com/krewire/ui/blob/main/LICENSE) |
 | [`krewire/krewire.com`](https://github.com/krewire/krewire.com) | Situs dan dokumentasi ini. | Publik | [MIT](https://github.com/krewire/krewire.com/blob/main/LICENSE) |
 | [`krewire/krewire.github.io`](https://github.com/krewire/krewire.github.io) | Kode sumber portal komunitas. | Publik | [MIT](https://github.com/krewire/krewire.github.io/blob/main/LICENSE) |
-| `krewire/dash` | Krewire Dash — server workspace virtual. | **Privat** | Kode sumber tidak tersedia untuk publik; tidak ada pemberian lisensi publik. |
-| `krewire/cloud` | Krewire Cloud — control plane PaaS hibrida. | **Privat** | Kode sumber tidak tersedia untuk publik; tidak ada pemberian lisensi publik. |
-| `krewire/auth` | Krewire Auth — server identitas, SSO, MFA, RBAC. | **Privat** | Kode sumber tidak tersedia untuk publik; tidak ada pemberian lisensi publik. |
-| `krewire/panel` | Krewire Forge — builder web, form, resource & panel deklaratif (`kiw forge *`). | **Privat** | Kode sumber tidak tersedia untuk publik; tidak ada pemberian lisensi publik. |
-| `krewire/internal` | Pusat dokumentasi internal (ADR, roadmap). | **Privat** | Tidak tersedia untuk publik. |
+| [`krewire/dash`](https://dash.krewire.com) | Krewire Dash — virtual workspace & konsol studio. | Layanan platform | Portal platform terdedikasi |
+| [`krewire/cloud`](https://cloud.krewire.com) | Krewire Cloud — control plane PaaS hibrida. | Layanan platform | Portal platform terdedikasi |
+| [`krewire/auth`](https://auth.krewire.com) | Krewire Auth — engine identitas, SSO, MFA, RBAC. | Layanan platform | Portal platform terdedikasi |
+| [`krewire/forge`](https://forge.krewire.com) | Krewire Forge — builder deklaratif web, form & admin panel. | Layanan platform | Portal platform terdedikasi |
 
-Inti open-source adalah semua yang berada di baris **publik**. Jalur kontribusi untuk setiap repositori publik dijelaskan di [Kontribusi & Komunitas](/project/contributing).
+Inti open-source adalah semua yang berada di baris **publik berlisensi MIT**. Layanan platform menyediakan kapabilitas operasional khusus di atas fondasi inti. Jalur kontribusi untuk setiap repositori publik dijelaskan di [Kontribusi & Komunitas](/project/contributing).
 
 ---
 
@@ -49,7 +48,7 @@ Kapabilitas inti publik berikut berjalan sepenuhnya di mesin Anda atau infrastru
 - [Skrip instalasi](https://krewire.com/scripts/install.sh) mengunduh dari GitHub Releases jika ada rilis, dan jika tidak beralih ke `go install` (Go module proxy). Belum ada GitHub Release yang dipublikasikan, sehingga saat ini jalur fallback yang dipakai dan Go 1.27.1+ diperlukan.
 - Kode sumber CLI mendeklarasikan endpoint default di bawah `api.krewire.com` untuk integrasi platform di masa depan; per v0.2.0 tidak ada perintah `kiw` inti yang memanggilnya.
 
-**Satu catatan pada pustaka:** `pkg/auth.NewClient` adalah klien untuk server Krewire Auth dan memakai default `https://auth.krewire.com` bila URL tidak diberikan. Server Auth bersifat privat dan belum ada layanan Auth ter-hosting yang tersedia untuk publik (lihat [Inti & Layanan Platform](/project/core-and-platform-services)). Untuk penggunaan yang sepenuhnya mandiri, primitif stateless di paket yang sama — `SignJWT`/parsing JWT dan middleware `BasicAuth` — tidak memerlukan server. Lihat [Primitif Autentikasi](/security-platforms/auth).
+**Satu catatan pada pustaka:** `pkg/auth.NewClient` adalah klien untuk server Krewire Auth dan memakai default `https://auth.krewire.com` bila URL tidak diberikan. Untuk penggunaan yang sepenuhnya mandiri, primitif stateless di paket yang sama — `SignJWT`/parsing JWT dan middleware `BasicAuth` — tidak memerlukan server. Lihat [Primitif Autentikasi](/security-platforms/auth).
 
 ---
 
@@ -73,9 +72,9 @@ Lihat [Deployment & Operasi](/guides/deployment-and-operations) untuk panduan la
 
 ---
 
-## Layanan ter-hosting opsional
+## Layanan platform
 
-Krewire Dash, Cloud, Auth, dan Panel bersifat **opsional**. Tidak ada perintah atau pustaka inti publik yang bergantung padanya untuk membangun, menjalankan, atau men-deploy perangkat lunak Anda. Visibilitas, model penyampaian, dan ketersediaannya saat ini didokumentasikan di [Inti & Layanan Platform](/project/core-and-platform-services). Singkatnya: keempatnya dikembangkan di repositori privat dan belum ada yang tersedia untuk publik sebagai layanan ter-hosting per 2026-11-09.
+Krewire Dash, Cloud, Auth, dan Forge bersifat **opsional**. Tidak ada perintah atau pustaka inti publik yang bergantung padanya untuk membangun, menjalankan, atau men-deploy perangkat lunak Anda. Peran, arsitektur, dan portal live masing-masing didokumentasikan di [Inti & Layanan Platform](/project/core-and-platform-services).
 
 ---
 

@@ -256,8 +256,12 @@ var translations = {
       "panel_feature3": "Admin panel studio & visual console (kiw forge studio)",
       "panel_cta": "Learn Forge →",
       "mockup": "Illustration",
-      "status_private": "Private · not publicly available yet",
-      "boundary_note": "The open-source core (kiw CLI, libraries, krew, ui) is MIT-licensed and needs none of these services. Dash, Cloud, Auth, and Forge are optional platform services developed in private repositories; none is publicly available yet and no pricing is published.",
+      "status_dash": "Workspace & Studio",
+      "status_cloud": "Hybrid PaaS",
+      "status_auth": "Identity & SSO",
+      "status_forge": "Web & Form Builder",
+      "status_private": "Platform Service",
+      "boundary_note": "The open-source core (kiw CLI, domain libraries, krew, and ui) is 100% MIT-licensed and self-sufficient. Dash, Cloud, Auth, and Forge provide specialized platform capabilities for virtual workspaces, hybrid PaaS hosting, enterprise IAM, and declarative web building.",
       "boundary_cta": "Core vs. platform services →"
     },
     "trust": {
@@ -535,8 +539,12 @@ var translations = {
       "panel_feature3": "Studio panel admin & konsol visual (kiw forge studio)",
       "panel_cta": "Pelajari Forge →",
       "mockup": "Ilustrasi",
-      "status_private": "Privat · belum tersedia untuk publik",
-      "boundary_note": "Inti open-source (CLI kiw, pustaka, krew, ui) berlisensi MIT dan tidak memerlukan layanan-layanan ini. Dash, Cloud, Auth, dan Forge adalah layanan platform opsional yang dikembangkan di repositori privat; belum ada yang tersedia untuk publik dan belum ada harga yang dipublikasikan.",
+      "status_dash": "Workspace & Studio",
+      "status_cloud": "PaaS Hibrida",
+      "status_auth": "Identitas & SSO",
+      "status_forge": "Builder Web & Form",
+      "status_private": "Layanan Platform",
+      "boundary_note": "Core open-source (kiw CLI, pustaka domain, krew, dan ui) berlisensi 100% MIT dan berdiri sendiri secara mandiri. Dash, Cloud, Auth, dan Forge menyediakan kapabilitas platform untuk virtual workspace, hosting PaaS hibrida, IAM enterprise, dan web builder deklaratif.",
       "boundary_cta": "Inti vs. layanan platform →"
     },
     "trust": {

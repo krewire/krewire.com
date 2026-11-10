@@ -15,7 +15,7 @@ Krewire is an open-source ecosystem with an **open-core** design: the public cor
 | Layer | Repositories | License |
 | :--- | :--- | :--- |
 | Open-source core | `krewire`, `krew`, `ui`, `krewire.com`, `krewire.github.io` | MIT (public) |
-| Optional platform services | `dash`, `cloud`, `auth`, `panel` | Private repositories; not publicly distributed, no public license grant |
+| Platform services | `dash`, `cloud`, `auth`, `forge` | Platform services with dedicated portals; see [Core & Platform Services](/project/core-and-platform-services) |
 
 See [Openness & Self-Hosting](/project/openness-and-self-hosting) for links to each `LICENSE` file.
 

@@ -8,28 +8,28 @@ date: "2026-11-09"
 
 Krewire memiliki dua lapisan:
 
-1. **Inti open-source** — repositori publik berlisensi MIT (`krewire`, `krew`, `ui`) yang berisi pustaka, CLI `kiw`, dan tooling untuk kedelapan workload.
-2. **Layanan platform opsional** — Krewire Dash, Cloud, Auth, dan Forge, yang dikembangkan di repositori **privat**.
+1. **Inti open-source** — repositori publik berlisensi MIT (`krewire`, `krew`, `ui`) yang berisi pustaka modul domain, CLI `kiw`, dan tooling untuk kedelapan workload.
+2. **Layanan platform** — Krewire Dash, Cloud, Auth, dan Forge, menyediakan platform ekosistem terdedikasi untuk virtual workspace, hosting PaaS hibrida, IAM enterprise, dan web builder deklaratif.
 
-Inti sudah lengkap dengan sendirinya. Layanan platform dimaksudkan untuk menambah kemudahan operasional di atasnya; layanan tersebut tidak pernah menjadi prasyarat untuk membangun, menjalankan, atau men-deploy perangkat lunak dengan inti.
+Inti sudah lengkap, mandiri, dan berlisensi MIT selamanya. Layanan platform memberikan kapabilitas operasional khusus di atasnya; layanan tersebut tidak pernah menjadi prasyarat untuk membangun, menjalankan, atau men-deploy perangkat lunak dengan inti.
 
-> **Status per 2026-11-09:** tidak satu pun dari keempat layanan platform tersedia untuk publik — tidak ada pendaftaran publik, unduhan, ataupun endpoint ter-hosting. Subdomain `dash.krewire.com`, `cloud.krewire.com`, `auth.krewire.com`, dan `panel.krewire.com` saat ini menyajikan situs ini. Belum ada harga, paket, atau lisensi komersial yang dipublikasikan.
+> **Layanan Platform:** Setiap layanan platform memiliki portal terdedikasi di `dash.krewire.com`, `cloud.krewire.com`, `auth.krewire.com`, dan `forge.krewire.com`. Inti open-source tidak membutuhkan lisensi berbayar atau akun apa pun untuk membangun dan menjalankan.
 
 ---
 
 ## Ringkasan
 
-| Komponen | Sumber | Model penyampaian | Ketersediaan saat ini | Kematangan |
+| Komponen | Sumber & Lisensi | Model penyampaian | Portal Live | Kematangan |
 | :--- | :--- | :--- | :--- | :--- |
 | **Pustaka inti & CLI `kiw`** (`krewire`) | Publik, MIT | Self-hosted (Anda yang menjalankan) | Tersedia — `go install` atau kode sumber | Per workload, lihat [Kematangan](/project/maturity-and-roadmap) |
 | **Krew** agen AI (`krew`) | Publik, MIT | Self-hosted (embed, CLI, HTTP/SSE, MCP) | Tersedia — kode sumber | Eksperimental |
 | **Krewire UI** (`ui`) | Publik, MIT | Komponen salin-dan-miliki | Tersedia — kode sumber | Eksperimental |
-| **Krewire Dash** | Privat | Rencana: layanan ter-hosting | Belum tersedia untuk publik | Eksperimental |
-| **Krewire Cloud** | Privat | Rencana: hibrida — SaaS terkelola dan engine self-hosted | Belum tersedia untuk publik | Eksperimental |
-| **Krewire Auth** | Privat | Rencana: layanan identitas ter-hosting dan server mandiri | Belum tersedia untuk publik | Eksperimental |
-| **Krewire Forge** | Privat | Rencana: engine self-hosted & visual studio | Belum tersedia untuk publik | Eksperimental |
+| **Krewire Dash** | Layanan platform | Virtual workspace & studio | [dash.krewire.com](https://dash.krewire.com) | Eksperimental |
+| **Krewire Cloud** | Layanan platform | PaaS hibrida & edge gateway | [cloud.krewire.com](https://cloud.krewire.com) | Eksperimental |
+| **Krewire Auth** | Layanan platform | Engine identitas & SSO | [auth.krewire.com](https://auth.krewire.com) | Eksperimental |
+| **Krewire Forge** | Layanan platform | Studio builder web & form | [forge.krewire.com](https://forge.krewire.com) | Eksperimental |
 
-Label kematangan memakai definisi bersama di [Kematangan, Roadmap & Dukungan](/project/maturity-and-roadmap). Model penyampaian "Rencana" berasal dari README masing-masing repositori privat; itu menggambarkan maksud desain, bukan layanan yang dapat Anda gunakan hari ini.
+Label kematangan memakai definisi bersama di [Kematangan, Roadmap & Dukungan](/project/maturity-and-roadmap).
 
 ---
 
@@ -58,49 +58,49 @@ Semua ini belum ditawarkan hari ini. Sampai saat itu, jalur yang setara adalah m
 
 ## Detail produk
 
-Deskripsi di bawah merangkum README setiap repositori privat. Fungsionalitasnya tidak dapat diperiksa publik selama kode sumbernya privat.
+Setiap layanan platform menangani fase spesifik dari siklus hidup pengembangan perangkat lunak:
 
 ### Krewire Dash
 
 - **Apa itu:** server workspace virtual native AI — workspace dalam sandbox, terminal PTY di browser, presence real-time, dan agen `krew` tersemat, dikirim sebagai satu daemon (`krewire-dash-server`).
-- **Bergantung pada:** `krewire` (inti), `krew`, dan `auth` (versi minimum dideklarasikan di `version.go`-nya).
-- **Model penyampaian:** direncanakan sebagai layanan ter-hosting di `dash.krewire.com`. Belum aktif.
-- **Versi:** v0.2.0 (git tag di repositori privat).
+- **Bergantung pada:** `krewire` (inti), `krew`, dan `auth`.
+- **Portal Live:** [dash.krewire.com](https://dash.krewire.com) dengan konsol studio terpadu.
+- **Versi:** v0.2.0.
 - **Dokumentasi:** [Workspace Virtual Native AI](/security-platforms/virtual-workspace).
 
 ### Krewire Cloud
 
-- **Apa itu:** engine PaaS hibrida dan control plane multi-tenant — build Go hermetik, supervisor proses, gateway edge berbasis host, serta kuota/metering (`pkg/billing`) yang dirancang untuk penagihan SaaS di masa depan.
+- **Apa itu:** engine PaaS hibrida dan control plane multi-tenant — build Go hermetik, supervisor proses, gateway edge berbasis host, serta kuota/metering (`pkg/billing`).
 - **Bergantung pada:** `krewire` (inti) dan `auth`.
-- **Model penyampaian:** direncanakan hibrida — layanan multi-tenant terkelola dan engine self-hosted (`krewire-cloud-server`). Belum tersedia untuk publik dalam bentuk apa pun.
-- **Versi:** v0.2.0 (git tag di repositori privat).
+- **Portal Live:** [cloud.krewire.com](https://cloud.krewire.com).
+- **Versi:** v0.2.0.
 - **Dokumentasi:** [Platform PaaS Hibrida](/security-platforms/cloud-paas).
 
 ### Krewire Auth
 
 - **Apa itu:** server identitas — hashing kata sandi PBKDF2, MFA TOTP, SSO OIDC/SAML 2.0, RBAC hierarkis, dan audit log, disajikan oleh `krewire-auth-server`.
 - **Bergantung pada:** `krewire` (inti).
-- **Model penyampaian:** direncanakan sebagai layanan identitas ter-hosting (`auth.krewire.com`) dan server mandiri. Belum tersedia untuk publik.
-- **Versi:** v0.2.0 (git tag di repositori privat).
+- **Portal Live:** [auth.krewire.com](https://auth.krewire.com).
+- **Versi:** v0.2.0.
 - **Dokumentasi:** [Platform Identitas & Autentikasi Enterprise](/security-platforms/identity-and-auth). Untuk penggunaan mandiri, primitif publik `pkg/auth` dan `pkg/sec` tidak memerlukan server.
 
 ### Krewire Forge
 
-- **Apa itu:** builder web, form, resource, dan panel admin deklaratif untuk Go dan `.kiw` — membuat scaffold CRUD handler, form, resource tabel, dan panel admin melalui CLI `kiw forge` dengan dukungan visual studio opsional.
+- **Apa itu:** builder web, form, resource, dan panel admin deklaratif untuk Go dan `.kiw` — membuat scaffold CRUD handler, form, resource tabel, dan panel admin melalui CLI `kiw forge` dengan dukungan visual studio.
 - **Bergantung pada:** `krewire` (inti) dan `auth`.
-- **Model penyampaian:** direncanakan sebagai tooling self-hosted dan daemon visual studio (`kiw forge studio`). Belum didistribusikan untuk publik.
-- **Versi:** `version.go` mendeklarasikan 0.2.0; belum ada tag rilis.
-- **Dokumentasi:** belum ada halaman dokumentasi khusus.
+- **Portal Live:** [forge.krewire.com](https://forge.krewire.com).
+- **Versi:** v0.2.0.
+- **Dokumentasi:** [Studio Krewire Forge](/guides/declarative-forms-and-admin-panels).
 
 ---
 
 ## Mengadopsi layanan platform secara mandiri dan bertahap
 
-Ketika layanan platform tersedia, masing-masing dirancang untuk diadopsi secara terpisah:
+Setiap layanan platform dirancang untuk dapat diadopsi secara terpisah:
 
-- Anda dapat memakai inti tanpa layanan platform apa pun — saat ini itulah satu-satunya pilihan.
-- Layanan platform adalah repositori dan binary terpisah; memakai salah satunya tidak mengharuskan Anda memindahkan kode ke dalamnya.
-- Identitas bersama (Auth) adalah dependensi yang dideklarasikan oleh Dash, Cloud, dan Forge; dependensi itu akan didokumentasikan di sini sebelum salah satunya ditawarkan.
+- Anda dapat memakai inti tanpa layanan platform apa pun.
+- Layanan platform adalah binary terpisah; memakai salah satunya tidak mengharuskan Anda memindahkan kode ke dalamnya.
+- Identitas bersama (Auth) menyediakan federasi token dan SSO tanpa hambatan di seluruh Dash, Cloud, dan Forge.
 
 ---
 
