@@ -23,7 +23,7 @@ flowchart TD
 
     subgraph Inbound ["Telemetri & Kontrol Agen Masuk"]
         STDIO["kiw mcp --stdio"]
-        SSE["kiw dashboard (/mcp/sse)"]
+        SSE["kiw dash (/mcp/sse)"]
         SRV["Native MCP Server"]
     end
 
@@ -88,10 +88,10 @@ Untuk **OpenCode** (`opencode.json`):
 
 ### B. Konfigurasi Jaringan / Browser dengan HTTP/SSE
 
-Saat mengembangkan layanan mikro, kontainer, atau menggunakan agen yang terhubung melalui web, jalankan `kiw dashboard`:
+Saat mengembangkan layanan mikro, kontainer, atau menggunakan agen yang terhubung melalui web, jalankan `kiw dash`:
 
 ```bash
-kiw dashboard --port 4000
+kiw dash --port 4000
 ```
 
 Server MCP SSE secara otomatis tersedia di:

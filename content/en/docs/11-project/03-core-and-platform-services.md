@@ -1,6 +1,6 @@
 ---
 title: "Core & Platform Services"
-description: "The boundary between Krewire's open-source core and the optional platform services (Workspace/Dash, Cloud, Auth, Panel): delivery model, maturity, dependencies, availability, and pricing status."
+description: "The boundary between Krewire's open-source core and the optional platform services (Dash, Cloud, Auth, Forge): delivery model, maturity, dependencies, availability, and pricing status."
 date: "2026-11-09"
 ---
 
@@ -9,7 +9,7 @@ date: "2026-11-09"
 Krewire has two layers:
 
 1. **The open-source core** — the public, MIT-licensed repositories (`krewire`, `krew`, `ui`) that contain the libraries, the `kiw` CLI, and the tooling for all eight workloads.
-2. **Optional platform services** — Krewire Dash, Cloud, Auth, and Panel, developed in **private** repositories.
+2. **Optional platform services** — Krewire Dash, Cloud, Auth, and Forge, developed in **private** repositories.
 
 The core is complete on its own. Platform services are meant to add operational convenience on top of it; they are never a prerequisite for building, running, or deploying software with the core.
 

@@ -123,7 +123,7 @@ Engineering teams adopting Krewire across several products can follow this six-s
 
 ### Stage 6: Operations, Cloud & the Open-Core Boundary
 1. [**Deployment & Operations**](/guides/deployment-and-operations)
-2. [**Core & Platform Services**](/project/core-and-platform-services) — what is open source and the current availability of Krewire Cloud, Auth, Workspace, and Panel.
+2. [**Core & Platform Services**](/project/core-and-platform-services) — what is open source and the current availability of Krewire Cloud, Auth, Dash, and Forge.
 3. [**Open Core & Licensing**](/guides/open-core-and-licensing)
 
 ---

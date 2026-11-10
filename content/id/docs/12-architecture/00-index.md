@@ -123,7 +123,7 @@ Tim rekayasa yang mengadopsi Krewire di beberapa produk dapat mengikuti jalur en
 
 ### Tahap 6: Operasi, Cloud & Batas Open-Core
 1. [**Deployment & Operasi**](/guides/deployment-and-operations)
-2. [**Inti & Layanan Platform**](/project/core-and-platform-services) — apa yang open source dan ketersediaan Krewire Cloud, Auth, Workspace, dan Panel saat ini.
+2. [**Inti & Layanan Platform**](/project/core-and-platform-services) — apa yang open source dan ketersediaan Krewire Cloud, Auth, Dash, dan Forge saat ini.
 3. [**Open Core & Lisensi**](/guides/open-core-and-licensing)
 
 ---

@@ -36,7 +36,7 @@ The following capabilities of the public core run entirely on your machine or yo
 | Capability | Commands / packages | Network access it needs |
 | :--- | :--- | :--- |
 | Scaffold projects for all eight workloads | `kiw new`, `kiw init` | None (built-in templates); optional `--template <git URL>` clones from a URL you choose. |
-| Local development and preview | `kiw dev`, `kiw serve`, `kiw dashboard` | None. |
+| Local development and preview | `kiw dev`, `kiw serve`, `kiw dash` | None. |
 | Build sites, books, binaries | `kiw build` | None beyond fetching Go modules you depend on. |
 | Test and verify | `kiw test`, `kiw vet`, `kiw compat` | None. |
 | Deploy to your own targets | `kiw deploy --target` (`binary`, `systemd`, `gh-pages`, `infra`) | Only the target you choose (for example, pushing to your own GitHub Pages branch). |

@@ -48,7 +48,7 @@ One set of labels is used for workloads **and** products. The first three defini
 | Krew (`krew`) | Experimental | Public source, tag `v0.2.0`; no public production deployment cited. |
 | Krewire UI (`ui`) | Experimental | Public source, no tag yet; used by this website's components. |
 | Krewire Dash, Cloud, Auth | Experimental | Private source, tag `v0.2.0`; not publicly available. |
-| Panel | Experimental | Private source; `version.go` declares 0.2.0, no tag yet; not publicly available. |
+| Krewire Forge | Experimental | Private source; `version.go` declares 0.2.0, no tag yet; not publicly available. |
 
 Delivery models and availability are on [Core & Platform Services](/project/core-and-platform-services).
 

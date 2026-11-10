@@ -93,16 +93,27 @@ Menjalankan server HTTP lokal untuk meninjau output statis (workload `site` atau
 kiw serve [--port 3000] [--dir .krewire/build]
 ```
 
-### `kiw dashboard`
+### `kiw dash` (alias: `kiw dashboard`)
 
-Meluncurkan dasbor pengembang lokal yang interaktif dan server telemetri observabilitas real-time:
+Meluncurkan dasbor pengembang lokal yang interaktif dan server telemetri observabilitas real-time, atau mengelola virtual developer workspace berbasis AI dan sandbox eksekusi terisolasi:
 
 ```bash
-kiw dashboard [--port 4000] [--host 127.0.0.1]
+kiw dash [--port 4000] [--host 127.0.0.1]
+kiw dash start --sandbox=go-1.27
+kiw dash list
+kiw dash status
+kiw dash console [--port 9000]
+kiw dash stop [id]
 ```
 
 - **UI Interaktif (`/`)**: Dasbor web bertema gelap untuk memeriksa halaman yang terdeteksi, handler, layanan mikro terkonfigurasi, dan metrik memori secara langsung.
 - **Telemetri Real-Time (`/api/events`)**: Aliran Server-Sent Events (SSE) yang mengirimkan jumlah goroutine, alokasi memori, dan statistik GC setiap 2 detik.
+- **Virtual Workspace Sandbox**:
+  - `start [--sandbox=<image>]`: Menyiapkan dan melampirkan ke sandbox developer workspace terisolasi.
+  - `list`: Menampilkan daftar developer workspace dan sandbox aktif.
+  - `status`: Memeriksa konektivitas, kuota, dan kesehatan server Dash.
+  - `console`: Membuka atau mencetak URL Web IDE console.
+  - `stop [id]`: Menghentikan sandbox yang sedang berjalan.
 - **Endpoint REST & MCP**:
   - `GET /api/info`: Bentuk proyek, versi toolchain Go, layanan, dan tabel rute.
   - `GET /api/metrics`: Alokasi memori langsung dan penghitung goroutine.
@@ -373,4 +384,16 @@ kiw self-update --dry-run # Simulasikan proses pembaruan
 
 - `--force`: Memasang ulang atau memperbarui meskipun sudah berada di versi terbaru.
 - `--version <ver>`: Memasang versi target semver tertentu.
+- Melakukan penggantian biner atomik di Linux, macOS, dan Windows dengan fallback otomatis ke toolchain Go.
+
+### `kiw forge <subcommand>`
+
+Builder web, form, dan panel admin deklaratif untuk Go dan `.kiw` (Krewire Forge).
+
+```bash
+kiw forge panel admin                                                        # Scaffold layout dashboard admin
+kiw forge resource product --model=Product                                   # Scaffold resource CRUD lengkap
+kiw forge form contact --fields="name:string,email:string,message:textarea"  # Buat form deklaratif dengan validasi
+kiw forge studio --port=8089                                                 # Jalankan studio visual builder interaktif
+```
 - Melakukan penggantian binary secara atomik pada Linux, macOS, dan Windows dengan fallback otomatis ke toolchain Go.

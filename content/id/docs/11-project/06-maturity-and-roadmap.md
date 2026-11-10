@@ -47,8 +47,8 @@ Satu set label dipakai untuk workload **dan** produk. Tiga definisi pertama diam
 | CLI `kiw` & pustaka inti | Per workload (di atas) | Kode sumber publik, tag `v0.2.0`. |
 | Krew (`krew`) | Eksperimental | Kode sumber publik, tag `v0.2.0`; belum ada deployment produksi publik yang dikutip. |
 | Krewire UI (`ui`) | Eksperimental | Kode sumber publik, belum ada tag; dipakai oleh komponen situs ini. |
-| Workspace (Dash), Cloud, Auth | Eksperimental | Kode sumber privat, tag `v0.2.0`; belum tersedia untuk publik. |
-| Panel | Eksperimental | Kode sumber privat; `version.go` mendeklarasikan 0.2.0, belum ada tag; belum tersedia untuk publik. |
+| Krewire Dash, Cloud, Auth | Eksperimental | Kode sumber privat, tag `v0.2.0`; belum tersedia untuk publik. |
+| Krewire Forge | Eksperimental | Kode sumber privat; `version.go` mendeklarasikan 0.2.0, belum ada tag; belum tersedia untuk publik. |
 
 Model penyampaian dan ketersediaan ada di [Inti & Layanan Platform](/project/core-and-platform-services).
 
@@ -80,7 +80,7 @@ Definisi status:
 
 - **Celah implementasi inti** (dari [matriks kematangan](https://github.com/krewire/krewire/blob/main/docs/workloads/maturity-matrix.md)): build tanpa konfigurasi yang berhasil untuk kedelapan starter (P0); koordinasi worker terdistribusi (P1); endpoint Prometheus standar untuk `service` dan `gateway` (P1).
 - **Krew** ([roadmap README](https://github.com/krewire/krew#readme)): memori hierarkis, tracing langkah OpenTelemetry, dan identitas agen (dinyatakan untuk 2027); mesh antar-agen dan LTS `v1.0.0` (dinyatakan untuk 2028).
-- **Workspace (Dash)** (roadmap README privat): isolasi MicroVM dan snapshot (dinyatakan untuk 2027); pengeditan kolaboratif dan LTS `v1.0.0` (dinyatakan untuk 2028).
+- **Krewire Dash** (roadmap README privat): isolasi MicroVM dan snapshot (dinyatakan untuk 2027); pengeditan kolaboratif dan LTS `v1.0.0` (dinyatakan untuk 2028).
 
 Tahun pada butir yang diusulkan adalah target yang dinyatakan di README tersebut, bukan komitmen dari halaman ini.
 

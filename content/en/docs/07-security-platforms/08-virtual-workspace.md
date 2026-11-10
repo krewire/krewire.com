@@ -58,7 +58,7 @@ The hosted portal is **planned, not live**. As designed, developers would spin u
 
 For local development without cloud dependencies, developers use the native `kiw` CLI tools:
 - `kiw dev`: Run applications locally with auto-restart and hot reload.
-- `kiw dashboard`: Run a local observability dashboard at `http://127.0.0.1:4000`.
+- `kiw dash`: Run local dev dashboard & MCP telemetry (`:4000`) or manage virtual workspace sandboxes.
 - `kiw mcp --stdio`: Connect AI coding assistants (such as Antigravity or Cursor) directly to your project via the Model Context Protocol.
 
 ### Self-Hosted and Enterprise Editions

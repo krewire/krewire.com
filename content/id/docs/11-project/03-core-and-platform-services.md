@@ -1,6 +1,6 @@
 ---
 title: "Inti & Layanan Platform"
-description: "Batas antara inti open-source Krewire dan layanan platform opsional (Workspace/Dash, Cloud, Auth, Panel): model penyampaian, kematangan, dependensi, ketersediaan, dan status harga."
+description: "Batas antara inti open-source Krewire dan layanan platform opsional (Dash, Cloud, Auth, Forge): model penyampaian, kematangan, dependensi, ketersediaan, dan status harga."
 date: "2026-11-09"
 ---
 
@@ -9,7 +9,7 @@ date: "2026-11-09"
 Krewire memiliki dua lapisan:
 
 1. **Inti open-source** — repositori publik berlisensi MIT (`krewire`, `krew`, `ui`) yang berisi pustaka, CLI `kiw`, dan tooling untuk kedelapan workload.
-2. **Layanan platform opsional** — Krewire Dash, Cloud, Auth, dan Panel, yang dikembangkan di repositori **privat**.
+2. **Layanan platform opsional** — Krewire Dash, Cloud, Auth, dan Forge, yang dikembangkan di repositori **privat**.
 
 Inti sudah lengkap dengan sendirinya. Layanan platform dimaksudkan untuk menambah kemudahan operasional di atasnya; layanan tersebut tidak pernah menjadi prasyarat untuk membangun, menjalankan, atau men-deploy perangkat lunak dengan inti.
 

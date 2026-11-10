@@ -28,7 +28,7 @@ project:
 | **Situs Statis (SSG)** | `site` | Landing page, situs pemasaran, blog, portofolio | `kiw build`, `kiw dev` | `pkg/web/ssg`, `pkg/kiw` |
 | **Buku Teknis & Dokumentasi** | `book` | Dokumentasi multi-bab, buku panduan, manual software | `kiw build --target book`, `kiw dev` | `pkg/book` |
 | **Worker Latar Belakang** | `worker` | Antrean tugas asinkron, jadwal cron, retry, DLQ | `kiw worker` | `pkg/cloud/worker` |
-| **Microservice** | `service` | API RPC/HTTP terdistribusi, registry layanan, gateway | `kiw run`, `kiw dashboard` | `pkg/cloud/service` |
+| **Microservice** | `service` | API RPC/HTTP terdistribusi, registry layanan, gateway | `kiw run`, `kiw dash` | `pkg/cloud/service` |
 | **Infrastruktur Cloud (IaC)** | `infra` | Provisi sumber daya cloud multi-provider (AWS/K8s) | `kiw deploy --target infra` | `pkg/cloud/infra` |
 | **Gateway API** | `gateway` | Reverse proxy deklaratif, middleware per rute, load balancing | `kiw gateway`, `kiw run` | `pkg/web/gateway` |
 

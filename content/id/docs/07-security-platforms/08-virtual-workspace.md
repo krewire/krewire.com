@@ -58,7 +58,7 @@ Portal ter-hosting ini **masih direncanakan, belum aktif**. Sesuai desainnya, de
 
 Untuk alur kerja pengembangan lokal tanpa dependensi cloud, developer dapat memanfaatkan perkakas native CLI `kiw`:
 - `kiw dev`: Menjalankan aplikasi secara lokal dengan auto-restart dan hot reload.
-- `kiw dashboard`: Menjalankan dashboard observabilitas lokal di `http://127.0.0.1:4000`.
+- `kiw dash`: Menjalankan dashboard observabilitas lokal & telemetri MCP (`:4000`) atau mengelola virtual workspace dan sandbox eksekusi.
 - `kiw mcp --stdio`: Menghubungkan asisten coding AI (seperti Antigravity atau Cursor) langsung ke proyek melalui Model Context Protocol (MCP).
 
 ### Edisi Self-Hosted dan Enterprise

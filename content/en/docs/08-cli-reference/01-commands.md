@@ -93,16 +93,27 @@ Start a local HTTP server to preview static output (`site` or `book` workloads) 
 kiw serve [--port 3000] [--dir .krewire/build]
 ```
 
-### `kiw dashboard`
+### `kiw dash` (alias: `kiw dashboard`)
 
-Launch an interactive local developer dashboard and real-time observability telemetry server:
+Launch an interactive local developer dashboard and real-time observability telemetry server, or manage AI-native virtual developer workspaces and isolated execution sandboxes:
 
 ```bash
-kiw dashboard [--port 4000] [--host 127.0.0.1]
+kiw dash [--port 4000] [--host 127.0.0.1]
+kiw dash start --sandbox=go-1.27
+kiw dash list
+kiw dash status
+kiw dash console [--port 9000]
+kiw dash stop [id]
 ```
 
 - **Interactive UI (`/`)**: Dark-themed web dashboard inspecting detected pages, handlers, configured microservices, and live memory metrics.
 - **Real-Time Telemetry (`/api/events`)**: Server-Sent Events (SSE) stream pushing goroutine count, memory allocation, and GC telemetry every 2 seconds.
+- **Virtual Workspace Sandboxes**:
+  - `start [--sandbox=<image>]`: Mount and attach to an isolated developer workspace sandbox.
+  - `list`: List running developer workspaces and sandboxes.
+  - `status`: Inspect Dash server connectivity, quota, and health.
+  - `console`: Open or print Web IDE console URL.
+  - `stop [id]`: Stop a running sandbox.
 - **REST & MCP Endpoints**:
   - `GET /api/info`: Project shape, Go toolchain version, services, and route table.
   - `GET /api/metrics`: Live memory allocations and goroutine counter.
@@ -373,3 +384,14 @@ kiw self-update --dry-run # Simulate update process
 - `--force`: Reinstalls or updates even if already on the latest version.
 - `--version <ver>`: Installs a specific target version.
 - Performs atomic binary replacement on Linux, macOS, and Windows with automatic Go toolchain fallback.
+
+### `kiw forge <subcommand>`
+
+Declarative web, form, and admin panel builder for Go and `.kiw` (Krewire Forge).
+
+```bash
+kiw forge panel admin                                                        # Scaffold admin dashboard layout
+kiw forge resource product --model=Product                                   # Scaffold full CRUD resource
+kiw forge form contact --fields="name:string,email:string,message:textarea"  # Generate declarative form
+kiw forge studio --port=8089                                                 # Launch interactive visual builder studio
+```

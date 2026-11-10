@@ -36,7 +36,7 @@ Krewire's primary objective is **long-term impact on how software is built**: ma
 
 - **Impact is the measure of success.** Revenue is not the primary success metric of the ecosystem. How the project intends to measure impact — and which measurements do not exist yet — is published in the [Impact & Sustainability Report](/project/impact-report).
 - **Open access is the default.** The core repositories (`krewire`, `krew`, `ui`, `krewire.com`, `krewire.github.io`) are public and MIT-licensed. Building, running, and deploying with the core tooling does not require a Krewire account, license key, or Krewire-hosted service.
-- **Financial sustainability exists to fund the mission.** Maintaining an ecosystem costs time and infrastructure. Optional platform services (Workspace/Dash, Cloud, Auth, Panel) are developed in private repositories and may be offered commercially in the future to help fund maintenance and community growth. This does **not** mean every service must be free, and it does **not** make the open-source core a paid product.
+- **Financial sustainability exists to fund the mission.** Maintaining an ecosystem costs time and infrastructure. Optional platform services (Dash, Cloud, Auth, Forge) are developed in private repositories and may be offered commercially in the future to help fund maintenance and community growth. This does **not** mean every service must be free, and it does **not** make the open-source core a paid product.
 
 > **Current status (2026-11-09):** no paid plans, prices, or commercial licenses are published, and no funding sources are reported. When that changes, it will be documented in [Core & Platform Services](/project/core-and-platform-services) and the [Impact & Sustainability Report](/project/impact-report).
 

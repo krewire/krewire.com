@@ -28,7 +28,7 @@ project:
 | **Static Site (SSG)** | `site` | Landing pages, marketing websites, blogs, portfolios | `kiw build`, `kiw dev` | `pkg/web/ssg`, `pkg/kiw` |
 | **Technical Book** | `book` | Multi-chapter documentation, books, software manuals | `kiw build --target book`, `kiw dev` | `pkg/book` |
 | **Background Worker** | `worker` | Asynchronous job queues, cron schedules, retries, DLQ | `kiw worker` | `pkg/cloud/worker` |
-| **Microservice** | `service` | Distributed RPC/HTTP APIs, service registry, gateways | `kiw run`, `kiw dashboard` | `pkg/cloud/service` |
+| **Microservice** | `service` | Distributed RPC/HTTP APIs, service registry, gateways | `kiw run`, `kiw dash` | `pkg/cloud/service` |
 | **Cloud Infra (IaC)** | `infra` | Provider-agnostic cloud resource provisioning (AWS/K8s) | `kiw deploy --target infra` | `pkg/cloud/infra` |
 | **API Gateway** | `gateway` | Declarative reverse proxy, per-route middleware, service-discovery balancing | `kiw gateway`, `kiw run` | `pkg/web/gateway` |
 

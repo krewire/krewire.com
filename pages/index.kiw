@@ -224,7 +224,7 @@ layout: Landing
               <Badge Variant="neutral" Size="sm"><span data-i18n="products.mockup">Illustration</span></Badge>
             </div>
             <div class="p-4 sm:p-5 font-mono text-xs leading-relaxed text-slate-300">
-              <div class="text-emerald-400 font-bold">$ kiw workspace start --sandbox=go-1.27</div>
+              <div class="text-emerald-400 font-bold">$ kiw dash start --sandbox=go-1.27</div>
               <div class="text-slate-400 mt-1">✓ Isolated micro-container mounted (14ms)</div>
               <div class="text-slate-400 mt-1">✓ PTY terminal attached on ws://dash.krewire.com/pty</div>
               <div class="text-cyan-400 mt-2 font-bold">⚡ Autonomous ReAct Agent active (krew engine)</div>

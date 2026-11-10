@@ -36,7 +36,7 @@ Kapabilitas inti publik berikut berjalan sepenuhnya di mesin Anda atau infrastru
 | Kapabilitas | Perintah / paket | Akses jaringan yang dibutuhkan |
 | :--- | :--- | :--- |
 | Scaffold proyek untuk kedelapan workload | `kiw new`, `kiw init` | Tidak ada (template bawaan); opsi `--template <URL git>` meng-clone dari URL pilihan Anda. |
-| Pengembangan dan pratinjau lokal | `kiw dev`, `kiw serve`, `kiw dashboard` | Tidak ada. |
+| Pengembangan dan pratinjau lokal | `kiw dev`, `kiw serve`, `kiw dash` | Tidak ada. |
 | Membangun situs, buku, binary | `kiw build` | Tidak ada selain mengambil modul Go yang Anda gunakan. |
 | Pengujian dan verifikasi | `kiw test`, `kiw vet`, `kiw compat` | Tidak ada. |
 | Deploy ke target Anda sendiri | `kiw deploy --target` (`binary`, `systemd`, `gh-pages`, `infra`) | Hanya target yang Anda pilih (misalnya push ke branch GitHub Pages Anda sendiri). |
