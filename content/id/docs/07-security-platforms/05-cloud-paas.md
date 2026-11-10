@@ -22,7 +22,7 @@ Krewire Cloud dirancang sebagai mesin PaaS hibrida mandiri (self-hosted) sekalig
 - Menghasilkan binary mandiri yang hemat sumber daya (~15MB RAM) tanpa dependensi eksternal.
 
 ### 3. `pkg/supervisor`
-- Supervisor kolam proses dinamis yang mengalokasikan port localhost terisolasi.
+- Supervisor kolam proses dinamis yang mengalokasikan sandbox eksekusi terisolasi.
 - Probe health check otomatis sebelum pengalihan lalu lintas jaringan (traffic cutover).
 - Rolling deployment tanpa jeda (zero-downtime rolling deploys).
 
@@ -40,9 +40,9 @@ Krewire Cloud dirancang sebagai mesin PaaS hibrida mandiri (self-hosted) sekalig
 
 ## Akses Platform & Deployment
 
-> **Ketersediaan (2026-11-09):** Krewire Cloud dikembangkan di repositori privat dan **belum tersedia untuk publik** — tidak ada pendaftaran publik, unduhan, ataupun endpoint ter-hosting, dan `cloud.krewire.com` saat ini menyajikan situs utama krewire.com. Belum ada harga, paket, atau lisensi komersial yang dipublikasikan. Lihat [Inti & Layanan Platform](/project/core-and-platform-services) untuk model penyampaian, kematangan, dan proses pembaruan.
+> **Portal Live:** Krewire Cloud tersedia di [cloud.krewire.com](https://cloud.krewire.com) menyediakan orkestrasi PaaS hibrida, build hermetis, supervisi proses, dan routing edge dinamis. Lihat [Inti & Layanan Platform](/project/core-and-platform-services) untuk detail arsitektur.
 
-Krewire Cloud direncanakan untuk disampaikan sebagai control plane multi-tenant terkelola dan sebagai engine self-hosted; keduanya belum tersedia untuk publik. Anda sudah dapat men-deploy proyek Krewire apa pun ke infrastruktur Anda sendiri hari ini dengan CLI open-source `kiw`:
+Selain hosting cloud, Anda dapat men-deploy proyek Krewire apa pun ke infrastruktur Anda sendiri hari ini menggunakan CLI open-source `kiw`:
 
 ### Men-deploy Aplikasi Anda
 

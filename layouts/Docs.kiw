@@ -13,7 +13,7 @@
 <body class="docs-body">
 
   <!-- NAVBAR (Krewire UI) -->
-  <Navbar showSidebarToggle=true showLangToggle=true gitHubURL="https://github.com/krewire/krewire">
+  <Navbar BrandName="Krewire" BrandBadge="Docs" showSidebarToggle=true showLangToggle=true gitHubURL="https://github.com/krewire/krewire">
     <div class="version-picker" id="versionPicker">
       <select id="docVersionSelect" aria-label="Documentation Version">
         <option value="v0.2.0" selected>v0.2.0 (latest)</option>

@@ -249,11 +249,11 @@ layout: Landing
           </div>
         </div>
 
-        <div class="flex items-center justify-between pt-5 border-t border-border-subtle mt-auto">
-          <Button Variant="primary" Size="md" Href="/docs/security-platforms/virtual-workspace">
+        <div class="flex flex-wrap items-center justify-between gap-3 pt-5 border-t border-border-subtle mt-auto">
+          <Button Variant="primary" Size="md" Href="https://dash.krewire.com" Target="_blank">
             <span data-i18n="products.workspace_cta">Learn Dash →</span>
           </Button>
-          <span class="text-xs font-mono font-bold text-muted dark:text-muted-dark" data-i18n="products.status_private">Private · not publicly available yet</span>
+          <span class="badge badge-neutral text-xs font-mono" data-i18n="products.status_dash">Workspace &amp; Studio</span>
         </div>
       </div>
 
@@ -281,12 +281,11 @@ layout: Landing
               <Badge Variant="neutral" Size="sm">Multi-tenant</Badge>
             </div>
           </div>
-          <div class="flex items-center justify-between pt-4 mt-auto border-t border-border-subtle">
-            <a href="/docs/security-platforms/cloud-paas" class="text-xs font-extrabold text-primary hover:underline flex items-center gap-1.5" data-i18n="products.cloud_cta">
-              <span>Learn Cloud</span>
-              <span>→</span>
-            </a>
-            <span class="text-[11px] font-mono text-muted dark:text-muted-dark" data-i18n="products.status_private">Private · not publicly available yet</span>
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-4 mt-auto border-t border-border-subtle">
+            <Button Variant="primary" Size="md" Href="https://cloud.krewire.com" Target="_blank">
+              <span data-i18n="products.cloud_cta">Learn Cloud →</span>
+            </Button>
+            <span class="badge badge-neutral text-xs font-mono" data-i18n="products.status_cloud">Hybrid PaaS</span>
           </div>
         </div>
 
@@ -311,12 +310,11 @@ layout: Landing
               <Badge Variant="neutral" Size="sm">PBKDF2-SHA256</Badge>
             </div>
           </div>
-          <div class="flex items-center justify-between pt-4 mt-auto border-t border-border-subtle">
-            <a href="/docs/security-platforms/identity-and-auth" class="text-xs font-extrabold text-primary hover:underline flex items-center gap-1.5" data-i18n="products.auth_cta">
-              <span>Learn Auth</span>
-              <span>→</span>
-            </a>
-            <span class="text-[11px] font-mono text-muted dark:text-muted-dark" data-i18n="products.status_private">Private · not publicly available yet</span>
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-4 mt-auto border-t border-border-subtle">
+            <Button Variant="primary" Size="md" Href="https://auth.krewire.com" Target="_blank">
+              <span data-i18n="products.auth_cta">Learn Auth →</span>
+            </Button>
+            <span class="badge badge-neutral text-xs font-mono" data-i18n="products.status_auth">Identity &amp; SSO</span>
           </div>
         </div>
 
@@ -348,13 +346,13 @@ layout: Landing
               <div class="w-px h-7 bg-border-subtle"></div>
               <div class="flex flex-col"><span class="text-muted text-[10px]">MEMORY</span><span class="font-extrabold text-fg dark:text-fg-dark">18.4 MB</span></div>
               <div class="w-px h-7 bg-border-subtle"></div>
-              <div class="flex flex-col"><span class="text-muted text-[10px]">STUDIO</span><span class="font-extrabold text-primary">PORT 8089</span></div>
+              <div class="flex flex-col"><span class="text-muted text-[10px]">ENGINE</span><span class="font-extrabold text-primary">PURE GO</span></div>
             </div>
             <div class="flex flex-col items-start gap-2">
-              <Button Variant="primary" Size="lg" Href="/docs/project/core-and-platform-services#krewire-forge">
+              <Button Variant="primary" Size="md" Href="https://forge.krewire.com" Target="_blank">
                 <span data-i18n="products.panel_cta">Learn Forge →</span>
               </Button>
-              <span class="text-[11px] font-mono text-muted dark:text-muted-dark" data-i18n="products.status_private">Private · not publicly available yet</span>
+              <span class="badge badge-neutral text-xs font-mono" data-i18n="products.status_forge">Web &amp; Form Builder</span>
             </div>
           </div>
         </div>
@@ -363,7 +361,7 @@ layout: Landing
     </div>
 
     <div class="card p-5 sm:p-6 bg-bg-2 dark:bg-bg-dark-2 mt-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
-      <p class="text-sm text-muted dark:text-muted-dark leading-relaxed m-0" data-i18n="products.boundary_note">The open-source core (kiw CLI, libraries, krew, ui) is MIT-licensed and needs none of these services. Dash, Cloud, Auth, and Forge are optional platform services developed in private repositories; none is publicly available yet and no pricing is published.</p>
+      <p class="text-sm text-muted dark:text-muted-dark leading-relaxed m-0" data-i18n="products.boundary_note">The open-source core (kiw CLI, domain libraries, krew, and ui) is 100% MIT-licensed and self-sufficient. Dash, Cloud, Auth, and Forge provide specialized platform capabilities for virtual workspaces, hybrid PaaS hosting, enterprise IAM, and declarative web building.</p>
       <Button Variant="outline" Size="md" Href="/docs/project/core-and-platform-services" Class="shrink-0"><span data-i18n="products.boundary_cta">Core vs. platform services →</span></Button>
     </div>
   </div>

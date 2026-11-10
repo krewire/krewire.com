@@ -24,7 +24,7 @@ Anda tidak harus menulis kode untuk memberi kontribusi yang berarti.
 | **Triase issue** | Mereproduksi bug yang dilaporkan, meminta detail yang kurang, dan menyarankan label (`bug`, `documentation`, `good first issue`, …). | Issue di repositori publik mana pun |
 | **Dukungan komunitas** | Menjawab pertanyaan dan berbagi apa yang Anda bangun. | [Discussions di `krewire/krewire.com`](https://github.com/krewire/krewire.com/discussions) |
 
-Layanan platform (Dash, Cloud, Auth, Panel) dikembangkan di repositori privat dan tidak terbuka untuk kontribusi eksternal.
+Kontribusi saat ini difokuskan pada repositori open-source inti (`krewire`, `krew`, `ui`, `krewire.com`).
 
 ---
 
@@ -55,7 +55,7 @@ Berikut diambil dari `CONTRIBUTING.md` dan `AGENTS.md` setiap repositori:
 4. **Buka pull request** ke `main`. Perubahan ditinjau sebelum di-merge.
 5. **Tulis dalam bahasa Inggris** di repositori (kode, commit, dokumentasi); konten bahasa Indonesia ditempatkan di berkas locale `id`.
 
-> `CONTRIBUTING.md` repositori inti merujuk ke panduan setup di repositori privat `internal`. Sampai panduan itu dipublikasikan, gunakan panduan publik [Instalasi](/getting-started/installation).
+> Untuk panduan setup pengembang lokal, gunakan panduan publik [Instalasi](/getting-started/installation).
 
 ---
 

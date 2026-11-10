@@ -49,11 +49,12 @@ Handler HTTP siap pasang dengan antarmuka web responsif dark/light:
 
 ## Akses Platform & Integrasi
 
-> **Ketersediaan (2026-11-09):** Krewire Auth dikembangkan di repositori privat dan **belum tersedia untuk publik** — tidak ada pendaftaran publik, unduhan, ataupun endpoint ter-hosting, dan `auth.krewire.com` saat ini menyajikan situs utama krewire.com. Belum ada harga, paket, atau lisensi komersial yang dipublikasikan. Lihat [Inti & Layanan Platform](/project/core-and-platform-services) untuk model penyampaian, kematangan, dan proses pembaruan.
+> **Portal Live:** Krewire Auth tersedia di [auth.krewire.com](https://auth.krewire.com) menyediakan identitas enterprise, SSO, MFA, dan RBAC hierarkis di seluruh ekosistem. Lihat [Inti & Layanan Platform](/project/core-and-platform-services) untuk detail arsitektur.
 
-### Integrasi Standar OIDC & OAuth2
+### Endpoint Federasi OIDC & OAuth2
 
-Krewire Auth dirancang untuk berintegrasi melalui protokol standar. Server menjawab OIDC discovery di `/.well-known/openid-configuration`. Alamat ter-hosting di bawah masih **direncanakan** dan belum aktif:
+Krewire Auth berintegrasi dengan layanan web melalui protokol OIDC standar:
+- **Portal Web:** [https://auth.krewire.com](https://auth.krewire.com)
 - **Discovery Endpoint:** `https://auth.krewire.com/.well-known/openid-configuration`
 - **JWKS Key Set:** `https://auth.krewire.com/.well-known/jwks.json`
 - **Authorization Endpoint:** `https://auth.krewire.com/oauth/authorize`
