@@ -15,8 +15,10 @@ import (
 // TestTaskFlow drives the real handler: GET issues a CSRF token, a POST
 // without it is rejected, a valid POST stores a task that GET then lists.
 func TestTaskFlow(t *testing.T) {
-	t.Setenv("TODO_DB", filepath.Join(t.TempDir(), "test.db"))
-	a, err := New(&config.Metadata{Project: config.Project{Name: "todo-app", Kind: "app"}})
+	a, err := New(&config.Metadata{
+		Project:  config.Project{Name: "todo-app", Kind: "app"},
+		Database: config.Database{Driver: "sqlite", DSN: filepath.Join(t.TempDir(), "test.db")},
+	})
 	if err != nil {
 		t.Fatal(err)
 	}

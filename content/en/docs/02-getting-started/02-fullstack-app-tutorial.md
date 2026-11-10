@@ -1,6 +1,6 @@
 ---
 title: "Build a Fullstack App in 15 Minutes"
-description: "Zero-to-hero tutorial: scaffold an app with kiw new --app, store data in SQLite through pkg/orm with migrations, render .kiw pages with Krewire UI components, handle validated CSRF-protected forms, and ship a single binary."
+description: "Zero-to-hero tutorial: scaffold an app with kiw new --app, store data in SQLite through pkg/orm with kiw migrate migrations, render .kiw pages with Krewire UI components, handle validated CSRF-protected forms, and ship a single binary."
 date: "2026-11-09"
 ---
 
@@ -22,7 +22,7 @@ You will build **todo-app**, a small task manager: a page that lists tasks store
 <div class="overview-grid">
 
   <div class="chapter-card">
-    <p class="chapter-card-desc"><b>Time:</b> about 15 minutes.<br><b>You need:</b> Go 1.27.1+, <code>kiw</code> (see the <a href="/getting-started/quickstart">Quickstart</a>), and network access for <code>go get</code>.<br><b>You learn:</b> <code>kiw new --app</code>, <code>kiw make</code>, <code>pkg/orm</code>, migrations, <code>.kiw</code> views, <code>pkg/validation</code>, <code>web.CSRF</code>, <code>kiw build</code>.</p>
+    <p class="chapter-card-desc"><b>Time:</b> about 15 minutes.<br><b>You need:</b> Go 1.27.1+, <code>kiw</code> (see the <a href="/getting-started/quickstart">Quickstart</a>), and network access to download Go modules.<br><b>You learn:</b> <code>kiw new --app</code>, <code>kiw make</code>, <code>pkg/orm</code>, <code>kiw migrate</code>, <code>.kiw</code> views, <code>pkg/validation</code>, <code>web.CSRF</code>, <code>kiw build</code>.</p>
   </div>
 
 </div>
@@ -61,7 +61,8 @@ The parts you will touch:
 ```text
 todo-app/
 ├── main.go                 # loads krewire.yaml, builds the app, runs it — unchanged
-├── krewire.yaml            # name, kind: app, dev.port: 8080
+├── krewire.yaml            # name, kind: app, dev.port: 8080 — gains a database section
+├── internal/config/config.go # mirrors krewire.yaml in Go — gains a Database field
 ├── internal/app/app.go     # wiring: providers registered in the app container
 ├── internal/http/http.go   # a sample JSON API (/api/status) — unchanged
 ├── web/layouts/shell.go    # the HTML shell around every page — unchanged
@@ -80,11 +81,46 @@ Open <http://localhost:8080>, then stop the server with `Ctrl+C`.
 
 ## Step 2: Define the Data Model and Migration
 
-### 2.1 Add the SQLite driver
+### 2.1 Point the app at a database
 
-```bash
-go get modernc.org/sqlite@latest
+Add a `database:` section to `krewire.yaml`. The app reads it to open the database, and `kiw migrate` reads the same keys:
+
+```yaml
+# yaml-language-server: $schema=https://krewire.com/schemas/krewire.json
+project:
+  name: todo-app
+  kind: app
+  version: 0.1.0
+
+dev:
+  port: 8080
+
+database:
+  driver: sqlite
+  dsn: todo.db
 ```
+
+Mirror the section in `internal/config/config.go`: add the `Database` field to `Metadata`, and the new type below `Dev`:
+
+```go
+// Metadata mirrors krewire.yaml.
+type Metadata struct {
+	Project  Project  `yaml:"project"`
+	Dev      Dev      `yaml:"dev"`
+	Database Database `yaml:"database"`
+}
+
+// Database holds the database section of krewire.yaml, the same keys
+// `kiw migrate` reads. APP_DATABASE_DSN overrides dsn for both.
+type Database struct {
+	Driver string `yaml:"driver"`
+	DSN    string `yaml:"dsn" validate:"required"`
+}
+```
+
+The scaffolded `LoadMetadata` already overlays the environment, so `APP_DATABASE_DSN` overrides `dsn` for the app and for `kiw migrate` alike. `validate:"required"` makes the app refuse to start without a DSN instead of quietly using a throwaway in-memory database.
+
+There is nothing to install for SQLite: the pure-Go driver ships with core as `pkg/orm/sqlite` (no C compiler, `CGO_ENABLED=0` friendly). Importing it in Step 2.4 is enough.
 
 ### 2.2 Generate the model
 
@@ -151,6 +187,21 @@ import "embed"
 var Files embed.FS
 ```
 
+Apply the migration and look at the result:
+
+```bash
+kiw migrate up
+kiw migrate status
+```
+
+```text
+applied 20261109123854_create_tasks (284µs)
+STATE    MIGRATION                    APPLIED AT
+applied  20261109123854_create_tasks  2026-11-09T15:56:47Z
+```
+
+`kiw migrate up` created `todo.db` and recorded the migration in the `schema_migrations` table, together with a checksum of the file.
+
 ### 2.4 Open the database and apply migrations
 
 Create `internal/db/db.go`:
@@ -161,102 +212,38 @@ package db
 
 import (
 	"context"
-	"fmt"
-	"io/fs"
-	"sort"
-	"strings"
-	"time"
 
 	"github.com/krewire/krewire/pkg/orm"
-	_ "modernc.org/sqlite" // pure-Go SQLite driver, registers "sqlite"
+	"github.com/krewire/krewire/pkg/orm/migrate"
+	"github.com/krewire/krewire/pkg/orm/sqlite" // bundled pure-Go SQLite driver
 
 	"todo-app/migrations"
 )
 
-// Open opens (or creates) the SQLite file at path and migrates it.
+// Open opens (or creates) the SQLite file at path and applies every pending
+// migration, so a fresh deployment starts with the right schema.
 func Open(ctx context.Context, path string) (*orm.DB, error) {
-	db, err := orm.NewSQLite(orm.SQLiteConfig{
-		Path:       path,
-		DriverName: "sqlite",
-		// One writer keeps SQLite simple and avoids "database is locked".
-		MaxOpenConns: 1,
-	})
+	db, err := sqlite.Open(path)
 	if err != nil {
 		return nil, err
 	}
-	if err := db.Ping(ctx); err != nil {
-		return nil, fmt.Errorf("db: ping: %w", err)
-	}
-	if err := migrate(ctx, db); err != nil {
+	if err := migrate.Up(ctx, db, migrations.Files); err != nil {
+		_ = db.Close()
 		return nil, err
 	}
 	return db, nil
 }
-
-// migrate runs the "-- +up" section of every migration that is not yet
-// recorded in schema_migrations, in file-name (timestamp) order.
-func migrate(ctx context.Context, db *orm.DB) error {
-	if _, err := db.Exec(ctx, `CREATE TABLE IF NOT EXISTS schema_migrations (
-  version    TEXT PRIMARY KEY,
-  applied_at DATETIME NOT NULL
-)`); err != nil {
-		return fmt.Errorf("db: schema_migrations: %w", err)
-	}
-	names, err := fs.Glob(migrations.Files, "*.sql")
-	if err != nil {
-		return err
-	}
-	sort.Strings(names)
-	for _, name := range names {
-		var n int
-		if err := db.QueryRow(ctx, `SELECT COUNT(*) FROM schema_migrations WHERE version = ?`, name).Scan(&n); err != nil {
-			return err
-		}
-		if n > 0 {
-			continue
-		}
-		src, err := migrations.Files.ReadFile(name)
-		if err != nil {
-			return err
-		}
-		// orm.Tx exposes only Commit/Rollback, so the migration transaction
-		// uses the underlying *sql.DB.
-		tx, err := db.SQLDB().BeginTx(ctx, nil)
-		if err != nil {
-			return err
-		}
-		if _, err := tx.ExecContext(ctx, upSection(string(src))); err != nil {
-			_ = tx.Rollback()
-			return fmt.Errorf("db: migrate %s: %w", name, err)
-		}
-		if _, err := tx.ExecContext(ctx, `INSERT INTO schema_migrations (version, applied_at) VALUES (?, ?)`, name, time.Now().UTC()); err != nil {
-			_ = tx.Rollback()
-			return err
-		}
-		if err := tx.Commit(); err != nil {
-			return err
-		}
-	}
-	return nil
-}
-
-// upSection returns the SQL between "-- +up" and "-- +down".
-func upSection(src string) string {
-	_, after, found := strings.Cut(src, "-- +up")
-	if !found {
-		return src
-	}
-	up, _, _ := strings.Cut(after, "-- +down")
-	return up
-}
 ```
+
+`sqlite.Open` creates the file when it is missing and turns on WAL, foreign keys, and a 5-second busy timeout. `migrate.Up` applies every migration not yet recorded in `schema_migrations`, each in its own transaction and under a lock, so `kiw migrate` and several app instances can start at the same time and each migration still runs once. A deployed binary therefore migrates its own database on start-up.
 
 **The migration workflow from now on:**
 
-1. `kiw make migration add_due_date` — a new timestamped file sorts after the previous ones.
+1. `kiw migrate create add_due_date` (the same as `kiw make migration add_due_date`) — a new timestamped file sorts after the previous ones.
 2. Write the change in `-- +up` (for example `ALTER TABLE tasks ADD COLUMN due_date DATETIME;`) and its reversal in `-- +down`.
-3. Restart the app. `migrate` applies only files not yet recorded in `schema_migrations`.
-4. To roll back by hand, run the `-- +down` SQL and delete the row from `schema_migrations`.
+3. `kiw migrate up` applies it; the app would also apply it on its next start.
+4. `kiw migrate status` lists each migration as `pending`, `applied`, `modified`, or `missing`. `kiw migrate down` rolls back the last migration (`down 2`: the last two) and `kiw migrate redo` rolls it back and applies it again — handy while you iterate on a new migration.
+5. Never edit a migration that is already applied elsewhere: the runner compares checksums and stops with an error, and `kiw migrate status` shows the file as `modified`. Put the change in a new migration instead.
 
 > **Prototyping shortcut:** `db.AutoMigrate(ctx, &models.Task{})` creates a table straight from the struct (`CREATE TABLE IF NOT EXISTS`). It never alters existing tables, so switch to migration files once you have data to keep.
 
@@ -593,7 +580,7 @@ func (s *Store) DeleteHandler(w http.ResponseWriter, r *http.Request, p web.Para
 
 ### 5.2 Wire everything together
 
-Update `internal/app/app.go`. Compared with the scaffold, it adds a `dbProvider`, registers the views, installs `rvweb.CSRF()`, and mounts the three `POST` routes:
+Update `internal/app/app.go`. Compared with the scaffold, it adds a `dbProvider` that opens `meta.Database.DSN`, registers the views, installs `rvweb.CSRF()`, and mounts the three `POST` routes:
 
 ```go
 // Package app composes the application: it wires every
@@ -687,7 +674,7 @@ func (p *dbProvider) Boot(c *rvapp.Container) error { return nil }
 func New(meta *config.Metadata) (*rvweb.App, error) {
 	container, err := rvapp.NewApp(
 		&configProvider{meta: meta},
-		&dbProvider{path: config.Env("TODO_DB", "todo.db")},
+		&dbProvider{path: meta.Database.DSN},
 		&webProvider{},
 		&http.Provider{},
 	).Build()
@@ -723,7 +710,7 @@ go mod tidy
 kiw dev
 ```
 
-Open <http://localhost:8080>: add a task, submit an empty title to see the validation error, toggle a task, delete one. The data lands in `todo.db` (set `TODO_DB` to use another file).
+Open <http://localhost:8080>: add a task, submit an empty title to see the validation error, toggle a task, delete one. The data lands in `todo.db` (set `APP_DATABASE_DSN` to use another file).
 
 Check the CSRF guard from a second terminal — a `POST` without the token is rejected:
 
@@ -757,8 +744,10 @@ import (
 // TestTaskFlow drives the real handler: GET issues a CSRF token, a POST
 // without it is rejected, a valid POST stores a task that GET then lists.
 func TestTaskFlow(t *testing.T) {
-	t.Setenv("TODO_DB", filepath.Join(t.TempDir(), "test.db"))
-	a, err := New(&config.Metadata{Project: config.Project{Name: "todo-app", Kind: "app"}})
+	a, err := New(&config.Metadata{
+		Project:  config.Project{Name: "todo-app", Kind: "app"},
+		Database: config.Database{Driver: "sqlite", DSN: filepath.Join(t.TempDir(), "test.db")},
+	})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -837,7 +826,7 @@ Deploy by copying **two files** — the scaffolded `main.go` reads `krewire.yaml
 
 ```bash
 scp .krewire/build/bin/todo-app krewire.yaml user@server:/opt/todo-app/
-ssh user@server 'cd /opt/todo-app && APP_ADDR=:8080 TODO_DB=/opt/todo-app/data.db ./todo-app'
+ssh user@server 'cd /opt/todo-app && APP_ADDR=:8080 APP_DATABASE_DSN=/opt/todo-app/data.db ./todo-app'
 ```
 
 On first start the binary creates the database file and applies the migrations. For a systemd unit, a reverse proxy with TLS, or a container image, continue with [Deployment & Operations](/guides/deployment-and-operations).
@@ -855,14 +844,15 @@ go test ./...
 go run .
 ```
 
-Its `go.mod` pins the exact core version this tutorial was verified with.
+Its `go.mod` pins the exact core version this tutorial was verified with: commit `d2f4cb9` of the core `fino` branch, not yet released (see the note at the top).
 
 ## Recap
 
 | You used | For |
 | :--- | :--- |
 | `kiw new --app`, `kiw make model`, `kiw make migration` | Scaffolding the app, the model, and the SQL migration |
-| `pkg/orm` + `modernc.org/sqlite` | SQLite access with a fluent, parameterized query API |
+| `pkg/orm` + `pkg/orm/sqlite` | SQLite access with a fluent, parameterized query API and the bundled pure-Go driver |
+| `kiw migrate` + `pkg/orm/migrate` | Applying, inspecting, and rolling back migrations — from the terminal and on start-up |
 | `.kiw` + Krewire UI | The page, with `Badge`, `Alert`, `Input`, `Button`, and `Card` |
 | `web.PageSpec{DataFunc}` | Per-request data for the page |
 | `pkg/validation` + post/redirect/get | Server-side validation with friendly errors |

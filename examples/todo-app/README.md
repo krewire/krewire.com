@@ -3,11 +3,17 @@
 The finished project from the tutorial at
 <https://krewire.com/docs/getting-started/fullstack-app-tutorial>: a task
 manager built on a `kiw new todo-app --app` scaffold with SQLite (`pkg/orm` +
-the pure-Go `modernc.org/sqlite` driver), a `.kiw` view using Krewire UI
+the bundled pure-Go driver `pkg/orm/sqlite`), migrations applied with
+`pkg/orm/migrate` and `kiw migrate`, a `.kiw` view using Krewire UI
 components, server-side validation, and CSRF-protected HTML forms.
 
-Verified with Go 1.27.1 and `github.com/krewire/krewire` at commit `33fe553`
-(the version pinned in `go.mod`).
+Verified with Go 1.27.1 and `github.com/krewire/krewire` at commit `d2f4cb9`
+(the version pinned in `go.mod`). That commit is on the core `fino` branch
+and is **not released yet**: `pkg/orm/sqlite`, `pkg/orm/migrate`, and
+`kiw migrate` ship with the first core release after it is merged. Until
+then, build `kiw` from the same commit:
+
+	go install github.com/krewire/krewire/tools/kiw/cmd/kiw@d2f4cb9
 
 ## Run it
 
@@ -17,7 +23,10 @@ Verified with Go 1.27.1 and `github.com/krewire/krewire` at commit `33fe553`
 	go run .            # or: kiw dev
 
 Open <http://localhost:8080>. Tasks are stored in `todo.db` in the working
-directory; set `TODO_DB` to use another file.
+directory (`database.dsn` in `krewire.yaml`); set `APP_DATABASE_DSN` to use
+another file. The app applies pending migrations when it starts; inspect or
+roll them back with `kiw migrate status`, `kiw migrate down`, and
+`kiw migrate redo`.
 
 ## Build and deploy
 
@@ -26,12 +35,13 @@ directory; set `TODO_DB` to use another file.
 
 Copy `.krewire/build/bin/todo-app` **and** `krewire.yaml` to the server (the
 scaffolded `main.go` reads `krewire.yaml` from the working directory at start
-up) and run `APP_ADDR=:8080 ./todo-app`.
+up) and run `APP_ADDR=:8080 APP_DATABASE_DSN=/var/lib/todo-app/todo.db ./todo-app`.
 
 ## Where things are
 
 	migrations/                SQL created by `kiw make migration create_tasks`, embedded
-	internal/db/db.go          opens SQLite and applies the "-- +up" sections once
+	internal/db/db.go          opens SQLite (pkg/orm/sqlite) and runs migrate.Up
+	internal/config/config.go  the krewire.yaml mirror, plus its database section
 	internal/models/task.go    Task model (`kiw make model Task`)
 	internal/tasks/tasks.go    queries + form handlers (validation, redirects)
 	web/views/TaskBoard.kiw    the page, written in .kiw with Krewire UI components

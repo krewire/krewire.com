@@ -12,8 +12,9 @@ import (
 
 // Metadata mirrors krewire.yaml.
 type Metadata struct {
-	Project Project `yaml:"project"`
-	Dev     Dev     `yaml:"dev"`
+	Project  Project  `yaml:"project"`
+	Dev      Dev      `yaml:"dev"`
+	Database Database `yaml:"database"`
 }
 
 // Project holds the project section of krewire.yaml.
@@ -26,6 +27,13 @@ type Project struct {
 // Dev holds the dev section of krewire.yaml.
 type Dev struct {
 	Port int `yaml:"port"`
+}
+
+// Database holds the database section of krewire.yaml, the same keys
+// `kiw migrate` reads. APP_DATABASE_DSN overrides dsn for both.
+type Database struct {
+	Driver string `yaml:"driver"`
+	DSN    string `yaml:"dsn" validate:"required"`
 }
 
 // Addr returns the listen address derived from env or krewire.yaml dev.port.

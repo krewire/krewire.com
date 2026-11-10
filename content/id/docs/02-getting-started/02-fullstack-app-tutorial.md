@@ -1,6 +1,6 @@
 ---
 title: "Membangun Aplikasi Fullstack dalam 15 Menit"
-description: "Tutorial dari nol hingga mahir: scaffold aplikasi dengan kiw new --app, simpan data di SQLite melalui pkg/orm beserta migrasi, render halaman .kiw dengan komponen Krewire UI, tangani form tervalidasi yang dilindungi CSRF, dan rilis satu binary."
+description: "Tutorial dari nol hingga mahir: scaffold aplikasi dengan kiw new --app, simpan data di SQLite melalui pkg/orm beserta migrasi kiw migrate, render halaman .kiw dengan komponen Krewire UI, tangani form tervalidasi yang dilindungi CSRF, dan rilis satu binary."
 date: "2026-11-09"
 ---
 
@@ -22,7 +22,7 @@ Anda akan membangun **todo-app**, sebuah pengelola tugas kecil: halaman yang men
 <div class="overview-grid">
 
   <div class="chapter-card">
-    <p class="chapter-card-desc"><b>Waktu:</b> sekitar 15 menit.<br><b>Yang Anda perlukan:</b> Go 1.27.1+, <code>kiw</code> (lihat <a href="/getting-started/quickstart">Quickstart</a>), dan akses jaringan untuk <code>go get</code>.<br><b>Yang Anda pelajari:</b> <code>kiw new --app</code>, <code>kiw make</code>, <code>pkg/orm</code>, migrasi, view <code>.kiw</code>, <code>pkg/validation</code>, <code>web.CSRF</code>, <code>kiw build</code>.</p>
+    <p class="chapter-card-desc"><b>Waktu:</b> sekitar 15 menit.<br><b>Yang Anda perlukan:</b> Go 1.27.1+, <code>kiw</code> (lihat <a href="/getting-started/quickstart">Quickstart</a>), dan akses jaringan untuk mengunduh modul Go.<br><b>Yang Anda pelajari:</b> <code>kiw new --app</code>, <code>kiw make</code>, <code>pkg/orm</code>, <code>kiw migrate</code>, view <code>.kiw</code>, <code>pkg/validation</code>, <code>web.CSRF</code>, <code>kiw build</code>.</p>
   </div>
 
 </div>
@@ -61,7 +61,8 @@ Bagian-bagian yang akan Anda ubah:
 ```text
 todo-app/
 ├── main.go                 # loads krewire.yaml, builds the app, runs it — unchanged
-├── krewire.yaml            # name, kind: app, dev.port: 8080
+├── krewire.yaml            # name, kind: app, dev.port: 8080 — gains a database section
+├── internal/config/config.go # mirrors krewire.yaml in Go — gains a Database field
 ├── internal/app/app.go     # wiring: providers registered in the app container
 ├── internal/http/http.go   # a sample JSON API (/api/status) — unchanged
 ├── web/layouts/shell.go    # the HTML shell around every page — unchanged
@@ -80,11 +81,46 @@ Buka <http://localhost:8080>, lalu hentikan server dengan `Ctrl+C`.
 
 ## Langkah 2: Definisikan Model Data dan Migrasi
 
-### 2.1 Tambahkan driver SQLite
+### 2.1 Arahkan aplikasi ke database
 
-```bash
-go get modernc.org/sqlite@latest
+Tambahkan bagian `database:` ke `krewire.yaml`. Aplikasi membacanya untuk membuka database, dan `kiw migrate` membaca key yang sama:
+
+```yaml
+# yaml-language-server: $schema=https://krewire.com/schemas/krewire.json
+project:
+  name: todo-app
+  kind: app
+  version: 0.1.0
+
+dev:
+  port: 8080
+
+database:
+  driver: sqlite
+  dsn: todo.db
 ```
+
+Cerminkan bagian ini di `internal/config/config.go`: tambahkan field `Database` ke `Metadata`, dan tipe baru di bawah `Dev`:
+
+```go
+// Metadata mirrors krewire.yaml.
+type Metadata struct {
+	Project  Project  `yaml:"project"`
+	Dev      Dev      `yaml:"dev"`
+	Database Database `yaml:"database"`
+}
+
+// Database holds the database section of krewire.yaml, the same keys
+// `kiw migrate` reads. APP_DATABASE_DSN overrides dsn for both.
+type Database struct {
+	Driver string `yaml:"driver"`
+	DSN    string `yaml:"dsn" validate:"required"`
+}
+```
+
+`LoadMetadata` hasil scaffold sudah menimpa nilai dengan environment, sehingga `APP_DATABASE_DSN` menimpa `dsn` baik untuk aplikasi maupun untuk `kiw migrate`. `validate:"required"` membuat aplikasi menolak start tanpa DSN, alih-alih diam-diam memakai database sementara di memori.
+
+Tidak ada yang perlu dipasang untuk SQLite: driver Go murni disertakan di inti sebagai `pkg/orm/sqlite` (tanpa compiler C, ramah `CGO_ENABLED=0`). Cukup import di Langkah 2.4.
 
 ### 2.2 Buat model
 
@@ -151,6 +187,21 @@ import "embed"
 var Files embed.FS
 ```
 
+Terapkan migrasi dan lihat hasilnya:
+
+```bash
+kiw migrate up
+kiw migrate status
+```
+
+```text
+applied 20261109123854_create_tasks (284µs)
+STATE    MIGRATION                    APPLIED AT
+applied  20261109123854_create_tasks  2026-11-09T15:56:47Z
+```
+
+`kiw migrate up` membuat `todo.db` dan mencatat migrasi di tabel `schema_migrations`, beserta checksum berkasnya.
+
 ### 2.4 Buka database dan terapkan migrasi
 
 Buat `internal/db/db.go`:
@@ -161,102 +212,38 @@ package db
 
 import (
 	"context"
-	"fmt"
-	"io/fs"
-	"sort"
-	"strings"
-	"time"
 
 	"github.com/krewire/krewire/pkg/orm"
-	_ "modernc.org/sqlite" // pure-Go SQLite driver, registers "sqlite"
+	"github.com/krewire/krewire/pkg/orm/migrate"
+	"github.com/krewire/krewire/pkg/orm/sqlite" // bundled pure-Go SQLite driver
 
 	"todo-app/migrations"
 )
 
-// Open opens (or creates) the SQLite file at path and migrates it.
+// Open opens (or creates) the SQLite file at path and applies every pending
+// migration, so a fresh deployment starts with the right schema.
 func Open(ctx context.Context, path string) (*orm.DB, error) {
-	db, err := orm.NewSQLite(orm.SQLiteConfig{
-		Path:       path,
-		DriverName: "sqlite",
-		// One writer keeps SQLite simple and avoids "database is locked".
-		MaxOpenConns: 1,
-	})
+	db, err := sqlite.Open(path)
 	if err != nil {
 		return nil, err
 	}
-	if err := db.Ping(ctx); err != nil {
-		return nil, fmt.Errorf("db: ping: %w", err)
-	}
-	if err := migrate(ctx, db); err != nil {
+	if err := migrate.Up(ctx, db, migrations.Files); err != nil {
+		_ = db.Close()
 		return nil, err
 	}
 	return db, nil
 }
-
-// migrate runs the "-- +up" section of every migration that is not yet
-// recorded in schema_migrations, in file-name (timestamp) order.
-func migrate(ctx context.Context, db *orm.DB) error {
-	if _, err := db.Exec(ctx, `CREATE TABLE IF NOT EXISTS schema_migrations (
-  version    TEXT PRIMARY KEY,
-  applied_at DATETIME NOT NULL
-)`); err != nil {
-		return fmt.Errorf("db: schema_migrations: %w", err)
-	}
-	names, err := fs.Glob(migrations.Files, "*.sql")
-	if err != nil {
-		return err
-	}
-	sort.Strings(names)
-	for _, name := range names {
-		var n int
-		if err := db.QueryRow(ctx, `SELECT COUNT(*) FROM schema_migrations WHERE version = ?`, name).Scan(&n); err != nil {
-			return err
-		}
-		if n > 0 {
-			continue
-		}
-		src, err := migrations.Files.ReadFile(name)
-		if err != nil {
-			return err
-		}
-		// orm.Tx exposes only Commit/Rollback, so the migration transaction
-		// uses the underlying *sql.DB.
-		tx, err := db.SQLDB().BeginTx(ctx, nil)
-		if err != nil {
-			return err
-		}
-		if _, err := tx.ExecContext(ctx, upSection(string(src))); err != nil {
-			_ = tx.Rollback()
-			return fmt.Errorf("db: migrate %s: %w", name, err)
-		}
-		if _, err := tx.ExecContext(ctx, `INSERT INTO schema_migrations (version, applied_at) VALUES (?, ?)`, name, time.Now().UTC()); err != nil {
-			_ = tx.Rollback()
-			return err
-		}
-		if err := tx.Commit(); err != nil {
-			return err
-		}
-	}
-	return nil
-}
-
-// upSection returns the SQL between "-- +up" and "-- +down".
-func upSection(src string) string {
-	_, after, found := strings.Cut(src, "-- +up")
-	if !found {
-		return src
-	}
-	up, _, _ := strings.Cut(after, "-- +down")
-	return up
-}
 ```
+
+`sqlite.Open` membuat berkas jika belum ada dan mengaktifkan WAL, foreign key, serta busy timeout 5 detik. `migrate.Up` menerapkan setiap migrasi yang belum tercatat di `schema_migrations`, masing-masing dalam transaksinya sendiri dan di bawah lock, sehingga `kiw migrate` dan beberapa instance aplikasi bisa start bersamaan dan setiap migrasi tetap berjalan sekali. Binary yang di-deploy pun memigrasikan databasenya sendiri saat startup.
 
 **Alur kerja migrasi mulai sekarang:**
 
-1. `kiw make migration add_due_date` — berkas baru bertimestamp akan terurut setelah berkas-berkas sebelumnya.
+1. `kiw migrate create add_due_date` (sama dengan `kiw make migration add_due_date`) — berkas baru bertimestamp akan terurut setelah berkas-berkas sebelumnya.
 2. Tulis perubahannya di `-- +up` (misalnya `ALTER TABLE tasks ADD COLUMN due_date DATETIME;`) dan pembaliknya di `-- +down`.
-3. Jalankan ulang aplikasi. `migrate` hanya menerapkan berkas yang belum tercatat di `schema_migrations`.
-4. Untuk rollback secara manual, jalankan SQL `-- +down` lalu hapus barisnya dari `schema_migrations`.
+3. `kiw migrate up` menerapkannya; aplikasi juga akan menerapkannya saat start berikutnya.
+4. `kiw migrate status` menampilkan setiap migrasi sebagai `pending`, `applied`, `modified`, atau `missing`. `kiw migrate down` membatalkan migrasi terakhir (`down 2`: dua terakhir) dan `kiw migrate redo` membatalkan lalu menerapkannya lagi — berguna saat Anda mengulang-ulang migrasi baru.
+5. Jangan pernah mengedit migrasi yang sudah diterapkan di tempat lain: runner membandingkan checksum dan berhenti dengan error, dan `kiw migrate status` menampilkan berkas itu sebagai `modified`. Tulis perubahannya di migrasi baru.
 
 > **Jalan pintas untuk prototipe:** `db.AutoMigrate(ctx, &models.Task{})` membuat tabel langsung dari struct (`CREATE TABLE IF NOT EXISTS`). Perintah ini tidak pernah mengubah tabel yang sudah ada, jadi beralihlah ke berkas migrasi begitu Anda memiliki data yang perlu dipertahankan.
 
@@ -593,7 +580,7 @@ func (s *Store) DeleteHandler(w http.ResponseWriter, r *http.Request, p web.Para
 
 ### 5.2 Hubungkan semuanya
 
-Perbarui `internal/app/app.go`. Dibandingkan dengan hasil scaffold, berkas ini menambahkan `dbProvider`, mendaftarkan view, memasang `rvweb.CSRF()`, dan memasang tiga rute `POST`:
+Perbarui `internal/app/app.go`. Dibandingkan dengan hasil scaffold, berkas ini menambahkan `dbProvider` yang membuka `meta.Database.DSN`, mendaftarkan view, memasang `rvweb.CSRF()`, dan memasang tiga rute `POST`:
 
 ```go
 // Package app composes the application: it wires every
@@ -687,7 +674,7 @@ func (p *dbProvider) Boot(c *rvapp.Container) error { return nil }
 func New(meta *config.Metadata) (*rvweb.App, error) {
 	container, err := rvapp.NewApp(
 		&configProvider{meta: meta},
-		&dbProvider{path: config.Env("TODO_DB", "todo.db")},
+		&dbProvider{path: meta.Database.DSN},
 		&webProvider{},
 		&http.Provider{},
 	).Build()
@@ -723,7 +710,7 @@ go mod tidy
 kiw dev
 ```
 
-Buka <http://localhost:8080>: tambahkan tugas, kirim judul kosong untuk melihat error validasi, ubah status tugas, dan hapus salah satunya. Data tersimpan di `todo.db` (atur `TODO_DB` untuk menggunakan berkas lain).
+Buka <http://localhost:8080>: tambahkan tugas, kirim judul kosong untuk melihat error validasi, ubah status tugas, dan hapus salah satunya. Data tersimpan di `todo.db` (atur `APP_DATABASE_DSN` untuk menggunakan berkas lain).
 
 Periksa pelindung CSRF dari terminal kedua — `POST` tanpa token akan ditolak:
 
@@ -757,8 +744,10 @@ import (
 // TestTaskFlow drives the real handler: GET issues a CSRF token, a POST
 // without it is rejected, a valid POST stores a task that GET then lists.
 func TestTaskFlow(t *testing.T) {
-	t.Setenv("TODO_DB", filepath.Join(t.TempDir(), "test.db"))
-	a, err := New(&config.Metadata{Project: config.Project{Name: "todo-app", Kind: "app"}})
+	a, err := New(&config.Metadata{
+		Project:  config.Project{Name: "todo-app", Kind: "app"},
+		Database: config.Database{Driver: "sqlite", DSN: filepath.Join(t.TempDir(), "test.db")},
+	})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -837,7 +826,7 @@ Deploy dengan menyalin **dua berkas** — `main.go` hasil scaffold membaca `krew
 
 ```bash
 scp .krewire/build/bin/todo-app krewire.yaml user@server:/opt/todo-app/
-ssh user@server 'cd /opt/todo-app && APP_ADDR=:8080 TODO_DB=/opt/todo-app/data.db ./todo-app'
+ssh user@server 'cd /opt/todo-app && APP_ADDR=:8080 APP_DATABASE_DSN=/opt/todo-app/data.db ./todo-app'
 ```
 
 Saat pertama kali dijalankan, binary akan membuat berkas database dan menerapkan migrasi. Untuk unit systemd, reverse proxy dengan TLS, atau image kontainer, lanjutkan ke [Deployment & Operasi](/guides/deployment-and-operations).
@@ -855,14 +844,15 @@ go test ./...
 go run .
 ```
 
-`go.mod`-nya mengunci versi inti persis yang digunakan untuk memverifikasi tutorial ini.
+`go.mod`-nya mengunci versi inti persis yang digunakan untuk memverifikasi tutorial ini: commit `d2f4cb9` dari branch `fino` inti, belum dirilis (lihat catatan di bagian atas).
 
 ## Rangkuman
 
 | Yang Anda gunakan | Untuk |
 | :--- | :--- |
 | `kiw new --app`, `kiw make model`, `kiw make migration` | Scaffold aplikasi, model, dan migrasi SQL |
-| `pkg/orm` + `modernc.org/sqlite` | Akses SQLite dengan API query fluent yang terparameterisasi |
+| `pkg/orm` + `pkg/orm/sqlite` | Akses SQLite dengan API query fluent yang terparameterisasi dan driver Go murni bawaan |
+| `kiw migrate` + `pkg/orm/migrate` | Menerapkan, memeriksa, dan membatalkan migrasi — dari terminal maupun saat startup |
 | `.kiw` + Krewire UI | Halaman, dengan `Badge`, `Alert`, `Input`, `Button`, dan `Card` |
 | `web.PageSpec{DataFunc}` | Data per request untuk halaman |
 | `pkg/validation` + post/redirect/get | Validasi sisi server dengan pesan error yang ramah |
