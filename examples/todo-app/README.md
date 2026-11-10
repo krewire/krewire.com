@@ -8,9 +8,9 @@ the bundled pure-Go driver `pkg/orm/sqlite`), migrations applied with
 components, server-side validation, and CSRF-protected HTML forms.
 
 Verified with Go 1.27.1 and `github.com/krewire/krewire` at commit `d2f4cb9`
-(the version pinned in `go.mod`). That commit is on the core `fino` branch
-and is **not released yet**: `pkg/orm/sqlite`, `pkg/orm/migrate`, and
-`kiw migrate` ship with the first core release after it is merged. Until
+(the version pinned in `go.mod`). That commit is on core `main` but is
+**not in a tagged release yet**: `pkg/orm/sqlite`, `pkg/orm/migrate`, and
+`kiw migrate` ship with the next core release after v0.2.0. Until
 then, build `kiw` from the same commit:
 
 	go install github.com/krewire/krewire/tools/kiw/cmd/kiw@d2f4cb9

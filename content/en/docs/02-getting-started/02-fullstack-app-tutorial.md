@@ -844,7 +844,7 @@ go test ./...
 go run .
 ```
 
-Its `go.mod` pins the exact core version this tutorial was verified with: commit `d2f4cb9` of the core `fino` branch, not yet released (see the note at the top).
+Its `go.mod` pins the exact core version this tutorial was verified with.
 
 ## Recap
 

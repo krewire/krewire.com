@@ -844,7 +844,7 @@ go test ./...
 go run .
 ```
 
-`go.mod`-nya mengunci versi inti persis yang digunakan untuk memverifikasi tutorial ini: commit `d2f4cb9` dari branch `fino` inti, belum dirilis (lihat catatan di bagian atas).
+`go.mod`-nya mengunci versi inti persis yang digunakan untuk memverifikasi tutorial ini.
 
 ## Rangkuman
 
