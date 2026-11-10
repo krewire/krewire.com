@@ -21,7 +21,7 @@ COPY .krewire/build /usr/share/nginx/html
 EXPOSE 80
 
 # Liveness check: nginx process is running and can serve the root page
-HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+HEALTHCHECK --interval=5s --timeout=3s --start-period=2s --retries=3 \
   CMD wget --quiet --tries=1 --spider http://127.0.0.1/ || exit 1
 
 CMD ["nginx", "-g", "daemon off;"]

@@ -177,6 +177,9 @@ jobs:
             elif docker inspect --type=image krewire-app:latest >/dev/null 2>&1; then
               STABLE_IMAGE="krewire-app:latest"
             fi
+            if [ -n "$STABLE_IMAGE" ]; then
+              docker tag "$STABLE_IMAGE" krewire-app:stable 2>/dev/null || true
+            fi
             echo "✓ Pinned STABLE fallback baseline: ${STABLE_IMAGE:-none}"
 
             echo "▶ [HOTFIX] Verifying image checksum on VPS..."
@@ -197,11 +200,13 @@ jobs:
 
             echo "▶ [HOTFIX] Verifying container health..."
             HEALTHY=false
-            for i in $(seq 1 15); do
-              STATUS="$(docker inspect --format='{{.State.Health.Status}}' krewire-app 2>/dev/null || echo 'unknown')"
-              printf "  [%2d/15] Health: %s\n" "$i" "$STATUS"
-              if [ "$STATUS" = "healthy" ]; then
+            for i in $(seq 1 20); do
+              STATUS="$(docker inspect --format='{{if .State.Health}}{{.State.Health.Status}}{{else}}unknown{{end}}' krewire-app 2>/dev/null || echo 'unknown')"
+              HTTP_CODE="$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8090/ 2>/dev/null || true)"
+              printf "  [%2d/20] Health: %s | HTTP: %s\n" "$i" "$STATUS" "$HTTP_CODE"
+              if [ "$STATUS" = "healthy" ] || [ "$HTTP_CODE" = "200" ]; then
                 HEALTHY=true
+                echo "✓ Hotfix container is healthy and responding with HTTP 200."
                 break
               fi
               if [ "$STATUS" = "unhealthy" ]; then
@@ -279,6 +284,8 @@ jobs:
               FALLBACK="$STABLE_TAG"
             elif docker inspect --type=image krewire-app:previous >/dev/null 2>&1; then
               FALLBACK="krewire-app:previous"
+            elif docker inspect --type=image krewire-app:latest >/dev/null 2>&1; then
+              FALLBACK="krewire-app:latest"
             else
               echo "⚠ No fallback image found."
               exit 1
