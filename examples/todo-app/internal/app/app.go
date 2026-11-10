@@ -89,7 +89,7 @@ func (p *dbProvider) Boot(c *rvapp.Container) error { return nil }
 func New(meta *config.Metadata) (*rvweb.App, error) {
 	container, err := rvapp.NewApp(
 		&configProvider{meta: meta},
-		&dbProvider{path: config.Env("TODO_DB", "todo.db")},
+		&dbProvider{path: meta.Database.DSN},
 		&webProvider{},
 		&http.Provider{},
 	).Build()
