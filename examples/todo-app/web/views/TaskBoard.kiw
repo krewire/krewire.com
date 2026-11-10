@@ -1,0 +1,54 @@
+<main class="board">
+  <header class="board-head">
+    <h1>{title}</h1>
+    <Badge variant="primary" text={summary} />
+  </header>
+
+  {#if error}
+  <Alert variant="error" title="Task not saved" message={error} />
+  {/if}
+
+  <form method="post" action="/tasks" class="task-form">
+    <input type="hidden" name="csrf_token" value="{token}">
+    <Input name="title" id="title" label="New task" placeholder="Write the release notes" value={draft} />
+    <Button type="submit" variant="primary" text="Add task" />
+  </form>
+
+  <ul class="task-list">
+    {#each tasks as task}
+    <li class="task-row">
+      <form method="post" action="/tasks/{task.ID}/toggle">
+        <input type="hidden" name="csrf_token" value="{token}">
+        <button type="submit" class="task-check" aria-label="Toggle task">{#if task.Done}✓{:else}○{/if}</button>
+      </form>
+      <span class="task-title">{task.Title}</span>
+      {#if task.Done}<Badge variant="success" size="sm" text="done" />{/if}
+      <form method="post" action="/tasks/{task.ID}/delete">
+        <input type="hidden" name="csrf_token" value="{token}">
+        <Button type="submit" variant="ghost" size="sm" text="Delete" />
+      </form>
+    </li>
+    {:else}
+    <li class="task-empty">No tasks yet. Add your first one above.</li>
+    {/each}
+  </ul>
+
+  <Card title="How this page works" variant="default">
+    <p>GET / runs a Go function that queries SQLite and passes the rows to this .kiw view.
+    Every form posts back to a Go handler that validates the input and redirects.</p>
+  </Card>
+</main>
+
+<style>
+.board { max-width: 40rem; margin: 0 auto; padding: 2rem 1rem; display: grid; gap: 1.25rem; }
+.board-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.board-head h1 { margin: 0; font-size: 1.75rem; }
+.task-form { display: grid; gap: 0.75rem; justify-items: start; }
+.task-form .field-group { width: 100%; }
+.task-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+.task-row { display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0.8rem; border: 2px solid var(--border, #0B1F3B); border-radius: 10px; }
+.task-row form { margin: 0; }
+.task-title { flex: 1; }
+.task-check { width: 2rem; height: 2rem; border-radius: 50%; border: 2px solid var(--border, #0B1F3B); background: transparent; color: inherit; cursor: pointer; font-weight: 800; }
+.task-empty { opacity: 0.7; padding: 0.6rem 0; }
+</style>

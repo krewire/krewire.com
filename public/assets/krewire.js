@@ -212,27 +212,28 @@ var translations = {
       "workspace_desc": "Virtual workspaces & autonomous agents",
       "cloud_desc": "Hybrid PaaS control plane & zero-downtime",
       "auth_desc": "Multi-tenant SSO, MFA & OIDC identity",
-      "panel_desc": "Self-hosted server & admin control panel"
+      "panel_desc": "Self-hosted server & admin control panel",
+      "contribute": "Contribute"
     },
     "hero": {
-      "eyebrow": "End-to-End Digital SDLC Ecosystem · v0.2.2 · Open Source",
-      "title_html": "The Complete Go SDLC Platform.<br class=\"hidden sm:inline\"><span class=\"text-primary\">One Ecosystem. Every Workload.</span>",
+      "eyebrow": "GO-FIRST SOFTWARE ENGINEERING ECOSYSTEM · v0.2.3",
+      "title_html": "The Go-First Software Engineering Ecosystem.<br class=\"hidden sm:inline\"><span class=\"text-primary\">One Ecosystem. Every Workload.</span>",
       "lead_html": "Krewire is an end-to-end <b class=\"text-fg dark:text-fg-dark\">digital SDLC platform and application ecosystem</b> in Go — spanning the entire software lifecycle from specification, autonomous AI agents, enterprise SSO &amp; RBAC, hybrid PaaS, virtual dev workspaces, to production server operations. Far beyond modular Go libraries, Krewire delivers a cohesive, unified platform driven by a single CLI <code class=\"code-inline\">kiw</code>. Built on three immutable pillars: <b class=\"text-fg dark:text-fg-dark\">secure</b>, <b class=\"text-fg dark:text-fg-dark\">sustainable</b>, and <b class=\"text-fg dark:text-fg-dark\">scalable</b>.",
       "cta_start": "Get Started — 5 Min →",
       "cta_contribute": "Contribute →",
-      "meta": "Go 1.27.1+ · Spec to Production · File-based routing · Scoped CSS · 100% Zero JS by default"
+      "meta": "Go 1.27.1+ · Spec to Production · File-based routing · Scoped CSS · Progressive by design"
     },
     "products": {
       "badge": "Krewire Ecosystem",
       "title": "The Krewire Ecosystem",
       "lead": "One unified architecture and digital SDLC ecosystem — from autonomous AI workspaces and enterprise IAM to hybrid PaaS and server management.",
-      "workspace_title": "Krewire Workspace",
+      "workspace_title": "Krewire Dash",
       "workspace_badge": "AI-Powered",
       "workspace_desc": "Virtual workspace & autonomous integration engine. Web terminal, sandboxed runtimes, real-time code collaboration, and deep AI agent automation.",
       "workspace_feature1": "Browser-based interactive terminal & PTY",
       "workspace_feature2": "Sandboxed project workspaces & file explorer",
       "workspace_feature3": "Integrated Krew autonomous AI agents",
-      "workspace_cta": "Learn Workspace →",
+      "workspace_cta": "Learn Dash →",
       "cloud_title": "Krewire Cloud",
       "cloud_badge": "Hybrid PaaS",
       "cloud_desc": "Enterprise hybrid PaaS engine and multi-tenant control plane. Hermetic builds, declarative deployments, process supervision, and edge gateways.",
@@ -247,21 +248,52 @@ var translations = {
       "auth_feature2": "TOTP two-factor authentication & recovery",
       "auth_feature3": "Tenant isolation & fine-grained RBAC",
       "auth_cta": "Learn Auth →",
-      "panel_title": "Krewire Panel",
-      "panel_badge": "Server & Admin",
-      "panel_desc": "Self-hosted server and admin control panel. Manage bare-metal & VPS hosts, systemd daemons, vHosts, databases, and firewall with zero external bloat.",
-      "panel_feature1": "Host service & daemon supervision (systemd)",
-      "panel_feature2": "Automated vHosts (Caddy/Nginx) & database provisioning",
-      "panel_feature3": "Integrated firewall, streaming file manager & web console",
-      "panel_cta": "Learn Panel →"
+      "panel_title": "Krewire Forge",
+      "panel_badge": "Web, Form & Panel",
+      "panel_desc": "Declarative web, form, and admin panel builder for Go and .kiw. Schema-driven form engine, data table resources, and interactive dashboard studio.",
+      "panel_feature1": "Declarative schema & type-safe form validation",
+      "panel_feature2": "Tabular CRUD resources, pagination & column sorting",
+      "panel_feature3": "Admin panel studio & visual console (kiw forge studio)",
+      "panel_cta": "Learn Forge →",
+      "mockup": "Illustration",
+      "status_private": "Private · not publicly available yet",
+      "boundary_note": "The open-source core (kiw CLI, libraries, krew, ui) is MIT-licensed and needs none of these services. Dash, Cloud, Auth, and Forge are optional platform services developed in private repositories; none is publicly available yet and no pricing is published.",
+      "boundary_cta": "Core vs. platform services →"
     },
     "trust": {
       "label": "Unified Go Toolchain",
-      "stdlib": "100% Go Standard Library",
-      "npm": "0 npm / 0 Bundlers",
-      "workloads": "8 Workloads in 1 Binary",
-      "coldstart": "< 1ms Cold Starts",
-      "config": "Single Config krewire.yaml"
+      "opensource": "Open Source · MIT · Self-Hostable"
+    },
+    "mission": {
+      "badge": "Our Mission",
+      "title": "Impact First. Sustainable by Design.",
+      "statement": "Krewire's mission is to make it nearly free — in financial cost, operational burden, and cognitive effort — for anyone to build, own, and operate digital products that are secure, sustainable, and scalable.",
+      "who_title": "Who it serves",
+      "who_desc": "Independent developers and small engineering teams first. Learners and educators, open-source maintainers, and organizations benefit from the same open foundation.",
+      "impact_title": "Impact is the measure",
+      "impact_desc": "Success is long-term impact on how software is built, not revenue. The open-source core needs no account, license key, or Krewire-hosted service.",
+      "sustain_title": "Sustainability serves the mission",
+      "sustain_desc": "Optional platform services may be offered commercially in the future to fund maintenance. Not every service must be free — but the core tooling is never paywalled. No pricing is published today.",
+      "vision": "Long-term aspiration: a single builder can still read, run, and afford what they built with Krewire a decade from now.",
+      "cta_about": "About Krewire →"
+    },
+    "audiences": {
+      "badge": "Who Krewire Is For",
+      "title": "Built for Independent Developers and Small Teams",
+      "lead": "Adopt one workload at a time, next to the stack you already have. No full migration required.",
+      "primary_badge": "Primary",
+      "indie_title": "Independent developers",
+      "indie_desc": "One language, one CLI, and one config file instead of a separate bundler, backend framework, docs generator, and deploy scripts.",
+      "indie_uc1": "Publish a landing page or blog → site",
+      "indie_uc2": "Publish product documentation → book",
+      "indie_uc3": "Ship a small web app or API as one binary → app",
+      "team_title": "Small engineering teams",
+      "team_desc": "Shared conventions and lifecycle commands across services, so moving between them does not mean switching mental models.",
+      "team_uc1": "Move slow work out of the request path → worker",
+      "team_uc2": "Add a headless service next to an existing app → service",
+      "team_uc3": "Deploy to a VPS with systemd → kiw deploy",
+      "secondary": "Also relevant to learners and educators, open-source maintainers, and organizations evaluating self-hostable tooling.",
+      "cta": "All audiences & use cases →"
     },
     "pillars": {
       "badge": "Three Pillars",
@@ -395,7 +427,8 @@ var translations = {
       "title": "Start Building with Krewire Today",
       "lead": "Start with a lightweight static site, scale to a web monolith, then to distributed cloud services — one repository, one CLI, one configuration.",
       "button": "Get Started — 5 Min →",
-      "star": "Star on GitHub"
+      "star": "Star on GitHub",
+      "contribute": "Contribute →"
     },
     "footer": {
       "products_title": "Products",
@@ -404,7 +437,16 @@ var translations = {
       "ecosystem_title": "Ecosystem",
       "tagline_html": "One Ecosystem. Every Workload.<br>One CLI <code class=\"code-inline\">kiw</code>, one config <code class=\"code-inline\">krewire.yaml</code>.",
       "badge": "Compiled Go · Zero Bloat",
-      "copyright_html": "© 2026 Krewire Team — Built with Krewire <code class=\"code-inline\">site</code> workload."
+      "copyright_html": "© 2026 Krewire Team — Built with Krewire <code class=\"code-inline\">site</code> workload.",
+      "project_title": "Project",
+      "about": "About Krewire",
+      "audiences": "Who It's For",
+      "openness": "Openness & Self-Hosting",
+      "services": "Core vs. Platform Services",
+      "contribute": "Contribute",
+      "impact": "Impact Report",
+      "roadmap": "Maturity & Roadmap",
+      "security": "Report a Security Issue"
     },
     "docs_reader": {
       "toc_title": "Contents",
@@ -413,6 +455,20 @@ var translations = {
       "copied_button": "✓ Copied!",
       "prev_label": "Previous",
       "next_label": "Next"
+    },
+    "playground": {
+      "eyebrow": "KREWIRE UI · LIVE PREVIEW",
+      "title": "Component Playground",
+      "lead_html": "Every preview below is a real <code class=\"code-inline\">.kiw</code> component from <code class=\"code-inline\">github.com/krewire/ui</code>, rendered by <code class=\"code-inline\">kiw build</code> for each variant and size. Toggle the options, compare the light and dark themes side by side, then copy the component source or the exact usage snippet. Nothing is fetched from the network.",
+      "docs_link": "Component docs →",
+      "noscript_html": "The live preview needs JavaScript. You can still open the static preview page linked from the component docs.",
+      "button_desc": "Primary interactive element. Variants map to intent; sizes follow the sm / md / lg scale.",
+      "badge_desc": "Compact status or category label in seven semantic colours and two sizes.",
+      "input_desc": "Labelled text field with help text, validation error, and disabled states.",
+      "card_desc": "Surface container with a title block and a body slot, in four emphasis variants.",
+      "modal_desc": "Native dialog element. Press the button inside the preview to open it; Esc or the buttons close it.",
+      "tabs_desc": "Accessible tab list. Click a tab inside the preview to move the active state.",
+      "alert_desc": "Inline feedback banner for info, success, warning, and error messages."
     }
   },
   "id": {
@@ -435,27 +491,28 @@ var translations = {
       "workspace_desc": "Workspace virtual & agen otonom",
       "cloud_desc": "Control plane hybrid PaaS & tanpa downtime",
       "auth_desc": "SSO multi-tenant, MFA & identitas OIDC",
-      "panel_desc": "Panel kontrol server mandiri & admin"
+      "panel_desc": "Panel kontrol server mandiri & admin",
+      "contribute": "Kontribusi"
     },
     "hero": {
-      "eyebrow": "Ekosistem SDLC Digital End-to-End · v0.2.2 · Open Source",
-      "title_html": "Platform SDLC Digital Terpadu dalam Go.<br class=\"hidden sm:inline\"><span class=\"text-primary\">One Ecosystem. Every Workload.</span>",
+      "eyebrow": "GO-FIRST SOFTWARE ENGINEERING ECOSYSTEM · v0.2.3",
+      "title_html": "Ekosistem Rekayasa Perangkat Lunak Berbasis Go.<br class=\"hidden sm:inline\"><span class=\"text-primary\">One Ecosystem. Every Workload.</span>",
       "lead_html": "Krewire adalah <b class=\"text-fg dark:text-fg-dark\">platform SDLC digital terpadu dan ekosistem aplikasi</b> berbasis Go — mencakup seluruh siklus pengembangan software dari spesifikasi, agen AI otonom, identitas SSO &amp; RBAC, hybrid PaaS, workspace virtual, hingga manajemen server produksi. Krewire bukan sekadar pustaka Go modular, melainkan ekosistem terpadu yang digerakkan oleh satu CLI <code class=\"code-inline\">kiw</code>. Dibangun kokoh di atas tiga pilar: <b class=\"text-fg dark:text-fg-dark\">secure</b>, <b class=\"text-fg dark:text-fg-dark\">sustainable</b>, dan <b class=\"text-fg dark:text-fg-dark\">scalable</b>.",
       "cta_start": "Mulai Sekarang — 5 Menit →",
       "cta_contribute": "Berkontribusi →",
-      "meta": "Go 1.27.1+ · Dari Spek ke Produksi · Routing Berbasis Berkas · Scoped CSS · 100% Bebas JS secara Bawaan"
+      "meta": "Go 1.27.1+ · Dari Spek ke Produksi · Routing Berbasis Berkas · Scoped CSS · Progresif secara Bawaan"
     },
     "products": {
       "badge": "Ekosistem Krewire",
       "title": "Ekosistem Krewire",
       "lead": "Satu arsitektur terpadu dan ekosistem SDLC digital — dari ruang kerja AI otonom dan IAM enterprise hingga hybrid PaaS dan manajemen server.",
-      "workspace_title": "Krewire Workspace",
+      "workspace_title": "Krewire Dash",
       "workspace_badge": "Bertenaga AI",
       "workspace_desc": "Virtual workspace & mesin integrasi otonom. Terminal web, runtime dalam sandbox, kolaborasi kode real-time, dan otomatisasi agen AI mendalam.",
       "workspace_feature1": "Terminal interaktif berbasis peramban & PTY",
       "workspace_feature2": "Ruang kerja sandbox & penjelajah berkas",
       "workspace_feature3": "Agen AI otonom Krew terintegrasi",
-      "workspace_cta": "Pelajari Workspace →",
+      "workspace_cta": "Pelajari Dash →",
       "cloud_title": "Krewire Cloud",
       "cloud_badge": "PaaS Hibrida",
       "cloud_desc": "Engine hybrid PaaS enterprise dan control plane multi-tenant. Build hermetik, deployment deklaratif, supervisi proses, dan gateway edge.",
@@ -470,21 +527,52 @@ var translations = {
       "auth_feature2": "Autentikasi dua faktor TOTP & pemulihan",
       "auth_feature3": "Isolasi tenant & RBAC berbutir halus",
       "auth_cta": "Pelajari Auth →",
-      "panel_title": "Krewire Panel",
-      "panel_badge": "Server & Admin",
-      "panel_desc": "Control panel server dan admin mandiri (self-hosted). Kelola host bare-metal & VPS, daemon systemd, vHost, database, dan firewall tanpa dependensi runtime pihak ketiga.",
-      "panel_feature1": "Supervisi servis host & daemon (systemd)",
-      "panel_feature2": "Provisioning vHost otomatis (Caddy/Nginx) & database",
-      "panel_feature3": "Firewall terintegrasi, file manager streaming & konsol web",
-      "panel_cta": "Pelajari Panel →"
+      "panel_title": "Krewire Forge",
+      "panel_badge": "Web, Form & Panel",
+      "panel_desc": "Builder web, form, resource, dan panel admin deklaratif untuk Go dan .kiw. Engine form berbasis skema, resource tabel CRUD, dan studio dashboard interaktif.",
+      "panel_feature1": "Skema deklaratif & validasi form type-safe",
+      "panel_feature2": "Resource tabel CRUD, paginasi & pengurutan kolom",
+      "panel_feature3": "Studio panel admin & konsol visual (kiw forge studio)",
+      "panel_cta": "Pelajari Forge →",
+      "mockup": "Ilustrasi",
+      "status_private": "Privat · belum tersedia untuk publik",
+      "boundary_note": "Inti open-source (CLI kiw, pustaka, krew, ui) berlisensi MIT dan tidak memerlukan layanan-layanan ini. Dash, Cloud, Auth, dan Forge adalah layanan platform opsional yang dikembangkan di repositori privat; belum ada yang tersedia untuk publik dan belum ada harga yang dipublikasikan.",
+      "boundary_cta": "Inti vs. layanan platform →"
     },
     "trust": {
       "label": "Toolchain Go Terpadu",
-      "stdlib": "100% Standard Library Go",
-      "npm": "0 npm / 0 Bundler",
-      "workloads": "8 Workload dalam 1 Binary",
-      "coldstart": "< 1ms Cold Start",
-      "config": "Satu Konfigurasi krewire.yaml"
+      "opensource": "Open Source · MIT · Dapat Di-host Sendiri"
+    },
+    "mission": {
+      "badge": "Misi Kami",
+      "title": "Dampak Lebih Dulu. Berkelanjutan Sejak Desain.",
+      "statement": "Misi Krewire adalah membuatnya mendekati gratis — baik dalam biaya finansial, beban operasional, maupun beban kognitif — bagi siapa pun untuk membangun, memiliki, dan mengoperasikan produk digital yang aman, berkelanjutan, dan berskala besar.",
+      "who_title": "Untuk siapa",
+      "who_desc": "Pengembang independen dan tim engineering kecil lebih dulu. Pelajar dan pendidik, maintainer open-source, serta organisasi mendapat manfaat dari fondasi terbuka yang sama.",
+      "impact_title": "Dampak adalah ukurannya",
+      "impact_desc": "Keberhasilan diukur dari dampak jangka panjang pada cara perangkat lunak dibangun, bukan pendapatan. Inti open-source tidak memerlukan akun, kunci lisensi, ataupun layanan yang di-host Krewire.",
+      "sustain_title": "Keberlanjutan melayani misi",
+      "sustain_desc": "Layanan platform opsional mungkin ditawarkan secara komersial di masa depan untuk mendanai pemeliharaan. Tidak semua layanan harus gratis — tetapi tooling inti tidak pernah berbayar. Saat ini belum ada harga yang dipublikasikan.",
+      "vision": "Aspirasi jangka panjang: satu pembangun masih dapat membaca, menjalankan, dan membiayai apa yang ia bangun dengan Krewire sepuluh tahun dari sekarang.",
+      "cta_about": "Tentang Krewire →"
+    },
+    "audiences": {
+      "badge": "Untuk Siapa Krewire",
+      "title": "Dibuat untuk Pengembang Independen dan Tim Kecil",
+      "lead": "Adopsi satu workload demi satu workload, berdampingan dengan stack yang sudah Anda miliki. Tanpa migrasi menyeluruh.",
+      "primary_badge": "Utama",
+      "indie_title": "Pengembang independen",
+      "indie_desc": "Satu bahasa, satu CLI, dan satu berkas konfigurasi sebagai ganti bundler, framework backend, generator dokumentasi, dan skrip deploy yang terpisah-pisah.",
+      "indie_uc1": "Terbitkan landing page atau blog → site",
+      "indie_uc2": "Terbitkan dokumentasi produk → book",
+      "indie_uc3": "Rilis aplikasi web kecil atau API sebagai satu binary → app",
+      "team_title": "Tim engineering kecil",
+      "team_desc": "Konvensi dan perintah siklus hidup yang sama di semua layanan, sehingga berpindah antar-layanan tidak berarti berganti model mental.",
+      "team_uc1": "Pindahkan pekerjaan lambat keluar dari jalur request → worker",
+      "team_uc2": "Tambahkan layanan headless di samping aplikasi yang ada → service",
+      "team_uc3": "Deploy ke VPS dengan systemd → kiw deploy",
+      "secondary": "Juga relevan bagi pelajar dan pendidik, maintainer open-source, serta organisasi yang mengevaluasi tooling yang dapat di-host sendiri.",
+      "cta": "Semua audiens & kasus penggunaan →"
     },
     "pillars": {
       "badge": "Tiga Pilar",
@@ -618,7 +706,8 @@ var translations = {
       "title": "Mulai Bangun dengan Krewire Hari Ini",
       "lead": "Mulai dari situs statis ringan, skalakan ke monolit web, lalu ke layanan cloud terdistribusi — satu repositori, satu CLI, satu konfigurasi.",
       "button": "Mulai Sekarang — 5 Menit →",
-      "star": "Star di GitHub"
+      "star": "Star di GitHub",
+      "contribute": "Berkontribusi →"
     },
     "footer": {
       "products_title": "Produk",
@@ -627,7 +716,16 @@ var translations = {
       "ecosystem_title": "Ekosistem",
       "tagline_html": "One Ecosystem. Every Workload.<br>Satu CLI <code class=\"code-inline\">kiw</code>, satu konfigurasi <code class=\"code-inline\">krewire.yaml</code>.",
       "badge": "Go Terkompilasi · Bebas Kembung",
-      "copyright_html": "© 2026 Krewire Team — Dibangun dengan workload <code class=\"code-inline\">site</code> Krewire."
+      "copyright_html": "© 2026 Krewire Team — Dibangun dengan workload <code class=\"code-inline\">site</code> Krewire.",
+      "project_title": "Proyek",
+      "about": "Tentang Krewire",
+      "audiences": "Untuk Siapa",
+      "openness": "Keterbukaan & Self-Hosting",
+      "services": "Inti vs. Layanan Platform",
+      "contribute": "Berkontribusi",
+      "impact": "Laporan Dampak",
+      "roadmap": "Kematangan & Roadmap",
+      "security": "Laporkan Masalah Keamanan"
     },
     "docs_reader": {
       "toc_title": "Daftar Isi",
@@ -636,6 +734,20 @@ var translations = {
       "copied_button": "✓ Tersalin!",
       "prev_label": "Sebelumnya",
       "next_label": "Selanjutnya"
+    },
+    "playground": {
+      "eyebrow": "KREWIRE UI · PRATINJAU LANGSUNG",
+      "title": "Playground Komponen",
+      "lead_html": "Setiap pratinjau di bawah adalah komponen <code class=\"code-inline\">.kiw</code> asli dari <code class=\"code-inline\">github.com/krewire/ui</code> yang di-render oleh <code class=\"code-inline\">kiw build</code> untuk setiap varian dan ukuran. Ganti opsi, bandingkan tema terang dan gelap berdampingan, lalu salin kode sumber komponen atau contoh penggunaannya. Tidak ada yang diambil dari jaringan.",
+      "docs_link": "Dokumentasi komponen →",
+      "noscript_html": "Pratinjau langsung membutuhkan JavaScript. Anda tetap dapat membuka halaman pratinjau statis yang ditautkan dari dokumentasi komponen.",
+      "button_desc": "Elemen interaktif utama. Varian menunjukkan maksud aksi; ukuran mengikuti skala sm / md / lg.",
+      "badge_desc": "Label status atau kategori ringkas dalam tujuh warna semantik dan dua ukuran.",
+      "input_desc": "Kolom teks berlabel dengan teks bantuan, galat validasi, dan status nonaktif.",
+      "card_desc": "Wadah permukaan dengan blok judul dan slot isi, dalam empat varian penekanan.",
+      "modal_desc": "Elemen dialog native. Tekan tombol di dalam pratinjau untuk membukanya; Esc atau tombol di dalamnya menutupnya.",
+      "tabs_desc": "Daftar tab yang aksesibel. Klik tab di dalam pratinjau untuk memindahkan status aktif.",
+      "alert_desc": "Banner umpan balik untuk pesan info, sukses, peringatan, dan galat."
     }
   }
 };

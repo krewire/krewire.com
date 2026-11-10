@@ -1,0 +1,244 @@
+---
+title: "Configuration"
+description: "Detailed specification and guide for krewire.yaml — the unified declarative devtool configuration."
+date: "2026-09-29"
+---
+
+# Configuration
+
+Every Krewire project is driven by a single, declarative configuration file: **`krewire.yaml`**.
+
+`krewire.yaml` acts as the **Single Source of Truth (SSOT)** for project metadata, compiler pipeline settings, local development servers, and custom automation scripts.
+
+---
+
+## 1. Architectural Philosophy
+
+Krewire maintains a strict separation of concerns between devtool configuration and application runtime logic:
+
+1. **Devtool Controls (`krewire.yaml`):** Instructs the `kiw` CLI on how to build, run, test, and package the project.
+2. **Application Settings:** Web titles, layouts, meta tags, and component styling belong inside pages, templates, and Go code—never duplicated in YAML.
+3. **Decoupled Toolchain:** Projects compile cleanly with standard `go build` even if `krewire.yaml` is absent, falling back to sensible Go conventions.
+
+---
+
+## 2. Complete Schema Reference
+
+Below is the complete, canonical schema of `krewire.yaml` with production defaults:
+
+```yaml
+# =============================================================================
+# Krewire Devtool Configuration (krewire.yaml)
+# =============================================================================
+
+# Project Identity & Workload Kind
+project:
+  name: "my-service"            # Project identifier (read by the site loader)
+  # kind: "site"                # Optional override (app | cli | site | book | worker | service | gateway | infra).
+                                # When omitted, kiw auto-detects kind from filesystem markers (pages/, main.go, etc.)
+  version: "v0.2.0"             # Semantic version injected as `.Version` into pages
+  dirs:                         # Optional: Override canonical folder locations
+    web: "web"                  # Web handlers and templates
+    public: "public"            # Raw static assets
+    internal: "internal"        # Private domain packages
+    cmd: "cmd"                  # Executable entry points
+
+# Content Input (top level)
+input: "content"                # Content directory consumed by the book pipeline
+
+# Devtool Build Pipeline
+build:
+  output: ".krewire/build"      # Target compilation output directory
+  base: "/"                     # URL base the site is served under
+  include:                      # Glob patterns for content inclusion
+    - "**/*.md"
+  exclude:                      # Glob patterns for exclusion
+    - "**/README.md"
+    - "**/readme.md"
+  depends_on:                   # Shell commands run before the build
+    - "go generate ./..."
+
+# Automatic CSS/JS Injection (site kind; on by default)
+auto_assets:
+  enabled: true                 # Set false to link every asset by hand in layouts/
+  js_placement: "head"          # head (default, first-paint scripts) | body
+  exclude:                      # Never auto-inject these assets
+    - "*.min.css"
+  order:                        # Pin where a specific asset loads
+    "assets/theme.css":
+      layer: "page"             # scoped | vendor | component | theme | book | page
+  bundle: false                 # true merges CSS/JS into assets/krewire.{css,js}
+
+# Documentation Book Pipeline (pkg/book)
+book:
+  mount: "/docs/"               # Mount path in output URL space (hybrid mode)
+  toc: true                     # Generate root table-of-contents page
+
+# WebAssembly Client Runtime
+wasm:
+  entry: "./wasm"               # Main package entry point for GOOS=js
+  name: "runtime"               # Emitted wasm module filename
+
+# Custom Task Runner Scripts
+scripts:
+  lint: "golangci-lint run ./..."
+  fmt: "gofmt -s -w ."
+  test: "go test -race -v ./..."
+  seed: "go run cmd/seed/main.go"
+```
+
+---
+
+## 3. Configuration Breakdown
+
+### 3.1 Project Block (`project:`)
+
+The `project:` section defines the identity and workload behavior:
+
+- **`kind` (Optional):** Explicitly pins the architectural workload. When omitted, `kiw` automatically infers the workload kind from filesystem markers via `shape.Detect`:
+  - `site`: Inferred from `pages/` directory or `ssg:` key in `krewire.yaml`.
+  - `app`: Inferred from root `main.go` or `cmd/` with `func main()`.
+  - `book`: Inferred from `content/` directory.
+  - `worker`: Inferred from `worker:` configuration key.
+  - `service`: Inferred from `service:` configuration key.
+  - `gateway`: Inferred from `gateway:` configuration key.
+  - `infra`: Inferred from `infra:` configuration key.
+  - `cli`: Inferred or declared for terminal utilities.
+
+  A pre-scaffold bootstrap project is **not** a kind: `kiw info` reports `none`
+  with the marker `pre-init` until `kiw init` equips a variant.
+
+  **Progressive Pipeline:** Workloads in Krewire are additive rather than rigid siloes. A static site (`site`) can evolve into a fullstack SSR backend (`app`) simply by adding a `main.go` entry point—without rewriting `.kiw` templates, layouts, or component hierarchies.
+- **`dirs` (Optional):** Allows customization of the default directory layout if integrating Krewire into an existing repository layout.
+
+---
+
+### 3.2 Content Input (`input:`)
+
+- **`input`:** The content directory consumed by the book (`pkg/book`) pipeline. Defaults to `content`. With `i18n:` enabled, `kiw build` resolves `content/<locale>/docs/` per locale and only falls back to this value.
+
+---
+
+### 3.3 Build Block (`build:`)
+
+Controls where artifacts land and which content files the pipeline processes:
+
+- **`output`:** The directory where compiled static files or assets are staged. Defaults to `.krewire/build`. A compiled `app`/`cli` binary lands in `<output>/bin/<project name>`.
+- **`base`:** The URL prefix under which assets and pages are served. Defaults to `/`. For sites hosted under subpaths (e.g. `https://example.com/blog/`), set `base: "/blog/"`.
+- **`include` & `exclude`:** Glob patterns controlling which Markdown manuscripts or content files are processed. Unset `include` defaults to `**/*.md`; unset `exclude` defaults to skipping `README.md`/`readme.md`. An empty list disables that filter.
+- **`depends_on`:** Shell commands run in order before the build.
+- **`outputs`:** Runtime name to output directory, for polyglot projects.
+
+The top-level `output:` and `base:` keys are legacy aliases. The nested
+`build.*` value wins when both are set, and the `--output` / `--base` flags win
+over both. Declare each value once — do not repeat it at both levels.
+
+---
+
+### 3.4 Dev Server Port (`dev:`)
+
+The `dev:` block declares the local development port:
+
+```yaml
+dev:
+  port: 8080
+```
+
+The listen address resolves in this order: the `--addr` flag, then
+`runtime.port`, `dev.port`, `server.port`, and the first `services[].port`,
+then `:8080`:
+
+```bash
+kiw dev --addr :3000
+kiw serve --addr :3000
+```
+
+---
+
+### 3.5 Auto Assets Block (`auto_assets:`)
+
+Applies to the `site` kind. By default the build injects a `<link
+rel="stylesheet">` into `<head>` and a `<script src>` into `<head>` for every
+`.css`/`.js` file under `public/assets/`, plus the generated scoped stylesheet
+`assets/style.css`. Layouts do not need to name them, and a tag you write by
+hand is never duplicated. Cache busting uses `?v=<project version>`.
+
+- **`enabled`:** `false` restores fully manual asset tags.
+- **`js_placement`:** `head` (default) keeps theme scripts running before first
+  paint; `body` appends them at the end of `<body>` instead.
+- **`exclude`:** Asset names, base names, or globs that must never be injected.
+- **`order`:** Pins one asset to a cascade layer, when the default position is
+  wrong for your project. An unrecognized layer name is reported as a build
+  warning and the default order is kept, so a typo is visible without failing
+  the build.
+- **`bundle`:** `true` merges the eligible CSS and JS into `assets/krewire.css`
+  and `assets/krewire.js`, trading per-asset requests for one of each.
+
+Assets are **not** injected alphabetically — alphabetical order silently loads
+book content before the utilities meant to override it. They load in cascade
+order, so each layer can win over the previous one:
+
+| Layer         | Holds                                            |
+| ------------- | ------------------------------------------------ |
+| `scoped`      | styles generated from `<style>` in components/layouts |
+| `vendor`      | third-party output such as plugin CSS (Tailwind) |
+| `component`   | component-library styling (Krewire UI)           |
+| `theme`       | theme variables and last-mile design overrides   |
+| `book`        | content-pipeline styling (pkg/book)                |
+| `page`        | per-page overrides — always last                 |
+
+```yaml
+auto_assets:
+  enabled: true
+  js_placement: "body"
+  exclude:
+    - "vendor.js"
+  order:
+    "assets/theme.css":
+      layer: "page"   # move the theme to last-mile
+```
+
+---
+
+### 3.6 Scripts Task Runner (`scripts:`)
+
+Krewire includes an integrated task runner, eliminating the need for `Makefile` or external runners. Any task declared in `scripts:` can be executed directly via `kiw run <task>`:
+
+```yaml
+scripts:
+  lint: "golangci-lint run ./..."
+  audit: "go run cmd/security-audit/main.go"
+  generate: "go generate ./..."
+```
+
+Run named tasks:
+
+```bash
+kiw run lint
+kiw run audit
+```
+
+Tasks are executed using the native operating system shell (`sh -c` on Unix/macOS, `cmd /C` on Windows).
+
+---
+
+## 4. Environment Variables
+
+Runtime configuration can be overridden using environment variables without modifying `krewire.yaml`:
+
+| Variable | Values | Description |
+| :--- | :--- | :--- |
+| `KIW_ENV` | `local`, `production`, `testing` | Sets active environment profile. |
+| `KIW_DEBUG` | `true`, `false`, `1`, `0` | Enables verbose debug logging and diagnostics. |
+
+Example:
+
+```bash
+KIW_ENV=production KIW_DEBUG=false kiw run
+```
+
+---
+
+## Next Steps
+
+With your configuration in place, proceed to [**2.5 Directory Structure →**](/getting-started/directory-structure) to explore the standard directory layouts for each workload.

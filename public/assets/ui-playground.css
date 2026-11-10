@@ -1,0 +1,126 @@
+/* Krewire UI live preview playground (public/assets/ui-playground.js).
+   Host markup: [data-component-preview] → .cpv (ComponentPreview.kiw or a
+   hand-written embed in a docs page). Uses the site's design tokens. */
+.cpv {
+  display: grid;
+  gap: 0.9rem;
+  margin: 1.25rem 0 1.75rem;
+  padding: 1rem;
+  border: var(--pop-border-thin, 2px solid var(--border, #0B1F3B));
+  border-radius: var(--radius, 14px);
+  box-shadow: var(--pop-shadow-sm, 2px 2px 0 var(--border, #0B1F3B));
+  background: var(--bg-2, #f2ede4);
+  color: var(--fg, #0B1F3B);
+  min-width: 0;
+}
+.cpv-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+}
+.cpv-controls:empty { display: none; }
+.cpv-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+}
+.cpv-group-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted, #57677d);
+  margin-right: 0.25rem;
+}
+.cpv-toggle,
+.cpv-btn {
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+  padding: 0.3rem 0.65rem;
+  border-radius: 8px;
+  border: 1.5px solid var(--border, #0B1F3B);
+  background: var(--bg, #FAF8F4);
+  color: var(--fg, #0B1F3B);
+  cursor: pointer;
+}
+.cpv-toggle[aria-pressed="true"] {
+  background: var(--primary, #39D353);
+  color: var(--primary-content, #0B1F3B);
+  box-shadow: 2px 2px 0 var(--border, #0B1F3B);
+}
+.cpv-toggle:focus-visible,
+.cpv-btn:focus-visible,
+.cpv-link:focus-visible {
+  outline: 3px solid var(--primary, #39D353);
+  outline-offset: 2px;
+}
+.cpv-stages {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+@media (max-width: 720px) {
+  .cpv-stages { grid-template-columns: minmax(0, 1fr); }
+}
+.cpv-stage {
+  margin: 0;
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+}
+.cpv-stage-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted, #57677d);
+}
+.cpv-frame {
+  display: block;
+  width: 100%;
+  min-height: 120px;
+  border: 1.5px solid var(--border-subtle, rgba(11, 31, 59, 0.18));
+  border-radius: 10px;
+  background: transparent;
+}
+.cpv[data-component-preview="Modal"] .cpv-frame { min-height: 320px; }
+.cpv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+.cpv-btn-primary {
+  background: var(--primary, #39D353);
+  color: var(--primary-content, #0B1F3B);
+}
+.cpv-btn.is-copied { background: var(--success, #39D353); color: #0B1F3B; }
+.cpv-link {
+  margin-left: auto;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--fg, #0B1F3B);
+}
+.cpv-code { display: grid; gap: 0.35rem; min-width: 0; }
+.cpv-code-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted, #57677d);
+}
+.cpv-code pre {
+  margin: 0;
+  padding: 0.75rem 0.9rem;
+  overflow-x: auto;
+  border-radius: 10px;
+  background: #0B1F3B;
+  color: #FAF8F4;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+.cpv-code pre code { background: none; color: inherit; padding: 0; white-space: pre; }
+.cpv-fallback { margin: 0; font-size: 0.85rem; color: var(--muted, #57677d); }

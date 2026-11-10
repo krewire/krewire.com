@@ -6,7 +6,7 @@ date: "2026-10-31"
 
 # Platform Hybrid PaaS (Krewire Cloud)
 
-Krewire Cloud menenagai mesin PaaS hibrida mandiri (self-hosted) sekaligus platform SaaS cloud multi-tenant terkelola (`cloud.krewire.com`).
+Krewire Cloud dirancang sebagai mesin PaaS hibrida mandiri (self-hosted) sekaligus platform cloud multi-tenant terkelola. Status ketersediaannya dijelaskan di bagian **Akses Platform & Deployment** di bawah.
 
 ---
 
@@ -40,7 +40,9 @@ Krewire Cloud menenagai mesin PaaS hibrida mandiri (self-hosted) sekaligus platf
 
 ## Akses Platform & Deployment
 
-Krewire Cloud disediakan sebagai control plane PaaS multi-tenant terkelola di [cloud.krewire.com](https://cloud.krewire.com), dengan edisi on-premise khusus yang tersedia untuk pelanggan enterprise.
+> **Ketersediaan (2026-11-09):** Krewire Cloud dikembangkan di repositori privat dan **belum tersedia untuk publik** — tidak ada pendaftaran publik, unduhan, ataupun endpoint ter-hosting, dan `cloud.krewire.com` saat ini menyajikan situs utama krewire.com. Belum ada harga, paket, atau lisensi komersial yang dipublikasikan. Lihat [Inti & Layanan Platform](/project/core-and-platform-services) untuk model penyampaian, kematangan, dan proses pembaruan.
+
+Krewire Cloud direncanakan untuk disampaikan sebagai control plane multi-tenant terkelola dan sebagai engine self-hosted; keduanya belum tersedia untuk publik. Anda sudah dapat men-deploy proyek Krewire apa pun ke infrastruktur Anda sendiri hari ini dengan CLI open-source `kiw`:
 
 ### Men-deploy Aplikasi Anda
 
@@ -78,6 +80,6 @@ EXPOSE 8080
 ENTRYPOINT ["/app/server"]
 ```
 
-### PaaS Enterprise On-Premise
+### Edisi Self-Hosted dan Terkelola
 
-Bagi organisasi yang membutuhkan hosting privat air-gapped atau control plane mandiri di infrastruktur internal, Krewire Cloud disediakan melalui langganan enterprise. Hubungi tim enterprise melalui `enterprise@krewire.com` untuk akses registri privat dan panduan provisi.
+Belum ada edisi self-hosted maupun terkelola Krewire Cloud yang ditawarkan untuk publik, dan belum ada langganan enterprise, harga, atau ketentuan lisensi yang dipublikasikan. Ketersediaan di masa depan akan diumumkan di [Inti & Layanan Platform](/project/core-and-platform-services).

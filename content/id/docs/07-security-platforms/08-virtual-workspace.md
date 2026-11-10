@@ -45,11 +45,11 @@ Krewire Dash menyediakan mesin workspace virtual berbasis AI dan platform cloud 
 
 ## Akses Workspace & Integrasi Platform
 
-Krewire Workspace di-host sebagai layanan cloud kolaboratif di [dash.krewire.com](https://dash.krewire.com).
+> **Ketersediaan (2026-11-09):** Krewire Dash dikembangkan di repositori privat dan **belum tersedia untuk publik** — tidak ada pendaftaran publik, unduhan, ataupun endpoint ter-hosting, dan `dash.krewire.com` saat ini menyajikan situs utama krewire.com. Belum ada harga, paket, atau lisensi komersial yang dipublikasikan. Lihat [Inti & Layanan Platform](/project/core-and-platform-services) untuk model penyampaian, kematangan, dan proses pembaruan.
 
-### Portal Workspace Cloud
+### Rencana Portal Workspace Cloud
 
-Developer dapat menyalakan lingkungan pengembangan instan langsung dari browser:
+Portal ter-hosting ini **masih direncanakan, belum aktif**. Sesuai desainnya, developer akan dapat menyalakan lingkungan pengembangan langsung dari browser:
 - **Portal Web:** `https://dash.krewire.com`
 - **Fitur:** Editor web berbasis VS Code / Monaco, streaming terminal dua arah, dan asisten AI `krew` tersemat.
 - **Single Sign-On:** Terintegrasi penuh dengan Krewire Auth (`auth.krewire.com`).
@@ -58,9 +58,9 @@ Developer dapat menyalakan lingkungan pengembangan instan langsung dari browser:
 
 Untuk alur kerja pengembangan lokal tanpa dependensi cloud, developer dapat memanfaatkan perkakas native CLI `kiw`:
 - `kiw dev`: Menjalankan aplikasi secara lokal dengan auto-restart dan hot reload.
-- `kiw dashboard`: Menjalankan dashboard observabilitas lokal di `http://127.0.0.1:4000`.
+- `kiw dash`: Menjalankan dashboard observabilitas lokal & telemetri MCP (`:4000`) atau mengelola virtual workspace dan sandbox eksekusi.
 - `kiw mcp --stdio`: Menghubungkan asisten coding AI (seperti Antigravity atau Cursor) langsung ke proyek melalui Model Context Protocol (MCP).
 
-### Edisi Enterprise On-Premise
+### Edisi Self-Hosted dan Enterprise
 
-Workspace enterprise dengan VPC peering privat, sandbox air-gapped, dan audit log terpusat tersedia melalui kontrak enterprise. Hubungi `enterprise@krewire.com`.
+Belum ada edisi self-hosted maupun enterprise yang ditawarkan untuk publik, dan belum ada ketentuan kontrak atau harga yang dipublikasikan. Ketersediaan di masa depan akan diumumkan di [Inti & Layanan Platform](/project/core-and-platform-services).

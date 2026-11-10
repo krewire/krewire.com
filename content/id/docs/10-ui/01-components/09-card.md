@@ -14,6 +14,14 @@ Komponen `<Card />` menyediakan permukaan kontainer terangkat dengan pop-border 
 
 ---
 
+## Pratinjau Langsung
+
+<div data-component-preview="Card" data-slug="card"></div>
+
+Bingkai di atas memuat `Card.kiw` asli dari Krewire UI, yang sudah di-render oleh `kiw build` untuk setiap varian, dalam tema terang dan gelap secara berdampingan. Gunakan tombol pilihan untuk mengganti varian, lalu salin kode sumber komponen atau contoh penggunaannya. **Buka di playground** menampilkannya bersama komponen inti lainnya.
+
+---
+
 ## 1. Instalasi (Model Copy & Own)
 
 ```bash

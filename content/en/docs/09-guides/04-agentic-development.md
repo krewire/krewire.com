@@ -23,7 +23,7 @@ flowchart TD
 
     subgraph Inbound ["Inbound Agent Telemetry & Control"]
         STDIO["kiw mcp --stdio"]
-        SSE["kiw dashboard (/mcp/sse)"]
+        SSE["kiw dash (/mcp/sse)"]
         SRV["Native MCP Server"]
     end
 
@@ -88,10 +88,10 @@ For **OpenCode** (`opencode.json`):
 
 ### B. Network / Browser Setup with HTTP/SSE
 
-When developing microservices, containers, or using web-connected agents, start `kiw dashboard`:
+When developing microservices, containers, or using web-connected agents, start `kiw dash`:
 
 ```bash
-kiw dashboard --port 4000
+kiw dash --port 4000
 ```
 
 The MCP SSE server is automatically exposed at:

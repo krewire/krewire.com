@@ -57,3 +57,16 @@ Docs content is Markdown under `content/<locale>/docs/` and is rendered by
 
 - **Standard Production Release**: Triggered exclusively by pushing stable SemVer Git tags (`vX.Y.Z`) on `main`. Workflow: `.github/workflows/deploy.yaml`.
 - **Emergency Hotfix Deployment**: Bypasses the release protocol and Git tags entirely. Push directly to the dedicated `hotfix` branch (`git checkout hotfix && git merge main --ff-only && git push origin hotfix`). Workflow: `.github/workflows/hotfix.yaml`. Never tag hotfixes or deploy them from `main`.
+
+## Release checklist: public status content
+
+Before tagging a site release (`vX.Y.Z`), review the status pages under
+`content/<locale>/docs/11-project/` (English and Indonesian together) so that
+every public claim stays verifiable:
+
+1. **Maturity & roadmap** (`06-maturity-and-roadmap.md`): re-check tags (`git tag` in each repo), the upstream `krewire/docs/workloads/maturity-matrix.md`, open issues, and live endpoints; move roadmap items between shipped / in progress / proposed / deferred; update the "last verified" date.
+2. **Core & platform services** (`03-core-and-platform-services.md`): re-check repository visibility, product availability, and pricing. Never publish pricing, tiers, or availability that is not live and owned.
+3. **Openness** (`02-openness-and-self-hosting.md`): re-check licenses and network calls made by the core CLI.
+4. **Impact report** (`05-impact-report.md`): add the new period's values with definition, period, and source; keep unavailable data labelled "not yet measured".
+5. **Contributing** (`04-contributing.md`): re-check channels, labels, governance, and security-reporting routes.
+6. Run `python3 scripts/check-i18n-parity.py`, `python3 scripts/sync-i18n.py --check`, and `kiw build`.

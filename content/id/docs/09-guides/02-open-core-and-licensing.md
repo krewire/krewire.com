@@ -1,54 +1,64 @@
 ---
 title: "Open Core & Lisensi"
-description: "Tangga open core empat tingkat: free, pro, team, dan enterprise. Aturan arsitektur, batas komersial, dan nol ketergantungan runtime (zero lock-in)."
-date: "2026-10-08"
+description: "Cara kerja batas open-core Krewire saat ini: repositori publik berlisensi MIT, klasifikasi tier di pkg/model, aturan desain yang melindungi inti gratis, dan hal yang belum didefinisikan."
+date: "2026-11-09"
 ---
 
 # Open Core & Lisensi
 
-Krewire adalah komunitas sumber terbuka (open-source) berbasis di Indonesia, yang beroperasi di bawah model bisnis **Open Core** yang transparan.
-
-Kerangka kerja lisensi kami menjamin kebebasan penuh bagi para pembuat sistem (builders) sekaligus menyediakan fitur operasional, kepatuhan (compliance), dan perusahaan tingkat lanjut melalui tingkatan komersial.
+Krewire adalah ekosistem open-source dengan desain **open-core**: inti publik berlisensi MIT, dan layanan platform opsional dikembangkan secara terpisah. Panduan ini menjelaskan batas lisensi **sebagaimana adanya saat ini** dan memisahkannya dari hal yang belum didefinisikan.
 
 ---
 
-## 1. Tangga Empat Tingkat (The Four-Rung Tier Ladder)
+## 1. Apa yang dilisensikan saat ini
 
-Ekosistem ini mengorganisasikan modul ke dalam empat tingkatan yang jelas:
+| Lapisan | Repositori | Lisensi |
+| :--- | :--- | :--- |
+| Inti open-source | `krewire`, `krew`, `ui`, `krewire.com`, `krewire.github.io` | MIT (publik) |
+| Layanan platform opsional | `dash`, `cloud`, `auth`, `panel` | Repositori privat; tidak didistribusikan untuk publik, tidak ada pemberian lisensi publik |
+
+Lihat [Keterbukaan & Self-Hosting](/project/openness-and-self-hosting) untuk tautan ke setiap berkas `LICENSE`.
+
+---
+
+## 2. Klasifikasi tier (`pkg/model`)
+
+`pkg/model` mendefinisikan empat tier berurutan — `free` → `pro` → `team` → `enterprise` — dan `kiw tier [--json] [--check <tier>]` melaporkan postur tier sebuah proyek serta dapat memastikan proyek tetap dalam suatu tier (misalnya `kiw tier --check free`).
 
 ```text
-┌──────────────────────────────────────────────┐
-│  4. Enterprise (B2B, air-gapped, custom SLA)  │
-├──────────────────────────────────────────────┤
-│  3. Team (Multi-tenant governance, audit)    │
-├──────────────────────────────────────────────┤
-│  2. Pro (Telemetri canggih, throughput tinggi)│
-├──────────────────────────────────────────────┤
-│  1. Free (Pustaka inti, CLI, SDLC lengkap)   │
-└──────────────────────────────────────────────┘
+┌──────────────────────────────┐
+│  4. enterprise               │
+├──────────────────────────────┤
+│  3. team                     │
+├──────────────────────────────┤
+│  2. pro                      │
+├──────────────────────────────┤
+│  1. free  ← seluruh inti     │
+└──────────────────────────────┘
 ```
 
-| Tingkat | Model Lisensi | Harga | Target Audiens |
-| :--- | :--- | :--- | :--- |
-| **`free`** | Open Source Permisif (MIT) | $0 Selamanya | Pengembang individu, startup, proyek open-source. |
-| **`pro`** | Komersial Source-Available | Publik Self-Serve | Tim berkembang yang membutuhkan driver yang diperkuat dan metrik mendalam. |
-| **`team`** | Lisensi Komersial | Publik Organisasi | Perusahaan mid-market yang membutuhkan SSO, RBAC, dan kebijakan multi-tenant. |
-| **`enterprise`** | Kontrak B2B Nego | Penawaran Kustom | Deployment air-gapped, kepatuhan kustom, dan SLA khusus 24/7. |
+Kondisi saat ini (dapat diverifikasi di [`version.go`](https://github.com/krewire/krewire/blob/main/version.go)): monorepo inti mendeklarasikan `Tier = model.TierFree` — *"All code in krewire/krewire is 100% open source; all packages are currently free-tier by default."*
+
+| Tier | Status |
+| :--- | :--- |
+| **`free`** | Seluruh inti publik. Berlisensi MIT. |
+| **`pro`** | Hanya didefinisikan sebagai klasifikasi. Belum ada paket, lisensi, atau harga yang dipublikasikan. |
+| **`team`** | Hanya didefinisikan sebagai klasifikasi. Belum ada paket, lisensi, atau harga yang dipublikasikan. |
+| **`enterprise`** | Hanya didefinisikan sebagai klasifikasi. Belum ada paket, lisensi, ketentuan kontrak, atau harga yang dipublikasikan. |
+
+Harga, model lisensi komersial, dan ketentuan dukungan untuk tier yang lebih tinggi **belum didefinisikan**. Definisi apa pun di masa depan akan dipublikasikan, beserta pemilik dan tanggalnya, di [Inti & Layanan Platform](/project/core-and-platform-services).
 
 ---
 
-## 2. Aturan Arsitektur yang Tidak Dapat Dilanggar
+## 3. Aturan desain yang melindungi inti gratis
 
-Berdasarkan spesifikasi tata kelola kanonikal Open Core Krewire, tiga aturan berikut melindungi integritas inti open-source:
+Aturan berikut adalah komitmen desain Krewire yang dinyatakan untuk batas open-core:
 
-### Aturan 1: Nol Ketergantungan Runtime (Zero Runtime Lock-in)
-Proyek yang hanya merujuk pada paket `free` harus **dapat di-build, di-deploy, dan dijalankan tanpa lisensi kunci atau panggilan verifikasi cloud (call-homes)**. Tidak pernah ada masa uji coba (trial expiration) atau batasan tersembunyi pada tingkat free.
+### Aturan 1: Tanpa Lock-in Runtime
+Proyek yang hanya mereferensikan paket `free` harus dapat **di-build, di-deploy, dan dijalankan tanpa kunci lisensi atau panggilan pulang ke cloud**. Tidak ada masa uji coba atau batasan tersembunyi pada tier gratis. Panggilan jaringan yang memang dilakukan CLI inti tercantum di [Keterbukaan & Self-Hosting](/project/openness-and-self-hosting).
 
-### Aturan 2: Batasan Pembungkus Aditif (Additive Wrapper Boundaries)
-Modul berbayar boleh membungkus, memperkuat, atau mengoptimalkan modul `free`, tetapi modul berbayar **tidak boleh sekali pun menjadi prasyarat untuk modul free**.
+### Aturan 2: Batas Pembungkus Aditif
+Modul berbayar di masa depan boleh membungkus, memperkuat, atau mengoptimalkan modul `free`, tetapi **tidak boleh menjadi prasyarat bagi modul free**.
 
-### Aturan 3: Subset Hirarki Ketat (Strict Hierarchy Subsets)
-Setiap tingkat merupakan superset ketat dari tingkat di bawahnya:
-- `pro` mencakup semua fitur `free`.
-- `team` mencakup semua fitur `pro` dan `free`.
-- `enterprise` dinegosiasikan per organisasi dan tidak pernah dipublikasikan sebagai harga tetap.
+### Aturan 3: Hierarki Superset yang Ketat
+Setiap tier adalah superset dari tier di bawahnya: `pro` mencakup seluruh `free`, `team` mencakup seluruh `pro` dan `free`, dan `enterprise` mencakup semua tier di bawahnya.

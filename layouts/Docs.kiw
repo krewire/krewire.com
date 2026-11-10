@@ -46,13 +46,13 @@
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-left">
-            <a href="https://dash.krewire.com" target="_blank" rel="noopener" class="dropdown-product-card block p-4 rounded-xl no-underline group">
+            <a href="/docs/security-platforms/virtual-workspace" class="dropdown-product-card block p-4 rounded-xl no-underline group">
               <div class="flex items-center justify-between gap-2 mb-2">
                 <span class="icon-box bg-primary text-primary-content text-base shrink-0 w-8 h-8 flex items-center justify-center font-black">⚡</span>
                 <span class="text-[10px] badge badge-primary py-0.5 px-1.5 font-mono" data-i18n="nav.badge_ai">AI</span>
               </div>
               <div class="text-sm font-black text-fg dark:text-fg-dark group-hover:text-primary transition-colors flex items-center gap-1.5" data-i18n="products.workspace_title">
-                Krewire Workspace
+                Krewire Dash
               </div>
               <p class="text-xs text-muted dark:text-muted-dark leading-relaxed mt-1 mb-3" data-i18n="nav.workspace_desc">
                 Virtual workspaces &amp; autonomous agents. Web terminal &amp; sandboxed runtimes.
@@ -60,7 +60,7 @@
               <span class="text-[11px] font-bold text-primary flex items-center gap-1">dash.krewire.com ↗</span>
             </a>
 
-            <a href="https://cloud.krewire.com" target="_blank" rel="noopener" class="dropdown-product-card block p-4 rounded-xl no-underline group">
+            <a href="/docs/security-platforms/cloud-paas" class="dropdown-product-card block p-4 rounded-xl no-underline group">
               <div class="flex items-center justify-between gap-2 mb-2">
                 <span class="icon-box bg-primary text-primary-content text-base shrink-0 w-8 h-8 flex items-center justify-center font-black">◈</span>
                 <span class="text-[10px] badge badge-primary py-0.5 px-1.5 font-mono" data-i18n="nav.badge_paas">PaaS</span>
@@ -74,7 +74,7 @@
               <span class="text-[11px] font-bold text-primary flex items-center gap-1">cloud.krewire.com ↗</span>
             </a>
 
-            <a href="https://auth.krewire.com" target="_blank" rel="noopener" class="dropdown-product-card block p-4 rounded-xl no-underline group">
+            <a href="/docs/security-platforms/identity-and-auth" class="dropdown-product-card block p-4 rounded-xl no-underline group">
               <div class="flex items-center justify-between gap-2 mb-2">
                 <span class="icon-box bg-primary text-primary-content text-base shrink-0 w-8 h-8 flex items-center justify-center font-bold">🛡</span>
                 <span class="text-[10px] badge badge-primary py-0.5 px-1.5 font-mono" data-i18n="nav.badge_id">ID</span>
@@ -88,18 +88,18 @@
               <span class="text-[11px] font-bold text-primary flex items-center gap-1">auth.krewire.com ↗</span>
             </a>
 
-            <a href="https://panel.krewire.com" target="_blank" rel="noopener" class="dropdown-product-card block p-4 rounded-xl no-underline group">
+            <a href="/docs/project/core-and-platform-services#krewire-forge" class="dropdown-product-card block p-4 rounded-xl no-underline group">
               <div class="flex items-center justify-between gap-2 mb-2">
-                <span class="icon-box bg-primary text-primary-content text-base shrink-0 w-8 h-8 flex items-center justify-center font-bold">🎛</span>
-                <span class="text-[10px] badge badge-primary py-0.5 px-1.5 font-mono" data-i18n="nav.badge_host">Host</span>
+                <span class="icon-box bg-primary text-primary-content text-base shrink-0 w-8 h-8 flex items-center justify-center font-bold">🛠</span>
+                <span class="text-[10px] badge badge-primary py-0.5 px-1.5 font-mono" data-i18n="nav.badge_forge">Forge</span>
               </div>
               <div class="text-sm font-black text-fg dark:text-fg-dark group-hover:text-primary transition-colors flex items-center gap-1.5" data-i18n="products.panel_title">
-                Krewire Panel
+                Krewire Forge
               </div>
               <p class="text-xs text-muted dark:text-muted-dark leading-relaxed mt-1 mb-3" data-i18n="nav.panel_desc">
-                Self-hosted server &amp; admin control panel for bare-metal/VPS, systemd &amp; SSL.
+                Declarative web, form, resource, and admin panel builder for Go and .kiw.
               </p>
-              <span class="text-[11px] font-bold text-primary flex items-center gap-1">panel.krewire.com ↗</span>
+              <span class="text-[11px] font-bold text-primary flex items-center gap-1">forge.krewire.com ↗</span>
             </a>
           </div>
 
@@ -123,6 +123,7 @@
     </details>
 
     <a class="nav-link font-bold text-primary" href="/docs">Docs</a>
+    <a class="nav-link font-bold" href="/docs/project/contributing" data-i18n="nav.contribute">Contribute</a>
 
     <div slot="drawer">
       <button class="topbar-search-btn w-full mb-3" onclick="openSearchModal()" aria-label="Search Documentation">
@@ -135,17 +136,17 @@
         <span class="text-primary font-mono text-[10px]">4 Platforms</span>
       </div>
       <div class="flex flex-col gap-1.5 mb-2">
-        <a href="https://dash.krewire.com" target="_blank" rel="noopener" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
+        <a href="/docs/security-platforms/virtual-workspace" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
           <div class="flex items-center gap-2.5 min-w-0">
             <span class="icon-box bg-primary text-primary-content text-xs w-7 h-7 shrink-0 flex items-center justify-center font-bold">⚡</span>
             <div class="min-w-0">
-              <div class="text-xs font-black text-fg dark:text-fg-dark truncate" data-i18n="products.workspace_title">Krewire Workspace</div>
+              <div class="text-xs font-black text-fg dark:text-fg-dark truncate" data-i18n="products.workspace_title">Krewire Dash</div>
               <div class="text-[10px] text-muted dark:text-muted-dark leading-tight truncate" data-i18n="nav.workspace_desc">Virtual workspaces &amp; AI agents</div>
             </div>
           </div>
           <span class="text-2xs badge badge-primary py-0 px-1 font-mono shrink-0 ml-2" data-i18n="nav.badge_ai">AI</span>
         </a>
-        <a href="https://cloud.krewire.com" target="_blank" rel="noopener" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
+        <a href="/docs/security-platforms/cloud-paas" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
           <div class="flex items-center gap-2.5 min-w-0">
             <span class="icon-box bg-primary text-primary-content text-xs w-7 h-7 shrink-0 flex items-center justify-center font-bold">◈</span>
             <div class="min-w-0">
@@ -155,7 +156,7 @@
           </div>
           <span class="text-2xs badge badge-primary py-0 px-1 font-mono shrink-0 ml-2" data-i18n="nav.badge_paas">PaaS</span>
         </a>
-        <a href="https://auth.krewire.com" target="_blank" rel="noopener" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
+        <a href="/docs/security-platforms/identity-and-auth" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
           <div class="flex items-center gap-2.5 min-w-0">
             <span class="icon-box bg-primary text-primary-content text-xs w-7 h-7 shrink-0 flex items-center justify-center font-bold">🛡</span>
             <div class="min-w-0">
@@ -165,18 +166,19 @@
           </div>
           <span class="text-2xs badge badge-primary py-0 px-1 font-mono shrink-0 ml-2" data-i18n="nav.badge_id">ID</span>
         </a>
-        <a href="https://panel.krewire.com" target="_blank" rel="noopener" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
+        <a href="/docs/project/core-and-platform-services#krewire-forge" class="mobile-link flex items-center justify-between p-2.5 rounded-lg border border-border-subtle bg-bg-2 dark:bg-bg-dark-2 hover:border-primary transition-all">
           <div class="flex items-center gap-2.5 min-w-0">
-            <span class="icon-box bg-primary text-primary-content text-xs w-7 h-7 shrink-0 flex items-center justify-center font-bold">🎛</span>
+            <span class="icon-box bg-primary text-primary-content text-xs w-7 h-7 shrink-0 flex items-center justify-center font-bold">🛠</span>
             <div class="min-w-0">
-              <div class="text-xs font-black text-fg dark:text-fg-dark truncate" data-i18n="products.panel_title">Krewire Panel</div>
-              <div class="text-[10px] text-muted dark:text-muted-dark leading-tight truncate" data-i18n="nav.panel_desc">Bare-metal server control panel</div>
+              <div class="text-xs font-black text-fg dark:text-fg-dark truncate" data-i18n="products.panel_title">Krewire Forge</div>
+              <div class="text-[10px] text-muted dark:text-muted-dark leading-tight truncate" data-i18n="nav.panel_desc">Web, form &amp; panel builder</div>
             </div>
           </div>
-          <span class="text-2xs badge badge-primary py-0 px-1 font-mono shrink-0 ml-2" data-i18n="nav.badge_host">Host</span>
+          <span class="text-2xs badge badge-primary py-0 px-1 font-mono shrink-0 ml-2" data-i18n="nav.badge_forge">Forge</span>
         </a>
       </div>
       <a class="mobile-link flex items-center gap-2 px-3 py-2.5 rounded-lg font-bold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all text-primary" href="/docs">Documentation</a>
+      <a class="mobile-link flex items-center gap-2 px-3 py-2.5 rounded-lg font-bold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all" href="/docs/project/contributing" data-i18n="nav.contribute">Contribute</a>
       <hr class="my-2" style="border-color:var(--pop-border); border-width:1.5px">
       <a class="mobile-link gh-mobile flex items-center gap-2 px-3 py-2.5 rounded-lg font-bold text-sm text-fg dark:text-fg-dark min-h-[44px] hover:bg-bg-2 dark:hover:bg-bg-dark-2 transition-all" href="https://github.com/krewire/krewire" target="_blank" rel="noopener">
         <span>GitHub ↗</span>
@@ -305,7 +307,7 @@
             <a href="/docs/guides" class="toc-link">Guides & Architecture</a>
           </div>
           <div class="toc-subs">
-            <a href="/docs/guides/architecture-discipline" class="toc-sub">Architecture Invariants</a>
+            <a href="/docs/architecture" class="toc-sub">Architecture Deep-Dive</a>
             <a href="/docs/guides/agentic-development" class="toc-sub">Agentic Development</a>
             <a href="/docs/guides/deployment-and-operations" class="toc-sub">Deployment & Operations</a>
             <a href="/docs/guides/hybrid-paas-and-cloud" class="toc-sub">Hybrid PaaS & Cloud</a>
