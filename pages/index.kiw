@@ -249,11 +249,11 @@ layout: Landing
           </div>
         </div>
 
-        <div class="flex items-center justify-between pt-5 border-t border-border-subtle mt-auto">
-          <Button Variant="primary" Size="md" Href="/docs/security-platforms/virtual-workspace">
+        <div class="flex flex-wrap items-center justify-between gap-3 pt-5 border-t border-border-subtle mt-auto">
+          <Button Variant="primary" Size="md" Href="https://dash.krewire.com" Target="_blank">
             <span data-i18n="products.workspace_cta">Learn Dash →</span>
           </Button>
-          <span class="text-xs font-mono font-bold text-muted dark:text-muted-dark" data-i18n="products.status_private">Private · not publicly available yet</span>
+          <span class="text-[11px] font-mono text-muted dark:text-muted-dark" data-i18n="products.status_private">Private · not publicly available yet</span>
         </div>
       </div>
 
@@ -281,11 +281,10 @@ layout: Landing
               <Badge Variant="neutral" Size="sm">Multi-tenant</Badge>
             </div>
           </div>
-          <div class="flex items-center justify-between pt-4 mt-auto border-t border-border-subtle">
-            <a href="/docs/security-platforms/cloud-paas" class="text-xs font-extrabold text-primary hover:underline flex items-center gap-1.5" data-i18n="products.cloud_cta">
-              <span>Learn Cloud</span>
-              <span>→</span>
-            </a>
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-4 mt-auto border-t border-border-subtle">
+            <Button Variant="primary" Size="md" Href="https://cloud.krewire.com" Target="_blank">
+              <span data-i18n="products.cloud_cta">Learn Cloud →</span>
+            </Button>
             <span class="text-[11px] font-mono text-muted dark:text-muted-dark" data-i18n="products.status_private">Private · not publicly available yet</span>
           </div>
         </div>
@@ -311,11 +310,10 @@ layout: Landing
               <Badge Variant="neutral" Size="sm">PBKDF2-SHA256</Badge>
             </div>
           </div>
-          <div class="flex items-center justify-between pt-4 mt-auto border-t border-border-subtle">
-            <a href="/docs/security-platforms/identity-and-auth" class="text-xs font-extrabold text-primary hover:underline flex items-center gap-1.5" data-i18n="products.auth_cta">
-              <span>Learn Auth</span>
-              <span>→</span>
-            </a>
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-4 mt-auto border-t border-border-subtle">
+            <Button Variant="primary" Size="md" Href="https://auth.krewire.com" Target="_blank">
+              <span data-i18n="products.auth_cta">Learn Auth →</span>
+            </Button>
             <span class="text-[11px] font-mono text-muted dark:text-muted-dark" data-i18n="products.status_private">Private · not publicly available yet</span>
           </div>
         </div>
@@ -351,7 +349,7 @@ layout: Landing
               <div class="flex flex-col"><span class="text-muted text-[10px]">STUDIO</span><span class="font-extrabold text-primary">PORT 8089</span></div>
             </div>
             <div class="flex flex-col items-start gap-2">
-              <Button Variant="primary" Size="lg" Href="/docs/project/core-and-platform-services#krewire-forge">
+              <Button Variant="primary" Size="md" Href="https://forge.krewire.com" Target="_blank">
                 <span data-i18n="products.panel_cta">Learn Forge →</span>
               </Button>
               <span class="text-[11px] font-mono text-muted dark:text-muted-dark" data-i18n="products.status_private">Private · not publicly available yet</span>
