@@ -24,7 +24,7 @@ You do not need to write code to make a meaningful contribution.
 | **Issue triage** | Reproduce reported bugs, ask for missing details, and suggest labels (`bug`, `documentation`, `good first issue`, …). | Issues in any public repository |
 | **Community support** | Answer questions and share what you built. | [Discussions on `krewire/krewire.com`](https://github.com/krewire/krewire.com/discussions) |
 
-The platform services (Dash, Cloud, Auth, Panel) are developed in private repositories and are not open to external contributions.
+Contributions are currently focused on the open-source core repositories (`krewire`, `krew`, `ui`, `krewire.com`).
 
 ---
 
@@ -55,7 +55,7 @@ These come from each repository's `CONTRIBUTING.md` and `AGENTS.md`:
 4. **Open a pull request** against `main`. Changes are reviewed before merge.
 5. **Write in English** in repositories (code, commits, docs); Indonesian content belongs in the `id` locale files.
 
-> The core repository's `CONTRIBUTING.md` refers to a setup guide in the private `internal` repository. Until that is published, use the public [Installation](/getting-started/installation) guide instead.
+> For local developer setup guidance, refer to the public [Installation](/getting-started/installation) guide.
 
 ---
 

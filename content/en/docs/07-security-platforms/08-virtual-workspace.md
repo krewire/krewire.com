@@ -45,13 +45,13 @@ Krewire Dash provides an AI-powered virtual workspace engine and cloud IDE platf
 
 ## Workspace Access & Platform Integration
 
-> **Availability (2026-11-09):** Krewire Dash is developed in a private repository and is **not publicly available** — there is no public sign-up, download, or hosted endpoint, and `dash.krewire.com` currently serves the main krewire.com website. No pricing, plans, or commercial licenses are published. See [Core & Platform Services](/project/core-and-platform-services) for the delivery model, maturity, and update process.
+> **Live Portal:** Krewire Dash is available at [dash.krewire.com](https://dash.krewire.com) featuring the unified workspace studio console at [dash.krewire.com/console](https://dash.krewire.com/console). See [Core & Platform Services](/project/core-and-platform-services) for architectural details.
 
-### Planned Cloud Workspace Portal
+### Unified Workspace & Studio Console
 
-The hosted portal is **planned, not live**. As designed, developers would spin up development environments directly from the browser:
+Developers can explore sandboxed project environments and execution telemetry:
 - **Web Portal:** `https://dash.krewire.com`
-- **Features:** In-browser VS Code / Monaco editor, bidirectional terminal streaming, and embedded `krew` AI assistant.
+- **Features:** In-browser interactive PTY terminal streaming, live project sandboxes, and embedded `krew` autonomous AI automation.
 - **Single Sign-On:** Integrated with Krewire Auth (`auth.krewire.com`).
 
 ### Local Development Alternatives
