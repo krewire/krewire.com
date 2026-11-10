@@ -13,7 +13,7 @@ Krewire has two layers:
 
 The core is complete on its own. Platform services are meant to add operational convenience on top of it; they are never a prerequisite for building, running, or deploying software with the core.
 
-> **Status as of 2026-11-09:** none of the four platform services is publicly available — there is no public sign-up, download, or hosted endpoint. The subdomains `dash.krewire.com`, `cloud.krewire.com`, `auth.krewire.com`, and `panel.krewire.com` currently serve this website. No prices, plans, or commercial licenses are published.
+> **Status as of 2026-11-09:** none of the four platform services is publicly available — there is no public sign-up, download, or hosted endpoint. The subdomains `dash.krewire.com`, `cloud.krewire.com`, `auth.krewire.com`, and `forge.krewire.com` currently serve their respective endpoints or redirects. No prices, plans, or commercial licenses are published.
 
 ---
 

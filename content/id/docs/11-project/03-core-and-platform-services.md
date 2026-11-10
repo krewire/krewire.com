@@ -13,7 +13,7 @@ Krewire memiliki dua lapisan:
 
 Inti sudah lengkap dengan sendirinya. Layanan platform dimaksudkan untuk menambah kemudahan operasional di atasnya; layanan tersebut tidak pernah menjadi prasyarat untuk membangun, menjalankan, atau men-deploy perangkat lunak dengan inti.
 
-> **Status per 2026-11-09:** tidak satu pun dari keempat layanan platform tersedia untuk publik — tidak ada pendaftaran publik, unduhan, ataupun endpoint ter-hosting. Subdomain `dash.krewire.com`, `cloud.krewire.com`, `auth.krewire.com`, dan `panel.krewire.com` saat ini menyajikan situs ini. Belum ada harga, paket, atau lisensi komersial yang dipublikasikan.
+> **Status per 2026-11-09:** tidak satu pun dari keempat layanan platform tersedia untuk publik — tidak ada pendaftaran publik, unduhan, ataupun endpoint ter-hosting. Subdomain `dash.krewire.com`, `cloud.krewire.com`, `auth.krewire.com`, dan `forge.krewire.com` saat ini menyajikan endpoint atau pengalihan masing-masing. Belum ada harga, paket, atau lisensi komersial yang dipublikasikan.
 
 ---
 
