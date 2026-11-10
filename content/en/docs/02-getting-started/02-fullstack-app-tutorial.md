@@ -29,7 +29,7 @@ You will build **todo-app**, a small task manager: a page that lists tasks store
 
 > **Verified:** every command and file below was run end to end with Go 1.27.1 and `kiw` built from `github.com/krewire/krewire` at commit `d2f4cb9`. The finished project is in [`examples/todo-app`](https://github.com/krewire/krewire.com/tree/main/examples/todo-app) of the krewire.com repository, with an end-to-end test.
 
-> **Requires an unreleased core:** this page uses the bundled SQLite driver (`pkg/orm/sqlite`), the migration runner (`pkg/orm/migrate`), and `kiw migrate`. They are on the core `fino` branch at commit `d2f4cb9` and are **not in a release yet**. Until they are merged and released, install `kiw` from that commit — `kiw new` then pins the same core version in your `go.mod`:
+> **Requires core newer than v0.2.0:** this page uses the bundled SQLite driver (`pkg/orm/sqlite`), the migration runner (`pkg/orm/migrate`), and `kiw migrate`. They are on core `main` since commit `d2f4cb9` and are **not in a tagged release yet**. Until the next core release, install `kiw` from that commit — `kiw new` then pins the same core version in your `go.mod`:
 >
 > ```bash
 > go install github.com/krewire/krewire/tools/kiw/cmd/kiw@d2f4cb9
@@ -858,7 +858,7 @@ go test ./...
 go run .
 ```
 
-Its `go.mod` pins the exact core version this tutorial was verified with: commit `d2f4cb9` of the core `fino` branch, not yet released (see the note at the top).
+Its `go.mod` pins the exact core version this tutorial was verified with: commit `d2f4cb9` on core `main`, not yet in a tagged release (see the note at the top).
 
 ## Recap
 

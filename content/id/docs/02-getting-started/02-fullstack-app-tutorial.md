@@ -29,7 +29,7 @@ Anda akan membangun **todo-app**, sebuah pengelola tugas kecil: halaman yang men
 
 > **Terverifikasi:** setiap perintah dan berkas di bawah ini telah dijalankan dari awal hingga akhir dengan Go 1.27.1 dan `kiw` yang di-build dari `github.com/krewire/krewire` pada commit `d2f4cb9`. Proyek jadinya ada di [`examples/todo-app`](https://github.com/krewire/krewire.com/tree/main/examples/todo-app) dalam repositori krewire.com, lengkap dengan tes end-to-end.
 
-> **Memerlukan inti yang belum dirilis:** halaman ini menggunakan driver SQLite bawaan (`pkg/orm/sqlite`), runner migrasi (`pkg/orm/migrate`), dan `kiw migrate`. Ketiganya ada di branch `fino` inti pada commit `d2f4cb9` dan **belum masuk rilis**. Sampai digabung dan dirilis, pasang `kiw` dari commit tersebut — `kiw new` lalu mengunci versi inti yang sama di `go.mod` Anda:
+> **Memerlukan inti yang lebih baru dari v0.2.0:** halaman ini menggunakan driver SQLite bawaan (`pkg/orm/sqlite`), runner migrasi (`pkg/orm/migrate`), dan `kiw migrate`. Ketiganya ada di `main` inti sejak commit `d2f4cb9` dan **belum masuk rilis bertag**. Sampai rilis inti berikutnya, pasang `kiw` dari commit tersebut — `kiw new` lalu mengunci versi inti yang sama di `go.mod` Anda:
 >
 > ```bash
 > go install github.com/krewire/krewire/tools/kiw/cmd/kiw@d2f4cb9
@@ -858,7 +858,7 @@ go test ./...
 go run .
 ```
 
-`go.mod`-nya mengunci versi inti persis yang digunakan untuk memverifikasi tutorial ini: commit `d2f4cb9` dari branch `fino` inti, belum dirilis (lihat catatan di bagian atas).
+`go.mod`-nya mengunci versi inti persis yang digunakan untuk memverifikasi tutorial ini: commit `d2f4cb9` di `main` inti, belum masuk rilis bertag (lihat catatan di bagian atas).
 
 ## Rangkuman
 
