@@ -44,6 +44,7 @@ Rapidly scaffold application artifacts with idiomatic conventions:
 
 ```bash
 kiw make component <Name>       # Scaffold components/<Name>.kiw
+kiw make component <Name.Part>  # Scaffold compound component components/<Name>/<Part>.kiw
 kiw make page <name>            # Scaffold pages/<name>.kiw
 kiw make handler <Name>         # Scaffold internal/handlers/<name>.go
 kiw make migration <name>       # Scaffold migrations/YYYYMMDDHHMMSS_<name>.sql
@@ -51,9 +52,11 @@ kiw make model <Name>           # Scaffold internal/models/<name>.go
 kiw make middleware <Name>      # Scaffold internal/middleware/<name>.go
 kiw make service <Name>         # Scaffold internal/services/<name>.go
 kiw make job <Name>             # Scaffold internal/jobs/<name>_job.go
+kiw make chapter <name>         # Scaffold book chapter manuscript
+kiw make doc <name>             # Scaffold docs article
 ```
 
-Supports colon syntax (e.g. `kiw make:component Card` or `kiw make component:Card`) and explicit flags (`--kind`, `--name`).
+Supports colon syntax (e.g. `kiw make:component Card` or `kiw make component:Card`) and explicit flags (`--kind`, `--name`). Supports compound dotted component names (`kiw make component Card.Header` automatically scaffolds `components/Card/Header.kiw` for seamless `<Card.Header />` compound invocation).
 
 ---
 
@@ -395,3 +398,31 @@ kiw forge resource product --model=Product                                   # S
 kiw forge form contact --fields="name:string,email:string,message:textarea"  # Generate declarative form
 kiw forge studio --port=8089                                                 # Launch interactive visual builder studio
 ```
+
+### `kiw ui <subcommand>`
+
+Manage Pop-Brutalist `.kiw` design system components and templates:
+
+```bash
+kiw ui list               # List all available components in Krewire UI
+kiw ui add <name>         # Install component directly into ./components/
+kiw ui diff <name>        # Compare local component with upstream template
+```
+
+### `kiw pkg <init|pack|add|list|export>`
+
+Manage standalone, independently distributable `.kiw` component packages and UI kits ([ADR-K7P9L](https://github.com/krewire/internal/blob/main/docs/adr/ADR-K7P9L-pluggable-reusable-kiw-dsl-components.md)). Enables modular packaging, tar.gz (`.kpkg`) archiving with SHA-256 integrity verification, local installation into `./.krewire/pkg/`, and automated style injection with zero npm dependencies:
+
+```bash
+kiw pkg init @acme/ui              # Scaffolds standalone package with kiw.pkg.json
+kiw pkg pack ./my-kit              # Packs package into a distributable .kpkg archive
+kiw pkg add ./dist/ui-1.0.0.kpkg   # Installs package archive into ./.krewire/pkg/
+kiw pkg add ./local-kit            # Installs from local directory into ./.krewire/pkg/
+kiw pkg list                       # Lists installed component packages in ./.krewire/pkg
+kiw pkg list --json                # Machine-readable JSON inventory of installed packages
+kiw pkg export Card                # Validates and exports self-contained component
+```
+
+- **Manifest (`kiw.pkg.json`)**: Declares package metadata, exported component paths, and package stylesheets (`styles`).
+- **Namespace & Aliasing**: Components from installed packages can be invoked using their package namespace (e.g. `<acme:Button />`) or imported directly via `<script> import Button from '@acme/ui'; </script>`.
+- **Integrity & Security**: `kiw pkg pack` and `kiw pkg add` enforce SHA-256 checksums and `sec.SafePath` bounds to prevent ZipSlip and directory traversal vulnerabilities.

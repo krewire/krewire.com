@@ -168,7 +168,7 @@ Tidak diperlukan tag `<link>` atau `<script>` manual untuk CSS/JS situs: setiap 
 
 ## 4. Komposisi Komponen yang Dapat Digunakan Kembali
 
-Komponen yang terletak di direktori `components/` (atau disematkan dari Krewire UI) dapat diinstansiasi secara dinamis di dalam halaman, layout, atau komponen lainnya menggunakan tag komponen kustom atau helper `component`:
+Komponen yang terletak di direktori `components/` (atau dipasang di `./.krewire/pkg/`, atau disematkan dari Krewire UI) dapat diinstansiasi secara dinamis di dalam halaman, layout, atau komponen lainnya menggunakan tag komponen kustom:
 
 ```html
 <!-- Pemanggilan berbasis tag dengan atribut sebagai props -->
@@ -176,7 +176,111 @@ Komponen yang terletak di direktori `components/` (atau disematkan dari Krewire 
 <Alert Type="warning" Message="Pembaruan sistem sedang berlangsung" />
 ```
 
-Bentuk ekuivalen menggunakan helper template adalah `{{component "ComponentName" .}}`; kedua bentuk ini menghasilkan komposisi komponen yang sama.
+Bentuk ekuivalen menggunakan helper template Go adalah `{{component "ComponentName" .}}`; kedua bentuk ini menghasilkan pohon komponen yang persis sama.
+
+### 4.1 Komponen Majemuk (Notasi Titik / Compound)
+
+Komponen dapat diorganisasikan ke dalam subdirektori dan dipanggil menggunakan notasi majemuk bertitik:
+
+```html
+<Card>
+  <Card.Header title="Status Deployment" />
+  <Card.Body>
+    <p>Semua layanan mikro beroperasi normal.</p>
+  </Card.Body>
+  <Card.Footer>
+    <Button Variant="ghost">Tutup</Button>
+  </Card.Footer>
+</Card>
+```
+
+Scaffold komponen majemuk langsung menggunakan CLI:
+```bash
+kiw make component Card.Header     # menghasilkan components/Card/Header.kiw
+kiw make component Card.Body       # menghasilkan components/Card/Body.kiw
+kiw make component Card.Footer     # menghasilkan components/Card/Footer.kiw
+```
+
+### 4.2 Komponen Bernamespace & Vendor
+
+Paket antarmuka pengguna yang dipasang dari `./.krewire/pkg/` atau design system bawaan dapat dipanggil menggunakan sintaks namespace titik dua:
+
+```html
+<ui:Button variant="primary">Jalankan</ui:Button>
+<acme:MetricCard label="Permintaan Aktif" value=1420 />
+```
+
+### 4.3 Slot Outlet & Konten Cadangan (Fallback)
+
+Konten anak yang diteruskan di dalam tag berpasangan mengisi slot default (`{body}`). Komponen dapat mendeklarasikan outlet slot bernama dengan konten cadangan default yang dirender secara otomatis bila pemanggil tidak menyediakan konten:
+
+```html
+<!-- components/Card/Header.kiw -->
+<div class="card-header">
+  <slot name="title">
+    <h3>Judul Header Default</h3>
+  </slot>
+  <slot name="actions"></slot>
+</div>
+```
+
+Pemanggil dapat menyediakan konten slot menggunakan `<template slot="...">` atau `<slot:...>`:
+
+```html
+<Card.Header>
+  <template slot="title">Metrik Klaster Kustom</template>
+  <template slot="actions">
+    <Button size="sm">Segarkan</Button>
+  </template>
+</Card.Header>
+```
+
+### 4.4 Inline Snippet & Makro Lokal
+
+Fragmen template yang dapat digunakan kembali dapat dideklarasikan dan dirender di dalam berkas `.kiw` yang sama tanpa perlu membuat berkas eksternal:
+
+```html
+{#snippet userBadge(name, role)}
+  <span class="badge {role}">{name}</span>
+{/snippet}
+
+<div class="team-roster">
+  {@render userBadge("Alice", "admin")}
+  {@render userBadge("Bob", "contributor")}
+</div>
+```
+
+Snippet dikonversi secara bersih ke dalam definisi dan pemanggilan template Go ber-scope.
+
+### 4.5 Impor Komponen Deklaratif
+
+Komponen dapat mendeklarasikan impor di dalam blok `<script>` atau frontmatter:
+
+```html
+<script>
+  import Header from './Header.kiw';
+  import { Badge } from '@krewire/ui';
+</script>
+
+<Header />
+<Badge variant="success">Online</Badge>
+```
+
+### 4.6 Paket Komponen Mandiri (`.kpkg`)
+
+Pustaka komponen yang dapat digunakan kembali dapat didistribusikan dan dipasang sebagai paket mandiri tanpa dependensi npm:
+- **Manifest (`kiw.pkg.json`)**: Mendeklarasikan metadata paket, pemetaan komponen yang diekspor, dan stylesheet.
+- **Format Arsip (`.kpkg`)**: Arsip tarball gzipped dengan verifikasi integritas SHA-256.
+- **Direktori Pemasangan (`./.krewire/pkg/`)**: Repositori paket proyek lokal.
+
+```bash
+kiw pkg init @acme/ui              # Men-scaffold direktori paket dengan kiw.pkg.json
+kiw pkg pack ./acme-ui             # Mengemas ke arsip acme-ui-0.1.0.kpkg
+kiw pkg add ./acme-ui-0.1.0.kpkg   # Memasang ke ./.krewire/pkg/acme-ui
+kiw pkg list                       # Menampilkan daftar paket dan komponen yang diekspor
+```
+
+Stylesheet yang dideklarasikan di `kiw.pkg.json` (`styles: "./styles/theme.css"`) secara otomatis dikompilasi dan disuntikkan ke dalam pipeline aset situs.
 
 ### Contoh: Komponen dengan Props Ber-Scope
 

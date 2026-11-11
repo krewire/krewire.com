@@ -174,7 +174,7 @@ injection off or exclude specific files.
 
 ## 4. Reusable Component Composition
 
-Components located in the `components/` directory (or embedded from Krewire UI) can be instantiated dynamically inside any page, layout, or other component using either custom component tags or the `component` helper:
+Components located in the `components/` directory (or installed into `./.krewire/pkg/`, or embedded from Krewire UI) can be instantiated dynamically inside any page, layout, or component using custom component tags:
 
 ```html
 <!-- Tag-based invocation with attributes as props -->
@@ -182,10 +182,111 @@ Components located in the `components/` directory (or embedded from Krewire UI) 
 <Alert Type="warning" Message="System update in progress" />
 ```
 
-The equivalent template-helper form is `{{component "ComponentName" .}}`; both forms produce the same component composition.
+The equivalent Go template helper is `{{component "ComponentName" .}}`; both forms produce the exact same component tree.
 
+### 4.1 Compound Components (Dotted Notation)
 
+Components can be organized into subdirectories and invoked using dotted compound notation:
 
+```html
+<Card>
+  <Card.Header title="Deployment Status" />
+  <Card.Body>
+    <p>All microservices are running nominally.</p>
+  </Card.Body>
+  <Card.Footer>
+    <Button Variant="ghost">Dismiss</Button>
+  </Card.Footer>
+</Card>
+```
+
+Scaffold compound components directly with the CLI:
+```bash
+kiw make component Card.Header     # generates components/Card/Header.kiw
+kiw make component Card.Body       # generates components/Card/Body.kiw
+kiw make component Card.Footer     # generates components/Card/Footer.kiw
+```
+
+### 4.2 Namespaced & Vendor Components
+
+Installed UI packages from `./.krewire/pkg/` or embedded design systems can be invoked with colon namespace syntax:
+
+```html
+<ui:Button variant="primary">Launch</ui:Button>
+<acme:MetricCard label="Active Requests" value=1420 />
+```
+
+### 4.3 Slot Outlets & Fallback Content
+
+Child content passed inside a paired tag populates the default slot (`{body}`). Components can declare named slot outlets with default fallback content that renders automatically when no content is provided by the caller:
+
+```html
+<!-- components/Card/Header.kiw -->
+<div class="card-header">
+  <slot name="title">
+    <h3>Default Header Title</h3>
+  </slot>
+  <slot name="actions"></slot>
+</div>
+```
+
+Callers supply slot content using `<template slot="...">` or `<slot:...>`:
+
+```html
+<Card.Header>
+  <template slot="title">Custom Cluster Metrics</template>
+  <template slot="actions">
+    <Button size="sm">Refresh</Button>
+  </template>
+</Card.Header>
+```
+
+### 4.4 Inline Snippets & Local Macros
+
+Reusable template snippets can be authored and rendered in the same `.kiw` file without creating external files:
+
+```html
+{#snippet userBadge(name, role)}
+  <span class="badge {role}">{name}</span>
+{/snippet}
+
+<div class="team-roster">
+  {@render userBadge("Alice", "admin")}
+  {@render userBadge("Bob", "contributor")}
+</div>
+```
+
+Snippets desugar cleanly into scoped Go template definitions and invocations.
+
+### 4.5 Declarative Component Imports
+
+Components can declare imports in `<script>` blocks or frontmatter:
+
+```html
+<script>
+  import Header from './Header.kiw';
+  import { Badge } from '@krewire/ui';
+</script>
+
+<Header />
+<Badge variant="success">Online</Badge>
+```
+
+### 4.6 Standalone Component Packages (`.kpkg`)
+
+Reusable component libraries can be distributed and installed as standalone packages with zero npm dependencies:
+- **Manifest (`kiw.pkg.json`)**: Declares package metadata, exported component paths, and stylesheets.
+- **Archive Format (`.kpkg`)**: Gzipped tarball with SHA-256 integrity verification.
+- **Install Directory (`./.krewire/pkg/`)**: Local project packages repository.
+
+```bash
+kiw pkg init @acme/ui              # Scaffolds package directory with kiw.pkg.json
+kiw pkg pack ./acme-ui             # Packs into acme-ui-0.1.0.kpkg archive
+kiw pkg add ./acme-ui-0.1.0.kpkg   # Installs into ./.krewire/pkg/acme-ui
+kiw pkg list                       # Lists installed packages and exported components
+```
+
+Stylesheets declared in `kiw.pkg.json` (`styles: "./styles/theme.css"`) are automatically compiled and injected into the site asset pipeline.
 
 ### Example: Component with Scoped Props
 
