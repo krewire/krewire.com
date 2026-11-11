@@ -1526,6 +1526,21 @@ details.dropdown-container[open] .dropdown-menu,
 details.dropdown-container[open] .dropdown-menu-fullwidth {
   display: block !important;
 }
+.dropdown-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+.dropdown-chevron {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
 details.dropdown-container[open] .dropdown-chevron {
   transform: rotate(180deg);
 }

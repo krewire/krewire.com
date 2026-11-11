@@ -42,6 +42,7 @@ Use `<Dropdown />` directly within your `.kiw` page or layout templates:
 ## 3. Supported Props & Attributes
 
 - `align`: Configures the `align` attribute or behavior.
+- `icon`: Optional leading icon rendered before the label in default trigger button.
 - `item`: Configures the `item` attribute or behavior.
 - `label`: Configures the `label` attribute or behavior.
 - `trigger`: Configures the `trigger` attribute or behavior.

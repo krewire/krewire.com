@@ -42,6 +42,7 @@ Gunakan `<Dropdown />` langsung di dalam halaman `.kiw` atau template tata letak
 ## 3. Properti & Atribut yang Didukung
 
 - `align`: Mengonfigurasi atribut atau perilaku `align`.
+- `icon`: Ikon opsional yang dirender di depan label pada tombol pemicu default.
 - `item`: Mengonfigurasi atribut atau perilaku `item`.
 - `label`: Mengonfigurasi atribut atau perilaku `label`.
 - `trigger`: Mengonfigurasi atribut atau perilaku `trigger`.
