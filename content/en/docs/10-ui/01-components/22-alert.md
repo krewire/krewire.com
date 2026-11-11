@@ -6,9 +6,7 @@ date: "2026-11-09"
 
 # Alert
 
-Category: **Feedback & Status**  
-Component File: `components/Alert.kiw`  
-Source: `github.com/krewire/ui/components/Alert.kiw`
+Category: **Feedback & Status**
 
 Contextual feedback banner supporting info, success, warning, and error states.
 
@@ -22,20 +20,7 @@ The frames above load the real `Alert.kiw` from Krewire UI, prebuilt by `kiw bui
 
 ---
 
-## 1. Copy & Own Installation
-
-Copy the `Alert.kiw` component directly into your project's `./components` directory:
-
-```bash
-mkdir -p ./components
-cp path/to/krewire/ui/components/Alert.kiw ./components/
-```
-
-Once copied, your project owns the component file completely. You can customize the HTML markup, logic, and styling without upstream library lock-in.
-
----
-
-## 2. Basic Usage
+## Basic Usage
 
 Use `<Alert />` directly within your `.kiw` page or layout templates:
 
@@ -47,7 +32,7 @@ Use `<Alert />` directly within your `.kiw` page or layout templates:
 
 ---
 
-## 3. Supported Props & Attributes
+## Supported Props
 
 - `action`: Configures the `action` attribute or behavior.
 - `actions`: Configures the `actions` attribute or behavior.
@@ -61,7 +46,7 @@ Use `<Alert />` directly within your `.kiw` page or layout templates:
 
 ---
 
-## 4. Visual Tokens & Accessibility
+## Visual Tokens & Accessibility
 
 - **Design System Stylesheet**: Inherits variables from `krewire-ui.css` (`--border`, `--radius`, `--pop-shadow`).
 - **Dark Mode**: Automatically inverts surface and text colors when `data-theme="dark"` or the `.dark` class is applied to `:root`.

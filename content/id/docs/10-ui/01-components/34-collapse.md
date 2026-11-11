@@ -6,28 +6,13 @@ date: "2026-11-09"
 
 # Collapse
 
-Kategori: **Tampilan Data & Konten**  
-Berkas Komponen: `components/Collapse.kiw`  
-Sumber: `github.com/krewire/ui/components/Collapse.kiw`
+Kategori: **Tampilan Data & Konten**
 
 Kontainer lipat tunggal untuk menampilkan atau menyembunyikan konten.
 
 ---
 
-## 1. Instalasi (Model Copy & Own)
-
-Salin berkas komponen `Collapse.kiw` langsung ke direktori `./components` proyek Anda:
-
-```bash
-mkdir -p ./components
-cp path/to/krewire/ui/components/Collapse.kiw ./components/
-```
-
-Setelah disalin, proyek Anda memiliki berkas komponen ini sepenuhnya. Anda bebas menyesuaikan markup HTML, logika, dan styling tanpa khawatir pembaruan upstream merusak aplikasi Anda.
-
----
-
-## 2. Contoh Penggunaan Dasar
+## Contoh Penggunaan Dasar
 
 Gunakan `<Collapse />` langsung di dalam halaman `.kiw` atau template tata letak:
 
@@ -39,7 +24,7 @@ Gunakan `<Collapse />` langsung di dalam halaman `.kiw` atau template tata letak
 
 ---
 
-## 3. Properti & Atribut yang Didukung
+## Properti & Atribut
 
 - `badge`: Mengonfigurasi atribut atau perilaku `badge`.
 - `header`: Mengonfigurasi atribut atau perilaku `header`.
@@ -55,7 +40,7 @@ Gunakan `<Collapse />` langsung di dalam halaman `.kiw` atau template tata letak
 
 ---
 
-## 4. Token Visual & Aksesibilitas
+## Token Visual & Aksesibilitas
 
 - **Stylesheet Design System**: Mewarisi token CSS terpusat dari `krewire-ui.css` (`--border`, `--radius`, `--pop-shadow`).
 - **Mode Gelap (Dark Mode)**: Warna permukaan dan teks otomatis dibalik saat `data-theme="dark"` atau class `.dark` diterapkan pada `:root`.

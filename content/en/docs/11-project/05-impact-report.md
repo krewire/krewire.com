@@ -12,7 +12,7 @@ This report explains what Krewire is contributing and how that work is sustained
 | :--- | :--- |
 | **Edition** | Baseline — first report |
 | **Reporting period** | Project start (first public commit, 2026-08-24) to **2026-11-09** |
-| **Owner** | Krewire Team (maintainers of [`krewire/krewire.com`](https://github.com/krewire/krewire.com)) |
+| **Owner** | Krewire Team |
 | **Next update** | At the next tagged release of this website |
 
 ---

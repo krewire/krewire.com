@@ -6,28 +6,13 @@ date: "2026-11-09"
 
 # Breadcrumb
 
-Category: **Navigation & Structure**  
-Component File: `components/Breadcrumb.kiw`  
-Source: `github.com/krewire/ui/components/Breadcrumb.kiw`
+Category: **Navigation & Structure**
 
 Hierarchical navigation trail indicating current page location.
 
 ---
 
-## 1. Copy & Own Installation
-
-Copy the `Breadcrumb.kiw` component directly into your project's `./components` directory:
-
-```bash
-mkdir -p ./components
-cp path/to/krewire/ui/components/Breadcrumb.kiw ./components/
-```
-
-Once copied, your project owns the component file completely. You can customize the HTML markup, logic, and styling without upstream library lock-in.
-
----
-
-## 2. Basic Usage
+## Basic Usage
 
 Use `<Breadcrumb />` directly within your `.kiw` page or layout templates:
 
@@ -39,7 +24,7 @@ Use `<Breadcrumb />` directly within your `.kiw` page or layout templates:
 
 ---
 
-## 3. Supported Props & Attributes
+## Supported Props
 
 - `id`: Configures the `id` attribute or behavior.
 - `item`: Configures the `item` attribute or behavior.
@@ -49,7 +34,7 @@ Use `<Breadcrumb />` directly within your `.kiw` page or layout templates:
 
 ---
 
-## 4. Visual Tokens & Accessibility
+## Visual Tokens & Accessibility
 
 - **Design System Stylesheet**: Inherits variables from `krewire-ui.css` (`--border`, `--radius`, `--pop-shadow`).
 - **Dark Mode**: Automatically inverts surface and text colors when `data-theme="dark"` or the `.dark` class is applied to `:root`.

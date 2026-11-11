@@ -6,28 +6,13 @@ date: "2026-11-09"
 
 # Stat
 
-Kategori: **Tampilan Data & Konten**  
-Berkas Komponen: `components/Stat.kiw`  
-Sumber: `github.com/krewire/ui/components/Stat.kiw`
+Kategori: **Tampilan Data & Konten**
 
 Kartu metrik indikator kinerja utama (KPI) dengan angka dan indikator tren.
 
 ---
 
-## 1. Instalasi (Model Copy & Own)
-
-Salin berkas komponen `Stat.kiw` langsung ke direktori `./components` proyek Anda:
-
-```bash
-mkdir -p ./components
-cp path/to/krewire/ui/components/Stat.kiw ./components/
-```
-
-Setelah disalin, proyek Anda memiliki berkas komponen ini sepenuhnya. Anda bebas menyesuaikan markup HTML, logika, dan styling tanpa khawatir pembaruan upstream merusak aplikasi Anda.
-
----
-
-## 2. Contoh Penggunaan Dasar
+## Contoh Penggunaan Dasar
 
 Gunakan `<Stat />` langsung di dalam halaman `.kiw` atau template tata letak:
 
@@ -39,7 +24,7 @@ Gunakan `<Stat />` langsung di dalam halaman `.kiw` atau template tata letak:
 
 ---
 
-## 3. Properti & Atribut yang Didukung
+## Properti & Atribut
 
 - `change`: Mengonfigurasi atribut atau perilaku `change`.
 - `help`: Mengonfigurasi atribut atau perilaku `help`.
@@ -54,7 +39,7 @@ Gunakan `<Stat />` langsung di dalam halaman `.kiw` atau template tata letak:
 
 ---
 
-## 4. Token Visual & Aksesibilitas
+## Token Visual & Aksesibilitas
 
 - **Stylesheet Design System**: Mewarisi token CSS terpusat dari `krewire-ui.css` (`--border`, `--radius`, `--pop-shadow`).
 - **Mode Gelap (Dark Mode)**: Warna permukaan dan teks otomatis dibalik saat `data-theme="dark"` atau class `.dark` diterapkan pada `:root`.

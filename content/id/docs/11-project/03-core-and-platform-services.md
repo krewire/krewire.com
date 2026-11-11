@@ -38,7 +38,7 @@ Label kematangan memakai definisi bersama di [Kematangan, Roadmap & Dukungan](/p
 **Tidak.** Ini adalah fakta lisensi yang dapat diverifikasi, bukan janji tentang masa depan:
 
 - Setiap repositori publik berlisensi MIT (lihat [Keterbukaan & Self-Hosting](/project/openness-and-self-hosting)).
-- Inti mendeklarasikan tier-nya sendiri di kode sebagai gratis: [`version.go`](https://github.com/krewire/krewire/blob/main/version.go) menetapkan `Tier = model.TierFree` dengan komentar *"All code in krewire/krewire is 100% open source; all packages are currently free-tier by default."*
+- Inti mendeklarasikan tier-nya sendiri di kode sebagai gratis: `version.go` menetapkan `Tier = model.TierFree` dengan komentar *"All code in krewire/krewire is 100% open source; all packages are currently free-tier by default."*
 - `pkg/model` mendefinisikan jenjang tier (`free`, `pro`, `team`, `enterprise`) dan `kiw tier --check <tier>` dapat memastikan sebuah proyek tetap dalam suatu tier. **Saat ini tidak ada paket, lisensi, atau harga `pro`, `team`, maupun `enterprise` yang tersedia untuk publik.** Jenjang ini adalah mekanisme klasifikasi, bukan daftar harga.
 - Komitmen desain inti yang dinyatakan ([Filosofi](/overview/philosophy)) adalah bahwa tidak ada lisensi berbayar yang menjadi prasyarat untuk membangun, men-deploy, atau mengoperasikan sistem lengkap dengannya.
 
@@ -101,11 +101,3 @@ Setiap layanan platform dirancang untuk dapat diadopsi secara terpisah:
 - Anda dapat memakai inti tanpa layanan platform apa pun.
 - Layanan platform adalah binary terpisah; memakai salah satunya tidak mengharuskan Anda memindahkan kode ke dalamnya.
 - Identitas bersama (Auth) menyediakan federasi token dan SSO tanpa hambatan di seluruh Dash, Cloud, dan Forge.
-
----
-
-## Harga dan ketersediaan: kepemilikan dan proses pembaruan
-
-- **Harga saat ini:** belum ada yang dipublikasikan.
-- **Pemilik:** Krewire Team (maintainer [`krewire/krewire.com`](https://github.com/krewire/krewire.com)).
-- **Proses pembaruan:** informasi ketersediaan atau harga apa pun akan ditambahkan ke halaman ini melalui pull request, diberi tanggal, dan ditinjau sebagai bagian dari proses rilis situs yang di-tag yang dijelaskan di [Kematangan, Roadmap & Dukungan](/project/maturity-and-roadmap). Informasi yang tidak ada di halaman ini tidak boleh dianggap berlaku.

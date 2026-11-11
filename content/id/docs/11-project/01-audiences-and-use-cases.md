@@ -49,7 +49,7 @@ Audiens berikut mendapat manfaat dari fondasi terbuka yang sama, tetapi situs in
 
 | Audiens | Contoh kasus penggunaan | Titik awal |
 | :--- | :--- | :--- |
-| **Pelajar & pendidik** | Membaca dan mengajarkan basis kode Go lengkap berlisensi MIT yang mencakup web, CLI, worker, dan infrastruktur. | [Filosofi](/overview/philosophy), [Disiplin Arsitektur](/architecture/layered-pyramid), kode sumber di [github.com/krewire/krewire](https://github.com/krewire/krewire) |
+| **Pelajar & pendidik** | Membaca dan mengajarkan basis kode Go lengkap berlisensi MIT yang mencakup web, CLI, worker, dan infrastruktur. | [Filosofi](/overview/philosophy), [Disiplin Arsitektur](/architecture/layered-pyramid), kode sumber di `krewire/krewire` |
 | **Maintainer open-source** | Membangun situs dokumentasi proyek dengan `site` atau `book`, seperti situs ini. | [Situs Statis (`site`)](/workloads/site), [Kontribusi & Komunitas](/project/contributing) |
 | **Organisasi** | Mengevaluasi keluaran binary tunggal yang dapat di-host sendiri serta batas open-core sebelum berkomitmen. | [Keterbukaan & Self-Hosting](/project/openness-and-self-hosting), [Inti & Layanan Platform](/project/core-and-platform-services) |
 
@@ -60,7 +60,7 @@ Audiens berikut mendapat manfaat dari fondasi terbuka yang sama, tetapi situs in
 Krewire dirancang untuk diadopsi satu workload demi satu workload. Anda **tidak** perlu memigrasikan seluruh stack.
 
 1. **Mulai dari satu workload yang terisolasi.** Situs dokumentasi (`book`) atau landing page (`site`) tidak memiliki ketergantungan runtime pada sistem Anda yang lain.
-2. **Tempatkan berdampingan, jangan mengganti.** Workload Krewire dapat berada di direktorinya sendiri (dengan `go.mod` dan `krewire.yaml` sendiri) di dalam repositori Node.js, Laravel, atau PHP yang sudah ada. Menurut [panduan interoperabilitas](https://github.com/krewire/krewire/blob/main/docs/guides/interoperability-and-migration.md) di repositori inti, `kiw` mendeteksi proyek host tersebut (`package.json`, `composer.json`) tetapi tidak pernah mengubah manifes host maupun direktori dependensinya.
+2. **Tempatkan berdampingan, jangan mengganti.** Workload Krewire dapat berada di direktorinya sendiri (dengan `go.mod` dan `krewire.yaml` sendiri) di dalam repositori Node.js, Laravel, atau PHP yang sudah ada. Menurut panduan interoperabilitas di repositori inti, `kiw` mendeteksi proyek host tersebut (`package.json`, `composer.json`) tetapi tidak pernah mengubah manifes host maupun direktori dependensinya.
 3. **Integrasikan lewat antarmuka standar.** Workload berkomunikasi melalui HTTP atau input/output standar, dan keluarannya berupa binary Go biasa atau berkas statis yang dapat disajikan web server mana pun. Situs ini, misalnya, dibangun dengan `kiw build` dan disajikan oleh kontainer nginx standar (lihat `Dockerfile` di repositori).
 4. **Tumbuh hanya saat dibutuhkan.** Tambahkan workload `worker`, `service`, atau `gateway` ketika kebutuhan menuntutnya; paket yang tidak dipakai tidak dikompilasi ke dalam keluaran.
 

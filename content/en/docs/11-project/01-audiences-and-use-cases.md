@@ -49,7 +49,7 @@ These audiences benefit from the same open foundation, but the website does not 
 
 | Audience | Representative use case | Where to start |
 | :--- | :--- | :--- |
-| **Learners & educators** | Read and teach a complete, MIT-licensed Go codebase that spans web, CLI, workers, and infrastructure. | [Philosophy](/overview/philosophy), [Architecture Discipline](/architecture/layered-pyramid), source at [github.com/krewire/krewire](https://github.com/krewire/krewire) |
+| **Learners & educators** | Read and teach a complete, MIT-licensed Go codebase that spans web, CLI, workers, and infrastructure. | [Philosophy](/overview/philosophy), [Architecture Discipline](/architecture/layered-pyramid), source in `krewire/krewire` |
 | **Open-source maintainers** | Build a project's documentation site with `site` or `book`, as this website does. | [Static Sites (`site`)](/workloads/site), [Contributing & Community](/project/contributing) |
 | **Organizations** | Evaluate self-hostable, single-binary output and the open-core boundary before committing. | [Openness & Self-Hosting](/project/openness-and-self-hosting), [Core & Platform Services](/project/core-and-platform-services) |
 
@@ -60,7 +60,7 @@ These audiences benefit from the same open foundation, but the website does not 
 Krewire is designed to be adopted one workload at a time. You do **not** need to migrate your whole stack.
 
 1. **Start with one isolated workload.** A docs site (`book`) or a landing page (`site`) has no runtime dependency on the rest of your system.
-2. **Co-locate, do not replace.** A Krewire workload can live in its own directory (with its own `go.mod` and `krewire.yaml`) inside an existing Node.js, Laravel, or PHP repository. According to the core [interoperability guide](https://github.com/krewire/krewire/blob/main/docs/guides/interoperability-and-migration.md), `kiw` detects these host projects (`package.json`, `composer.json`) but never modifies host manifests or dependency directories.
+2. **Co-locate, do not replace.** A Krewire workload can live in its own directory (with its own `go.mod` and `krewire.yaml`) inside an existing Node.js, Laravel, or PHP repository. According to the core interoperability guide, `kiw` detects these host projects (`package.json`, `composer.json`) but never modifies host manifests or dependency directories.
 3. **Integrate over standard interfaces.** Workloads communicate over HTTP or standard input/output, and output is a plain Go binary or static files that any web server can serve. This website, for example, is built with `kiw build` and served by a stock nginx container (see the repository's `Dockerfile`).
 4. **Grow only when needed.** Add `worker`, `service`, or `gateway` workloads when your requirements call for them; unused packages are not compiled into your output.
 

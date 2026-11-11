@@ -14,15 +14,15 @@ Halaman ini memungkinkan Anda memeriksa — tanpa harus memercayai materi pemasa
 
 | Repositori | Isi | Visibilitas | Lisensi |
 | :--- | :--- | :--- | :--- |
-| [`krewire/krewire`](https://github.com/krewire/krewire) | Monorepo inti: pustaka `pkg/*`, CLI `kiw`, template. | Publik | [MIT](https://github.com/krewire/krewire/blob/main/LICENSE) (berkas `LICENSE` tingkat paket juga MIT) |
-| [`krewire/krew`](https://github.com/krewire/krew) | Mesin agen AI otonom (embed, CLI, HTTP/SSE, MCP). | Publik | [MIT](https://github.com/krewire/krew/blob/main/LICENSE) |
-| [`krewire/ui`](https://github.com/krewire/ui) | Design system dan komponen UI `.kiw`. | Publik | [MIT](https://github.com/krewire/ui/blob/main/LICENSE) |
-| [`krewire/krewire.com`](https://github.com/krewire/krewire.com) | Situs dan dokumentasi ini. | Publik | [MIT](https://github.com/krewire/krewire.com/blob/main/LICENSE) |
-| [`krewire/krewire.github.io`](https://github.com/krewire/krewire.github.io) | Kode sumber portal komunitas. | Publik | [MIT](https://github.com/krewire/krewire.github.io/blob/main/LICENSE) |
-| [`krewire/dash`](https://dash.krewire.com) | Krewire Dash — virtual workspace & konsol studio. | Layanan platform | Portal platform terdedikasi |
-| [`krewire/cloud`](https://cloud.krewire.com) | Krewire Cloud — control plane PaaS hibrida. | Layanan platform | Portal platform terdedikasi |
-| [`krewire/auth`](https://auth.krewire.com) | Krewire Auth — engine identitas, SSO, MFA, RBAC. | Layanan platform | Portal platform terdedikasi |
-| [`krewire/forge`](https://forge.krewire.com) | Krewire Forge — builder deklaratif web, form & admin panel. | Layanan platform | Portal platform terdedikasi |
+| `krewire/krewire` | Monorepo inti: pustaka `pkg/*`, CLI `kiw`, template. | Publik | MIT |
+| `krewire/krew` | Mesin agen AI otonom (embed, CLI, HTTP/SSE, MCP). | Publik | MIT |
+| `krewire/ui` | Design system dan komponen UI `.kiw`. | Publik | MIT |
+| `krewire/krewire.com` | Situs dan dokumentasi ini. | Publik | MIT |
+| `krewire/krewire.github.io` | Kode sumber portal komunitas. | Publik | MIT |
+| `krewire/dash` | Krewire Dash — virtual workspace & konsol studio. | Layanan platform | Portal platform terdedikasi |
+| `krewire/cloud` | Krewire Cloud — control plane PaaS hibrida. | Layanan platform | Portal platform terdedikasi |
+| `krewire/auth` | Krewire Auth — engine identitas, SSO, MFA, RBAC. | Layanan platform | Portal platform terdedikasi |
+| `krewire/forge` | Krewire Forge — builder deklaratif web, form & admin panel. | Layanan platform | Portal platform terdedikasi |
 
 Inti open-source adalah semua yang berada di baris **publik berlisensi MIT**. Layanan platform menyediakan kapabilitas operasional khusus di atas fondasi inti. Jalur kontribusi untuk setiap repositori publik dijelaskan di [Kontribusi & Komunitas](/project/contributing).
 
@@ -40,7 +40,7 @@ Kapabilitas inti publik berikut berjalan sepenuhnya di mesin Anda atau infrastru
 | Pengujian dan verifikasi | `kiw test`, `kiw vet`, `kiw compat` | Tidak ada. |
 | Deploy ke target Anda sendiri | `kiw deploy --target` (`binary`, `systemd`, `gh-pages`, `infra`) | Hanya target yang Anda pilih (misalnya push ke branch GitHub Pages Anda sendiri). |
 | Memakai pustaka di program Go mana pun | `github.com/krewire/krewire/pkg/...` | Tidak ada — paket Go standar. |
-| Menjalankan agen AI | `krew` | Penyedia LLM pilihan Anda; dengan Ollama (`OLLAMA_HOST`) inferensi dapat berjalan sepenuhnya lokal ([README krew](https://github.com/krewire/krew#readme)). |
+| Menjalankan agen AI | `krew` | Penyedia LLM pilihan Anda; dengan Ollama (`OLLAMA_HOST`) inferensi dapat berjalan sepenuhnya lokal. |
 
 **Panggilan jaringan yang memang ada di CLI inti** (diverifikasi dari kode sumber):
 
@@ -56,7 +56,7 @@ Kapabilitas inti publik berikut berjalan sepenuhnya di mesin Anda atau infrastru
 
 Krewire tidak meng-host aplikasi Anda; Anda yang meng-host-nya. Keluaran `kiw build` / `kiw deploy` berupa:
 
-- **Berkas statis** untuk `site` dan `book` — dapat disajikan oleh web server statis mana pun atau GitHub Pages. Situs ini contohnya: dibangun dengan `kiw build` dan disajikan oleh kontainer `nginx:alpine` standar (lihat [`Dockerfile`](https://github.com/krewire/krewire.com/blob/main/Dockerfile) di repositori ini).
+- **Berkas statis** untuk `site` dan `book` — dapat disajikan oleh web server statis mana pun atau GitHub Pages. Situs ini contohnya: dibangun dengan `kiw build` dan disajikan oleh kontainer `nginx:alpine` standar.
 - **Satu binary Go** untuk `app`, `cli`, `worker`, `service`, dan `gateway` — dapat dijalankan di host Linux/macOS mana pun; `kiw deploy --target systemd` menghasilkan unit systemd.
 
 **Kebutuhan operasional:**
@@ -80,8 +80,6 @@ Krewire Dash, Cloud, Auth, dan Forge bersifat **opsional**. Tidak ada perintah a
 
 ## Interoperabilitas dan koeksistensi
 
-- **Berdampingan dengan stack lain.** Workload Krewire dapat berada di direktorinya sendiri di dalam repositori Node.js, Laravel, atau PHP. `kiw info` mendeteksi proyek host tersebut tetapi tidak mengubah `package.json`, `composer.json`, `node_modules/`, atau `vendor/` ([panduan interoperabilitas](https://github.com/krewire/krewire/blob/main/docs/guides/interoperability-and-migration.md), dicakup oleh pengujian seperti `TestDetectHost_NodeJS` dan `TestDetectHost_Laravel`).
+- **Berdampingan dengan stack lain.** Workload Krewire dapat berada di direktorinya sendiri di dalam repositori Node.js, Laravel, atau PHP. `kiw info` mendeteksi proyek host tersebut tetapi tidak mengubah `package.json`, `composer.json`, `node_modules/`, atau `vendor/`.
 - **Antarmuka standar.** Workload berkomunikasi melalui HTTP atau input/output standar; keluarannya berupa binary dan berkas statis biasa.
 - **Infrastruktur Anda, pilihan Anda.** Target deploy adalah host Anda sendiri (binary/systemd), GitHub Pages, atau infrastruktur Anda sendiri melalui `pkg/cloud/infra`.
-
-*Pemilik konten: Krewire Team. Verifikasi ulang tabel di atas pada setiap rilis yang di-tag; visibilitas repositori dan lisensi adalah sumber kebenarannya.*

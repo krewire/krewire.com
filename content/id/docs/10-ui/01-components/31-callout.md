@@ -6,28 +6,13 @@ date: "2026-11-09"
 
 # Callout
 
-Kategori: **Umpan Balik & Status**  
-Berkas Komponen: `components/Callout.kiw`  
-Sumber: `github.com/krewire/ui/components/Callout.kiw`
+Kategori: **Umpan Balik & Status**
 
 Kotak catatan berbingkai untuk tips, peringatan, dan catatan dokumentasi.
 
 ---
 
-## 1. Instalasi (Model Copy & Own)
-
-Salin berkas komponen `Callout.kiw` langsung ke direktori `./components` proyek Anda:
-
-```bash
-mkdir -p ./components
-cp path/to/krewire/ui/components/Callout.kiw ./components/
-```
-
-Setelah disalin, proyek Anda memiliki berkas komponen ini sepenuhnya. Anda bebas menyesuaikan markup HTML, logika, dan styling tanpa khawatir pembaruan upstream merusak aplikasi Anda.
-
----
-
-## 2. Contoh Penggunaan Dasar
+## Contoh Penggunaan Dasar
 
 Gunakan `<Callout />` langsung di dalam halaman `.kiw` atau template tata letak:
 
@@ -39,7 +24,7 @@ Gunakan `<Callout />` langsung di dalam halaman `.kiw` atau template tata letak:
 
 ---
 
-## 3. Properti & Atribut yang Didukung
+## Properti & Atribut
 
 - `title`: Mengonfigurasi atribut atau perilaku `title`.
 - `type`: Mengonfigurasi atribut atau perilaku `type`.
@@ -48,7 +33,7 @@ Gunakan `<Callout />` langsung di dalam halaman `.kiw` atau template tata letak:
 
 ---
 
-## 4. Token Visual & Aksesibilitas
+## Token Visual & Aksesibilitas
 
 - **Stylesheet Design System**: Mewarisi token CSS terpusat dari `krewire-ui.css` (`--border`, `--radius`, `--pop-shadow`).
 - **Mode Gelap (Dark Mode)**: Warna permukaan dan teks otomatis dibalik saat `data-theme="dark"` atau class `.dark` diterapkan pada `:root`.

@@ -19,8 +19,6 @@ date: "2026-11-09"
 
 Dalam lima menit Anda akan menginstal CLI `kiw`, membuat situs statis, mengubah halaman, menulis komponen pertama Anda, dan menghasilkan build produksi. Anda hanya memerlukan Go 1.27.1+ dan terminal — tanpa Node.js, tanpa npm, dan tanpa pengetahuan tentang internal Krewire.
 
-> **Catatan:** Setiap perintah dan berkas di halaman ini telah dijalankan terhadap `kiw` yang di-build dari `github.com/krewire/krewire` pada commit `33fe553` (November 2026). Baris output disalin dari eksekusi tersebut; timestamp dan path akan berbeda di mesin Anda.
-
 ---
 
 ## Langkah 1: Instal `kiw`

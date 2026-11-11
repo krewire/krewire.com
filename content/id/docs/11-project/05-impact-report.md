@@ -12,7 +12,7 @@ Laporan ini menjelaskan apa yang dikontribusikan Krewire dan bagaimana pekerjaan
 | :--- | :--- |
 | **Edisi** | Baseline — laporan pertama |
 | **Periode pelaporan** | Awal proyek (commit publik pertama, 2026-08-24) hingga **2026-11-09** |
-| **Pemilik** | Krewire Team (maintainer [`krewire/krewire.com`](https://github.com/krewire/krewire.com)) |
+| **Pemilik** | Krewire Team |
 | **Pembaruan berikutnya** | Pada rilis situs ini berikutnya yang di-tag |
 
 ---

@@ -6,14 +6,9 @@ date: "2026-11-09"
 
 # Katalog Komponen Krewire UI
 
-Jalur Import: `github.com/krewire/ui`  
-Stylesheet Design System: `/styles/krewire-ui.css`
-
 Selamat datang di **Katalog Komponen Krewire UI (`kui`)**.
 
-Krewire UI menyediakan **66 Single-File Component (`.kiw`) bergaya pop-brutalist tanpa dependensi eksternal** yang dibangun secara native untuk ekosistem Go Krewire.
-
-Seluruh komponen mengikuti filosofi **shadcn/ui "Copy & Own"**: Anda menyalin berkas `.kiw` langsung ke direktori `./components/` proyek Anda, memberi Anda kepemilikan penuh tanpa dependensi runtime tersembunyi atau risiko breaking changes dari upstream.
+Krewire UI menyediakan **66 komponen pop-brutalist aksesibel tanpa dependensi** yang dibangun secara native untuk ekosistem Krewire. Komponen dapat diimpor langsung sebagai paket terversi (`@krewire/ui`), digunakan sebagai widget Go bertipe, atau di-eject secara lokal bila diperlukan kustomisasi kode sumber penuh.
 
 ---
 

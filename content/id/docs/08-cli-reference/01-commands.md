@@ -445,7 +445,7 @@ kiw ui diff <name>        # Bandingkan komponen lokal dengan template upstream
 
 ### `kiw pkg <init|pack|add|list|export>`
 
-Kelola paket komponen mandiri `.kiw` dan kit UI yang dapat didistribusikan secara independen ([ADR-K7P9L](https://github.com/krewire/internal/blob/main/docs/adr/ADR-K7P9L-pluggable-reusable-kiw-dsl-components.md)). Memungkinkan pengemasan modular, pengarsipan tar.gz (`.kpkg`) dengan verifikasi integritas SHA-256, pemasangan lokal ke `./.krewire/pkg/`, dan injeksi stylesheet otomatis tanpa dependensi npm:
+Kelola paket komponen mandiri `.kiw` dan kit UI yang dapat didistribusikan secara independen (ADR-K7P9L). Memungkinkan pengemasan modular, pengarsipan tar.gz (`.kpkg`) dengan verifikasi integritas SHA-256, pemasangan lokal ke `./.krewire/pkg/`, dan injeksi stylesheet otomatis tanpa dependensi npm:
 
 ```bash
 kiw pkg init @acme/ui              # Membuat perancah paket mandiri dengan kiw.pkg.json

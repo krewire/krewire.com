@@ -6,9 +6,7 @@ date: "2026-11-09"
 
 # Alert
 
-Kategori: **Umpan Balik & Status**  
-Berkas Komponen: `components/Alert.kiw`  
-Sumber: `github.com/krewire/ui/components/Alert.kiw`
+Kategori: **Umpan Balik & Status**
 
 Banner pemberitahuan kontekstual dengan status info, success, warning, dan error.
 
@@ -22,20 +20,7 @@ Bingkai di atas memuat `Alert.kiw` asli dari Krewire UI, yang sudah di-render ol
 
 ---
 
-## 1. Instalasi (Model Copy & Own)
-
-Salin berkas komponen `Alert.kiw` langsung ke direktori `./components` proyek Anda:
-
-```bash
-mkdir -p ./components
-cp path/to/krewire/ui/components/Alert.kiw ./components/
-```
-
-Setelah disalin, proyek Anda memiliki berkas komponen ini sepenuhnya. Anda bebas menyesuaikan markup HTML, logika, dan styling tanpa khawatir pembaruan upstream merusak aplikasi Anda.
-
----
-
-## 2. Contoh Penggunaan Dasar
+## Contoh Penggunaan Dasar
 
 Gunakan `<Alert />` langsung di dalam halaman `.kiw` atau template tata letak:
 
@@ -47,7 +32,7 @@ Gunakan `<Alert />` langsung di dalam halaman `.kiw` atau template tata letak:
 
 ---
 
-## 3. Properti & Atribut yang Didukung
+## Properti & Atribut
 
 - `action`: Mengonfigurasi atribut atau perilaku `action`.
 - `actions`: Mengonfigurasi atribut atau perilaku `actions`.
@@ -61,7 +46,7 @@ Gunakan `<Alert />` langsung di dalam halaman `.kiw` atau template tata letak:
 
 ---
 
-## 4. Token Visual & Aksesibilitas
+## Token Visual & Aksesibilitas
 
 - **Stylesheet Design System**: Mewarisi token CSS terpusat dari `krewire-ui.css` (`--border`, `--radius`, `--pop-shadow`).
 - **Mode Gelap (Dark Mode)**: Warna permukaan dan teks otomatis dibalik saat `data-theme="dark"` atau class `.dark` diterapkan pada `:root`.

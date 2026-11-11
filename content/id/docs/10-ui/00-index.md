@@ -4,15 +4,14 @@ description: "Design system pop-brutalist tanpa dependensi eksternal dan arsitek
 date: "2026-11-09"
 ---
 
-# Krewire UI (`github.com/krewire/ui`)
+# Krewire UI
 
-Jalur import: `github.com/krewire/ui`  
-Direktori Komponen: `/id/docs/ui/components`  
-Stylesheet Design System: `/styles/krewire-ui.css`
+**Krewire UI (`kui`)** adalah design system neo-brutalist ("pop-brutalist") tanpa dependensi eksternal dan pustaka komponen yang dibangun secara native untuk ekosistem Krewire.
 
-**Krewire UI (`kui`)** adalah design system neo-brutalist ("pop-brutalist") tanpa dependensi eksternal dan pustaka Single-File Component (`.kiw`) yang dibangun secara native untuk ekosistem Go Krewire.
-
-Seluruh komponen mengikuti filosofi **shadcn/ui "Copy & Own"**: Anda menyalin berkas `.kiw` langsung ke direktori `./components/` proyek Anda, memberi Anda kepemilikan penuh tanpa dependensi runtime tersembunyi atau risiko breaking changes dari upstream.
+Komponen dapat digunakan langsung melalui dua authoring surface:
+- **Go-Native:** Widget dan node bertipe aman secara programatik (`github.com/krewire/ui/widget`).
+- **`.kiw` DSL:** Single-File Component deklaratif (`import { Button } from '@krewire/ui'`).
+- **Berbasis Paket:** Dipasang langsung via `kiw add @krewire/ui` tanpa mengotori direktori lokal, dengan opsi `kiw pkg eject` bila kustomisasi sumber lokal diperlukan.
 
 ---
 

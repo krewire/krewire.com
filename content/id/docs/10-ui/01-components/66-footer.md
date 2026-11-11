@@ -6,28 +6,13 @@ date: "2026-11-09"
 
 # Footer
 
-Kategori: **Navigasi & Struktur**  
-Berkas Komponen: `components/Footer.kiw`  
-Sumber: `github.com/krewire/ui/components/Footer.kiw`
+Kategori: **Navigasi & Struktur**
 
 Footer situs multi-kolom komprehensif dengan brand, tautan navigasi, dan hak cipta.
 
 ---
 
-## 1. Instalasi (Model Copy & Own)
-
-Salin berkas komponen `Footer.kiw` langsung ke direktori `./components` proyek Anda:
-
-```bash
-mkdir -p ./components
-cp path/to/krewire/ui/components/Footer.kiw ./components/
-```
-
-Setelah disalin, proyek Anda memiliki berkas komponen ini sepenuhnya. Anda bebas menyesuaikan markup HTML, logika, dan styling tanpa khawatir pembaruan upstream merusak aplikasi Anda.
-
----
-
-## 2. Contoh Penggunaan Dasar
+## Contoh Penggunaan Dasar
 
 Gunakan `<Footer />` langsung di dalam halaman `.kiw` atau template tata letak:
 
@@ -39,7 +24,7 @@ Gunakan `<Footer />` langsung di dalam halaman `.kiw` atau template tata letak:
 
 ---
 
-## 3. Properti & Atribut yang Didukung
+## Properti & Atribut
 
 - `bottom`: Mengonfigurasi atribut atau perilaku `bottom`.
 - `brand`: Mengonfigurasi atribut atau perilaku `brand`.
@@ -56,7 +41,7 @@ Gunakan `<Footer />` langsung di dalam halaman `.kiw` atau template tata letak:
 
 ---
 
-## 4. Token Visual & Aksesibilitas
+## Token Visual & Aksesibilitas
 
 - **Stylesheet Design System**: Mewarisi token CSS terpusat dari `krewire-ui.css` (`--border`, `--radius`, `--pop-shadow`).
 - **Mode Gelap (Dark Mode)**: Warna permukaan dan teks otomatis dibalik saat `data-theme="dark"` atau class `.dark` diterapkan pada `:root`.

@@ -37,7 +37,7 @@ Lihat [Keterbukaan & Self-Hosting](/project/openness-and-self-hosting) untuk tau
 └──────────────────────────────┘
 ```
 
-Kondisi saat ini (dapat diverifikasi di [`version.go`](https://github.com/krewire/krewire/blob/main/version.go)): monorepo inti mendeklarasikan `Tier = model.TierFree` — *"All code in krewire/krewire is 100% open source; all packages are currently free-tier by default."*
+Monorepo inti mendeklarasikan `Tier = model.TierFree` di `version.go`: seluruh kode dalam `krewire/krewire` adalah 100% open source, dan seluruh paket adalah free-tier secara default.
 
 | Tier | Status |
 | :--- | :--- |

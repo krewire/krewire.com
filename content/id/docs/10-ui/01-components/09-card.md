@@ -4,11 +4,9 @@ description: "Permukaan kartu terangkat dengan slot header, media, isi, dan foot
 date: "2026-11-09"
 ---
 
-# Card (`Card.kiw`)
+# Card
 
-Kategori: **Tampilan Data & Konten**  
-Berkas Komponen: `components/Card.kiw`  
-Sumber: `github.com/krewire/ui/components/Card.kiw`
+Kategori: **Tampilan Data & Konten**
 
 Komponen `<Card />` menyediakan permukaan kontainer terangkat dengan pop-border khas (`2.5px solid var(--border)`), bayangan kotak kaku, serta slot fleksibel untuk header, media gambar, isi kartu, dan footer tombol aksi.
 
@@ -22,18 +20,9 @@ Bingkai di atas memuat `Card.kiw` asli dari Krewire UI, yang sudah di-render ole
 
 ---
 
-## 1. Instalasi (Model Copy & Own)
+## Contoh Penggunaan
 
-```bash
-mkdir -p ./components
-cp path/to/krewire/ui/components/Card.kiw ./components/
-```
-
----
-
-## 2. Contoh Penggunaan
-
-### 2.1 Kartu Standar dengan Judul dan Badge
+### Kartu Standar dengan Judul dan Badge
 
 ```html
 <Card title="Database Cluster" subtitle="PostgreSQL 17.2 · Produksi" badge="Sehat">
@@ -45,7 +34,7 @@ cp path/to/krewire/ui/components/Card.kiw ./components/
 </Card>
 ```
 
-### 2.2 Kartu Unggulan dengan Header dan Media Kustom
+### Kartu Unggulan dengan Header dan Media Kustom
 
 ```html
 <Card variant="featured">
@@ -64,7 +53,7 @@ cp path/to/krewire/ui/components/Card.kiw ./components/
 
 ---
 
-## 3. Properti & Slot yang Didukung
+## Properti & Atribut
 
 ### Properti
 - `title`: Teks judul kartu di area header.

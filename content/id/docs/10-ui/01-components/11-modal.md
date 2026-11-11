@@ -4,11 +4,9 @@ description: "Dialog modal aksesibel yang dibangun di atas elemen native dialog 
 date: "2026-11-09"
 ---
 
-# Modal (`Modal.kiw`)
+# Modal
 
-Kategori: **Lapisan Mengambang & Dialog**  
-Berkas Komponen: `components/Modal.kiw`  
-Sumber: `github.com/krewire/ui/components/Modal.kiw`
+Kategori: **Lapisan Mengambang & Dialog**
 
 Komponen `<Modal />` merender kotak dialog modal aksesibel berbasis elemen native `<dialog>` browser. Komponen ini memiliki animasi pop-in halus, latar belakang buram, penutupan otomatis via tombol `Escape`, dan isolasi fokus keyboard (*focus trap*) tanpa perlu dependensi JavaScript eksternal.
 
@@ -22,16 +20,7 @@ Bingkai di atas memuat `Modal.kiw` asli dari Krewire UI, yang sudah di-render ol
 
 ---
 
-## 1. Instalasi (Model Copy & Own)
-
-```bash
-mkdir -p ./components
-cp path/to/krewire/ui/components/Modal.kiw ./components/
-```
-
----
-
-## 2. Contoh Penggunaan
+## Contoh Penggunaan
 
 ```html
 <!-- Tombol Pembuka -->

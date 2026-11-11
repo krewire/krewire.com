@@ -6,28 +6,13 @@ date: "2026-11-09"
 
 # ActionMenu
 
-Kategori: **Aksi & Tombol**  
-Berkas Komponen: `components/ActionMenu.kiw`  
-Sumber: `github.com/krewire/ui/components/ActionMenu.kiw`
+Kategori: **Aksi & Tombol**
 
 Menu dropdown aksi kontekstual ringkas untuk baris tabel dan kartu.
 
 ---
 
-## 1. Instalasi (Model Copy & Own)
-
-Salin berkas komponen `ActionMenu.kiw` langsung ke direktori `./components` proyek Anda:
-
-```bash
-mkdir -p ./components
-cp path/to/krewire/ui/components/ActionMenu.kiw ./components/
-```
-
-Setelah disalin, proyek Anda memiliki berkas komponen ini sepenuhnya. Anda bebas menyesuaikan markup HTML, logika, dan styling tanpa khawatir pembaruan upstream merusak aplikasi Anda.
-
----
-
-## 2. Contoh Penggunaan Dasar
+## Contoh Penggunaan Dasar
 
 Gunakan `<ActionMenu />` langsung di dalam halaman `.kiw` atau template tata letak:
 
@@ -39,7 +24,7 @@ Gunakan `<ActionMenu />` langsung di dalam halaman `.kiw` atau template tata let
 
 ---
 
-## 3. Properti & Atribut yang Didukung
+## Properti & Atribut
 
 - `align`: Mengonfigurasi atribut atau perilaku `align`.
 - `item`: Mengonfigurasi atribut atau perilaku `item`.
@@ -49,7 +34,7 @@ Gunakan `<ActionMenu />` langsung di dalam halaman `.kiw` atau template tata let
 
 ---
 
-## 4. Token Visual & Aksesibilitas
+## Token Visual & Aksesibilitas
 
 - **Stylesheet Design System**: Mewarisi token CSS terpusat dari `krewire-ui.css` (`--border`, `--radius`, `--pop-shadow`).
 - **Mode Gelap (Dark Mode)**: Warna permukaan dan teks otomatis dibalik saat `data-theme="dark"` atau class `.dark` diterapkan pada `:root`.

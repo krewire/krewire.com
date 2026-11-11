@@ -4,11 +4,9 @@ description: "Core interactive button component supporting primary, secondary, a
 date: "2026-11-09"
 ---
 
-# Button (`Button.kiw`)
+# Button
 
-Category: **Actions & Buttons**  
-Component File: `components/Button.kiw`  
-Source: `github.com/krewire/ui/components/Button.kiw`
+Category: **Actions & Buttons**
 
 The `<Button />` component is the fundamental interactive element of the Krewire UI design system. It renders either an HTML `<button>` or an accessible `<a>` link styled with pop-brutalist solid borders, hard offset shadows, and active click translations.
 
@@ -22,20 +20,9 @@ The frames above load the real `Button.kiw` from Krewire UI, prebuilt by `kiw bu
 
 ---
 
-## 1. Copy & Own Installation
+## Examples & Usage
 
-Copy `Button.kiw` directly into your project's `components/` directory:
-
-```bash
-mkdir -p ./components
-cp path/to/krewire/ui/components/Button.kiw ./components/
-```
-
----
-
-## 2. Examples & Usage
-
-### 2.1 Color Variants
+### Color Variants
 
 ```html
 <Button variant="primary">Primary Action</Button>
@@ -45,7 +32,7 @@ cp path/to/krewire/ui/components/Button.kiw ./components/
 <Button variant="ghost">Ghost Button</Button>
 ```
 
-### 2.2 Sizing Scale
+### Sizing Scale
 
 ```html
 <Button variant="primary" size="sm">Small (sm)</Button>
@@ -53,7 +40,7 @@ cp path/to/krewire/ui/components/Button.kiw ./components/
 <Button variant="primary" size="lg">Large (lg)</Button>
 ```
 
-### 2.3 With Icons and Links
+### With Icons and Links
 
 ```html
 <!-- Button with prepended icon -->
@@ -65,7 +52,7 @@ cp path/to/krewire/ui/components/Button.kiw ./components/
 </Button>
 ```
 
-### 2.4 Disabled and Click Handlers
+### Disabled and Click Handlers
 
 ```html
 <Button variant="primary" disabled=true>Disabled State</Button>
@@ -74,7 +61,7 @@ cp path/to/krewire/ui/components/Button.kiw ./components/
 
 ---
 
-## 3. Supported Props
+## Supported Props
 
 - `variant`: Button style variant (`primary`, `secondary`, `accent`, `outline`, `ghost`, default: `primary`).
 - `size`: Sizing token (`sm`, `md`, `lg`, default: `md`).
@@ -92,7 +79,7 @@ cp path/to/krewire/ui/components/Button.kiw ./components/
 
 ---
 
-## 4. Pop-Brutalist Visual Tokens
+## Visual Tokens & Styling
 
 - **Border**: `var(--pop-border-thin, 2px solid var(--border))`
 - **Drop Shadow**: `var(--pop-shadow-sm, 2px 2px 0px var(--border))`

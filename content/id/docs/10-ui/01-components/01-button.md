@@ -4,11 +4,9 @@ description: "Tombol interaktif inti dengan varian primary, secondary, accent, o
 date: "2026-11-09"
 ---
 
-# Button (`Button.kiw`)
+# Button
 
-Kategori: **Aksi & Tombol**  
-Berkas Komponen: `components/Button.kiw`  
-Sumber: `github.com/krewire/ui/components/Button.kiw`
+Kategori: **Aksi & Tombol**
 
 Komponen `<Button />` adalah elemen interaktif fundamental dari design system Krewire UI. Komponen ini me-render elemen HTML `<button>` atau tautan `<a>` dengan styling pop-brutalist (border solid tegas, bayangan kotak kaku, dan animasi klik kaku).
 
@@ -22,20 +20,9 @@ Bingkai di atas memuat `Button.kiw` asli dari Krewire UI, yang sudah di-render o
 
 ---
 
-## 1. Instalasi (Model Copy & Own)
+## Contoh Penggunaan
 
-Salin berkas `Button.kiw` langsung ke direktori `components/` proyek Anda:
-
-```bash
-mkdir -p ./components
-cp path/to/krewire/ui/components/Button.kiw ./components/
-```
-
----
-
-## 2. Contoh Penggunaan
-
-### 2.1 Varian Warna
+### Varian Warna
 
 ```html
 <Button variant="primary">Aksi Utama</Button>
@@ -45,7 +32,7 @@ cp path/to/krewire/ui/components/Button.kiw ./components/
 <Button variant="ghost">Tombol Polos (Ghost)</Button>
 ```
 
-### 2.2 Skala Ukuran
+### Skala Ukuran
 
 ```html
 <Button variant="primary" size="sm">Kecil (sm)</Button>
@@ -53,7 +40,7 @@ cp path/to/krewire/ui/components/Button.kiw ./components/
 <Button variant="primary" size="lg">Besar (lg)</Button>
 ```
 
-### 2.3 Dengan Ikon dan Tautan
+### Dengan Ikon dan Tautan
 
 ```html
 <!-- Tombol dengan ikon di depan -->
@@ -65,7 +52,7 @@ cp path/to/krewire/ui/components/Button.kiw ./components/
 </Button>
 ```
 
-### 2.4 Status Nonaktif dan Handler Klik
+### Status Nonaktif dan Handler Klik
 
 ```html
 <Button variant="primary" disabled=true>Status Nonaktif</Button>
@@ -74,7 +61,7 @@ cp path/to/krewire/ui/components/Button.kiw ./components/
 
 ---
 
-## 3. Properti yang Didukung
+## Properti & Atribut
 
 - `variant`: Gaya tampilan tombol (`primary`, `secondary`, `accent`, `outline`, `ghost`, default: `primary`).
 - `size`: Token ukuran tombol (`sm`, `md`, `lg`, default: `md`).

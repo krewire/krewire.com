@@ -6,28 +6,13 @@ date: "2026-11-09"
 
 # Empty
 
-Kategori: **Umpan Balik & Status**  
-Berkas Komponen: `components/Empty.kiw`  
-Sumber: `github.com/krewire/ui/components/Empty.kiw`
+Kategori: **Umpan Balik & Status**
 
 Placeholder status kosong dengan ikon ilustrasi, pesan, dan tombol aksi.
 
 ---
 
-## 1. Instalasi (Model Copy & Own)
-
-Salin berkas komponen `Empty.kiw` langsung ke direktori `./components` proyek Anda:
-
-```bash
-mkdir -p ./components
-cp path/to/krewire/ui/components/Empty.kiw ./components/
-```
-
-Setelah disalin, proyek Anda memiliki berkas komponen ini sepenuhnya. Anda bebas menyesuaikan markup HTML, logika, dan styling tanpa khawatir pembaruan upstream merusak aplikasi Anda.
-
----
-
-## 2. Contoh Penggunaan Dasar
+## Contoh Penggunaan Dasar
 
 Gunakan `<Empty />` langsung di dalam halaman `.kiw` atau template tata letak:
 
@@ -39,7 +24,7 @@ Gunakan `<Empty />` langsung di dalam halaman `.kiw` atau template tata letak:
 
 ---
 
-## 3. Properti & Atribut yang Didukung
+## Properti & Atribut
 
 - `action`: Mengonfigurasi atribut atau perilaku `action`.
 - `actionText`: Mengonfigurasi atribut atau perilaku `actionText`.
@@ -52,7 +37,7 @@ Gunakan `<Empty />` langsung di dalam halaman `.kiw` atau template tata letak:
 
 ---
 
-## 4. Token Visual & Aksesibilitas
+## Token Visual & Aksesibilitas
 
 - **Stylesheet Design System**: Mewarisi token CSS terpusat dari `krewire-ui.css` (`--border`, `--radius`, `--pop-shadow`).
 - **Mode Gelap (Dark Mode)**: Warna permukaan dan teks otomatis dibalik saat `data-theme="dark"` atau class `.dark` diterapkan pada `:root`.

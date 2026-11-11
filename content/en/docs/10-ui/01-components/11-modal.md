@@ -4,11 +4,9 @@ description: "Accessible modal dialog built on the native HTML dialog element."
 date: "2026-11-09"
 ---
 
-# Modal (`Modal.kiw`)
+# Modal
 
-Category: **Overlays & Dialogs**  
-Component File: `components/Modal.kiw`  
-Source: `github.com/krewire/ui/components/Modal.kiw`
+Category: **Overlays & Dialogs**
 
 The `<Modal />` component renders an accessible modal dialog leveraging the browser's native `<dialog>` element. It features pop-in animations, backdrop blur, keyboard `Escape` dismissal, and focus trapping without third-party dependencies.
 
@@ -22,16 +20,7 @@ The frames above load the real `Modal.kiw` from Krewire UI, prebuilt by `kiw bui
 
 ---
 
-## 1. Copy & Own Installation
-
-```bash
-mkdir -p ./components
-cp path/to/krewire/ui/components/Modal.kiw ./components/
-```
-
----
-
-## 2. Examples & Usage
+## Examples & Usage
 
 ```html
 <!-- Trigger Button -->

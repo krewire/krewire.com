@@ -6,28 +6,13 @@ date: "2026-11-09"
 
 # Flex
 
-Category: **Layout Primitives**  
-Component File: `components/Flex.kiw`  
-Source: `github.com/krewire/ui/components/Flex.kiw`
+Category: **Layout Primitives**
 
 Flexible layout container with configurable direction, align, and justify.
 
 ---
 
-## 1. Copy & Own Installation
-
-Copy the `Flex.kiw` component directly into your project's `./components` directory:
-
-```bash
-mkdir -p ./components
-cp path/to/krewire/ui/components/Flex.kiw ./components/
-```
-
-Once copied, your project owns the component file completely. You can customize the HTML markup, logic, and styling without upstream library lock-in.
-
----
-
-## 2. Basic Usage
+## Basic Usage
 
 Use `<Flex />` directly within your `.kiw` page or layout templates:
 
@@ -39,7 +24,7 @@ Use `<Flex />` directly within your `.kiw` page or layout templates:
 
 ---
 
-## 3. Supported Props & Attributes
+## Supported Props
 
 - `align`: Configures the `align` attribute or behavior.
 - `direction`: Configures the `direction` attribute or behavior.
@@ -52,7 +37,7 @@ Use `<Flex />` directly within your `.kiw` page or layout templates:
 
 ---
 
-## 4. Visual Tokens & Accessibility
+## Visual Tokens & Accessibility
 
 - **Design System Stylesheet**: Inherits variables from `krewire-ui.css` (`--border`, `--radius`, `--pop-shadow`).
 - **Dark Mode**: Automatically inverts surface and text colors when `data-theme="dark"` or the `.dark` class is applied to `:root`.

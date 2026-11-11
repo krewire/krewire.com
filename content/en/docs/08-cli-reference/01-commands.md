@@ -444,7 +444,7 @@ kiw ui diff <name>        # Compare local component with upstream template
 
 ### `kiw pkg <init|pack|add|list|export>`
 
-Manage standalone, independently distributable `.kiw` component packages and UI kits ([ADR-K7P9L](https://github.com/krewire/internal/blob/main/docs/adr/ADR-K7P9L-pluggable-reusable-kiw-dsl-components.md)). Enables modular packaging, tar.gz (`.kpkg`) archiving with SHA-256 integrity verification, local installation into `./.krewire/pkg/`, and automated style injection with zero npm dependencies:
+Manage standalone, independently distributable `.kiw` component packages and UI kits (ADR-K7P9L). Enables modular packaging, tar.gz (`.kpkg`) archiving with SHA-256 integrity verification, local installation into `./.krewire/pkg/`, and automated style injection with zero npm dependencies:
 
 ```bash
 kiw pkg init @acme/ui              # Scaffolds standalone package with kiw.pkg.json

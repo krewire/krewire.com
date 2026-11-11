@@ -37,7 +37,7 @@ See [Openness & Self-Hosting](/project/openness-and-self-hosting) for links to e
 └──────────────────────────────┘
 ```
 
-Current state (verifiable in [`version.go`](https://github.com/krewire/krewire/blob/main/version.go)): the core monorepo declares `Tier = model.TierFree` — *"All code in krewire/krewire is 100% open source; all packages are currently free-tier by default."*
+The core monorepo declares `Tier = model.TierFree` in `version.go`: all code in `krewire/krewire` is 100% open source, and all packages are free-tier by default.
 
 | Tier | Status |
 | :--- | :--- |

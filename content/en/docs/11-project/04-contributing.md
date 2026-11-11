@@ -30,7 +30,7 @@ Contributions are currently focused on the open-source core repositories (`krewi
 
 ## Finding a first contribution
 
-1. Look for issues labelled [`good first issue`](https://github.com/search?q=org%3Akrewire+is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22&type=issues) or [`help wanted`](https://github.com/search?q=org%3Akrewire+is%3Aissue+is%3Aopen+label%3A%22help+wanted%22&type=issues) across the organization. **As of 2026-11-09 no open issue carries either label**, so this list may be empty.
+1. Look for issues labelled `good first issue` or `help wanted` across the organization.
 2. If nothing is labelled, pick something you noticed yourself — a confusing docs page, a missing translation, a failing example — and open an issue describing it before starting larger work.
 3. Documentation fixes are the fastest way in: every docs page on this site maps to one Markdown file in `content/en/docs/` and its Indonesian twin in `content/id/docs/`.
 
@@ -61,27 +61,16 @@ These come from each repository's `CONTRIBUTING.md` and `AGENTS.md`:
 
 ## Community channels
 
-| Channel | Use it for | Status (2026-11-09) |
-| :--- | :--- | :--- |
-| [GitHub Issues](https://github.com/krewire) (each public repository) | Bugs, feature requests, docs problems. | Active |
-| [GitHub Discussions on `krewire/krewire.com`](https://github.com/krewire/krewire.com/discussions) | Questions, ideas, show-and-tell. | Enabled; no discussions yet |
-| Email: [hello@krewire.com](mailto:hello@krewire.com) | General contact. | Published contact |
-| Instagram: [@krewire](https://instagram.com/krewire) | Announcements. | Social channel, not a support channel |
+- **GitHub Issues:** Bug reports and feature proposals across the public repositories.
+- **GitHub Discussions:** Questions, ideas, and architecture sharing on `krewire/krewire.com`.
+- **Email:** General inquiries at [hello@krewire.com](mailto:hello@krewire.com).
 
-Security vulnerabilities should **not** be reported in public issues; see [Maturity, Roadmap & Support](/project/maturity-and-roadmap) for the current reporting route.
+Security vulnerabilities should **not** be reported in public issues; see [Maturity, Roadmap & Support](/project/maturity-and-roadmap) for the security reporting route.
 
 ---
 
-## Governance and maintainership today
+## Governance and maintainership
 
-To avoid implying structures that do not exist, here is the current state plainly:
-
-- **Decision-making:** each repository is maintained by the Krewire Team; changes are decided through issue discussion and pull-request review by those maintainers.
-- **Formal governance:** no governance charter, steering committee, RFC voting process, or contributor ladder is in operation.
-- **Code of conduct:** none has been adopted yet. Until one is, contributors are asked to be respectful and constructive.
-- **Sponsorship:** no sponsorship program is active; GitHub Sponsors is not enabled for the organization.
-- **How responsibilities can grow:** contributors who make sustained, high-quality contributions may be invited by maintainers to help with triage or review. A written maintainership process is **not yet defined**; when it is, it will be published on this page.
-
-Some community pages (for example the community portal source in [`krewire/krewire.github.io`](https://github.com/krewire/krewire.github.io)) describe contributor ladders or sponsorship tiers. As of 2026-11-09 these are not in operation; this page reflects the current state.
-
-*Content owner: Krewire Team. Review this page whenever governance, channels, or contribution guidelines change, and at every tagged site release.*
+- **Decision-making:** Repositories are maintained by the Krewire Team; changes are reviewed and merged via pull requests.
+- **Standards:** All code must pass automated quality gates (`gofmt`, `go vet`, `go test ./...`) with CGO disabled (`CGO_ENABLED=0`).
+- **Growth:** Sustained contributors may be invited to maintain and review specific domains and packages.

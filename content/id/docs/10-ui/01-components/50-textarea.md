@@ -6,28 +6,13 @@ date: "2026-11-09"
 
 # Textarea
 
-Kategori: **Formulir & Masukan**  
-Berkas Komponen: `components/Textarea.kiw`  
-Sumber: `github.com/krewire/ui/components/Textarea.kiw`
+Kategori: **Formulir & Masukan**
 
 Kolom input teks multi-baris dengan dukungan penyesuaian ukuran otomatis.
 
 ---
 
-## 1. Instalasi (Model Copy & Own)
-
-Salin berkas komponen `Textarea.kiw` langsung ke direktori `./components` proyek Anda:
-
-```bash
-mkdir -p ./components
-cp path/to/krewire/ui/components/Textarea.kiw ./components/
-```
-
-Setelah disalin, proyek Anda memiliki berkas komponen ini sepenuhnya. Anda bebas menyesuaikan markup HTML, logika, dan styling tanpa khawatir pembaruan upstream merusak aplikasi Anda.
-
----
-
-## 2. Contoh Penggunaan Dasar
+## Contoh Penggunaan Dasar
 
 Gunakan `<Textarea />` langsung di dalam halaman `.kiw` atau template tata letak:
 
@@ -39,7 +24,7 @@ Gunakan `<Textarea />` langsung di dalam halaman `.kiw` atau template tata letak
 
 ---
 
-## 3. Properti & Atribut yang Didukung
+## Properti & Atribut
 
 - `disabled`: Mengonfigurasi atribut atau perilaku `disabled`.
 - `error`: Mengonfigurasi atribut atau perilaku `error`.
@@ -56,7 +41,7 @@ Gunakan `<Textarea />` langsung di dalam halaman `.kiw` atau template tata letak
 
 ---
 
-## 4. Token Visual & Aksesibilitas
+## Token Visual & Aksesibilitas
 
 - **Stylesheet Design System**: Mewarisi token CSS terpusat dari `krewire-ui.css` (`--border`, `--radius`, `--pop-shadow`).
 - **Mode Gelap (Dark Mode)**: Warna permukaan dan teks otomatis dibalik saat `data-theme="dark"` atau class `.dark` diterapkan pada `:root`.

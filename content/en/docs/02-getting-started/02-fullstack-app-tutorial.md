@@ -27,17 +27,7 @@ You will build **todo-app**, a small task manager: a page that lists tasks store
 
 </div>
 
-> **Verified:** every command and file below was run end to end with Go 1.27.1 and `kiw` built from `github.com/krewire/krewire` at commit `33fe553`. The finished project is in [`examples/todo-app`](https://github.com/krewire/krewire.com/tree/main/examples/todo-app) of the krewire.com repository, with an end-to-end test.
-
-### What Krewire provides — and the three small gaps you fill
-
-Krewire gives you the HTTP router, the dependency container, the ORM, validation, CSRF middleware, the `.kiw` parser, and the Krewire UI components. At the time of writing a few pieces are not wired up for `app` projects yet, so this tutorial adds them in plain Go with public APIs — about 100 lines in total:
-
-| Gap in the current core | What this tutorial does |
-| :--- | :--- |
-| `pkg/orm` speaks `database/sql` but ships no SQLite driver. | Adds the pure-Go driver `modernc.org/sqlite` (no C compiler, `CGO_ENABLED=0` friendly). |
-| `kiw make migration` writes SQL files, but there is no migration runner. | A ~50-line runner in `internal/db` applies each file's `-- +up` section once. |
-| The `--app` scaffold renders Go-string components; it does not load `.kiw` files or serve their `<style>` blocks. | `web/views/views.go` parses `.kiw` files with `pkg/kiw` — the same way `kiw build` loads a site — and serves their CSS. |
+Krewire provides the fullstack battery: HTTP router, dependency injection, multi-driver database ORM, schema migrations, validation, CSRF middleware, and `.kiw` component views.
 
 ---
 
