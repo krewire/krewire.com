@@ -16,13 +16,13 @@ You do not need to write code to make a meaningful contribution.
 
 | Contribution | What it looks like | Where |
 | :--- | :--- | :--- |
-| **Code** | Fix a bug, improve a package, or extend `kiw`. | [`krewire/krewire`](https://github.com/krewire/krewire), [`krewire/krew`](https://github.com/krewire/krew), [`krewire/ui`](https://github.com/krewire/ui) |
-| **Documentation** | Correct, clarify, or extend a docs page. Docs live in `content/<locale>/docs/` as Markdown. | [`krewire/krewire.com`](https://github.com/krewire/krewire.com) |
-| **Translation** | Keep English and Indonesian pages consistent; translate new pages. | [`krewire/krewire.com`](https://github.com/krewire/krewire.com) (`content/id/`, `lang/id/`) |
-| **Examples & starters** | Improve project templates or write a worked example. | `templates/` in [`krewire/krewire`](https://github.com/krewire/krewire) |
+| **Code** | Fix a bug, improve a package, or extend `kiw`. | Core monorepo (`krewire`), AI agent (`krew`), UI kit (`ui`) |
+| **Documentation** | Correct, clarify, or extend a docs page. Docs live in `content/<locale>/docs/` as Markdown. | Documentation repo (`krewire.com`) |
+| **Translation** | Keep English and Indonesian pages consistent; translate new pages. | Documentation repo (`content/id/`, `lang/id/`) |
+| **Examples & starters** | Improve project templates or write a worked example. | `templates/` in `krewire` |
 | **Testing** | Try a workload end to end on your platform and report what broke, with steps to reproduce. | Issues in the relevant repository |
 | **Issue triage** | Reproduce reported bugs, ask for missing details, and suggest labels (`bug`, `documentation`, `good first issue`, …). | Issues in any public repository |
-| **Community support** | Answer questions and share what you built. | [Discussions on `krewire/krewire.com`](https://github.com/krewire/krewire.com/discussions) |
+| **Community support** | Answer questions and share what you built. | GitHub Discussions |
 
 Contributions are currently focused on the open-source core repositories (`krewire`, `krew`, `ui`, `krewire.com`).
 

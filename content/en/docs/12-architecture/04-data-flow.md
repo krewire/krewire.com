@@ -23,8 +23,6 @@ A `.kiw` file never fetches data itself. It is a template that receives a **data
 - In an **`app`** the data is computed **per request** by Go functions you register on a `web.App` (`pkg/web`, assembled with `pkg/app`). The same renderer turns it into HTML on every request.
 - In both, a **client script** can talk to JSON endpoints after the page loads — in an `app` those endpoints are your own Go handlers.
 
-Every statement and code sample on this page was checked against `github.com/krewire/krewire` at commit `33fe553`; the code samples were compiled and run.
-
 ---
 
 ## 1. The Request-Response Lifecycle

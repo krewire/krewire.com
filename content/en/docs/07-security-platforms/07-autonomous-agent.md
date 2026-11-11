@@ -4,7 +4,7 @@ description: "Architecture, ReAct execution loop, safe sandboxed tools, sliding-
 date: "2026-11-05"
 ---
 
-# Autonomous AI Agent Engine (`github.com/krewire/krew`)
+# Autonomous AI Agent Engine
 
 `krewire/krew` is the standalone, platform-agnostic autonomous AI agent monorepo of the Krewire ecosystem. It delivers a full-spectrum agent runtime featuring multi-turn ReAct reasoning, sandboxed workspace operations, sliding-window memory compaction, native Model Context Protocol (MCP) support, and a high-ergonomics embedding API.
 

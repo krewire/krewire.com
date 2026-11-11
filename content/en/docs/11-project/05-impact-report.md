@@ -36,7 +36,7 @@ Krewire separates three levels, and only treats the last two as impact:
 | Metric | Definition | Value | Period | Source |
 | :--- | :--- | :--- | :--- | :--- |
 | Public repositories | Repositories in the `krewire` GitHub organization visible without authentication. | 5 | As of 2026-11-09 | GitHub organization API (`public_repos`) |
-| Tagged versions of the core | Git tags on `krewire/krewire`. | 1 (`v0.2.0`) | As of 2026-11-09 | [`krewire/krewire` tags](https://github.com/krewire/krewire/tags) |
+| Tagged versions of the core | Git tags on `krewire/krewire`. | 1 (`v0.2.0`) | As of 2026-11-09 | Release tags on `krewire` repository |
 | Published GitHub Releases | Releases with downloadable assets across public repositories. | 0 | As of 2026-11-09 | GitHub Releases API |
 | Workload starters | Workload kinds that `kiw new` can scaffold. | 8 | As of v0.2.0 | `kiw new` flags in `tools/kiw/internal/commands/new.go` |
 | Documentation pages | Markdown pages per locale under `content/<locale>/docs/` of this website (English and Indonesian kept 1:1). | 135 per locale | As of 2026-11-09 | `scripts/check-i18n-parity.py` in this repository |
@@ -84,4 +84,4 @@ To keep reporting within the project's current capacity:
 1. **When:** at each tagged release of this website, or at least every six months.
 2. **How:** add the new period's values next to the previous ones in the tables above; keep earlier values for comparison. The report is plain Markdown, so updating it needs no website redesign.
 3. **Rules:** every metric keeps its definition, period, and source; unavailable data stays labelled "not yet measured"; estimates are never presented as measurements.
-4. **Adding metrics:** propose a new metric in an issue on [`krewire/krewire.com`](https://github.com/krewire/krewire.com/issues) with a definition and a reliable data source before publishing it.
+4. **Adding metrics:** propose a new metric via project issue with a definition and a reliable data source before publishing it.

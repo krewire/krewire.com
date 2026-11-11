@@ -16,13 +16,13 @@ Anda tidak harus menulis kode untuk memberi kontribusi yang berarti.
 
 | Kontribusi | Bentuknya | Tempat |
 | :--- | :--- | :--- |
-| **Kode** | Memperbaiki bug, meningkatkan paket, atau memperluas `kiw`. | [`krewire/krewire`](https://github.com/krewire/krewire), [`krewire/krew`](https://github.com/krewire/krew), [`krewire/ui`](https://github.com/krewire/ui) |
-| **Dokumentasi** | Mengoreksi, memperjelas, atau memperluas halaman dokumentasi. Dokumentasi berada di `content/<locale>/docs/` sebagai Markdown. | [`krewire/krewire.com`](https://github.com/krewire/krewire.com) |
-| **Terjemahan** | Menjaga konsistensi halaman bahasa Inggris dan Indonesia; menerjemahkan halaman baru. | [`krewire/krewire.com`](https://github.com/krewire/krewire.com) (`content/id/`, `lang/id/`) |
-| **Contoh & starter** | Meningkatkan template proyek atau menulis contoh kerja. | `templates/` di [`krewire/krewire`](https://github.com/krewire/krewire) |
+| **Kode** | Memperbaiki bug, meningkatkan paket, atau memperluas `kiw`. | Monorepo inti (`krewire`), AI agent (`krew`), UI kit (`ui`) |
+| **Dokumentasi** | Mengoreksi, memperjelas, atau memperluas halaman dokumentasi. Dokumentasi berada di `content/<locale>/docs/` sebagai Markdown. | Repositori dokumentasi (`krewire.com`) |
+| **Terjemahan** | Menjaga konsistensi halaman bahasa Inggris dan Indonesia; menerjemahkan halaman baru. | Repositori dokumentasi (`content/id/`, `lang/id/`) |
+| **Contoh & starter** | Meningkatkan template proyek atau menulis contoh kerja. | Direktori `templates/` di `krewire` |
 | **Pengujian** | Mencoba sebuah workload dari awal sampai akhir di platform Anda dan melaporkan yang rusak, beserta langkah reproduksinya. | Issue di repositori terkait |
 | **Triase issue** | Mereproduksi bug yang dilaporkan, meminta detail yang kurang, dan menyarankan label (`bug`, `documentation`, `good first issue`, …). | Issue di repositori publik mana pun |
-| **Dukungan komunitas** | Menjawab pertanyaan dan berbagi apa yang Anda bangun. | [Discussions di `krewire/krewire.com`](https://github.com/krewire/krewire.com/discussions) |
+| **Dukungan komunitas** | Menjawab pertanyaan dan berbagi apa yang Anda bangun. | GitHub Discussions |
 
 Kontribusi saat ini difokuskan pada repositori open-source inti (`krewire`, `krew`, `ui`, `krewire.com`).
 

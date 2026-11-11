@@ -4,7 +4,7 @@ description: "Arsitektur, execution loop ReAct, sandboxed tools, memori sliding-
 date: "2026-11-05"
 ---
 
-# Mesin Agen AI Otonom (`github.com/krewire/krew`)
+# Mesin Agen AI Otonom
 
 `krewire/krew` adalah monorepo agen AI otonom yang mandiri dan agnostik terhadap platform di dalam ekosistem Krewire. Monorepo ini menyediakan runtime agen lengkap dengan reasoning ReAct multi-langkah, operasi workspace terisolasi (sandbox), pemadatan konteks memori geser (sliding-window), dukungan native Model Context Protocol (MCP), serta embedding API yang sangat ergonomis.
 

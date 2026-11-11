@@ -128,7 +128,7 @@ func handleStream(w http.ResponseWriter, r *http.Request) {
 
 ---
 
-## 6. Mesin AI Agent Otonom (`github.com/krewire/krew`)
+## 6. Mesin AI Agent Otonom
 
 Sementara `pkg/ai` menyediakan abstraksi tingkat rendah untuk LLM, **`krew`** adalah platform AI agent otonom Krewire:
 

@@ -36,7 +36,7 @@ Krewire membedakan tiga tingkat, dan hanya menganggap dua tingkat terakhir sebag
 | Metrik | Definisi | Nilai | Periode | Sumber |
 | :--- | :--- | :--- | :--- | :--- |
 | Repositori publik | Repositori di organisasi GitHub `krewire` yang terlihat tanpa autentikasi. | 5 | Per 2026-11-09 | API organisasi GitHub (`public_repos`) |
-| Versi inti yang di-tag | Git tag pada `krewire/krewire`. | 1 (`v0.2.0`) | Per 2026-11-09 | [Tag `krewire/krewire`](https://github.com/krewire/krewire/tags) |
+| Versi inti yang di-tag | Git tag pada `krewire/krewire`. | 1 (`v0.2.0`) | Per 2026-11-09 | Tag rilis di repositori `krewire` |
 | GitHub Release yang dipublikasikan | Rilis dengan aset unduhan di seluruh repositori publik. | 0 | Per 2026-11-09 | GitHub Releases API |
 | Starter workload | Jenis workload yang dapat di-scaffold oleh `kiw new`. | 8 | Per v0.2.0 | Flag `kiw new` di `tools/kiw/internal/commands/new.go` |
 | Halaman dokumentasi | Halaman Markdown per locale di `content/<locale>/docs/` situs ini (bahasa Inggris dan Indonesia dijaga 1:1). | 135 per locale | Per 2026-11-09 | `scripts/check-i18n-parity.py` di repositori ini |
@@ -84,4 +84,4 @@ Agar pelaporan tetap sesuai dengan kapasitas proyek saat ini:
 1. **Kapan:** pada setiap rilis situs ini yang di-tag, atau setidaknya setiap enam bulan.
 2. **Bagaimana:** tambahkan nilai periode baru di samping nilai sebelumnya pada tabel di atas; pertahankan nilai lama untuk perbandingan. Laporan ini berupa Markdown biasa, sehingga pembaruannya tidak memerlukan desain ulang situs.
 3. **Aturan:** setiap metrik mempertahankan definisi, periode, dan sumbernya; data yang belum tersedia tetap diberi label "belum diukur"; estimasi tidak pernah disajikan sebagai hasil pengukuran.
-4. **Menambah metrik:** usulkan metrik baru melalui issue di [`krewire/krewire.com`](https://github.com/krewire/krewire.com/issues) beserta definisi dan sumber data yang andal sebelum dipublikasikan.
+4. **Menambah metrik:** usulkan metrik baru melalui issue proyek beserta definisi dan sumber data yang andal sebelum dipublikasikan.

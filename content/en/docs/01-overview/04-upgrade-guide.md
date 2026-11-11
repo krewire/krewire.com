@@ -126,10 +126,8 @@ location / {
 
 ---
 
-## Need Help Upgrading?
+## Next Steps
 
-If you encounter unexpected build behaviors or test failures:
+After understanding the upgrade strategy, proceed to hands-on onboarding:
 
-- Open a discussion on the [Krewire GitHub Forum](https://github.com/orgs/krewire/discussions).
-- Check the [issue tracker](https://github.com/krewire/krewire.com/issues) for known issues.
-- Return to [**Overview →**](/overview) or proceed to [**2. Getting Started →**](/getting-started).
+Continue to [**2. Getting Started →**](/getting-started).

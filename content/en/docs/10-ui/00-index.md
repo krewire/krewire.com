@@ -11,7 +11,7 @@ date: "2026-11-09"
 Components can be used directly across both authoring surfaces:
 - **Go-Native:** Programmatic, type-safe widgets and nodes (`github.com/krewire/ui/widget`).
 - **`.kiw` DSL:** Declarative Single-File Components (`import { Button } from '@krewire/ui'`).
-- **Package-based:** Install once via `kiw add @krewire/ui` without copying files into local directories, with optional `kiw pkg eject` if custom source ownership is needed.
+- **Package-based:** Install once via `kiw add @krewire/ui` without copying files into local directories, with optional `kiw ui vendor` if custom source ownership is needed.
 
 ---
 
@@ -20,4 +20,4 @@ Components can be used directly across both authoring surfaces:
 1. [**Components Directory (`/ui/components`)**](/docs/ui/components) — Complete reference catalog for all 66 Single-File Components, including buttons, cards, modals, navigation bars, forms, data displays, and layout primitives.
 2. **Design Tokens & Pop-Brutalism** — High-contrast semantic color palette, 2.5px solid borders, hard offset drop shadows (`4px 4px 0px var(--border)`), and accessible dark mode inversion.
 3. **Zero-Dependency Architecture** — Pure Go compilation (`CGO_ENABLED=0`), zero npm or Node.js runtime bloat, and standard library `embed.FS` distribution.
-4. [**Component Playground (`/ui/playground`)**](https://krewire.com/ui/playground) — Live light/dark previews of `Button`, `Badge`, `Input`, `Card`, `Modal`, `Tabs`, and `Alert` with variant and size toggles and one-click copy of the `.kiw` source and usage snippet. The same preview is embedded at the top of each of those component pages.
+4. [**Component Playground (`/ui/playground`)**](/ui/playground) — Live light/dark previews of `Button`, `Badge`, `Input`, `Card`, `Modal`, `Tabs`, and `Alert` with variant and size toggles and one-click copy of the `.kiw` source and usage snippet. The same preview is embedded at the top of each of those component pages.
