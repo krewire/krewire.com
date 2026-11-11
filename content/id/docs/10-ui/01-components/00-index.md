@@ -110,13 +110,29 @@ Tujuh komponen inti memiliki pratinjau interaktif: [`Button`](/id/docs/ui/compon
 
 ---
 
-## Cara Memasang Komponen
+## Menggunakan Komponen
 
-Untuk menambahkan komponen apa pun ke proyek Anda, gunakan perintah salin standar:
+### Pada Template `.kiw`
+Impor komponen berdasarkan nama:
+
+```html
+<script>
+  import { Button, Card } from '@krewire/ui';
+</script>
+```
+
+### Pada Kode Go
+Impor paket komponen:
+
+```go
+import "github.com/krewire/ui/components"
+```
+
+### Kustomisasi Lokal (Opt-in)
+Untuk melakukan fork dan mengedit komponen secara lokal di `./components/`:
 
 ```bash
-mkdir -p ./components
-cp path/to/krewire/ui/components/<NamaKomponen>.kiw ./components/
+kiw ui vendor <NamaKomponen>
 ```
 
 Dan hubungkan stylesheet kanonikal pada tag `<head>` tata letak halaman Anda:

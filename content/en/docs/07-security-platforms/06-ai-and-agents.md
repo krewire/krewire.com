@@ -128,7 +128,7 @@ func handleStream(w http.ResponseWriter, r *http.Request) {
 
 ---
 
-## 6. Autonomous AI Agent Engine (`github.com/krewire/krew`)
+## 6. Autonomous AI Agent Engine
 
 While `pkg/ai` provides low-level LLM abstractions, **`krew`** is Krewire's autonomous AI agent platform:
 

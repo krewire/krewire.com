@@ -110,13 +110,29 @@ Seven core components have an interactive preview: [`Button`](/docs/ui/component
 
 ---
 
-## How to Install Any Component
+## Using Components
 
-To add any component to your project, use the standard copy command:
+### In `.kiw` Templates
+Import components by name:
+
+```html
+<script>
+  import { Button, Card } from '@krewire/ui';
+</script>
+```
+
+### In Go Code
+Import the components package:
+
+```go
+import "github.com/krewire/ui/components"
+```
+
+### Local Customization (Opt-in)
+To fork and edit a component locally in `./components/`:
 
 ```bash
-mkdir -p ./components
-cp path/to/krewire/ui/components/<ComponentName>.kiw ./components/
+kiw ui vendor <ComponentName>
 ```
 
 And link the canonical stylesheet in your layout `<head>`:

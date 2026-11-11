@@ -23,8 +23,6 @@ Berkas `.kiw` tidak pernah mengambil data sendiri. Berkas ini adalah template ya
 - Pada **`app`**, data dihitung **per request** oleh fungsi Go yang Anda daftarkan pada `web.App` (`pkg/web`, dirakit dengan `pkg/app`). Renderer yang sama mengubahnya menjadi HTML pada setiap request.
 - Pada keduanya, **skrip klien** dapat berkomunikasi dengan endpoint JSON setelah halaman dimuat — pada `app`, endpoint tersebut adalah handler Go Anda sendiri.
 
-Setiap pernyataan dan contoh kode di halaman ini telah diperiksa terhadap `github.com/krewire/krewire` pada commit `33fe553`; contoh kodenya telah dikompilasi dan dijalankan.
-
 ---
 
 ## 1. Siklus Hidup Request-Response
