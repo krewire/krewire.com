@@ -47,8 +47,11 @@ kiw make component <Name>       # Membuat perancah components/<Name>.kiw
 kiw make component <Name.Part>  # Membuat perancah komponen majemuk components/<Name>/<Part>.kiw
 kiw make page <name>            # Membuat perancah pages/<name>.kiw
 kiw make handler <Name>         # Membuat perancah internal/handlers/<name>.go
-kiw make migration <name>       # Membuat perancah migrations/YYYYMMDDHHMMSS_<name>.sql
-kiw make model <Name>           # Membuat perancah internal/models/<name>.go
+kiw make migration <name>       # Membuat perancah migrations/YYYYMMDDHHMMSS_<name>.go
+kiw make model <Name>           # Membuat perancah internal/models/<name>.go (dengan orm.BaseModel)
+kiw make seeder <Name>          # Membuat perancah seeds/<name>_seeder.go
+kiw make factory <Name>         # Membuat perancah factories/<name>_factory.go
+kiw make repository <Name>      # Membuat perancah internal/repositories/<name>_repository.go
 kiw make middleware <Name>      # Membuat perancah internal/middleware/<name>.go
 kiw make service <Name>         # Membuat perancah internal/services/<name>.go
 kiw make job <Name>             # Membuat perancah internal/jobs/<name>_job.go
@@ -57,6 +60,36 @@ kiw make doc <name>             # Membuat artikel dokumentasi
 ```
 
 Mendukung sintaks titik dua (misalnya `kiw make:component Card` atau `kiw make component:Card`) dan flag eksplisit (`--kind`, `--name`). Mendukung notasi komponen majemuk bertitik (`kiw make component Card.Header` secara otomatis membuat `components/Card/Header.kiw` untuk pemanggilan komponen majemuk `<Card.Header />`).
+
+### `kiw migrate <up [n] | down [n] | redo | status | create <name>>`
+
+Mengelola migrasi skema database dengan jaminan transaksi aman dan advisory lock:
+
+```bash
+kiw migrate create create_users   # Membuat berkas migrasi skema Go baru
+kiw migrate up                    # Menerapkan seluruh migrasi yang tertunda
+kiw migrate up 1                  # Menerapkan satu migrasi berikutnya
+kiw migrate down                  # Mengembalikan batch migrasi terakhir
+kiw migrate redo                  # Rollback dan terapkan ulang secara atomik
+kiw migrate status                # Menampilkan tabel status migrasi
+```
+
+Flag:
+- `--dsn <dsn>`: Override string koneksi database.
+- `--driver <driver>`: Driver database (`sqlite`, `postgres`, `mysql`).
+- `--dir <path>`: Direktori migrasi (default: `migrations`).
+- `--lock-timeout <duration>`: Batas waktu perolehan lock (default: `30s`).
+
+### `kiw seed [--class <nama>] [--dsn <dsn>] [--driver <driver>] [--dir <dir>]`
+Alias: `kiw db:seed`
+
+Mengisi database dengan data pengujian dan status inisial sistem via seeder Go dan model factory:
+
+```bash
+kiw seed                       # Menjalankan DatabaseSeeder
+kiw seed --class UserSeeder    # Menjalankan seeder tertentu
+kiw db:seed                    # Alias kompatibel dengan Laravel
+```
 
 ---
 

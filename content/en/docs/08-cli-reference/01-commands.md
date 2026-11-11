@@ -47,8 +47,11 @@ kiw make component <Name>       # Scaffold components/<Name>.kiw
 kiw make component <Name.Part>  # Scaffold compound component components/<Name>/<Part>.kiw
 kiw make page <name>            # Scaffold pages/<name>.kiw
 kiw make handler <Name>         # Scaffold internal/handlers/<name>.go
-kiw make migration <name>       # Scaffold migrations/YYYYMMDDHHMMSS_<name>.sql
-kiw make model <Name>           # Scaffold internal/models/<name>.go
+kiw make migration <name>       # Scaffold migrations/YYYYMMDDHHMMSS_<name>.go
+kiw make model <Name>           # Scaffold internal/models/<name>.go (with orm.BaseModel)
+kiw make seeder <Name>          # Scaffold seeds/<name>_seeder.go
+kiw make factory <Name>         # Scaffold factories/<name>_factory.go
+kiw make repository <Name>      # Scaffold internal/repositories/<name>_repository.go
 kiw make middleware <Name>      # Scaffold internal/middleware/<name>.go
 kiw make service <Name>         # Scaffold internal/services/<name>.go
 kiw make job <Name>             # Scaffold internal/jobs/<name>_job.go
@@ -57,6 +60,36 @@ kiw make doc <name>             # Scaffold docs article
 ```
 
 Supports colon syntax (e.g. `kiw make:component Card` or `kiw make component:Card`) and explicit flags (`--kind`, `--name`). Supports compound dotted component names (`kiw make component Card.Header` automatically scaffolds `components/Card/Header.kiw` for seamless `<Card.Header />` compound invocation).
+
+### `kiw migrate <up [n] | down [n] | redo | status | create <name>>`
+
+Manage database schema migrations with transactional safety and advisory locks:
+
+```bash
+kiw migrate create create_users   # Generate a new Go schema migration
+kiw migrate up                    # Apply all pending migrations
+kiw migrate up 1                  # Apply the next single migration
+kiw migrate down                  # Roll back the last migration batch
+kiw migrate redo                  # Roll back and re-apply atomically
+kiw migrate status                # Display migration status table
+```
+
+Flags:
+- `--dsn <dsn>`: Override database connection string.
+- `--driver <driver>`: Database driver (`sqlite`, `postgres`, `mysql`).
+- `--dir <path>`: Migrations directory (default: `migrations`).
+- `--lock-timeout <duration>`: Lock acquisition timeout (default: `30s`).
+
+### `kiw seed [--class <name>] [--dsn <dsn>] [--driver <driver>] [--dir <dir>]`
+Alias: `kiw db:seed`
+
+Seed the database with test data and initial system state via Go seeders and model factories:
+
+```bash
+kiw seed                       # Execute DatabaseSeeder
+kiw seed --class UserSeeder    # Execute a specific seeder class
+kiw db:seed                    # Laravel-compatible alias
+```
 
 ---
 
