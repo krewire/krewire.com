@@ -44,16 +44,52 @@ Membuat perancah artefak aplikasi secara cepat mengikuti konvensi idiomatik:
 
 ```bash
 kiw make component <Name>       # Membuat perancah components/<Name>.kiw
+kiw make component <Name.Part>  # Membuat perancah komponen majemuk components/<Name>/<Part>.kiw
 kiw make page <name>            # Membuat perancah pages/<name>.kiw
 kiw make handler <Name>         # Membuat perancah internal/handlers/<name>.go
-kiw make migration <name>       # Membuat perancah migrations/YYYYMMDDHHMMSS_<name>.sql
-kiw make model <Name>           # Membuat perancah internal/models/<name>.go
+kiw make migration <name>       # Membuat perancah migrations/YYYYMMDDHHMMSS_<name>.go
+kiw make model <Name>           # Membuat perancah internal/models/<name>.go (dengan orm.BaseModel)
+kiw make seeder <Name>          # Membuat perancah seeds/<name>_seeder.go
+kiw make factory <Name>         # Membuat perancah factories/<name>_factory.go
+kiw make repository <Name>      # Membuat perancah internal/repositories/<name>_repository.go
 kiw make middleware <Name>      # Membuat perancah internal/middleware/<name>.go
 kiw make service <Name>         # Membuat perancah internal/services/<name>.go
 kiw make job <Name>             # Membuat perancah internal/jobs/<name>_job.go
+kiw make chapter <name>         # Membuat naskah bab buku (manuscript)
+kiw make doc <name>             # Membuat artikel dokumentasi
 ```
 
-Mendukung sintaks titik dua (misalnya `kiw make:component Card` atau `kiw make component:Card`) dan flag eksplisit (`--kind`, `--name`).
+Mendukung sintaks titik dua (misalnya `kiw make:component Card` atau `kiw make component:Card`) dan flag eksplisit (`--kind`, `--name`). Mendukung notasi komponen majemuk bertitik (`kiw make component Card.Header` secara otomatis membuat `components/Card/Header.kiw` untuk pemanggilan komponen majemuk `<Card.Header />`).
+
+### `kiw migrate <up [n] | down [n] | redo | status | create <name>>`
+
+Mengelola migrasi skema database dengan jaminan transaksi aman dan advisory lock:
+
+```bash
+kiw migrate create create_users   # Membuat berkas migrasi skema Go baru
+kiw migrate up                    # Menerapkan seluruh migrasi yang tertunda
+kiw migrate up 1                  # Menerapkan satu migrasi berikutnya
+kiw migrate down                  # Mengembalikan batch migrasi terakhir
+kiw migrate redo                  # Rollback dan terapkan ulang secara atomik
+kiw migrate status                # Menampilkan tabel status migrasi
+```
+
+Flag:
+- `--dsn <dsn>`: Override string koneksi database.
+- `--driver <driver>`: Driver database (`sqlite`, `postgres`, `mysql`).
+- `--dir <path>`: Direktori migrasi (default: `migrations`).
+- `--lock-timeout <duration>`: Batas waktu perolehan lock (default: `30s`).
+
+### `kiw seed [--class <nama>] [--dsn <dsn>] [--driver <driver>] [--dir <dir>]`
+Alias: `kiw db:seed`
+
+Mengisi database dengan data pengujian dan status inisial sistem via seeder Go dan model factory:
+
+```bash
+kiw seed                       # Menjalankan DatabaseSeeder
+kiw seed --class UserSeeder    # Menjalankan seeder tertentu
+kiw db:seed                    # Alias kompatibel dengan Laravel
+```
 
 ---
 
@@ -396,4 +432,31 @@ kiw forge resource product --model=Product                                   # S
 kiw forge form contact --fields="name:string,email:string,message:textarea"  # Buat form deklaratif dengan validasi
 kiw forge studio --port=8089                                                 # Jalankan studio visual builder interaktif
 ```
-- Melakukan penggantian binary secara atomik pada Linux, macOS, dan Windows dengan fallback otomatis ke toolchain Go.
+
+### `kiw ui <subcommand>`
+
+Kelola komponen design system dan template Pop-Brutalist `.kiw`:
+
+```bash
+kiw ui list               # Tampilkan daftar semua komponen di Krewire UI
+kiw ui add <name>         # Pasang komponen langsung ke ./components/
+kiw ui diff <name>        # Bandingkan komponen lokal dengan template upstream
+```
+
+### `kiw pkg <init|pack|add|list|export>`
+
+Kelola paket komponen mandiri `.kiw` dan kit UI yang dapat didistribusikan secara independen ([ADR-K7P9L](https://github.com/krewire/internal/blob/main/docs/adr/ADR-K7P9L-pluggable-reusable-kiw-dsl-components.md)). Memungkinkan pengemasan modular, pengarsipan tar.gz (`.kpkg`) dengan verifikasi integritas SHA-256, pemasangan lokal ke `./.krewire/pkg/`, dan injeksi stylesheet otomatis tanpa dependensi npm:
+
+```bash
+kiw pkg init @acme/ui              # Membuat perancah paket mandiri dengan kiw.pkg.json
+kiw pkg pack ./my-kit              # Mengemas paket ke dalam arsip distributable .kpkg
+kiw pkg add ./dist/ui-1.0.0.kpkg   # Memasang arsip paket ke ./.krewire/pkg/
+kiw pkg add ./local-kit            # Memasang dari direktori lokal ke ./.krewire/pkg/
+kiw pkg list                       # Menampilkan daftar paket komponen yang terpasang di ./.krewire/pkg
+kiw pkg list --json                # Inventaris JSON paket terpasang untuk mesin/CI
+kiw pkg export Card                # Memvalidasi dan mengekspor komponen mandiri
+```
+
+- **Manifest (`kiw.pkg.json`)**: Mendeklarasikan metadata paket, pemetaan path komponen yang diekspor, dan stylesheet (`styles`).
+- **Namespace & Aliasing**: Komponen dari paket terpasang dapat dipanggil menggunakan namespace paket (misalnya `<acme:Button />`) atau diimpor langsung via `<script> import Button from '@acme/ui'; </script>`.
+- **Integritas & Keamanan**: `kiw pkg pack` dan `kiw pkg add` menegakkan checksum SHA-256 dan batas `sec.SafePath` untuk mencegah kerentanan ZipSlip dan traversal direktori.

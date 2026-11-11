@@ -44,16 +44,52 @@ Rapidly scaffold application artifacts with idiomatic conventions:
 
 ```bash
 kiw make component <Name>       # Scaffold components/<Name>.kiw
+kiw make component <Name.Part>  # Scaffold compound component components/<Name>/<Part>.kiw
 kiw make page <name>            # Scaffold pages/<name>.kiw
 kiw make handler <Name>         # Scaffold internal/handlers/<name>.go
-kiw make migration <name>       # Scaffold migrations/YYYYMMDDHHMMSS_<name>.sql
-kiw make model <Name>           # Scaffold internal/models/<name>.go
+kiw make migration <name>       # Scaffold migrations/YYYYMMDDHHMMSS_<name>.go
+kiw make model <Name>           # Scaffold internal/models/<name>.go (with orm.BaseModel)
+kiw make seeder <Name>          # Scaffold seeds/<name>_seeder.go
+kiw make factory <Name>         # Scaffold factories/<name>_factory.go
+kiw make repository <Name>      # Scaffold internal/repositories/<name>_repository.go
 kiw make middleware <Name>      # Scaffold internal/middleware/<name>.go
 kiw make service <Name>         # Scaffold internal/services/<name>.go
 kiw make job <Name>             # Scaffold internal/jobs/<name>_job.go
+kiw make chapter <name>         # Scaffold book chapter manuscript
+kiw make doc <name>             # Scaffold docs article
 ```
 
-Supports colon syntax (e.g. `kiw make:component Card` or `kiw make component:Card`) and explicit flags (`--kind`, `--name`).
+Supports colon syntax (e.g. `kiw make:component Card` or `kiw make component:Card`) and explicit flags (`--kind`, `--name`). Supports compound dotted component names (`kiw make component Card.Header` automatically scaffolds `components/Card/Header.kiw` for seamless `<Card.Header />` compound invocation).
+
+### `kiw migrate <up [n] | down [n] | redo | status | create <name>>`
+
+Manage database schema migrations with transactional safety and advisory locks:
+
+```bash
+kiw migrate create create_users   # Generate a new Go schema migration
+kiw migrate up                    # Apply all pending migrations
+kiw migrate up 1                  # Apply the next single migration
+kiw migrate down                  # Roll back the last migration batch
+kiw migrate redo                  # Roll back and re-apply atomically
+kiw migrate status                # Display migration status table
+```
+
+Flags:
+- `--dsn <dsn>`: Override database connection string.
+- `--driver <driver>`: Database driver (`sqlite`, `postgres`, `mysql`).
+- `--dir <path>`: Migrations directory (default: `migrations`).
+- `--lock-timeout <duration>`: Lock acquisition timeout (default: `30s`).
+
+### `kiw seed [--class <name>] [--dsn <dsn>] [--driver <driver>] [--dir <dir>]`
+Alias: `kiw db:seed`
+
+Seed the database with test data and initial system state via Go seeders and model factories:
+
+```bash
+kiw seed                       # Execute DatabaseSeeder
+kiw seed --class UserSeeder    # Execute a specific seeder class
+kiw db:seed                    # Laravel-compatible alias
+```
 
 ---
 
@@ -395,3 +431,31 @@ kiw forge resource product --model=Product                                   # S
 kiw forge form contact --fields="name:string,email:string,message:textarea"  # Generate declarative form
 kiw forge studio --port=8089                                                 # Launch interactive visual builder studio
 ```
+
+### `kiw ui <subcommand>`
+
+Manage Pop-Brutalist `.kiw` design system components and templates:
+
+```bash
+kiw ui list               # List all available components in Krewire UI
+kiw ui add <name>         # Install component directly into ./components/
+kiw ui diff <name>        # Compare local component with upstream template
+```
+
+### `kiw pkg <init|pack|add|list|export>`
+
+Manage standalone, independently distributable `.kiw` component packages and UI kits ([ADR-K7P9L](https://github.com/krewire/internal/blob/main/docs/adr/ADR-K7P9L-pluggable-reusable-kiw-dsl-components.md)). Enables modular packaging, tar.gz (`.kpkg`) archiving with SHA-256 integrity verification, local installation into `./.krewire/pkg/`, and automated style injection with zero npm dependencies:
+
+```bash
+kiw pkg init @acme/ui              # Scaffolds standalone package with kiw.pkg.json
+kiw pkg pack ./my-kit              # Packs package into a distributable .kpkg archive
+kiw pkg add ./dist/ui-1.0.0.kpkg   # Installs package archive into ./.krewire/pkg/
+kiw pkg add ./local-kit            # Installs from local directory into ./.krewire/pkg/
+kiw pkg list                       # Lists installed component packages in ./.krewire/pkg
+kiw pkg list --json                # Machine-readable JSON inventory of installed packages
+kiw pkg export Card                # Validates and exports self-contained component
+```
+
+- **Manifest (`kiw.pkg.json`)**: Declares package metadata, exported component paths, and package stylesheets (`styles`).
+- **Namespace & Aliasing**: Components from installed packages can be invoked using their package namespace (e.g. `<acme:Button />`) or imported directly via `<script> import Button from '@acme/ui'; </script>`.
+- **Integrity & Security**: `kiw pkg pack` and `kiw pkg add` enforce SHA-256 checksums and `sec.SafePath` bounds to prevent ZipSlip and directory traversal vulnerabilities.
