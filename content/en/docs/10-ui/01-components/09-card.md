@@ -4,11 +4,9 @@ description: "Elevated card surface with header, media, body, and footer slots."
 date: "2026-11-09"
 ---
 
-# Card (`Card.kiw`)
+# Card
 
-Category: **Data Display & Content**  
-Component File: `components/Card.kiw`  
-Source: `github.com/krewire/ui/components/Card.kiw`
+Category: **Data Display & Content**
 
 The `<Card />` component provides an elevated surface container with signature pop-brutalist borders (`2.5px solid var(--border)`), hard offset box-shadows, and slots for headers, media, body content, and action footers.
 
@@ -22,18 +20,9 @@ The frames above load the real `Card.kiw` from Krewire UI, prebuilt by `kiw buil
 
 ---
 
-## 1. Copy & Own Installation
+## Examples & Usage
 
-```bash
-mkdir -p ./components
-cp path/to/krewire/ui/components/Card.kiw ./components/
-```
-
----
-
-## 2. Examples & Usage
-
-### 2.1 Basic Card with Titles and Badge
+### Basic Card with Titles and Badge
 
 ```html
 <Card title="Database Cluster" subtitle="PostgreSQL 17.2 · Production" badge="Healthy">
@@ -45,7 +34,7 @@ cp path/to/krewire/ui/components/Card.kiw ./components/
 </Card>
 ```
 
-### 2.2 Featured Card with Custom Header and Media
+### Featured Card with Custom Header and Media
 
 ```html
 <Card variant="featured">
@@ -64,7 +53,7 @@ cp path/to/krewire/ui/components/Card.kiw ./components/
 
 ---
 
-## 3. Supported Props & Slots
+## Supported Props
 
 ### Props
 - `title`: Header title text.

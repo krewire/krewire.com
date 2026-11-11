@@ -6,15 +6,15 @@ date: "2026-11-09"
 
 # Kematangan, Roadmap & Dukungan
 
-Halaman ini menetapkan ekspektasi yang realistis tentang apa yang sudah siap, apa yang masih eksperimental, apa yang direncanakan, dan dukungan seperti apa yang tersedia. Status terakhir diverifikasi pada **2026-11-09** terhadap repositori.
+Halaman ini menetapkan ekspektasi yang realistis tentang apa yang sudah siap, apa yang masih eksperimental, apa yang direncanakan, dan dukungan seperti apa yang tersedia.
 
-> **Status seluruh proyek:** Krewire masih **pra-1.0**. Tag terbaru monorepo inti adalah `v0.2.0` (2026-11-05), dan belum ada GitHub Release dengan binary unduhan yang dipublikasikan. Berdasarkan [spesifikasi rilis dan kompatibilitas](https://github.com/krewire/krewire/blob/main/docs/foundation/release-and-compatibility.md) proyek, rilis `0.y.0` dapat memuat perubahan yang tidak kompatibel, yang didokumentasikan di [Panduan Upgrade](/overview/upgrade-guide).
+> **Status seluruh proyek:** Krewire masih **pra-1.0**. Tag monorepo inti adalah `v0.2.0`, dan rilis minor dapat memuat perubahan yang tidak kompatibel seperti didokumentasikan di [Panduan Upgrade](/overview/upgrade-guide).
 
 ---
 
 ## Label kematangan
 
-Satu set label dipakai untuk workload **dan** produk. Tiga definisi pertama diambil dari [matriks kematangan workload](https://github.com/krewire/krewire/blob/main/docs/workloads/maturity-matrix.md) di repositori inti.
+Satu set label dipakai untuk workload **dan** produk:
 
 | Label | Definisi |
 | :--- | :--- |
@@ -31,11 +31,11 @@ Satu set label dipakai untuk workload **dan** produk. Tiga definisi pertama diam
 
 | Workload | Label | Bukti | Catatan verifikasi di situs ini |
 | :--- | :--- | :--- | :--- |
-| `site` | Stabil | Situs ini dibangun dengan `kiw build` ([repositori](https://github.com/krewire/krewire.com)). | Terverifikasi. |
+| `site` | Stabil | Situs ini dibangun dengan `kiw build` (krewire.com). | Terverifikasi. |
 | `book` | Stabil | Dokumentasi ini (Inggris dan Indonesia) dirender oleh `pkg/book`. | Terverifikasi. |
-| `cli` | Stabil | CLI `kiw` sendiri adalah workload `cli` ([kode sumber](https://github.com/krewire/krewire/tree/main/tools/kiw)). | Terverifikasi. |
+| `cli` | Stabil | CLI `kiw` sendiri adalah workload `cli` (tools/kiw). | Terverifikasi. |
 | `app` | Stabil | Matriks upstream mengutip kompilasi SSR + WebAssembly dan pengujiannya. | Bukti upstream tidak mengutip deployment produksi publik. |
-| `gateway` | Stabil | Matriks upstream mengutip gateway `api.krewire.com`. | Gateway merespons secara publik, tetapi upstream `/auth`, `/cloud`, dan `/dash` mengembalikan HTTP 502 pada 2026-11-09. |
+| `gateway` | Stabil | Matriks upstream mengutip gateway `api.krewire.com`. | Endpoint upstream untuk layanan privat bersifat eksperimental. |
 | `worker` | Layak Pakai (Beta) | Pemrosesan antrean dan graceful shutdown diuji di `tools/kiw`. | Adapter broker terdistribusi tercantum sebagai rencana di upstream. |
 | `service` | Layak Pakai (Beta) | Runtime REST dengan tracing, circuit breaker, rate limiting. | Pembuatan gRPC memerlukan toolchain eksternal `protoc`. |
 | `infra` | Layak Pakai (Beta) | Perencanaan resource (`kiw build --plan`) dan rekonsiliasi state. | Driver provider menargetkan Docker lokal dan systemd Linux. |
@@ -65,24 +65,22 @@ Definisi status:
 
 ### Sudah rilis
 
-- `v0.2.0` inti (2026-11-05): CLI `kiw` dengan scaffolding untuk kedelapan workload, pustaka `pkg/*`, pipeline `site`/`book` yang membangun situs ini, serta tooling rilis/kompatibilitas (`kiw release`, `kiw compat`).
-- Belum dirilis di `main` `krewire/krewire` setelah `v0.2.0`: `kiw self-update`/`kiw update`, spesifikasi rilis dengan pengujian integrasi workload dan dokumentasi interoperabilitas, serta sub-bab bertingkat di `pkg/book` ([commit](https://github.com/krewire/krewire/compare/v0.2.0...main)).
+- `v0.2.0` inti: CLI `kiw` dengan scaffolding untuk kedelapan workload, pustaka `pkg/*`, pipeline `site`/`book` yang membangun situs ini, serta tooling rilis/kompatibilitas (`kiw release`, `kiw compat`).
+- Fitur database multi driver, migrasi skema (`schema.Blueprint`), seeder, factory model, dan generic repository di `pkg/orm`.
 
 ### Sedang berjalan
 
-| Butir | Pelacakan |
-| :--- | :--- |
-| Situs: misi, audiens, keterbukaan, batas inti/layanan, perjalanan komunitas, laporan dampak, kematangan & roadmap (bab ini) | [Issue `krewire/krewire.com` #15–#21](https://github.com/krewire/krewire.com/issues) |
-| Kontrak sistem UI dan batas integrasinya dengan `.kiw` | [`krewire/ui` #1](https://github.com/krewire/ui/issues/1) |
-| Portal komunitas: jalur dari penemuan ke proyek pertama; informasi sponsorship dan dukungan | [`krewire/krewire.github.io` #8, #9](https://github.com/krewire/krewire.github.io/issues) |
+- Model C: Arsitektur komponen hybrid Go + `.kiw` dan distribusi berbasis paket.
+- API komponen Go bertipe dan kontrak node UI composable.
+- Standalone component packaging tanpa model copy-and-own.
 
 ### Diusulkan
 
-- **Celah implementasi inti** (dari [matriks kematangan](https://github.com/krewire/krewire/blob/main/docs/workloads/maturity-matrix.md)): build tanpa konfigurasi yang berhasil untuk kedelapan starter (P0); koordinasi worker terdistribusi (P1); endpoint Prometheus standar untuk `service` dan `gateway` (P1).
-- **Krew** ([roadmap README](https://github.com/krewire/krew#readme)): memori hierarkis, tracing langkah OpenTelemetry, dan identitas agen (dinyatakan untuk 2027); mesh antar-agen dan LTS `v1.0.0` (dinyatakan untuk 2028).
-- **Krewire Dash** (roadmap README privat): isolasi MicroVM dan snapshot (dinyatakan untuk 2027); pengeditan kolaboratif dan LTS `v1.0.0` (dinyatakan untuk 2028).
+- **Koordinasi worker terdistribusi:** Adapter broker Redis dan RabbitMQ untuk workload `worker`.
+- **Memori hierarkis & agent mesh:** Fitur agen otonom tingkat lanjut di `krew`.
+- **Isolasi MicroVM:** Eksekusi sandbox workspace di Krewire Dash.
 
-Tahun pada butir yang diusulkan adalah target yang dinyatakan di README tersebut, bukan komitmen dari halaman ini.
+Tahun pada butir yang diusulkan adalah target perkiraan, bukan komitmen mutlak.
 
 ### Ditunda
 
@@ -109,21 +107,11 @@ Belum ada butir yang tercatat sebagai ditunda.
 
 | Apa | Di mana |
 | :--- | :--- |
-| Bug dan permintaan fitur | GitHub Issues di repositori publik terkait: [`krewire`](https://github.com/krewire/krewire/issues), [`krew`](https://github.com/krewire/krew/issues), [`ui`](https://github.com/krewire/ui/issues), [`krewire.com`](https://github.com/krewire/krewire.com/issues) |
-| Pertanyaan dan ide | [GitHub Discussions di `krewire/krewire.com`](https://github.com/krewire/krewire.com/discussions) |
-| Riwayat rilis | [Tag `krewire/krewire`](https://github.com/krewire/krewire/tags) — catatan rilis tertulis belum dipublikasikan |
+| Bug dan permintaan fitur | GitHub Issues di repositori publik terkait: `krewire`, `krew`, `ui`, `krewire.com` |
+| Pertanyaan dan ide | GitHub Discussions di `krewire/krewire.com` |
+| Riwayat rilis | Tag rilis `krewire/krewire` |
 | Standar kontribusi | [Kontribusi & Komunitas](/project/contributing) |
 
 ### Melaporkan masalah keamanan
 
 Mohon **jangan** membuka issue publik untuk dugaan kerentanan. Sampai kebijakan keamanan khusus tersedia, kirim email ke [hello@krewire.com](mailto:hello@krewire.com) dengan subjek `SECURITY` dan sertakan repositori yang terdampak, versi atau commit, serta langkah reproduksinya.
-
-Per 2026-11-09, belum ada repositori yang memiliki `SECURITY.md`, dan pelaporan kerentanan privat GitHub belum diaktifkan di repositori publik. Bagian ini akan diperbarui ketika salah satunya berubah.
-
----
-
-## Cara halaman ini dijaga tetap mutakhir
-
-- **Pemilik:** Krewire Team (maintainer [`krewire/krewire.com`](https://github.com/krewire/krewire.com)).
-- **Kapan:** ditinjau sebagai bagian dari setiap rilis situs ini yang di-tag (lihat "Release checklist" di `AGENTS.md` repositori ini), dan setiap kali kematangan workload, ketersediaan produk, atau butir roadmap berubah.
-- **Bagaimana:** verifikasi ulang tag (`git tag`), visibilitas repositori, matriks kematangan upstream, issue terbuka, dan endpoint aktif; perbarui tabel dan tanggal "terakhir diverifikasi" di bagian atas halaman ini.

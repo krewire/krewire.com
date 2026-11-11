@@ -6,28 +6,13 @@ date: "2026-11-09"
 
 # VStack
 
-Kategori: **Tata Letak Primitif**  
-Berkas Komponen: `components/VStack.kiw`  
-Sumber: `github.com/krewire/ui/components/VStack.kiw`
+Kategori: **Tata Letak Primitif**
 
 Kontainer flex vertikal dengan jarak seragam antar elemen anak.
 
 ---
 
-## 1. Instalasi (Model Copy & Own)
-
-Salin berkas komponen `VStack.kiw` langsung ke direktori `./components` proyek Anda:
-
-```bash
-mkdir -p ./components
-cp path/to/krewire/ui/components/VStack.kiw ./components/
-```
-
-Setelah disalin, proyek Anda memiliki berkas komponen ini sepenuhnya. Anda bebas menyesuaikan markup HTML, logika, dan styling tanpa khawatir pembaruan upstream merusak aplikasi Anda.
-
----
-
-## 2. Contoh Penggunaan Dasar
+## Contoh Penggunaan Dasar
 
 Gunakan `<VStack />` langsung di dalam halaman `.kiw` atau template tata letak:
 
@@ -39,7 +24,7 @@ Gunakan `<VStack />` langsung di dalam halaman `.kiw` atau template tata letak:
 
 ---
 
-## 3. Properti & Atribut yang Didukung
+## Properti & Atribut
 
 - `align`: Mengonfigurasi atribut atau perilaku `align`.
 - `gap`: Mengonfigurasi atribut atau perilaku `gap`.
@@ -50,7 +35,7 @@ Gunakan `<VStack />` langsung di dalam halaman `.kiw` atau template tata letak:
 
 ---
 
-## 4. Token Visual & Aksesibilitas
+## Token Visual & Aksesibilitas
 
 - **Stylesheet Design System**: Mewarisi token CSS terpusat dari `krewire-ui.css` (`--border`, `--radius`, `--pop-shadow`).
 - **Mode Gelap (Dark Mode)**: Warna permukaan dan teks otomatis dibalik saat `data-theme="dark"` atau class `.dark` diterapkan pada `:root`.

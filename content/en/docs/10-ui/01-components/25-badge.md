@@ -6,9 +6,7 @@ date: "2026-11-09"
 
 # Badge
 
-Category: **Feedback & Status**  
-Component File: `components/Badge.kiw`  
-Source: `github.com/krewire/ui/components/Badge.kiw`
+Category: **Feedback & Status**
 
 Compact pill badge with color variants for tags, counts, and status indicators.
 
@@ -22,20 +20,7 @@ The frames above load the real `Badge.kiw` from Krewire UI, prebuilt by `kiw bui
 
 ---
 
-## 1. Copy & Own Installation
-
-Copy the `Badge.kiw` component directly into your project's `./components` directory:
-
-```bash
-mkdir -p ./components
-cp path/to/krewire/ui/components/Badge.kiw ./components/
-```
-
-Once copied, your project owns the component file completely. You can customize the HTML markup, logic, and styling without upstream library lock-in.
-
----
-
-## 2. Basic Usage
+## Basic Usage
 
 Use `<Badge />` directly within your `.kiw` page or layout templates:
 
@@ -47,7 +32,7 @@ Use `<Badge />` directly within your `.kiw` page or layout templates:
 
 ---
 
-## 3. Supported Props & Attributes
+## Supported Props
 
 - `dot`: Configures the `dot` attribute or behavior.
 - `size`: Configures the `size` attribute or behavior.
@@ -58,7 +43,7 @@ Use `<Badge />` directly within your `.kiw` page or layout templates:
 
 ---
 
-## 4. Visual Tokens & Accessibility
+## Visual Tokens & Accessibility
 
 - **Design System Stylesheet**: Inherits variables from `krewire-ui.css` (`--border`, `--radius`, `--pop-shadow`).
 - **Dark Mode**: Automatically inverts surface and text colors when `data-theme="dark"` or the `.dark` class is applied to `:root`.

@@ -6,28 +6,13 @@ date: "2026-11-09"
 
 # Sidebar
 
-Kategori: **Navigasi & Struktur**  
-Berkas Komponen: `components/Sidebar.kiw`  
-Sumber: `github.com/krewire/ui/components/Sidebar.kiw`
+Kategori: **Navigasi & Struktur**
 
 Bilah navigasi samping collapsible untuk dokumentasi dan dasbor aplikasi.
 
 ---
 
-## 1. Instalasi (Model Copy & Own)
-
-Salin berkas komponen `Sidebar.kiw` langsung ke direktori `./components` proyek Anda:
-
-```bash
-mkdir -p ./components
-cp path/to/krewire/ui/components/Sidebar.kiw ./components/
-```
-
-Setelah disalin, proyek Anda memiliki berkas komponen ini sepenuhnya. Anda bebas menyesuaikan markup HTML, logika, dan styling tanpa khawatir pembaruan upstream merusak aplikasi Anda.
-
----
-
-## 2. Contoh Penggunaan Dasar
+## Contoh Penggunaan Dasar
 
 Gunakan `<Sidebar />` langsung di dalam halaman `.kiw` atau template tata letak:
 
@@ -39,7 +24,7 @@ Gunakan `<Sidebar />` langsung di dalam halaman `.kiw` atau template tata letak:
 
 ---
 
-## 3. Properti & Atribut yang Didukung
+## Properti & Atribut
 
 - `head`: Mengonfigurasi atribut atau perilaku `head`.
 - `header`: Mengonfigurasi atribut atau perilaku `header`.
@@ -52,7 +37,7 @@ Gunakan `<Sidebar />` langsung di dalam halaman `.kiw` atau template tata letak:
 
 ---
 
-## 4. Token Visual & Aksesibilitas
+## Token Visual & Aksesibilitas
 
 - **Stylesheet Design System**: Mewarisi token CSS terpusat dari `krewire-ui.css` (`--border`, `--radius`, `--pop-shadow`).
 - **Mode Gelap (Dark Mode)**: Warna permukaan dan teks otomatis dibalik saat `data-theme="dark"` atau class `.dark` diterapkan pada `:root`.

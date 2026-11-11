@@ -27,17 +27,7 @@ Anda akan membangun **todo-app**, sebuah pengelola tugas kecil: halaman yang men
 
 </div>
 
-> **Terverifikasi:** setiap perintah dan berkas di bawah ini telah dijalankan dari awal hingga akhir dengan Go 1.27.1 dan `kiw` yang di-build dari `github.com/krewire/krewire` pada commit `33fe553`. Proyek jadinya ada di [`examples/todo-app`](https://github.com/krewire/krewire.com/tree/main/examples/todo-app) dalam repositori krewire.com, lengkap dengan tes end-to-end.
-
-### Apa yang disediakan Krewire — dan tiga celah kecil yang Anda isi
-
-Krewire menyediakan router HTTP, wadah dependensi, ORM, validasi, middleware CSRF, parser `.kiw`, dan komponen Krewire UI. Pada saat tulisan ini dibuat, beberapa bagian belum terhubung untuk proyek `app`, sehingga tutorial ini menambahkannya dengan Go biasa menggunakan API publik — sekitar 100 baris secara keseluruhan:
-
-| Celah di inti saat ini | Yang dilakukan tutorial ini |
-| :--- | :--- |
-| `pkg/orm` menggunakan `database/sql` tetapi tidak menyertakan driver SQLite. | Menambahkan driver Go murni `modernc.org/sqlite` (tanpa compiler C, ramah `CGO_ENABLED=0`). |
-| `kiw make migration` menulis berkas SQL, tetapi belum ada runner migrasi. | Runner ~50 baris di `internal/db` menerapkan bagian `-- +up` setiap berkas satu kali. |
-| Scaffold `--app` merender komponen berupa string Go; scaffold ini tidak memuat berkas `.kiw` maupun menyajikan blok `<style>`-nya. | `web/views/views.go` mengurai berkas `.kiw` dengan `pkg/kiw` — dengan cara yang sama seperti `kiw build` memuat sebuah situs — dan menyajikan CSS-nya. |
+Krewire menyediakan baterai fullstack lengkap: router HTTP, dependency injection, multi-driver database ORM, migrasi skema, validasi, middleware CSRF, dan tampilan komponen `.kiw`.
 
 ---
 

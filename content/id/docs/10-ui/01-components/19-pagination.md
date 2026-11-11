@@ -6,28 +6,13 @@ date: "2026-11-09"
 
 # Pagination
 
-Kategori: **Navigasi & Struktur**  
-Berkas Komponen: `components/Pagination.kiw`  
-Sumber: `github.com/krewire/ui/components/Pagination.kiw`
+Kategori: **Navigasi & Struktur**
 
 Bilah navigasi halaman dengan tombol sebelum, sesudah, dan tautan angka.
 
 ---
 
-## 1. Instalasi (Model Copy & Own)
-
-Salin berkas komponen `Pagination.kiw` langsung ke direktori `./components` proyek Anda:
-
-```bash
-mkdir -p ./components
-cp path/to/krewire/ui/components/Pagination.kiw ./components/
-```
-
-Setelah disalin, proyek Anda memiliki berkas komponen ini sepenuhnya. Anda bebas menyesuaikan markup HTML, logika, dan styling tanpa khawatir pembaruan upstream merusak aplikasi Anda.
-
----
-
-## 2. Contoh Penggunaan Dasar
+## Contoh Penggunaan Dasar
 
 Gunakan `<Pagination />` langsung di dalam halaman `.kiw` atau template tata letak:
 
@@ -39,7 +24,7 @@ Gunakan `<Pagination />` langsung di dalam halaman `.kiw` atau template tata let
 
 ---
 
-## 3. Properti & Atribut yang Didukung
+## Properti & Atribut
 
 - `currentPage`: Mengonfigurasi atribut atau perilaku `currentPage`.
 - `hasNext`: Mengonfigurasi atribut atau perilaku `hasNext`.
@@ -54,7 +39,7 @@ Gunakan `<Pagination />` langsung di dalam halaman `.kiw` atau template tata let
 
 ---
 
-## 4. Token Visual & Aksesibilitas
+## Token Visual & Aksesibilitas
 
 - **Stylesheet Design System**: Mewarisi token CSS terpusat dari `krewire-ui.css` (`--border`, `--radius`, `--pop-shadow`).
 - **Mode Gelap (Dark Mode)**: Warna permukaan dan teks otomatis dibalik saat `data-theme="dark"` atau class `.dark` diterapkan pada `:root`.

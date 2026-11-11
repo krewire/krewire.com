@@ -38,7 +38,7 @@ Maturity labels use the shared definitions in [Maturity, Roadmap & Support](/pro
 **No.** This is a verifiable licensing fact, not a promise about the future:
 
 - Every public repository is MIT-licensed (see [Openness & Self-Hosting](/project/openness-and-self-hosting)).
-- The core declares its own tier in code as free: [`version.go`](https://github.com/krewire/krewire/blob/main/version.go) sets `Tier = model.TierFree` with the comment *"All code in krewire/krewire is 100% open source; all packages are currently free-tier by default."*
+- The core declares its tier in code as free: `version.go` sets `Tier = model.TierFree` (*"All code in krewire/krewire is 100% open source; all packages are currently free-tier by default."*).
 - `pkg/model` defines a tier ladder (`free`, `pro`, `team`, `enterprise`) and `kiw tier --check <tier>` can assert that a project stays within a tier. **No `pro`, `team`, or `enterprise` packages, licenses, or prices exist publicly today.** The ladder is a classification mechanism, not a price list.
 - The core's stated design commitment ([Philosophy](/overview/philosophy)) is that no paid license is ever a prerequisite to build, deploy, or operate a complete system with it.
 
@@ -101,11 +101,3 @@ Each platform service is designed to be adopted on its own:
 - You can use the core without any platform service.
 - Platform services are separate binaries; using one does not require moving your codebase into it.
 - Shared identity (Auth) provides seamless token federation and SSO across Dash, Cloud, and Forge.
-
----
-
-## Pricing and availability: ownership and update process
-
-- **Current pricing:** none published.
-- **Owner:** Krewire Team (maintainers of [`krewire/krewire.com`](https://github.com/krewire/krewire.com)).
-- **Update process:** any availability or pricing information will be added to this page by pull request, dated, and reviewed as part of the tagged site release process described in [Maturity, Roadmap & Support](/project/maturity-and-roadmap). Information not on this page should not be treated as current.

@@ -6,28 +6,13 @@ date: "2026-11-09"
 
 # LangSwitch
 
-Category: **Actions & Buttons**  
-Component File: `components/LangSwitch.kiw`  
-Source: `github.com/krewire/ui/components/LangSwitch.kiw`
+Category: **Actions & Buttons**
 
 Language selector switch for multi-lingual internationalized applications.
 
 ---
 
-## 1. Copy & Own Installation
-
-Copy the `LangSwitch.kiw` component directly into your project's `./components` directory:
-
-```bash
-mkdir -p ./components
-cp path/to/krewire/ui/components/LangSwitch.kiw ./components/
-```
-
-Once copied, your project owns the component file completely. You can customize the HTML markup, logic, and styling without upstream library lock-in.
-
----
-
-## 2. Basic Usage
+## Basic Usage
 
 Use `<LangSwitch />` directly within your `.kiw` page or layout templates:
 
@@ -39,7 +24,7 @@ Use `<LangSwitch />` directly within your `.kiw` page or layout templates:
 
 ---
 
-## 3. Supported Props & Attributes
+## Supported Props
 
 - `code`: Configures the `code` attribute or behavior.
 - `icon`: Configures the `icon` attribute or behavior.
@@ -50,7 +35,7 @@ Use `<LangSwitch />` directly within your `.kiw` page or layout templates:
 
 ---
 
-## 4. Visual Tokens & Accessibility
+## Visual Tokens & Accessibility
 
 - **Design System Stylesheet**: Inherits variables from `krewire-ui.css` (`--border`, `--radius`, `--pop-shadow`).
 - **Dark Mode**: Automatically inverts surface and text colors when `data-theme="dark"` or the `.dark` class is applied to `:root`.

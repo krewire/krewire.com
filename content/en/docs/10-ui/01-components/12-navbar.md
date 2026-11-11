@@ -6,28 +6,13 @@ date: "2026-11-09"
 
 # Navbar
 
-Category: **Navigation & Structure**  
-Component File: `components/Navbar.kiw`  
-Source: `github.com/krewire/ui/components/Navbar.kiw`
+Category: **Navigation & Structure**
 
 Main application header with brand logo, nav links, and drawer trigger.
 
 ---
 
-## 1. Copy & Own Installation
-
-Copy the `Navbar.kiw` component directly into your project's `./components` directory:
-
-```bash
-mkdir -p ./components
-cp path/to/krewire/ui/components/Navbar.kiw ./components/
-```
-
-Once copied, your project owns the component file completely. You can customize the HTML markup, logic, and styling without upstream library lock-in.
-
----
-
-## 2. Basic Usage
+## Basic Usage
 
 Use `<Navbar />` directly within your `.kiw` page or layout templates:
 
@@ -39,7 +24,7 @@ Use `<Navbar />` directly within your `.kiw` page or layout templates:
 
 ---
 
-## 3. Supported Props & Attributes
+## Supported Props
 
 - `actions`: Configures the `actions` attribute or behavior.
 - `brand`: Configures the `brand` attribute or behavior.
@@ -59,7 +44,7 @@ Use `<Navbar />` directly within your `.kiw` page or layout templates:
 
 ---
 
-## 4. Visual Tokens & Accessibility
+## Visual Tokens & Accessibility
 
 - **Design System Stylesheet**: Inherits variables from `krewire-ui.css` (`--border`, `--radius`, `--pop-shadow`).
 - **Dark Mode**: Automatically inverts surface and text colors when `data-theme="dark"` or the `.dark` class is applied to `:root`.

@@ -92,5 +92,3 @@ Progress toward these aspirations is not yet measured. The [Impact & Sustainabil
 4. [**Contributing & Community**](/project/contributing) — How to participate, beyond code.
 5. [**Impact & Sustainability Report**](/project/impact-report) — What is measured, what is not, and how the project is funded.
 6. [**Maturity, Roadmap & Support**](/project/maturity-and-roadmap) — Status labels, roadmap, maintenance expectations, and reporting routes.
-
-*Content owner: Krewire Team (maintainers of [`krewire/krewire.com`](https://github.com/krewire/krewire.com)). Reviewed at every tagged site release.*

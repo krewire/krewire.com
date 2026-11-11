@@ -30,7 +30,7 @@ Kontribusi saat ini difokuskan pada repositori open-source inti (`krewire`, `kre
 
 ## Menemukan kontribusi pertama
 
-1. Cari issue berlabel [`good first issue`](https://github.com/search?q=org%3Akrewire+is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22&type=issues) atau [`help wanted`](https://github.com/search?q=org%3Akrewire+is%3Aissue+is%3Aopen+label%3A%22help+wanted%22&type=issues) di seluruh organisasi. **Per 2026-11-09 belum ada issue terbuka yang memakai kedua label tersebut**, sehingga daftar ini mungkin kosong.
+1. Cari issue berlabel `good first issue` atau `help wanted` di seluruh organisasi.
 2. Jika belum ada yang berlabel, pilih sesuatu yang Anda temukan sendiri — halaman dokumentasi yang membingungkan, terjemahan yang hilang, contoh yang gagal — dan buka issue yang menjelaskannya sebelum memulai pekerjaan besar.
 3. Perbaikan dokumentasi adalah jalan masuk tercepat: setiap halaman dokumentasi di situs ini berpadanan dengan satu berkas Markdown di `content/en/docs/` dan kembarannya dalam bahasa Indonesia di `content/id/docs/`.
 
@@ -61,27 +61,16 @@ Berikut diambil dari `CONTRIBUTING.md` dan `AGENTS.md` setiap repositori:
 
 ## Kanal komunitas
 
-| Kanal | Gunakan untuk | Status (2026-11-09) |
-| :--- | :--- | :--- |
-| [GitHub Issues](https://github.com/krewire) (setiap repositori publik) | Bug, permintaan fitur, masalah dokumentasi. | Aktif |
-| [GitHub Discussions di `krewire/krewire.com`](https://github.com/krewire/krewire.com/discussions) | Pertanyaan, ide, berbagi karya. | Diaktifkan; belum ada diskusi |
-| Email: [hello@krewire.com](mailto:hello@krewire.com) | Kontak umum. | Kontak yang dipublikasikan |
-| Instagram: [@krewire](https://instagram.com/krewire) | Pengumuman. | Kanal sosial, bukan kanal dukungan |
+- **GitHub Issues:** Laporan bug dan usulan fitur di repositori publik Krewire.
+- **GitHub Discussions:** Tanya jawab, ide, dan diskusi arsitektur di `krewire/krewire.com`.
+- **Email:** Kontak umum via [hello@krewire.com](mailto:hello@krewire.com).
 
-Kerentanan keamanan **tidak** boleh dilaporkan di issue publik; lihat [Kematangan, Roadmap & Dukungan](/project/maturity-and-roadmap) untuk jalur pelaporan saat ini.
+Kerentanan keamanan **tidak** boleh dilaporkan di issue publik; lihat [Kematangan, Roadmap & Dukungan](/project/maturity-and-roadmap) untuk jalur pelaporan keamanan.
 
 ---
 
-## Tata kelola dan maintainership saat ini
+## Tata kelola dan maintainership
 
-Agar tidak menyiratkan struktur yang belum ada, berikut kondisi saat ini apa adanya:
-
-- **Pengambilan keputusan:** setiap repositori dirawat oleh Krewire Team; perubahan diputuskan melalui diskusi issue dan review pull request oleh para maintainer tersebut.
-- **Tata kelola formal:** belum ada piagam tata kelola, komite pengarah, proses voting RFC, atau jenjang kontributor yang berjalan.
-- **Kode etik:** belum ada yang diadopsi. Sampai ada, kontributor diminta bersikap saling menghormati dan konstruktif.
-- **Sponsorship:** belum ada program sponsorship yang aktif; GitHub Sponsors belum diaktifkan untuk organisasi ini.
-- **Bagaimana tanggung jawab dapat berkembang:** kontributor yang memberi kontribusi berkualitas secara konsisten dapat diundang maintainer untuk membantu triase atau review. Proses maintainership tertulis **belum didefinisikan**; ketika sudah, proses itu akan dipublikasikan di halaman ini.
-
-Beberapa halaman komunitas (misalnya kode sumber portal komunitas di [`krewire/krewire.github.io`](https://github.com/krewire/krewire.github.io)) menggambarkan jenjang kontributor atau tingkatan sponsorship. Per 2026-11-09 hal tersebut belum berjalan; halaman inilah yang mencerminkan kondisi saat ini.
-
-*Pemilik konten: Krewire Team. Tinjau halaman ini setiap kali tata kelola, kanal, atau panduan kontribusi berubah, dan pada setiap rilis situs yang di-tag.*
+- **Pengambilan keputusan:** Repositori dirawat oleh Krewire Team; perubahan ditinjau dan digabungkan melalui pull request.
+- **Standar:** Seluruh kode harus lolos quality gate otomatis (`gofmt`, `go vet`, `go test ./...`) dengan CGO dinonaktifkan (`CGO_ENABLED=0`).
+- **Pengembangan:** Kontributor yang konsisten dapat diundang untuk membantu merawat dan meninjau domain serta paket tertentu.

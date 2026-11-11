@@ -6,15 +6,15 @@ date: "2026-11-09"
 
 # Maturity, Roadmap & Support
 
-This page sets realistic expectations about what is ready, what is experimental, what is planned, and what kind of support exists. Status was last verified on **2026-11-09** against the repositories.
+This page sets realistic expectations about what is ready, what is experimental, what is planned, and what kind of support exists.
 
-> **Project-wide status:** Krewire is **pre-1.0**. The core monorepo's latest tag is `v0.2.0` (2026-11-05), and no GitHub Release with downloadable binaries has been published. Under the project's [release and compatibility specification](https://github.com/krewire/krewire/blob/main/docs/foundation/release-and-compatibility.md), `0.y.0` releases may contain breaking changes, documented in the [Upgrade Guide](/overview/upgrade-guide).
+> **Project-wide status:** Krewire is **pre-1.0**. The core monorepo tag is `v0.2.0`, and minor releases may contain breaking changes as documented in the [Upgrade Guide](/overview/upgrade-guide).
 
 ---
 
 ## Maturity labels
 
-One set of labels is used for workloads **and** products. The first three definitions are taken from the core repository's [workload maturity matrix](https://github.com/krewire/krewire/blob/main/docs/workloads/maturity-matrix.md).
+One set of labels is used for workloads **and** products:
 
 | Label | Definition |
 | :--- | :--- |
@@ -31,11 +31,11 @@ One set of labels is used for workloads **and** products. The first three defini
 
 | Workload | Label | Evidence | Notes from verification on this site |
 | :--- | :--- | :--- | :--- |
-| `site` | Stable | This website is built with `kiw build` ([repository](https://github.com/krewire/krewire.com)). | Verified. |
+| `site` | Stable | This website is built with `kiw build` (krewire.com). | Verified. |
 | `book` | Stable | These docs (English and Indonesian) are rendered by `pkg/book`. | Verified. |
-| `cli` | Stable | The `kiw` CLI is itself a `cli` workload ([source](https://github.com/krewire/krewire/tree/main/tools/kiw)). | Verified. |
+| `cli` | Stable | The `kiw` CLI is itself a `cli` workload (tools/kiw). | Verified. |
 | `app` | Stable | Upstream matrix cites SSR + WebAssembly compilation and tests. | The upstream evidence does not cite a public production deployment. |
-| `gateway` | Stable | Upstream matrix cites the `api.krewire.com` gateway. | The gateway responds publicly, but its `/auth`, `/cloud`, and `/dash` upstreams returned HTTP 502 on 2026-11-09. |
+| `gateway` | Stable | Upstream matrix cites the `api.krewire.com` gateway. | Upstream gateway endpoints for private services are experimental. |
 | `worker` | Usable (Beta) | Queue processing and graceful shutdown tested in `tools/kiw`. | Distributed broker adapters are listed as planned upstream. |
 | `service` | Usable (Beta) | REST runtime with tracing, circuit breakers, rate limiting. | gRPC generation needs the external `protoc` toolchain. |
 | `infra` | Usable (Beta) | Resource planning (`kiw build --plan`) and state reconciliation. | Provider drivers target local Docker and Linux systemd. |
@@ -65,22 +65,20 @@ Status definitions:
 
 ### Shipped
 
-- `v0.2.0` of the core (2026-11-05): `kiw` CLI with scaffolding for all eight workloads, `pkg/*` libraries, the `site`/`book` pipeline that builds this website, and the release/compatibility tooling (`kiw release`, `kiw compat`).
-- Unreleased on `main` of `krewire/krewire` after `v0.2.0`: `kiw self-update`/`kiw update`, a release specification with workload integration tests and interoperability docs, and nested subchapters in `pkg/book` ([commits](https://github.com/krewire/krewire/compare/v0.2.0...main)).
+- `v0.2.0` of the core: `kiw` CLI with scaffolding for all eight workloads, `pkg/*` libraries, the `site`/`book` pipeline that builds this website, and the release/compatibility tooling (`kiw release`, `kiw compat`).
+- Advanced multi-driver database, migrations (`schema.Blueprint`), seeders, model factories, and generic repository in `pkg/orm`.
 
 ### In progress
 
-| Item | Tracking |
-| :--- | :--- |
-| Website: mission, audiences, openness, core/services boundary, community journey, impact report, maturity & roadmap (this chapter) | [`krewire/krewire.com` issues #15–#21](https://github.com/krewire/krewire.com/issues) |
-| UI system contract and integration boundary with `.kiw` | [`krewire/ui` #1](https://github.com/krewire/ui/issues/1) |
-| Community portal: path from discovery to first project; sponsorship and support information | [`krewire/krewire.github.io` #8, #9](https://github.com/krewire/krewire.github.io/issues) |
+- Model C: Hybrid Go + `.kiw` component architecture and package-based distribution.
+- Typed Go component API and composable UI node contract.
+- Standalone component packaging without copy-and-own defaults.
 
 ### Proposed
 
-- **Core implementation gaps** (from the [maturity matrix](https://github.com/krewire/krewire/blob/main/docs/workloads/maturity-matrix.md)): zero-configuration build success for all eight starters (P0); distributed worker coordination (P1); standard Prometheus endpoints for `service` and `gateway` (P1).
-- **Krew** ([README roadmap](https://github.com/krewire/krew#readme)): hierarchical memory, OpenTelemetry step tracing, and agent identity (stated for 2027); agent-to-agent mesh and `v1.0.0` LTS (stated for 2028).
-- **Krewire Dash** (private README roadmap): MicroVM isolation and snapshots (stated for 2027); collaborative editing and `v1.0.0` LTS (stated for 2028).
+- **Distributed worker coordination:** Redis and RabbitMQ broker adapters for `worker`.
+- **Hierarchical memory & agent mesh:** Advanced autonomous agent features in `krew`.
+- **MicroVM isolation:** Sandboxed workspace execution in Krewire Dash.
 
 Years in the proposed items are the targets stated in those READMEs, not commitments made by this page.
 
@@ -109,21 +107,11 @@ No item is currently recorded as deferred.
 
 | What | Where |
 | :--- | :--- |
-| Bugs and feature requests | GitHub Issues in the relevant public repository: [`krewire`](https://github.com/krewire/krewire/issues), [`krew`](https://github.com/krewire/krew/issues), [`ui`](https://github.com/krewire/ui/issues), [`krewire.com`](https://github.com/krewire/krewire.com/issues) |
-| Questions and ideas | [GitHub Discussions on `krewire/krewire.com`](https://github.com/krewire/krewire.com/discussions) |
-| Release history | [Tags of `krewire/krewire`](https://github.com/krewire/krewire/tags) — written release notes are not yet published |
+| Bugs and feature requests | GitHub Issues in the relevant public repository: `krewire`, `krew`, `ui`, `krewire.com` |
+| Questions and ideas | GitHub Discussions on `krewire/krewire.com` |
+| Release history | Release tags of `krewire/krewire` |
 | Contribution standards | [Contributing & Community](/project/contributing) |
 
 ### Reporting security issues
 
 Please **do not** open a public issue for a suspected vulnerability. Until a dedicated security policy exists, email [hello@krewire.com](mailto:hello@krewire.com) with the subject line `SECURITY` and include the affected repository, version or commit, and reproduction steps.
-
-As of 2026-11-09, no repository has a `SECURITY.md`, and GitHub private vulnerability reporting is not enabled on the public repositories. This section will be updated when either changes.
-
----
-
-## How this page is kept current
-
-- **Owner:** Krewire Team (maintainers of [`krewire/krewire.com`](https://github.com/krewire/krewire.com)).
-- **When:** reviewed as part of every tagged release of this website (see the "Release checklist" in this repository's `AGENTS.md`), and whenever a workload's maturity, a product's availability, or a roadmap item changes.
-- **How:** re-verify tags (`git tag`), repository visibility, the upstream maturity matrix, open issues, and live endpoints; update the tables and the "last verified" date at the top of this page.

@@ -6,28 +6,13 @@ date: "2026-11-09"
 
 # Drawer
 
-Category: **Navigation & Structure**  
-Component File: `components/Drawer.kiw`  
-Source: `github.com/krewire/ui/components/Drawer.kiw`
+Category: **Navigation & Structure**
 
 Smooth sliding drawer panel for mobile navigation and overlays.
 
 ---
 
-## 1. Copy & Own Installation
-
-Copy the `Drawer.kiw` component directly into your project's `./components` directory:
-
-```bash
-mkdir -p ./components
-cp path/to/krewire/ui/components/Drawer.kiw ./components/
-```
-
-Once copied, your project owns the component file completely. You can customize the HTML markup, logic, and styling without upstream library lock-in.
-
----
-
-## 2. Basic Usage
+## Basic Usage
 
 Use `<Drawer />` directly within your `.kiw` page or layout templates:
 
@@ -39,7 +24,7 @@ Use `<Drawer />` directly within your `.kiw` page or layout templates:
 
 ---
 
-## 3. Supported Props & Attributes
+## Supported Props
 
 - `Body`: Configures the `Body` attribute or behavior.
 - `Class`: Configures the `Class` attribute or behavior.
@@ -59,7 +44,7 @@ Use `<Drawer />` directly within your `.kiw` page or layout templates:
 
 ---
 
-## 4. Visual Tokens & Accessibility
+## Visual Tokens & Accessibility
 
 - **Design System Stylesheet**: Inherits variables from `krewire-ui.css` (`--border`, `--radius`, `--pop-shadow`).
 - **Dark Mode**: Automatically inverts surface and text colors when `data-theme="dark"` or the `.dark` class is applied to `:root`.

@@ -6,14 +6,9 @@ date: "2026-11-09"
 
 # Krewire UI Components Catalog
 
-Import path: `github.com/krewire/ui`  
-Design System Stylesheet: `/styles/krewire-ui.css`
-
 Welcome to the **Krewire UI (`kui`) Components Catalog**.
 
-Krewire UI provides **66 accessible, zero-dependency, pop-brutalist Single-File Components (`.kiw`)** built natively for the Krewire Go ecosystem.
-
-All components follow the **shadcn/ui "Copy & Own"** philosophy: you copy `.kiw` files directly into your project's `./components/` directory, giving you complete ownership without opaque runtime dependencies or upstream breaking changes.
+Krewire UI provides **66 accessible, zero-dependency, pop-brutalist components** built natively for the Krewire ecosystem. Components can be imported as versioned packages (`@krewire/ui`), used as typed Go widgets, or ejected locally if full source customization is required.
 
 ---
 

@@ -6,28 +6,13 @@ date: "2026-11-09"
 
 # Hamburger
 
-Kategori: **Navigasi & Struktur**  
-Berkas Komponen: `components/Hamburger.kiw`  
-Sumber: `github.com/krewire/ui/components/Hamburger.kiw`
+Kategori: **Navigasi & Struktur**
 
 Tombol menu hamburger 3 baris teranimasi untuk membuka drawer mobile.
 
 ---
 
-## 1. Instalasi (Model Copy & Own)
-
-Salin berkas komponen `Hamburger.kiw` langsung ke direktori `./components` proyek Anda:
-
-```bash
-mkdir -p ./components
-cp path/to/krewire/ui/components/Hamburger.kiw ./components/
-```
-
-Setelah disalin, proyek Anda memiliki berkas komponen ini sepenuhnya. Anda bebas menyesuaikan markup HTML, logika, dan styling tanpa khawatir pembaruan upstream merusak aplikasi Anda.
-
----
-
-## 2. Contoh Penggunaan Dasar
+## Contoh Penggunaan Dasar
 
 Gunakan `<Hamburger />` langsung di dalam halaman `.kiw` atau template tata letak:
 
@@ -39,7 +24,7 @@ Gunakan `<Hamburger />` langsung di dalam halaman `.kiw` atau template tata leta
 
 ---
 
-## 3. Properti & Atribut yang Didukung
+## Properti & Atribut
 
 - `Class`: Mengonfigurasi atribut atau perilaku `Class`.
 - `Controls`: Mengonfigurasi atribut atau perilaku `Controls`.
@@ -57,7 +42,7 @@ Gunakan `<Hamburger />` langsung di dalam halaman `.kiw` atau template tata leta
 
 ---
 
-## 4. Token Visual & Aksesibilitas
+## Token Visual & Aksesibilitas
 
 - **Stylesheet Design System**: Mewarisi token CSS terpusat dari `krewire-ui.css` (`--border`, `--radius`, `--pop-shadow`).
 - **Mode Gelap (Dark Mode)**: Warna permukaan dan teks otomatis dibalik saat `data-theme="dark"` atau class `.dark` diterapkan pada `:root`.

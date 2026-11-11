@@ -14,15 +14,15 @@ This page lets you check — without trusting marketing copy — what you can **
 
 | Repository | What it contains | Visibility | License |
 | :--- | :--- | :--- | :--- |
-| [`krewire/krewire`](https://github.com/krewire/krewire) | Core monorepo: `pkg/*` libraries, the `kiw` CLI, templates. | Public | [MIT](https://github.com/krewire/krewire/blob/main/LICENSE) (package-level `LICENSE` files are also MIT) |
-| [`krewire/krew`](https://github.com/krewire/krew) | Autonomous AI agent engine (embed, CLI, HTTP/SSE, MCP). | Public | [MIT](https://github.com/krewire/krew/blob/main/LICENSE) |
-| [`krewire/ui`](https://github.com/krewire/ui) | `.kiw` design system and UI components. | Public | [MIT](https://github.com/krewire/ui/blob/main/LICENSE) |
-| [`krewire/krewire.com`](https://github.com/krewire/krewire.com) | This website and documentation. | Public | [MIT](https://github.com/krewire/krewire.com/blob/main/LICENSE) |
-| [`krewire/krewire.github.io`](https://github.com/krewire/krewire.github.io) | Community portal source. | Public | [MIT](https://github.com/krewire/krewire.github.io/blob/main/LICENSE) |
-| [`krewire/dash`](https://dash.krewire.com) | Krewire Dash — virtual workspace & studio console. | Platform service | Dedicated platform portal |
-| [`krewire/cloud`](https://cloud.krewire.com) | Krewire Cloud — hybrid PaaS control plane. | Platform service | Dedicated platform portal |
-| [`krewire/auth`](https://auth.krewire.com) | Krewire Auth — identity, SSO, MFA, RBAC engine. | Platform service | Dedicated platform portal |
-| [`krewire/forge`](https://forge.krewire.com) | Krewire Forge — declarative web, form & admin panel builder. | Platform service | Dedicated platform portal |
+| `krewire/krewire` | Core monorepo: `pkg/*` libraries, the `kiw` CLI, templates. | Public | MIT |
+| `krewire/krew` | Autonomous AI agent engine (embed, CLI, HTTP/SSE, MCP). | Public | MIT |
+| `krewire/ui` | `.kiw` design system and UI components. | Public | MIT |
+| `krewire/krewire.com` | This website and documentation. | Public | MIT |
+| `krewire/krewire.github.io` | Community portal source. | Public | MIT |
+| `krewire/dash` | Krewire Dash — virtual workspace & studio console. | Platform service | Dedicated platform portal |
+| `krewire/cloud` | Krewire Cloud — hybrid PaaS control plane. | Platform service | Dedicated platform portal |
+| `krewire/auth` | Krewire Auth — identity, SSO, MFA, RBAC engine. | Platform service | Dedicated platform portal |
+| `krewire/forge` | Krewire Forge — declarative web, form & admin panel builder. | Platform service | Dedicated platform portal |
 
 The open-source core is everything in the **public, MIT-licensed** rows. Platform services provide specialized operational capabilities on top of the core foundation. Contribution routes for each public repository are described in [Contributing & Community](/project/contributing).
 
@@ -40,7 +40,7 @@ The following capabilities of the public core run entirely on your machine or yo
 | Test and verify | `kiw test`, `kiw vet`, `kiw compat` | None. |
 | Deploy to your own targets | `kiw deploy --target` (`binary`, `systemd`, `gh-pages`, `infra`) | Only the target you choose (for example, pushing to your own GitHub Pages branch). |
 | Use the libraries in any Go program | `github.com/krewire/krewire/pkg/...` | None — standard Go packages. |
-| Run the AI agent | `krew` | An LLM provider of your choice; with Ollama (`OLLAMA_HOST`) inference can run fully locally ([krew README](https://github.com/krewire/krew#readme)). |
+| Run the AI agent | `krew` | An LLM provider of your choice; with Ollama (`OLLAMA_HOST`) inference can run fully locally. |
 
 **Network calls that do exist in the core CLI** (verified in source):
 
@@ -56,7 +56,7 @@ The following capabilities of the public core run entirely on your machine or yo
 
 Krewire does not host your application; you do. The output of `kiw build` / `kiw deploy` is:
 
-- **Static files** for `site` and `book` — servable by any static web server or GitHub Pages. This website is an example: it is built with `kiw build` and served by a stock `nginx:alpine` container (see this repository's [`Dockerfile`](https://github.com/krewire/krewire.com/blob/main/Dockerfile)).
+- **Static files** for `site` and `book` — servable by any static web server or GitHub Pages. This website is an example: it is built with `kiw build` and served by a stock `nginx:alpine` container.
 - **A single Go binary** for `app`, `cli`, `worker`, `service`, and `gateway` — runnable on any Linux/macOS host; `kiw deploy --target systemd` generates a systemd unit.
 
 **Operational requirements:**
@@ -80,8 +80,6 @@ Krewire Dash, Cloud, Auth, and Forge are **optional**. No public core command or
 
 ## Interoperability and coexistence
 
-- **Co-location with other stacks.** A Krewire workload can live in its own directory inside a Node.js, Laravel, or PHP repository. `kiw info` detects these host projects but does not modify `package.json`, `composer.json`, `node_modules/`, or `vendor/` ([interoperability guide](https://github.com/krewire/krewire/blob/main/docs/guides/interoperability-and-migration.md), covered by tests such as `TestDetectHost_NodeJS` and `TestDetectHost_Laravel`).
+- **Co-location with other stacks.** A Krewire workload can live in its own directory inside a Node.js, Laravel, or PHP repository. `kiw info` detects these host projects but does not modify `package.json`, `composer.json`, `node_modules/`, or `vendor/`.
 - **Standard interfaces.** Workloads talk over HTTP or standard input/output; output is ordinary binaries and static files.
 - **Your infrastructure, your choice.** Deploy targets are your own host (binary/systemd), GitHub Pages, or your own infrastructure via `pkg/cloud/infra`.
-
-*Content owner: Krewire Team. Re-verify the tables above at every tagged release; repository visibility and licenses are the source of truth.*

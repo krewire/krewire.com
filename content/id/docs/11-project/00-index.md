@@ -92,5 +92,3 @@ Kemajuan menuju aspirasi ini belum diukur. [Laporan Dampak & Keberlanjutan](/pro
 4. [**Kontribusi & Komunitas**](/project/contributing) — Cara berpartisipasi, tidak hanya lewat kode.
 5. [**Laporan Dampak & Keberlanjutan**](/project/impact-report) — Apa yang diukur, apa yang belum, dan bagaimana proyek didanai.
 6. [**Kematangan, Roadmap & Dukungan**](/project/maturity-and-roadmap) — Label status, roadmap, ekspektasi pemeliharaan, dan jalur pelaporan.
-
-*Pemilik konten: Krewire Team (maintainer [`krewire/krewire.com`](https://github.com/krewire/krewire.com)). Ditinjau pada setiap rilis situs yang di-tag.*

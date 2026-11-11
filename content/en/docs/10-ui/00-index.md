@@ -4,15 +4,14 @@ description: "Zero-dependency pop-brutalist design system and component architec
 date: "2026-11-09"
 ---
 
-# Krewire UI (`github.com/krewire/ui`)
+# Krewire UI
 
-Import path: `github.com/krewire/ui`  
-Components Directory: `/docs/ui/components`  
-Design System Stylesheet: `/styles/krewire-ui.css`
+**Krewire UI (`kui`)** is a zero-dependency, neo-brutalist ("pop-brutalist") design system and component library built natively for the Krewire ecosystem.
 
-**Krewire UI (`kui`)** is a zero-dependency, neo-brutalist ("pop-brutalist") design system and Single-File Component library built natively for the Krewire Go ecosystem.
-
-All components follow the **shadcn/ui "Copy & Own"** model: you copy `.kiw` component files directly into your project's `./components/` directory, giving you complete ownership without opaque runtime dependencies or upstream breaking changes.
+Components can be used directly across both authoring surfaces:
+- **Go-Native:** Programmatic, type-safe widgets and nodes (`github.com/krewire/ui/widget`).
+- **`.kiw` DSL:** Declarative Single-File Components (`import { Button } from '@krewire/ui'`).
+- **Package-based:** Install once via `kiw add @krewire/ui` without copying files into local directories, with optional `kiw pkg eject` if custom source ownership is needed.
 
 ---
 
