@@ -1081,17 +1081,19 @@ setOpen(false);
 });
 });
 }
-document.querySelectorAll('[data-group] .toc-toggle').forEach(function (btn) {
+document.querySelectorAll('[data-group] .toc-toggle, [data-subgroup] .toc-toggle').forEach(function (btn) {
 if (btn._docsGroupBound) return;
 btn._docsGroupBound = true;
 btn.addEventListener('click', function (e) {
 e.preventDefault();
 e.stopPropagation();
-var g = btn.closest('[data-group]');
+// Bind to the nearest group: a subgroup toggle must never toggle its
+// parent chapter. closest() walks up, so the subgroup wins when present.
+var g = btn.closest('[data-subgroup], [data-group]');
 if (!g) return;
 var open = g.classList.toggle('open');
 btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-var link = g.querySelector('.toc-link');
+var link = g.querySelector('.toc-link, .toc-sub');
 if (link) {
 try {
 localStorage.setItem('krewire-toc-' + link.getAttribute('href'), open ? '1' : '0');
@@ -1099,18 +1101,40 @@ localStorage.setItem('krewire-toc-' + link.getAttribute('href'), open ? '1' : '0
 }
 });
 });
+// Restore saved state and always reveal the active branch.
+try {
+document.querySelectorAll('[data-group], [data-subgroup]').forEach(function (g) {
+var toggle = g.querySelector('.toc-toggle');
+if (g.querySelector('.active')) {
+g.classList.add('open');
+g.classList.add('has-active');
+if (toggle) toggle.setAttribute('aria-expanded', 'true');
+return;
+}
+var link = g.querySelector('.toc-link, .toc-sub');
+if (!link) return;
+var v = localStorage.getItem('krewire-toc-' + link.getAttribute('href'));
+if (v === '0') {
+g.classList.remove('open');
+if (toggle) toggle.setAttribute('aria-expanded', 'false');
+} else if (v === '1') {
+g.classList.add('open');
+if (toggle) toggle.setAttribute('aria-expanded', 'true');
+}
+});
+} catch (_) {}
 var toggleAll = document.getElementById('toc-toggle-all');
 if (toggleAll && !toggleAll._docsGroupBound) {
 toggleAll._docsGroupBound = true;
 toggleAll.addEventListener('click', function (e) {
 e.preventDefault();
-var groups = document.querySelectorAll('[data-group]');
+var groups = document.querySelectorAll('[data-group], [data-subgroup]');
 var anyClosed = Array.from(groups).some(function (g) { return !g.classList.contains('open'); });
 groups.forEach(function (g) {
 g.classList.toggle('open', anyClosed);
 var b = g.querySelector('.toc-toggle');
 if (b) b.setAttribute('aria-expanded', anyClosed ? 'true' : 'false');
-var link = g.querySelector('.toc-link');
+var link = g.querySelector('.toc-link, .toc-sub');
 if (link) {
 try {
 localStorage.setItem('krewire-toc-' + link.getAttribute('href'), anyClosed ? '1' : '0');
@@ -1132,8 +1156,19 @@ var matchCount = 0;
 document.querySelectorAll('#sidebar-toc > *').forEach(function (el) {
 if (!q) {
 el.style.display = '';
-if (el.hasAttribute('data-group')) {
 el.querySelectorAll('.toc-sub').forEach(function (s) { s.style.display = ''; });
+// Restore each subgroup independently from the chapter.
+el.querySelectorAll('[data-subgroup]').forEach(function (sub) {
+sub.style.display = '';
+var subLink = sub.querySelector('.toc-sub');
+var subHref = subLink ? subLink.getAttribute('href') : '';
+var subSaved = subHref ? localStorage.getItem('krewire-toc-' + subHref) : null;
+var subOpen = !!sub.querySelector('.active') || subSaved === '1' || (subSaved !== '0' && sub.classList.contains('open'));
+sub.classList.toggle('open', subOpen);
+var subToggle = sub.querySelector('.toc-toggle');
+if (subToggle) subToggle.setAttribute('aria-expanded', subOpen ? 'true' : 'false');
+});
+if (el.hasAttribute('data-group')) {
 var l = el.querySelector('.toc-link');
 var href = l ? l.getAttribute('href') : '';
 var v = href ? localStorage.getItem('krewire-toc-' + href) : null;
@@ -1152,6 +1187,17 @@ el.querySelectorAll('.toc-sub').forEach(function (s) {
 var m = (s.textContent || '').toLowerCase().indexOf(q) !== -1;
 s.style.display = (m || parentMatch) ? '' : 'none';
 if (m) subMatches++;
+});
+// A matched nested item must reveal its subgroup, not just the chapter.
+el.querySelectorAll('[data-subgroup]').forEach(function (sub) {
+var hasVisibleChild = Array.prototype.some.call(sub.querySelectorAll('.toc-sub'), function (s) {
+return s.style.display !== 'none';
+});
+var show = parentMatch || hasVisibleChild;
+sub.style.display = show ? '' : 'none';
+sub.classList.toggle('open', show);
+var subToggle = sub.querySelector('.toc-toggle');
+if (subToggle) subToggle.setAttribute('aria-expanded', show ? 'true' : 'false');
 });
 if (parentMatch || subMatches > 0) {
 el.style.display = '';
