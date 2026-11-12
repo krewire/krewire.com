@@ -849,6 +849,28 @@ body {
   border-left-color: var(--primary);
 }
 
+/* Subchapters are a second level: a compact toggle and their own height
+   budget. They must not inherit the chapter's 1200px cap, because a
+   subchapter can hold dozens of component pages. */
+.toc-subgroup > .toc-parent-row .toc-toggle {
+  width: 22px;
+  height: 22px;
+  box-shadow: none;
+}
+
+.toc-subgroup > .toc-parent-row .toc-sub {
+  font-size: 12.5px;
+}
+
+.toc-subgroup.open > .toc-subs {
+  max-height: 4000px;
+}
+
+.toc-sub.nested {
+  padding: 0.3rem 0.55rem 0.3rem 0.65rem;
+  font-size: 12.5px;
+}
+
 /* ── Content & Reader ─────────────────────────────────────────────────────── */
 .layout > main,
 .layout main {

@@ -114,14 +114,13 @@ Pelajari panduan lengkap untuk ekosistem Krewire:
 | **2.** | [**Memulai (Getting Started)**](/getting-started) | Jalur pemula: quickstart, tutorial aplikasi fullstack, instalasi, konfigurasi, dan DSL `.kiw`. |
 | **3.** | [**Workload Mendalam**](/workloads) | Arsitektur rinci untuk 8 jenis workload (`app`, `cli`, `site`, `book`, `worker`, `service`, `gateway`, `infra`). |
 | **4.** | [**Pustaka Inti & Fondasi**](/core-libraries) | Model domain dasar, supervisor siklus hidup kernel, konfigurasi, validasi, resiliensi, dan pengujian. |
-| **5.** | [**Framework Web & UI**](/web-ui) | Router radix HTTP, wadah aplikasi monolit, runtime WebAssembly, komponen .kiw UI, dan toolkit TUI. |
-| **6.** | [**Data, Penyimpanan & Layanan**](/data-services) | ORM multi-driver, penyimpanan objek, sistem berkas virtual, caching, email transaksional, dan pembayaran Indonesia. |
-| **7.** | [**Keamanan & Platform Ekosistem**](/security-platforms) | Kontrol keamanan, primitif auth, platform identitas enterprise, hybrid PaaS, dan agen AI otonom. |
-| **8.** | [**Referensi CLI**](/cli-reference) | Katalog perintah `kiw`, spesifikasi skema `krewire.yaml`, dan otomasi tugas. |
-| **9.** | [**Panduan & Arsitektur**](/guides) | Desain arsitektur, ketentuan lisensi open-core, dan panduan deployment produksi. |
-| **10.** | [**Krewire UI**](/ui) | Design system dan seluruh 66 komponen `.kiw`, dengan pratinjau langsung untuk komponen inti. |
-| **11.** | [**Proyek**](/project) | Audiens, keterbukaan, kontribusi, laporan dampak, kematangan dan peta jalan. |
-| **12.** | [**Pendalaman Arsitektur**](/architecture) | Platform engineering: piramida berlapis, DAG ekosistem, level cakupan, dan alur data. |
+| **5.** | [**Framework Web & UI**](/web-ui) | Router radix HTTP, wadah aplikasi monolit, runtime WebAssembly, dan toolkit TUI. |
+| **6.** | [**Krewire UI & Design System**](/ui) | Design system dan seluruh 66 komponen `.kiw`, dengan pratinjau langsung untuk komponen inti. |
+| **7.** | [**Data, Penyimpanan & Layanan**](/data-services) | ORM multi-driver, penyimpanan objek, sistem berkas virtual, caching, email transaksional, dan pembayaran Indonesia. |
+| **8.** | [**Keamanan & Platform Ekosistem**](/security-platforms) | Kontrol keamanan, primitif auth, platform identitas enterprise, hybrid PaaS, dan agen AI otonom. |
+| **9.** | [**Referensi CLI**](/cli-reference) | Katalog perintah `kiw`, spesifikasi skema `krewire.yaml`, dan otomasi tugas. |
+| **10.** | [**Panduan & Praktik Terbaik**](/guides) | Desain arsitektur, ketentuan lisensi open-core, dan panduan deployment produksi. |
+| **11.** | [**Pendalaman Arsitektur**](/architecture) | Platform engineering: piramida berlapis, DAG ekosistem, level cakupan, dan alur data. |
 
 ---
 

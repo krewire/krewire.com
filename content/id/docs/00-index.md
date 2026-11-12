@@ -1,16 +1,32 @@
 ---
-title: "Dokumentasi — Pilih Jalur Anda"
-description: "Mulailah dengan quickstart untuk pemula, ikuti jalur sesuai tujuan Anda (situs, aplikasi web, atau platform), atau baca dokumentasi sesuai urutan yang disarankan untuk peran Anda."
-date: "2026-11-09"
+title: "Dokumentasi — Jalur Belajar Komprehensif"
+description: "Ikuti jalur belajar bertahap dari situs Krewire pertama Anda hingga workload produksi dan arsitektur platform."
+date: "2026-11-12"
 ---
 
 # Dokumentasi Krewire
 
-> **Misi:** Misi Krewire adalah membuatnya mendekati gratis — baik dalam biaya finansial, beban operasional, maupun beban kognitif — bagi siapa pun untuk membangun, memiliki, dan mengoperasikan produk digital yang aman, berkelanjutan, dan berskala besar. Baca selengkapnya di [Tentang Krewire](/project).
+> **Misi:** Misi Krewire adalah membuatnya mendekati gratis — baik dalam biaya finansial, beban operasional, maupun beban kognitif — bagi siapa pun untuk membangun, memiliki, dan mengoperasikan produk digital yang aman, berkelanjutan, dan berskala besar. Baca selengkapnya di [Mengapa Krewire](/overview/why-krewire).
 
 **Krewire** adalah sekumpulan paket Go independen yang dijalankan melalui satu CLI (**`kiw`**) dan satu berkas konfigurasi (**`krewire.yaml`**). Anda menggunakannya untuk membangun situs web, dokumentasi, aplikasi web, CLI, dan — saat Anda membutuhkannya — worker, microservices, gateway, serta infrastruktur.
 
-Anda **tidak** perlu membaca tentang arsitektur untuk menggunakannya. Pilih titik awal di bawah ini.
+Anda **tidak** perlu membaca tentang arsitektur untuk menggunakannya. Ikuti tahapan di bawah ini secara berurutan, atau langsung menuju jalur yang sesuai dengan tujuan Anda.
+
+---
+
+## Jalur Belajar Sekilas
+
+| Tahap | Tujuan | Baca |
+| :--- | :--- | :--- |
+| **0. Orientasi** | Memahami apa itu Krewire dan apakah cocok untuk Anda. | [1. Ringkasan](/overview) |
+| **1. Sukses pertama** | Instal `kiw`, scaffold proyek, dan build sesuatu yang bisa dijalankan. | [2. Memulai](/getting-started) |
+| **2. Bangun produk** | Pilih workload yang tepat dan pelajari siklus hidup serta perintahnya. | [3. Workload](/workloads) |
+| **3. Pelajari fondasi** | Pahami model domain, siklus hidup, konfigurasi, validasi, dan resiliensi. | [4. Pustaka Inti & Fondasi](/core-libraries) |
+| **4. Bangun antarmuka** | Tambahkan routing HTTP, wadah aplikasi, WASM, dan design system. | [5. Framework Web & UI](/web-ui) · [6. Krewire UI](/ui) |
+| **5. Tambahkan data dan layanan** | Simpan data, cache, berkas, kirim email, dan integrasikan pembayaran. | [7. Data, Penyimpanan & Layanan](/data-services) |
+| **6. Amankan dan skalakan** | Terapkan kontrol keamanan, identitas, cloud, dan kapabilitas platform AI. | [8. Keamanan & Platform Ekosistem](/security-platforms) |
+| **7. Operasikan dan referensi** | Cari perintah, konfigurasi, dan playbook produksi. | [9. Referensi CLI](/cli-reference) · [10. Panduan & Praktik Terbaik](/guides) |
+| **8. Pendalaman** | Pelajari invarian arsitektur yang menjaga ekosistem tetap komposabel. | [11. Pendalaman Arsitektur](/architecture) |
 
 ---
 
@@ -106,11 +122,10 @@ Anda **tidak** perlu membaca tentang arsitektur untuk menggunakannya. Pilih titi
 | [2. Memulai](/getting-started) | **Jalur pemula**: quickstart, tutorial fullstack, instalasi, konfigurasi, DSL `.kiw`. |
 | [3. Workload](/workloads) | Satu panduan per workload: `app`, `cli`, `site`, `book`, `worker`, `service`, `gateway`, `infra`. |
 | [4. Pustaka Inti & Fondasi](/core-libraries) | Model, siklus hidup, konfigurasi, validasi, resiliensi, pengujian. |
-| [5. Framework Web & UI](/web-ui) | Router, wadah aplikasi, runtime WASM, UI, TUI. |
-| [6. Data, Penyimpanan & Layanan](/data-services) | ORM, penyimpanan objek, sistem berkas, cache, email, pembayaran. |
-| [7. Keamanan & Platform Ekosistem](/security-platforms) | Kontrol keamanan, auth, identitas, cloud, agen AI. |
-| [8. Referensi CLI](/cli-reference) | Setiap perintah `kiw` dan field `krewire.yaml`. |
-| [9. Panduan & Arsitektur](/guides) | Deployment, pengembangan berbantuan AI, hybrid cloud, lisensi open-core. |
-| [10. Krewire UI](/ui) | Design system dan seluruh 66 komponen, dengan pratinjau langsung. |
-| [11. Proyek](/project) | Audiens, keterbukaan, kontribusi, dampak, kematangan dan peta jalan. |
-| [12. Pendalaman Arsitektur](/architecture) | Platform engineering: piramida, DAG ekosistem, level cakupan, alur data, dan jalur belajar bertahap untuk tim. |
+| [5. Framework Web & UI](/web-ui) | Router, wadah aplikasi, runtime WASM, dan TUI. |
+| [6. Krewire UI](/ui) | Design system dan seluruh 66 komponen, dengan pratinjau langsung. |
+| [7. Data, Penyimpanan & Layanan](/data-services) | ORM, penyimpanan objek, sistem berkas, cache, email, pembayaran. |
+| [8. Keamanan & Platform Ekosistem](/security-platforms) | Kontrol keamanan, auth, identitas, cloud, agen AI. |
+| [9. Referensi CLI](/cli-reference) | Setiap perintah `kiw` dan field `krewire.yaml`. |
+| [10. Panduan & Praktik Terbaik](/guides) | Deployment, pengembangan berbantuan AI, hybrid cloud, lisensi open-core. |
+| [11. Pendalaman Arsitektur](/architecture) | Platform engineering: piramida, DAG ekosistem, level cakupan, alur data, dan jalur belajar bertahap untuk tim. |

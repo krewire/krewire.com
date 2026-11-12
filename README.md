@@ -2,7 +2,7 @@
 
 Source for the unified Krewire site (landing + docs), **100% built with Krewire** (`site` workload, file-based `.kiw`).
 
-**Mission:** make it nearly free — in financial cost, operational burden, and cognitive effort — for anyone to build, own, and operate digital products that are secure, sustainable, and scalable (see `content/<locale>/docs/11-project/`).
+**Mission:** make it nearly free — in financial cost, operational burden, and cognitive effort — for anyone to build, own, and operate digital products that are secure, sustainable, and scalable (see `content/<locale>/docs/01-overview/01-why-krewire.md`).
 
 **Positioning:** this site is the public face of Krewire — an end-to-end **digital SDLC ecosystem** in Go, from specification to production operations, held to three pillars: **secure**, **sustainable**, and **scalable**.
 

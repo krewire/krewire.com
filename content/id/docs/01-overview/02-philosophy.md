@@ -6,7 +6,7 @@ date: "2026-10-14"
 
 # Filosofi Inti
 
-Krewire dipandu oleh sebuah keyakinan fundamental — dirumuskan sebagai [misinya](/project): **membuatnya mendekati gratis — baik dalam biaya finansial, beban operasional, maupun beban kognitif — bagi siapa pun untuk membangun, memiliki, dan mengoperasikan produk digital yang aman, berkelanjutan, dan berskala besar.**
+Krewire dipandu oleh sebuah keyakinan fundamental — dirumuskan sebagai [misinya](/overview/why-krewire): **membuatnya mendekati gratis — baik dalam biaya finansial, beban operasional, maupun beban kognitif — bagi siapa pun untuk membangun, memiliki, dan mengoperasikan produk digital yang aman, berkelanjutan, dan berskala besar.**
 
 Perangkat lunak seharusnya mengubah pembangun menjadi produsen yang berdaulat, bukan penyewa abadi di atas platform kepemilikan tertutup (proprietary). Krewire dihadirkan sebagai **Pustaka Modular**: paket Go independen dengan satu tujuan yang Anda padukan di balik satu berkas konfigurasi (`krewire.yaml`) dan satu CLI terpadu (`kiw`).
 
