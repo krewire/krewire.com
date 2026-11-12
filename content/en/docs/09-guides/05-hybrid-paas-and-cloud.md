@@ -8,7 +8,7 @@ date: "2026-10-24"
 
 Krewire Cloud is designed as both a self-hosted hybrid PaaS engine for private VPS hosting and a managed multi-tenant cloud platform.
 
-> **Live Portal:** Krewire Cloud is available at [cloud.krewire.com](https://cloud.krewire.com). The `kiw deploy` commands in section 1 are part of the open-source core and work independently on your own infrastructure. See [Core & Platform Services](/project/core-and-platform-services).
+> **Live Portal:** Krewire Cloud is available at [cloud.krewire.com](https://cloud.krewire.com). The `kiw deploy` commands in section 1 are part of the open-source core and work independently on your own infrastructure. See the project's public documentation.
 
 ## 1. Self-Hosted Hybrid PaaS Engine
 

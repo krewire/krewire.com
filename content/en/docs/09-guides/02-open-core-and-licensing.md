@@ -15,9 +15,9 @@ Krewire is an open-source ecosystem with an **open-core** design: the public cor
 | Layer | Repositories | License |
 | :--- | :--- | :--- |
 | Open-source core | `krewire`, `krew`, `ui`, `krewire.com`, `krewire.github.io` | MIT (public) |
-| Platform services | `dash`, `cloud`, `auth`, `forge` | Platform services with dedicated portals; see [Core & Platform Services](/project/core-and-platform-services) |
+| Platform services | `dash`, `cloud`, `auth`, `forge` | Platform services with dedicated portals (see each product site). |
 
-See [Openness & Self-Hosting](/project/openness-and-self-hosting) for links to each `LICENSE` file.
+See the repository LICENSE files.
 
 ---
 
@@ -46,7 +46,7 @@ The core monorepo declares `Tier = model.TierFree` in `version.go`: all code in 
 | **`team`** | Defined as a classification only. No packages, license, or price are published. |
 | **`enterprise`** | Defined as a classification only. No packages, license, contract terms, or price are published. |
 
-Pricing, commercial license models, and support terms for higher tiers are **not yet defined**. Any future definition will be published, with an owner and date, on [Core & Platform Services](/project/core-and-platform-services).
+Pricing, commercial license models, and support terms for higher tiers are **not yet defined**. Any future definition will be published, with an owner and date, on the project public documentation.
 
 ---
 
@@ -55,7 +55,7 @@ Pricing, commercial license models, and support terms for higher tiers are **not
 These rules are Krewire's stated design commitments for the open-core boundary:
 
 ### Rule 1: Zero Runtime Lock-in
-A project referencing only `free` packages must **build, deploy, and run with zero license keys or cloud call-homes**. There is no trial expiration or hidden limit on the free tier. The network calls that the core CLI does make are listed in [Openness & Self-Hosting](/project/openness-and-self-hosting).
+A project referencing only `free` packages must **build, deploy, and run with zero license keys or cloud call-homes**. There is no trial expiration or hidden limit on the free tier. The network calls that the core CLI does make are listed in the repository documentation.
 
 ### Rule 2: Additive Wrapper Boundaries
 Any future paid module may wrap, harden, or optimize a `free` module, but must **never be a prerequisite for a free module**.

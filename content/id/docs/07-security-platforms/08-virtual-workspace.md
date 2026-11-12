@@ -45,7 +45,7 @@ Krewire Dash menyediakan mesin workspace virtual berbasis AI dan platform cloud 
 
 ## Akses Workspace & Integrasi Platform
 
-> **Portal Live:** Krewire Dash tersedia di [dash.krewire.com](https://dash.krewire.com) dengan konsol studio workspace terpadu di [dash.krewire.com/console](https://dash.krewire.com/console). Lihat [Inti & Layanan Platform](/project/core-and-platform-services) untuk detail arsitektur.
+> **Portal Live:** Krewire Dash tersedia di [dash.krewire.com](https://dash.krewire.com) dengan konsol studio workspace terpadu di [dash.krewire.com/console](https://dash.krewire.com/console). Lihat dokumentasi publik proyek untuk detail arsitektur.
 
 ### Konsol Studio & Workspace Terpadu
 
@@ -63,4 +63,4 @@ Untuk alur kerja pengembangan lokal tanpa dependensi cloud, developer dapat mema
 
 ### Edisi Self-Hosted dan Enterprise
 
-Belum ada edisi self-hosted maupun enterprise yang ditawarkan untuk publik, dan belum ada ketentuan kontrak atau harga yang dipublikasikan. Ketersediaan di masa depan akan diumumkan di [Inti & Layanan Platform](/project/core-and-platform-services).
+Belum ada edisi self-hosted maupun enterprise yang ditawarkan untuk publik, dan belum ada ketentuan kontrak atau harga yang dipublikasikan. Ketersediaan di masa depan akan diumumkan di dokumentasi publik proyek.

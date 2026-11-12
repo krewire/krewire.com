@@ -8,7 +8,7 @@ date: "2026-10-31"
 
 Krewire Cloud is designed as both a hybrid PaaS engine and a multi-tenant managed platform.
 
-> **Live Portal:** Krewire Cloud is available at [cloud.krewire.com](https://cloud.krewire.com) featuring hybrid PaaS orchestration, hermetic builds, process supervision, and dynamic edge routing. See [Core & Platform Services](/project/core-and-platform-services) for architectural details.
+> **Live Portal:** Krewire Cloud is available at [cloud.krewire.com](https://cloud.krewire.com) featuring hybrid PaaS orchestration, hermetic builds, process supervision, and dynamic edge routing. See the project's public documentation for architectural details.
 
 ---
 
@@ -82,4 +82,4 @@ ENTRYPOINT ["/app/server"]
 
 ### Self-Hosted and Managed Editions
 
-No self-hosted or managed edition of Krewire Cloud is offered publicly, and no enterprise subscription, pricing, or licensing terms are published. Any future availability will be announced on [Core & Platform Services](/project/core-and-platform-services).
+No self-hosted or managed edition of Krewire Cloud is offered publicly, and no enterprise subscription, pricing, or licensing terms are published. Any future availability will be announced on the project public documentation.

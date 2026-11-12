@@ -45,7 +45,7 @@ Krewire Dash provides an AI-powered virtual workspace engine and cloud IDE platf
 
 ## Workspace Access & Platform Integration
 
-> **Live Portal:** Krewire Dash is available at [dash.krewire.com](https://dash.krewire.com) featuring the unified workspace studio console at [dash.krewire.com/console](https://dash.krewire.com/console). See [Core & Platform Services](/project/core-and-platform-services) for architectural details.
+> **Live Portal:** Krewire Dash is available at [dash.krewire.com](https://dash.krewire.com) featuring the unified workspace studio console at [dash.krewire.com/console](https://dash.krewire.com/console). See the project's public documentation for architectural details.
 
 ### Unified Workspace & Studio Console
 
@@ -63,4 +63,4 @@ For local development without cloud dependencies, developers use the native `kiw
 
 ### Self-Hosted and Enterprise Editions
 
-No self-hosted or enterprise edition is offered publicly, and no contract terms or pricing are published. Any future availability will be announced on [Core & Platform Services](/project/core-and-platform-services).
+No self-hosted or enterprise edition is offered publicly, and no contract terms or pricing are published. Any future availability will be announced on the project public documentation.

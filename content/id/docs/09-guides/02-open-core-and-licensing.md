@@ -15,9 +15,9 @@ Krewire adalah ekosistem open-source dengan desain **open-core**: inti publik be
 | Lapisan | Repositori | Lisensi |
 | :--- | :--- | :--- |
 | Inti open-source | `krewire`, `krew`, `ui`, `krewire.com`, `krewire.github.io` | MIT (publik) |
-| Layanan platform | `dash`, `cloud`, `auth`, `forge` | Layanan platform dengan portal terdedikasi; lihat [Inti & Layanan Platform](/project/core-and-platform-services) |
+| Layanan platform | `dash`, `cloud`, `auth`, `forge` | Layanan platform dengan portal terdedikasi (lihat situs masing-masing produk) |
 
-Lihat [Keterbukaan & Self-Hosting](/project/openness-and-self-hosting) untuk tautan ke setiap berkas `LICENSE`.
+Lihat berkas LICENSE di setiap repositori.
 
 ---
 
@@ -46,7 +46,7 @@ Monorepo inti mendeklarasikan `Tier = model.TierFree` di `version.go`: seluruh k
 | **`team`** | Hanya didefinisikan sebagai klasifikasi. Belum ada paket, lisensi, atau harga yang dipublikasikan. |
 | **`enterprise`** | Hanya didefinisikan sebagai klasifikasi. Belum ada paket, lisensi, ketentuan kontrak, atau harga yang dipublikasikan. |
 
-Harga, model lisensi komersial, dan ketentuan dukungan untuk tier yang lebih tinggi **belum didefinisikan**. Definisi apa pun di masa depan akan dipublikasikan, beserta pemilik dan tanggalnya, di [Inti & Layanan Platform](/project/core-and-platform-services).
+Harga, model lisensi komersial, dan ketentuan dukungan untuk tier yang lebih tinggi **belum didefinisikan**. Definisi apa pun di masa depan akan dipublikasikan, beserta pemilik dan tanggalnya, di dokumentasi publik proyek.
 
 ---
 
@@ -55,7 +55,7 @@ Harga, model lisensi komersial, dan ketentuan dukungan untuk tier yang lebih tin
 Aturan berikut adalah komitmen desain Krewire yang dinyatakan untuk batas open-core:
 
 ### Aturan 1: Tanpa Lock-in Runtime
-Proyek yang hanya mereferensikan paket `free` harus dapat **di-build, di-deploy, dan dijalankan tanpa kunci lisensi atau panggilan pulang ke cloud**. Tidak ada masa uji coba atau batasan tersembunyi pada tier gratis. Panggilan jaringan yang memang dilakukan CLI inti tercantum di [Keterbukaan & Self-Hosting](/project/openness-and-self-hosting).
+Proyek yang hanya mereferensikan paket `free` harus dapat **di-build, di-deploy, dan dijalankan tanpa kunci lisensi atau panggilan pulang ke cloud**. Tidak ada masa uji coba atau batasan tersembunyi pada tier gratis. Panggilan jaringan yang memang dilakukan CLI inti tercantum di dokumentasi publik proyek.
 
 ### Aturan 2: Batas Pembungkus Aditif
 Modul berbayar di masa depan boleh membungkus, memperkuat, atau mengoptimalkan modul `free`, tetapi **tidak boleh menjadi prasyarat bagi modul free**.

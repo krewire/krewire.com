@@ -49,7 +49,7 @@ Handler HTTP siap pasang dengan antarmuka web responsif dark/light:
 
 ## Akses Platform & Integrasi
 
-> **Portal Live:** Krewire Auth tersedia di [auth.krewire.com](https://auth.krewire.com) menyediakan identitas enterprise, SSO, MFA, dan RBAC hierarkis di seluruh ekosistem. Lihat [Inti & Layanan Platform](/project/core-and-platform-services) untuk detail arsitektur.
+> **Portal Live:** Krewire Auth tersedia di [auth.krewire.com](https://auth.krewire.com) menyediakan identitas enterprise, SSO, MFA, dan RBAC hierarkis di seluruh ekosistem. Lihat dokumentasi publik proyek untuk detail arsitektur.
 
 ### Endpoint Federasi OIDC & OAuth2
 
@@ -75,4 +75,4 @@ import (
 
 ### Server Mandiri
 
-Server Krewire Auth mandiri (`krewire-auth-server`) belum didistribusikan untuk publik, dan belum ada ketentuan lisensi enterprise maupun harga yang dipublikasikan. Ketersediaan di masa depan akan diumumkan di [Inti & Layanan Platform](/project/core-and-platform-services).
+Server Krewire Auth mandiri (`krewire-auth-server`) belum didistribusikan untuk publik, dan belum ada ketentuan lisensi enterprise maupun harga yang dipublikasikan. Ketersediaan di masa depan akan diumumkan di dokumentasi publik proyek.

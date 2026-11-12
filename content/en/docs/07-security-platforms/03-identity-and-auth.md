@@ -49,7 +49,7 @@ Ready-to-mount HTTP handlers with clean, responsive dark/light UI:
 
 ## Platform Access & Integration
 
-> **Live Portal:** Krewire Auth is available at [auth.krewire.com](https://auth.krewire.com) providing enterprise identity, SSO, MFA, and hierarchical RBAC across the ecosystem. See [Core & Platform Services](/project/core-and-platform-services) for architectural details.
+> **Live Portal:** Krewire Auth is available at [auth.krewire.com](https://auth.krewire.com) providing enterprise identity, SSO, MFA, and hierarchical RBAC across the ecosystem. See the project's public documentation for architectural details.
 
 ### OIDC & OAuth2 Federation Endpoints
 
@@ -75,4 +75,4 @@ import (
 
 ### Standalone Server
 
-The standalone Krewire Auth server (`krewire-auth-server`) is not publicly distributed, and no enterprise licensing terms or pricing are published. Any future availability will be announced on [Core & Platform Services](/project/core-and-platform-services).
+The standalone Krewire Auth server (`krewire-auth-server`) is not publicly distributed, and no enterprise licensing terms or pricing are published. Any future availability will be announced on the project public documentation.

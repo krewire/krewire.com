@@ -77,7 +77,7 @@ Compile-time imports are kept to shared libraries. Products talk to platform cap
 - **HTTP APIs:** REST behind an edge reverse proxy or a [gateway workload](/workloads/gateway).
 - **Events:** an asynchronous event bus or Server-Sent Events streams.
 
-Hosted `cloud` and `auth` are optional. `forge` and `dash` run completely self-hosted; see [Core & Platform Services](/project/core-and-platform-services) for what is publicly available today.
+Hosted `cloud` and `auth` are optional. `forge` and `dash` run completely self-hosted; see the project's public documentation for what is publicly available today.
 
 ## 4. Product Parallelism
 

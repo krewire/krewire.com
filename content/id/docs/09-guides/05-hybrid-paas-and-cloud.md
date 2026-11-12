@@ -8,7 +8,7 @@ date: "2026-10-24"
 
 Krewire Cloud dirancang sebagai mesin PaaS hibrida mandiri untuk hosting VPS privat sekaligus platform cloud multi-tenant terkelola.
 
-> **Portal Live:** Krewire Cloud tersedia di [cloud.krewire.com](https://cloud.krewire.com). Perintah `kiw deploy` di bagian 1 adalah bagian dari inti open-source dan sudah berfungsi mandiri di infrastruktur Anda sendiri tanpa Krewire Cloud. Lihat [Inti & Layanan Platform](/project/core-and-platform-services).
+> **Portal Live:** Krewire Cloud tersedia di [cloud.krewire.com](https://cloud.krewire.com). Perintah `kiw deploy` di bagian 1 adalah bagian dari inti open-source dan sudah berfungsi mandiri di infrastruktur Anda sendiri tanpa Krewire Cloud. Lihat dokumentasi publik proyek.
 
 ## 1. Mesin PaaS Hibrida Self-Hosted
 

@@ -60,13 +60,4 @@ Docs content is Markdown under `content/<locale>/docs/` and is rendered by
 
 ## Release checklist: public status content
 
-Before tagging a site release (`vX.Y.Z`), review the status pages under
-`content/<locale>/docs/11-project/` (English and Indonesian together) so that
-every public claim stays verifiable:
-
-1. **Maturity & roadmap** (`06-maturity-and-roadmap.md`): re-check tags (`git tag` in each repo), the upstream `krewire/docs/workloads/maturity-matrix.md`, open issues, and live endpoints; move roadmap items between shipped / in progress / proposed / deferred; update the "last verified" date.
-2. **Core & platform services** (`03-core-and-platform-services.md`): re-check repository visibility, product availability, and pricing. Never publish pricing, tiers, or availability that is not live and owned.
-3. **Openness** (`02-openness-and-self-hosting.md`): re-check licenses and network calls made by the core CLI.
-4. **Impact report** (`05-impact-report.md`): add the new period's values with definition, period, and source; keep unavailable data labelled "not yet measured".
-5. **Contributing** (`04-contributing.md`): re-check channels, labels, governance, and security-reporting routes.
-6. Run `python3 scripts/check-i18n-parity.py`, `python3 scripts/sync-i18n.py --check`, and `kiw build`.
+Before tagging a site release (`vX.Y.Z`), run `python3 scripts/check-i18n-parity.py`, `python3 scripts/sync-i18n.py --check`, and `kiw build`.

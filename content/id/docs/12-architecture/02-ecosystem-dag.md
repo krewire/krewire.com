@@ -77,7 +77,7 @@ Impor saat kompilasi dibatasi pada pustaka bersama. Sebagai gantinya, produk ber
 - **API HTTP:** REST di balik reverse proxy edge atau [workload gateway](/workloads/gateway).
 - **Event:** event bus asinkron atau stream Server-Sent Events.
 
-`cloud` dan `auth` versi hosted bersifat opsional. `forge` dan `dash` berjalan sepenuhnya self-hosted; lihat [Inti & Layanan Platform](/project/core-and-platform-services) untuk mengetahui apa saja yang tersedia untuk publik saat ini.
+`cloud` dan `auth` versi hosted bersifat opsional. `forge` dan `dash` berjalan sepenuhnya self-hosted; lihat dokumentasi publik proyek untuk mengetahui apa saja yang tersedia untuk publik saat ini.
 
 ## 4. Paralelisme Produk
 

@@ -76,7 +76,7 @@
         <a href="/docs/security-platforms/identity-and-auth" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
           <span>Krewire Auth</span> <Badge Variant="primary" Size="sm" Class="font-mono">SSO</Badge>
         </a>
-        <a href="/docs/project/core-and-platform-services#krewire-forge" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
+        <a href="https://forge.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
           <span>Krewire Forge</span> <Badge Variant="primary" Size="sm" Class="font-mono">Forge</Badge>
         </a>
         <a href="https://github.com/krewire/krew" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
@@ -85,19 +85,6 @@
         <a href="https://github.com/krewire/krewire" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors">
           <span>Core Monorepo</span>
         </a>
-      </div>
-
-      <!-- Col 5: Project (3 cols on lg) -->
-      <div class="lg:col-span-3 flex flex-col gap-2.5">
-        <strong class="text-2xs font-mono font-bold uppercase tracking-wider text-fg dark:text-fg-dark mb-1" data-i18n="footer.project_title">Project</strong>
-        <a href="/docs/project" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors" data-i18n="footer.about">About Krewire</a>
-        <a href="/docs/project/audiences-and-use-cases" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors" data-i18n="footer.audiences">Who It's For</a>
-        <a href="/docs/project/openness-and-self-hosting" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors" data-i18n="footer.openness">Openness &amp; Self-Hosting</a>
-        <a href="/docs/project/core-and-platform-services" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors" data-i18n="footer.services">Core vs. Platform Services</a>
-        <a href="/docs/project/contributing" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors" data-i18n="footer.contribute">Contribute</a>
-        <a href="/docs/project/impact-report" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors" data-i18n="footer.impact">Impact Report</a>
-        <a href="/docs/project/maturity-and-roadmap" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors" data-i18n="footer.roadmap">Maturity &amp; Roadmap</a>
-        <a href="/docs/project/maturity-and-roadmap#reporting-security-issues" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors" data-i18n="footer.security">Report a Security Issue</a>
       </div>
 
     </div>
