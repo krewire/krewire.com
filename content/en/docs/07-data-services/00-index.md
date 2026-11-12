@@ -20,7 +20,7 @@ Modern digital services require robust, modular storage and integration patterns
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">6.1</span>
+      <span class="chapter-card-num">7.1</span>
       <h3 class="chapter-card-title">
         <a href="/data-services/database-and-orm">Database & Multi-Driver ORM (pkg/orm) <span class="arrow">→</span></a>
       </h3>
@@ -32,7 +32,7 @@ Modern digital services require robust, modular storage and integration patterns
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">6.2</span>
+      <span class="chapter-card-num">7.2</span>
       <h3 class="chapter-card-title">
         <a href="/data-services/storage">Multi-Driver Object Storage (pkg/storage) <span class="arrow">→</span></a>
       </h3>
@@ -44,7 +44,7 @@ Modern digital services require robust, modular storage and integration patterns
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">6.3</span>
+      <span class="chapter-card-num">7.3</span>
       <h3 class="chapter-card-title">
         <a href="/data-services/filesystem">Virtual Filesystem & Atomic Files (pkg/fs, pkg/file) <span class="arrow">→</span></a>
       </h3>
@@ -56,7 +56,7 @@ Modern digital services require robust, modular storage and integration patterns
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">6.4</span>
+      <span class="chapter-card-num">7.4</span>
       <h3 class="chapter-card-title">
         <a href="/data-services/caching">Multi-Driver Caching (pkg/cache, pkg/redis) <span class="arrow">→</span></a>
       </h3>
@@ -68,7 +68,7 @@ Modern digital services require robust, modular storage and integration patterns
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">6.5</span>
+      <span class="chapter-card-num">7.5</span>
       <h3 class="chapter-card-title">
         <a href="/data-services/mail">Transactional Mailer (pkg/mail) <span class="arrow">→</span></a>
       </h3>
@@ -80,7 +80,7 @@ Modern digital services require robust, modular storage and integration patterns
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">6.6</span>
+      <span class="chapter-card-num">7.6</span>
       <h3 class="chapter-card-title">
         <a href="/data-services/commerce-and-payments">Commerce & Indonesian Payments (pkg/commerce) <span class="arrow">→</span></a>
       </h3>

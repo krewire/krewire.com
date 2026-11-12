@@ -101,4 +101,4 @@ Saat Anda menambahkan repositori atau impor baru antar-repositori, tempatkan ter
 
 ---
 
-**Sebelumnya:** [12.1 Piramida Berlapis](/architecture/layered-pyramid) · **Berikutnya:** [**12.3 Level Cakupan →**](/architecture/scope-levels)
+**Sebelumnya:** [11.1 Piramida Berlapis](/architecture/layered-pyramid) · **Berikutnya:** [**11.3 Level Cakupan →**](/architecture/scope-levels)

@@ -408,4 +408,4 @@ Untuk `site`, pola skrip yang sama berlaku, dengan JSON yang berasal dari API di
 
 ---
 
-**Sebelumnya:** [12.3 Level Cakupan](/architecture/scope-levels) · **Kembali ke:** [Pendalaman Arsitektur](/architecture)
+**Sebelumnya:** [11.3 Level Cakupan](/architecture/scope-levels) · **Kembali ke:** [Pendalaman Arsitektur](/architecture)

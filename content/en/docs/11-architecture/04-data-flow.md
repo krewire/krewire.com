@@ -408,4 +408,4 @@ For a `site`, the same script pattern applies, with the JSON coming from an API 
 
 ---
 
-**Previous:** [12.3 Scope Levels](/architecture/scope-levels) · **Back to:** [Architecture Deep-Dive](/architecture)
+**Previous:** [11.3 Scope Levels](/architecture/scope-levels) · **Back to:** [Architecture Deep-Dive](/architecture)

@@ -80,4 +80,4 @@ func main() {
 
 ---
 
-**Previous:** [12.2 Ecosystem DAG](/architecture/ecosystem-dag) · **Next:** [**12.4 Data Flow: SSG vs Runtime →**](/architecture/data-flow)
+**Previous:** [11.2 Ecosystem DAG](/architecture/ecosystem-dag) · **Next:** [**11.4 Data Flow: SSG vs Runtime →**](/architecture/data-flow)

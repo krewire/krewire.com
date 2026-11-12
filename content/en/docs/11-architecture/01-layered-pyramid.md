@@ -105,4 +105,4 @@ Every library and workload binary must cross-compile to Linux, macOS (`darwin/ar
 
 ---
 
-**Next:** [**12.2 Ecosystem DAG →**](/architecture/ecosystem-dag)
+**Next:** [**11.2 Ecosystem DAG →**](/architecture/ecosystem-dag)

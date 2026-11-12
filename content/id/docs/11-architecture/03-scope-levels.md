@@ -80,4 +80,4 @@ func main() {
 
 ---
 
-**Sebelumnya:** [12.2 DAG Ekosistem](/architecture/ecosystem-dag) · **Berikutnya:** [**12.4 Alur Data: SSG vs Runtime →**](/architecture/data-flow)
+**Sebelumnya:** [11.2 DAG Ekosistem](/architecture/ecosystem-dag) · **Berikutnya:** [**11.4 Alur Data: SSG vs Runtime →**](/architecture/data-flow)

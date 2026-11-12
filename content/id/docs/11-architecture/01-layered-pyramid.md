@@ -105,4 +105,4 @@ Setiap pustaka dan binary workload harus dapat dikompilasi silang (cross-compile
 
 ---
 
-**Berikutnya:** [**12.2 DAG Ekosistem →**](/architecture/ecosystem-dag)
+**Berikutnya:** [**11.2 DAG Ekosistem →**](/architecture/ecosystem-dag)

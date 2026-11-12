@@ -21,7 +21,7 @@ Keamanan dan kecerdasan terdistribusi adalah pilar fundamental dari ekosistem Kr
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">7.1</span>
+      <span class="chapter-card-num">8.1</span>
       <h3 class="chapter-card-title">
         <a href="/security-platforms/security">Kontrol Keamanan & Hardening (pkg/sec) <span class="arrow">→</span></a>
       </h3>
@@ -33,7 +33,7 @@ Keamanan dan kecerdasan terdistribusi adalah pilar fundamental dari ekosistem Kr
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">7.2</span>
+      <span class="chapter-card-num">8.2</span>
       <h3 class="chapter-card-title">
         <a href="/security-platforms/auth">Primitif Autentikasi (pkg/auth) <span class="arrow">→</span></a>
       </h3>
@@ -45,7 +45,7 @@ Keamanan dan kecerdasan terdistribusi adalah pilar fundamental dari ekosistem Kr
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">7.3</span>
+      <span class="chapter-card-num">8.3</span>
       <h3 class="chapter-card-title">
         <a href="/security-platforms/identity-and-auth">Platform Identitas & Autentikasi Enterprise (Krewire Auth) <span class="arrow">→</span></a>
       </h3>
@@ -57,7 +57,7 @@ Keamanan dan kecerdasan terdistribusi adalah pilar fundamental dari ekosistem Kr
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">7.4</span>
+      <span class="chapter-card-num">8.4</span>
       <h3 class="chapter-card-title">
         <a href="/security-platforms/cloud-distributed">Cloud & Sistem Terdistribusi (pkg/cloud) <span class="arrow">→</span></a>
       </h3>
@@ -69,7 +69,7 @@ Keamanan dan kecerdasan terdistribusi adalah pilar fundamental dari ekosistem Kr
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">7.5</span>
+      <span class="chapter-card-num">8.5</span>
       <h3 class="chapter-card-title">
         <a href="/security-platforms/cloud-paas">Platform PaaS Hibrida (Krewire Cloud) <span class="arrow">→</span></a>
       </h3>
@@ -81,7 +81,7 @@ Keamanan dan kecerdasan terdistribusi adalah pilar fundamental dari ekosistem Kr
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">7.6</span>
+      <span class="chapter-card-num">8.6</span>
       <h3 class="chapter-card-title">
         <a href="/security-platforms/ai-and-agents">Orkestrasi AI & LLM (pkg/ai) <span class="arrow">→</span></a>
       </h3>
@@ -93,7 +93,7 @@ Keamanan dan kecerdasan terdistribusi adalah pilar fundamental dari ekosistem Kr
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">7.7</span>
+      <span class="chapter-card-num">8.7</span>
       <h3 class="chapter-card-title">
         <a href="/security-platforms/autonomous-agent">Mesin Agen AI Otonom (krew) <span class="arrow">→</span></a>
       </h3>
@@ -105,7 +105,7 @@ Keamanan dan kecerdasan terdistribusi adalah pilar fundamental dari ekosistem Kr
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">7.8</span>
+      <span class="chapter-card-num">8.8</span>
       <h3 class="chapter-card-title">
         <a href="/security-platforms/virtual-workspace">Krewire Dash (Workspace Virtual Native AI) <span class="arrow">→</span></a>
       </h3>

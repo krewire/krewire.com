@@ -18,7 +18,7 @@ The **`kiw`** CLI is the unified entry point for the entire Krewire ecosystem. I
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">8.1</span>
+      <span class="chapter-card-num">9.1</span>
       <h3 class="chapter-card-title">
         <a href="/cli-reference/commands">Command Catalog <span class="arrow">→</span></a>
       </h3>
@@ -30,7 +30,7 @@ The **`kiw`** CLI is the unified entry point for the entire Krewire ecosystem. I
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">8.2</span>
+      <span class="chapter-card-num">9.2</span>
       <h3 class="chapter-card-title">
         <a href="/cli-reference/configuration">Configuration Schema (krewire.yaml) <span class="arrow">→</span></a>
       </h3>
@@ -42,7 +42,7 @@ The **`kiw`** CLI is the unified entry point for the entire Krewire ecosystem. I
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">8.3</span>
+      <span class="chapter-card-num">9.3</span>
       <h3 class="chapter-card-title">
         <a href="/cli-reference/scripting">Task Automation &amp; Scripting <span class="arrow">→</span></a>
       </h3>

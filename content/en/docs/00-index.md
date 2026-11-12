@@ -1,16 +1,32 @@
 ---
-title: "Documentation — Choose Your Path"
-description: "Start with the beginner quickstart, follow a path for your goal (site, web app, or platform), or read the docs in the order recommended for your role."
-date: "2026-11-09"
+title: "Documentation — Comprehensive Learning Path"
+description: "Follow a staged learning path from your first Krewire site to production workloads and platform architecture."
+date: "2026-11-12"
 ---
 
 # Krewire Documentation
 
-> **Mission:** Krewire's mission is to make it nearly free — in financial cost, operational burden, and cognitive effort — for anyone to build, own, and operate digital products that are secure, sustainable, and scalable. Read more in [About Krewire](/project).
+> **Mission:** Krewire's mission is to make it nearly free — in financial cost, operational burden, and cognitive effort — for anyone to build, own, and operate digital products that are secure, sustainable, and scalable. Read more in [Why Krewire](/overview/why-krewire).
 
 **Krewire** is a set of independent Go packages driven by one CLI (**`kiw`**) and one config file (**`krewire.yaml`**). You use it to build websites, documentation, web applications, CLIs, and — when you need them — workers, microservices, gateways, and infrastructure.
 
-You do **not** need to read about architecture to use it. Pick a starting point below.
+You do **not** need to read about architecture to use it. Follow the stages below in order, or jump directly to the path that matches your goal.
+
+---
+
+## Learning Path at a Glance
+
+| Stage | Goal | Read |
+| :--- | :--- | :--- |
+| **0. Orient** | Understand what Krewire is and whether it fits. | [1. Overview](/overview) |
+| **1. First success** | Install `kiw`, scaffold a project, and build something runnable. | [2. Getting Started](/getting-started) |
+| **2. Build products** | Choose the right workload and learn its lifecycle and commands. | [3. Workloads](/workloads) |
+| **3. Learn the foundations** | Understand the domain model, lifecycle, config, validation, and resilience. | [4. Core & Foundation Libraries](/core-libraries) |
+| **4. Build interfaces** | Add HTTP routing, application containers, WASM, and a design system. | [5. Web & UI Framework](/web-ui) · [6. Krewire UI](/ui) |
+| **5. Add data and services** | Persist data, cache, store files, send mail, and integrate payments. | [7. Data, Storage & Services](/data-services) |
+| **6. Secure and scale** | Apply security controls, identity, cloud, and AI platform capabilities. | [8. Security & Ecosystem Platforms](/security-platforms) |
+| **7. Operate and reference** | Look up commands, configuration, and production playbooks. | [9. CLI Reference](/cli-reference) · [10. Guides & Best Practices](/guides) |
+| **8. Go deep** | Learn the architectural invariants that keep the ecosystem composable. | [11. Architecture Deep-Dive](/architecture) |
 
 ---
 
@@ -106,11 +122,10 @@ You do **not** need to read about architecture to use it. Pick a starting point 
 | [2. Getting Started](/getting-started) | **Beginner track**: quickstart, fullstack tutorial, installation, configuration, `.kiw` DSL. |
 | [3. Workloads](/workloads) | One guide per workload: `app`, `cli`, `site`, `book`, `worker`, `service`, `gateway`, `infra`. |
 | [4. Core & Foundation Libraries](/core-libraries) | Model, lifecycle, config, validation, resilience, testing. |
-| [5. Web & UI Framework](/web-ui) | Router, application container, WASM runtime, UI, TUI. |
-| [6. Data, Storage & Services](/data-services) | ORM, object storage, filesystem, cache, mail, payments. |
-| [7. Security & Ecosystem Platforms](/security-platforms) | Security controls, auth, identity, cloud, AI agents. |
-| [8. CLI Reference](/cli-reference) | Every `kiw` command and `krewire.yaml` field. |
-| [9. Architecture & Guides](/guides) | Deployment, agentic development, hybrid cloud, open-core licensing. |
-| [10. Krewire UI](/ui) | The design system and all 66 components, with live previews. |
-| [11. Project](/project) | Audiences, openness, contributing, impact, maturity and roadmap. |
-| [12. Architecture Deep-Dive](/architecture) | Platform engineering: pyramid, ecosystem DAG, scope levels, data flow, and the staged learning path for teams. |
+| [5. Web & UI Framework](/web-ui) | Router, application container, WASM runtime, and TUI. |
+| [6. Krewire UI](/ui) | The design system and all 66 components, with live previews. |
+| [7. Data, Storage & Services](/data-services) | ORM, object storage, filesystem, cache, mail, payments. |
+| [8. Security & Ecosystem Platforms](/security-platforms) | Security controls, auth, identity, cloud, AI agents. |
+| [9. CLI Reference](/cli-reference) | Every `kiw` command and `krewire.yaml` field. |
+| [10. Guides & Best Practices](/guides) | Deployment, agentic development, hybrid cloud, open-core licensing. |
+| [11. Architecture Deep-Dive](/architecture) | Platform engineering: pyramid, ecosystem DAG, scope levels, data flow, and the staged learning path for teams. |

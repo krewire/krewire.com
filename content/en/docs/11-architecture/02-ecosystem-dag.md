@@ -101,4 +101,4 @@ When you add a repository or a new import between repositories, place it on a la
 
 ---
 
-**Previous:** [12.1 Layered Pyramid](/architecture/layered-pyramid) · **Next:** [**12.3 Scope Levels →**](/architecture/scope-levels)
+**Previous:** [11.1 Layered Pyramid](/architecture/layered-pyramid) · **Next:** [**11.3 Scope Levels →**](/architecture/scope-levels)

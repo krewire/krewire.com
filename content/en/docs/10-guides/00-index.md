@@ -1,12 +1,12 @@
 ---
-title: "Architecture & Guides"
-description: "Engineering guides, architectural discipline, open-core licensing model, and production deployment operations."
-date: "2026-10-24"
+title: "Guides & Best Practices"
+description: "Engineering guides, open-core licensing, agentic development, hybrid cloud, and production deployment operations."
+date: "2026-11-12"
 ---
 
-# Architecture & Guides
+# Guides & Best Practices
 
-This chapter collects deep-dive engineering guides, architectural invariants, and operational practices that govern software development across the Krewire ecosystem.
+This chapter collects practical engineering guides, operational practices, and integration recipes for building and running Krewire workloads in production. For the architectural invariants themselves, continue to [Architecture Deep-Dive](/architecture).
 
 Whether you are contributing to core packages or authoring mission-critical applications on top of Krewire, these guides ensure your codebase remains maintainable, secure, and sustainable over long horizons.
 
@@ -20,7 +20,7 @@ Whether you are contributing to core packages or authoring mission-critical appl
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">9.1</span>
+      <span class="chapter-card-num">10.1</span>
       <h3 class="chapter-card-title">
         <a href="/guides/agentic-development">Agentic Development <span class="arrow">→</span></a>
       </h3>
@@ -32,7 +32,7 @@ Whether you are contributing to core packages or authoring mission-critical appl
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">9.2</span>
+      <span class="chapter-card-num">10.2</span>
       <h3 class="chapter-card-title">
         <a href="/guides/deployment-and-operations">Deployment &amp; Operations <span class="arrow">→</span></a>
       </h3>
@@ -44,7 +44,7 @@ Whether you are contributing to core packages or authoring mission-critical appl
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">9.3</span>
+      <span class="chapter-card-num">10.3</span>
       <h3 class="chapter-card-title">
         <a href="/guides/hybrid-paas-and-cloud">Hybrid PaaS &amp; Managed Cloud <span class="arrow">→</span></a>
       </h3>
@@ -56,7 +56,7 @@ Whether you are contributing to core packages or authoring mission-critical appl
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">9.4</span>
+      <span class="chapter-card-num">10.4</span>
       <h3 class="chapter-card-title">
         <a href="/guides/open-core-and-licensing">Open Core &amp; Licensing <span class="arrow">→</span></a>
       </h3>

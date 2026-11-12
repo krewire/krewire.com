@@ -20,7 +20,7 @@ Layanan digital modern membutuhkan pola integrasi dan persistensi data yang tang
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">6.1</span>
+      <span class="chapter-card-num">7.1</span>
       <h3 class="chapter-card-title">
         <a href="/data-services/database-and-orm">Database & Multi-Driver ORM (pkg/orm) <span class="arrow">→</span></a>
       </h3>
@@ -32,7 +32,7 @@ Layanan digital modern membutuhkan pola integrasi dan persistensi data yang tang
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">6.2</span>
+      <span class="chapter-card-num">7.2</span>
       <h3 class="chapter-card-title">
         <a href="/data-services/storage">Penyimpanan Objek Multi-Driver (pkg/storage) <span class="arrow">→</span></a>
       </h3>
@@ -44,7 +44,7 @@ Layanan digital modern membutuhkan pola integrasi dan persistensi data yang tang
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">6.3</span>
+      <span class="chapter-card-num">7.3</span>
       <h3 class="chapter-card-title">
         <a href="/data-services/filesystem">Sistem Berkas Virtual & Berkas Atomik (pkg/fs, pkg/file) <span class="arrow">→</span></a>
       </h3>
@@ -56,7 +56,7 @@ Layanan digital modern membutuhkan pola integrasi dan persistensi data yang tang
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">6.4</span>
+      <span class="chapter-card-num">7.4</span>
       <h3 class="chapter-card-title">
         <a href="/data-services/caching">Cache Multi-Driver (pkg/cache, pkg/redis) <span class="arrow">→</span></a>
       </h3>
@@ -68,7 +68,7 @@ Layanan digital modern membutuhkan pola integrasi dan persistensi data yang tang
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">6.5</span>
+      <span class="chapter-card-num">7.5</span>
       <h3 class="chapter-card-title">
         <a href="/data-services/mail">Mailer Transaksional (pkg/mail) <span class="arrow">→</span></a>
       </h3>
@@ -80,7 +80,7 @@ Layanan digital modern membutuhkan pola integrasi dan persistensi data yang tang
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">6.6</span>
+      <span class="chapter-card-num">7.6</span>
       <h3 class="chapter-card-title">
         <a href="/data-services/commerce-and-payments">Commerce & Pembayaran Indonesia (pkg/commerce) <span class="arrow">→</span></a>
       </h3>

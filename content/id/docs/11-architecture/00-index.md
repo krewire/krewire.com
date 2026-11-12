@@ -29,7 +29,7 @@ Bab ini ditujukan bagi **platform engineer, arsitek, dan kontributor** repositor
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">12.1</span>
+      <span class="chapter-card-num">11.1</span>
       <h3 class="chapter-card-title">
         <a href="/architecture/layered-pyramid">Piramida Berlapis &amp; Invarian <span class="arrow">→</span></a>
       </h3>
@@ -41,7 +41,7 @@ Bab ini ditujukan bagi **platform engineer, arsitek, dan kontributor** repositor
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">12.2</span>
+      <span class="chapter-card-num">11.2</span>
       <h3 class="chapter-card-title">
         <a href="/architecture/ecosystem-dag">DAG Ekosistem <span class="arrow">→</span></a>
       </h3>
@@ -53,7 +53,7 @@ Bab ini ditujukan bagi **platform engineer, arsitek, dan kontributor** repositor
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">12.3</span>
+      <span class="chapter-card-num">11.3</span>
       <h3 class="chapter-card-title">
         <a href="/architecture/scope-levels">Level Cakupan <span class="arrow">→</span></a>
       </h3>
@@ -65,7 +65,7 @@ Bab ini ditujukan bagi **platform engineer, arsitek, dan kontributor** repositor
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">12.4</span>
+      <span class="chapter-card-num">11.4</span>
       <h3 class="chapter-card-title">
         <a href="/architecture/data-flow">Alur Data: SSG vs Runtime <span class="arrow">→</span></a>
       </h3>

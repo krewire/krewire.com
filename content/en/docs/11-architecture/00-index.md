@@ -29,7 +29,7 @@ This chapter is for **platform engineers, architects, and contributors** to the 
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">12.1</span>
+      <span class="chapter-card-num">11.1</span>
       <h3 class="chapter-card-title">
         <a href="/architecture/layered-pyramid">Layered Pyramid &amp; Invariants <span class="arrow">→</span></a>
       </h3>
@@ -41,7 +41,7 @@ This chapter is for **platform engineers, architects, and contributors** to the 
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">12.2</span>
+      <span class="chapter-card-num">11.2</span>
       <h3 class="chapter-card-title">
         <a href="/architecture/ecosystem-dag">Ecosystem DAG <span class="arrow">→</span></a>
       </h3>
@@ -53,7 +53,7 @@ This chapter is for **platform engineers, architects, and contributors** to the 
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">12.3</span>
+      <span class="chapter-card-num">11.3</span>
       <h3 class="chapter-card-title">
         <a href="/architecture/scope-levels">Scope Levels <span class="arrow">→</span></a>
       </h3>
@@ -65,7 +65,7 @@ This chapter is for **platform engineers, architects, and contributors** to the 
 
   <div class="chapter-card">
     <div class="chapter-card-head">
-      <span class="chapter-card-num">12.4</span>
+      <span class="chapter-card-num">11.4</span>
       <h3 class="chapter-card-title">
         <a href="/architecture/data-flow">Data Flow: SSG vs Runtime <span class="arrow">→</span></a>
       </h3>
