@@ -67,12 +67,11 @@ Definisi status:
 
 - `v0.2.0` inti: CLI `kiw` dengan scaffolding untuk kedelapan workload, pustaka `pkg/*`, pipeline `site`/`book` yang membangun situs ini, serta tooling rilis/kompatibilitas (`kiw release`, `kiw compat`).
 - Fitur database multi driver, migrasi skema (`schema.Blueprint`), seeder, factory model, dan generic repository di `pkg/orm`.
+- Model C: Arsitektur komponen hybrid Go + `.kiw`, API komponen Go bertipe (`pkg/ui/node`, `pkg/ui/widget`), interop dua arah Go ↔ `.kiw`, dan distribusi berbasis paket melalui Go modules (dengan escape hatch opsional `kiw ui vendor`/`eject`).
 
 ### Sedang berjalan
 
-- Model C: Arsitektur komponen hybrid Go + `.kiw` dan distribusi berbasis paket.
-- API komponen Go bertipe dan kontrak node UI composable.
-- Standalone component packaging tanpa model copy-and-own.
+- Penyempurnaan standalone packaging komponen `.kiw` (`.kpkg`) dan registry/property-decoder.
 
 ### Diusulkan
 

@@ -23,7 +23,7 @@ The core is complete, self-sufficient, and MIT-licensed forever. Platform servic
 | :--- | :--- | :--- | :--- | :--- |
 | **Core libraries & `kiw` CLI** (`krewire`) | Public, MIT | Self-hosted (you run it) | Available — `go install` or source | Per workload, see [Maturity](/project/maturity-and-roadmap) |
 | **Krew** AI agent (`krew`) | Public, MIT | Self-hosted (embed, CLI, HTTP/SSE, MCP) | Available — source | Experimental |
-| **Krewire UI** (`ui`) | Public, MIT | Copy-and-own components | Available — source | Experimental |
+| **Krewire UI** (`ui`) | Public, MIT | Go module + optional vendor/eject | Available — source | Experimental |
 | **Krewire Dash** | Platform service | Virtual workspace & studio | [dash.krewire.com](https://dash.krewire.com) | Experimental |
 | **Krewire Cloud** | Platform service | Hybrid PaaS & edge gateway | [cloud.krewire.com](https://cloud.krewire.com) | Experimental |
 | **Krewire Auth** | Platform service | Identity & SSO engine | [auth.krewire.com](https://auth.krewire.com) | Experimental |

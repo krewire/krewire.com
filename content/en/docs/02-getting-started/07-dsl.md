@@ -174,7 +174,7 @@ injection off or exclude specific files.
 
 ## 4. Reusable Component Composition
 
-Components located in the `components/` directory (or installed into `./.krewire/pkg/`, or embedded from Krewire UI) can be instantiated dynamically inside any page, layout, or component using custom component tags:
+Components can be instantiated dynamically inside any page, layout, or component using custom component tags. Sources include local files in `components/`, standalone packages installed into `./.krewire/pkg/`, and components imported as Go modules (for example `github.com/krewire/ui`, available as `@krewire/ui`):
 
 ```html
 <!-- Tag-based invocation with attributes as props -->

@@ -168,7 +168,7 @@ Tidak diperlukan tag `<link>` atau `<script>` manual untuk CSS/JS situs: setiap 
 
 ## 4. Komposisi Komponen yang Dapat Digunakan Kembali
 
-Komponen yang terletak di direktori `components/` (atau dipasang di `./.krewire/pkg/`, atau disematkan dari Krewire UI) dapat diinstansiasi secara dinamis di dalam halaman, layout, atau komponen lainnya menggunakan tag komponen kustom:
+Komponen dapat diinstansiasi secara dinamis di dalam halaman, layout, atau komponen lainnya menggunakan tag komponen kustom. Sumbernya mencakup file lokal di `components/`, paket mandiri yang dipasang di `./.krewire/pkg/`, dan komponen yang diimpor sebagai modul Go (misalnya `github.com/krewire/ui`, tersedia sebagai `@krewire/ui`):
 
 ```html
 <!-- Pemanggilan berbasis tag dengan atribut sebagai props -->

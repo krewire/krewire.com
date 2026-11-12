@@ -67,12 +67,11 @@ Status definitions:
 
 - `v0.2.0` of the core: `kiw` CLI with scaffolding for all eight workloads, `pkg/*` libraries, the `site`/`book` pipeline that builds this website, and the release/compatibility tooling (`kiw release`, `kiw compat`).
 - Advanced multi-driver database, migrations (`schema.Blueprint`), seeders, model factories, and generic repository in `pkg/orm`.
+- Model C: Hybrid Go + `.kiw` component architecture, typed Go component API (`pkg/ui/node`, `pkg/ui/widget`), bi-directional Go ↔ `.kiw` interop, and package-based distribution via Go modules (with optional `kiw ui vendor`/`eject` escape hatch).
 
 ### In progress
 
-- Model C: Hybrid Go + `.kiw` component architecture and package-based distribution.
-- Typed Go component API and composable UI node contract.
-- Standalone component packaging without copy-and-own defaults.
+- Standalone `.kiw` component packaging (`.kpkg`) refinements and registry/property-decoder polish.
 
 ### Proposed
 

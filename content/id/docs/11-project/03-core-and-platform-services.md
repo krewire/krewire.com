@@ -23,7 +23,7 @@ Inti sudah lengkap, mandiri, dan berlisensi MIT selamanya. Layanan platform memb
 | :--- | :--- | :--- | :--- | :--- |
 | **Pustaka inti & CLI `kiw`** (`krewire`) | Publik, MIT | Self-hosted (Anda yang menjalankan) | Tersedia — `go install` atau kode sumber | Per workload, lihat [Kematangan](/project/maturity-and-roadmap) |
 | **Krew** agen AI (`krew`) | Publik, MIT | Self-hosted (embed, CLI, HTTP/SSE, MCP) | Tersedia — kode sumber | Eksperimental |
-| **Krewire UI** (`ui`) | Publik, MIT | Komponen salin-dan-miliki | Tersedia — kode sumber | Eksperimental |
+| **Krewire UI** (`ui`) | Publik, MIT | Modul Go + vendor/eject opsional | Tersedia — kode sumber | Eksperimental |
 | **Krewire Dash** | Layanan platform | Virtual workspace & studio | [dash.krewire.com](https://dash.krewire.com) | Eksperimental |
 | **Krewire Cloud** | Layanan platform | PaaS hibrida & edge gateway | [cloud.krewire.com](https://cloud.krewire.com) | Eksperimental |
 | **Krewire Auth** | Layanan platform | Engine identitas & SSO | [auth.krewire.com](https://auth.krewire.com) | Eksperimental |
