@@ -34,7 +34,6 @@ Seven core components have an interactive preview: [`Button`](/docs/ui/component
 - [**`<Hamburger />`**](/docs/ui/components/hamburger) — Animated 3-line hamburger menu toggle button for mobile drawers.
 - [**`<Brand />`**](/docs/ui/components/brand) — Ecosystem brand mark with logo icon and version badge.
 - [**`<Head />`**](/docs/ui/components/head) — Document head injector for standard meta tags, OpenGraph, and favicon assets.
-- [**`<Header />`**](/docs/ui/components/header) — Top sectional page banner header with title and subtitle.
 - [**`<Footer />`**](/docs/ui/components/footer) — Comprehensive multi-column footer with brand, navigation links, and copyright.
 
 ### Actions & Buttons

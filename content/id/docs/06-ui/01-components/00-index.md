@@ -34,7 +34,6 @@ Tujuh komponen inti memiliki pratinjau interaktif: [`Button`](/id/docs/ui/compon
 - [**`<Hamburger />`**](/id/docs/ui/components/hamburger) — Tombol menu hamburger 3 baris teranimasi untuk membuka drawer mobile.
 - [**`<Brand />`**](/id/docs/ui/components/brand) — Logo brand ekosistem lengkap dengan lambang ikon dan badge versi.
 - [**`<Head />`**](/id/docs/ui/components/head) — Penyuntik tag head standar untuk metadata, OpenGraph, dan favicon.
-- [**`<Header />`**](/id/docs/ui/components/header) — Banner header bagian atas halaman dengan judul dan subjudul.
 - [**`<Footer />`**](/id/docs/ui/components/footer) — Footer situs multi-kolom komprehensif dengan brand, tautan navigasi, dan hak cipta.
 
 ### Aksi & Tombol

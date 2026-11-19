@@ -162,7 +162,7 @@ Pada komponen layout (`layouts/*.kiw`), konten halaman yang telah dirender diinj
 </html>
 ```
 
-Tidak diperlukan tag `<link>` atau `<script>` manual untuk CSS/JS situs: setiap berkas di `public/assets/` yang berakhiran `.css` atau `.js` akan diinjeksikan secara otomatis — stylesheet ke dalam `<head>`, skrip ke dalam `<head>` — dengan kueri cache-busting `?v=<version>` yang diambil dari versi proyek. Menulis tag secara manual tetap didukung; pipeline tidak akan menduplikasi aset yang sudah Anda tautkan sendiri. Lihat `auto_assets:` di [`krewire.yaml`](configuration) untuk mematikan injeksi atau mengecualikan berkas tertentu.
+Tidak diperlukan tag `<link>` atau `<script>` manual untuk CSS/JS situs: setiap berkas di `public/assets/` yang berakhiran `.css` atau `.js` akan diinjeksikan secara otomatis — stylesheet ke dalam `<head>`, skrip ke dalam `<head>` — dengan kueri cache-busting `?v=<version>` yang diambil dari versi proyek. Menulis tag secara manual tetap didukung; pipeline tidak akan menduplikasi aset yang sudah Anda tautkan sendiri. Lihat `auto_assets:` di [`krewire.yaml`](./04-configuration.md) untuk mematikan injeksi atau mengecualikan berkas tertentu.
 
 ---
 

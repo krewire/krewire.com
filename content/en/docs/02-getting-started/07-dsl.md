@@ -167,7 +167,7 @@ No `<link>` or `<script>` tag is needed for site CSS/JS: every file in
 stylesheets into `<head>`, scripts into `<head>` — with a `?v=<version>`
 cache-busting query derived from the project version. Writing a tag by hand
 still works; the pipeline never adds a second copy of an asset you linked
-yourself. See `auto_assets:` in [`krewire.yaml`](configuration) to turn
+yourself. See `auto_assets:` in [`krewire.yaml`](./04-configuration.md) to turn
 injection off or exclude specific files.
 
 ---
