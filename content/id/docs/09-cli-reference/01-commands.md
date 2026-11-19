@@ -360,26 +360,33 @@ kiw ws exec <cmd>   # Menjalankan perintah di setiap modul workspace
 
 ### `kiw boost install`
 
-Melengkapi repositori proyek apa pun dengan sistem AI agent **Krewire Boost**:
+Melengkapi repositori proyek apa pun dengan sistem AI agent otonom **Krewire Boost**:
 
 ```bash
 kiw boost install [path]
 ```
 
-Memasang definisi agen otonom, slash command kustom, dan alur kerja SDLC otonom ke dalam direktori `.agents/` dan `AGENTS.md`.
+Memasang:
+- 21 persona agen AI otonom ke dalam direktori `.agents/`
+- Aturan alur kerja SDLC 6-fase ke dalam direktori `.workflow/`
+- Definisi slash command (`/plan`, `/build`, `/test`, `/review`, `/deploy`, `/boost`)
+- Panduan operasional workspace ke dalam `AGENTS.md`
 
 ### `kiw add <package[@version]>`
 
-Menambahkan modul Go atau plugin ekosistem pilihan (seperti Tailwind CSS):
+Menambahkan modul Go, dependensi eksternal, atau plugin frontend ekosistem pilihan:
 
 ```bash
-kiw add twcss@latest
-kiw add tailwindcss
+kiw add svelte                     # Pasang kompilator pulau Svelte 5 dan plugin
+kiw add vue                        # Pasang kompilator pulau Vue 3 dan plugin
+kiw add twcss                      # Pasang runner kompilator Tailwind CSS
+kiw add tailwindcss                # Alias untuk twcss
 kiw add github.com/krewire/krewire@v0.2.0
 ```
 
 - **Nol JS secara Default**: Krewire secara default tidak memerlukan JavaScript serta menggunakan token CSS mandiri.
 - **Teknologi Pilihan (Opt-In)**: Saat menambahkan `twcss`, `kiw` akan menginisialisasi `tailwind.config.js` secara otomatis dan mengaktifkan runner compiler Tailwind (binary CLI mandiri di `bin/tailwindcss`, Bun, PNPM, atau fallback npm/npx).
+- **Pulau Reaktif**: Menambahkan `svelte` atau `vue` mengonfigurasi bundler untuk hidrasi pulau progresif (`data-kiw-framework="svelte|vue"`).
 
 ### `kiw remove <package>`
 

@@ -1,33 +1,67 @@
 ---
 title: "Web Runtime & WASM (pkg/runtime)"
-description: "Author client-side reactive web applications in Go compiled to WebAssembly: virtual DOM diffing, hooks, component registry, SSR hydration markers, and a reproducible WASM build pipeline."
+description: "Author client-side reactive web applications in Go compiled to WebAssembly: virtual DOM diffing, hooks, component registry, SSR hydration markers, and multi-framework island hydration."
 date: "2026-10-25"
 ---
 
 # Web Runtime & WASM (`pkg/runtime`)
 
-The `pkg/runtime` family compiles Go to WebAssembly (`GOOS=js GOARCH=wasm`) so
-interactive islands can share the same component model as server-rendered
-`.kiw` pages. It is a **library**, not a workload kind: a WASM frontend ships
-inside an `app` or `site` project and is built with `kiw build --target wasm`.
+Import path: `github.com/krewire/krewire/pkg/runtime`
+
+The `pkg/runtime` library delivers a client-side WebAssembly (WASM) execution engine, Virtual DOM (VDOM) diffing and reconciliation algorithm, Fiber component lifecycle scheduler, and progressive multi-framework island hydration contracts.
+
+It allows developers to write interactive, reactive client-side widgets in 100% pure Go compiled to WebAssembly (`GOOS=js GOARCH=wasm`), or seamlessly embed lightweight modular frontend framework islands (Svelte 5, Vue 3) while keeping initial page loads static and zero-JS by default.
 
 ---
 
-## Subpackage Layout
+## 1. Subpackage Layout
 
 ```text
 pkg/runtime/
 ├── vdom/         # Immutable virtual DOM: VNode, El, Text, Component, Diff, RenderHTML
-├── component/    # Component model, hooks, event handlers, component registry
-├── mount/        # SSR hydration contract shared by the emitter and the client boot
+├── component/    # Component model, Fiber scheduler, state hooks, event registry
+├── mount/        # Progressive hydration contract (data-kiw-mount, load, idle, visible)
 ├── boot/         # Scans data-kiw-mount markers and hydrates registered components
 ├── schedule/     # Per-frame render batching (requestAnimationFrame on js/wasm)
-└── build/        # BuildWASM: go build wrapper with hashing and diagnostics
+└── build/        # BuildWASM: pure-Go wasm compiler wrapper with content hashing
 ```
 
 ---
 
-## Virtual DOM (`pkg/runtime/vdom`)
+## 2. Progressive Island Hydration (`pkg/runtime/mount`)
+
+Krewire implements the **Islands Architecture**: pages are rendered statically on the server (SSG/SSR) with zero JavaScript bloat. Interactive islands are hydrated selectively on the client based on user visibility or browser idle cycles.
+
+### Hydration HTML Contract
+
+Mount points emit standard HTML markers:
+
+```html
+<div data-kiw-mount="Counter"
+     data-kiw-framework="wasm"
+     data-kiw-hydrate="visible"
+     data-kiw-props='{"initial":10}'>
+  <!-- Server-rendered fallback HTML -->
+  <button class="btn">Count: 10</button>
+</div>
+```
+
+### Hydration Strategies (`mount.Hydrate`)
+
+- **`load`** (`mount.Load`): Hydrates immediately as soon as the client module or WASM bundle boots.
+- **`idle`** (`mount.Idle`): Hydrates during browser idle periods via `window.requestIdleCallback`.
+- **`visible`** (`mount.Visible`): Hydrates only when the island scrolls into the browser viewport via `IntersectionObserver`.
+
+### Multi-Framework Island Support
+
+Through `pkg/runtime/mount` and the Krewire plugin ecosystem, mount points support:
+- **`wasm`** (Default): Pure-Go compiled WebAssembly island with zero node/npm dependencies.
+- **`svelte`**: Svelte 5 reactive component island installed via `kiw add svelte`.
+- **`vue`**: Vue 3 reactive component island installed via `kiw add vue`.
+
+---
+
+## 3. Virtual DOM Engine (`pkg/runtime/vdom`)
 
 ```go
 import "github.com/krewire/krewire/pkg/runtime/vdom"
@@ -37,19 +71,17 @@ tree := vdom.El("section", map[string]string{"class": "hero"},
 	vdom.Component("Counter", "counter-1", map[string]string{"initial": "0"}),
 )
 
-html := vdom.RenderHTML(tree) // server-side rendering
-patches := vdom.Diff(oldTree, tree) // client-side reconciliation
+html := vdom.RenderHTML(tree)        // Server-side rendering (SSR)
+patches := vdom.Diff(oldTree, tree) // Client-side reconciliation
 ```
 
-`VNode` is an immutable description. `RenderHTML` and `Diff` both funnel props
-through `NormalizeProps`, so server output and client reconciliation agree on
-attribute names, classes, and event markers.
+`VNode` is an immutable description. Both `RenderHTML` and `Diff` funnel props through `NormalizeProps`, ensuring server output and client reconciliation agree on attribute names, classes, and event markers.
 
 ---
 
-## Component Model (`pkg/runtime/component`)
+## 4. Component Model & Reactive Hooks (`pkg/runtime/component`)
 
-A component is anything that renders a virtual tree:
+A component is anything implementing the `Component` interface:
 
 ```go
 type Component interface {
@@ -57,10 +89,11 @@ type Component interface {
 }
 ```
 
-Stateful logic uses generic hooks, which bind to the `Fiber` currently being
-rendered and enforce a stable call order:
+Stateful logic uses generic hooks that bind to the active `Fiber` and enforce stable execution order:
 
 ```go
+package main
+
 import (
 	"context"
 	"fmt"
@@ -91,32 +124,36 @@ func init() {
 }
 ```
 
-Available hooks: `UseState`, `UseRef`, `UseMemo`, `UseEffect`, `UseEvent`.
-Lifecycle participation is opt-in through the `Mounter`, `Unmounter`, and
-`ShouldUpdater` capability interfaces. Calling a hook outside a render panics
-with `*component.HookRuleError`, which surfaces the ordering mistake instead of
-silently corrupting state.
+Available hooks include `UseState`, `UseRef`, `UseMemo`, `UseEffect`, and `UseEvent`. Calling a hook outside a render cycle panics with `*component.HookRuleError`, immediately surfacing incorrect hook ordering.
 
 ---
 
-## SSR Hydration (`pkg/runtime/mount` and `pkg/runtime/boot`)
+## 5. Client Boot Scanner (`pkg/runtime/boot`)
 
-The server emits a fragment wrapped in a container carrying three attributes:
+The client runtime automatically boots and mounts components upon DOM ready:
 
-```html
-<div data-kiw-mount="Counter" data-kiw-hydrate="load" data-kiw-props='{"initial":0}'>
-  <!-- server-rendered HTML -->
-</div>
+```go
+package main
+
+import (
+	"github.com/krewire/krewire/pkg/runtime/boot"
+	"github.com/krewire/krewire/pkg/runtime/component"
+)
+
+func main() {
+	// 1. Register interactive Go components
+	component.Register("Counter", func() component.Component {
+		return &Counter{}
+	})
+
+	// 2. Scan DOM for [data-kiw-mount] markers and mount islands
+	boot.Run()
+}
 ```
 
-`boot` scans for those markers on the client, instantiates the registered
-component, and seeds the fiber with the server-rendered DOM so the first render
-diffs instead of re-rendering. Later updates coalesce through `schedule`, which
-batches notifications into one flush per animation frame.
-
 ---
 
-## Building a WASM Module (`pkg/runtime/build`)
+## 6. Building WASM Binaries (`pkg/runtime/build`)
 
 ```go
 import "github.com/krewire/krewire/pkg/runtime/build"
@@ -133,15 +170,16 @@ if err != nil {
 fmt.Println(artifacts.WASM, artifacts.JS, artifacts.Digest)
 ```
 
-`BuildWASM` wraps `go build` with `GOOS=js GOARCH=wasm`, copies `wasm_exec.js`,
-content-hashes the module, and returns actionable diagnostics for toolchain and
-version mismatches.
-
-From the CLI, the same pipeline is reachable as a build target:
+From the developer CLI, the same pipeline is accessible as a build target:
 
 ```bash
 kiw build --target wasm
 ```
 
-The resulting module and JS glue are placed in your output directory, ready to be
-mounted into any HTML page served by the `app` or `site` workload.
+---
+
+## 7. Alignment with the Three Pillars (3S)
+
+- **Secure (S1)**: WASM executes inside the browser's hermetic WebAssembly sandbox with no direct unsafe memory access. VDOM auto-escapes all text nodes and attribute values to eliminate Cross-Site Scripting (XSS).
+- **Sustainable (S2)**: Zero JavaScript runtime dependencies for pure Go WASM workloads. Progressive island hydration guarantees users download interactive scripts only for sections requiring dynamic behavior.
+- **Scalable (S3)**: Unifies Go WASM, Svelte 5, and Vue 3 under a single declarative island hydration contract (`data-kiw-hydrate`).

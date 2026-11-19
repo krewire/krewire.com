@@ -1,30 +1,67 @@
 ---
 title: "Web Runtime & WASM (pkg/runtime)"
-description: "Menulis aplikasi web reaktif di sisi klien menggunakan Go yang dikompilasi ke WebAssembly: diffing virtual DOM, hooks, registri komponen, penanda hidrasi SSR, dan pipeline build WASM yang dapat direproduksi."
+description: "Menulis aplikasi web reaktif di sisi klien menggunakan Go yang dikompilasi ke WebAssembly: diffing virtual DOM, hooks, registri komponen, penanda hidrasi SSR, dan hidrasi pulau multi-framework."
 date: "2026-10-25"
 ---
 
 # Web Runtime & WASM (`pkg/runtime`)
 
-Keluarga package `pkg/runtime` mengompilasi kode Go ke WebAssembly (`GOOS=js GOARCH=wasm`) agar komponen pulau interaktif (interactive islands) dapat berbagi model komponen yang sama dengan halaman `.kiw` yang dirender di sisi server (SSR). Ini adalah sebuah **pustaka (library)**, bukan jenis beban kerja (workload kind): antarmuka frontend WASM dikirimkan di dalam proyek `app` atau `site` dan dibangun menggunakan perintah `kiw build --target wasm`.
+Jalur impor: `github.com/krewire/krewire/pkg/runtime`
+
+Pustaka `pkg/runtime` menghadirkan mesin eksekusi WebAssembly (WASM) di sisi klien, algoritma diffing dan rekonsiliasi Virtual DOM (VDOM), penjadwal siklus hidup komponen Fiber, serta kontrak hidrasi pulau (island hydration) progresif lintas framework.
+
+Pustaka ini memungkinkan pengembang menulis widget sisi klien yang interaktif dan reaktif dalam 100% Go murni yang dikompilasi ke WebAssembly (`GOOS=js GOARCH=wasm`), atau menyematkan pulau frontend modular yang ringan (Svelte 5, Vue 3) sembari menjaga pemuatan awal halaman tetap statis dan bebas JavaScript secara bawaan.
 
 ---
 
-## Tata Letak Subpackage
+## 1. Tata Letak Subpackage
 
 ```text
 pkg/runtime/
 ├── vdom/         # Virtual DOM immutable: VNode, El, Text, Component, Diff, RenderHTML
-├── component/    # Model komponen, hooks, event handler, registri komponen
-├── mount/        # Kontrak hidrasi SSR yang digunakan bersama oleh pembuat (emitter) dan boot klien
+├── component/    # Model komponen, penjadwal Fiber, hooks state, registri event
+├── mount/        # Kontrak hidrasi progresif (data-kiw-mount, load, idle, visible)
 ├── boot/         # Memindai penanda data-kiw-mount dan menghidrasi komponen terdaftar
 ├── schedule/     # Pengelompokan render per-frame (requestAnimationFrame pada js/wasm)
-└── build/        # BuildWASM: pembungkus go build dengan hashing dan diagnostik
+└── build/        # BuildWASM: pembungkus kompilator pure-Go wasm dengan hashing konten
 ```
 
 ---
 
-## Virtual DOM (`pkg/runtime/vdom`)
+## 2. Hidrasi Pulau Progresif (`pkg/runtime/mount`)
+
+Krewire menerapkan **Arsitektur Kepulauan (Islands Architecture)**: halaman dirender secara statis di server (SSG/SSR) tanpa beban JavaScript berlebih. Pulau-pulau interaktif dihidrasi secara selektif di peramban klien berdasarkan visibilitas layar atau periode senggang peramban.
+
+### Kontrak Atribut HTML Hidrasi
+
+Titik pemasangan (mount point) memancarkan penanda HTML standar:
+
+```html
+<div data-kiw-mount="Counter"
+     data-kiw-framework="wasm"
+     data-kiw-hydrate="visible"
+     data-kiw-props='{"initial":10}'>
+  <!-- HTML cadangan hasil render server -->
+  <button class="btn">Hitungan: 10</button>
+</div>
+```
+
+### Strategi Hidrasi (`mount.Hydrate`)
+
+- **`load`** (`mount.Load`): Menghidrasi segera setelah modul klien atau bundle WASM selesai dimuat.
+- **`idle`** (`mount.Idle`): Menghidrasi pada periode senggang peramban melalui `window.requestIdleCallback`.
+- **`visible`** (`mount.Visible`): Menghidrasi hanya saat pulau masuk ke viewport peramban melalui `IntersectionObserver`.
+
+### Dukungan Pulau Multi-Framework
+
+Melalui `pkg/runtime/mount` dan ekosistem plugin Krewire, titik pemasangan mendukung:
+- **`wasm`** (Bawaan): Pulau WebAssembly hasil kompilasi Go murni tanpa dependensi runtime node/npm.
+- **`svelte`**: Pulau komponen reaktif Svelte 5 yang dipasang melalui `kiw add svelte`.
+- **`vue`**: Pulau komponen reaktif Vue 3 yang dipasang melalui `kiw add vue`.
+
+---
+
+## 3. Mesin Virtual DOM (`pkg/runtime/vdom`)
 
 ```go
 import "github.com/krewire/krewire/pkg/runtime/vdom"
@@ -34,17 +71,17 @@ tree := vdom.El("section", map[string]string{"class": "hero"},
 	vdom.Component("Counter", "counter-1", map[string]string{"initial": "0"}),
 )
 
-html := vdom.RenderHTML(tree)        // server-side rendering (SSR)
-patches := vdom.Diff(oldTree, tree) // rekonsiliasi sisi klien
+html := vdom.RenderHTML(tree)        // Server-side rendering (SSR)
+patches := vdom.Diff(oldTree, tree) // Rekonsiliasi di sisi klien
 ```
 
-`VNode` adalah deskripsi struktur pohon yang bersifat immutable. Fungsi `RenderHTML` dan `Diff` sama-sama menyalurkan properti melalui `NormalizeProps`, sehingga output server dan rekonsiliasi klien memiliki kesesuaian identik pada nama atribut, kelas CSS, serta penanda event.
+`VNode` adalah deskripsi struktur pohon yang bersifat immutable. Fungsi `RenderHTML` dan `Diff` sama-sama memproses properti melalui `NormalizeProps`, memastikan output server dan rekonsiliasi klien memiliki keselarasan mutlak pada nama atribut, kelas CSS, serta penanda event.
 
 ---
 
-## Model Komponen (`pkg/runtime/component`)
+## 4. Model Komponen & Hooks Reaktif (`pkg/runtime/component`)
 
-Komponen adalah entitas apa pun yang merender pohon virtual:
+Komponen adalah entitas apa pun yang mengimplementasikan antarmuka `Component`:
 
 ```go
 type Component interface {
@@ -52,9 +89,11 @@ type Component interface {
 }
 ```
 
-Logika berstatus (stateful) menggunakan hooks generik yang terikat ke `Fiber` yang sedang dirender dan menegakkan urutan panggilan yang stabil:
+Logika berstatus (stateful) menggunakan hooks generik yang terikat ke `Fiber` aktif dan menegakkan urutan eksekusi yang stabil:
 
 ```go
+package main
+
 import (
 	"context"
 	"fmt"
@@ -85,25 +124,36 @@ func init() {
 }
 ```
 
-Hooks yang tersedia: `UseState`, `UseRef`, `UseMemo`, `UseEffect`, `UseEvent`. Partisipasi siklus hidup bersifat pilihan melalui antarmuka kapabilitas `Mounter`, `Unmounter`, dan `ShouldUpdater`. Memanggil hook di luar fungsi render akan memicu panic dengan galat `*component.HookRuleError`, yang secara eksplisit memunculkan kesalahan urutan panggilan alih-alih merusak state secara diam-diam.
+Hooks yang tersedia mencakup `UseState`, `UseRef`, `UseMemo`, `UseEffect`, dan `UseEvent`. Memanggil hook di luar siklus render akan memicu panic dengan galat `*component.HookRuleError`, yang secara langsung mendeteksi kesalahan urutan hooks.
 
 ---
 
-## Hidrasi SSR (`pkg/runtime/mount` dan `pkg/runtime/boot`)
+## 5. Pemindai Boot Klien (`pkg/runtime/boot`)
 
-Server mengeluarkan fragmen HTML yang dibungkus dalam kontainer dengan tiga atribut khusus:
+Runtime klien secara otomatis melakukan booting dan memasang komponen saat DOM selesai dimuat:
 
-```html
-<div data-kiw-mount="Counter" data-kiw-hydrate="load" data-kiw-props='{"initial":0}'>
-  <!-- server-rendered HTML -->
-</div>
+```go
+package main
+
+import (
+	"github.com/krewire/krewire/pkg/runtime/boot"
+	"github.com/krewire/krewire/pkg/runtime/component"
+)
+
+func main() {
+	// 1. Mendaftarkan komponen Go interaktif
+	component.Register("Counter", func() component.Component {
+		return &Counter{}
+	})
+
+	// 2. Memindai DOM untuk penanda [data-kiw-mount] dan menghidrasi pulau
+	boot.Run()
+}
 ```
 
-`boot` memindai penanda-penanda tersebut pada sisi klien, membuat instansiasi komponen yang terdaftar, dan mengisikan fiber awal dengan DOM hasil render server sehingga proses render pertama melakukan diffing alih-alih rendering ulang penuh. Pembaruan berikutnya digabungkan melalui `schedule`, yang mengelompokkan notifikasi ke dalam satu proses flush per frame animasi (`requestAnimationFrame`).
-
 ---
 
-## Membangun Modul WASM (`pkg/runtime/build`)
+## 6. Membangun Modul Biner WASM (`pkg/runtime/build`)
 
 ```go
 import "github.com/krewire/krewire/pkg/runtime/build"
@@ -120,12 +170,16 @@ if err != nil {
 fmt.Println(artifacts.WASM, artifacts.JS, artifacts.Digest)
 ```
 
-`BuildWASM` membungkus `go build` dengan flag lingkungan `GOOS=js GOARCH=wasm`, menyalin skrip perekat `wasm_exec.js`, menghasilkan hash konten modul, serta menyediakan diagnostik komprehensif saat terjadi ketidakcocokan toolchain maupun versi.
-
-Dari CLI `kiw`, pipeline yang sama dapat dipanggil langsung sebagai target build:
+Dari CLI pengembang, pipeline kompilasi yang sama dapat dipanggil langsung:
 
 ```bash
 kiw build --target wasm
 ```
 
-Modul biner hasil kompilasi dan skrip perekat JS akan ditempatkan di direktori output Anda, siap dipasang ke halaman HTML mana pun yang dilayani oleh workload `app` atau `site`.
+---
+
+## 7. Keselarasan dengan Tiga Pilar (3S)
+
+- **Aman (S1 - Secure)**: WASM dieksekusi di dalam sandbox hermetik peramban WebAssembly tanpa akses memori langsung yang tidak aman. VDOM meng-escape otomatis semua simpul teks dan nilai atribut untuk mencegah XSS.
+- **Berkelanjutan (S2 - Sustainable)**: Nol dependensi runtime JavaScript untuk beban kerja Go WASM murni. Hidrasi pulau progresif menjamin pengguna hanya mengunduh skrip interaktif untuk bagian halaman yang benar-benar membutuhkan dinamisme.
+- **Skalabel (S3 - Scalable)**: Menyatukan Go WASM, Svelte 5, dan Vue 3 di bawah satu kontrak hidrasi deklaratif yang seragam (`data-kiw-hydrate`).

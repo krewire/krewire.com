@@ -46,6 +46,11 @@ Handler HTTP siap pasang dengan antarmuka web responsif dark/light:
 - `GET /2fa/setup`, `POST /2fa/setup`
 - `GET /logout`, `POST /logout`
 
+#### Pengalihan Aman & Pencegahan Open Redirect (CWE-601)
+`pkg/webauth` melindungi sistem dari upaya phishing dan pengalihan yang tidak divalidasi via parameter `return_to`:
+- **`AUTH_RETURN_TO_HOSTS`**: Dikonfigurasi melalui environment variable sebagai daftar hostname yang diizinkan dipisahkan koma (contoh: `localhost:8080,dash.internal.org,app.krewire.com`).
+- Jika parameter `return_to` menargetkan domain eksternal di luar daftar `AUTH_RETURN_TO_HOSTS`, handler otomatis menolaknya dan mengalihkan pengguna dengan aman ke `/`.
+
 ---
 
 ## Akses Platform & Integrasi

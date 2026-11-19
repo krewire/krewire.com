@@ -1,62 +1,80 @@
 ---
-title: "Composable Input Validation"
-description: "Composable data validation without reflection overhead, providing structured errors for APIs and forms in pkg/validation."
+title: "Declarative Struct Validation"
+description: "Reflection-based struct and scalar validation using validate tags in pure Go in pkg/validation."
 date: "2026-10-25"
 ---
 
-# Composable Input Validation (`pkg/validation`)
+# Declarative Struct Validation (`pkg/validation`)
 
 Import path: `github.com/krewire/krewire/pkg/validation`
 
-The `validation` package validates data structures without reflection overhead, providing clear error structures for APIs and web forms.
+The `pkg/validation` package validates Go structs and scalar fields using `validate` struct tags. It is framework-agnostic and relies 100% on the Go standard library, allowing HTTP endpoints, CLI tools, and domain entities to share one unified validation engine.
 
 ---
 
-## Common Rules
+## 1. Supported Rules
 
-- **`rules.Required`**: Value must not be empty or zero.
-- **`rules.Email`**: RFC 5322 compliant email format.
-- **`rules.Min` / `rules.Max`**: Numeric bounds or minimum/maximum string length.
-- **`rules.OneOf`**: Value must match one of the allowed options.
-- **`rules.Pattern`**: Regular expression validation.
+- **`required`**: Field must not be zero-valued, empty, or nil.
+- **`min=N`**: Minimum numeric value or minimum string/slice length.
+- **`max=N`**: Maximum numeric value or maximum string/slice length.
+- **`len=N`**: Exact string or slice length.
+- **`email`**: Valid RFC 5322 email address format.
+- **`oneof=a b c`**: Value must match one of the whitespace-delimited options.
+- **`pattern=regex`**: Value must match compiled regular expression.
 
 ---
 
-## Usage Example
+## 2. Core API Reference
+
+- **`validation.Struct(v any) error`**: Validates a struct or pointer to a struct. Returns `nil` when all rules pass, or a `*validation.ValidationError` detailing failing fields.
+- **`validation.Field(value any, tag string) error`**: Validates a single scalar value against a rule string.
+
+---
+
+## 3. Usage Example
 
 ```go
 package main
 
 import (
+	"errors"
 	"fmt"
+
 	"github.com/krewire/krewire/pkg/validation"
-	"github.com/krewire/krewire/pkg/validation/rules"
 )
 
-type RegisterRequest struct {
-	Username string
-	Email    string
-	Age      int
-}
-
-func (r RegisterRequest) Validate() validation.Errors {
-	v := validation.New()
-
-	v.Check("username", r.Username, rules.Required(), rules.Min(3), rules.Max(32))
-	v.Check("email", r.Email, rules.Required(), rules.Email())
-	v.Check("age", r.Age, rules.Min(18))
-
-	return v.Errors()
+type UserRegistration struct {
+	Username string `json:"username" validate:"required,min=3,max=32,pattern=^[a-zA-Z0-9_-]+$"`
+	Email    string `json:"email"    validate:"required,email"`
+	Role     string `json:"role"     validate:"required,oneof=developer admin observer"`
+	Age      int    `json:"age"      validate:"min=13,max=120"`
 }
 
 func main() {
-	req := RegisterRequest{Username: "al", Email: "invalid-email", Age: 16}
-	errs := req.Validate()
+	user := UserRegistration{
+		Username: "al",
+		Email:    "invalid-email",
+		Role:     "superuser",
+		Age:      10,
+	}
 
-	if errs.HasErrors() {
-		for field, msg := range errs.All() {
-			fmt.Printf("- %s: %s\n", field, msg)
+	err := validation.Struct(user)
+	if err != nil {
+		var valErr *validation.ValidationError
+		if errors.As(err, &valErr) {
+			for _, f := range valErr.Fields {
+				fmt.Printf("Field %q failed rule %q (got: %v, param: %q)\n",
+					f.Field, f.Rule, f.Value, f.Param)
+			}
 		}
 	}
 }
-```\n
+```
+
+---
+
+## 4. Alignment with the Three Pillars (3S)
+
+- **Secure (S1)**: Invariants are validated at the perimeter before untrusted client payloads reach databases, command executors, or file storage.
+- **Sustainable (S2)**: Pure Go standard library reflection; zero third-party dependencies, zero CGO.
+- **Scalable (S3)**: Single validation schema shared identically across web handlers, CLI arguments, and background jobs.

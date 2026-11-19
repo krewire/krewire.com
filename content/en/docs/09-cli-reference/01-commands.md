@@ -359,26 +359,33 @@ kiw ws exec <cmd>   # Execute a command across every workspace module
 
 ### `kiw boost install`
 
-Equip any project repository with the **Krewire Boost** AI agent system:
+Equip any project repository with the **Krewire Boost** autonomous AI agent system:
 
 ```bash
 kiw boost install [path]
 ```
 
-Installs the autonomous agent definitions, custom slash commands, and autonomous SDLC workflows into `.agents/` and `AGENTS.md`.
+Installs:
+- 21 autonomous agent personas into `.agents/`
+- 6-phase SDLC workflow rules into `.workflow/`
+- Slash command definitions (`/plan`, `/build`, `/test`, `/review`, `/deploy`, `/boost`)
+- Operational guidelines into `AGENTS.md`
 
 ### `kiw add <package[@version]>`
 
-Add a Go module or an opt-in ecosystem plugin (such as Tailwind CSS):
+Add a Go module, external library, or an opt-in ecosystem frontend plugin:
 
 ```bash
-kiw add twcss@latest
-kiw add tailwindcss
+kiw add svelte                     # Install Svelte 5 island compiler and plugin
+kiw add vue                        # Install Vue 3 island compiler and plugin
+kiw add twcss                      # Install Tailwind CSS compiler runner
+kiw add tailwindcss                # Alias for twcss
 kiw add github.com/krewire/krewire@v0.2.0
 ```
 
 - **Zero JS by Default**: Krewire defaults to zero JavaScript and standalone CSS tokens.
 - **Opt-In Technology**: When adding `twcss`, `kiw` automatically initializes `tailwind.config.js` and enables the Tailwind compiler runner (standalone CLI binary in `bin/tailwindcss`, Bun, PNPM, or npm/npx fallback).
+- **Reactive Islands**: Adding `svelte` or `vue` configures client bundlers for progressive island hydration (`data-kiw-framework="svelte|vue"`).
 
 ### `kiw remove <package>`
 

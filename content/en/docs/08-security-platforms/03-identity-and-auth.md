@@ -46,6 +46,11 @@ Ready-to-mount HTTP handlers with clean, responsive dark/light UI:
 - `GET /2fa/setup`, `POST /2fa/setup`
 - `GET /logout`, `POST /logout`
 
+#### Safe Redirection & Open Redirect Prevention (CWE-601)
+`pkg/webauth` protects against phishing and unvalidated redirects via the `return_to` parameter:
+- **`AUTH_RETURN_TO_HOSTS`**: Configured via environment variable as a comma-separated list of permitted hostnames (e.g. `localhost:8080,dash.internal.org,app.krewire.com`).
+- If `return_to` targets an external domain not listed in `AUTH_RETURN_TO_HOSTS`, the handler automatically discards it and safely falls back to `/`.
+
 ---
 
 ## Platform Access & Integration

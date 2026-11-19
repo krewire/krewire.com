@@ -175,6 +175,73 @@ kiw boost install
 
 Perintah ini akan memasang:
 
-- `AGENTS.md` — Konstitusi agen dan batasan operasional.
+- `AGENTS.md` — Konstitusi agen dan batasan operasional workspace.
 - `.cursor/mcp.json` & `opencode.json` — Definisi server MCP yang telah terkonfigurasi.
-- `.agents/` — Persona subagen spesialis (`planner`, `designer`, `builder`, `tester`, `deployer`, `maintainer`, `auditor`).
+- `.agents/` — 21 persona subagen spesialis di 5 kluster fungsional.
+- `.workflow/` — Aturan eksekusi SDLC otonom 6-fase dan gerbang kualitas (quality gates).
+
+---
+
+## 6. 21 Peran Agen Otonom & Kluster Spesialisasi
+
+Krewire Boost mendefinisikan 21 subagen terspesialisasi yang beroperasi di bawah prinsip pemisahan tanggung jawab (Separation of Concerns) yang ketat:
+
+### 1. Tata Kelola & Kepemimpinan (Governance & Leadership)
+- **`leader` (Otoritas Hasil)**: Memiliki wewenang penerimaan akhir, kesiapan rilis, dan kompromi cakupan.
+- **`orchestrator` (Koordinator Multi-Agen)**: Mengoordinasikan graf eksekusi multi-fase di seluruh subagen.
+- **`manager` (Klarifikasi & Perutean)**: Mengklarifikasi permintaan ambigu dan merutekan tugas ke subagen yang paling sesuai.
+- **`supervisor` (Pemantau Runtime)**: Memantau batas waktu eksekusi agen, anggaran percobaan ulang, dan pemulihan galat.
+
+### 2. Arsitektur & Desain (Architecture & Design)
+- **`planner` (Kebutuhan & Backlog)**: Menyusun PRD, rincian struktur kerja (WBS), dan cerita pengguna (user stories).
+- **`thinker` (Penalaran Arsitektural)**: Mengevaluasi trade-off teknis, ADR, dan desain alternatif (bersifat read-only).
+- **`designer` (Arsitektur Sistem)**: Menerjemahkan kebutuhan ke dalam diagram C4, ERD, skema API, dan model ancaman keamanan.
+
+### 3. Implementasi & Refaktorisasi (Implementation & Refactoring)
+- **`builder` (Implementasi Fitur)**: Menulis kode produksi Go, mengimplementasikan fitur, dan memperbaiki bug.
+- **`decomposer` (SRP & Clean Code)**: Mendekomposisi god-class dan fungsi monolitik menjadi unit berkemampuan tunggal.
+- **`automator` (Perkakas & Skrip)**: Membuat scaffolding perkakas pengembang, generator kode, skrip batch, dan alur CI.
+- **`customizer` (Kustomisasi Toko Agen)**: Membakukan agen kustom, skills, slash commands, dan aturan proyek.
+
+### 4. Verifikasi, Pengujian & Keamanan (Verification, Testing & Security)
+- **`tester` (Penjaminan Kualitas)**: Menulis pengujian unit, tabel data uji, harness pengujian HTTP, dan memverifikasi cakupan kode.
+- **`auditor` (Keamanan & Kepatuhan)**: Mengaudit kode terhadap OWASP Top 10, CWE-22 (SafePath), CWE-918 (SSRF), dan kebocoran rahasia.
+- **`tracker` (Pelacakan Isu GitHub SSOT)**: Menemukan isu terbuka, memperbarui checklist tugas (`- [ ]` → `- [x]`), dan menjaga ketertelusuran isu.
+
+### 5. Operasional & Higienitas Pengetahuan (Operations & Knowledge Hygiene)
+- **`deployer` (CI/CD & Infrastruktur)**: Mengelola target deployment (systemd, Docker, biner, GitHub Pages) dan blueprint infrastruktur.
+- **`maintainer` (Operasi & Triase)**: Melakukan triase bug, memperbarui dependensi, dan menyelesaikan utang teknis.
+- **`explorer` (Eksplorasi Basis Kode)**: Memindai repositori baru, memetakan struktur direktori, dan menemukan simbol kode.
+- **`researcher` (Riset Eksternal)**: Mengevaluasi library eksternal, spesifikasi RFC, dan praktik terbaik industri.
+- **`housekeeper` (Higienitas Memori & Pengetahuan)**: Memangkas konteks sesi yang usang, merapikan file sementara, dan memelihara dokumentasi indeks.
+- **`learner` (Penyempurnaan Diri)**: Mengonsolidasikan preferensi pengembang dan koreksi kesalahan agen menjadi aturan proyek persisten.
+- **`writer` (Dokumentasi & Redaksi)**: Menulis dokumentasi, referensi API, docstring Go, dan salinan antarmuka pengguna.
+
+---
+
+## 7. Siklus Hidup Eksekusi Otonom & Slash Commands
+
+Setiap tugas agen bergerak melalui siklus deterministik enam tahap:
+
+```text
+[1. Pahami] ──► [2. Petakan] ──► [3. Rencanakan] ──► [4. Implementasikan] ──► [5. Verifikasi] ──► [6. Simpulkan]
+```
+
+### Matriks Slash Commands
+
+Boost menyediakan pintasan perintah pengguna yang dipetakan langsung ke alur kerja otonom:
+
+- **Kebutuhan & Perencanaan**: `/plan`, `/spec`, `/grill-me` (Melibatkan `planner`, `thinker`, `manager`).
+- **Arsitektur & Desain**: `/design`, `/adr` (Melibatkan `designer`, `thinker`).
+- **Implementasi**: `/build`, `/refactor`, `/fix`, `/commit` (Melibatkan `builder`, `decomposer`, `automator`).
+- **Pengujian & Verifikasi**: `/test`, `/audit`, `/verify` (Melibatkan `tester`, `auditor`).
+- **Rilis & Deployment**: `/deploy`, `/release` (Melibatkan `deployer`, `maintainer`).
+- **Higienitas & Evolusi**: `/learn`, `/compact`, `/docs` (Melibatkan `housekeeper`, `learner`, `writer`).
+
+---
+
+## 8. Keselarasan dengan Tiga Pilar (3S)
+
+- **Aman (S1 - Secure)**: Inbound MCP menegakkan inspeksi baca-saja secara bawaan; perubahan berbahaya memerlukan pemanggilan tool eksplisit. Izin subagen mematuhi prinsip hak istimewa paling rendah (least privilege).
+- **Berkelanjutan (S2 - Sustainable)**: Server MCP murni Go tanpa memerlukan daemon runtime Node.js atau orchestrator Python yang berat.
+- **Skalabel (S3 - Scalable)**: Subagen modular dan transport dwi-kanal (stdio / SSE) dapat diskalakan dari laptop pengembang mandiri hingga pipeline agen cloud multi-tenant.
