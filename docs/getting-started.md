@@ -1,20 +1,33 @@
 # Getting Started with Krewire.com
 
-This guide walks you through setting up and running **`krewire.com`** locally.
+This guide walks you through setting up, running, and contributing to **`krewire.com`** locally.
 
 ---
 
 ## Prerequisites
 
 1. **`kiw` CLI**: The unified Krewire ecosystem CLI.
-   - Built from the `krewire` core monorepo:
+   - Install using the official installer:
      ```bash
-     cd /home/reasvyn/workspace/krewire/krewire
-     go build -o ../bin/kiw ./tools/kiw/cmd/kiw
+     curl -fsSL https://krewire.com/scripts/install.sh | sh
      ```
-   - Ensure `bin/kiw` is accessible in your `PATH` or invoke it directly via `../bin/kiw`.
-2. **Docker** *(optional)*: For testing the production Nginx container build.
-3. **No Go Toolchain Required Locally**: As a pure `site` workload, `krewire.com` does not need a local `go.mod`.
+   - Or install via Go:
+     ```bash
+     go install github.com/krewire/krewire/tools/kiw/cmd/kiw@latest
+     ```
+   - Or build locally from the core `krewire` repository:
+     ```bash
+     git clone https://github.com/krewire/krewire.git
+     cd krewire
+     go build -o /usr/local/bin/kiw ./tools/kiw/cmd/kiw
+     ```
+   - Verify installation:
+     ```bash
+     kiw --version
+     ```
+2. **Python 3**: Required to execute verification and utility scripts in `scripts/`.
+3. **Docker** *(optional)*: For testing the production Nginx container build.
+4. **No Go Toolchain Required Locally**: As a pure `site` workload, `krewire.com` does not need a local `go.mod`.
 
 ---
 
@@ -22,18 +35,18 @@ This guide walks you through setting up and running **`krewire.com`** locally.
 
 ### 1. Build Static Output
 
-Generate the static website into `.krewire/build/`:
+Generate the complete static website into `.krewire/build/`:
 
 ```bash
-cd /home/reasvyn/workspace/krewire/krewire.com
 kiw build
 ```
 
 The build pipeline performs:
 - Route generation from `pages/*.kiw` using layouts in `layouts/`.
-- Markdown compilation of `content/<locale>/docs/**/*.md` into `/docs/...` and `/<locale>/docs/...` via `pkg/book`.
-- Translation dictionary aggregation from `lang/`.
-- Asset copying and bundling from `public/`.
+- Markdown compilation of `content/en/docs/**/*.md` into `/docs/...` via `pkg/book`.
+- Markdown compilation of `content/id/docs/**/*.md` into `/id/docs/...` via `pkg/book`.
+- Scoped CSS compilation for all `.kiw` component styles.
+- Automatic asset copying and bundling from `public/` into `.krewire/build/assets/`.
 
 ### 2. Live Preview Server
 
@@ -51,13 +64,13 @@ By default, the server listens at `http://localhost:8080`. You can configure the
 
 ### `.kiw` Template Syntax
 
-Pages and layouts use Krewire's `.kiw` format:
+Pages and layouts use Krewire's `.kiw` single-file component format:
 - **YAML Frontmatter**: Metadata declared at the top between `---` delimiters.
 - **Scoped Styling**: `<style>` tags are automatically scoped with unique `data-kiw-*` attributes.
-- **Components**: Reusable components in `components/` can be invoked using custom tags (e.g. `<SearchModal />` or `<TabbedCode />`).
+- **Components**: Reusable components in `components/` can be invoked using custom tags (e.g. `<SearchModal />`, `<Navbar />`, `<Footer />`).
 - **Markdown Blocks**: Embed markdown directly inside template files using `<markdown>...</markdown>`.
 
-Example page template:
+Example page template (`pages/example.kiw`):
 
 ```html
 ---
@@ -86,11 +99,30 @@ The official documentation lives under `content/`:
 - **English**: `content/en/docs/`
 - **Indonesian**: `content/id/docs/`
 
-Files are organized with numbered prefixes for ordering (e.g., `01-overview`, `02-getting-started`).
+Files are organized with numbered prefixes for hierarchical ordering (e.g., `01-overview`, `02-getting-started`, `06-ui`).
+
 When adding or updating docs:
-1. Mirror changes across both `en` and `id` trees when applicable.
-2. Maintain frontmatter metadata (`title`, `description`, etc.).
-3. Rebuild with `kiw build` to verify table-of-contents generation.
+1. **Maintain 1:1 Parity**: Ensure every document in `content/en/docs/` has an identical counterpart in `content/id/docs/`.
+2. **Preserve Frontmatter**: Maintain frontmatter metadata (`title`, `description`).
+3. **Verify Parity**:
+   ```bash
+   python3 scripts/check-i18n-parity.py
+   ```
+4. **Rebuild & Verify**:
+   ```bash
+   kiw build
+   ```
+
+---
+
+## UI Component Previews
+
+Krewire UI components have live interactive previews in `ui/playground` and inside documentation pages:
+- Previews are statically generated using `scripts/gen-ui-previews.py`.
+- If you update core UI components in `components/` or add new preview variants, re-run:
+  ```bash
+  python3 scripts/gen-ui-previews.py
+  ```
 
 ---
 
@@ -99,8 +131,11 @@ When adding or updating docs:
 To build and run the production Docker image locally:
 
 ```bash
+# Build the production container
 docker build -t krewire-site .
-docker run -p 8080:80 krewire-site
+
+# Run the container locally
+docker run -d -p 8080:80 --name krewire-site-test krewire-site
 ```
 
-Visit `http://localhost:8080` to verify Nginx routing, asset headers, and fallback behaviors.
+Visit `http://localhost:8080` to verify Nginx routing, clean URLs, security headers, and asset caching behavior.

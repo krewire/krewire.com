@@ -1,15 +1,15 @@
 # Architecture of Krewire.com
 
-This document describes the architectural layout, compilation pipeline, and deployment strategy of the **`krewire.com`** website.
+This document describes the architectural layout, compilation pipeline, subsystem design, and deployment strategy of the **`krewire.com`** website.
 
 ---
 
 ## Architectural Role
 
-`krewire.com` serves as the public face and official documentation portal of the Krewire ecosystem.
-It is built as an end-to-end reference implementation for the **`site`** workload kind, validating that static sites and docs can be produced without external Node.js/JavaScript toolchains.
+`krewire.com` serves as the official public website and documentation portal for the Krewire digital SDLC ecosystem.
+It is built as an end-to-end reference implementation for the **`site`** workload kind, validating that high-performance websites and documentation can be produced with zero Node.js/npm dependencies and standard Go toolchain primitives.
 
-```
+```text
                       +-----------------------------+
                       |   Source Files & Content    |
                       |  - pages/*.kiw              |
@@ -25,6 +25,7 @@ It is built as an end-to-end reference implementation for the **`site`** workloa
                       |  - pkg/kiw (template parser)|
                       |  - pkg/book (manuscripts)   |
                       |  - pkg/web/ssg (generator)  |
+                      |  - auto_assets (bundling)   |
                       +--------------+--------------+
                                      |
                                      v
@@ -44,39 +45,74 @@ It is built as an end-to-end reference implementation for the **`site`** workloa
 
 ## Key Subsystems
 
-### 1. The `.kiw` Template Engine
-- Evaluated by `pkg/kiw` in the core repository.
-- Processes YAML frontmatter, scoped `<style>` blocks, inline `<markdown>`, and embedded components.
-- Injects standard page context:
+### 1. The `.kiw` Template Engine (`pkg/kiw`)
+- Parses YAML frontmatter, scoped `<style>` blocks, inline `<markdown>`, and custom tags.
+- Injects standard page context into layouts and templates:
   - `.Title`, `.Description`: Page metadata.
-  - `.Version`: Propagated from `krewire.yaml` (SSOT).
+  - `.Version`: Propagated from `krewire.yaml` (SSOT: `v0.2.3`).
   - `.Nav`: Navigation links configured in `krewire.yaml`.
 
 ### 2. Documentation Book Subsystem (`pkg/book`)
 - Configured via `book:` block in `krewire.yaml` (`mount: "/docs"`, `toc: true`).
-- Parses markdown files in `content/en/docs/` and `content/id/docs/`.
-- Extracts headings to build hierarchical tables of contents.
-- Wraps output using `layouts/Docs.kiw`.
+- Parses markdown manuscripts from `content/en/docs/` and `content/id/docs/`.
+- Automatically extracts headings to generate hierarchical tables of contents with independent subchapter toggle states.
+- Generates HTML pages rendered through `layouts/Docs.kiw`.
+- Mounts default English documentation under `/docs/` and localized Indonesian documentation under `/id/docs/`.
 
-### 3. Client Search Subsystem
+### 3. Asset Injection & Bundling
+- Controlled by `auto_assets.bundle: true` in `krewire.yaml`.
+- All CSS and JS files in `public/assets/` are automatically bundled and injected into `<head>`:
+  - Scoped CSS rules prevent style leaks across components (`data-kiw-*`).
+  - Cache-busting queries (`?v=<version>`) are automatically appended based on `project.version`.
+
+### 4. Client Search Subsystem
 - Documentation topics are indexed during build into search JSON manifests.
-- Handled at runtime by `components/SearchModal.kiw` and client scripts in `public/assets/`.
-- Fast, client-side modal search with keyboard shortcuts (`Cmd/Ctrl + K`).
+- Handled at runtime by `components/SearchModal.kiw` and client scripts in `public/assets/krewire.js`.
+- Fast, client-side modal search with keyboard shortcuts (`Cmd/Ctrl + K`) supporting both English and Indonesian documents.
 
-### 4. Internationalization (i18n)
-- Declared under `i18n:` in `krewire.yaml` (`locales: ["en", "id"]`).
-- Default English routes mount at `/` and `/docs/...`.
-- Indonesian routes mount under `/id/` and `/id/docs/...`.
-- Translation dictionaries live in `lang/en/` and `lang/id/`.
+### 5. UI Component Previews & Playground
+- Contains 66 single-file `.kiw` components in the Krewire UI design system.
+- Interactive live previews for core components (`Button`, `Badge`, `Input`, `Card`, `Modal`, `Tabs`, `Alert`) are statically generated via `scripts/gen-ui-previews.py`.
+- Previews feature live light/dark theme toggles and one-click copyable `.kiw` component and usage snippets.
+- Accessible at `/ui/playground` and embedded directly in component documentation pages.
+
+### 6. Internationalization (i18n) & Parity Pipeline
+- Configured in `krewire.yaml` (`locales: ["en", "id"]`, `default_locale: "en"`).
+- Translation dictionaries live in `lang/en.json` and `lang/id.json`.
+- Strict 1:1 bilingual documentation parity is enforced:
+  - `python3 scripts/check-i18n-parity.py` validates that all 134 manuscripts in English have identical Indonesian counterparts.
+  - `python3 scripts/sync-i18n.py --check` ensures all translation keys match across dictionaries.
 
 ---
 
-## Production Deployment Model
+## Dual Production Deployment Pathways
 
-1. **Static Build**: `kiw build` generates optimized static files in `.krewire/build/`.
-2. **Container Image**: A multi-stage Docker build copies `.krewire/build/` into a hardened `nginx:alpine` image.
-3. **Nginx Runtime**:
-   - Gzip compression for static text/HTML/CSS/JS.
-   - Cache-Control headers for hashed assets.
-   - Clean URLs (rewriting `/docs` to `/docs/index.html`).
-   - Standard security headers (`X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`).
+The repository employs two distinct deployment pathways:
+
+1. **Standard Production Release (SemVer)**:
+   - Triggered exclusively by pushing stable SemVer Git tags (`vX.Y.Z` or `vX.Y.Z-lts*`) on `main`.
+   - Workflow: [`.github/workflows/deploy.yaml`](../.github/workflows/deploy.yaml).
+   - Generates production static build, verifies health checks, and deploys container.
+
+2. **Emergency Hotfix Deployment (Fast-Track Bypass)**:
+   - Bypasses tag requirements and standard multi-stage approval.
+   - Pushed directly to the dedicated `hotfix` branch (`git checkout hotfix && git merge main --ff-only && git push origin hotfix`).
+   - Workflow: [`.github/workflows/hotfix.yaml`](../.github/workflows/hotfix.yaml).
+   - **Automated Rollback Guarantee**: If container health checks or live smoke tests fail, the workflow immediately rolls back to the last known stable production image (`krewire-app:stable`).
+
+---
+
+## Nginx Production Runtime
+
+The container build defined in `Dockerfile` and `docker/nginx.conf` features:
+- Multi-stage build based on pinned `nginx:alpine` image.
+- Removal of default Nginx configuration to prevent configuration leaks.
+- Static Gzip compression for text, HTML, CSS, JavaScript, and JSON.
+- Clean URL rewrites (e.g. `/docs` → `/docs/index.html`).
+- Cache-Control headers for version-hashed assets.
+- Hardened security headers: `X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, and `Content-Security-Policy`.
+- Container health check:
+  ```dockerfile
+  HEALTHCHECK --interval=5s --timeout=3s --start-period=2s --retries=3 \
+    CMD wget --quiet --tries=1 --spider http://127.0.0.1/ || exit 1
+  ```
