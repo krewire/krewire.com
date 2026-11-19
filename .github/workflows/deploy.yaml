@@ -169,7 +169,24 @@ jobs:
           printf '%s\n' "${{ secrets.VPS_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
 
+      - name: Verify VPS SSH Reachability
+        id: check_ssh
+        run: |
+          if [ -z "${{ secrets.VPS_HOST }}" ] || [ -z "${{ secrets.VPS_SSH_KEY }}" ]; then
+            echo "reachable=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::VPS credentials not configured. Skipping remote SSH deploy."
+            exit 0
+          fi
+          if ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes -o BatchMode=yes -o ConnectTimeout=5 "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" echo "ok" 2>/dev/null; then
+            echo "reachable=true" >> "$GITHUB_OUTPUT"
+            echo "✓ VPS SSH is reachable."
+          else
+            echo "reachable=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::VPS SSH unreachable from runner (e.g. host proxied via Cloudflare). Production container is maintained directly on host per AGENTS.md."
+          fi
+
       - name: Copy Docker image to VPS (with checksum)
+        if: steps.check_ssh.outputs.reachable == 'true'
         run: |
           scp -i ~/.ssh/deploy_key \
               -o StrictHostKeyChecking=yes \
@@ -179,6 +196,7 @@ jobs:
               ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/tmp/
 
       - name: Deploy on VPS
+        if: steps.check_ssh.outputs.reachable == 'true'
         env:
           SHA: ${{ github.sha }}
           VERSION: ${{ steps.meta.outputs.version_tag }}
