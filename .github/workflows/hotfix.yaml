@@ -1,4 +1,4 @@
-name: Emergency Hotfix Deploy to krewire.com (Protocol Bypass with Stable Fallback)
+name: Hotfix Pipeline
 
 # ─────────────────────────────────────────────────────────────────────────────
 # EMERGENCY HOTFIX DEPLOYMENT WORKFLOW
