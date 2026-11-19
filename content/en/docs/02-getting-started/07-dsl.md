@@ -275,6 +275,7 @@ Components can declare imports in `<script>` blocks or frontmatter:
 ### 4.6 Standalone Component Packages (`.kpkg`)
 
 Reusable component libraries can be distributed and installed as standalone packages with zero npm dependencies:
+
 - **Manifest (`kiw.pkg.json`)**: Declares package metadata, exported component paths, and stylesheets.
 - **Archive Format (`.kpkg`)**: Gzipped tarball with SHA-256 integrity verification.
 - **Install Directory (`./.krewire/pkg/`)**: Local project packages repository.
@@ -334,6 +335,7 @@ You declare hydration behavior using `client:*` directives directly on component
 ```
 
 **How It Works:**
+
 1. **Server Rendering (SSR/SSG)**: During build, Krewire renders the component to HTML and wraps it in a lightweight marker container (`data-kiw-mount="Counter" data-kiw-hydrate="load" data-kiw-props='{"initial":0}'`).
 2. **Instant Preview**: The browser paints the full content immediately with zero layout shift (CLS: 0).
 3. **Progressive Hydration**: The Krewire WebAssembly runtime (`pkg/runtime`) scans for mount markers, seeds the VDOM fiber with the existing DOM, and attaches reactive events without re-rendering server text.
@@ -347,10 +349,13 @@ Styles defined inside `<style>` blocks are **scoped to the component automatical
 ### How Scoping Works:
 
 1. When parsing a component (e.g. `components/Card.kiw`), Krewire injects a unique attribute into the component's root elements:
+
    ```html
    <div class="card" data-kiw-component="Card">...</div>
    ```
+
 2. The CSS compiler (`pkg/web/ssg`) rewrites your selectors to bind strictly to that component's scope:
+
    ```css
    /* Your authored CSS */
    .card { padding: 20px; }
@@ -360,6 +365,7 @@ Styles defined inside `<style>` blocks are **scoped to the component automatical
    [data-kiw-component="Card"] .card, [data-kiw-component="Card"].card { padding: 20px; }
    [data-kiw-component="Card"] h3, [data-kiw-component="Card"]h3 { font-size: 1.25rem; }
    ```
+
 3. All component styles are bundled and minified into a single `assets/style.css` file, eliminating render-blocking CSS requests.
 
 ---

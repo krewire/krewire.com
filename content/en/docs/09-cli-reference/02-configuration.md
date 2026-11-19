@@ -242,6 +242,5 @@ The dev server port is **not** an environment variable. The listen address
 resolves in this order:
 
 1. `--addr` flag (`kiw serve --addr :3000`).
-2. `runtime.port`, then `dev.port`, then `server.port`, then the first
-   `services[].port`.
+2. `runtime.port`, then `dev.port`, then `server.port`, then the first `services[].port`.
 3. `:8080`.

@@ -95,6 +95,7 @@ kiw dash --port 4000
 ```
 
 The MCP SSE server is automatically exposed at:
+
 - **SSE Stream**: `http://127.0.0.1:4000/mcp/sse`
 - **JSON-RPC Message Endpoint**: `http://127.0.0.1:4000/mcp/message`
 
@@ -173,6 +174,7 @@ kiw boost install
 ```
 
 This installs:
+
 - `AGENTS.md` — The agent constitution and operational boundaries.
 - `.cursor/mcp.json` & `opencode.json` — Pre-wired MCP server definitions.
 - `.agents/` — Specialist subagent personas (`planner`, `designer`, `builder`, `tester`, `deployer`, `maintainer`, `auditor`).

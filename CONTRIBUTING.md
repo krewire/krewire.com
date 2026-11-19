@@ -48,22 +48,17 @@ kiw serve
 ## 3. Documentation Authoring & 1:1 Parity
 
 Documentation manuscripts are organized into numbered chapters under `content/`:
+
 - **English**: `content/en/docs/`
 - **Indonesian**: `content/id/docs/`
 
 ### Authoring Rules
 
-1. **1:1 File & Path Parity:**
-   Every new or renamed document in `content/en/docs/` must have a corresponding counterpart in `content/id/docs/` with the exact same relative file path and numbered prefix.
-2. **YAML Frontmatter:**
-   Every documentation file must include frontmatter with `title:` and `description:`.
-3. **Code Blocks:**
-   Always declare explicit language identifiers on fenced code blocks (e.g., ````go`, ````yaml`, ````bash`, ````html`).
-4. **Internal Links:**
-   - Link to other docs chapters using absolute paths (e.g., `[Overview](/overview)` or `[Button](/ui/components/button)`). The `pkg/book` compiler automatically maps them to the appropriate localized mount (`/docs/...` or `/id/docs/...`).
-   - For links to non-book routes such as the UI playground, use `https://krewire.com/ui/playground` or relative navigation to avoid book-mount remapping.
-5. **No Hardcoded Versions:**
-   Do not hardcode release versions into documentation prose unless specifically referring to historical migration guides. Dynamic pages receive `.Version` from `krewire.yaml`.
+1. **1:1 File & Path Parity:** Every new or renamed document in `content/en/docs/` must have a corresponding counterpart in `content/id/docs/` with the exact same relative file path and numbered prefix.
+2. **YAML Frontmatter:** Every documentation file must include frontmatter with `title:` and `description:`.
+3. **Code Blocks:** Always declare explicit language identifiers on fenced code blocks (e.g., ````go`, ````yaml`, ````bash`, ````html`).
+4. **Internal Links:** Link to other docs chapters using absolute paths (e.g., `[Overview](/overview)` or `[Button](/ui/components/button)`). For links to non-book routes such as the UI playground, use `https://krewire.com/ui/playground`.
+5. **No Hardcoded Versions:** Do not hardcode release versions into documentation prose unless specifically referring to historical migration guides. Dynamic pages receive `.Version` from `krewire.yaml`.
 
 ---
 
@@ -107,6 +102,7 @@ kiw build
 ### Conventional Commits
 
 We strictly follow Conventional Commits formatting:
+
 - `feat(site|ui|docs): description`
 - `fix(site|ui|docs): description`
 - `docs(content): description`

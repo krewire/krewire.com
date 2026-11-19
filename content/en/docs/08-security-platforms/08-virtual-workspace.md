@@ -50,6 +50,7 @@ Krewire Dash provides an AI-powered virtual workspace engine and cloud IDE platf
 ### Unified Workspace & Studio Console
 
 Developers can explore sandboxed project environments and execution telemetry:
+
 - **Web Portal:** `https://dash.krewire.com`
 - **Features:** In-browser interactive PTY terminal streaming, live project sandboxes, and embedded `krew` autonomous AI automation.
 - **Single Sign-On:** Integrated with Krewire Auth (`auth.krewire.com`).
@@ -57,6 +58,7 @@ Developers can explore sandboxed project environments and execution telemetry:
 ### Local Development Alternatives
 
 For local development without cloud dependencies, developers use the native `kiw` CLI tools:
+
 - `kiw dev`: Run applications locally with auto-restart and hot reload.
 - `kiw dash`: Run local dev dashboard & MCP telemetry (`:4000`) or manage virtual workspace sandboxes.
 - `kiw mcp --stdio`: Connect AI coding assistants (such as Antigravity or Cursor) directly to your project via the Model Context Protocol.

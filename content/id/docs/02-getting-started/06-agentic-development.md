@@ -120,6 +120,7 @@ Pada sesi pertama di sebuah proyek, pengembang atau agen memicu `/kickoff`. Sub-
 
 ### 3. Rancang & Susun Spesifikasi (Plan & Spec - `/spec`, `/plan`)
 Fitur penting atau refactor besar tidak pernah diimplementasikan secara membabi buta. Agen menyusun draf spesifikasi teknis ringkas di `docs/specs/` yang mendefinisikan:
+
 - Sasaran (goals) dan non-sasaran (non-goals)
 - Kontrak API atau perubahan skema
 - Kriteria penerimaan yang terukur

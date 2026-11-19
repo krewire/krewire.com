@@ -37,6 +37,7 @@ Krewire Auth adalah platform identitas enterprise terdedikasi yang menyediakan s
 
 ### 5. `pkg/webauth`
 Handler HTTP siap pasang dengan antarmuka web responsif dark/light:
+
 - `GET /login`, `POST /login`
 - `GET /register`, `POST /register`
 - `GET /forgot-password`, `POST /forgot-password`
@@ -54,6 +55,7 @@ Handler HTTP siap pasang dengan antarmuka web responsif dark/light:
 ### Endpoint Federasi OIDC & OAuth2
 
 Krewire Auth berintegrasi dengan layanan web melalui protokol OIDC standar:
+
 - **Portal Web:** [https://auth.krewire.com](https://auth.krewire.com)
 - **Discovery Endpoint:** `https://auth.krewire.com/.well-known/openid-configuration`
 - **JWKS Key Set:** `https://auth.krewire.com/.well-known/jwks.json`
@@ -63,6 +65,7 @@ Krewire Auth berintegrasi dengan layanan web melalui protokol OIDC standar:
 ### Keamanan Lokal untuk Workload Open-Source
 
 Bagi proyek open-source yang berjalan mandiri tanpa layanan cloud, Krewire menyediakan library autentikasi dan keamanan native tanpa dependensi di monorepo inti:
+
 - `pkg/sec`: Perbandingan constant-time, header keamanan OWASP, validasi token CSRF, dan pencegahan SSRF.
 - `pkg/auth`: Token JWT stateless, hashing password PBKDF2, dan middleware HTTP Basic Auth.
 

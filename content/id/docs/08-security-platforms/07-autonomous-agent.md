@@ -20,6 +20,7 @@ date: "2026-11-05"
 
 ### 2. `pkg/persona` — Spesialisasi Karakter Agen
 Persona terkonfigurasi yang menyesuaikan system prompt, temperature, dan batasan perilaku:
+
 - `CodingAssistant`: Pair programming, refaktorisasi struktural, dan implementasi berbasis TDD.
 - `DevOpsRunner`: Manajemen infrastruktur, diagnostik pipeline CI/CD, dan telemetri kontainer.
 - `AutonomousWorker`: Penyelesaian tugas mandiri tanpa pengawasan, otomatisasi skrip batch, dan migrasi massal.

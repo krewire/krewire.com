@@ -75,6 +75,7 @@ kiw migrate status                # Menampilkan tabel status migrasi
 ```
 
 Flag:
+
 - `--dsn <dsn>`: Override string koneksi database.
 - `--driver <driver>`: Driver database (`sqlite`, `postgres`, `mysql`).
 - `--dir <path>`: Direktori migrasi (default: `migrations`).

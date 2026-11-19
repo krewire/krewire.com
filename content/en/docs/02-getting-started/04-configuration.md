@@ -109,6 +109,7 @@ The `project:` section defines the identity and workload behavior:
   with the marker `pre-init` until `kiw init` equips a variant.
 
   **Progressive Pipeline:** Workloads in Krewire are additive rather than rigid siloes. A static site (`site`) can evolve into a fullstack SSR backend (`app`) simply by adding a `main.go` entry point—without rewriting `.kiw` templates, layouts, or component hierarchies.
+
 - **`dirs` (Optional):** Allows customization of the default directory layout if integrating Krewire into an existing repository layout.
 
 ---
@@ -166,11 +167,13 @@ hand is never duplicated. Cache busting uses `?v=<project version>`.
 - **`enabled`:** `false` restores fully manual asset tags.
 - **`js_placement`:** `head` (default) keeps theme scripts running before first
   paint; `body` appends them at the end of `<body>` instead.
+
 - **`exclude`:** Asset names, base names, or globs that must never be injected.
 - **`order`:** Pins one asset to a cascade layer, when the default position is
   wrong for your project. An unrecognized layer name is reported as a build
   warning and the default order is kept, so a typo is visible without failing
   the build.
+
 - **`bundle`:** `true` merges the eligible CSS and JS into `assets/krewire.css`
   and `assets/krewire.js`, trading per-asset requests for one of each.
 

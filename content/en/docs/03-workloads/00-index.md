@@ -146,6 +146,7 @@ project:
 ```
 
 When `project.kind` is omitted, `kiw` automatically infers the kind using shape markers:
+
 - Directories containing `pages/` or an `ssg:` key are detected as **`site`**.
 - Directories containing `content/` are detected as **`book`**.
 - Directories containing a `worker:` key are detected as **`worker`**.

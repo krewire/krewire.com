@@ -66,6 +66,7 @@ my-project/
 
 ### `pages/` (File-Based Routing)
 Files in `pages/` map directly to public URL routes:
+
 - `pages/index.kiw` → `https://example.com/`
 - `pages/pricing.kiw` → `https://example.com/pricing`
 - `pages/blog/first-post.kiw` → `https://example.com/blog/first-post`
@@ -98,6 +99,7 @@ Stores Markdown documentation manuscripts compiled by `pkg/book`. Numeric prefix
 
 ### `public/` (Uncompiled Static Assets)
 Files inside `public/` are served verbatim without preprocessing:
+
 - `public/favicon.svg` is served at `/favicon.svg`.
 - `public/robots.txt` is served at `/robots.txt`.
 - `public/assets/` contains client scripts and CSS stylesheets. Files ending
@@ -114,6 +116,7 @@ Files inside `public/` are served verbatim without preprocessing:
 
 ### `.krewire/` (Build Artifacts)
 Created automatically by `kiw dev` and `kiw build`:
+
 - **`.krewire/build/`:** Houses the compiled production output ready for static hosting or Docker image packaging.
 - This directory is managed by `kiw` and should always be added to your `.gitignore`.
 

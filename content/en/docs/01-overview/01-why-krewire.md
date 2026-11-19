@@ -75,16 +75,11 @@ one CLI, and one language — from `docs/specs/` to `kiw deploy`.
 
 Choosing Go is **architectural, not preferential**:
 
-1. **Standard Library Completeness:**  
-   Go's standard library (`net/http`, `html/template`, `embed`, `context`, `log/slog`, `flag`) provides production-grade networking, templating, and asset embedding out of the box. No external runtime or interpreter is required.
-2. **True Static Single Binaries:**  
-   A single `go build` produces a statically linked binary containing all compiled code, templates, and static assets. Startups occur in milliseconds with tiny memory footprints (10–30 MB RAM).
-3. **One Tooling Gate:**  
-   A single command pipeline (`gofmt`, `go vet`, `go test`) checks and formats every single workload in your repository—from the frontend SSG to the cloud infrastructure plans.
-4. **Compile Speed & Concurrency:**  
-   Go compiles in seconds and offers lightweight goroutines that can handle tens of thousands of concurrent network connections without thread exhaustion.
-5. **No Virtual Machine or Interpreter Tax:**  
-   Unlike Node.js or Python, Go does not require managing runtime environments (`nvm`, `venv`), avoiding version drift between local developer machines and production containers.
+1. **Standard Library Completeness:** Go's standard library (`net/http`, `html/template`, `embed`, `context`, `log/slog`, `flag`) provides production-grade networking, templating, and asset embedding out of the box. No external runtime or interpreter is required.
+2. **True Static Single Binaries:** A single `go build` produces a statically linked binary containing all compiled code, templates, and static assets. Startups occur in milliseconds with tiny memory footprints (10–30 MB RAM).
+3. **One Tooling Gate:** A single command pipeline (`gofmt`, `go vet`, `go test`) checks and formats every single workload in your repository—from the frontend SSG to the cloud infrastructure plans.
+4. **Compile Speed & Concurrency:** Go compiles in seconds and offers lightweight goroutines that can handle tens of thousands of concurrent network connections without thread exhaustion.
+5. **No Virtual Machine or Interpreter Tax:** Unlike Node.js or Python, Go does not require managing runtime environments (`nvm`, `venv`), avoiding version drift between local developer machines and production containers.
 
 ---
 

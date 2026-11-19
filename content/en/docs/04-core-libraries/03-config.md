@@ -9,6 +9,7 @@ date: "2026-10-25"
 Import path: `github.com/krewire/krewire/pkg/config`
 
 The `config` package loads typed application settings with deterministic priority:
+
 1. Explicit CLI flags
 2. Environment variables (`APP_*` prefix)
 3. Local environment file (`.env.local`)

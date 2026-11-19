@@ -53,6 +53,7 @@ kiw serve
 ```
 
 The output is emitted to `.krewire/build/`:
+
 - `pages/index.kiw` → `.krewire/build/index.html` (Landing page)
 - `content/en/docs/**/*.md` → `.krewire/build/docs/**` (English documentation)
 - `content/id/docs/**/*.md` → `.krewire/build/id/docs/**` (Indonesian documentation)

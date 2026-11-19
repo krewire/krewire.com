@@ -35,14 +35,19 @@ We follow standard trunk-based development:
 ## 2. Documentation Guidelines
 
 When authoring or modifying documentation under `content/`:
+
 - **1:1 Bilingual Parity:**
   Whenever you add, move, rename, or update an English document in `content/en/docs/`, apply the identical structural change to the corresponding Indonesian file in `content/id/docs/`.
+
 - **Clarity & Directness:**
   Keep explanations focused, accurate, and concise. Avoid unnecessary filler or speculation.
+
 - **Frontmatter Invariants:**
   Each markdown file requires `title` and `description` in YAML frontmatter.
+
 - **Code Blocks:**
   Always specify the language identifier for fenced code blocks (e.g. ````go`, ````yaml`, ````bash`, ````html`).
+
 - **No Hardcoded Versions:**
   Do not hardcode versions into documentation prose; dynamic pages receive `.Version` from `krewire.yaml`.
 

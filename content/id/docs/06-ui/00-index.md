@@ -9,6 +9,7 @@ date: "2026-11-09"
 **Krewire UI (`kui`)** adalah design system neo-brutalist ("pop-brutalist") tanpa dependensi eksternal dan pustaka komponen yang dibangun secara native untuk ekosistem Krewire.
 
 Komponen dapat digunakan langsung melalui dua authoring surface:
+
 - **Go-Native:** Widget dan node bertipe aman secara programatik (`github.com/krewire/ui/widget`).
 - **`.kiw` DSL:** Single-File Component deklaratif (`import { Button } from '@krewire/ui'`).
 - **Berbasis Paket:** Dipasang langsung via `kiw add @krewire/ui` tanpa mengotori direktori lokal, dengan opsi `kiw ui vendor` bila kustomisasi sumber lokal diperlukan.

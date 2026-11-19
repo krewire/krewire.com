@@ -15,6 +15,7 @@ Security is Krewire's primary pillar. Rather than leaving hardening as an aftert
 ## Security Headers Middleware
 
 Automatically applies modern HTTP defense headers:
+
 - `X-Frame-Options: DENY`
 - `X-Content-Type-Options: nosniff`
 - `Referrer-Policy: strict-origin-when-cross-origin`

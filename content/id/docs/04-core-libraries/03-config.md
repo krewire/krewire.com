@@ -9,6 +9,7 @@ date: "2026-10-25"
 Jalur impor: `github.com/krewire/krewire/pkg/config`
 
 Paket `config` memuat pengaturan aplikasi bertipe dengan urutan prioritas deterministik:
+
 1. Flag CLI eksplisit
 2. Variabel lingkungan (awalan `APP_*`)
 3. Berkas lingkungan lokal (`.env.local`)

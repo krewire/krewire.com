@@ -33,6 +33,7 @@ Tiga pilar di atas adalah hasil akhir (outcomes); tujuh prinsip berikut adalah c
 Perangkat lunak yang Anda sewa pada akhirnya akan mendikte Anda. Ketika platform pihak ketiga mengendalikan alur build, runtime, atau target deployment, mereka dapat menentukan margin harga, biaya, dan aturannya.
 
 Krewire merancang alat yang hasilnya dimiliki sepenuhnya oleh pembuatnya:
+
 - **Deployment Binary Tunggal:** Aplikasi dikompilasi menjadi kode mesin mandiri yang terhubung secara statis.
 - **Aset Tersemat:** Template, migrasi database, dan aset web berada di dalam binary via paket `embed` Go.
 - **Data Berdaulat Sendiri:** Database, penyimpanan objek, dan penyedia cache terlepas dari keterikatan vendor (vendor lock-in).
@@ -43,6 +44,7 @@ Krewire merancang alat yang hasilnya dimiliki sepenuhnya oleh pembuatnya:
 Biaya mendekati nol dirancang secara sadar, bukan dari potongan diskon sementara. Setiap dependensi yang tidak perlu, lapisan indireksi rumit, dan trik pemrograman yang berlebihan akan membebankan bunga selamanya — berupa tagihan hosting, beban pemeliharaan, audit keamanan, dan waktu onboarding.
 
 Krewire menolak tumpukan teknologi yang secara diam-diam membebani pengembang dengan biaya operasional tinggi:
+
 - **Pustaka Standar Pertama (Stdlib First):** Maksimalkan pustaka bawaan Go yang berperforma tinggi (`net/http`, `html/template`, `log/slog`, `context`, `flag`) sebelum memasukkan dependensi eksternal pihak ketiga.
 - **Kemasan Modular:** Proyek hanya mengimpor apa yang digunakan. Jika aplikasi hanya memerlukan pembangkit situs statis, modul antrean worker tidak akan pernah ditautkan ke hasil kompilasi.
 - **Komputasi Efisien:** Penggunaan memori yang ramping (10–30 MB) dan waktu booting sub-milidetik memungkinkan aplikasi produksi berjalan stabil di perangkat keras ekonomis.
@@ -53,6 +55,7 @@ Krewire menolak tumpukan teknologi yang secara diam-diam membebani pengembang de
 Fragmentasi membebani paling berat mereka yang memiliki sumber daya terbatas — tim pemula, pelajar, dan pengembang independen. Pilihan yang tak terbatas menciptakan kelelahan dalam mengambil keputusan (decision fatigue).
 
 Berkomitmen pada satu toolchain yang koheren mengubah eksplorasi yang terpecah menjadi penguasaan yang terakumulasi:
+
 - **Satu Konfigurasi:** `krewire.yaml` adalah satu-satunya sumber kebenaran (SSOT) untuk seluruh definisi workload, binding environment, dan target build.
 - **Satu CLI:** `kiw` menangani pembuatan proyek, pengembangan lokal, pengujian, kompilasi, dan deployment di seluruh tipe workload.
 - **Satu Bahasa:** Go mentenagai seluruh tumpukan — dari layanan backend dan antrean worker hingga situs statis dan runtime WebAssembly client-side.
@@ -87,6 +90,7 @@ Kepercayaan dibangun di ruang terbuka. Krewire berkomitmen pada transparansi pen
 Framework memaksakan konvensi kaku, jebakan siklus hidup, dan hierarki kelas yang mengikat ke dalam aplikasi Anda. Saat kebutuhan bisnis berkembang, tim sering kali terjebak dalam perombakan kode besar-besaran.
 
 Krewire mendekati arsitektur melalui pustaka modular yang dapat dikomposisikan:
+
 - **Kendali Kontrol Tetap di Tangan Anda:** Anda merangkai paket-paket Krewire ke dalam `main.go` aplikasi Anda sendiri, bukan mewarisi wadah runtime beropini kaku.
 - **Evolusi Progresif:** Mulai dari situs dokumentasi statis atau landing page (`site`), tambahkan rute server dan model database (`app`), ekstrak komputasi berat ke worker latar belakang (`worker`), dan pecah menjadi microservices otonom (`service`) hanya ketika skala organisasi membutuhkannya.
 - **Nol Biaya Penulisan Ulang:** Seluruh komponen, logika domain, dan konfigurasi dapat digunakan kembali secara utuh di setiap tahapan ekspansi sistem.

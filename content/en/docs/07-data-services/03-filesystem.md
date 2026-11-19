@@ -7,6 +7,7 @@ date: "2026-10-25"
 # Virtual Filesystem & Atomic Files (`pkg/fs`, `pkg/file`)
 
 Import paths:
+
 - `github.com/krewire/krewire/pkg/file`
 - `github.com/krewire/krewire/pkg/fs`
 

@@ -120,6 +120,7 @@ On the first session in a project, the developer or agent triggers `/kickoff`. T
 
 ### 3. Plan & Spec (`/spec`, `/plan`)
 Non-trivial features or refactorings are never implemented blind. The agent drafts a lightweight engineering specification in `docs/specs/` defining:
+
 - Goals and non-goals
 - API contracts or schema changes
 - Measurable acceptance criteria

@@ -50,6 +50,7 @@ Krewire Dash menyediakan mesin workspace virtual berbasis AI dan platform cloud 
 ### Konsol Studio & Workspace Terpadu
 
 Developer dapat mengelola lingkungan proyek sandbox dan telemetri eksekusi:
+
 - **Portal Web:** `https://dash.krewire.com`
 - **Fitur:** Streaming terminal PTY interaktif langsung di browser, sandbox proyek terisolasi, dan otomatisasi agen AI `krew` tersemat.
 - **Single Sign-On:** Terintegrasi penuh dengan Krewire Auth (`auth.krewire.com`).
@@ -57,6 +58,7 @@ Developer dapat mengelola lingkungan proyek sandbox dan telemetri eksekusi:
 ### Alternatif Pengembangan Lokal
 
 Untuk alur kerja pengembangan lokal tanpa dependensi cloud, developer dapat memanfaatkan perkakas native CLI `kiw`:
+
 - `kiw dev`: Menjalankan aplikasi secara lokal dengan auto-restart dan hot reload.
 - `kiw dash`: Menjalankan dashboard observabilitas lokal & telemetri MCP (`:4000`) atau mengelola virtual workspace dan sandbox eksekusi.
 - `kiw mcp --stdio`: Menghubungkan asisten coding AI (seperti Antigravity atau Cursor) langsung ke proyek melalui Model Context Protocol (MCP).

@@ -11,16 +11,19 @@ This guide walks you through setting up, running, and contributing to **`krewire
      ```bash
      curl -fsSL https://krewire.com/scripts/install.sh | sh
      ```
+
    - Or install via Go:
      ```bash
      go install github.com/krewire/krewire/tools/kiw/cmd/kiw@latest
      ```
+
    - Or build locally from the core `krewire` repository:
      ```bash
      git clone https://github.com/krewire/krewire.git
      cd krewire
      go build -o /usr/local/bin/kiw ./tools/kiw/cmd/kiw
      ```
+
    - Verify installation:
      ```bash
      kiw --version
@@ -42,6 +45,7 @@ kiw build
 ```
 
 The build pipeline performs:
+
 - Route generation from `pages/*.kiw` using layouts in `layouts/`.
 - Markdown compilation of `content/en/docs/**/*.md` into `/docs/...` via `pkg/book`.
 - Markdown compilation of `content/id/docs/**/*.md` into `/id/docs/...` via `pkg/book`.
@@ -65,6 +69,7 @@ By default, the server listens at `http://localhost:8080`. You can configure the
 ### `.kiw` Template Syntax
 
 Pages and layouts use Krewire's `.kiw` single-file component format:
+
 - **YAML Frontmatter**: Metadata declared at the top between `---` delimiters.
 - **Scoped Styling**: `<style>` tags are automatically scoped with unique `data-kiw-*` attributes.
 - **Components**: Reusable components in `components/` can be invoked using custom tags (e.g. `<SearchModal />`, `<Navbar />`, `<Footer />`).
@@ -96,12 +101,14 @@ layout: "Landing"
 ## Editing Documentation Content
 
 The official documentation lives under `content/`:
+
 - **English**: `content/en/docs/`
 - **Indonesian**: `content/id/docs/`
 
 Files are organized with numbered prefixes for hierarchical ordering (e.g., `01-overview`, `02-getting-started`, `06-ui`).
 
 When adding or updating docs:
+
 1. **Maintain 1:1 Parity**: Ensure every document in `content/en/docs/` has an identical counterpart in `content/id/docs/`.
 2. **Preserve Frontmatter**: Maintain frontmatter metadata (`title`, `description`).
 3. **Verify Parity**:
@@ -118,6 +125,7 @@ When adding or updating docs:
 ## UI Component Previews
 
 Krewire UI components have live interactive previews in `ui/playground` and inside documentation pages:
+
 - Previews are statically generated using `scripts/gen-ui-previews.py`.
 - If you update core UI components in `components/` or add new preview variants, re-run:
   ```bash

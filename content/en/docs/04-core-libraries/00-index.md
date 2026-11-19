@@ -9,6 +9,7 @@ date: "2026-10-25"
 The foundational tier of Krewire establishes the architectural guarantees, domain rules, and lifecycle supervision required by all workloads.
 
 Packages in this layer adhere to strict design principles:
+
 - **Strict Downward-Only Dependencies:** Domain primitives and rules reside in `pkg/model` and `pkg/errs`. Higher packages never inject upward dependencies.
 - **Single Source of Truth (SSOT):** Facts, constants, and validation rules are owned by exactly one package and imported elsewhere.
 - **Zero Third-Party Bloat:** Where Go standard library packages suffice, Krewire builds upon them without introducing external dependency chains.

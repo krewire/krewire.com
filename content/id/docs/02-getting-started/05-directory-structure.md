@@ -66,6 +66,7 @@ my-project/
 
 ### `pages/` (Perutean Berbasis Berkas / File-Based Routing)
 Berkas di dalam `pages/` dipetakan langsung ke rute URL publik:
+
 - `pages/index.kiw` → `https://example.com/`
 - `pages/pricing.kiw` → `https://example.com/pricing`
 - `pages/blog/first-post.kiw` → `https://example.com/blog/first-post`
@@ -98,6 +99,7 @@ Menyimpan manuskrip dokumentasi Markdown yang dikompilasi oleh `pkg/book`. Awala
 
 ### `public/` (Aset Statis Tanpa Kompilasi)
 Berkas di dalam `public/` disajikan apa adanya tanpa pra-pemrosesan:
+
 - `public/favicon.svg` disajikan di `/favicon.svg`.
 - `public/robots.txt` disajikan di `/robots.txt`.
 - `public/assets/` berisi skrip sisi klien dan stylesheet CSS. Berkas yang berakhiran `.css` atau `.js` ditautkan ke setiap halaman secara otomatis — tidak memerlukan tag `<link>` atau `<script>` manual di dalam layout.
@@ -112,6 +114,7 @@ Berkas di dalam `public/` disajikan apa adanya tanpa pra-pemrosesan:
 
 ### `.krewire/` (Artefak Build)
 Dibuat secara otomatis oleh `kiw dev` dan `kiw build`:
+
 - **`.krewire/build/`:** Menyimpan output produksi hasil kompilasi yang siap untuk hosting statis atau pemaketan citra Docker.
 - Direktori ini dikelola sepenuhnya oleh `kiw` dan harus selalu ditambahkan ke dalam `.gitignore` Anda.
 

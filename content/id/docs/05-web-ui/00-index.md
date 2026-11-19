@@ -9,6 +9,7 @@ date: "2026-10-25"
 Krewire menyediakan lapisan web dan presentasi yang kohesif, dirancang untuk latensi sub-milidetik, jejak memori minimal (~15MB RAM), dan eksekusi Go murni.
 
 Framework ini mendukung pengalaman render di sisi server maupun interaktivitas sisi klien:
+
 - **Perutean Radix Tree:** Mesin perutean tanpa alokasi dengan ekstraksi parameter dan pipeline middleware.
 - **Arsitektur Monolit Terpadu:** Wadah aplikasi dengan injeksi dependensi otomatis dan supervisi siklus hidup.
 - **Go WASM di Sisi Klien:** Jalankan Go murni di peramban web dengan diffing virtual DOM dan hidrasi SSR.

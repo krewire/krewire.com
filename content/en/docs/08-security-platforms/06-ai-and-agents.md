@@ -7,6 +7,7 @@ date: "2026-10-18"
 # AI & Agents (`pkg/ai`)
 
 Import paths:
+
 - `github.com/krewire/krewire/pkg/ai`
 - `github.com/krewire/krewire/pkg/ai/providers`
 

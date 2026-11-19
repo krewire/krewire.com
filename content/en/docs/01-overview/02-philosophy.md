@@ -33,6 +33,7 @@ The three pillars are the outcomes; the following seven tenets are the engineeri
 Software you rent eventually governs you. When third-party platforms control the build pipeline, the runtime environment, or the deployment targets, they dictate the margins, the pricing, and the rules.
 
 Krewire builds tools whose output builders own outright:
+
 - **Single-Binary Deploys:** Applications compile down to self-contained, statically linked machine code.
 - **Embedded Assets:** Templates, migrations, and static assets reside inside the binary via Go's `embed` package.
 - **Self-Sovereign Data:** Databases, file storage, and cache providers are decoupled from vendor lock-in.
@@ -43,6 +44,7 @@ Krewire builds tools whose output builders own outright:
 Near-zero cost is engineered, never discounted. Every unnecessary dependency, indirection, and piece of cleverness charges interest forever — in hosting bills, maintenance overhead, security audits, and onboarding time.
 
 Krewire rejects stacks that silently exclude builders through prohibitive operational costs:
+
 - **Standard Library First:** Leverage Go's high-performance standard library (`net/http`, `html/template`, `log/slog`, `context`, `flag`) before introducing external third-party dependencies.
 - **Modular Packaging:** Projects import only what they use. If an app only needs static site generation, background queue packages are never linked into the build.
 - **Efficient Compute:** Lean memory footprints (10–30 MB) and millisecond boot times allow production workloads to run reliably on affordable hardware.
@@ -53,6 +55,7 @@ Krewire rejects stacks that silently exclude builders through prohibitive operat
 Fragmentation taxes hardest those who can least afford it — early-stage teams, students, and independent developers. Infinite optionality creates decision fatigue and friction.
 
 Committing to one coherent toolchain transforms fragmented exploration into compounding mastery:
+
 - **One Config:** `krewire.yaml` is the single source of truth for all workload definitions, environment bindings, and build targets.
 - **One CLI:** `kiw` handles project creation, local development, testing, compilation, and deployment across all workloads.
 - **One Language:** Go powers the entire stack — from backend services and worker queues to static sites and client-side WebAssembly runtimes.
@@ -87,6 +90,7 @@ Trust is earned in the open. Krewire commits to radical legibility across its co
 Frameworks impose their conventions, lifecycle traps, and rigid class hierarchies onto your application. When requirements change, teams are forced into catastrophic rewrites.
 
 Krewire approaches architecture through composable, modular libraries:
+
 - **Inversion of Control Stays with You:** You compose Krewire packages into your application's `main.go`, rather than inheriting an opinionated runtime container.
 - **Progressive Evolution:** Start with a static documentation portal or landing page (`site`), add server-rendered routes and database models (`app`), extract intensive tasks into background workers (`worker`), and decompose into autonomous microservices (`service`) only when organizational scale demands it.
 - **Zero Rewrite Tax:** Components, domain business logic, and configuration carry forward intact across each stage of growth.

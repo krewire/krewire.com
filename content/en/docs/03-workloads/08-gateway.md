@@ -18,14 +18,10 @@ or straight from the CLI with `kiw gateway`.
 
 ## Architectural Characteristics
 
-1. **Declarative Route Table:** exact and prefix routes, per-route method
-   matching, and either a fixed `target_url` or a registry-resolved `service`.
-2. **Per-Route Middleware:** CORS, tracing, timeout, rate limiting, and circuit
-   breaking are registered by name and composed per route instead of globally.
-3. **Service Discovery:** round-robin load balancing over registered endpoints;
-   an unavailable upstream returns `502` with a structured Problem JSON body.
-4. **One Route Table, Two Runners:** `kiw dev` / `kiw run` execute the project
-   binary; `kiw gateway` runs the identical `gateway:` block without a rebuild.
+1. **Declarative Route Table:** Exact and prefix routes, per-route method matching, and either a fixed `target_url` or a registry-resolved `service`.
+2. **Per-Route Middleware:** CORS, tracing, timeout, rate limiting, and circuit breaking are registered by name and composed per route instead of globally.
+3. **Service Discovery:** Round-robin load balancing over registered endpoints; an unavailable upstream returns `502` with a structured Problem JSON body.
+4. **One Route Table, Two Runners:** `kiw dev` / `kiw run` execute the project binary; `kiw gateway` runs the identical `gateway:` block without a rebuild.
 
 ---
 

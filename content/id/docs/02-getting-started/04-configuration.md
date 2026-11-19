@@ -108,6 +108,7 @@ Bagian `project:` mendefinisikan identitas dan perilaku workload:
   Proyek bootstrap sebelum perancangan kerangka (pre-scaffold) **bukanlah** suatu jenis kind: `kiw info` melaporkan `none` dengan penanda `pre-init` hingga `kiw init` melengkapi variannya.
 
   **Progressive Pipeline:** Workload di Krewire bersifat aditif dan tidak membatasi evolusi proyek. Situs statis (`site`) dapat berkembang menjadi backend SSR (`app`) hanya dengan menambahkan berkas `main.go`—tanpa perlu menulis ulang komponen atau layout `.kiw` yang telah dibuat.
+
 - **`dirs` (Opsional):** Memungkinkan penyesuaian tata letak direktori default jika mengintegrasikan Krewire ke dalam struktur repositori yang sudah ada.
 
 ---

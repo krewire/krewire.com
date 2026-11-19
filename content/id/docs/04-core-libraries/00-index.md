@@ -9,6 +9,7 @@ date: "2026-10-25"
 Tingkat fondasi Krewire menetapkan jaminan arsitektur, aturan domain, dan supervisi siklus hidup yang dibutuhkan oleh seluruh workload.
 
 Pustaka pada lapisan ini mematuhi prinsip desain yang ketat:
+
 - **Dependensi Searah ke Bawah:** Primitif domain dan aturan bisnis berada di `pkg/model` dan `pkg/errs`. Pustaka lapisan atas tidak boleh menyuntikkan dependensi ke atas.
 - **Single Source of Truth (SSOT):** Fakta, konstanta, dan aturan validasi dimiliki oleh tepat satu paket dan diimpor oleh modul lainnya.
 - **Tanpa Ketergantungan Eksternal yang Tidak Perlu:** Jika pustaka standar Go sudah mencukupi, Krewire mengembangkannya secara langsung tanpa menambah rantai dependensi pihak ketiga.

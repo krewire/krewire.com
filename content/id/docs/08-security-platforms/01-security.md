@@ -15,6 +15,7 @@ Keamanan adalah pilar utama Krewire. Alih-alih menjadikan pengamanan sebagai pem
 ## Middleware Header Keamanan
 
 Secara otomatis menerapkan header pertahanan HTTP modern:
+
 - `X-Frame-Options: DENY`
 - `X-Content-Type-Options: nosniff`
 - `Referrer-Policy: strict-origin-when-cross-origin`

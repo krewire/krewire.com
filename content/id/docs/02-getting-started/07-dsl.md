@@ -269,6 +269,7 @@ Komponen dapat mendeklarasikan impor di dalam blok `<script>` atau frontmatter:
 ### 4.6 Paket Komponen Mandiri (`.kpkg`)
 
 Pustaka komponen yang dapat digunakan kembali dapat didistribusikan dan dipasang sebagai paket mandiri tanpa dependensi npm:
+
 - **Manifest (`kiw.pkg.json`)**: Mendeklarasikan metadata paket, pemetaan komponen yang diekspor, dan stylesheet.
 - **Format Arsip (`.kpkg`)**: Arsip tarball gzipped dengan verifikasi integritas SHA-256.
 - **Direktori Pemasangan (`./.krewire/pkg/`)**: Repositori paket proyek lokal.
@@ -328,6 +329,7 @@ Anda mendeklarasikan perilaku hidrasi menggunakan direktif `client:*` langsung p
 ```
 
 **Cara Kerjanya:**
+
 1. **Server Rendering (SSR/SSG)**: Selama proses build, Krewire me-render komponen menjadi HTML dan membungkusnya dalam wadah penanda ringan (`data-kiw-mount="Counter" data-kiw-hydrate="load" data-kiw-props='{"initial":0}'`).
 2. **Pratinjau Instan**: Browser menampilkan konten lengkap dengan segera tanpa adanya pergeseran tata letak (CLS: 0).
 3. **Hidrasi Progresif**: Runtime WebAssembly Krewire (`pkg/runtime`) memindai penanda mount, menginisialisasi fiber VDOM dengan DOM yang sudah ada, dan memasang event reaktif tanpa me-render ulang teks server.
@@ -341,10 +343,13 @@ Style yang didefinisikan di dalam blok `<style>` secara **otomatis diisolasi ke 
 ### Cara Kerja Scoping:
 
 1. Saat mem-parsing komponen (misalnya `components/Card.kiw`), Krewire menyisipkan atribut unik ke elemen root komponen:
+
    ```html
    <div class="card" data-kiw-component="Card">...</div>
    ```
+
 2. Kompiler CSS (`pkg/web/ssg`) menulis ulang selektor Anda agar terikat ketat pada scope komponen tersebut:
+
    ```css
    /* CSS yang Anda tulis */
    .card { padding: 20px; }
@@ -354,6 +359,7 @@ Style yang didefinisikan di dalam blok `<style>` secara **otomatis diisolasi ke 
    [data-kiw-component="Card"] .card, [data-kiw-component="Card"].card { padding: 20px; }
    [data-kiw-component="Card"] h3, [data-kiw-component="Card"]h3 { font-size: 1.25rem; }
    ```
+
 3. Semua style komponen digabungkan dan diminifikasi menjadi satu berkas `assets/style.css`, menghilangkan permintaan CSS yang memblokir rendering halaman.
 
 ---

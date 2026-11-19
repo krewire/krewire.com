@@ -75,6 +75,7 @@ kiw migrate status                # Display migration status table
 ```
 
 Flags:
+
 - `--dsn <dsn>`: Override database connection string.
 - `--driver <driver>`: Database driver (`sqlite`, `postgres`, `mysql`).
 - `--dir <path>`: Migrations directory (default: `migrations`).

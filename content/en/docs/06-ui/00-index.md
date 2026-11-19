@@ -9,6 +9,7 @@ date: "2026-11-09"
 **Krewire UI (`kui`)** is a zero-dependency, neo-brutalist ("pop-brutalist") design system and component library built natively for the Krewire ecosystem.
 
 Components can be used directly across both authoring surfaces:
+
 - **Go-Native:** Programmatic, type-safe widgets and nodes (`github.com/krewire/ui/widget`).
 - **`.kiw` DSL:** Declarative Single-File Components (`import { Button } from '@krewire/ui'`).
 - **Package-based:** Install once via `kiw add @krewire/ui` without copying files into local directories, with optional `kiw ui vendor` if custom source ownership is needed.

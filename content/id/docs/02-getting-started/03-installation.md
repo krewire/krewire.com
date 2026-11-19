@@ -135,6 +135,7 @@ Untuk memperbarui ke rilis stabil terbaru:
   ```bash
   curl -fsSL https://krewire.com/scripts/install.sh | sh
   ```
+
 - **Via Go Toolchain:**
   ```bash
   go install github.com/krewire/krewire/tools/kiw/cmd/kiw@latest

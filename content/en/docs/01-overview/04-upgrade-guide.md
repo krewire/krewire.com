@@ -19,6 +19,7 @@ $$\text{vMAJOR}.\text{MINOR}.\text{PATCH}$$
 - **`PATCH` releases (`v0.1.0` → `v0.1.1`):** Bug fixes, performance optimizations, and documentation updates. Guaranteed 100% backward compatible with zero breaking changes.
 - **`MINOR` releases (`v0.1.0` → `v0.2.0`):** New workload capabilities, additive packages, and new CLI flags:
   > *"New capabilities are introduced as additive packages; breaking changes are not allowed in minor/patch releases."*
+
 - **`MAJOR` releases (`v1.0.0`):** Significant architectural evolutions. Any backward-incompatible changes will be preceded by deprecation warnings and automated migration helpers.
 
 ---

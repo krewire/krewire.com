@@ -105,6 +105,7 @@ The repository employs two distinct deployment pathways:
 ## Nginx Production Runtime
 
 The container build defined in `Dockerfile` and `docker/nginx.conf` features:
+
 - Multi-stage build based on pinned `nginx:alpine` image.
 - Removal of default Nginx configuration to prevent configuration leaks.
 - Static Gzip compression for text, HTML, CSS, JavaScript, and JSON.

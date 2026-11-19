@@ -37,6 +37,7 @@ Krewire Auth is the enterprise identity platform providing full-spectrum identit
 
 ### 5. `pkg/webauth`
 Ready-to-mount HTTP handlers with clean, responsive dark/light UI:
+
 - `GET /login`, `POST /login`
 - `GET /register`, `POST /register`
 - `GET /forgot-password`, `POST /forgot-password`
@@ -54,6 +55,7 @@ Ready-to-mount HTTP handlers with clean, responsive dark/light UI:
 ### OIDC & OAuth2 Federation Endpoints
 
 Krewire Auth integrates with web services through standard OIDC protocols:
+
 - **Web Portal:** [https://auth.krewire.com](https://auth.krewire.com)
 - **Discovery Endpoint:** `https://auth.krewire.com/.well-known/openid-configuration`
 - **JWKS Key Set:** `https://auth.krewire.com/.well-known/jwks.json`
@@ -63,6 +65,7 @@ Krewire Auth integrates with web services through standard OIDC protocols:
 ### Securing Open-Source Workloads Locally
 
 For open-source projects operating independently of the cloud service, Krewire provides native, zero-dependency authentication and security libraries directly in the core monorepo:
+
 - `pkg/sec`: Constant-time comparisons, OWASP security headers, CSRF token validation, and SSRF guards.
 - `pkg/auth`: Stateless JWT tokens, PBKDF2 password hashing, and HTTP Basic Auth middleware.
 

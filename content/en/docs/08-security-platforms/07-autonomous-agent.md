@@ -20,6 +20,7 @@ date: "2026-11-05"
 
 ### 2. `pkg/persona` — Agent Specializations
 Configurable personas tailoring system prompts, temperature, and behavioral constraints:
+
 - `CodingAssistant`: Pair programming, structural refactoring, and test-driven implementation.
 - `DevOpsRunner`: Infrastructure provisioning, CI/CD pipeline diagnosis, and container telemetry.
 - `AutonomousWorker`: Unattended task completion, batch script automation, and bulk migrations.

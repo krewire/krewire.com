@@ -70,16 +70,11 @@ Pilar-pilar ini menjadi alasan mengapa "Mengapa Krewire?" memiliki jawaban konkr
 
 Pemilihan bahasa Go adalah keputusan **arsitektural, bukan sekadar preferensi pribadi**:
 
-1. **Kelengkapan Pustaka Standar (Stdlib):**  
-   Pustaka standar Go (`net/http`, `html/template`, `embed`, `context`, `log/slog`, `flag`) menyediakan jaringan kelas produksi, templating, dan penyematan aset bawaan. Tidak dibutuhkan runtime atau interpreter eksternal.
-2. **Binary Statis Tunggal Sejati:**  
-   Satu perintah `go build` menghasilkan binary mandiri yang terhubung secara statis dan memuat seluruh kode terkompilasi, template, serta aset web. Waktu mulai (cold start) hanya hitungan milidetik dengan konsumsi memori sangat minim (10–30 MB RAM).
-3. **Satu Gerbang Tooling:**  
-   Satu alur perintah (`gofmt`, `go vet`, `go test`) memvalidasi dan memformat seluruh workload di repositori Anda — dari SSG frontend hingga rancangan infrastruktur cloud.
-4. **Kecepatan Kompilasi & Konkurensi:**  
-   Go mengompilasi dalam hitungan detik dan menawarkan goroutine ringan yang mampu menangani puluhan ribu koneksi jaringan konkuren tanpa kehabisan thread.
-5. **Bebas Beban Mesin Virtual atau Interpreter:**  
-   Berbeda dengan Node.js atau Python, Go tidak memerlukan pengelolaan environment runtime (`nvm`, `venv`), sehingga terbebas dari masalah perbedaan versi antara laptop pengembang dan server produksi.
+1. **Kelengkapan Pustaka Standar (Stdlib):** Pustaka standar Go (`net/http`, `html/template`, `embed`, `context`, `log/slog`, `flag`) menyediakan jaringan kelas produksi, templating, dan penyematan aset bawaan. Tidak dibutuhkan runtime atau interpreter eksternal.
+2. **Binary Statis Tunggal Sejati:** Satu perintah `go build` menghasilkan binary mandiri yang terhubung secara statis dan memuat seluruh kode terkompilasi, template, serta aset web. Waktu mulai (cold start) hanya hitungan milidetik dengan konsumsi memori sangat minim (10–30 MB RAM).
+3. **Satu Gerbang Tooling:** Satu alur perintah (`gofmt`, `go vet`, `go test`) memvalidasi dan memformat seluruh workload di repositori Anda — dari SSG frontend hingga rancangan infrastruktur cloud.
+4. **Kecepatan Kompilasi & Konkurensi:** Go mengompilasi dalam hitungan detik dan menawarkan goroutine ringan yang mampu menangani puluhan ribu koneksi jaringan konkuren tanpa kehabisan thread.
+5. **Bebas Beban Mesin Virtual atau Interpreter:** Berbeda dengan Node.js atau Python, Go tidak memerlukan pengelolaan environment runtime (`nvm`, `venv`), sehingga terbebas dari masalah perbedaan versi antara laptop pengembang dan server produksi.
 
 ---
 

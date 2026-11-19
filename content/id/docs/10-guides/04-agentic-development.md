@@ -95,6 +95,7 @@ kiw dash --port 4000
 ```
 
 Server MCP SSE secara otomatis tersedia di:
+
 - **Aliran SSE (SSE Stream)**: `http://127.0.0.1:4000/mcp/sse`
 - **Endpoint Pesan JSON-RPC**: `http://127.0.0.1:4000/mcp/message`
 
@@ -173,6 +174,7 @@ kiw boost install
 ```
 
 Perintah ini akan memasang:
+
 - `AGENTS.md` — Konstitusi agen dan batasan operasional.
 - `.cursor/mcp.json` & `opencode.json` — Definisi server MCP yang telah terkonfigurasi.
 - `.agents/` — Persona subagen spesialis (`planner`, `designer`, `builder`, `tester`, `deployer`, `maintainer`, `auditor`).

@@ -9,6 +9,7 @@ date: "2026-10-25"
 Krewire provides a complete, cohesive web and presentation layer designed for sub-millisecond latency, minimal memory footprints (~15MB RAM), and pure Go execution.
 
 The framework supports both server-rendered and interactive experiences:
+
 - **Radix Tree Routing:** Zero-allocation routing engine with parameter extraction and middleware pipelines.
 - **Unified Monolith Architecture:** Application container with automatic dependency injection and lifecycle supervision.
 - **Client-Side Go WASM:** Run pure Go in the browser with virtual DOM diffing and SSR hydration.
