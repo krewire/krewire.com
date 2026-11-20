@@ -24,8 +24,8 @@ Krewire bukan satu repositori. Pustaka inti dan CLI, katalog UI, engine agen, la
 Seluruh komponen, platform, dan workload berjalan di atas progresi baterai arsitektur terpadu, dikelola penuh oleh CLI `kiw` dan skema deklaratif `krewire.yaml`:
 
 ```text
-Go Stdlib ──► Krewire Libraries ──► Krewire UI | Krewire Auth | Krewire Krew ──► Krewire Forge | Krewire Cloud ──► Krewire Dash
-                                                                                                               (Workspace Terpadu)
+Go Stdlib ──► Krewire Libraries ──► Krewire UI | Krewire Auth | Krewire Krew ──► Krewire Cloud ──► Krewire Dash
+                                                                                                  (Workspace Terpadu)
 ```
 
 ## 2. Sisi Waktu Kompilasi (Impor Modul Go)
@@ -39,11 +39,11 @@ Sisi-sisi ini adalah dependensi modul Go: sebuah panah berarti "mengimpor paket 
                                ▼
      dash ──────┐        cloud ─────┐                    (Layer 4 — products & platform services)
       │  │      │         │  │      │
-      │  └──► auth ◄──────┘  │      │        forge
-      │         │            │      │          │
-      └──► krew ◄────────────┘      │          │
-            │   │                   │          │
-            ▼   ▼                   ▼          ▼
+      │  └──► auth ◄──────┘  │      │
+      │         │            │      │
+      └──► krew ◄────────────┘      │
+            │   │                   │
+            ▼   ▼                   ▼
         ┌──────────────── github.com/krewire/krewire ────────────────┐  (Layers 1–3 — core + kiw)
         │  tools/kiw · pkg/* · pkg/model · pkg/errs · pkg/lifecycle   │
         └─────────────────────────────┬──────────────────────────────┘
@@ -59,14 +59,13 @@ Sisi-sisi ini adalah dependensi modul Go: sebuah panah berarti "mengimpor paket 
 | `krewire` (inti + `kiw`) | `github.com/krewire/krewire` | `ui` (`pkg/ui/components` mengekspor ulang `embed.FS` milik kui) |
 | `krew` (engine agen) | `github.com/krewire/krew` | `krewire` |
 | `auth` | `github.com/krewire/auth` | `krewire` |
-| `forge` | `github.com/krewire/forge` | `krewire` |
 | `cloud` | `github.com/krewire/cloud` | `krewire`, `auth`, `krew` |
 | `dash` | `github.com/krewire/dash` | `krewire`, `auth`, `krew` |
 | `krewire.com`, `krewire.github.io` | — | tidak ada di Go; di-build dengan `kiw build`, yang merender komponen kui |
 
 Dua sifat yang penting:
 
-- **Grafiknya asiklik.** `kui` tidak mengimpor apa pun, inti hanya mengimpor `kui`, dan setiap produk mengimpor ke arah bawah. Tidak ada produk yang mengimpor produk lain: `dash` dan `forge` tidak berbagi kode Go.
+- **Grafiknya asiklik.** `kui` tidak mengimpor apa pun, inti hanya mengimpor `kui`, dan setiap produk mengimpor ke arah bawah. Tidak ada produk yang mengimpor produk lain: `dash` dan `cloud` tidak berbagi kode Go.
 - **CLI adalah daun bagi konsumen.** Produk mengimpor paket `pkg/*`; tidak ada yang mengimpor `tools/kiw`.
 
 ## 3. Integrasi Runtime (Protokol Terpisah)
@@ -77,13 +76,13 @@ Impor saat kompilasi dibatasi pada pustaka bersama. Sebagai gantinya, produk ber
 - **API HTTP:** REST di balik reverse proxy edge atau [workload gateway](/workloads/gateway).
 - **Event:** event bus asinkron atau stream Server-Sent Events.
 
-`cloud` dan `auth` versi hosted bersifat opsional. `forge` dan `dash` berjalan sepenuhnya self-hosted; lihat dokumentasi publik proyek untuk mengetahui apa saja yang tersedia untuk publik saat ini.
+`cloud` dan `auth` versi hosted bersifat opsional. `dash` berjalan sepenuhnya self-hosted; lihat dokumentasi publik proyek untuk mengetahui apa saja yang tersedia untuk publik saat ini.
 
 ## 4. Paralelisme Produk
 
 | Produk | Tanggung Jawab | Bergantung pada yang lain? |
 | :--- | :--- | :--- |
-| **Krewire Forge** | Web, form, resource, dan panel builder deklaratif untuk Go dan `.kiw`. | Tidak |
+| **Krewire Cloud** | Control plane hybrid PaaS enterprise dan supervisor proses. | Tidak |
 | **Krewire Dash** | Workspace pengembang virtual berbasis AI, sandbox eksekusi, dan konsol kolaborasi. | Tidak |
 
 Keduanya tidak saling bergantung, baik saat kompilasi maupun saat deployment, sehingga masing-masing dapat dirilis, di-fork, atau diganti secara mandiri.

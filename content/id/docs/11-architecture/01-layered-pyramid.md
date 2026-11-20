@@ -24,8 +24,8 @@ Basis kode Krewire diatur oleh invarian arsitektur yang tidak dapat ditawar di s
 Seluruh ekosistem Krewire berjalan di atas progresi baterai arsitektur terpadu:
 
 ```text
-Go Stdlib ──► Krewire Libraries ──► Krewire UI | Krewire Auth | Krewire Krew ──► Krewire Forge | Krewire Cloud ──► Krewire Dash
-                                                                                                               (Workspace Terpadu)
+Go Stdlib ──► Krewire Libraries ──► Krewire UI | Krewire Auth | Krewire Krew ──► Krewire Cloud ──► Krewire Dash
+                                                                                                  (Workspace Terpadu)
 ```
 
 Setiap tahapan progresi ini digerakkan dan dikelola secara penuh oleh CLI developer `kiw` serta dikonfigurasi secara deklaratif melalui berkas `krewire.yaml`.
@@ -37,8 +37,7 @@ Dilihat dari ekosistem secara keseluruhan, setiap repositori berada pada satu la
 ```text
 Layer 5: Unified Studio & Apex Portals     Dash (virtual workspace) · krewire.com · krewire.github.io
    ↓
-Layer 4: Platform Engines & Builders       Forge (web, form & panel builder) ∥ Cloud (PaaS)
-                                           Auth (IAM / SSO) ∥ Krew (AI agent)
+Layer 4: Platform Engines & Cloud          Cloud (PaaS) ∥ Auth (IAM / SSO) ∥ Krew (AI agent)
    ↓
 Layer 3: Universal Developer Driver & CLI  tools/kiw (kiw) driven by krewire.yaml
    ↓
@@ -81,12 +80,12 @@ Enam invarian menjaga tangga ini tetap konsisten:
 
 Komponen pada lapisan yang sama adalah **peer** (rekan sejajar) dan tetap independen secara lateral:
 
-- **Tanpa keterikatan peer:** produk paralel (`dash`, `forge`, `cloud`) tidak pernah mengimpor paket Go atau source tree privat satu sama lain.
+- **Tanpa keterikatan peer:** produk paralel (`dash`, `cloud`, `auth`, `krew`) tidak pernah mengimpor paket Go atau source tree privat satu sama lain.
 - **Mediasi bridge & gateway:** komunikasi antar-peer, atau dengan kapabilitas horizontal, melalui antarmuka standar:
   - **API gateway / reverse proxy** untuk lalu lintas HTTP dan gRPC dengan otorisasi per rute dan rate limiting.
   - **Identitas terfederasi** — OpenID Connect, bearer token OAuth 2.0, dan validasi JWKS publik, tanpa berbagi kredensial database.
   - **Event bus / stream SSE** untuk notifikasi asinkron.
-- **Tanpa keterikatan wajib:** `cloud` dan `auth` versi hosted tidak pernah menjadi prasyarat; `dash` dan `forge` dapat berjalan self-hosted tanpa keduanya.
+- **Tanpa keterikatan wajib:** `cloud` dan `auth` versi hosted tidak pernah menjadi prasyarat; `dash` dapat berjalan self-hosted tanpa keduanya.
 
 Halaman [DAG Ekosistem](/architecture/ecosystem-dag) mencantumkan sisi modul yang benar-benar ada di antara repositori saat ini.
 

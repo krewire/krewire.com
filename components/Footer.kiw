@@ -76,9 +76,6 @@
         <a href="/docs/security-platforms/identity-and-auth" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
           <span>Krewire Auth</span> <Badge Variant="primary" Size="sm" Class="font-mono">SSO</Badge>
         </a>
-        <a href="https://forge.krewire.com" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
-          <span>Krewire Forge</span> <Badge Variant="primary" Size="sm" Class="font-mono">Forge</Badge>
-        </a>
         <a href="https://github.com/krewire/krew" target="_blank" rel="noopener" class="text-sm font-semibold text-muted dark:text-muted-dark hover:text-primary transition-colors flex items-center justify-between">
           <span>Krew AI Engine</span> <Badge Variant="secondary" Size="sm" Class="font-mono">Agent</Badge>
         </a>

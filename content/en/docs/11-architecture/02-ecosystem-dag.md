@@ -24,8 +24,8 @@ Krewire is not one repository. The core libraries and CLI, the UI catalog, the a
 All components, platforms, and workloads advance along a progressive architectural battery, driven entirely by the `kiw` devtool CLI and declarative `krewire.yaml` schema:
 
 ```text
-Go Stdlib ──► Krewire Libraries ──► Krewire UI | Krewire Auth | Krewire Krew ──► Krewire Forge | Krewire Cloud ──► Krewire Dash
-                                                                                                               (Unified Workspace)
+Go Stdlib ──► Krewire Libraries ──► Krewire UI | Krewire Auth | Krewire Krew ──► Krewire Cloud ──► Krewire Dash
+                                                                                                  (Unified Workspace)
 ```
 
 ## 2. Compile-Time Edges (Go Module Imports)
@@ -39,11 +39,11 @@ These edges are Go module dependencies: an arrow means "imports packages from". 
                                ▼
      dash ──────┐        cloud ─────┐                    (Layer 4 — products & platform services)
       │  │      │         │  │      │
-      │  └──► auth ◄──────┘  │      │        forge
-      │         │            │      │          │
-      └──► krew ◄────────────┘      │          │
-            │   │                   │          │
-            ▼   ▼                   ▼          ▼
+      │  └──► auth ◄──────┘  │      │
+      │         │            │      │
+      └──► krew ◄────────────┘      │
+            │   │                   │
+            ▼   ▼                   ▼
         ┌──────────────── github.com/krewire/krewire ────────────────┐  (Layers 1–3 — core + kiw)
         │  tools/kiw · pkg/* · pkg/model · pkg/errs · pkg/lifecycle   │
         └─────────────────────────────┬──────────────────────────────┘
@@ -59,14 +59,13 @@ These edges are Go module dependencies: an arrow means "imports packages from". 
 | `krewire` (core + `kiw`) | `github.com/krewire/krewire` | `ui` (`pkg/ui/components` re-exports the kui `embed.FS`) |
 | `krew` (agent engine) | `github.com/krewire/krew` | `krewire` |
 | `auth` | `github.com/krewire/auth` | `krewire` |
-| `forge` | `github.com/krewire/forge` | `krewire` |
 | `cloud` | `github.com/krewire/cloud` | `krewire`, `auth`, `krew` |
 | `dash` | `github.com/krewire/dash` | `krewire`, `auth`, `krew` |
 | `krewire.com`, `krewire.github.io` | — | none in Go; built with `kiw build`, which renders kui components |
 
 Two properties matter:
 
-- **The graph is acyclic.** `kui` imports nothing, the core imports only `kui`, and every product imports downward. No product imports another product: `dash` and `forge` share no Go code.
+- **The graph is acyclic.** `kui` imports nothing, the core imports only `kui`, and every product imports downward. No product imports another product: `dash` and `cloud` share no Go code.
 - **The CLI is a leaf for consumers.** Products import `pkg/*` packages; none imports `tools/kiw`.
 
 ## 3. Runtime Integrations (Decoupled Protocols)
@@ -77,13 +76,13 @@ Compile-time imports are kept to shared libraries. Products talk to platform cap
 - **HTTP APIs:** REST behind an edge reverse proxy or a [gateway workload](/workloads/gateway).
 - **Events:** an asynchronous event bus or Server-Sent Events streams.
 
-Hosted `cloud` and `auth` are optional. `forge` and `dash` run completely self-hosted; see the project's public documentation for what is publicly available today.
+Hosted `cloud` and `auth` are optional. `dash` runs completely self-hosted; see the project's public documentation for what is publicly available today.
 
 ## 4. Product Parallelism
 
 | Product | Responsibility | Depends on the other? |
 | :--- | :--- | :--- |
-| **Krewire Forge** | Declarative web, form, resource, and admin panel builder for Go and `.kiw`. | No |
+| **Krewire Cloud** | Enterprise hybrid PaaS control plane and process supervisor. | No |
 | **Krewire Dash** | AI-native virtual developer workspace, execution sandboxes, and collaboration console. | No |
 
 Neither depends on the other at compile time or deployment time, so each can be released, forked, or replaced on its own.

@@ -429,17 +429,6 @@ kiw self-update --dry-run # Simulate update process
 - `--version <ver>`: Installs a specific target version.
 - Performs atomic binary replacement on Linux, macOS, and Windows with automatic Go toolchain fallback.
 
-### `kiw forge <subcommand>`
-
-Declarative web, form, and admin panel builder for Go and `.kiw` (Krewire Forge).
-
-```bash
-kiw forge panel admin                                                        # Scaffold admin dashboard layout
-kiw forge resource product --model=Product                                   # Scaffold full CRUD resource
-kiw forge form contact --fields="name:string,email:string,message:textarea"  # Generate declarative form
-kiw forge studio --port=8089                                                 # Launch interactive visual builder studio
-```
-
 ### `kiw ui <subcommand>`
 
 Manage Pop-Brutalist `.kiw` design system components and templates:

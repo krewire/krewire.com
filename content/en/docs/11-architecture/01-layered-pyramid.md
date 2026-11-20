@@ -24,8 +24,8 @@ The Krewire codebase is governed by non-negotiable architectural invariants acro
 The entire Krewire ecosystem flows through a unified architectural battery progression:
 
 ```text
-Go Stdlib ──► Krewire Libraries ──► Krewire UI | Krewire Auth | Krewire Krew ──► Krewire Forge | Krewire Cloud ──► Krewire Dash
-                                                                                                               (Unified Workspace)
+Go Stdlib ──► Krewire Libraries ──► Krewire UI | Krewire Auth | Krewire Krew ──► Krewire Cloud ──► Krewire Dash
+                                                                                                  (Unified Workspace)
 ```
 
 Every stage in this progression is driven and composed through the `kiw` developer CLI and configured declaratively via `krewire.yaml`.
@@ -37,8 +37,7 @@ Seen from the whole ecosystem, every repository sits on one layer of a pyramid (
 ```text
 Layer 5: Unified Studio & Apex Portals     Dash (virtual workspace) · krewire.com · krewire.github.io
    ↓
-Layer 4: Platform Engines & Builders       Forge (web, form & panel builder) ∥ Cloud (PaaS)
-                                           Auth (IAM / SSO) ∥ Krew (AI agent)
+Layer 4: Platform Engines & Cloud          Cloud (PaaS) ∥ Auth (IAM / SSO) ∥ Krew (AI agent)
    ↓
 Layer 3: Universal Developer Driver & CLI  tools/kiw (kiw) driven by krewire.yaml
    ↓
@@ -81,12 +80,12 @@ Six invariants keep this ladder honest:
 
 Components on the same layer are **peers** and stay laterally independent:
 
-- **Zero peer coupling:** parallel products (`dash`, `forge`, `cloud`) never import each other's Go packages or private source trees.
+- **Zero peer coupling:** parallel products (`dash`, `cloud`, `auth`, `krew`) never import each other's Go packages or private source trees.
 - **Bridge & gateway mediation:** communication between peers, or with the horizontal capabilities, goes through standard interfaces:
   - **API gateway / reverse proxy** for HTTP and gRPC traffic with per-route authorization and rate limiting.
   - **Federated identity** — OpenID Connect, OAuth 2.0 bearer tokens, and public JWKS validation, with no shared database credentials.
   - **Event bus / SSE streams** for asynchronous notifications.
-- **No mandatory coupling:** hosted `cloud` and `auth` are never prerequisites; `dash` and `forge` run self-hosted without them.
+- **No mandatory coupling:** hosted `cloud` and `auth` are never prerequisites; `dash` runs self-hosted without them.
 
 The [Ecosystem DAG](/architecture/ecosystem-dag) page lists the module edges that actually exist between the repositories today.
 

@@ -430,17 +430,6 @@ kiw self-update --dry-run # Simulasikan proses pembaruan
 - `--version <ver>`: Memasang versi target semver tertentu.
 - Melakukan penggantian biner atomik di Linux, macOS, dan Windows dengan fallback otomatis ke toolchain Go.
 
-### `kiw forge <subcommand>`
-
-Builder web, form, dan panel admin deklaratif untuk Go dan `.kiw` (Krewire Forge).
-
-```bash
-kiw forge panel admin                                                        # Scaffold layout dashboard admin
-kiw forge resource product --model=Product                                   # Scaffold resource CRUD lengkap
-kiw forge form contact --fields="name:string,email:string,message:textarea"  # Buat form deklaratif dengan validasi
-kiw forge studio --port=8089                                                 # Jalankan studio visual builder interaktif
-```
-
 ### `kiw ui <subcommand>`
 
 Kelola komponen design system dan template Pop-Brutalist `.kiw`:
