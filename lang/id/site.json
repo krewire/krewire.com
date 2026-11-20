@@ -18,13 +18,12 @@
     "workspace_desc": "Workspace virtual & agen otonom",
     "cloud_desc": "Control plane hybrid PaaS & tanpa downtime",
     "auth_desc": "SSO multi-tenant, MFA & identitas OIDC",
-    "panel_desc": "Panel kontrol server mandiri & admin",
     "contribute": "Kontribusi"
   },
   "hero": {
     "eyebrow": "GO-FIRST SOFTWARE ENGINEERING ECOSYSTEM · v0.2.3",
     "title_html": "Ekosistem Rekayasa Perangkat Lunak Berbasis Go.<br class=\"hidden sm:inline\"><span class=\"text-primary\">One Ecosystem. Every Workload.</span>",
-    "lead_html": "Krewire adalah <b class=\"text-fg dark:text-fg-dark\">platform SDLC digital terpadu dan ekosistem aplikasi</b> berbasis Go — mencakup seluruh siklus pengembangan software dari spesifikasi, agen AI otonom, identitas SSO &amp; RBAC, hybrid PaaS, workspace virtual, hingga manajemen server produksi. Krewire bukan sekadar pustaka Go modular, melainkan ekosistem terpadu yang digerakkan oleh satu CLI <code class=\"code-inline\">kiw</code>. Dibangun kokoh di atas tiga pilar: <b class=\"text-fg dark:text-fg-dark\">secure</b>, <b class=\"text-fg dark:text-fg-dark\">sustainable</b>, dan <b class=\"text-fg dark:text-fg-dark\">scalable</b>.",
+    "lead_html": "Krewire adalah <b class=\"text-fg dark:text-fg-dark\">platform SDLC digital terpadu dan ekosistem aplikasi</b> berbasis Go — mencakup seluruh siklus pengembangan software dari spesifikasi, agen AI otonom, identitas SSO &amp; RBAC, hybrid PaaS, workspace virtual, hingga manajemen server produksi. Krewire bukan sekadar pustaka Go modular, melainkan ekosistem terpadu yang digerakkan oleh satu CLI <code class=\"code-inline\">kiw</code>. Dibangun kokoh di atas tiga pilar: <b class=\"text-fg dark:text-fg-dark\">secure</b>, <b class=\"text-fg dark:text-fg-dark\">sustain</b>, dan <b class=\"text-fg dark:text-fg-dark\">scalable</b>.",
     "cta_start": "Mulai Sekarang — 5 Menit →",
     "cta_contribute": "Berkontribusi →",
     "meta": "Go 1.27.1+ · Dari Spek ke Produksi · Routing Berbasis Berkas · Scoped CSS · Progresif secara Bawaan"
@@ -212,8 +211,6 @@
     "auth_desc": "Identitas multi-tenant, Single Sign-On (OIDC/SAML2), MFA (TOTP), reset password, dan hierarki RBAC.",
     "dash_badge": "Virtual Workspace",
     "dash_desc": "Virtual workspace bertenaga AI untuk integrasi, otomatisasi, runtime cloud ter-sandbox, dan rekayasa kolaboratif.",
-    "panel_badge": "Admin Server",
-    "panel_desc": "Control panel server dan admin mandiri untuk VPS bare-metal, vHost, daemon systemd, database, dan firewall.",
     "internal_badge": "Pusat Dokumen",
     "internal_desc": "Pusat dokumentasi privat: catatan keputusan arsitektur (ADR), roadmap, panduan kontributor, dan riset.",
     "portal_badge": "Situs Portal",

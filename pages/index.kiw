@@ -70,8 +70,8 @@ layout: Landing
         <span class="k">return</span> c.JSON(<span class="n">200</span>, web.Map{
             <span class="s">"ecosystem"</span>:  <span class="s">"Krewire"</span>,
             <span class="s">"workload"</span>:   model.KindApp,
-            <span class="s">"pillars"</span>:    []string{<span class="s">"secure"</span>, <span class="s">"sustainable"</span>, <span class="s">"scalable"</span>},
-            <span class="s">"platforms"</span>:  []string{<span class="s">"krew"</span>, <span class="s">"auth"</span>, <span class="s">"cloud"</span>, <span class="s">"dash"</span>, <span class="s">"panel"</span>},
+            <span class="s">"pillars"</span>:    []string{<span class="s">"secure"</span>, <span class="s">"sustain"</span>, <span class="s">"scalable"</span>},
+            <span class="s">"platforms"</span>:  []string{<span class="s">"krew"</span>, <span class="s">"auth"</span>, <span class="s">"cloud"</span>, <span class="s">"dash"</span>},
             <span class="s">"footprint"</span>:  <span class="s">"10-30 MB RAM"</span>,
             <span class="s">"cold_start"</span>: <span class="s">"&lt; 1ms"</span>,
         })
