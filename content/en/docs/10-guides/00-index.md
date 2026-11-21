@@ -66,4 +66,16 @@ Whether you are contributing to core packages or authoring mission-critical appl
     </p>
   </div>
 
+  <div class="chapter-card">
+    <div class="chapter-card-head">
+      <span class="chapter-card-num">10.5</span>
+      <h3 class="chapter-card-title">
+        <a href="/guides/ai-native-engineering">AI-Native Engineering Handbook <span class="arrow">→</span></a>
+      </h3>
+    </div>
+    <p class="chapter-card-desc">
+      Governed, evidence-based engineering method across Krew, Boost, and the kiw toolchain with deterministic quality gates and human checkpoints.
+    </p>
+  </div>
+
 </div>

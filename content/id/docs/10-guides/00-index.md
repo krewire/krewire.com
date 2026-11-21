@@ -64,4 +64,16 @@ Bab ini menyediakan panduan operasional praktis dan resep integrasi untuk memban
     </p>
   </div>
 
+  <div class="chapter-card">
+    <div class="chapter-card-head">
+      <span class="chapter-card-num">10.5</span>
+      <h3 class="chapter-card-title">
+        <a href="/guides/ai-native-engineering">Buku Panduan AI-Native Engineering <span class="arrow">→</span></a>
+      </h3>
+    </div>
+    <p class="chapter-card-desc">
+      Metode rekayasa terkelola dan berbasis bukti di seluruh Krew, Boost, dan toolchain kiw dengan gerbang mutu deterministik dan titik persetujuan manusia.
+    </p>
+  </div>
+
 </div>
