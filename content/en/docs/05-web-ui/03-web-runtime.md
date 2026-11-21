@@ -56,8 +56,8 @@ Mount points emit standard HTML markers:
 
 Through `pkg/runtime/mount` and the Krewire plugin ecosystem, mount points support:
 - **`wasm`** (Default): Pure-Go compiled WebAssembly island with zero node/npm dependencies.
-- **`svelte`**: Svelte 5 reactive component island installed via `kiw add svelte`.
-- **`vue`**: Vue 3 reactive component island installed via `kiw add vue`.
+- **`svelte`**: Svelte 5 reactive component island installed via `krew add svelte`.
+- **`vue`**: Vue 3 reactive component island installed via `krew add vue`.
 
 ---
 
@@ -173,7 +173,7 @@ fmt.Println(artifacts.WASM, artifacts.JS, artifacts.Digest)
 From the developer CLI, the same pipeline is accessible as a build target:
 
 ```bash
-kiw build --target wasm
+krew build --target wasm
 ```
 
 ---

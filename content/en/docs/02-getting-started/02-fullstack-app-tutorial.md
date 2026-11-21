@@ -1,6 +1,6 @@
 ---
 title: "Build a Fullstack App in 15 Minutes"
-description: "Zero-to-hero tutorial: scaffold an app with kiw new --app, store data in SQLite through pkg/orm with migrations, render .kiw pages with Krewire UI components, handle validated CSRF-protected forms, and ship a single binary."
+description: "Zero-to-hero tutorial: scaffold an app with krew new --app, store data in SQLite through pkg/orm with migrations, render .kiw pages with Krewire UI components, handle validated CSRF-protected forms, and ship a single binary."
 date: "2026-11-09"
 ---
 
@@ -22,7 +22,7 @@ You will build **todo-app**, a small task manager: a page that lists tasks store
 <div class="overview-grid">
 
   <div class="chapter-card">
-    <p class="chapter-card-desc"><b>Time:</b> about 15 minutes.<br><b>You need:</b> Go 1.27.1+, <code>kiw</code> (see the <a href="/getting-started/quickstart">Quickstart</a>), and network access for <code>go get</code>.<br><b>You learn:</b> <code>kiw new --app</code>, <code>kiw make</code>, <code>pkg/orm</code>, migrations, <code>.kiw</code> views, <code>pkg/validation</code>, <code>web.CSRF</code>, <code>kiw build</code>.</p>
+    <p class="chapter-card-desc"><b>Time:</b> about 15 minutes.<br><b>You need:</b> Go 1.27.1+, <code>kiw</code> (see the <a href="/getting-started/quickstart">Quickstart</a>), and network access for <code>go get</code>.<br><b>You learn:</b> <code>krew new --app</code>, <code>krew make</code>, <code>pkg/orm</code>, migrations, <code>.kiw</code> views, <code>pkg/validation</code>, <code>web.CSRF</code>, <code>krew build</code>.</p>
   </div>
 
 </div>
@@ -34,7 +34,7 @@ Krewire provides the fullstack battery: HTTP router, dependency injection, multi
 ## Step 1: Scaffold the App
 
 ```bash
-kiw new todo-app --app
+krew new todo-app --app
 cd todo-app
 ```
 
@@ -71,7 +71,7 @@ todo-app/
 Run it once to see the scaffold:
 
 ```bash
-kiw dev
+krew dev
 ```
 
 Open <http://localhost:8080>, then stop the server with `Ctrl+C`.
@@ -89,7 +89,7 @@ go get modernc.org/sqlite@latest
 ### 2.2 Generate the model
 
 ```bash
-kiw make model Task
+krew make model Task
 ```
 
 This creates `internal/models/task.go`. Replace its contents with:
@@ -118,7 +118,7 @@ func (Task) TableName() string { return "tasks" }
 ### 2.3 Write the migration
 
 ```bash
-kiw make migration create_tasks
+krew make migration create_tasks
 ```
 
 `kiw` creates `migrations/<timestamp>_create_tasks.sql` with empty `-- +up` and `-- +down` sections. Fill them in:
@@ -142,7 +142,7 @@ DROP TABLE IF EXISTS tasks;
 Embed the migrations folder into the binary with `migrations/embed.go`:
 
 ```go
-// Package migrations embeds the SQL files created by `kiw make migration`.
+// Package migrations embeds the SQL files created by `krew make migration`.
 package migrations
 
 import "embed"
@@ -253,7 +253,7 @@ func upSection(src string) string {
 
 **The migration workflow from now on:**
 
-1. `kiw make migration add_due_date` — a new timestamped file sorts after the previous ones.
+1. `krew make migration add_due_date` — a new timestamped file sorts after the previous ones.
 2. Write the change in `-- +up` (for example `ALTER TABLE tasks ADD COLUMN due_date DATETIME;`) and its reversal in `-- +down`.
 3. Restart the app. `migrate` applies only files not yet recorded in `schema_migrations`.
 4. To roll back by hand, run the `-- +down` SQL and delete the row from `schema_migrations`.
@@ -401,7 +401,7 @@ Create `web/views/views.go`. It registers the whole Krewire UI catalog plus ever
 
 ```go
 // Package views turns the .kiw files in this directory into components the
-// web app can render, the same way `kiw build` loads components/ for a site.
+// web app can render, the same way `krew build` loads components/ for a site.
 package views
 
 import (
@@ -720,7 +720,7 @@ How CSRF protection works here: on a `GET`, `web.CSRF()` sets an `XSRF-TOKEN` co
 
 ```bash
 go mod tidy
-kiw dev
+krew dev
 ```
 
 Open <http://localhost:8080>: add a task, submit an empty title to see the validation error, toggle a task, delete one. The data lands in `todo.db` (set `TODO_DB` to use another file).
@@ -800,7 +800,7 @@ func TestTaskFlow(t *testing.T) {
 ```
 
 ```bash
-kiw test
+krew test
 ```
 
 ```text
@@ -814,7 +814,7 @@ ok  	todo-app/internal/app	0.552s
 ## Step 7: Build a Single Binary and Deploy
 
 ```bash
-kiw build
+krew build
 ```
 
 ```text
@@ -825,7 +825,7 @@ created .../todo-app/.krewire/build/bin/todo-app
 The binary embeds the views, the Krewire UI components, the migrations, and the static assets. The SQLite driver is pure Go, so you can cross-compile for a Linux server from any machine:
 
 ```bash
-GOOS=linux GOARCH=amd64 CGO_ENABLED=0 kiw build
+GOOS=linux GOARCH=amd64 CGO_ENABLED=0 krew build
 file .krewire/build/bin/todo-app
 ```
 
@@ -861,13 +861,13 @@ Its `go.mod` pins the exact core version this tutorial was verified with.
 
 | You used | For |
 | :--- | :--- |
-| `kiw new --app`, `kiw make model`, `kiw make migration` | Scaffolding the app, the model, and the SQL migration |
+| `krew new --app`, `krew make model`, `krew make migration` | Scaffolding the app, the model, and the SQL migration |
 | `pkg/orm` + `modernc.org/sqlite` | SQLite access with a fluent, parameterized query API |
 | `.kiw` + Krewire UI | The page, with `Badge`, `Alert`, `Input`, `Button`, and `Card` |
 | `web.PageSpec{DataFunc}` | Per-request data for the page |
 | `pkg/validation` + post/redirect/get | Server-side validation with friendly errors |
 | `web.CSRF()` | Token-based CSRF protection on every form |
-| `kiw dev`, `kiw test`, `kiw build` | Develop, verify, and ship one binary |
+| `krew dev`, `krew test`, `krew build` | Develop, verify, and ship one binary |
 
 ## Next Steps
 

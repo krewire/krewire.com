@@ -50,13 +50,13 @@ Anda dapat men-deploy proyek Krewire apa pun secara langsung menggunakan CLI `ki
 
 ```bash
 # Menyiapkan binary produksi dan artefak siap rilis
-kiw deploy --target binary
+krew deploy --target binary
 
 # Membuat definisi layanan systemd untuk server Linux
-kiw deploy --target systemd
+krew deploy --target systemd
 
 # Untuk situs statis dan buku dokumentasi (GitHub Pages)
-kiw deploy --target gh-pages
+krew deploy --target gh-pages
 ```
 
 ### Kontainer Docker Produksi

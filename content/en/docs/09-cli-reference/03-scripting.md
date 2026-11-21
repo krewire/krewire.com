@@ -8,7 +8,7 @@ date: "2026-10-08"
 
 Krewire includes a built-in task automation engine directly within `kiw`, eliminating the need for `Makefile`, `npm run`, or external task runners.
 
-Tasks are declared in the `scripts:` block of `krewire.yaml` and executed via `kiw run <task>`.
+Tasks are declared in the `scripts:` block of `krewire.yaml` and executed via `krew run <task>`.
 
 ---
 
@@ -21,9 +21,9 @@ scripts:
 
   # Sequential multi-command pipeline
   ci:
-    - "kiw fmt"
-    - "kiw vet"
-    - "kiw test"
+    - "krew fmt"
+    - "krew vet"
+    - "krew test"
 
   # Task with environment variables
   seed:
@@ -39,14 +39,14 @@ scripts:
 
 ## Executing Scripts
 
-Run any named script using `kiw run`:
+Run any named script using `krew run`:
 
 ```bash
 # Run the lint script
-kiw run lint
+krew run lint
 
 # Run the complete CI validation chain
-kiw run ci
+krew run ci
 ```
 
 ### Argument Forwarding
@@ -54,7 +54,7 @@ kiw run ci
 Arguments passed after `--` are automatically forwarded to the target command:
 
 ```bash
-kiw run migrate -- --steps 2
+krew run migrate -- --steps 2
 ```
 
 The underlying command executes:
@@ -66,10 +66,10 @@ go run ./cmd/migrate/main.go up --steps 2
 
 ## Built-In Ecosystem Tasks
 
-If no script with the specified name is found in `krewire.yaml`, `kiw run` attempts to execute matching Go files or entry points:
+If no script with the specified name is found in `krewire.yaml`, `krew run` attempts to execute matching Go files or entry points:
 
 ```bash
-kiw run ./cmd/server/main.go
+krew run ./cmd/server/main.go
 ```
 
 This guarantees a frictionless workflow for both scripted and ad-hoc Go development tasks.

@@ -64,13 +64,13 @@ curl -fsSL https://krewire.com/scripts/install.sh | INSTALL_DIR="$HOME/bin" sh
 Jika Anda sudah menginstal Go dan mengonfigurasi `$GOPATH/bin` dalam `PATH` sistem Anda, instal `kiw` langsung dari source code:
 
 ```bash
-go install github.com/krewire/krewire/tools/kiw/cmd/kiw@latest
+go install github.com/krewire/krew/cmd/krew@latest
 ```
 
 Untuk mengunci versi tertentu (misalnya `v0.2.0`):
 
 ```bash
-go install github.com/krewire/krewire/tools/kiw/cmd/kiw@v0.2.0
+go install github.com/krewire/krew/cmd/krew@v0.2.0
 ```
 
 #### Mengonfigurasi PATH Anda:
@@ -96,7 +96,7 @@ Setelah instalasi selesai, pastikan bahwa binary dapat diakses dan berfungsi nor
 ### 1. Pemeriksaan Versi
 
 ```bash
-kiw version
+krew version
 ```
 
 Output yang diharapkan (baris `Commit` hanya dicetak untuk build dengan informasi provenance modul):
@@ -111,18 +111,18 @@ kiw Krewire Devtool
 
 ### 2. Diagnostik Lingkungan
 
-Jalankan `kiw info` untuk memeriksa toolchain aktif, sistem operasi, dan lingkungan Go Anda:
+Jalankan `krew info` untuk memeriksa toolchain aktif, sistem operasi, dan lingkungan Go Anda:
 
 ```bash
-kiw info
+krew info
 ```
 
 ### 3. Pemeriksaan Kompatibilitas
 
-Jalankan `kiw compat` di dalam direktori proyek Krewire mana pun untuk memverifikasi bahwa CLI lokal Anda sesuai dengan dependensi paket di `go.mod`:
+Jalankan `krew compat` di dalam direktori proyek Krewire mana pun untuk memverifikasi bahwa CLI lokal Anda sesuai dengan dependensi paket di `go.mod`:
 
 ```bash
-kiw compat
+krew compat
 ```
 
 ---
@@ -138,7 +138,7 @@ Untuk memperbarui ke rilis stabil terbaru:
 
 - **Via Go Toolchain:**
   ```bash
-  go install github.com/krewire/krewire/tools/kiw/cmd/kiw@latest
+  go install github.com/krewire/krew/cmd/krew@latest
   ```
 
 ---
@@ -149,13 +149,13 @@ Karena `kiw` didistribusikan sebagai satu binary statis mandiri tanpa daemon lat
 
 ```bash
 # Untuk instalasi standar di seluruh sistem:
-sudo rm -f /usr/local/bin/kiw
+sudo rm -f /usr/local/bin/krew
 
 # Untuk instalasi lokal pengguna:
-rm -f ~/.local/bin/kiw
+rm -f ~/.local/bin/krew
 
 # Untuk instalasi via Go bin:
-rm -f "$(go env GOPATH)/bin/kiw"
+rm -f "$(go env GOPATH)/bin/krew"
 ```
 
 ---

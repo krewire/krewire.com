@@ -196,9 +196,9 @@ Komponen dapat diorganisasikan ke dalam subdirektori dan dipanggil menggunakan n
 
 Scaffold komponen majemuk langsung menggunakan CLI:
 ```bash
-kiw make component Card.Header     # menghasilkan components/Card/Header.kiw
-kiw make component Card.Body       # menghasilkan components/Card/Body.kiw
-kiw make component Card.Footer     # menghasilkan components/Card/Footer.kiw
+krew make component Card.Header     # menghasilkan components/Card/Header.kiw
+krew make component Card.Body       # menghasilkan components/Card/Body.kiw
+krew make component Card.Footer     # menghasilkan components/Card/Footer.kiw
 ```
 
 ### 4.2 Komponen Bernamespace & Vendor

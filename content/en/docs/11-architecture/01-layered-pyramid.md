@@ -39,7 +39,7 @@ Layer 5: Unified Studio & Apex Portals     Dash (virtual workspace) · krewire.c
    ↓
 Layer 4: Platform Engines & Cloud          Cloud (PaaS) ∥ Auth (IAM / SSO) ∥ Krew (AI agent)
    ↓
-Layer 3: Universal Developer Driver & CLI  tools/kiw (kiw) driven by krewire.yaml
+Layer 3: Universal Developer Driver & CLI  krew (kiw) driven by krewire.yaml
    ↓
 Layer 2: UI Foundation & Domain Libraries  kui (.kiw components) · pkg/* (web, orm, sec, …)
    ↓
@@ -50,7 +50,7 @@ Layer 0: Go Standard Library & OS Primitives
 
 - **Strict downward-only:** a layer may import only layers below it (`Layer N → Layer < N`). Upward imports are forbidden and caught by `layering_test.go`.
 - **Kernel isolation:** `pkg/model` depends only on the standard library and `pkg/errs`.
-- **CLI encapsulation:** no library or platform package may import `kiw` (`tools/kiw`). Generated user projects depend on Krewire libraries, never on the CLI.
+- **CLI encapsulation:** no library or platform package may import `kiw` (`krew`). Generated user projects depend on Krewire libraries, never on the CLI.
 
 ## 3. Inside the Core Repository
 
@@ -59,7 +59,7 @@ Zooming into `github.com/krewire/krewire`, the same idea is applied as a ranked 
 | Layer | Contents | May import |
 | :--- | :--- | :--- |
 | 5 | Scaffolding blueprints (`templates/*`) | Layers 0–4 |
-| 4 | Developer tooling (`tools/kiw`) | Layers 0–3 |
+| 4 | Developer tooling (`krew`) | Layers 0–3 |
 | 3 | Domain libraries (`pkg/web`, `pkg/sec`, `pkg/orm`, `pkg/ui`, …) | Layers 0–2 and sibling domain packages, acyclically |
 | 2 | Execution & supervision (`pkg/lifecycle`, `pkg/env`, `pkg/log`) | Layers 0–1 |
 | 1 | Declarative core (`pkg/errs`, `pkg/model`, `pkg/version`) | Standard library (`model`, `version` may import `errs`) |
@@ -73,7 +73,7 @@ Six invariants keep this ladder honest:
 | 2 | **Base floor** — `pkg/errs` imports only the standard library; `model` and `version` add only `errs`. | `pkg/errs/dependency_test.go`, `pkg/model/dependency_test.go` |
 | 3 | **No upward names** — foundation packages contain no string literals naming higher packages. | `TestFoundationNamesNoHigherPackage` |
 | 4 | **Hermetic core** — `pkg/model` has no third-party or other Krewire imports. | `TestModel_StdlibBoundary` |
-| 5 | **Tooling isolation** — nothing under `pkg/` or `templates/` imports `tools/kiw`. | `TestPackagesNeverImportKiw` |
+| 5 | **Tooling isolation** — nothing under `pkg/` or `templates/` imports `krew`. | `TestPackagesNeverImportKiw` |
 | 6 | **Opt-in batteries** — workload-specific packages (`cloud/worker`, `web/ssg`, …) cannot be imported by other kinds unless opted in. | `ViolatesOptIn` in `pkg/model/project.go` |
 
 ## 4. Peer Decoupling & the Bridge/Gateway Pattern

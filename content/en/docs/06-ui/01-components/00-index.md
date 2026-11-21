@@ -131,7 +131,7 @@ import "github.com/krewire/ui/components"
 To fork and edit a component locally in `./components/`:
 
 ```bash
-kiw ui vendor <ComponentName>
+krew ui vendor <ComponentName>
 ```
 
 And link the canonical stylesheet in your layout `<head>`:

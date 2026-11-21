@@ -24,7 +24,7 @@ Ditenagai oleh `pkg/tui` dan `pkg/term`, workload `cli` menghadirkan pola **Mode
 ## Scaffolding Proyek `cli`
 
 ```bash
-kiw new sysmon --cli
+krew new sysmon --cli
 cd sysmon
 ```
 
@@ -142,11 +142,11 @@ build:
 Jalankan CLI selama tahap pengembangan:
 
 ```bash
-kiw run -- --verbose
+krew run -- --verbose
 ```
 
 Build binary rilis:
 
 ```bash
-kiw build
+krew build
 ./bin/sysmon

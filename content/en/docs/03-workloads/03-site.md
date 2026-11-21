@@ -27,7 +27,7 @@ Powered by `pkg/web/ssg` and the `.kiw` DSL, the `site` compiler transforms Sing
 ## Scaffolding a `site` Project
 
 ```bash
-kiw new my-site --site
+krew new my-site --site
 cd my-site
 ```
 
@@ -138,7 +138,7 @@ The layout wraps pages with HTML metadata, global styles, and slots:
 ### Start Dev Server with Live Reload
 
 ```bash
-kiw dev
+krew dev
 ```
 
 Visit `http://localhost:8080`. Edits to `.kiw` files, layouts, and components trigger hot reloading in `< 10ms`.
@@ -146,7 +146,7 @@ Visit `http://localhost:8080`. Edits to `.kiw` files, layouts, and components tr
 ### Build Static Site
 
 ```bash
-kiw build
+krew build
 ```
 
 The output in `.krewire/build` is completely static and can be deployed directly to GitHub Pages, Cloudflare Pages, AWS S3, or Nginx.

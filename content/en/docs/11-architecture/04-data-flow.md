@@ -19,7 +19,7 @@ date: "2026-11-09"
 
 A `.kiw` file never fetches data itself. It is a template that receives a **data value** and turns it into HTML. What differs between workloads is *when* that value is computed and *who* computes it:
 
-- In a **`site` or `book`** the data is evaluated **once, at build time**, by `kiw build` (`pkg/web/ssg`, `pkg/book`). The output is plain files; no server runs your code.
+- In a **`site` or `book`** the data is evaluated **once, at build time**, by `krew build` (`pkg/web/ssg`, `pkg/book`). The output is plain files; no server runs your code.
 - In an **`app`** the data is computed **per request** by Go functions you register on a `web.App` (`pkg/web`, assembled with `pkg/app`). The same renderer turns it into HTML on every request.
 - In both, a **client script** can talk to JSON endpoints after the page loads — in an `app` those endpoints are your own Go handlers.
 
@@ -32,7 +32,7 @@ BUILD TIME — site, book (runs once, on your machine or in CI)
 
   krewire.yaml ─┐
   content/*.md ─┤
-  lang/*.json  ─┼──► kiw build ──► page data = yaml values + frontmatter
+  lang/*.json  ─┼──► krew build ──► page data = yaml values + frontmatter
   pages/*.kiw  ─┤    (ssg.LoadFromDir)        + Collections + i18n
   components/  ─┤                                   │
   layouts/     ─┘                                   ▼
@@ -62,7 +62,7 @@ The renderer in the middle is the same in both columns. `web.App` builds an `ssg
 
 | | Build-time SSG (`site`, `book`) | Request-time SSR (`app`) |
 | :--- | :--- | :--- |
-| Who computes the data | `kiw build` | Your Go code on every request (`PageSpec.DataFunc`) or once at startup (`PageSpec.Data`) |
+| Who computes the data | `krew build` | Your Go code on every request (`PageSpec.DataFunc`) or once at startup (`PageSpec.Data`) |
 | Data sources | `krewire.yaml`, page frontmatter, `content/<collection>/*.md`, `lang/` dictionaries | Anything Go can reach: databases (`pkg/orm`), services, the request (query, cookies, session, CSRF token) |
 | Output | Static `.html` files in `.krewire/build/` | An HTML response per request, from one Go binary |
 | Server needed | None — any static host | The app binary |
@@ -74,7 +74,7 @@ The renderer in the middle is the same in both columns. `web.App` builds an `ssg
 
 ## 2. Build Time: How a Site Gets Its Data
 
-`kiw build` (via `ssg.LoadFromDir`) merges several sources into each page's data:
+`krew build` (via `ssg.LoadFromDir`) merges several sources into each page's data:
 
 | Source | Available in templates as |
 | :--- | :--- |
@@ -111,7 +111,7 @@ layout: Base
 </article>
 ```
 
-Saved as `pages/posts.kiw` and `pages/posts/[slug].kiw`, `kiw build --target site` writes `posts.html`, `posts/hello.html`, and `posts/second.html`:
+Saved as `pages/posts.kiw` and `pages/posts/[slug].kiw`, `krew build --target site` writes `posts.html`, `posts/hello.html`, and `posts/second.html`:
 
 ```html
 <p>Notes from the build pipeline · site version 0.1.0</p>
@@ -124,7 +124,7 @@ Saved as `pages/posts.kiw` and `pages/posts/[slug].kiw`, `kiw build --target sit
 Three details that save debugging time:
 
 - The `{name}` shorthand capitalizes the first letter (`{tagline}` → `.Tagline`). Data loaded from YAML keeps its own spelling, so use the explicit `{{.tagline}}` and `{{range .Collections.posts}}` forms for frontmatter keys and collection names.
-- A site with a `content/` folder is also picked up by the book pipeline when you run plain `kiw build`. Use `kiw build --target site` when `content/` only holds collections.
+- A site with a `content/` folder is also picked up by the book pipeline when you run plain `krew build`. Use `krew build --target site` when `content/` only holds collections.
 - Nothing on this side runs at request time. To show data that changes between builds, either rebuild (for example on a schedule in CI) or fetch it from the browser (section 5).
 
 ---

@@ -149,4 +149,4 @@ func main() {
 
 ## Design Boundaries
 
-`pkg/app` owns application composition, registration order, and runner supervision. Domain business rules belong in `pkg/model`, HTTP routing belongs in `pkg/web`, and runtime engine mechanics belong in `pkg/lifecycle`. `pkg/app` never imports `tools/kiw`.
+`pkg/app` owns application composition, registration order, and runner supervision. Domain business rules belong in `pkg/model`, HTTP routing belongs in `pkg/web`, and runtime engine mechanics belong in `pkg/lifecycle`. `pkg/app` never imports `krew`.

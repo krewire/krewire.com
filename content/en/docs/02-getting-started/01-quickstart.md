@@ -32,13 +32,13 @@ curl -fsSL https://krewire.com/scripts/install.sh | sh
 On any platform with Go 1.27.1+ (including Windows):
 
 ```bash
-go install github.com/krewire/krewire/tools/kiw/cmd/kiw@latest
+go install github.com/krewire/krew/cmd/krew@latest
 ```
 
 Check that the shell can find it:
 
 ```bash
-kiw version
+krew version
 ```
 
 The first line reads `kiw Krewire Devtool`, followed by the ecosystem version and your Go version. If the command is not found, see [Installation → Configuring your PATH](/getting-started/installation).
@@ -48,7 +48,7 @@ The first line reads `kiw Krewire Devtool`, followed by the ecosystem version an
 ## Step 2: Create a Site
 
 ```bash
-kiw new my-site --site --title "My Site"
+krew new my-site --site --title "My Site"
 cd my-site
 ```
 
@@ -68,7 +68,7 @@ What each one is for:
 ```text
 my-site/
 ├── krewire.yaml         # project name, kind (site), build output, dev port
-├── go.mod               # Go module (created by kiw new)
+├── go.mod               # Go module (created by krew new)
 ├── pages/index.kiw      # the home page → /
 ├── layouts/Base.kiw     # the HTML shell every page renders inside
 ├── components/Hero.kiw  # a reusable component, used as <Hero /> in index.kiw
@@ -82,7 +82,7 @@ A file in `pages/` becomes a URL, a file in `components/` becomes a tag, and a f
 ## Step 3: Start the Dev Server
 
 ```bash
-kiw dev
+krew dev
 ```
 
 ```text
@@ -166,7 +166,7 @@ Create `components/Feature.kiw`:
 
 and add `.features { display: grid; gap: 1rem; margin-top: 2rem; }` to the page's `<style>` block. Save, and the two cards appear.
 
-> **Tip:** `kiw make component Feature` also creates `components/Feature.kiw` for you, as a starting point to edit.
+> **Tip:** `krew make component Feature` also creates `components/Feature.kiw` for you, as a starting point to edit.
 
 ---
 
@@ -175,7 +175,7 @@ and add `.features { display: grid; gap: 1rem; margin-top: 2rem; }` to the page'
 Stop the dev server (`Ctrl+C`) and run:
 
 ```bash
-kiw build
+krew build
 ```
 
 ```text
@@ -188,7 +188,7 @@ created assets/krewire.css
 `.krewire/build/` is the complete website: plain HTML and CSS that any static host (Nginx, Caddy, GitHub Pages, an object bucket) can serve. Preview it exactly as it will be served:
 
 ```bash
-kiw serve --addr :3000
+krew serve --addr :3000
 ```
 
 and open <http://localhost:3000>.
@@ -203,7 +203,7 @@ and open <http://localhost:3000>.
 | Layouts wrap pages | `layout: Base` → `layouts/Base.kiw` |
 | Components are tags | `components/Feature.kiw` → `<Feature>` |
 | Built-in UI | `<Badge>`, `<Button>`, `<Card>`, … from Krewire UI |
-| One command per step | `kiw new` → `kiw dev` → `kiw build` → `kiw serve` |
+| One command per step | `krew new` → `krew dev` → `krew build` → `krew serve` |
 
 ## Next Steps
 

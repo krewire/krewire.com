@@ -16,7 +16,7 @@ Komponen `<Button />` adalah elemen interaktif fundamental dari design system Kr
 
 <div data-component-preview="Button" data-slug="button"></div>
 
-Bingkai di atas memuat `Button.kiw` asli dari Krewire UI, yang sudah di-render oleh `kiw build` untuk setiap varian, dalam tema terang dan gelap secara berdampingan. Gunakan tombol pilihan untuk mengganti varian, lalu salin kode sumber komponen atau contoh penggunaannya. **Buka di playground** menampilkannya bersama komponen inti lainnya.
+Bingkai di atas memuat `Button.kiw` asli dari Krewire UI, yang sudah di-render oleh `krew build` untuk setiap varian, dalam tema terang dan gelap secara berdampingan. Gunakan tombol pilihan untuk mengganti varian, lalu salin kode sumber komponen atau contoh penggunaannya. **Buka di playground** menampilkannya bersama komponen inti lainnya.
 
 ---
 

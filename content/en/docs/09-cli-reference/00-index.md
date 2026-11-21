@@ -64,7 +64,7 @@ Every `kiw` command respects the following global flags and environment variable
 | :--- | :--- | :--- | :--- |
 | `--help`, `-h` | Boolean | `false` | Display command usage and flag descriptions. |
 | `--verbose`, `-v` | Boolean | `false` | Enable verbose debug output and diagnostics. |
-| `--addr` | String | `:8080` | Listen address for `kiw serve`/`kiw dev`; overrides any port declared in `krewire.yaml`. |
+| `--addr` | String | `:8080` | Listen address for `krew serve`/`krew dev`; overrides any port declared in `krewire.yaml`. |
 | `KIW_ENV` | String | `local` | Active runtime environment (`local`, `production`, `testing`). |
 | `KIW_DEBUG` | Flag | `false` | Enable debug mode (`1`, `true`, or `yes`). |
 | `NO_COLOR` | Flag | `false` | Disable ANSI color sequences in accordance with the `NO_COLOR` standard. |

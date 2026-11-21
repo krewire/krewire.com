@@ -202,9 +202,9 @@ Components can be organized into subdirectories and invoked using dotted compoun
 
 Scaffold compound components directly with the CLI:
 ```bash
-kiw make component Card.Header     # generates components/Card/Header.kiw
-kiw make component Card.Body       # generates components/Card/Body.kiw
-kiw make component Card.Footer     # generates components/Card/Footer.kiw
+krew make component Card.Header     # generates components/Card/Header.kiw
+krew make component Card.Body       # generates components/Card/Body.kiw
+krew make component Card.Footer     # generates components/Card/Footer.kiw
 ```
 
 ### 4.2 Namespaced & Vendor Components

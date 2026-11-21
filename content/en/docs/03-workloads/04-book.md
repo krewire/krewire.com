@@ -17,7 +17,7 @@ Powered by Krewire's native **`pkg/book`** engine (`github.com/krewire/krewire/p
 1. **Pure Go Standard Library:** Zero npm scripts, no Python runtime, and no Node.js dependencies.
 2. **Automated Chapter Ordering:** Files and directories with numeric prefixes (`01-overview`, `02-guide`) are automatically converted into numbered chapters and subchapters with clean URL slugs.
 3. **Responsive Navigation & Search:** Built-in collapsible sidebar, quick chapter search filter, keyboard shortcut navigation (`/` to search), and breadcrumbs.
-4. **Instant Live Authoring:** `kiw dev` or `kiw serve` provides a local HTTP server that re-renders Markdown files dynamically on browser refresh.
+4. **Instant Live Authoring:** `krew dev` or `krew serve` provides a local HTTP server that re-renders Markdown files dynamically on browser refresh.
 5. **Dark & Light Theming:** Built-in theme switcher with automatic OS preference detection and `localStorage` persistence.
 
 ---
@@ -25,7 +25,7 @@ Powered by Krewire's native **`pkg/book`** engine (`github.com/krewire/krewire/p
 ## Scaffolding a `book` Project
 
 ```bash
-kiw new my-book --book
+krew new my-book --book
 cd my-book
 ```
 
@@ -108,8 +108,8 @@ Build and serve your book directly with `kiw`:
 
 ```bash
 # Build book to output directory
-kiw build
+krew build
 
 # Serve book locally with live re-rendering
-kiw serve
+krew serve
 ```

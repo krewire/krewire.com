@@ -17,7 +17,7 @@ Krewire menyelesaikan tantangan ini melalui **Krewire Boost** (`templates/boost`
 **Krewire Boost** didistribusikan sebagai modul Go yang tersemat langsung di dalam CLI `kiw`. Hanya dengan satu perintah, Anda dapat melakukan bootstrap sistem agen yang lengkap ke dalam repositori Krewire mana pun:
 
 ```bash
-kiw boost install
+krew boost install
 ```
 
 ### Kemampuan Inti:
@@ -35,7 +35,7 @@ kiw boost install
 Untuk menginstal Boost ke dalam proyek Krewire Anda saat ini, jalankan:
 
 ```bash
-kiw boost install .
+krew boost install .
 ```
 
 *Output terminal:*
@@ -57,7 +57,7 @@ created .agents/skills/quality-gate/SKILL.md
 
 | Flag | Deskripsi |
 | :--- | :--- |
-| `kiw boost install [path]` | Menginstal berkas template ke direktori target (default ke direktori saat ini). |
+| `krew boost install [path]` | Menginstal berkas template ke direktori target (default ke direktori saat ini). |
 | `--force` | Menimpa berkas agen terkelola yang ada tanpa konfirmasi interaktif. |
 | `--dry-run` | Menampilkan pratinjau berkas yang akan dibuat tanpa menulisnya ke disk. |
 
@@ -108,7 +108,7 @@ Ketika agen AI beroperasi di dalam proyek Krewire Boost, agen tersebut menjalank
                                                  │
 ┌──────────────┐     ┌──────────────┐     ┌──────▼───────┐
 │ 6. Ringkas   │ <── │ 5. Verifikasi│ <── │4. Implementasi
-│(Lapor Gate)  │     │  (kiw test)  │     │(agen build)  │
+│(Lapor Gate)  │     │  (krew test)  │     │(agen build)  │
 └──────────────┘     └──────────────┘     └──────────────┘
 ```
 
@@ -140,7 +140,7 @@ Agen `build` mengeksekusi perubahan kode minimal yang mematuhi konvensi. Untuk t
 ### 5. Verifikasi (Automated Quality Gate)
 Agen mengeksekusi rangkaian perintah verifikasi:
 ```bash
-kiw test && kiw vet
+krew test && krew vet
 ```
 Agen dilarang keras melaporkan suatu tugas selesai jika pengujian gagal atau masih terdapat kode yang belum diformat dengan rapi.
 
@@ -163,8 +163,8 @@ Agen akan memindai `krewire.yaml`, memeriksa dependensi Go, mendeteksi bahwa wor
 
 ```text
 ✓ Identified Krewire project: "my-first-app" (workload: site)
-✓ Build command: kiw build
-✓ Dev command: kiw dev (port 8080)
+✓ Build command: krew build
+✓ Dev command: krew dev (port 8080)
 ✓ Ready for tasks. Use /plan to design or /test to verify.
 ```
 

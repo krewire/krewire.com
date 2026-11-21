@@ -41,14 +41,14 @@ Krewire menyatukan seluruh jenis workload ini di bawah payung **Go**, **`kiw`**,
 
 | Workload | Pendekatan Terfragmentasi Tradisional | Pendekatan Krewire |
 | :--- | :--- | :--- |
-| **Situs Statis** | Node.js + Astro / Hugo / Next.js | `kiw build --site` (Go SSG, zero client JS) |
-| **Dokumentasi** | Docusaurus / GitBook / MkDocs | `kiw build --book` (engine markdown `pkg/book`) |
-| **Monolit Web** | Laravel / Django / Next.js + Node | `kiw run` (`pkg/app` single binary Go) |
-| **CLI & TUI** | Python Click / Node / Cobra | `kiw run` (antarmuka reaktif `pkg/tui`) |
+| **Situs Statis** | Node.js + Astro / Hugo / Next.js | `krew build --site` (Go SSG, zero client JS) |
+| **Dokumentasi** | Docusaurus / GitBook / MkDocs | `krew build --book` (engine markdown `pkg/book`) |
+| **Monolit Web** | Laravel / Django / Next.js + Node | `krew run` (`pkg/app` single binary Go) |
+| **CLI & TUI** | Python Click / Node / Cobra | `krew run` (antarmuka reaktif `pkg/tui`) |
 | **Tugas Latar Belakang** | Celery + Python + Redis / Sidekiq | `kiw worker` (antrean & cron `pkg/cloud/worker`) |
-| **Microservices** | Spring Boot / Express / Go kit | `kiw run` (gateway & OTel `pkg/cloud/service`) |
-| **Infrastruktur Cloud** | Terraform / HCL / CloudFormation | `kiw deploy --target infra` (deklarasi Go IaC `pkg/cloud/infra`) |
-| **Client Frontend** | React / Vue / Angular + bundler | `kiw build --target wasm` (Go-ke-WASM `pkg/runtime`) |
+| **Microservices** | Spring Boot / Express / Go kit | `krew run` (gateway & OTel `pkg/cloud/service`) |
+| **Infrastruktur Cloud** | Terraform / HCL / CloudFormation | `krew deploy --target infra` (deklarasi Go IaC `pkg/cloud/infra`) |
+| **Client Frontend** | React / Vue / Angular + bundler | `krew build --target wasm` (Go-ke-WASM `pkg/runtime`) |
 
 ---
 
@@ -62,7 +62,7 @@ Krewire bukanlah framework monolitik kaku — Krewire adalah rangkaian **pustaka
 | **Sustainable** | Pengembang tunggal masih dapat membaca, menjalankan, dan membiayainya satu dekade ke depan. | Binary statis tunggal dengan aset tersemat, baterai opsional berbiaya nol saat tidak digunakan, komponen teruji, bebas biaya lisensi, dan komunitas belajar sambil berkarya. |
 | **Scalable** | Pertumbuhan bersifat aditif, bukan perombakan total. | Alur bertahap (progressive pipeline): setiap tahap dapat diaktifkan atau dikembalikan secara fleksibel, sehingga produk pada VPS $5 dapat berkembang hingga hyperscale tanpa rombak arsitektur. |
 
-Pilar-pilar ini menjadi alasan mengapa "Mengapa Krewire?" memiliki jawaban konkret untuk setiap tahapan siklus rekayasa: satu format spesifikasi, satu konfigurasi, satu CLI, dan satu bahasa — dari `docs/specs/` hingga `kiw deploy`.
+Pilar-pilar ini menjadi alasan mengapa "Mengapa Krewire?" memiliki jawaban konkret untuk setiap tahapan siklus rekayasa: satu format spesifikasi, satu konfigurasi, satu CLI, dan satu bahasa — dari `docs/specs/` hingga `krew deploy`.
 
 ---
 

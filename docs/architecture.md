@@ -21,7 +21,7 @@ It is built as an end-to-end reference implementation for the **`site`** workloa
                                      |
                                      v
                       +-----------------------------+
-                      |          kiw build          |
+                      |          krew build          |
                       |  - pkg/kiw (template parser)|
                       |  - pkg/book (manuscripts)   |
                       |  - pkg/web/ssg (generator)  |
@@ -38,7 +38,7 @@ It is built as an end-to-end reference implementation for the **`site`** workloa
                       |                             |
                       v                             v
            [Local Preview Server]        [Production Docker Image]
-             kiw serve (:8080)              Nginx Alpine (:80)
+             krew serve (:8080)              Nginx Alpine (:80)
 ```
 
 ---

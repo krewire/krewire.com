@@ -8,7 +8,7 @@ date: "2026-10-25"
 
 Krewire beroperasi di bawah aturan **Satu Konfigurasi (One Config)**: semua pengaturan di seluruh delapan jenis workload dideklarasikan dalam satu berkas tunggal—**`krewire.yaml`**.
 
-Tidak ada berkas konfigurasi terpisah seperti `ssg.yaml` atau berkas spesifik perkakas lainnya. Konfigurasi memiliki tipe data kuat, divalidasi terhadap aturan skema (`pkg/validation`), dan dimuat menggunakan `pkg/config` (pemilik skema: `tools/kiw/internal/config`).
+Tidak ada berkas konfigurasi terpisah seperti `ssg.yaml` atau berkas spesifik perkakas lainnya. Konfigurasi memiliki tipe data kuat, divalidasi terhadap aturan skema (`pkg/validation`), dan dimuat menggunakan `pkg/config` (pemilik skema: `krew/internal/config`).
 
 ---
 
@@ -86,7 +86,7 @@ infra:
 | `kind` | String | Ya | Jenis workload (`app`, `cli`, `site`, `book`, `worker`, `service`, `gateway`, `infra`). |
 | `version` | String | Tidak | Versi rilis semantik (`vX.Y.Z`); digabungkan ke dalam versi efektif yang digunakan oleh setiap pipeline. |
 
-Proyek bootstrap pra-perancah (pre-scaffold) **bukan** sebuah kind: `kiw info` melaporkan `none` dengan penanda `pre-init` hingga `kiw init` memilih suatu varian.
+Proyek bootstrap pra-perancah (pre-scaffold) **bukan** sebuah kind: `krew info` melaporkan `none` dengan penanda `pre-init` hingga `krew init` memilih suatu varian.
 
 ### Metadata tingkat atas
 
@@ -100,7 +100,7 @@ Proyek bootstrap pra-perancah (pre-scaffold) **bukan** sebuah kind: `kiw info` m
 | `input` | String | `content` | Direktori konten untuk workload site dan book. |
 | `nav` | Array | `[]` | Tautan navigasi (`text` + `url`). |
 | `footer` | String | — | Teks footer. |
-| `scripts` | Map | `{}` | Tugas shell bernama yang dijalankan dengan `kiw run <tugas>`. |
+| `scripts` | Map | `{}` | Tugas shell bernama yang dijalankan dengan `krew run <tugas>`. |
 
 ### `build`
 
@@ -157,7 +157,7 @@ Proyek dengan direktori `pages/` otomatis di-build sebagai `site` tanpa memerluk
 | `entry` | String | `./wasm` | Paket utama yang dikompilasi dengan `GOOS=js GOARCH=wasm`. |
 | `name` | String | `runtime` | Nama modul output. |
 
-WebAssembly sisi klien adalah **target pustaka (library target)**, bukan jenis workload: lakukan build dengan `kiw build --target wasm` di dalam proyek `app` atau `site`.
+WebAssembly sisi klien adalah **target pustaka (library target)**, bukan jenis workload: lakukan build dengan `krew build --target wasm` di dalam proyek `app` atau `site`.
 
 ### `worker`
 
@@ -204,7 +204,7 @@ Kunci untuk rute:
 | `provider` | String | `aws` | Penyedia cloud target (`aws`, `gcp`, `kubernetes`). |
 | `region` | String | — | Wilayah/region penyedia. |
 | `state` | String | — | Lokasi backend status penyimpanan (state). |
-| `resources` | Array | `[]` | Sumber daya terdeklarasi yang diterapkan oleh `kiw deploy --target infra`. |
+| `resources` | Array | `[]` | Sumber daya terdeklarasi yang diterapkan oleh `krew deploy --target infra`. |
 
 ### `runtime`
 
@@ -230,6 +230,6 @@ LOG_LEVEL=debug
 
 Port server dev **bukan** sebuah variabel lingkungan. Alamat dengar ditentukan dengan urutan resolusi berikut:
 
-1. Flag `--addr` (`kiw serve --addr :3000`).
+1. Flag `--addr` (`krew serve --addr :3000`).
 2. `runtime.port`, kemudian `dev.port`, lalu `server.port`, disusul `services[].port` pertama.
 3. `:8080`.

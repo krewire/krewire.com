@@ -64,13 +64,13 @@ curl -fsSL https://krewire.com/scripts/install.sh | INSTALL_DIR="$HOME/bin" sh
 If you already have Go installed and `$GOPATH/bin` configured in your system `PATH`, install `kiw` directly from source:
 
 ```bash
-go install github.com/krewire/krewire/tools/kiw/cmd/kiw@latest
+go install github.com/krewire/krew/cmd/krew@latest
 ```
 
 To pin a specific version (e.g. `v0.2.0`):
 
 ```bash
-go install github.com/krewire/krewire/tools/kiw/cmd/kiw@v0.2.0
+go install github.com/krewire/krew/cmd/krew@v0.2.0
 ```
 
 #### Configuring Your PATH:
@@ -96,7 +96,7 @@ After installation completes, verify that the binary is accessible and operation
 ### 1. Version Inspection
 
 ```bash
-kiw version
+krew version
 ```
 
 Expected output (the `Commit` line is printed only for builds with module
@@ -112,18 +112,18 @@ kiw Krewire Devtool
 
 ### 2. Environment Diagnostics
 
-Run `kiw info` to inspect your active toolchain, operating system, and Go environment:
+Run `krew info` to inspect your active toolchain, operating system, and Go environment:
 
 ```bash
-kiw info
+krew info
 ```
 
 ### 3. Compatibility Check
 
-Run `kiw compat` inside any Krewire project directory to verify that your local CLI matches the package dependencies in `go.mod`:
+Run `krew compat` inside any Krewire project directory to verify that your local CLI matches the package dependencies in `go.mod`:
 
 ```bash
-kiw compat
+krew compat
 ```
 
 ---
@@ -139,7 +139,7 @@ To upgrade to the latest stable release:
 
 - **Via Go Toolchain:**
   ```bash
-  go install github.com/krewire/krewire/tools/kiw/cmd/kiw@latest
+  go install github.com/krewire/krew/cmd/krew@latest
   ```
 
 ---
@@ -150,13 +150,13 @@ Because `kiw` is distributed as a single static binary with no background daemon
 
 ```bash
 # For standard system-wide install:
-sudo rm -f /usr/local/bin/kiw
+sudo rm -f /usr/local/bin/krew
 
 # For user-local install:
-rm -f ~/.local/bin/kiw
+rm -f ~/.local/bin/krew
 
 # For Go bin install:
-rm -f "$(go env GOPATH)/bin/kiw"
+rm -f "$(go env GOPATH)/bin/krew"
 ```
 
 ---

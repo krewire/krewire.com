@@ -24,10 +24,10 @@ Dibangun di atas primitif standar Go (`net/http`, `embed.FS`, `context`, `slog`)
 
 ## Scaffolding Proyek `app`
 
-Gunakan perintah `kiw new` (yang memilih varian `app` secara default atau dengan flag `--app`), atau lengkapi direktori yang ada dengan `kiw init --app`:
+Gunakan perintah `krew new` (yang memilih varian `app` secara default atau dengan flag `--app`), atau lengkapi direktori yang ada dengan `krew init --app`:
 
 ```bash
-kiw new storefront --app
+krew new storefront --app
 cd storefront
 ```
 
@@ -254,40 +254,40 @@ build:
   output: ".krewire/build"
 ```
 
-Alamat runtime juga dapat disesuaikan melalui variabel lingkungan `APP_ADDR` atau flag `--addr` (contoh: `kiw run --addr :3000`).
+Alamat runtime juga dapat disesuaikan melalui variabel lingkungan `APP_ADDR` atau flag `--addr` (contoh: `krew run --addr :3000`).
 
 ---
 
 ## Pengembangan & Operasional
 
-### Pengembangan Lokal (`kiw dev` atau `kiw run`)
+### Pengembangan Lokal (`krew dev` atau `krew run`)
 
 Jalankan aplikasi dengan pemantauan perubahan file dan kompilasi otomatis:
 
 ```bash
-kiw dev
+krew dev
 ```
 
 Atau jalankan aplikasi secara langsung:
 
 ```bash
-kiw run
+krew run
 ```
 
-### Menjalankan Pengujian (`kiw test`)
+### Menjalankan Pengujian (`krew test`)
 
 Jalankan test suite unit dan integrasi:
 
 ```bash
-kiw test ./...
+krew test ./...
 ```
 
-### Melakukan Build untuk Produksi (`kiw build`)
+### Melakukan Build untuk Produksi (`krew build`)
 
 Kompilasi binary siap produksi:
 
 ```bash
-kiw build
+krew build
 ```
 
 Binary yang dihasilkan ditempatkan di `.krewire/build/bin/storefront` (atau cross-compiled untuk platform target dengan variabel env standar Go seperti `GOOS=linux GOARCH=amd64`).

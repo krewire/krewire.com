@@ -68,12 +68,12 @@ errs.ExitCodeFailure // 1
 errs.ExitCodeUsage   // 2
 
 // Error construction
-err := errs.UsageError("kiw build: unknown target")
+err := errs.UsageError("krew build: unknown target")
 err = errs.FailureError("build failed")
 err = errs.NewError("custom", errs.ExitCode(3))
 
 // Context that survives the error chain
-err = errs.WithHint(err, "run 'kiw init' first")
+err = errs.WithHint(err, "run 'krew init' first")
 err = errs.WithAttrs(err, errs.Attr{Key: "path", Value: "krewire.yaml"})
 err = errs.WithStack(err)
 
@@ -122,9 +122,9 @@ if !v.IsCompatible(version.MustParseVersion("0.1.0")) {
 	return fmt.Errorf("incompatible version %s", v)
 }
 
-// Ecosystem-wide compatibility gate used by `kiw compat`.
+// Ecosystem-wide compatibility gate used by `krew compat`.
 err := version.CheckEcosystemCompatibility(required, actual)
 
-// Build watermark printed by `kiw version`.
+// Build watermark printed by `krew version`.
 sig := version.BuildSignature()
 ```\n

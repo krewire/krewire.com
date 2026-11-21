@@ -12,7 +12,7 @@ Components can be used directly across both authoring surfaces:
 
 - **Go-Native:** Programmatic, type-safe widgets and nodes (`github.com/krewire/ui/widget`).
 - **`.kiw` DSL:** Declarative Single-File Components (`import { Button } from '@krewire/ui'`).
-- **Package-based:** Install once via `kiw add @krewire/ui` without copying files into local directories, with optional `kiw ui vendor` if custom source ownership is needed.
+- **Package-based:** Install once via `krew add @krewire/ui` without copying files into local directories, with optional `krew ui vendor` if custom source ownership is needed.
 
 ---
 

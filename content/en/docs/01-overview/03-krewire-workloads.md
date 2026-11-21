@@ -23,14 +23,14 @@ project:
 
 | Workload | Kind Name | Primary Use Case | CLI Execution | Key Packages |
 | :--- | :--- | :--- | :--- | :--- |
-| **Fullstack Monolith** | `app` | Web applications, SSR, JSON APIs, sessions, database access | `kiw run`, `kiw dev` | `pkg/web`, `pkg/app`, `pkg/ui` |
-| **Terminal CLI & TUI** | `cli` | Command-line utilities, interactive developer TUIs | `kiw run`, `kiw new my-cli --cli` | `pkg/tui` |
-| **Static Site (SSG)** | `site` | Landing pages, marketing websites, blogs, portfolios | `kiw build`, `kiw dev` | `pkg/web/ssg`, `pkg/kiw` |
-| **Technical Book** | `book` | Multi-chapter documentation, books, software manuals | `kiw build --target book`, `kiw dev` | `pkg/book` |
+| **Fullstack Monolith** | `app` | Web applications, SSR, JSON APIs, sessions, database access | `krew run`, `krew dev` | `pkg/web`, `pkg/app`, `pkg/ui` |
+| **Terminal CLI & TUI** | `cli` | Command-line utilities, interactive developer TUIs | `krew run`, `krew new my-cli --cli` | `pkg/tui` |
+| **Static Site (SSG)** | `site` | Landing pages, marketing websites, blogs, portfolios | `krew build`, `krew dev` | `pkg/web/ssg`, `pkg/kiw` |
+| **Technical Book** | `book` | Multi-chapter documentation, books, software manuals | `krew build --target book`, `krew dev` | `pkg/book` |
 | **Background Worker** | `worker` | Asynchronous job queues, cron schedules, retries, DLQ | `kiw worker` | `pkg/cloud/worker` |
-| **Microservice** | `service` | Distributed RPC/HTTP APIs, service registry, gateways | `kiw run`, `kiw dash` | `pkg/cloud/service` |
-| **Cloud Infra (IaC)** | `infra` | Provider-agnostic cloud resource provisioning (AWS/K8s) | `kiw deploy --target infra` | `pkg/cloud/infra` |
-| **API Gateway** | `gateway` | Declarative reverse proxy, per-route middleware, service-discovery balancing | `kiw gateway`, `kiw run` | `pkg/web/gateway` |
+| **Microservice** | `service` | Distributed RPC/HTTP APIs, service registry, gateways | `krew run`, `kiw dash` | `pkg/cloud/service` |
+| **Cloud Infra (IaC)** | `infra` | Provider-agnostic cloud resource provisioning (AWS/K8s) | `krew deploy --target infra` | `pkg/cloud/infra` |
+| **API Gateway** | `gateway` | Declarative reverse proxy, per-route middleware, service-discovery balancing | `kiw gateway`, `krew run` | `pkg/web/gateway` |
 
 ---
 
@@ -48,9 +48,9 @@ The `app` workload produces a single, self-contained static Go binary that embed
 ### Scaffolding & Running
 
 ```bash
-kiw new my-app --app
+krew new my-app --app
 cd my-app
-kiw run
+krew run
 ```
 
 ---
@@ -68,9 +68,9 @@ The `cli` workload is tailored for building command-line utilities, developer to
 ### Scaffolding & Running
 
 ```bash
-kiw new my-cli --cli
+krew new my-cli --cli
 cd my-cli
-kiw run -- --verbose
+krew run -- --verbose
 ```
 
 ---
@@ -84,14 +84,14 @@ The `site` workload provides an ultra-fast static site generator powered by the 
 - **File-Based Routing:** `pages/index.kiw` serves `/`; `pages/about.kiw` serves `/about`.
 - **Zero Client-Side JS:** Emits pure semantic HTML and scoped CSS by default.
 - **Tailwind CSS Integration:** Automatically detects `tailwind.config.js` and compiles minified utility classes.
-- **Incremental Builds:** Fast rebuilds during development (`kiw dev`) with millisecond turnaround.
+- **Incremental Builds:** Fast rebuilds during development (`krew dev`) with millisecond turnaround.
 
 ### Scaffolding & Running
 
 ```bash
-kiw new my-site --site
+krew new my-site --site
 cd my-site
-kiw dev # Starts dev server at localhost:8080 with live reload
+krew dev # Starts dev server at localhost:8080 with live reload
 ```
 
 ---
@@ -110,9 +110,9 @@ The `book` workload transforms Markdown manuscripts into responsive, reader-frie
 ### Scaffolding & Running
 
 ```bash
-kiw new my-docs --book
+krew new my-docs --book
 cd my-docs
-kiw dev
+krew dev
 ```
 
 ---
@@ -149,7 +149,7 @@ The `service` workload equips high-throughput Go microservices with cloud-native
 ### Running
 
 ```bash
-kiw run
+krew run
 ```
 
 ---
@@ -161,14 +161,14 @@ The `infra` workload allows developers to declare cloud architecture directly in
 ### Characteristics
 
 - **Declarative Go Structs:** Define VPCs, databases, object storage, and compute clusters using typed Go declarations instead of HCL or YAML.
-- **Deterministic Planning:** `kiw deploy --target infra --plan` generates an execution graph with zero side-effects before applying.
+- **Deterministic Planning:** `krew deploy --target infra --plan` generates an execution graph with zero side-effects before applying.
 - **Provider Support:** Multi-cloud drivers covering AWS (ECS, Lambda, RDS, S3, CloudFront) and Kubernetes (Deployments, Services, Ingress).
 
 ### Running
 
 ```bash
-kiw deploy --target infra --plan
-kiw deploy --target infra
+krew deploy --target infra --plan
+krew deploy --target infra
 ```
 
 ---
@@ -182,7 +182,7 @@ The `gateway` workload is a standalone reverse proxy that fronts one or more ups
 - **Declarative Routing:** Exact and prefix routes, per-route method matching, and either a fixed `target_url` or a registry-resolved `service`.
 - **Per-Route Middleware:** CORS, tracing, timeout, rate limiting, and circuit breaking are registered by name and composed per route.
 - **Service Discovery:** Round-robin balancing over registered endpoints; an unavailable upstream returns `502` with a structured Problem JSON body.
-- **One Route Table, Two Runners:** `kiw run` executes the project binary; `kiw gateway` runs the identical `gateway:` block without a rebuild.
+- **One Route Table, Two Runners:** `krew run` executes the project binary; `kiw gateway` runs the identical `gateway:` block without a rebuild.
 
 ### Running
 
@@ -193,7 +193,7 @@ kiw gateway --port 8080 --routes "/api=user-service"
 > [!NOTE]
 > Client-side WebAssembly is a **library**, not a workload kind. `pkg/runtime`
 > compiles Go to WASM inside an `app` or `site` project via
-> `kiw build --target wasm` — see [Web Runtime & WASM](/web-ui/web-runtime).
+> `krew build --target wasm` — see [Web Runtime & WASM](/web-ui/web-runtime).
 
 ---
 

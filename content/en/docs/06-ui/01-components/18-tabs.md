@@ -16,7 +16,7 @@ Accessible tabbed content switcher supporting persistent active states.
 
 <div data-component-preview="Tabs" data-slug="tabs"></div>
 
-The frames above load the real `Tabs.kiw` from Krewire UI, prebuilt by `kiw build` for every variant, in the light and dark themes side by side. Use the toggles to switch variants, then copy the component source or the usage snippet. **Open in playground** shows it next to the other core components.
+The frames above load the real `Tabs.kiw` from Krewire UI, prebuilt by `krew build` for every variant, in the light and dark themes side by side. Use the toggles to switch variants, then copy the component source or the usage snippet. **Open in playground** shows it next to the other core components.
 
 ---
 

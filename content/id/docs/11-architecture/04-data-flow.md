@@ -19,7 +19,7 @@ date: "2026-11-09"
 
 Berkas `.kiw` tidak pernah mengambil data sendiri. Berkas ini adalah template yang menerima sebuah **nilai data** lalu mengubahnya menjadi HTML. Yang membedakan antar-workload adalah *kapan* nilai tersebut dihitung dan *siapa* yang menghitungnya:
 
-- Pada **`site` atau `book`**, data dievaluasi **satu kali, saat build**, oleh `kiw build` (`pkg/web/ssg`, `pkg/book`). Hasilnya berupa berkas biasa; tidak ada server yang menjalankan kode Anda.
+- Pada **`site` atau `book`**, data dievaluasi **satu kali, saat build**, oleh `krew build` (`pkg/web/ssg`, `pkg/book`). Hasilnya berupa berkas biasa; tidak ada server yang menjalankan kode Anda.
 - Pada **`app`**, data dihitung **per request** oleh fungsi Go yang Anda daftarkan pada `web.App` (`pkg/web`, dirakit dengan `pkg/app`). Renderer yang sama mengubahnya menjadi HTML pada setiap request.
 - Pada keduanya, **skrip klien** dapat berkomunikasi dengan endpoint JSON setelah halaman dimuat — pada `app`, endpoint tersebut adalah handler Go Anda sendiri.
 
@@ -32,7 +32,7 @@ BUILD TIME — site, book (runs once, on your machine or in CI)
 
   krewire.yaml ─┐
   content/*.md ─┤
-  lang/*.json  ─┼──► kiw build ──► page data = yaml values + frontmatter
+  lang/*.json  ─┼──► krew build ──► page data = yaml values + frontmatter
   pages/*.kiw  ─┤    (ssg.LoadFromDir)        + Collections + i18n
   components/  ─┤                                   │
   layouts/     ─┘                                   ▼
@@ -62,7 +62,7 @@ Renderer di bagian tengah sama untuk kedua kolom. `web.App` membangun sebuah `ss
 
 | | SSG saat build (`site`, `book`) | SSR saat request (`app`) |
 | :--- | :--- | :--- |
-| Siapa yang menghitung data | `kiw build` | Kode Go Anda pada setiap request (`PageSpec.DataFunc`) atau sekali saat startup (`PageSpec.Data`) |
+| Siapa yang menghitung data | `krew build` | Kode Go Anda pada setiap request (`PageSpec.DataFunc`) atau sekali saat startup (`PageSpec.Data`) |
 | Sumber data | `krewire.yaml`, frontmatter halaman, `content/<collection>/*.md`, kamus `lang/` | Apa pun yang dapat dijangkau Go: database (`pkg/orm`), layanan, request (query, cookie, sesi, token CSRF) |
 | Output | Berkas `.html` statis di `.krewire/build/` | Respons HTML per request, dari satu binary Go |
 | Server yang dibutuhkan | Tidak ada — host statis apa pun | Binary aplikasi |
@@ -74,7 +74,7 @@ Renderer di bagian tengah sama untuk kedua kolom. `web.App` membangun sebuah `ss
 
 ## 2. Saat Build: Bagaimana Situs Mendapatkan Datanya
 
-`kiw build` (melalui `ssg.LoadFromDir`) menggabungkan beberapa sumber ke dalam data setiap halaman:
+`krew build` (melalui `ssg.LoadFromDir`) menggabungkan beberapa sumber ke dalam data setiap halaman:
 
 | Sumber | Tersedia di template sebagai |
 | :--- | :--- |
@@ -111,7 +111,7 @@ layout: Base
 </article>
 ```
 
-Jika disimpan sebagai `pages/posts.kiw` dan `pages/posts/[slug].kiw`, `kiw build --target site` akan menulis `posts.html`, `posts/hello.html`, dan `posts/second.html`:
+Jika disimpan sebagai `pages/posts.kiw` dan `pages/posts/[slug].kiw`, `krew build --target site` akan menulis `posts.html`, `posts/hello.html`, dan `posts/second.html`:
 
 ```html
 <p>Notes from the build pipeline · site version 0.1.0</p>
@@ -124,7 +124,7 @@ Jika disimpan sebagai `pages/posts.kiw` dan `pages/posts/[slug].kiw`, `kiw build
 Tiga detail yang menghemat waktu debugging:
 
 - Singkatan `{name}` mengubah huruf pertama menjadi kapital (`{tagline}` → `.Tagline`). Data yang dimuat dari YAML mempertahankan ejaannya sendiri, jadi gunakan bentuk eksplisit `{{.tagline}}` dan `{{range .Collections.posts}}` untuk kunci frontmatter dan nama koleksi.
-- Situs yang memiliki folder `content/` juga akan diproses oleh pipeline book saat Anda menjalankan `kiw build` biasa. Gunakan `kiw build --target site` jika `content/` hanya berisi koleksi.
+- Situs yang memiliki folder `content/` juga akan diproses oleh pipeline book saat Anda menjalankan `krew build` biasa. Gunakan `krew build --target site` jika `content/` hanya berisi koleksi.
 - Tidak ada apa pun di sisi ini yang berjalan saat request. Untuk menampilkan data yang berubah di antara build, lakukan build ulang (misalnya secara terjadwal di CI) atau ambil datanya dari peramban (bagian 5).
 
 ---

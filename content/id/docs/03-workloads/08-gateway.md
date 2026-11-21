@@ -17,14 +17,14 @@ Ditenagai oleh `pkg/web/gateway`, tabel rute yang sama dapat dijalankan dari bin
 1. **Tabel Rute Deklaratif:** Rute eksak dan prefiks, pencocokan method per-route, serta penentuan alamat baik dengan `target_url` tetap maupun `service` yang diuraikan oleh registry.
 2. **Middleware Per-Route:** CORS, tracing, timeout, rate limiting, dan circuit breaking didaftarkan berdasarkan nama dan disusun per-route alih-alih secara global.
 3. **Penemuan Layanan (Service Discovery):** Penyeimbangan beban round-robin di atas endpoint yang terdaftar; upstream yang tidak tersedia akan mengembalikan `502` dengan payload bodi Problem JSON terstruktur.
-4. **Satu Tabel Rute, Dua Cara Eksekusi:** `kiw dev` / `kiw run` mengeksekusi binary proyek; `kiw gateway` menjalankan blok `gateway:` yang identik secara langsung tanpa perlu build ulang.
+4. **Satu Tabel Rute, Dua Cara Eksekusi:** `krew dev` / `krew run` mengeksekusi binary proyek; `kiw gateway` menjalankan blok `gateway:` yang identik secara langsung tanpa perlu build ulang.
 
 ---
 
 ## Scaffolding Proyek `gateway`
 
 ```bash
-kiw new my-gateway --gateway
+krew new my-gateway --gateway
 cd my-gateway
 ```
 
@@ -155,10 +155,10 @@ Rute yang menyebutkan nama middleware yang belum didaftarkan pada gateway akan m
 
 ```bash
 # Pengembangan: compile ulang dan restart saat ada perubahan file
-kiw dev
+krew dev
 
 # Binary produksi di .krewire/build/bin/<name>
-kiw build
+krew build
 
 # Jalankan tabel rute bersama tanpa perlu melakukan build binary proyek
 kiw gateway --port 8080 --routes "/api=user-service,/pay=payment-service"

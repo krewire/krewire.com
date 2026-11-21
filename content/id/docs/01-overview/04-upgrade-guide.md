@@ -36,18 +36,18 @@ Jalankan kembali skrip installer resmi:
 curl -fsSL https://krewire.com/scripts/install.sh | sh
 ```
 
-Skrip ini akan secara otomatis mendeteksi arsitektur CPU Anda, mengunduh rilis binary terbaru, dan mengganti file binary di direktori `/usr/local/bin/kiw` (atau `~/.local/bin/kiw`).
+Skrip ini akan secara otomatis mendeteksi arsitektur CPU Anda, mengunduh rilis binary terbaru, dan mengganti file binary di direktori `/usr/local/bin/krew` (atau `~/.local/bin/krew`).
 
 ### Opsi B: Menggunakan `go install`
 
 ```bash
-go install github.com/krewire/krewire/tools/kiw/cmd/kiw@latest
+go install github.com/krewire/krew/cmd/krew@latest
 ```
 
 ### Verifikasi Versi Terbaru
 
 ```bash
-kiw version
+krew version
 ```
 
 Pastikan keluaran versi CLI telah sesuai dengan rilis terbaru yang dituju (`v0.1.0`+).
@@ -70,10 +70,10 @@ go mod tidy
 Setelah melakukan pembaruan, jalankan perintah validator kompatibilitas bawaan:
 
 ```bash
-kiw compat
+krew compat
 ```
 
-Perintah `kiw compat` akan memvalidasi keharmonisan antara konfigurasi `krewire.yaml`, versi modul Go, dan dukungan kompiler.
+Perintah `krew compat` akan memvalidasi keharmonisan antara konfigurasi `krewire.yaml`, versi modul Go, dan dukungan kompiler.
 
 ---
 

@@ -170,7 +170,7 @@ func main() {
 To equip your project with a full software development lifecycle agent matrix, run:
 
 ```bash
-kiw boost install
+krew boost install
 ```
 
 This installs:

@@ -23,14 +23,14 @@ project:
 
 | Workload | Nama Kind | Kasus Penggunaan Utama | Eksekusi CLI | Paket Kunci |
 | :--- | :--- | :--- | :--- | :--- |
-| **Monolit Fullstack** | `app` | Aplikasi web, SSR, API JSON, sesi, akses database | `kiw run`, `kiw dev` | `pkg/web`, `pkg/app`, `pkg/ui` |
-| **CLI & TUI Terminal** | `cli` | Utilitas baris perintah, TUI pengembang interaktif | `kiw run`, `kiw new my-cli --cli` | `pkg/tui` |
-| **Situs Statis (SSG)** | `site` | Landing page, situs pemasaran, blog, portofolio | `kiw build`, `kiw dev` | `pkg/web/ssg`, `pkg/kiw` |
-| **Buku Teknis & Dokumentasi** | `book` | Dokumentasi multi-bab, buku panduan, manual software | `kiw build --target book`, `kiw dev` | `pkg/book` |
+| **Monolit Fullstack** | `app` | Aplikasi web, SSR, API JSON, sesi, akses database | `krew run`, `krew dev` | `pkg/web`, `pkg/app`, `pkg/ui` |
+| **CLI & TUI Terminal** | `cli` | Utilitas baris perintah, TUI pengembang interaktif | `krew run`, `krew new my-cli --cli` | `pkg/tui` |
+| **Situs Statis (SSG)** | `site` | Landing page, situs pemasaran, blog, portofolio | `krew build`, `krew dev` | `pkg/web/ssg`, `pkg/kiw` |
+| **Buku Teknis & Dokumentasi** | `book` | Dokumentasi multi-bab, buku panduan, manual software | `krew build --target book`, `krew dev` | `pkg/book` |
 | **Worker Latar Belakang** | `worker` | Antrean tugas asinkron, jadwal cron, retry, DLQ | `kiw worker` | `pkg/cloud/worker` |
-| **Microservice** | `service` | API RPC/HTTP terdistribusi, registry layanan, gateway | `kiw run`, `kiw dash` | `pkg/cloud/service` |
-| **Infrastruktur Cloud (IaC)** | `infra` | Provisi sumber daya cloud multi-provider (AWS/K8s) | `kiw deploy --target infra` | `pkg/cloud/infra` |
-| **Gateway API** | `gateway` | Reverse proxy deklaratif, middleware per rute, load balancing | `kiw gateway`, `kiw run` | `pkg/web/gateway` |
+| **Microservice** | `service` | API RPC/HTTP terdistribusi, registry layanan, gateway | `krew run`, `kiw dash` | `pkg/cloud/service` |
+| **Infrastruktur Cloud (IaC)** | `infra` | Provisi sumber daya cloud multi-provider (AWS/K8s) | `krew deploy --target infra` | `pkg/cloud/infra` |
+| **Gateway API** | `gateway` | Reverse proxy deklaratif, middleware per rute, load balancing | `kiw gateway`, `krew run` | `pkg/web/gateway` |
 
 ---
 
@@ -48,9 +48,9 @@ Workload `app` menghasilkan binary statis Go mandiri yang menyematkan aset web s
 ### Pembuatan & Menjalankan
 
 ```bash
-kiw new my-app --app
+krew new my-app --app
 cd my-app
-kiw run
+krew run
 ```
 
 ---
@@ -75,7 +75,7 @@ Workload `site` mengompilasi halaman dan komponen `.kiw` menjadi HTML, CSS, dan 
 
 - **Nol JavaScript di Client:** Menghasilkan dokumen web statis yang sangat ringan dengan skor performa Lighthouse 100/100.
 - **Komponen `.kiw` yang Kuat:** Menulis komponen file tunggal dengan scoped style dan desugaring komponen seperti JSX.
-- **Hot-Reloading Cepat:** Server pengembangan lokal `kiw dev` memantau perubahan berkas dan memuat ulang halaman secara otomatis dalam milidetik.
+- **Hot-Reloading Cepat:** Server pengembangan lokal `krew dev` memantau perubahan berkas dan memuat ulang halaman secara otomatis dalam milidetik.
 
 ---
 

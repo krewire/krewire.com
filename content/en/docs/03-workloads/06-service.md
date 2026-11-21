@@ -24,7 +24,7 @@ Powered by `pkg/cloud/service`, `pkg/sec`, and `pkg/resilience`, the `service` w
 ## Scaffolding a `service` Project
 
 ```bash
-kiw new auth-service --service
+krew new auth-service --service
 cd auth-service
 ```
 
@@ -115,7 +115,7 @@ composed in Go code, where the registry and transport are wired.
 Run the service locally:
 
 ```bash
-kiw run
+krew run
 ```
 
 Inspect registered endpoints and service health status:

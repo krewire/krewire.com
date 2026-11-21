@@ -47,7 +47,7 @@ Ikuti secara berurutan. Setiap perintah di dalamnya telah dijalankan terhadap CL
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Pengelola tugas dengan <code>kiw new --app</code>, SQLite melalui <code>pkg/orm</code>, halaman <code>.kiw</code> dengan komponen Krewire UI, form tervalidasi yang dilindungi CSRF, dan build satu binary.
+      Pengelola tugas dengan <code>krew new --app</code>, SQLite melalui <code>pkg/orm</code>, halaman <code>.kiw</code> dengan komponen Krewire UI, form tervalidasi yang dilindungi CSRF, dan build satu binary.
     </p>
   </div>
 
@@ -83,14 +83,14 @@ Setiap proyek Krewire memiliki satu *jenis* (kind). Pilih baris yang sesuai deng
 
 | Saya ingin membangun… | Jenis | Scaffold | Pelajari lebih lanjut |
 | :--- | :--- | :--- | :--- |
-| Situs web, landing page, atau blog | `site` | `kiw new my-site --site` | [Workload Site](/workloads/site) |
-| Dokumentasi atau buku | `book` | `kiw new my-docs --book` | [Workload Book](/workloads/book) |
-| Aplikasi web dengan database dan form | `app` | `kiw new my-app --app` | [Workload App](/workloads/app) |
-| Alat command-line | `cli` | `kiw new my-tool --cli` | [Workload CLI](/workloads/cli) |
-| Pemroses job latar belakang | `worker` | `kiw new my-worker --worker` | [Workload Worker](/workloads/worker) |
-| Microservice HTTP | `service` | `kiw new my-svc --service` | [Workload Service](/workloads/service) |
-| Reverse proxy di depan layanan | `gateway` | `kiw new my-gw --gateway` | [Workload Gateway](/workloads/gateway) |
-| Definisi infrastruktur cloud | `infra` | `kiw new my-infra --infra` | [Workload Infra](/workloads/infra) |
+| Situs web, landing page, atau blog | `site` | `krew new my-site --site` | [Workload Site](/workloads/site) |
+| Dokumentasi atau buku | `book` | `krew new my-docs --book` | [Workload Book](/workloads/book) |
+| Aplikasi web dengan database dan form | `app` | `krew new my-app --app` | [Workload App](/workloads/app) |
+| Alat command-line | `cli` | `krew new my-tool --cli` | [Workload CLI](/workloads/cli) |
+| Pemroses job latar belakang | `worker` | `krew new my-worker --worker` | [Workload Worker](/workloads/worker) |
+| Microservice HTTP | `service` | `krew new my-svc --service` | [Workload Service](/workloads/service) |
+| Reverse proxy di depan layanan | `gateway` | `krew new my-gw --gateway` | [Workload Gateway](/workloads/gateway) |
+| Definisi infrastruktur cloud | `infra` | `krew new my-infra --infra` | [Workload Infra](/workloads/infra) |
 
 Belum yakin? Mulailah dengan `--site` (Quickstart) atau `--app` (tutorial Fullstack).
 
@@ -100,14 +100,14 @@ Belum yakin? Mulailah dengan `--site` (Quickstart) atau `--app` (tutorial Fullst
 
 | Perintah | Fungsinya |
 | :--- | :--- |
-| `kiw new <name> --site` | Membuat proyek baru (`--app`, `--book`, `--cli`, … untuk jenis lainnya). |
-| `kiw dev` | Menjalankan proyek secara lokal dengan rebuild otomatis saat disimpan (`http://localhost:8080`). |
-| `kiw build` | Build produksi: berkas statis di `.krewire/build/` untuk situs dan buku, binary di `.krewire/build/bin/` untuk aplikasi. |
-| `kiw serve --addr :3000` | Pratinjau hasil build statis melalui HTTP. |
-| `kiw make component Card` | Membuat berkas awal (`component`, `page`, `model`, `migration`, `handler`, …). |
-| `kiw test` | Menjalankan tes Go proyek. |
-| `kiw doctor` | Mendiagnosis toolchain dan workspace Anda. |
-| `kiw help <command>` | Menampilkan opsi dari perintah apa pun. |
+| `krew new <name> --site` | Membuat proyek baru (`--app`, `--book`, `--cli`, … untuk jenis lainnya). |
+| `krew dev` | Menjalankan proyek secara lokal dengan rebuild otomatis saat disimpan (`http://localhost:8080`). |
+| `krew build` | Build produksi: berkas statis di `.krewire/build/` untuk situs dan buku, binary di `.krewire/build/bin/` untuk aplikasi. |
+| `krew serve --addr :3000` | Pratinjau hasil build statis melalui HTTP. |
+| `krew make component Card` | Membuat berkas awal (`component`, `page`, `model`, `migration`, `handler`, …). |
+| `krew test` | Menjalankan tes Go proyek. |
+| `krew doctor` | Mendiagnosis toolchain dan workspace Anda. |
+| `krew help <command>` | Menampilkan opsi dari perintah apa pun. |
 
 Daftar lengkapnya ada di [Referensi Perintah CLI](/cli-reference/commands).
 
@@ -117,7 +117,7 @@ Daftar lengkapnya ada di [Referensi Perintah CLI](/cli-reference/commands).
 
 **`kiw: command not found`** — direktori instalasi tidak ada di `PATH` Anda. Tambahkan `export PATH="$HOME/.local/bin:$PATH"` (installer shell) atau `export PATH="$(go env GOPATH)/bin:$PATH"` (`go install`) ke `~/.zshrc` atau `~/.bashrc`, lalu buka terminal baru.
 
-**`address already in use`** — port 8080 sedang dipakai program lain. Ubah `dev.port` di `krewire.yaml`, atau pratinjau build di alamat lain dengan `kiw serve --addr :3000`.
+**`address already in use`** — port 8080 sedang dipakai program lain. Ubah `dev.port` di `krewire.yaml`, atau pratinjau build di alamat lain dengan `krew serve --addr :3000`.
 
 **`requires go >= 1.27.1`** — versi Go Anda lebih lama dari yang ditargetkan Krewire. Instal Go terbaru dari [go.dev/dl](https://go.dev/dl); paket bawaan distribusi sering tertinggal beberapa versi.
 

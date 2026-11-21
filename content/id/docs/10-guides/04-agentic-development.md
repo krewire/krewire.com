@@ -170,7 +170,7 @@ func main() {
 Untuk melengkapi proyek Anda dengan matriks agen siklus hidup pengembangan perangkat lunak (SDLC) yang lengkap, jalankan:
 
 ```bash
-kiw boost install
+krew boost install
 ```
 
 Perintah ini akan memasang:

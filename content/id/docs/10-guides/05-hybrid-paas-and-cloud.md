@@ -8,7 +8,7 @@ date: "2026-10-24"
 
 Krewire Cloud dirancang sebagai mesin PaaS hibrida mandiri untuk hosting VPS privat sekaligus platform cloud multi-tenant terkelola.
 
-> **Portal Live:** Krewire Cloud tersedia di [cloud.krewire.com](https://cloud.krewire.com). Perintah `kiw deploy` di bagian 1 adalah bagian dari inti open-source dan sudah berfungsi mandiri di infrastruktur Anda sendiri tanpa Krewire Cloud. Lihat dokumentasi publik proyek.
+> **Portal Live:** Krewire Cloud tersedia di [cloud.krewire.com](https://cloud.krewire.com). Perintah `krew deploy` di bagian 1 adalah bagian dari inti open-source dan sudah berfungsi mandiri di infrastruktur Anda sendiri tanpa Krewire Cloud. Lihat dokumentasi publik proyek.
 
 ## 1. Mesin PaaS Hibrida Self-Hosted
 
@@ -16,10 +16,10 @@ Rilis workload native-Go privat Anda di Linux VPS mana pun (Ubuntu, Debian, Alpi
 
 ```bash
 # Kemas binary produksi dengan aset tersemat
-kiw deploy --target binary
+krew deploy --target binary
 
 # Hasilkan unit supervisor systemd untuk pengelolaan layanan tanpa downtime
-kiw deploy --target systemd
+krew deploy --target systemd
 ```
 
 - **Efisiensi RAM Ekstrem**: Workload Go berjalan hanya dalam 15–30MB RAM. Satu VPS seharga $5/bulan dapat menampung puluhan aplikasi aktif.
@@ -30,7 +30,7 @@ kiw deploy --target systemd
 
 Platform terkelola ini melayani tim yang menginginkan deployment tanpa repot mengelola VPS:
 
-- `kiw deploy` + webhook Git push-to-deploy: membundel dan menyiapkan proyek secara lokal, lalu continuous deployment merilisnya ke produksi.
+- `krew deploy` + webhook Git push-to-deploy: membundel dan menyiapkan proyek secara lokal, lalu continuous deployment merilisnya ke produksi.
 - Streaming build real-time dan agregasi log terpusat.
 - Pembayaran lokal Indonesia melalui QRIS dan Virtual Account Bank.
 - Kepatuhan kedaulatan data penuh di bawah Undang-Undang Perlindungan Data Pribadi (UU PDP) Indonesia.

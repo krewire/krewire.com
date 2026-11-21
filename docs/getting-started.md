@@ -14,14 +14,14 @@ This guide walks you through setting up, running, and contributing to **`krewire
 
    - Or install via Go:
      ```bash
-     go install github.com/krewire/krewire/tools/kiw/cmd/kiw@latest
+     go install github.com/krewire/krew/cmd/krew@latest
      ```
 
    - Or build locally from the core `krewire` repository:
      ```bash
      git clone https://github.com/krewire/krewire.git
      cd krewire
-     go build -o /usr/local/bin/kiw ./tools/kiw/cmd/kiw
+     go build -o /usr/local/bin/krew ./krew/cmd/kiw
      ```
 
    - Verify installation:
@@ -41,7 +41,7 @@ This guide walks you through setting up, running, and contributing to **`krewire
 Generate the complete static website into `.krewire/build/`:
 
 ```bash
-kiw build
+krew build
 ```
 
 The build pipeline performs:
@@ -57,7 +57,7 @@ The build pipeline performs:
 Start the local development preview server:
 
 ```bash
-kiw serve
+krew serve
 ```
 
 By default, the server listens at `http://localhost:8080`. You can configure the port in `krewire.yaml` under `dev.port`.
@@ -117,7 +117,7 @@ When adding or updating docs:
    ```
 4. **Rebuild & Verify**:
    ```bash
-   kiw build
+   krew build
    ```
 
 ---

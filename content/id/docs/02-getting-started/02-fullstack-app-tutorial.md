@@ -1,6 +1,6 @@
 ---
 title: "Membangun Aplikasi Fullstack dalam 15 Menit"
-description: "Tutorial dari nol hingga mahir: scaffold aplikasi dengan kiw new --app, simpan data di SQLite melalui pkg/orm beserta migrasi, render halaman .kiw dengan komponen Krewire UI, tangani form tervalidasi yang dilindungi CSRF, dan rilis satu binary."
+description: "Tutorial dari nol hingga mahir: scaffold aplikasi dengan krew new --app, simpan data di SQLite melalui pkg/orm beserta migrasi, render halaman .kiw dengan komponen Krewire UI, tangani form tervalidasi yang dilindungi CSRF, dan rilis satu binary."
 date: "2026-11-09"
 ---
 
@@ -22,7 +22,7 @@ Anda akan membangun **todo-app**, sebuah pengelola tugas kecil: halaman yang men
 <div class="overview-grid">
 
   <div class="chapter-card">
-    <p class="chapter-card-desc"><b>Waktu:</b> sekitar 15 menit.<br><b>Yang Anda perlukan:</b> Go 1.27.1+, <code>kiw</code> (lihat <a href="/getting-started/quickstart">Quickstart</a>), dan akses jaringan untuk <code>go get</code>.<br><b>Yang Anda pelajari:</b> <code>kiw new --app</code>, <code>kiw make</code>, <code>pkg/orm</code>, migrasi, view <code>.kiw</code>, <code>pkg/validation</code>, <code>web.CSRF</code>, <code>kiw build</code>.</p>
+    <p class="chapter-card-desc"><b>Waktu:</b> sekitar 15 menit.<br><b>Yang Anda perlukan:</b> Go 1.27.1+, <code>kiw</code> (lihat <a href="/getting-started/quickstart">Quickstart</a>), dan akses jaringan untuk <code>go get</code>.<br><b>Yang Anda pelajari:</b> <code>krew new --app</code>, <code>krew make</code>, <code>pkg/orm</code>, migrasi, view <code>.kiw</code>, <code>pkg/validation</code>, <code>web.CSRF</code>, <code>krew build</code>.</p>
   </div>
 
 </div>
@@ -34,7 +34,7 @@ Krewire menyediakan baterai fullstack lengkap: router HTTP, dependency injection
 ## Langkah 1: Scaffold Aplikasi
 
 ```bash
-kiw new todo-app --app
+krew new todo-app --app
 cd todo-app
 ```
 
@@ -71,7 +71,7 @@ todo-app/
 Jalankan sekali untuk melihat hasil scaffold:
 
 ```bash
-kiw dev
+krew dev
 ```
 
 Buka <http://localhost:8080>, lalu hentikan server dengan `Ctrl+C`.
@@ -89,7 +89,7 @@ go get modernc.org/sqlite@latest
 ### 2.2 Buat model
 
 ```bash
-kiw make model Task
+krew make model Task
 ```
 
 Perintah ini membuat `internal/models/task.go`. Ganti isinya dengan:
@@ -118,7 +118,7 @@ func (Task) TableName() string { return "tasks" }
 ### 2.3 Tulis migrasi
 
 ```bash
-kiw make migration create_tasks
+krew make migration create_tasks
 ```
 
 `kiw` membuat `migrations/<timestamp>_create_tasks.sql` dengan bagian `-- +up` dan `-- +down` yang masih kosong. Isi keduanya:
@@ -142,7 +142,7 @@ DROP TABLE IF EXISTS tasks;
 Sematkan folder migrasi ke dalam binary dengan `migrations/embed.go`:
 
 ```go
-// Package migrations embeds the SQL files created by `kiw make migration`.
+// Package migrations embeds the SQL files created by `krew make migration`.
 package migrations
 
 import "embed"
@@ -253,7 +253,7 @@ func upSection(src string) string {
 
 **Alur kerja migrasi mulai sekarang:**
 
-1. `kiw make migration add_due_date` — berkas baru bertimestamp akan terurut setelah berkas-berkas sebelumnya.
+1. `krew make migration add_due_date` — berkas baru bertimestamp akan terurut setelah berkas-berkas sebelumnya.
 2. Tulis perubahannya di `-- +up` (misalnya `ALTER TABLE tasks ADD COLUMN due_date DATETIME;`) dan pembaliknya di `-- +down`.
 3. Jalankan ulang aplikasi. `migrate` hanya menerapkan berkas yang belum tercatat di `schema_migrations`.
 4. Untuk rollback secara manual, jalankan SQL `-- +down` lalu hapus barisnya dari `schema_migrations`.
@@ -401,7 +401,7 @@ Buat `web/views/views.go`. Berkas ini mendaftarkan seluruh katalog Krewire UI be
 
 ```go
 // Package views turns the .kiw files in this directory into components the
-// web app can render, the same way `kiw build` loads components/ for a site.
+// web app can render, the same way `krew build` loads components/ for a site.
 package views
 
 import (
@@ -720,7 +720,7 @@ Cara kerja proteksi CSRF di sini: pada `GET`, `web.CSRF()` menetapkan cookie `XS
 
 ```bash
 go mod tidy
-kiw dev
+krew dev
 ```
 
 Buka <http://localhost:8080>: tambahkan tugas, kirim judul kosong untuk melihat error validasi, ubah status tugas, dan hapus salah satunya. Data tersimpan di `todo.db` (atur `TODO_DB` untuk menggunakan berkas lain).
@@ -800,7 +800,7 @@ func TestTaskFlow(t *testing.T) {
 ```
 
 ```bash
-kiw test
+krew test
 ```
 
 ```text
@@ -814,7 +814,7 @@ ok  	todo-app/internal/app	0.552s
 ## Langkah 7: Build Satu Binary dan Deploy
 
 ```bash
-kiw build
+krew build
 ```
 
 ```text
@@ -825,7 +825,7 @@ created .../todo-app/.krewire/build/bin/todo-app
 Binary ini menyematkan view, komponen Krewire UI, migrasi, dan aset statis. Driver SQLite-nya Go murni, sehingga Anda dapat melakukan cross-compile untuk server Linux dari mesin mana pun:
 
 ```bash
-GOOS=linux GOARCH=amd64 CGO_ENABLED=0 kiw build
+GOOS=linux GOARCH=amd64 CGO_ENABLED=0 krew build
 file .krewire/build/bin/todo-app
 ```
 
@@ -861,13 +861,13 @@ go run .
 
 | Yang Anda gunakan | Untuk |
 | :--- | :--- |
-| `kiw new --app`, `kiw make model`, `kiw make migration` | Scaffold aplikasi, model, dan migrasi SQL |
+| `krew new --app`, `krew make model`, `krew make migration` | Scaffold aplikasi, model, dan migrasi SQL |
 | `pkg/orm` + `modernc.org/sqlite` | Akses SQLite dengan API query fluent yang terparameterisasi |
 | `.kiw` + Krewire UI | Halaman, dengan `Badge`, `Alert`, `Input`, `Button`, dan `Card` |
 | `web.PageSpec{DataFunc}` | Data per request untuk halaman |
 | `pkg/validation` + post/redirect/get | Validasi sisi server dengan pesan error yang ramah |
 | `web.CSRF()` | Proteksi CSRF berbasis token di setiap form |
-| `kiw dev`, `kiw test`, `kiw build` | Mengembangkan, memverifikasi, dan merilis satu binary |
+| `krew dev`, `krew test`, `krew build` | Mengembangkan, memverifikasi, dan merilis satu binary |
 
 ## Langkah Selanjutnya
 

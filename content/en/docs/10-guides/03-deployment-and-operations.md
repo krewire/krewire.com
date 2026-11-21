@@ -114,7 +114,7 @@ sudo systemctl enable --now krewire-app
 
 ## 4. Static Site & Documentation Portal Hosting
 
-For `site` and `book` workloads built with `kiw build`, static artifacts are compiled into `.krewire/build`.
+For `site` and `book` workloads built with `krew build`, static artifacts are compiled into `.krewire/build`.
 
 ### Nginx Virtual Host for Static Assets
 

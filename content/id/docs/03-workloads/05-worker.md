@@ -24,7 +24,7 @@ Ditenagai oleh `pkg/cloud/worker` dan `pkg/resilience`, worker beroperasi secara
 ## Scaffolding Proyek `worker`
 
 ```bash
-kiw new email-worker --worker
+krew new email-worker --worker
 cd email-worker
 ```
 

@@ -114,7 +114,7 @@ sudo systemctl enable --now krewire-app
 
 ## 4. Hosting Situs Statis & Portal Dokumentasi
 
-Untuk workload `site` dan `book` yang di-build menggunakan `kiw build`, artefak statis dikompilasi ke dalam direktori `.krewire/build`.
+Untuk workload `site` dan `book` yang di-build menggunakan `krew build`, artefak statis dikompilasi ke dalam direktori `.krewire/build`.
 
 ### Virtual Host Nginx untuk Aset Statis
 

@@ -115,7 +115,7 @@ Files inside `public/` are served verbatim without preprocessing:
 ---
 
 ### `.krewire/` (Build Artifacts)
-Created automatically by `kiw dev` and `kiw build`:
+Created automatically by `krew dev` and `krew build`:
 
 - **`.krewire/build/`:** Houses the compiled production output ready for static hosting or Docker image packaging.
 - This directory is managed by `kiw` and should always be added to your `.gitignore`.
@@ -124,9 +124,9 @@ Created automatically by `kiw dev` and `kiw build`:
 
 ## 3. Workload-Specific Layouts
 
-When scaffolding a new project via `kiw new <project> [flags]`, `kiw` equips the directory structure tailored to that workload:
+When scaffolding a new project via `krew new <project> [flags]`, `kiw` equips the directory structure tailored to that workload:
 
-### 1. Static Site (`kiw new my-site --site`)
+### 1. Static Site (`krew new my-site --site`)
 ```text
 my-site/
 ├── krewire.yaml
@@ -139,7 +139,7 @@ my-site/
 └── public/
 ```
 
-### 2. Documentation Book (`kiw new my-docs --book`)
+### 2. Documentation Book (`krew new my-docs --book`)
 ```text
 my-docs/
 ├── krewire.yaml
@@ -150,7 +150,7 @@ my-docs/
         └── 02-getting-started.md
 ```
 
-### 3. Fullstack Monolith (`kiw new my-app --app`)
+### 3. Fullstack Monolith (`krew new my-app --app`)
 ```text
 my-app/
 ├── krewire.yaml
@@ -183,7 +183,7 @@ my-app/
 └── .env
 ```
 
-### 4. Terminal CLI (`kiw new my-cli --cli`)
+### 4. Terminal CLI (`krew new my-cli --cli`)
 ```text
 my-cli/
 ├── krewire.yaml

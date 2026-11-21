@@ -113,7 +113,7 @@ Berkas di dalam `public/` disajikan apa adanya tanpa pra-pemrosesan:
 ---
 
 ### `.krewire/` (Artefak Build)
-Dibuat secara otomatis oleh `kiw dev` dan `kiw build`:
+Dibuat secara otomatis oleh `krew dev` dan `krew build`:
 
 - **`.krewire/build/`:** Menyimpan output produksi hasil kompilasi yang siap untuk hosting statis atau pemaketan citra Docker.
 - Direktori ini dikelola sepenuhnya oleh `kiw` dan harus selalu ditambahkan ke dalam `.gitignore` Anda.
@@ -122,9 +122,9 @@ Dibuat secara otomatis oleh `kiw dev` dan `kiw build`:
 
 ## 3. Tata Letak Khusus untuk Masing-Masing Workload
 
-Saat membuat proyek baru melalui `kiw new <project> [flags]`, `kiw` akan menyiapkan struktur direktori yang disesuaikan untuk workload tersebut:
+Saat membuat proyek baru melalui `krew new <project> [flags]`, `kiw` akan menyiapkan struktur direktori yang disesuaikan untuk workload tersebut:
 
-### 1. Situs Statis (`kiw new my-site --site`)
+### 1. Situs Statis (`krew new my-site --site`)
 ```text
 my-site/
 ├── krewire.yaml
@@ -137,7 +137,7 @@ my-site/
 └── public/
 ```
 
-### 2. Buku Dokumentasi (`kiw new my-docs --book`)
+### 2. Buku Dokumentasi (`krew new my-docs --book`)
 ```text
 my-docs/
 ├── krewire.yaml
@@ -148,7 +148,7 @@ my-docs/
         └── 02-getting-started.md
 ```
 
-### 3. Monolit Fullstack (`kiw new my-app --app`)
+### 3. Monolit Fullstack (`krew new my-app --app`)
 ```text
 my-app/
 ├── krewire.yaml
@@ -181,7 +181,7 @@ my-app/
 └── .env
 ```
 
-### 4. CLI Terminal (`kiw new my-cli --cli`)
+### 4. CLI Terminal (`krew new my-cli --cli`)
 ```text
 my-cli/
 ├── krewire.yaml

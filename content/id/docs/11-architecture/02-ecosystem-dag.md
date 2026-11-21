@@ -45,7 +45,7 @@ Sisi-sisi ini adalah dependensi modul Go: sebuah panah berarti "mengimpor paket 
             │   │                   │
             ▼   ▼                   ▼
         ┌──────────────── github.com/krewire/krewire ────────────────┐  (Layers 1–3 — core + kiw)
-        │  tools/kiw · pkg/* · pkg/model · pkg/errs · pkg/lifecycle   │
+        │  krew · pkg/* · pkg/model · pkg/errs · pkg/lifecycle   │
         └─────────────────────────────┬──────────────────────────────┘
                                       ▼
                              github.com/krewire/ui  (kui)              (Layer 2 — no dependencies)
@@ -61,12 +61,12 @@ Sisi-sisi ini adalah dependensi modul Go: sebuah panah berarti "mengimpor paket 
 | `auth` | `github.com/krewire/auth` | `krewire` |
 | `cloud` | `github.com/krewire/cloud` | `krewire`, `auth`, `krew` |
 | `dash` | `github.com/krewire/dash` | `krewire`, `auth`, `krew` |
-| `krewire.com`, `krewire.github.io` | — | tidak ada di Go; di-build dengan `kiw build`, yang merender komponen kui |
+| `krewire.com`, `krewire.github.io` | — | tidak ada di Go; di-build dengan `krew build`, yang merender komponen kui |
 
 Dua sifat yang penting:
 
 - **Grafiknya asiklik.** `kui` tidak mengimpor apa pun, inti hanya mengimpor `kui`, dan setiap produk mengimpor ke arah bawah. Tidak ada produk yang mengimpor produk lain: `dash` dan `cloud` tidak berbagi kode Go.
-- **CLI adalah daun bagi konsumen.** Produk mengimpor paket `pkg/*`; tidak ada yang mengimpor `tools/kiw`.
+- **CLI adalah daun bagi konsumen.** Produk mengimpor paket `pkg/*`; tidak ada yang mengimpor `krew`.
 
 ## 3. Integrasi Runtime (Protokol Terpisah)
 

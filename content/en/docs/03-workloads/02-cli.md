@@ -24,7 +24,7 @@ Powered by `pkg/tui` and `pkg/term`, the `cli` workload delivers an Elm/Bubble T
 ## Scaffolding a `cli` Project
 
 ```bash
-kiw new sysmon --cli
+krew new sysmon --cli
 cd sysmon
 ```
 
@@ -142,12 +142,12 @@ build:
 Run the CLI during development:
 
 ```bash
-kiw run -- --verbose
+krew run -- --verbose
 ```
 
 Build the release binary:
 
 ```bash
-kiw build
+krew build
 ./bin/sysmon
 ```

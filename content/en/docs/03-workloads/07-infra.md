@@ -15,7 +15,7 @@ Powered by `pkg/cloud/infra`, the engine compiles Go declarations into determini
 ## Architectural Characteristics
 
 1. **Go as the Unified Language:** Refactor and test your infrastructure using standard Go compiler guarantees, type checking, and unit testing (`go test`).
-2. **Deterministic Execution Plans:** Run `kiw deploy --target infra --plan` to preview added, modified, or destroyed cloud resources before any mutations take place.
+2. **Deterministic Execution Plans:** Run `krew deploy --target infra --plan` to preview added, modified, or destroyed cloud resources before any mutations take place.
 3. **Provider-Agnostic Topologies:** Abstract declarations for compute (containers, serverless), networking (VPC, load balancers), and persistence (PostgreSQL, object stores).
 4. **State Integrity:** Stores encrypted state snapshots in remote backends (AWS S3, Google Cloud Storage, or Kubernetes Secrets).
 
@@ -24,7 +24,7 @@ Powered by `pkg/cloud/infra`, the engine compiles Go declarations into determini
 ## Scaffolding an `infra` Project
 
 ```bash
-kiw new cloud-env --infra
+krew new cloud-env --infra
 cd cloud-env
 ```
 
@@ -115,7 +115,7 @@ infra:
 ### Previewing Changes (Dry Run Plan)
 
 ```bash
-kiw deploy --target infra --plan
+krew deploy --target infra --plan
 ```
 
 *Output:*
@@ -129,5 +129,5 @@ Plan: 3 to add, 0 to change, 0 to destroy.
 ### Applying Changes
 
 ```bash
-kiw deploy --target infra
+krew deploy --target infra
 ```

@@ -59,7 +59,7 @@ Developer dapat mengelola lingkungan proyek sandbox dan telemetri eksekusi:
 
 Untuk alur kerja pengembangan lokal tanpa dependensi cloud, developer dapat memanfaatkan perkakas native CLI `kiw`:
 
-- `kiw dev`: Menjalankan aplikasi secara lokal dengan auto-restart dan hot reload.
+- `krew dev`: Menjalankan aplikasi secara lokal dengan auto-restart dan hot reload.
 - `kiw dash`: Menjalankan dashboard observabilitas lokal & telemetri MCP (`:4000`) atau mengelola virtual workspace dan sandbox eksekusi.
 - `kiw mcp --stdio`: Menghubungkan asisten coding AI (seperti Antigravity atau Cursor) langsung ke proyek melalui Model Context Protocol (MCP).
 

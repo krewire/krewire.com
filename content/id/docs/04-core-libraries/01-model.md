@@ -68,12 +68,12 @@ errs.ExitCodeFailure // 1
 errs.ExitCodeUsage   // 2
 
 // Pembuatan error
-err := errs.UsageError("kiw build: target tidak dikenal")
+err := errs.UsageError("krew build: target tidak dikenal")
 err = errs.FailureError("kompilasi gagal")
 err = errs.NewError("custom", errs.ExitCode(3))
 
 // Konteks yang tetap bertahan dalam rantai error
-err = errs.WithHint(err, "jalankan 'kiw init' terlebih dahulu")
+err = errs.WithHint(err, "jalankan 'krew init' terlebih dahulu")
 err = errs.WithAttrs(err, errs.Attr{Key: "path", Value: "krewire.yaml"})
 err = errs.WithStack(err)
 
@@ -120,9 +120,9 @@ if !v.IsCompatible(version.MustParseVersion("0.1.0")) {
 	return fmt.Errorf("versi tidak kompatibel %s", v)
 }
 
-// Gate kompatibilitas seluruh ekosistem yang digunakan oleh `kiw compat`.
+// Gate kompatibilitas seluruh ekosistem yang digunakan oleh `krew compat`.
 err := version.CheckEcosystemCompatibility(required, actual)
 
-// Watermark build yang dicetak oleh `kiw version`.
+// Watermark build yang dicetak oleh `krew version`.
 sig := version.BuildSignature()
 ```\n

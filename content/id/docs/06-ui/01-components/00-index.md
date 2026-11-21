@@ -131,7 +131,7 @@ import "github.com/krewire/ui/components"
 Untuk melakukan fork dan mengedit komponen secara lokal di `./components/`:
 
 ```bash
-kiw ui vendor <NamaKomponen>
+krew ui vendor <NamaKomponen>
 ```
 
 Dan hubungkan stylesheet kanonikal pada tag `<head>` tata letak halaman Anda:

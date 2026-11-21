@@ -12,12 +12,12 @@ The **`kiw`** CLI provides an end-to-end command set spanning the entire softwar
 
 ## 1. Project Initialization & Scaffolding
 
-### `kiw new <name>`
+### `krew new <name>`
 
 Scaffold a new project in a new directory with a pre-configured template.
 
 ```bash
-kiw new my-app [--site | --app | --cli | --book | --worker | --service | --infra]
+krew new my-app [--site | --app | --cli | --book | --worker | --service | --infra]
 ```
 
 - `--site`: Static site generator with `.kiw` Single-File Components.
@@ -28,38 +28,38 @@ kiw new my-app [--site | --app | --cli | --book | --worker | --service | --infra
 - `--service`: Cloud-native microservice.
 - `--infra`: Infrastructure as Code in Go.
 
-### `kiw init`
+### `krew init`
 
 Equip an existing project directory with Krewire workload structures:
 
 ```bash
-kiw init [--site | --book | --cli | --worker | --service | --infra]
+krew init [--site | --book | --cli | --worker | --service | --infra]
 ```
 
 - `--template <git-url>`: Clone an external starter template repository into an empty directory.
 
-### `kiw make <kind> <name>`
+### `krew make <kind> <name>`
 
 Rapidly scaffold application artifacts with idiomatic conventions:
 
 ```bash
-kiw make component <Name>       # Scaffold components/<Name>.kiw
-kiw make component <Name.Part>  # Scaffold compound component components/<Name>/<Part>.kiw
-kiw make page <name>            # Scaffold pages/<name>.kiw
-kiw make handler <Name>         # Scaffold internal/handlers/<name>.go
-kiw make migration <name>       # Scaffold migrations/YYYYMMDDHHMMSS_<name>.go
-kiw make model <Name>           # Scaffold internal/models/<name>.go (with orm.BaseModel)
-kiw make seeder <Name>          # Scaffold seeds/<name>_seeder.go
-kiw make factory <Name>         # Scaffold factories/<name>_factory.go
-kiw make repository <Name>      # Scaffold internal/repositories/<name>_repository.go
-kiw make middleware <Name>      # Scaffold internal/middleware/<name>.go
-kiw make service <Name>         # Scaffold internal/services/<name>.go
-kiw make job <Name>             # Scaffold internal/jobs/<name>_job.go
-kiw make chapter <name>         # Scaffold book chapter manuscript
-kiw make doc <name>             # Scaffold docs article
+krew make component <Name>       # Scaffold components/<Name>.kiw
+krew make component <Name.Part>  # Scaffold compound component components/<Name>/<Part>.kiw
+krew make page <name>            # Scaffold pages/<name>.kiw
+krew make handler <Name>         # Scaffold internal/handlers/<name>.go
+krew make migration <name>       # Scaffold migrations/YYYYMMDDHHMMSS_<name>.go
+krew make model <Name>           # Scaffold internal/models/<name>.go (with orm.BaseModel)
+krew make seeder <Name>          # Scaffold seeds/<name>_seeder.go
+krew make factory <Name>         # Scaffold factories/<name>_factory.go
+krew make repository <Name>      # Scaffold internal/repositories/<name>_repository.go
+krew make middleware <Name>      # Scaffold internal/middleware/<name>.go
+krew make service <Name>         # Scaffold internal/services/<name>.go
+krew make job <Name>             # Scaffold internal/jobs/<name>_job.go
+krew make chapter <name>         # Scaffold book chapter manuscript
+krew make doc <name>             # Scaffold docs article
 ```
 
-Supports colon syntax (e.g. `kiw make:component Card` or `kiw make component:Card`) and explicit flags (`--kind`, `--name`). Supports compound dotted component names (`kiw make component Card.Header` automatically scaffolds `components/Card/Header.kiw` for seamless `<Card.Header />` compound invocation).
+Supports colon syntax (e.g. `krew make:component Card` or `krew make component:Card`) and explicit flags (`--kind`, `--name`). Supports compound dotted component names (`krew make component Card.Header` automatically scaffolds `components/Card/Header.kiw` for seamless `<Card.Header />` compound invocation).
 
 ### `kiw migrate <up [n] | down [n] | redo | status | create <name>>`
 
@@ -96,38 +96,38 @@ kiw db:seed                    # Laravel-compatible alias
 
 ## 2. Development & Execution
 
-### `kiw dev`
+### `krew dev`
 
 Start the local development server with automatic file watching and live reload:
 
 ```bash
-kiw dev [--port 8080]
+krew dev [--port 8080]
 ```
 
 - Watches `pages/`, `layouts/`, `components/`, `public/`, and Go source files.
 - Automatically re-renders templates or restarts Go server processes in `<10ms`.
 
-### `kiw run [task|args]`
+### `krew run [task|args]`
 
 Run a Go entry point or a custom task defined in `krewire.yaml`:
 
 ```bash
-kiw run [task-name] [-- args...]
+krew run [task-name] [-- args...]
 ```
 
 Examples:
 ```bash
-kiw run                # Runs the default Go entry point
-kiw run build-css      # Executes the 'build-css' task from krewire.yaml
-kiw run -- --verbose   # Forwards '--verbose' flag to the application
+krew run                # Runs the default Go entry point
+krew run build-css      # Executes the 'build-css' task from krewire.yaml
+krew run -- --verbose   # Forwards '--verbose' flag to the application
 ```
 
-### `kiw serve`
+### `krew serve`
 
 Start a local HTTP server to preview static output (`site` or `book` workloads) or listen on a web port:
 
 ```bash
-kiw serve [--port 3000] [--dir .krewire/build]
+krew serve [--port 3000] [--dir .krewire/build]
 ```
 
 ### `kiw dash` (alias: `kiw dashboard`)
@@ -204,12 +204,12 @@ kiw gateway [--port 8080] [--host 0.0.0.0] [--routes "/api/orders=http://localho
 
 ## 3. Building & Deployment
 
-### `kiw build`
+### `krew build`
 
 Compile the current project into release-ready artifacts according to its workload kind:
 
 ```bash
-kiw build [--target site|book|binary|wasm|infra] [--output <path>]
+krew build [--target site|book|binary|wasm|infra] [--output <path>]
 ```
 
 - **`site`**: Generates optimized static HTML and scoped CSS into `.krewire/build`.
@@ -218,12 +218,12 @@ kiw build [--target site|book|binary|wasm|infra] [--output <path>]
 - **`wasm`**: Compiles a `pkg/runtime` client bundle into a `.wasm` module plus JS glue.
 - **`infra`**: Compiles and verifies the cloud infrastructure topology plan.
 
-### `kiw deploy`
+### `krew deploy`
 
 Validate the project, run quality gates, stage distribution artifacts into `.krewire/dist/`, and publish to target environments:
 
 ```bash
-kiw deploy [--target binary|systemd|gh-pages|infra] [--branch <name>] [--remote <name>] [--dry-run]
+krew deploy [--target binary|systemd|gh-pages|infra] [--branch <name>] [--remote <name>] [--dry-run]
 ```
 
 - `--dry-run`: Preview deployment steps without publishing or mutating cloud state.
@@ -232,12 +232,12 @@ kiw deploy [--target binary|systemd|gh-pages|infra] [--branch <name>] [--remote 
 - `--target gh-pages`: Commit and push the static output to GitHub Pages (`gh-pages` branch).
 - `--target infra`: Provision declared cloud resources via provider adapters.
 
-### `kiw bundle`
+### `krew bundle`
 
 Bundle all eligible CSS and JS assets into `assets/krewire.css` and `assets/krewire.js`:
 
 ```bash
-kiw bundle [--minify] [--output <dir>]
+krew bundle [--minify] [--output <dir>]
 ```
 
 - `--minify` / `-m`: enable CSS and JS minification.
@@ -247,12 +247,12 @@ kiw bundle [--minify] [--output <dir>]
 
 ## 4. Code Quality & Testing
 
-### `kiw test`
+### `krew test`
 
 Execute unit and integration tests across all Go packages:
 
 ```bash
-kiw test [--filter <pattern>] [--watch] [--coverage] [--verbose] [--json]
+krew test [--filter <pattern>] [--watch] [--coverage] [--verbose] [--json]
 ```
 
 Spawns `go test ./...` with standardized colorized output and test summary reporting.
@@ -264,12 +264,12 @@ Spawns `go test ./...` with standardized colorized output and test summary repor
 - `--update` / `-u`: update snapshots/golden files; `--list`: list tests instead of running.
 - `--count <n>`: pass through `go test -count` (e.g. `1` to disable the test cache).
 
-### `kiw vet`
+### `krew vet`
 
 Run static code analysis and optional security audits:
 
 ```bash
-kiw vet [--sec] [--vuln]
+krew vet [--sec] [--vuln]
 ```
 
 Runs Go's official `go vet ./...` analyzer, catching potential defects, dead code, and invalid struct tags.
@@ -277,12 +277,12 @@ Runs Go's official `go vet ./...` analyzer, catching potential defects, dead cod
 - `--sec`: security posture checks — secrets scan, config hygiene, and `.gitignore` coverage.
 - `--vuln`: vulnerability audit via `govulncheck` and checksum verification.
 
-### `kiw fmt`
+### `krew fmt`
 
 Inspect or format source code and `.kiw` component files:
 
 ```bash
-kiw fmt [--write]
+krew fmt [--write]
 ```
 
 - Without `--write`: Prints unformatted files and exits with code `1` if formatting is required (useful for CI gates).
@@ -292,12 +292,12 @@ kiw fmt [--write]
 
 ## 5. Ecosystem & Management
 
-### `kiw info`
+### `krew info`
 
 Display detected workload kind, active configuration, and Go environment diagnostics:
 
 ```bash
-kiw info
+krew info
 ```
 
 *Example Output:*
@@ -309,39 +309,39 @@ Output:       bin/server
 Go Version:   go1.27.1 (linux/amd64)
 ```
 
-### `kiw version`
+### `krew version`
 
 Print the version of the `kiw` CLI and underlying Krewire packages:
 
 ```bash
-kiw version
+krew version
 ```
 
-### `kiw compat`
+### `krew compat`
 
 Validate version compatibility across all module declarations in the workspace:
 
 ```bash
-kiw compat
+krew compat
 ```
 
-### `kiw tier`
+### `krew tier`
 
 Inspect the project's open-core tier and validate open-core boundary invariants:
 
 ```bash
-kiw tier [--json] [--check <tier>]
+krew tier [--json] [--check <tier>]
 ```
 
 - `--json`: output tier posture in structured JSON.
 - `--check <tier>`: assert the project does not exceed the specified tier (e.g. `--check free`).
 
-### `kiw doctor`
+### `krew doctor`
 
 Diagnose the developer environment and project readiness:
 
 ```bash
-kiw doctor [--json]
+krew doctor [--json]
 ```
 
 Checks toolchain prerequisites, workspace layout, and the prerequisites a project must meet before it can build. `--json` emits a machine-readable report for CI.
@@ -357,12 +357,12 @@ kiw ws sync         # Synchronize go.work and go.mod dependencies
 kiw ws exec <cmd>   # Execute a command across every workspace module
 ```
 
-### `kiw boost install`
+### `krew boost install`
 
 Equip any project repository with the **Krewire Boost** autonomous AI agent system:
 
 ```bash
-kiw boost install [path]
+krew boost install [path]
 ```
 
 Installs:
@@ -371,39 +371,39 @@ Installs:
 - Slash command definitions (`/plan`, `/build`, `/test`, `/review`, `/deploy`, `/boost`)
 - Operational guidelines into `AGENTS.md`
 
-### `kiw add <package[@version]>`
+### `krew add <package[@version]>`
 
 Add a Go module, external library, or an opt-in ecosystem frontend plugin:
 
 ```bash
-kiw add svelte                     # Install Svelte 5 island compiler and plugin
-kiw add vue                        # Install Vue 3 island compiler and plugin
-kiw add twcss                      # Install Tailwind CSS compiler runner
-kiw add tailwindcss                # Alias for twcss
-kiw add github.com/krewire/krewire@v0.2.0
+krew add svelte                     # Install Svelte 5 island compiler and plugin
+krew add vue                        # Install Vue 3 island compiler and plugin
+krew add twcss                      # Install Tailwind CSS compiler runner
+krew add tailwindcss                # Alias for twcss
+krew add github.com/krewire/krewire@v0.2.0
 ```
 
 - **Zero JS by Default**: Krewire defaults to zero JavaScript and standalone CSS tokens.
 - **Opt-In Technology**: When adding `twcss`, `kiw` automatically initializes `tailwind.config.js` and enables the Tailwind compiler runner (standalone CLI binary in `bin/tailwindcss`, Bun, PNPM, or npm/npx fallback).
 - **Reactive Islands**: Adding `svelte` or `vue` configures client bundlers for progressive island hydration (`data-kiw-framework="svelte|vue"`).
 
-### `kiw remove <package>`
+### `krew remove <package>`
 
 Uninstall a package or deactivate an opt-in plugin:
 
 ```bash
-kiw remove twcss
+krew remove twcss
 ```
 
-### `kiw update [packages...] [flags]`
+### `krew update [packages...] [flags]`
 
 Update project dependencies to their latest compatible versions. When run without arguments, updates all direct and indirect dependencies in `go.mod` and tidies the module files:
 
 ```bash
-kiw update                      # Update all dependencies in project
-kiw update --dry-run            # Preview available updates without modifying files
-kiw update krewire ui           # Update specific ecosystem packages to @latest
-kiw update github.com/foo/bar   # Update specific external dependency
+krew update                      # Update all dependencies in project
+krew update --dry-run            # Preview available updates without modifying files
+krew update krewire ui           # Update specific ecosystem packages to @latest
+krew update github.com/foo/bar   # Update specific external dependency
 ```
 
 - `--dry-run`: Previews available dependency updates without touching disk.
@@ -429,14 +429,14 @@ kiw self-update --dry-run # Simulate update process
 - `--version <ver>`: Installs a specific target version.
 - Performs atomic binary replacement on Linux, macOS, and Windows with automatic Go toolchain fallback.
 
-### `kiw ui <subcommand>`
+### `krew ui <subcommand>`
 
 Manage Pop-Brutalist `.kiw` design system components and templates:
 
 ```bash
-kiw ui list               # List all available components in Krewire UI
-kiw ui add <name>         # Install component directly into ./components/
-kiw ui diff <name>        # Compare local component with upstream template
+krew ui list               # List all available components in Krewire UI
+krew ui add <name>         # Install component directly into ./components/
+krew ui diff <name>        # Compare local component with upstream template
 ```
 
 ### `kiw pkg <init|pack|add|list|export>`

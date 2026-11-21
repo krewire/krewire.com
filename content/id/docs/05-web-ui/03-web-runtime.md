@@ -56,8 +56,8 @@ Titik pemasangan (mount point) memancarkan penanda HTML standar:
 
 Melalui `pkg/runtime/mount` dan ekosistem plugin Krewire, titik pemasangan mendukung:
 - **`wasm`** (Bawaan): Pulau WebAssembly hasil kompilasi Go murni tanpa dependensi runtime node/npm.
-- **`svelte`**: Pulau komponen reaktif Svelte 5 yang dipasang melalui `kiw add svelte`.
-- **`vue`**: Pulau komponen reaktif Vue 3 yang dipasang melalui `kiw add vue`.
+- **`svelte`**: Pulau komponen reaktif Svelte 5 yang dipasang melalui `krew add svelte`.
+- **`vue`**: Pulau komponen reaktif Vue 3 yang dipasang melalui `krew add vue`.
 
 ---
 
@@ -173,7 +173,7 @@ fmt.Println(artifacts.WASM, artifacts.JS, artifacts.Digest)
 Dari CLI pengembang, pipeline kompilasi yang sama dapat dipanggil langsung:
 
 ```bash
-kiw build --target wasm
+krew build --target wasm
 ```
 
 ---

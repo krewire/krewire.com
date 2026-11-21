@@ -24,7 +24,7 @@ Ditenagai oleh `pkg/cloud/service`, `pkg/sec`, dan `pkg/resilience`, workload `s
 ## Scaffolding Proyek `service`
 
 ```bash
-kiw new auth-service --service
+krew new auth-service --service
 cd auth-service
 ```
 
@@ -112,7 +112,7 @@ service:
 Jalankan service secara lokal:
 
 ```bash
-kiw run
+krew run
 ```
 
 Periksa endpoint yang terdaftar dan status kesehatan service:

@@ -15,7 +15,7 @@ Ditenagai oleh `pkg/cloud/infra`, engine mengompilasi deklarasi Go menjadi renca
 ## Karakteristik Arsitektur
 
 1. **Go sebagai Bahasa Terpadu:** Lakukan refaktor dan uji infrastruktur Anda menggunakan jaminan compiler Go standar, pemeriksaan tipe (type checking), dan pengujian unit (`go test`).
-2. **Rencana Eksekusi Deterministik:** Jalankan `kiw deploy --target infra --plan` untuk melihat pratinjau sumber daya cloud yang ditambahkan, diubah, atau dihapus sebelum mutasi apa pun dilakukan.
+2. **Rencana Eksekusi Deterministik:** Jalankan `krew deploy --target infra --plan` untuk melihat pratinjau sumber daya cloud yang ditambahkan, diubah, atau dihapus sebelum mutasi apa pun dilakukan.
 3. **Topologi Bebas Penyedia (Provider-Agnostic):** Deklarasi abstrak untuk komputasi (kontainer, serverless), jaringan (VPC, load balancer), dan persistensi (PostgreSQL, object store).
 4. **Integritas Status (State):** Menyimpan snapshot state terenkripsi di backend jarak jauh (AWS S3, Google Cloud Storage, atau Kubernetes Secrets).
 
@@ -24,7 +24,7 @@ Ditenagai oleh `pkg/cloud/infra`, engine mengompilasi deklarasi Go menjadi renca
 ## Scaffolding Proyek `infra`
 
 ```bash
-kiw new cloud-env --infra
+krew new cloud-env --infra
 cd cloud-env
 ```
 
@@ -115,7 +115,7 @@ infra:
 ### Melihat Pratinjau Perubahan (Dry Run Plan)
 
 ```bash
-kiw deploy --target infra --plan
+krew deploy --target infra --plan
 ```
 
 *Output:*
@@ -129,4 +129,4 @@ Plan: 3 to add, 0 to change, 0 to destroy.
 ### Menerapkan Perubahan (Apply)
 
 ```bash
-kiw deploy --target infra
+krew deploy --target infra

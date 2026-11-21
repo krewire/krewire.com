@@ -27,7 +27,7 @@ Ditenagai oleh `pkg/web/ssg` dan DSL `.kiw`, compiler `site` mengubah Single-Fil
 ## Scaffolding Proyek `site`
 
 ```bash
-kiw new my-site --site
+krew new my-site --site
 cd my-site
 ```
 
@@ -138,7 +138,7 @@ Layout membungkus halaman dengan metadata HTML, gaya visual global, dan slot kon
 ### Menjalankan Dev Server dengan Live Reload
 
 ```bash
-kiw dev
+krew dev
 ```
 
 Buka `http://localhost:8080`. Perubahan pada file `.kiw`, layout, dan komponen akan memicu reload instan dalam waktu `< 10ms`.
@@ -146,4 +146,4 @@ Buka `http://localhost:8080`. Perubahan pada file `.kiw`, layout, dan komponen a
 ### Membangun Situs Statis
 
 ```bash
-kiw build
+krew build

@@ -8,7 +8,7 @@ date: "2026-10-25"
 
 Krewire operates under the **One Config** rule: all settings across all eight workloads are declared in a single file—**`krewire.yaml`**.
 
-There is no separate `ssg.yaml` or tool-specific configuration file. Configuration is typed, validated against schema rules (`pkg/validation`), and loaded using `pkg/config` (schema owner: `tools/kiw/internal/config`).
+There is no separate `ssg.yaml` or tool-specific configuration file. Configuration is typed, validated against schema rules (`pkg/validation`), and loaded using `pkg/config` (schema owner: `krew/internal/config`).
 
 ---
 
@@ -86,8 +86,8 @@ infra:
 | `kind` | String | Yes | Workload kind (`app`, `cli`, `site`, `book`, `worker`, `service`, `gateway`, `infra`). |
 | `version` | String | No | Semantic release version (`vX.Y.Z`); folded into the effective version used by every pipeline. |
 
-A pre-scaffold bootstrap project is **not** a kind: `kiw info` reports `none`
-with the marker `pre-init` until `kiw init` equips a variant.
+A pre-scaffold bootstrap project is **not** a kind: `krew info` reports `none`
+with the marker `pre-init` until `krew init` equips a variant.
 
 ### Top-level metadata
 
@@ -101,7 +101,7 @@ with the marker `pre-init` until `kiw init` equips a variant.
 | `input` | String | `content` | Content directory for site and book workloads. |
 | `nav` | Array | `[]` | Navbar links (`text` + `url`). |
 | `footer` | String | — | Footer text. |
-| `scripts` | Map | `{}` | Named shell tasks run with `kiw run <task>`. |
+| `scripts` | Map | `{}` | Named shell tasks run with `krew run <task>`. |
 
 ### `build`
 
@@ -163,7 +163,7 @@ on disk.
 | `name` | String | `runtime` | Output module name. |
 
 Client-side WebAssembly is a **library target**, not a workload kind: build it
-with `kiw build --target wasm` inside an `app` or `site` project.
+with `krew build --target wasm` inside an `app` or `site` project.
 
 ### `worker`
 
@@ -211,7 +211,7 @@ Route keys:
 | `provider` | String | `aws` | Target provider (`aws`, `gcp`, `kubernetes`). |
 | `region` | String | — | Provider region. |
 | `state` | String | — | State backend location. |
-| `resources` | Array | `[]` | Declared resources applied by `kiw deploy --target infra`. |
+| `resources` | Array | `[]` | Declared resources applied by `krew deploy --target infra`. |
 
 ### `runtime`
 
@@ -241,6 +241,6 @@ precedence over the `env:` and `debug:` keys in `krewire.yaml`.
 The dev server port is **not** an environment variable. The listen address
 resolves in this order:
 
-1. `--addr` flag (`kiw serve --addr :3000`).
+1. `--addr` flag (`krew serve --addr :3000`).
 2. `runtime.port`, then `dev.port`, then `server.port`, then the first `services[].port`.
 3. `:8080`.

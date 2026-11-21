@@ -59,19 +59,20 @@ jobs:
           check-latest: true
           cache: true
 
-      - name: Install kiw CLI
+      - name: Install krew CLI
         run: |
           git clone --depth 1 --branch main "https://github.com/krewire/krewire.git" "${RUNNER_TEMP}/krewire"
           git clone --depth 1 --branch main "https://github.com/krewire/ui.git" "${RUNNER_TEMP}/ui"
+          git clone --depth 1 --branch main "https://github.com/krewire/tui.git" "${RUNNER_TEMP}/tui"
           git clone --depth 1 --branch main "https://github.com/krewire/krew.git" "${RUNNER_TEMP}/krew"
           cd "${RUNNER_TEMP}"
-          go work init ./krewire ./ui ./krew
-          cd "${RUNNER_TEMP}/krewire"
-          go build -o "${RUNNER_TEMP}/bin/kiw" ./tools/kiw/cmd/kiw
+          go work init ./krewire ./ui ./tui ./krew
+          cd "${RUNNER_TEMP}/krew"
+          go build -o "${RUNNER_TEMP}/bin/krew" ./cmd/krew
           echo "${RUNNER_TEMP}/bin" >> "$GITHUB_PATH"
 
       - name: Build static site (Hotfix)
-        run: kiw build
+        run: krew build
       - name: Fast sanity check of build outputs
         run: |
           test -f .krewire/build/index.html || { echo "✗ Missing index.html"; exit 1; }

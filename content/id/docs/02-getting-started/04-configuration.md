@@ -105,7 +105,7 @@ Bagian `project:` mendefinisikan identitas dan perilaku workload:
   - `infra`: Terdeteksi dari adanya blok konfigurasi `infra:`.
   - `cli`: Terdeteksi atau dideklarasikan untuk perkakas terminal / TUI.
 
-  Proyek bootstrap sebelum perancangan kerangka (pre-scaffold) **bukanlah** suatu jenis kind: `kiw info` melaporkan `none` dengan penanda `pre-init` hingga `kiw init` melengkapi variannya.
+  Proyek bootstrap sebelum perancangan kerangka (pre-scaffold) **bukanlah** suatu jenis kind: `krew info` melaporkan `none` dengan penanda `pre-init` hingga `krew init` melengkapi variannya.
 
   **Progressive Pipeline:** Workload di Krewire bersifat aditif dan tidak membatasi evolusi proyek. Situs statis (`site`) dapat berkembang menjadi backend SSR (`app`) hanya dengan menambahkan berkas `main.go`—tanpa perlu menulis ulang komponen atau layout `.kiw` yang telah dibuat.
 
@@ -115,7 +115,7 @@ Bagian `project:` mendefinisikan identitas dan perilaku workload:
 
 ### 3.2 Input Konten (`input:`)
 
-- **`input`:** Direktori konten yang digunakan oleh pipeline buku dokumentasi (`pkg/book`). Nilai defaultnya adalah `content`. Dengan mengaktifkan `i18n:`, `kiw build` me-resolve `content/<locale>/docs/` per lokal dan hanya beralih ke nilai ini jika lokal tidak ditemukan.
+- **`input`:** Direktori konten yang digunakan oleh pipeline buku dokumentasi (`pkg/book`). Nilai defaultnya adalah `content`. Dengan mengaktifkan `i18n:`, `krew build` me-resolve `content/<locale>/docs/` per lokal dan hanya beralih ke nilai ini jika lokal tidak ditemukan.
 
 ---
 
@@ -145,8 +145,8 @@ dev:
 Alamat listen diselesaikan dengan urutan prioritas berikut: flag `--addr`, lalu `runtime.port`, `dev.port`, `server.port`, kemudian `services[].port` pertama, dan terakhir `:8080`:
 
 ```bash
-kiw dev --addr :3000
-kiw serve --addr :3000
+krew dev --addr :3000
+krew serve --addr :3000
 ```
 
 ---
@@ -187,7 +187,7 @@ auto_assets:
 
 ### 3.6 Task Runner Scripts (`scripts:`)
 
-Krewire menyertakan task runner terintegrasi, menghilangkan kebutuhan akan `Makefile` atau alat eksternal tambahan. Setiap tugas yang dideklarasikan dalam `scripts:` dapat dieksekusi langsung melalui `kiw run <task>`:
+Krewire menyertakan task runner terintegrasi, menghilangkan kebutuhan akan `Makefile` atau alat eksternal tambahan. Setiap tugas yang dideklarasikan dalam `scripts:` dapat dieksekusi langsung melalui `krew run <task>`:
 
 ```yaml
 scripts:
@@ -199,8 +199,8 @@ scripts:
 Menjalankan tugas tertentu:
 
 ```bash
-kiw run lint
-kiw run audit
+krew run lint
+krew run audit
 ```
 
 Tugas dieksekusi menggunakan shell sistem operasi native (`sh -c` di Unix/macOS, `cmd /C` di Windows).
@@ -219,7 +219,7 @@ Konfigurasi runtime dapat ditimpa menggunakan variabel lingkungan tanpa perlu me
 Contoh:
 
 ```bash
-KIW_ENV=production KIW_DEBUG=false kiw run
+KIW_ENV=production KIW_DEBUG=false krew run
 ```
 
 ---

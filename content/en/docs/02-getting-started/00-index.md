@@ -47,7 +47,7 @@ Follow these in order. Every command in them was run against the current `kiw` C
       </h3>
     </div>
     <p class="chapter-card-desc">
-      A task manager with <code>kiw new --app</code>, SQLite through <code>pkg/orm</code>, a <code>.kiw</code> page with Krewire UI components, validated CSRF-protected forms, and a single-binary build.
+      A task manager with <code>krew new --app</code>, SQLite through <code>pkg/orm</code>, a <code>.kiw</code> page with Krewire UI components, validated CSRF-protected forms, and a single-binary build.
     </p>
   </div>
 
@@ -83,14 +83,14 @@ Every Krewire project has one *kind*. Pick the row that matches what you are bui
 
 | I want to build… | Kind | Scaffold | Learn more |
 | :--- | :--- | :--- | :--- |
-| A website, landing page, or blog | `site` | `kiw new my-site --site` | [Site workload](/workloads/site) |
-| Documentation or a book | `book` | `kiw new my-docs --book` | [Book workload](/workloads/book) |
-| A web app with a database and forms | `app` | `kiw new my-app --app` | [App workload](/workloads/app) |
-| A command-line tool | `cli` | `kiw new my-tool --cli` | [CLI workload](/workloads/cli) |
-| A background job processor | `worker` | `kiw new my-worker --worker` | [Worker workload](/workloads/worker) |
-| An HTTP microservice | `service` | `kiw new my-svc --service` | [Service workload](/workloads/service) |
-| A reverse proxy in front of services | `gateway` | `kiw new my-gw --gateway` | [Gateway workload](/workloads/gateway) |
-| Cloud infrastructure definitions | `infra` | `kiw new my-infra --infra` | [Infra workload](/workloads/infra) |
+| A website, landing page, or blog | `site` | `krew new my-site --site` | [Site workload](/workloads/site) |
+| Documentation or a book | `book` | `krew new my-docs --book` | [Book workload](/workloads/book) |
+| A web app with a database and forms | `app` | `krew new my-app --app` | [App workload](/workloads/app) |
+| A command-line tool | `cli` | `krew new my-tool --cli` | [CLI workload](/workloads/cli) |
+| A background job processor | `worker` | `krew new my-worker --worker` | [Worker workload](/workloads/worker) |
+| An HTTP microservice | `service` | `krew new my-svc --service` | [Service workload](/workloads/service) |
+| A reverse proxy in front of services | `gateway` | `krew new my-gw --gateway` | [Gateway workload](/workloads/gateway) |
+| Cloud infrastructure definitions | `infra` | `krew new my-infra --infra` | [Infra workload](/workloads/infra) |
 
 Not sure? Start with `--site` (Quickstart) or `--app` (Fullstack tutorial).
 
@@ -100,14 +100,14 @@ Not sure? Start with `--site` (Quickstart) or `--app` (Fullstack tutorial).
 
 | Command | What it does |
 | :--- | :--- |
-| `kiw new <name> --site` | Create a new project (`--app`, `--book`, `--cli`, … for other kinds). |
-| `kiw dev` | Run the project locally with rebuild on save (`http://localhost:8080`). |
-| `kiw build` | Production build: static files in `.krewire/build/` for sites and books, a binary in `.krewire/build/bin/` for apps. |
-| `kiw serve --addr :3000` | Preview the static build over HTTP. |
-| `kiw make component Card` | Generate a starter file (`component`, `page`, `model`, `migration`, `handler`, …). |
-| `kiw test` | Run the project's Go tests. |
-| `kiw doctor` | Diagnose your toolchain and workspace. |
-| `kiw help <command>` | Show the options of any command. |
+| `krew new <name> --site` | Create a new project (`--app`, `--book`, `--cli`, … for other kinds). |
+| `krew dev` | Run the project locally with rebuild on save (`http://localhost:8080`). |
+| `krew build` | Production build: static files in `.krewire/build/` for sites and books, a binary in `.krewire/build/bin/` for apps. |
+| `krew serve --addr :3000` | Preview the static build over HTTP. |
+| `krew make component Card` | Generate a starter file (`component`, `page`, `model`, `migration`, `handler`, …). |
+| `krew test` | Run the project's Go tests. |
+| `krew doctor` | Diagnose your toolchain and workspace. |
+| `krew help <command>` | Show the options of any command. |
 
 The complete list is in the [CLI Command Reference](/cli-reference/commands).
 
@@ -117,7 +117,7 @@ The complete list is in the [CLI Command Reference](/cli-reference/commands).
 
 **`kiw: command not found`** — the install directory is not on your `PATH`. Add `export PATH="$HOME/.local/bin:$PATH"` (shell installer) or `export PATH="$(go env GOPATH)/bin:$PATH"` (`go install`) to `~/.zshrc` or `~/.bashrc`, then open a new terminal.
 
-**`address already in use`** — another program owns port 8080. Change `dev.port` in `krewire.yaml`, or preview a build on another address with `kiw serve --addr :3000`.
+**`address already in use`** — another program owns port 8080. Change `dev.port` in `krewire.yaml`, or preview a build on another address with `krew serve --addr :3000`.
 
 **`requires go >= 1.27.1`** — your Go is older than the one Krewire targets. Install a current Go from [go.dev/dl](https://go.dev/dl); distribution packages are often several versions behind.
 

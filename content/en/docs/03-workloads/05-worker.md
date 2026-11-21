@@ -24,7 +24,7 @@ Powered by `pkg/cloud/worker` and `pkg/resilience`, workers operate reliably und
 ## Scaffolding a `worker` Project
 
 ```bash
-kiw new email-worker --worker
+krew new email-worker --worker
 cd email-worker
 ```
 

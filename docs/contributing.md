@@ -18,8 +18,8 @@ We follow standard trunk-based development:
    - Follow Krewire `.kiw` component standards and Markdown guidelines.
    - All repository files, components, and commit messages must be in **English**.
 4. **Local Verification:**
-   - Run `kiw build` to confirm clean compilation into `.krewire/build/`.
-   - Run `kiw serve` to preview changes at `http://localhost:8080`.
+   - Run `krew build` to confirm clean compilation into `.krewire/build/`.
+   - Run `krew serve` to preview changes at `http://localhost:8080`.
    - If editing documentation, run `python3 scripts/check-i18n-parity.py` to ensure 1:1 bilingual parity.
    - If editing translation keys, run `python3 scripts/sync-i18n.py --check`.
    - Verify both light and dark themes.
@@ -78,7 +78,7 @@ python3 scripts/check-i18n-parity.py
 python3 scripts/sync-i18n.py --check
 
 # 3. Clean static site generation
-kiw build
+krew build
 ```
 
 ---

@@ -16,7 +16,7 @@ The `<Card />` component provides an elevated surface container with signature p
 
 <div data-component-preview="Card" data-slug="card"></div>
 
-The frames above load the real `Card.kiw` from Krewire UI, prebuilt by `kiw build` for every variant, in the light and dark themes side by side. Use the toggles to switch variants, then copy the component source or the usage snippet. **Open in playground** shows it next to the other core components.
+The frames above load the real `Card.kiw` from Krewire UI, prebuilt by `krew build` for every variant, in the light and dark themes side by side. Use the toggles to switch variants, then copy the component source or the usage snippet. **Open in playground** shows it next to the other core components.
 
 ---
 

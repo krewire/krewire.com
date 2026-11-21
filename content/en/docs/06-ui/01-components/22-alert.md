@@ -16,7 +16,7 @@ Contextual feedback banner supporting info, success, warning, and error states.
 
 <div data-component-preview="Alert" data-slug="alert"></div>
 
-The frames above load the real `Alert.kiw` from Krewire UI, prebuilt by `kiw build` for every variant, in the light and dark themes side by side. Use the toggles to switch variants, then copy the component source or the usage snippet. **Open in playground** shows it next to the other core components.
+The frames above load the real `Alert.kiw` from Krewire UI, prebuilt by `krew build` for every variant, in the light and dark themes side by side. Use the toggles to switch variants, then copy the component source or the usage snippet. **Open in playground** shows it next to the other core components.
 
 ---
 

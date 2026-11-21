@@ -24,10 +24,10 @@ Built on standard Go primitives (`net/http`, `embed.FS`, `context`, `slog`), the
 
 ## Scaffolding an `app` Project
 
-Use the `kiw new` command (which equips the `app` variant by default or via `--app`), or equip an existing folder with `kiw init --app`:
+Use the `krew new` command (which equips the `app` variant by default or via `--app`), or equip an existing folder with `krew init --app`:
 
 ```bash
-kiw new storefront --app
+krew new storefront --app
 cd storefront
 ```
 
@@ -254,40 +254,40 @@ build:
   output: ".krewire/build"
 ```
 
-The runtime address can also be customized via the `APP_ADDR` environment variable or `--addr` CLI flag (e.g. `kiw run --addr :3000`).
+The runtime address can also be customized via the `APP_ADDR` environment variable or `--addr` CLI flag (e.g. `krew run --addr :3000`).
 
 ---
 
 ## Development & Operations
 
-### Local Development (`kiw dev` or `kiw run`)
+### Local Development (`krew dev` or `krew run`)
 
 Start the application with live-recompilation on file changes:
 
 ```bash
-kiw dev
+krew dev
 ```
 
 Or run the application directly:
 
 ```bash
-kiw run
+krew run
 ```
 
-### Running Tests (`kiw test`)
+### Running Tests (`krew test`)
 
 Execute package and integration tests:
 
 ```bash
-kiw test ./...
+krew test ./...
 ```
 
-### Building for Production (`kiw build`)
+### Building for Production (`krew build`)
 
 Compile the production binary:
 
 ```bash
-kiw build
+krew build
 ```
 
 The compiled binary will be placed at `.krewire/build/bin/storefront` (or cross-compiled for any platform using standard Go env variables like `GOOS=linux GOARCH=amd64`).

@@ -25,7 +25,7 @@ Rekayasa perangkat lunak modern kini bertransisi melampaui **AI-assisted coding*
 │ Model Integrasi               │ Popup chat editor sementara       │ Native MCP & runtime in-process │
 │ Penemuan Konteks              │ Salin-tempel prompt ad-hoc        │ SSOT terbaca-mesin (kiw)        │
 │ Batasan Keamanan              │ Akses terminal tanpa batas        │ SafePath & gerbang manusia      │
-│ Model Verifikasi              │ "Tampak benar di editor"          │ kiw verify & rekaman bukti      │
+│ Model Verifikasi              │ "Tampak benar di editor"          │ krew verify & rekaman bukti      │
 │ Sikap Tanggung Jawab          │ Menyalahkan AI atas bug           │ Manusia memiliki hasil & mutu   │
 │ Akumulasi Pengetahuan         │ Hilang saat sesi chat ditutup     │ ADR permanen & aturan konteks   │
 └───────────────────────────────┴───────────────────────────────────┴─────────────────────────────────┘
@@ -60,12 +60,12 @@ Ekosistem Krewire mengoordinasikan rekayasa AI melalui tiga batasan yang terpisa
                ┌───────────────────────────────────────────────────┐
                │             Krewire kiw CLI (Layer 3)             │
                │          Toolchain Deterministik & SSOT           │
-               │   kiw context · kiw verify · kiw test · Compiler  │
+               │   kiw context · krew verify · krew test · Compiler  │
                └───────────────────────────────────────────────────┘
 ```
 
-1. **Penyedia Kebenaran (`tools/kiw`)**:
-   Menyediakan satu-satunya sumber kebenaran (*single source of truth*) yang terbaca mesin via `kiw context --json`, menjalankan kompilasi, memeriksa kesehatan paket (`kiw pkg health`), dan menegakkan gerbang mutu (`kiw test`, `gofmt`, `go vet`). Berjalan 100% luring tanpa butuh LLM atau koneksi internet.
+1. **Penyedia Kebenaran (`krew`)**:
+   Menyediakan satu-satunya sumber kebenaran (*single source of truth*) yang terbaca mesin via `kiw context --json`, menjalankan kompilasi, memeriksa kesehatan paket (`kiw pkg health`), dan menegakkan gerbang mutu (`krew test`, `gofmt`, `go vet`). Berjalan 100% luring tanpa butuh LLM atau koneksi internet.
 2. **Konstitusi Rekayasa (`templates/boost`)**:
    Mendefinisikan aturan operasional, konvensi commit, struktur direktori, dan definisi persona agen yang tertanam langsung di repositori via `AGENTS.md` dan `.agents/`.
 3. **Engine Kognitif (`krew`)**:
@@ -84,10 +84,10 @@ Untuk memastikan keamanan tanpa menghambat kecepatan pengembang, kapabilitas age
 - **Tingkat 1: Otonom (Tanpa Persetujuan Khusus)**:
   - Membaca file repositori, dokumentasi, dan catatan keputusan arsitektur (ADR).
   - Memeriksa konteks proyek (`kiw context --json`) dan aturan linter.
-  - Menjalankan kueri baca-saja, pemeriksaan status, dan unit test (`kiw test`).
+  - Menjalankan kueri baca-saja, pemeriksaan status, dan unit test (`krew test`).
 - **Tingkat 2: Diawasi (Tindakan Dicatat, Ditinjau saat PR)**:
   - Membuat atau mengubah kode aplikasi, gaya CSS, template, dan unit test.
-  - Melakukan *scaffolding* komponen atau rute baru (`kiw make component <Nama>`).
+  - Melakukan *scaffolding* komponen atau rute baru (`krew make component <Nama>`).
   - Memformat kode dan merapikan impor (`gofmt`, `go vet`).
 - **Tingkat 3: Wajib Persetujuan Manusia (Gated)**:
   - Perintah sistem berkas yang merusak (`rm -rf`, penghapusan file di luar target kerja).
@@ -113,7 +113,7 @@ Sebelum menulis kode apa pun, agen memeriksa konteks proyek resmi yang terbaca-m
 ```bash
 # Menemukan jenis beban kerja, dependensi, aturan, dan cakupan
 kiw context --json
-kiw info
+krew info
 ```
 
 Agen membaca `AGENTS.md`, spesifikasi aktif di GitHub Issues, dan batasan arsitektur piramida 6 layer.
@@ -149,11 +149,11 @@ go test -v ./...
 CGO_ENABLED=0 go build ./...
 ```
 
-### Langkah 6: Verifikasi AI Berbasis Bukti (`kiw verify`)
-Agen menjalankan `kiw verify` untuk menghasilkan jejak audit yang dapat dibuktikan:
+### Langkah 6: Verifikasi AI Berbasis Bukti (`krew verify`)
+Agen menjalankan `krew verify` untuk menghasilkan jejak audit yang dapat dibuktikan:
 
 ```bash
-kiw verify --json
+krew verify --json
 ```
 
 Langkah ini memvalidasi bahwa seluruh kriteria penerimaan terpenuhi, dependensi terdaftar di `go.mod`, dan tidak ada panggilan jaringan yang mencurigakan.
@@ -242,10 +242,10 @@ Alur kerja AI-Native memperkenalkan pertimbangan keamanan khusus yang wajib dimi
 
 | Kapabilitas | Komponen | Status | Kesiapan Produksi |
 |---|---|---|---|
-| Native MCP Server (`stdio`) | `tools/kiw` | Rilis & Terverifikasi | Ya |
+| Native MCP Server (`stdio`) | `krew` | Rilis & Terverifikasi | Ya |
 | Unified AI SDK (`pkg/ai`) | `krewire/pkg/ai` | Rilis (v0.3+) | Ya |
 | Konstitusi 21 Agen Boost | `templates/boost` | Rilis & Terverifikasi | Ya |
-| Verifikasi AI (`kiw verify`) | `tools/kiw` | Rilis (v0.3.2) | Ya |
+| Verifikasi AI (`krew verify`) | `krew` | Rilis (v0.3.2) | Ya |
 | Sandbox Web PTY (Bubblewrap) | `dash/pkg/sandbox` | Rilis (Linux amd64/arm64) | Ya (Fail-closed) |
 | Multi-Agent Dynamic Swarms | `krew/pkg/sdlc` | Rilis (ref #15) | Ya |
 | Migrasi Beban Kerja Otonom | `cloud/pkg/supervisor` | Pengembangan Aktif | Single-Tenant Saja |

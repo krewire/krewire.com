@@ -17,7 +17,7 @@ Ditenagai oleh engine bawaan Krewire **`pkg/book`** (`github.com/krewire/krewire
 1. **Pustaka Standar Go Murni:** Tanpa script npm, tanpa runtime Python, dan tanpa dependensi Node.js.
 2. **Pengurutan Bab Otomatis:** File dan direktori dengan awalan numerik (`01-overview`, `02-guide`) secara otomatis diubah menjadi bab dan sub-bab bernomor dengan URL slug yang rapi.
 3. **Navigasi & Pencarian Responsif:** Dilengkapi sidebar yang dapat dilipat, filter pencarian bab instan, pintasan navigasi keyboard (`/` untuk mencari), dan breadcrumb.
-4. **Penulisan Langsung Instan (Live Authoring):** `kiw dev` atau `kiw serve` menyediakan server HTTP lokal yang merender ulang file Markdown secara dinamis saat browser dimuat ulang.
+4. **Penulisan Langsung Instan (Live Authoring):** `krew dev` atau `krew serve` menyediakan server HTTP lokal yang merender ulang file Markdown secara dinamis saat browser dimuat ulang.
 5. **Tema Gelap & Terang:** Pengalih tema bawaan dengan deteksi preferensi OS otomatis dan persistensi `localStorage`.
 
 ---
@@ -25,7 +25,7 @@ Ditenagai oleh engine bawaan Krewire **`pkg/book`** (`github.com/krewire/krewire
 ## Scaffolding Proyek `book`
 
 ```bash
-kiw new my-book --book
+krew new my-book --book
 cd my-book
 ```
 
@@ -108,8 +108,8 @@ Build dan sajikan buku Anda langsung dengan `kiw`:
 
 ```bash
 # Build buku ke direktori output
-kiw build
+krew build
 
 # Sajikan buku secara lokal dengan live re-rendering
-kiw serve
+krew serve
 ```

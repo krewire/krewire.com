@@ -12,12 +12,12 @@ CLI **`kiw`** menyediakan rangkaian perintah menyeluruh yang mencakup seluruh si
 
 ## 1. Inisialisasi Proyek & Perancah (Scaffolding)
 
-### `kiw new <nama>`
+### `krew new <nama>`
 
 Membuat perancah proyek baru di direktori baru menggunakan templat yang telah dikonfigurasi sebelumnya.
 
 ```bash
-kiw new my-app [--site | --app | --cli | --book | --worker | --service | --infra]
+krew new my-app [--site | --app | --cli | --book | --worker | --service | --infra]
 ```
 
 - `--site`: Generator situs statis (SSG) dengan Single-File Component `.kiw`.
@@ -28,38 +28,38 @@ kiw new my-app [--site | --app | --cli | --book | --worker | --service | --infra
 - `--service`: Layanan mikro (microservice) cloud-native.
 - `--infra`: Infrastructure as Code dalam bahasa Go.
 
-### `kiw init`
+### `krew init`
 
 Melengkapi direktori proyek yang sudah ada dengan struktur workload Krewire:
 
 ```bash
-kiw init [--site | --book | --cli | --worker | --service | --infra]
+krew init [--site | --book | --cli | --worker | --service | --infra]
 ```
 
 - `--template <git-url>`: Melakukan kloning repositori starter template eksternal ke dalam direktori kosong.
 
-### `kiw make <kind> <nama>`
+### `krew make <kind> <nama>`
 
 Membuat perancah artefak aplikasi secara cepat mengikuti konvensi idiomatik:
 
 ```bash
-kiw make component <Name>       # Membuat perancah components/<Name>.kiw
-kiw make component <Name.Part>  # Membuat perancah komponen majemuk components/<Name>/<Part>.kiw
-kiw make page <name>            # Membuat perancah pages/<name>.kiw
-kiw make handler <Name>         # Membuat perancah internal/handlers/<name>.go
-kiw make migration <name>       # Membuat perancah migrations/YYYYMMDDHHMMSS_<name>.go
-kiw make model <Name>           # Membuat perancah internal/models/<name>.go (dengan orm.BaseModel)
-kiw make seeder <Name>          # Membuat perancah seeds/<name>_seeder.go
-kiw make factory <Name>         # Membuat perancah factories/<name>_factory.go
-kiw make repository <Name>      # Membuat perancah internal/repositories/<name>_repository.go
-kiw make middleware <Name>      # Membuat perancah internal/middleware/<name>.go
-kiw make service <Name>         # Membuat perancah internal/services/<name>.go
-kiw make job <Name>             # Membuat perancah internal/jobs/<name>_job.go
-kiw make chapter <name>         # Membuat naskah bab buku (manuscript)
-kiw make doc <name>             # Membuat artikel dokumentasi
+krew make component <Name>       # Membuat perancah components/<Name>.kiw
+krew make component <Name.Part>  # Membuat perancah komponen majemuk components/<Name>/<Part>.kiw
+krew make page <name>            # Membuat perancah pages/<name>.kiw
+krew make handler <Name>         # Membuat perancah internal/handlers/<name>.go
+krew make migration <name>       # Membuat perancah migrations/YYYYMMDDHHMMSS_<name>.go
+krew make model <Name>           # Membuat perancah internal/models/<name>.go (dengan orm.BaseModel)
+krew make seeder <Name>          # Membuat perancah seeds/<name>_seeder.go
+krew make factory <Name>         # Membuat perancah factories/<name>_factory.go
+krew make repository <Name>      # Membuat perancah internal/repositories/<name>_repository.go
+krew make middleware <Name>      # Membuat perancah internal/middleware/<name>.go
+krew make service <Name>         # Membuat perancah internal/services/<name>.go
+krew make job <Name>             # Membuat perancah internal/jobs/<name>_job.go
+krew make chapter <name>         # Membuat naskah bab buku (manuscript)
+krew make doc <name>             # Membuat artikel dokumentasi
 ```
 
-Mendukung sintaks titik dua (misalnya `kiw make:component Card` atau `kiw make component:Card`) dan flag eksplisit (`--kind`, `--name`). Mendukung notasi komponen majemuk bertitik (`kiw make component Card.Header` secara otomatis membuat `components/Card/Header.kiw` untuk pemanggilan komponen majemuk `<Card.Header />`).
+Mendukung sintaks titik dua (misalnya `krew make:component Card` atau `krew make component:Card`) dan flag eksplisit (`--kind`, `--name`). Mendukung notasi komponen majemuk bertitik (`krew make component Card.Header` secara otomatis membuat `components/Card/Header.kiw` untuk pemanggilan komponen majemuk `<Card.Header />`).
 
 ### `kiw migrate <up [n] | down [n] | redo | status | create <name>>`
 
@@ -96,38 +96,38 @@ kiw db:seed                    # Alias kompatibel dengan Laravel
 
 ## 2. Pengembangan & Eksekusi
 
-### `kiw dev`
+### `krew dev`
 
 Menjalankan server pengembangan lokal dengan pemantauan berkas otomatis (file watching) dan live reload:
 
 ```bash
-kiw dev [--port 8080]
+krew dev [--port 8080]
 ```
 
 - Memantau direktori `pages/`, `layouts/`, `components/`, `public/`, serta berkas sumber Go.
 - Me-render ulang templat secara otomatis atau me-restart proses server Go dalam waktu `<10ms`.
 
-### `kiw run [task|args]`
+### `krew run [task|args]`
 
 Menjalankan titik masuk (entry point) Go atau tugas kustom yang didefinisikan dalam `krewire.yaml`:
 
 ```bash
-kiw run [nama-tugas] [-- args...]
+krew run [nama-tugas] [-- args...]
 ```
 
 Contoh:
 ```bash
-kiw run                # Menjalankan entry point Go default
-kiw run build-css      # Menjalankan tugas 'build-css' dari krewire.yaml
-kiw run -- --verbose   # Meneruskan flag '--verbose' ke aplikasi
+krew run                # Menjalankan entry point Go default
+krew run build-css      # Menjalankan tugas 'build-css' dari krewire.yaml
+krew run -- --verbose   # Meneruskan flag '--verbose' ke aplikasi
 ```
 
-### `kiw serve`
+### `krew serve`
 
 Menjalankan server HTTP lokal untuk meninjau output statis (workload `site` atau `book`) atau mendengarkan port web:
 
 ```bash
-kiw serve [--port 3000] [--dir .krewire/build]
+krew serve [--port 3000] [--dir .krewire/build]
 ```
 
 ### `kiw dash` (alias: `kiw dashboard`)
@@ -205,12 +205,12 @@ kiw gateway [--port 8080] [--host 0.0.0.0] [--routes "/api/orders=http://localho
 
 ## 3. Kompilasi & Deployment
 
-### `kiw build`
+### `krew build`
 
 Mengompilasi proyek saat ini menjadi artefak siap rilis sesuai dengan jenis workload-nya:
 
 ```bash
-kiw build [--target site|book|binary|wasm|infra] [--output <path>]
+krew build [--target site|book|binary|wasm|infra] [--output <path>]
 ```
 
 - **`site`**: Menghasilkan HTML statis teroptimasi dan CSS terlingkup (scoped CSS) ke dalam direktori `.krewire/build`.
@@ -219,12 +219,12 @@ kiw build [--target site|book|binary|wasm|infra] [--output <path>]
 - **`wasm`**: Mengompilasi bundle klien `pkg/runtime` menjadi modul `.wasm` beserta lem (glue) JS.
 - **`infra`**: Mengompilasi dan memverifikasi rencana topologi infrastruktur cloud.
 
-### `kiw deploy`
+### `krew deploy`
 
 Memvalidasi proyek, menjalankan quality gate, menyiapkan artefak distribusi ke `.krewire/dist/`, dan memublikasikannya ke lingkungan target:
 
 ```bash
-kiw deploy [--target binary|systemd|gh-pages|infra] [--branch <name>] [--remote <name>] [--dry-run]
+krew deploy [--target binary|systemd|gh-pages|infra] [--branch <name>] [--remote <name>] [--dry-run]
 ```
 
 - `--dry-run`: Meninjau langkah-langkah deployment tanpa memublikasikan atau mengubah status cloud.
@@ -233,12 +233,12 @@ kiw deploy [--target binary|systemd|gh-pages|infra] [--branch <name>] [--remote 
 - `--target gh-pages`: Melakukan commit dan push output statis ke GitHub Pages (branch `gh-pages`).
 - `--target infra`: Melakukan provisi sumber daya cloud yang dideklarasikan melalui adaptor penyedia (provider).
 
-### `kiw bundle`
+### `krew bundle`
 
 Membundel seluruh aset CSS dan JS yang memenuhi syarat menjadi `assets/krewire.css` dan `assets/krewire.js`:
 
 ```bash
-kiw bundle [--minify] [--output <dir>]
+krew bundle [--minify] [--output <dir>]
 ```
 
 - `--minify` / `-m`: mengaktifkan minifikasi CSS dan JS.
@@ -248,12 +248,12 @@ kiw bundle [--minify] [--output <dir>]
 
 ## 4. Kualitas Kode & Pengujian
 
-### `kiw test`
+### `krew test`
 
 Menjalankan unit test dan integration test di seluruh paket Go:
 
 ```bash
-kiw test [--filter <pattern>] [--watch] [--coverage] [--verbose] [--json]
+krew test [--filter <pattern>] [--watch] [--coverage] [--verbose] [--json]
 ```
 
 Menjalankan `go test ./...` dengan output berwarna standar serta laporan ringkasan pengujian.
@@ -265,12 +265,12 @@ Menjalankan `go test ./...` dengan output berwarna standar serta laporan ringkas
 - `--update` / `-u`: memperbarui snapshot/golden file; `--list`: hanya menampilkan daftar test.
 - `--count <n>`: meneruskan `go test -count` (mis. `1` untuk menonaktifkan cache test).
 
-### `kiw vet`
+### `krew vet`
 
 Menjalankan analisis kode statis dan audit keamanan opsional:
 
 ```bash
-kiw vet [--sec] [--vuln]
+krew vet [--sec] [--vuln]
 ```
 
 Menjalankan penganalisis resmi Go `go vet ./...`, mendeteksi potensi kerusakan kode, kode yang tidak terpakai (dead code), dan tag struct yang tidak valid.
@@ -278,12 +278,12 @@ Menjalankan penganalisis resmi Go `go vet ./...`, mendeteksi potensi kerusakan k
 - `--sec`: pemeriksaan postur keamanan — pemindaian secrets, higiene konfigurasi, dan cakupan `.gitignore`.
 - `--vuln`: audit kerentanan melalui `govulncheck` dan verifikasi checksum.
 
-### `kiw fmt`
+### `krew fmt`
 
 Memeriksa atau memformat kode sumber dan berkas komponen `.kiw`:
 
 ```bash
-kiw fmt [--write]
+krew fmt [--write]
 ```
 
 - Tanpa `--write`: Menampilkan berkas yang belum terformat dan keluar dengan kode `1` jika pemformatan diperlukan (berguna untuk gerbang CI).
@@ -293,12 +293,12 @@ kiw fmt [--write]
 
 ## 5. Ekosistem & Manajemen
 
-### `kiw info`
+### `krew info`
 
 Menampilkan jenis workload yang terdeteksi, konfigurasi aktif, dan diagnostik lingkungan Go:
 
 ```bash
-kiw info
+krew info
 ```
 
 *Contoh Output:*
@@ -310,39 +310,39 @@ Output:       bin/server
 Go Version:   go1.27.1 (linux/amd64)
 ```
 
-### `kiw version`
+### `krew version`
 
 Mencetak versi CLI `kiw` dan paket Krewire yang mendasarinya:
 
 ```bash
-kiw version
+krew version
 ```
 
-### `kiw compat`
+### `krew compat`
 
 Memvalidasi kompatibilitas versi di semua deklarasi modul dalam workspace:
 
 ```bash
-kiw compat
+krew compat
 ```
 
-### `kiw tier`
+### `krew tier`
 
 Memeriksa tier open-core proyek dan memvalidasi invarian batas open-core:
 
 ```bash
-kiw tier [--json] [--check <tier>]
+krew tier [--json] [--check <tier>]
 ```
 
 - `--json`: menampilkan postur tier dalam JSON terstruktur.
 - `--check <tier>`: memastikan proyek tidak melebihi tier tertentu (mis. `--check free`).
 
-### `kiw doctor`
+### `krew doctor`
 
 Mendiagnosa lingkungan developer dan kesiapan proyek:
 
 ```bash
-kiw doctor [--json]
+krew doctor [--json]
 ```
 
 Memeriksa prasyarat toolchain, tata letak workspace, dan prasyarat yang harus dipenuhi proyek sebelum dapat di-build. `--json` menghasilkan laporan siap-mesin untuk CI.
@@ -358,12 +358,12 @@ kiw ws sync         # Menyinkronkan dependensi go.work dan go.mod
 kiw ws exec <cmd>   # Menjalankan perintah di setiap modul workspace
 ```
 
-### `kiw boost install`
+### `krew boost install`
 
 Melengkapi repositori proyek apa pun dengan sistem AI agent otonom **Krewire Boost**:
 
 ```bash
-kiw boost install [path]
+krew boost install [path]
 ```
 
 Memasang:
@@ -372,39 +372,39 @@ Memasang:
 - Definisi slash command (`/plan`, `/build`, `/test`, `/review`, `/deploy`, `/boost`)
 - Panduan operasional workspace ke dalam `AGENTS.md`
 
-### `kiw add <package[@version]>`
+### `krew add <package[@version]>`
 
 Menambahkan modul Go, dependensi eksternal, atau plugin frontend ekosistem pilihan:
 
 ```bash
-kiw add svelte                     # Pasang kompilator pulau Svelte 5 dan plugin
-kiw add vue                        # Pasang kompilator pulau Vue 3 dan plugin
-kiw add twcss                      # Pasang runner kompilator Tailwind CSS
-kiw add tailwindcss                # Alias untuk twcss
-kiw add github.com/krewire/krewire@v0.2.0
+krew add svelte                     # Pasang kompilator pulau Svelte 5 dan plugin
+krew add vue                        # Pasang kompilator pulau Vue 3 dan plugin
+krew add twcss                      # Pasang runner kompilator Tailwind CSS
+krew add tailwindcss                # Alias untuk twcss
+krew add github.com/krewire/krewire@v0.2.0
 ```
 
 - **Nol JS secara Default**: Krewire secara default tidak memerlukan JavaScript serta menggunakan token CSS mandiri.
 - **Teknologi Pilihan (Opt-In)**: Saat menambahkan `twcss`, `kiw` akan menginisialisasi `tailwind.config.js` secara otomatis dan mengaktifkan runner compiler Tailwind (binary CLI mandiri di `bin/tailwindcss`, Bun, PNPM, atau fallback npm/npx).
 - **Pulau Reaktif**: Menambahkan `svelte` atau `vue` mengonfigurasi bundler untuk hidrasi pulau progresif (`data-kiw-framework="svelte|vue"`).
 
-### `kiw remove <package>`
+### `krew remove <package>`
 
 Menghapus paket atau menonaktifkan plugin pilihan:
 
 ```bash
-kiw remove twcss
+krew remove twcss
 ```
 
-### `kiw update [packages...] [flags]`
+### `krew update [packages...] [flags]`
 
 Memperbarui dependensi proyek ke versi kompatibel terbaru. Jika dijalankan tanpa argumen, akan memperbarui seluruh dependensi langsung maupun transitif di `go.mod` serta merapikan file modul:
 
 ```bash
-kiw update                      # Perbarui seluruh dependensi di proyek
-kiw update --dry-run            # Tinjau pembaruan yang tersedia tanpa mengubah file
-kiw update krewire ui           # Perbarui paket ekosistem ke @latest
-kiw update github.com/foo/bar   # Perbarui dependensi eksternal tertentu
+krew update                      # Perbarui seluruh dependensi di proyek
+krew update --dry-run            # Tinjau pembaruan yang tersedia tanpa mengubah file
+krew update krewire ui           # Perbarui paket ekosistem ke @latest
+krew update github.com/foo/bar   # Perbarui dependensi eksternal tertentu
 ```
 
 - `--dry-run`: Melihat versi pembaruan yang tersedia tanpa menyentuh disk.
@@ -430,14 +430,14 @@ kiw self-update --dry-run # Simulasikan proses pembaruan
 - `--version <ver>`: Memasang versi target semver tertentu.
 - Melakukan penggantian biner atomik di Linux, macOS, dan Windows dengan fallback otomatis ke toolchain Go.
 
-### `kiw ui <subcommand>`
+### `krew ui <subcommand>`
 
 Kelola komponen design system dan template Pop-Brutalist `.kiw`:
 
 ```bash
-kiw ui list               # Tampilkan daftar semua komponen di Krewire UI
-kiw ui add <name>         # Pasang komponen langsung ke ./components/
-kiw ui diff <name>        # Bandingkan komponen lokal dengan template upstream
+krew ui list               # Tampilkan daftar semua komponen di Krewire UI
+krew ui add <name>         # Pasang komponen langsung ke ./components/
+krew ui diff <name>        # Bandingkan komponen lokal dengan template upstream
 ```
 
 ### `kiw pkg <init|pack|add|list|export>`

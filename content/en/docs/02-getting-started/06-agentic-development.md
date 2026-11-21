@@ -17,7 +17,7 @@ Krewire solves this through **Krewire Boost** (`templates/boost` in `github.com/
 **Krewire Boost** is distributed as a Go module embedded directly inside the `kiw` CLI. With a single command, you can bootstrap a complete agent system into any Krewire repository:
 
 ```bash
-kiw boost install
+krew boost install
 ```
 
 ### Core Capabilities:
@@ -35,7 +35,7 @@ kiw boost install
 To install Boost into your current Krewire project, run:
 
 ```bash
-kiw boost install .
+krew boost install .
 ```
 
 *Terminal output:*
@@ -57,7 +57,7 @@ created .agents/skills/quality-gate/SKILL.md
 
 | Flag | Description |
 | :--- | :--- |
-| `kiw boost install [path]` | Install template files into the target directory (defaults to current dir). |
+| `krew boost install [path]` | Install template files into the target directory (defaults to current dir). |
 | `--force` | Overwrite existing managed agent files without interactive confirmation. |
 | `--dry-run` | Preview files that would be created without writing to disk. |
 
@@ -108,7 +108,7 @@ When an AI agent operates within a Krewire Boost project, it executes a rigorous
                                                  │
 ┌──────────────┐     ┌──────────────┐     ┌──────▼───────┐
 │ 6. Summarize │ <── │  5. Verify   │ <── │ 4. Implement │
-│ (Report Gate)│     │ (kiw test)   │     │ (build agent)│
+│ (Report Gate)│     │ (krew test)   │     │ (build agent)│
 └──────────────┘     └──────────────┘     └──────────────┘
 ```
 
@@ -140,7 +140,7 @@ The `build` agent executes the minimal, convention-respecting code change. For s
 ### 5. Verify (Automated Quality Gate)
 The agent executes the verification command suite:
 ```bash
-kiw test && kiw vet
+krew test && krew vet
 ```
 An agent is forbidden from reporting a task complete if tests fail or unformatted code exists.
 
@@ -163,8 +163,8 @@ The agent scans `krewire.yaml`, checks Go dependencies, detects that the workloa
 
 ```text
 ✓ Identified Krewire project: "my-first-app" (workload: site)
-✓ Build command: kiw build
-✓ Dev command: kiw dev (port 8080)
+✓ Build command: krew build
+✓ Dev command: krew dev (port 8080)
 ✓ Ready for tasks. Use /plan to design or /test to verify.
 ```
 

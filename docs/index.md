@@ -10,8 +10,8 @@ This repository is **100% built with Krewire**, dogfooding the native `site` wor
 
 - **Workload Kind:** `site` (declared in `krewire.yaml`).
 - **Current Version:** `v0.2.3` (single source of truth in `krewire.yaml`).
-- **Build Engine:** `kiw build` driven by `pkg/kiw`, `pkg/book`, and `pkg/web/ssg`.
-- **Runtime Model:** Pure static assets emitted into `.krewire/build/`, served locally via `kiw serve` or in production via lightweight hardened Nginx containers.
+- **Build Engine:** `krew build` driven by `pkg/kiw`, `pkg/book`, and `pkg/web/ssg`.
+- **Runtime Model:** Pure static assets emitted into `.krewire/build/`, served locally via `krew serve` or in production via lightweight hardened Nginx containers.
 - **Go Module Requirement:** None (`go.mod` is not needed for `site` workloads).
 - **Internationalization:** Bilingual 1:1 documentation parity between English (`en`) and Indonesian (`id`).
 
@@ -49,7 +49,7 @@ krewire.com/
 
 ## Documentation Navigation
 
-- [**Getting Started**](./getting-started.md) — Local environment setup, `kiw` installation, live preview with `kiw serve`, and building with `kiw build`.
+- [**Getting Started**](./getting-started.md) — Local environment setup, `kiw` installation, live preview with `krew serve`, and building with `krew build`.
 - [**Architecture**](./architecture.md) — SSG compilation pipeline, `.kiw` DSL integration, component playground, and production hosting model.
 - [**Contributing**](./contributing.md) — Contribution workflow, bilingual authoring standards, theme conventions, and quality gates.
 - [**Agent Guidelines**](../AGENTS.md) — Progress tracking, Git discipline, and automated quality gates.

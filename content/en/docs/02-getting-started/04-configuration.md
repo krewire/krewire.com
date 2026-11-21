@@ -105,8 +105,8 @@ The `project:` section defines the identity and workload behavior:
   - `infra`: Inferred from `infra:` configuration key.
   - `cli`: Inferred or declared for terminal utilities.
 
-  A pre-scaffold bootstrap project is **not** a kind: `kiw info` reports `none`
-  with the marker `pre-init` until `kiw init` equips a variant.
+  A pre-scaffold bootstrap project is **not** a kind: `krew info` reports `none`
+  with the marker `pre-init` until `krew init` equips a variant.
 
   **Progressive Pipeline:** Workloads in Krewire are additive rather than rigid siloes. A static site (`site`) can evolve into a fullstack SSR backend (`app`) simply by adding a `main.go` entry point—without rewriting `.kiw` templates, layouts, or component hierarchies.
 
@@ -116,7 +116,7 @@ The `project:` section defines the identity and workload behavior:
 
 ### 3.2 Content Input (`input:`)
 
-- **`input`:** The content directory consumed by the book (`pkg/book`) pipeline. Defaults to `content`. With `i18n:` enabled, `kiw build` resolves `content/<locale>/docs/` per locale and only falls back to this value.
+- **`input`:** The content directory consumed by the book (`pkg/book`) pipeline. Defaults to `content`. With `i18n:` enabled, `krew build` resolves `content/<locale>/docs/` per locale and only falls back to this value.
 
 ---
 
@@ -150,8 +150,8 @@ The listen address resolves in this order: the `--addr` flag, then
 then `:8080`:
 
 ```bash
-kiw dev --addr :3000
-kiw serve --addr :3000
+krew dev --addr :3000
+krew serve --addr :3000
 ```
 
 ---
@@ -205,7 +205,7 @@ auto_assets:
 
 ### 3.6 Scripts Task Runner (`scripts:`)
 
-Krewire includes an integrated task runner, eliminating the need for `Makefile` or external runners. Any task declared in `scripts:` can be executed directly via `kiw run <task>`:
+Krewire includes an integrated task runner, eliminating the need for `Makefile` or external runners. Any task declared in `scripts:` can be executed directly via `krew run <task>`:
 
 ```yaml
 scripts:
@@ -217,8 +217,8 @@ scripts:
 Run named tasks:
 
 ```bash
-kiw run lint
-kiw run audit
+krew run lint
+krew run audit
 ```
 
 Tasks are executed using the native operating system shell (`sh -c` on Unix/macOS, `cmd /C` on Windows).
@@ -237,7 +237,7 @@ Runtime configuration can be overridden using environment variables without modi
 Example:
 
 ```bash
-KIW_ENV=production KIW_DEBUG=false kiw run
+KIW_ENV=production KIW_DEBUG=false krew run
 ```
 
 ---

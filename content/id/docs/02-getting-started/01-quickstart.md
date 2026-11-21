@@ -32,13 +32,13 @@ curl -fsSL https://krewire.com/scripts/install.sh | sh
 Di platform apa pun dengan Go 1.27.1+ (termasuk Windows):
 
 ```bash
-go install github.com/krewire/krewire/tools/kiw/cmd/kiw@latest
+go install github.com/krewire/krew/cmd/krew@latest
 ```
 
 Pastikan shell dapat menemukannya:
 
 ```bash
-kiw version
+krew version
 ```
 
 Baris pertama berbunyi `kiw Krewire Devtool`, diikuti versi ekosistem dan versi Go Anda. Jika perintah tidak ditemukan, lihat [Instalasi → Mengonfigurasi PATH Anda](/getting-started/installation).
@@ -48,7 +48,7 @@ Baris pertama berbunyi `kiw Krewire Devtool`, diikuti versi ekosistem dan versi 
 ## Langkah 2: Buat Situs
 
 ```bash
-kiw new my-site --site --title "My Site"
+krew new my-site --site --title "My Site"
 cd my-site
 ```
 
@@ -68,7 +68,7 @@ Kegunaan masing-masing berkas:
 ```text
 my-site/
 ├── krewire.yaml         # project name, kind (site), build output, dev port
-├── go.mod               # Go module (created by kiw new)
+├── go.mod               # Go module (created by krew new)
 ├── pages/index.kiw      # the home page → /
 ├── layouts/Base.kiw     # the HTML shell every page renders inside
 ├── components/Hero.kiw  # a reusable component, used as <Hero /> in index.kiw
@@ -82,7 +82,7 @@ Berkas di `pages/` menjadi URL, berkas di `components/` menjadi tag, dan berkas 
 ## Langkah 3: Jalankan Server Pengembangan
 
 ```bash
-kiw dev
+krew dev
 ```
 
 ```text
@@ -166,7 +166,7 @@ Buat `components/Feature.kiw`:
 
 lalu tambahkan `.features { display: grid; gap: 1rem; margin-top: 2rem; }` ke blok `<style>` halaman tersebut. Simpan, dan kedua kartu akan muncul.
 
-> **Tips:** `kiw make component Feature` juga membuatkan `components/Feature.kiw` untuk Anda, sebagai titik awal untuk diedit.
+> **Tips:** `krew make component Feature` juga membuatkan `components/Feature.kiw` untuk Anda, sebagai titik awal untuk diedit.
 
 ---
 
@@ -175,7 +175,7 @@ lalu tambahkan `.features { display: grid; gap: 1rem; margin-top: 2rem; }` ke bl
 Hentikan server pengembangan (`Ctrl+C`) lalu jalankan:
 
 ```bash
-kiw build
+krew build
 ```
 
 ```text
@@ -188,7 +188,7 @@ created assets/krewire.css
 `.krewire/build/` adalah situs web yang lengkap: HTML dan CSS biasa yang dapat disajikan oleh host statis apa pun (Nginx, Caddy, GitHub Pages, object bucket). Pratinjau persis seperti saat nanti disajikan:
 
 ```bash
-kiw serve --addr :3000
+krew serve --addr :3000
 ```
 
 lalu buka <http://localhost:3000>.
@@ -203,7 +203,7 @@ lalu buka <http://localhost:3000>.
 | Layout membungkus halaman | `layout: Base` → `layouts/Base.kiw` |
 | Komponen adalah tag | `components/Feature.kiw` → `<Feature>` |
 | UI bawaan | `<Badge>`, `<Button>`, `<Card>`, … dari Krewire UI |
-| Satu perintah per langkah | `kiw new` → `kiw dev` → `kiw build` → `kiw serve` |
+| Satu perintah per langkah | `krew new` → `krew dev` → `krew build` → `krew serve` |
 
 ## Langkah Selanjutnya
 

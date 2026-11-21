@@ -23,7 +23,7 @@ See the repository LICENSE files.
 
 ## 2. The tier classification (`pkg/model`)
 
-`pkg/model` defines four ordered tiers — `free` → `pro` → `team` → `enterprise` — and `kiw tier [--json] [--check <tier>]` reports a project's tier posture and can assert that it stays within a tier (for example `kiw tier --check free`).
+`pkg/model` defines four ordered tiers — `free` → `pro` → `team` → `enterprise` — and `krew tier [--json] [--check <tier>]` reports a project's tier posture and can assert that it stays within a tier (for example `krew tier --check free`).
 
 ```text
 ┌──────────────────────────────┐

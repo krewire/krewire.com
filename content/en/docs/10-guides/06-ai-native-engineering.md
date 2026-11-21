@@ -25,7 +25,7 @@ Modern software engineering is transitioning beyond simple **AI-assisted coding*
 │ Integration Model             │ Ephemeral editor chat popup       │ Native MCP & in-process runtime │
 │ Context Discovery             │ Ad-hoc prompt copy-pasting        │ Machine-readable SSOT (kiw)     │
 │ Safety Boundary               │ Unbounded terminal access         │ SafePath & explicit human gates │
-│ Verification Model            │ "It looks right in editor"        │ kiw verify & evidence records   │
+│ Verification Model            │ "It looks right in editor"        │ krew verify & evidence records   │
 │ Responsibility Posture        │ Blaming model for bugs            │ Human owns outcome & quality    │
 │ Knowledge Compounding         │ Lost when chat session closes     │ Immutable ADRs & context rules  │
 └───────────────────────────────┴───────────────────────────────────┴─────────────────────────────────┘
@@ -60,12 +60,12 @@ The Krewire ecosystem coordinates AI engineering across three decoupled boundari
                ┌───────────────────────────────────────────────────┐
                │             Krewire kiw CLI (Layer 3)             │
                │          Deterministic Toolchain & SSOT           │
-               │   kiw context · kiw verify · kiw test · Compiler  │
+               │   kiw context · krew verify · krew test · Compiler  │
                └───────────────────────────────────────────────────┘
 ```
 
-1. **The Truth Provider (`tools/kiw`)**:
-   Exposes the deterministic single source of truth (`kiw context --json`), runs compilations, checks dependencies (`kiw pkg health`), and enforces quality gates (`kiw test`, `gofmt`, `go vet`). Operates 100% offline without requiring an LLM or network access.
+1. **The Truth Provider (`krew`)**:
+   Exposes the deterministic single source of truth (`kiw context --json`), runs compilations, checks dependencies (`kiw pkg health`), and enforces quality gates (`krew test`, `gofmt`, `go vet`). Operates 100% offline without requiring an LLM or network access.
 2. **The Engineering Constitution (`templates/boost`)**:
    Defines the operational rules, commit standards, directory structures, and role definitions embedded directly into repositories via `AGENTS.md` and `.agents/`.
 3. **The Cognitive Engine (`krew`)**:
@@ -84,10 +84,10 @@ To maintain safety without stalling developer velocity, agent capabilities are p
 - **Tier 1: Autonomous (No Approval Required)**:
   - Reading repository files, documentation, and architecture decision records.
   - Inspecting project context (`kiw context --json`) and linting rules.
-  - Running non-destructive read-only queries, status checks, and unit tests (`kiw test`).
+  - Running non-destructive read-only queries, status checks, and unit tests (`krew test`).
 - **Tier 2: Supervised (Action Logged, Review on PR)**:
   - Creating or editing application code, styles, templates, and unit tests.
-  - Scaffolding new components or routes (`kiw make component <Name>`).
+  - Scaffolding new components or routes (`krew make component <Name>`).
   - Formatting code and organizing imports (`gofmt`, `go vet`).
 - **Tier 3: Gated (Explicit Human Approval Mandatory)**:
   - Destructive filesystem commands (`rm -rf`, file deletions outside target workspace).
@@ -113,7 +113,7 @@ Before authoring any code, the agent inspects the authoritative machine-readable
 ```bash
 # Discover workload kind, dependencies, rules, and scope
 kiw context --json
-kiw info
+krew info
 ```
 
 The agent parses `AGENTS.md`, active specifications in GitHub Issues, and architectural constraints.
@@ -149,11 +149,11 @@ go test -v ./...
 CGO_ENABLED=0 go build ./...
 ```
 
-### Step 6: Evidence-Backed AI Verification (`kiw verify`)
-The agent runs `kiw verify` to produce a verifiable audit trail:
+### Step 6: Evidence-Backed AI Verification (`krew verify`)
+The agent runs `krew verify` to produce a verifiable audit trail:
 
 ```bash
-kiw verify --json
+krew verify --json
 ```
 
 This verifies that all acceptance criteria are met, dependencies exist in `go.mod`, and no unauthorized network calls were attempted.
@@ -242,10 +242,10 @@ AI-Native workflows introduce specific security considerations that every develo
 
 | Capability | Component | Status | Production Ready |
 |---|---|---|---|
-| Native MCP Server (`stdio`) | `tools/kiw` | Shipped & Verified | Yes |
+| Native MCP Server (`stdio`) | `krew` | Shipped & Verified | Yes |
 | Unified AI SDK (`pkg/ai`) | `krewire/pkg/ai` | Shipped (v0.3+) | Yes |
 | Boost 21-Agent Constitution | `templates/boost` | Shipped & Verified | Yes |
-| Reproducible Verification (`kiw verify`) | `tools/kiw` | Shipped (v0.3.2) | Yes |
+| Reproducible Verification (`krew verify`) | `krew` | Shipped (v0.3.2) | Yes |
 | Web PTY Sandboxing (Bubblewrap) | `dash/pkg/sandbox` | Shipped (Linux amd64/arm64) | Yes (Fail-closed) |
 | Multi-Agent Dynamic Swarms | `krew/pkg/sdlc` | Shipped (ref #15) | Yes |
 | Autonomous Workload Migrations | `cloud/pkg/supervisor` | Active Development | Single-Tenant Only |

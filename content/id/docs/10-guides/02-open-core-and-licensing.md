@@ -23,7 +23,7 @@ Lihat berkas LICENSE di setiap repositori.
 
 ## 2. Klasifikasi tier (`pkg/model`)
 
-`pkg/model` mendefinisikan empat tier berurutan — `free` → `pro` → `team` → `enterprise` — dan `kiw tier [--json] [--check <tier>]` melaporkan postur tier sebuah proyek serta dapat memastikan proyek tetap dalam suatu tier (misalnya `kiw tier --check free`).
+`pkg/model` mendefinisikan empat tier berurutan — `free` → `pro` → `team` → `enterprise` — dan `krew tier [--json] [--check <tier>]` melaporkan postur tier sebuah proyek serta dapat memastikan proyek tetap dalam suatu tier (misalnya `krew tier --check free`).
 
 ```text
 ┌──────────────────────────────┐

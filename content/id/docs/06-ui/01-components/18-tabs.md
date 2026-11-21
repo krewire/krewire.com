@@ -16,7 +16,7 @@ Pengalih konten bertab yang aksesibel dengan dukungan status aktif persisten.
 
 <div data-component-preview="Tabs" data-slug="tabs"></div>
 
-Bingkai di atas memuat `Tabs.kiw` asli dari Krewire UI, yang sudah di-render oleh `kiw build` untuk setiap varian, dalam tema terang dan gelap secara berdampingan. Gunakan tombol pilihan untuk mengganti varian, lalu salin kode sumber komponen atau contoh penggunaannya. **Buka di playground** menampilkannya bersama komponen inti lainnya.
+Bingkai di atas memuat `Tabs.kiw` asli dari Krewire UI, yang sudah di-render oleh `krew build` untuk setiap varian, dalam tema terang dan gelap secara berdampingan. Gunakan tombol pilihan untuk mengganti varian, lalu salin kode sumber komponen atau contoh penggunaannya. **Buka di playground** menampilkannya bersama komponen inti lainnya.
 
 ---
 

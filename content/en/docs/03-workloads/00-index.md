@@ -156,8 +156,8 @@ When `project.kind` is omitted, `kiw` automatically infers the kind using shape 
 - Repositories containing `main.go` or `cmd/` without specialized keys default to **`app`**.
 
 A pre-scaffold bootstrap project (only `go.mod`, `krewire.yaml`, and the starter
-`main.go`) is **not** a kind: `kiw info` reports `none` with the marker
-`pre-init` until `kiw init` equips a variant.
+`main.go`) is **not** a kind: `krew info` reports `none` with the marker
+`pre-init` until `krew init` equips a variant.
 
 > [!TIP]
 > Always declare `project.kind` explicitly in `krewire.yaml` to ensure deterministic CLI behavior across CI/CD and developer workstations.

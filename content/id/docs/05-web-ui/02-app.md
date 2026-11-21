@@ -149,4 +149,4 @@ func main() {
 
 ## Batasan Desain
 
-`pkg/app` bertanggung jawab atas komposisi aplikasi, urutan registrasi, dan supervisi runner saja. Aturan domain bisnis berada di `pkg/model`, perutean HTTP di `pkg/web`, dan mekanisme mesin runtime di `pkg/lifecycle`. `pkg/app` tidak pernah mengimpor `tools/kiw`.
+`pkg/app` bertanggung jawab atas komposisi aplikasi, urutan registrasi, dan supervisi runner saja. Aturan domain bisnis berada di `pkg/model`, perutean HTTP di `pkg/web`, dan mekanisme mesin runtime di `pkg/lifecycle`. `pkg/app` tidak pernah mengimpor `krew`.

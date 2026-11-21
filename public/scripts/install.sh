@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 # ─────────────────────────────────────────────────────────────────────────────
-# install.sh — Krewire kiw installer
+# install.sh — Krewire krew installer
 #
 # Usage:
 #   curl -fsSL https://krewire.com/scripts/install.sh | sh
@@ -19,12 +19,10 @@
 # ─────────────────────────────────────────────────────────────────────────────
 set -eu
 
-# Release assets are published from the krewire monorepo, and the CLI package
-# lives under tools/kiw inside that module. Keep both paths here so the release
-# download and the `go install` fallback can never drift apart.
-REPO="krewire/krewire"
-MODULE="github.com/krewire/krewire/tools/kiw/cmd/kiw"
-BINARY="kiw"
+# Release assets are published from the krew repository.
+REPO="krewire/krew"
+MODULE="github.com/krewire/krew/cmd/krew"
+BINARY="krew"
 INSTALL_DIR="/usr/local/bin"
 FALLBACK_DIR="${HOME}/.local/bin"
 
@@ -42,7 +40,7 @@ die()     { printf "${RED}${BLD}  ✗${RST}  %s\n" "$*" >&2; exit 1; }
 
 # ── Banner ───────────────────────────────────────────────────────────────────
 printf "\n"
-printf "${BLD}  Krewire kiw Installer${RST}\n"
+printf "${BLD}  Krewire krew Installer${RST}\n"
 printf "  Modular Go Libraries for Every Workload\n"
 printf "  https://krewire.com\n\n"
 
@@ -257,7 +255,7 @@ fi
 printf "\n"
 if [ -n "${INSTALLED_AT}" ] && [ -f "${INSTALLED_AT}" ] && [ -x "${INSTALLED_AT}" ]; then
   VER_TXT="$("${INSTALLED_AT}" version 2>/dev/null | head -1 || echo "(version unavailable)")"
-  success "kiw installed successfully!"
+  success "krew installed successfully!"
   info "Binary:  ${INSTALLED_AT}"
   info "Version: ${VER_TXT}"
 
@@ -278,9 +276,9 @@ fi
 # ── Next steps ───────────────────────────────────────────────────────────────
 printf "\n"
 printf "${BLD}  Get started in 30 seconds:${RST}\n\n"
-printf "    kiw new my-app --site   # scaffold a new static site\n"
+printf "    krew new my-app --site   # scaffold a new static site\n"
 printf "    cd my-app\n"
-printf "    kiw dev                 # start hot-reload dev server\n"
-printf "    kiw build               # build static output to .krewire/build\n"
+printf "    krew dev                 # start hot-reload dev server\n"
+printf "    krew build               # build static output to .krewire/build\n"
 printf "\n"
 printf "  Documentation → https://krewire.com/docs/getting-started\n\n"

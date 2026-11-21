@@ -59,7 +59,7 @@ Developers can explore sandboxed project environments and execution telemetry:
 
 For local development without cloud dependencies, developers use the native `kiw` CLI tools:
 
-- `kiw dev`: Run applications locally with auto-restart and hot reload.
+- `krew dev`: Run applications locally with auto-restart and hot reload.
 - `kiw dash`: Run local dev dashboard & MCP telemetry (`:4000`) or manage virtual workspace sandboxes.
 - `kiw mcp --stdio`: Connect AI coding assistants (such as Antigravity or Cursor) directly to your project via the Model Context Protocol.
 

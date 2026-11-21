@@ -21,14 +21,14 @@ or straight from the CLI with `kiw gateway`.
 1. **Declarative Route Table:** Exact and prefix routes, per-route method matching, and either a fixed `target_url` or a registry-resolved `service`.
 2. **Per-Route Middleware:** CORS, tracing, timeout, rate limiting, and circuit breaking are registered by name and composed per route instead of globally.
 3. **Service Discovery:** Round-robin load balancing over registered endpoints; an unavailable upstream returns `502` with a structured Problem JSON body.
-4. **One Route Table, Two Runners:** `kiw dev` / `kiw run` execute the project binary; `kiw gateway` runs the identical `gateway:` block without a rebuild.
+4. **One Route Table, Two Runners:** `krew dev` / `krew run` execute the project binary; `kiw gateway` runs the identical `gateway:` block without a rebuild.
 
 ---
 
 ## Scaffolding a `gateway` Project
 
 ```bash
-kiw new my-gateway --gateway
+krew new my-gateway --gateway
 cd my-gateway
 ```
 
@@ -167,10 +167,10 @@ wiring stays explicit in `main.go`.
 
 ```bash
 # Development: rebuild and restart on change
-kiw dev
+krew dev
 
 # Production binary in .krewire/build/bin/<name>
-kiw build
+krew build
 
 # Run the shared route table without building the project binary
 kiw gateway --port 8080 --routes "/api=user-service,/pay=payment-service"

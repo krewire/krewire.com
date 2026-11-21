@@ -73,7 +73,7 @@ Keamanan, keberlanjutan, dan keandalan adalah hasil dari disiplin arsitektural, 
 
 Kemampuan rekayasa yang sesungguhnya dibentuk di atas sistem produksi nyata, bukan lewat latihan sintetis semata. Pembelajar harus membangun perangkat lunak yang benar-benar dijalankan oleh bisnis nyata, dan bisnis selayaknya mengoperasikan perangkat lunak yang dapat dibedah dan dipahami oleh pembelajar.
 
-- **Scaffolding Kelas Produksi:** Perintah `kiw new` langsung menyediakan fondasi arsitektur nyata dengan penanganan error terstruktur, health check, dan logging sejak menit pertama.
+- **Scaffolding Kelas Produksi:** Perintah `krew new` langsung menyediakan fondasi arsitektur nyata dengan penanganan error terstruktur, health check, dan logging sejak menit pertama.
 - **Dokumentasi sebagai Produk Kelas Utama:** Panduan komprehensif berversi, dokumen keputusan arsitektur (ADR), dan contoh yang dapat dieksekusi menyertai setiap paket.
 - **SDLC Berbasis Komunitas:** Membangun ekosistem pengembang inklusif tempat kolaborasi terbuka menjembatani dunia pendidikan dan industri nyata.
 

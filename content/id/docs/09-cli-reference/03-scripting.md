@@ -8,7 +8,7 @@ date: "2026-10-08"
 
 Krewire menyertakan mesin otomasi tugas bawaan langsung di dalam `kiw`, menghilangkan kebutuhan akan `Makefile`, `npm run`, atau task runner eksternal lainnya.
 
-Tugas-tugas dideklarasikan di dalam blok `scripts:` pada `krewire.yaml` dan dieksekusi melalui `kiw run <tugas>`.
+Tugas-tugas dideklarasikan di dalam blok `scripts:` pada `krewire.yaml` dan dieksekusi melalui `krew run <tugas>`.
 
 ---
 
@@ -21,9 +21,9 @@ scripts:
 
   # Pipeline multi-perintah berurutan
   ci:
-    - "kiw fmt"
-    - "kiw vet"
-    - "kiw test"
+    - "krew fmt"
+    - "krew vet"
+    - "krew test"
 
   # Tugas dengan variabel lingkungan
   seed:
@@ -39,14 +39,14 @@ scripts:
 
 ## Mengeksekusi Skrip
 
-Jalankan skrip bernama apa pun menggunakan `kiw run`:
+Jalankan skrip bernama apa pun menggunakan `krew run`:
 
 ```bash
 # Menjalankan skrip lint
-kiw run lint
+krew run lint
 
 # Menjalankan seluruh rantai validasi CI
-kiw run ci
+krew run ci
 ```
 
 ### Penerusan Argumen (Argument Forwarding)
@@ -54,7 +54,7 @@ kiw run ci
 Argumen yang diberikan setelah tanda `--` secara otomatis diteruskan ke perintah target:
 
 ```bash
-kiw run migrate -- --steps 2
+krew run migrate -- --steps 2
 ```
 
 Perintah di balik layar yang dieksekusi:
@@ -66,10 +66,10 @@ go run ./cmd/migrate/main.go up --steps 2
 
 ## Tugas Ekosistem Bawaan
 
-Jika tidak ada skrip dengan nama yang cocok di `krewire.yaml`, `kiw run` akan mencoba mengeksekusi berkas atau titik masuk (entry point) Go yang sesuai:
+Jika tidak ada skrip dengan nama yang cocok di `krewire.yaml`, `krew run` akan mencoba mengeksekusi berkas atau titik masuk (entry point) Go yang sesuai:
 
 ```bash
-kiw run ./cmd/server/main.go
+krew run ./cmd/server/main.go
 ```
 
 Hal ini menjamin alur kerja yang mulus dan bebas hambatan, baik untuk tugas pengembangan Go terprogram maupun tugas ad-hoc.

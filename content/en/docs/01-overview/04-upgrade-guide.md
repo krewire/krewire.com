@@ -36,18 +36,18 @@ Re-run the automated installer:
 curl -fsSL https://krewire.com/scripts/install.sh | sh
 ```
 
-The script automatically downloads the latest release matching your CPU architecture and replaces the binary in `/usr/local/bin/kiw` (or `~/.local/bin/kiw`).
+The script automatically downloads the latest release matching your CPU architecture and replaces the binary in `/usr/local/bin/krew` (or `~/.local/bin/krew`).
 
 ### Option B: Via `go install`
 
 ```bash
-go install github.com/krewire/krewire/tools/kiw/cmd/kiw@latest
+go install github.com/krewire/krew/cmd/krew@latest
 ```
 
 ### Verify the Updated Version
 
 ```bash
-kiw version
+krew version
 ```
 
 Confirm that the CLI version matches the current release (`v0.1.0`+).
@@ -69,7 +69,7 @@ go mod tidy
 Run your automated test suite to verify compatibility:
 
 ```bash
-kiw test
+krew test
 # Or standard go test
 go test ./...
 ```

@@ -41,14 +41,14 @@ Krewire unifies all of these workloads under **Go**, **`kiw`**, and **`krewire.y
 
 | Workload | Traditional Fragmented Approach | The Krewire Approach |
 | :--- | :--- | :--- |
-| **Static Site** | Node.js + Astro / Hugo / Next.js | `kiw build --site` (Go SSG, zero client JS) |
-| **Documentation** | Docusaurus / GitBook / MkDocs | `kiw build --book` (`pkg/book` markdown engine) |
-| **Web Monolith** | Laravel / Django / Next.js + Node | `kiw run` (`pkg/app` single Go binary) |
-| **CLI & TUI** | Python Click / Node / Cobra | `kiw run` (`pkg/tui` reactive terminal) |
+| **Static Site** | Node.js + Astro / Hugo / Next.js | `krew build --site` (Go SSG, zero client JS) |
+| **Documentation** | Docusaurus / GitBook / MkDocs | `krew build --book` (`pkg/book` markdown engine) |
+| **Web Monolith** | Laravel / Django / Next.js + Node | `krew run` (`pkg/app` single Go binary) |
+| **CLI & TUI** | Python Click / Node / Cobra | `krew run` (`pkg/tui` reactive terminal) |
 | **Background Jobs** | Celery + Python + Redis / Sidekiq | `kiw worker` (`pkg/cloud/worker` queues & cron) |
-| **Microservices** | Spring Boot / Express / Go kit | `kiw run` (`pkg/cloud/service` gateway & OTel) |
-| **Cloud Infra** | Terraform / HCL / CloudFormation | `kiw deploy --target infra` (`pkg/cloud/infra` Go IaC declarations) |
-| **Client Frontend** | React / Vue / Angular + bundlers | `kiw build --target wasm` (`pkg/runtime` Go-to-WASM) |
+| **Microservices** | Spring Boot / Express / Go kit | `krew run` (`pkg/cloud/service` gateway & OTel) |
+| **Cloud Infra** | Terraform / HCL / CloudFormation | `krew deploy --target infra` (`pkg/cloud/infra` Go IaC declarations) |
+| **Client Frontend** | React / Vue / Angular + bundlers | `krew build --target wasm` (`pkg/runtime` Go-to-WASM) |
 
 ---
 
@@ -67,7 +67,7 @@ three pillars before it lands:
 
 These pillars are why "Why Krewire?" has a concrete answer for every stage of
 the life cycle, not just for the code: one specification format, one config,
-one CLI, and one language — from `docs/specs/` to `kiw deploy`.
+one CLI, and one language — from `docs/specs/` to `krew deploy`.
 
 ---
 

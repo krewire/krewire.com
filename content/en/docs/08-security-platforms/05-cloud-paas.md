@@ -50,13 +50,13 @@ You can deploy any Krewire project directly using the `kiw` CLI:
 
 ```bash
 # Stage production binary and deployable artifacts
-kiw deploy --target binary
+krew deploy --target binary
 
 # Generate production systemd service definition
-kiw deploy --target systemd
+krew deploy --target systemd
 
 # For static and documentation sites (GitHub Pages)
-kiw deploy --target gh-pages
+krew deploy --target gh-pages
 ```
 
 ### Production Docker Container

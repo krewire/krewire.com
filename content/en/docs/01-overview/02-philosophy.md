@@ -73,7 +73,7 @@ Security, sustainability, and reliability are outcomes of disciplined restraint,
 
 True engineering competency is developed on production systems, not synthetic exercises. Learners should build software businesses actually run, and businesses should operate software learners can actually inspect and comprehend.
 
-- **Production-Grade Scaffolding:** `kiw new` scaffolds real architectural foundations with structured error handling, health checks, and logging from minute one.
+- **Production-Grade Scaffolding:** `krew new` scaffolds real architectural foundations with structured error handling, health checks, and logging from minute one.
 - **Documentation as a First-Class Product:** Comprehensive, version-controlled guides, architecture decision records (ADRs), and executable examples accompany every package.
 - **Community-Driven SDLC:** Fostering an inclusive developer ecosystem where open collaboration bridges the gap between education and industry.
 
