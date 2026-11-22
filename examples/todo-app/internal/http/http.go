@@ -6,8 +6,8 @@ import (
 	"net/http"
 
 	rvapp "github.com/krewire/krewire/pkg/app"
-	rvweb "github.com/krewire/krewire/pkg/web"
 	validation "github.com/krewire/krewire/pkg/validation"
+	rvweb "github.com/krewire/krewire/pkg/web"
 )
 
 // Handler serves the JSON API endpoints.

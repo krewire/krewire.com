@@ -96,7 +96,6 @@ func main() {
 ```yaml
 project:
   name: "cloud-env"
-  kind: infra
   version: "0.1.0"
 
 infra:

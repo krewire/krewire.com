@@ -35,7 +35,7 @@ Struktur direktori yang dihasilkan mengikuti arsitektur modular monolit kanonika
 
 ```text
 storefront/
-├── krewire.yaml          # Konfigurasi proyek (kind: app)
+├── krewire.yaml          # Konfigurasi proyek (dev.port: 8080)
 ├── go.mod                # Definisi modul Go
 ├── main.go               # Titik masuk aplikasi yang ringkas (entry point)
 ├── internal/
@@ -244,7 +244,6 @@ Konfigurasikan port server, metadata proyek, dan target opsional di `krewire.yam
 ```yaml
 project:
   name: "storefront"
-  kind: app
   version: "0.1.0"
 
 dev:

@@ -8,12 +8,11 @@ date: "2026-09-29"
 
 Krewire menyatukan delapan jenis arsitektur workload di bawah satu antarmuka baris perintah (**`kiw`**) dan satu berkas konfigurasi devtool deklaratif (**`krewire.yaml`**).
 
-Tipe workload dideklarasikan di dalam berkas `krewire.yaml` proyek Anda melalui kolom `project.kind`. `kiw` menggunakan konfigurasi ini untuk menjalankan kompiler, server pengembangan lokal, dan pipeline deployment yang tepat:
+Krewire dapat menangani 8 workload secara progresif dalam satu arsitektur terpadu tanpa pemisahan jenis workload yang kaku. Konfigurasi dideklarasikan langsung di dalam `krewire.yaml`:
 
 ```yaml
 project:
   name: "my-service"
-  kind: "service" # app, cli, site, book, worker, service, gateway, infra
   version: "0.1.0"
 ```
 

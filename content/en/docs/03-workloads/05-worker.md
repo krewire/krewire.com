@@ -117,7 +117,6 @@ func main() {
 ```yaml
 project:
   name: "email-worker"
-  kind: worker
   version: "0.1.0"
 
 worker:

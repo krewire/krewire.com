@@ -89,7 +89,6 @@ Frontmatter akan dihapus otomatis sebelum perenderan Markdown untuk memastikan k
 ```yaml
 project:
   name: "ecosystem-docs"
-  kind: book
   version: "0.1.0"
 
 # Direktori sumber manuskrip markdown

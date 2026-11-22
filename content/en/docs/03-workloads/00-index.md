@@ -133,31 +133,25 @@ This chapter provides comprehensive architectural documentation, configuration g
 
 ---
 
-## Declaring Workloads in `krewire.yaml`
+## Configuring Workloads in `krewire.yaml`
 
-To set the workload for your project, configure the `project.kind` field:
+To set up project metadata and capabilities, configure `krewire.yaml`:
 
 ```yaml
 project:
   name: "storefront"
-  kind: app # app, cli, site, book, worker, service, gateway, infra
   version: "0.1.0"
   author: "Acme Corp"
 ```
 
-When `project.kind` is omitted, `kiw` automatically infers the kind using shape markers:
+Krewire automatically detects project capabilities using shape markers and declarative configuration blocks:
 
-- Directories containing `pages/` or an `ssg:` key are detected as **`site`**.
-- Directories containing `content/` are detected as **`book`**.
-- Directories containing a `worker:` key are detected as **`worker`**.
-- Directories containing a `service:` key are detected as **`service`**.
-- Directories containing a `gateway:` key are detected as **`gateway`**.
-- Directories containing an `infra:` key are detected as **`infra`**.
-- Repositories containing `main.go` or `cmd/` without specialized keys default to **`app`**.
+- Directories containing `pages/` or an `ssg:` key activate **SSG** capabilities.
+- Directories containing `content/` activate **book** documentation capabilities.
+- Projects containing a `worker:` key activate background **worker** queues.
+- Projects containing a `service:` key activate headless **service** capabilities.
+- Projects containing a `gateway:` key activate edge API **gateway** routing.
+- Projects containing an `infra:` key activate cloud **infrastructure** management.
+- Repositories containing `main.go` or `cmd/` activate binary **app** execution.
 
-A pre-scaffold bootstrap project (only `go.mod`, `krewire.yaml`, and the starter
-`main.go`) is **not** a kind: `krew info` reports `none` with the marker
-`pre-init` until `krew init` equips a variant.
-
-> [!TIP]
-> Always declare `project.kind` explicitly in `krewire.yaml` to ensure deterministic CLI behavior across CI/CD and developer workstations.
+A pre-scaffold bootstrap project (only `go.mod`, `krewire.yaml`, and the starter `main.go`) is in a `pre-init` state until `krew init` equips layout and capabilities.

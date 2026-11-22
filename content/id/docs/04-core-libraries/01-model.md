@@ -19,39 +19,24 @@ Sebagai paket fondasi inti, `pkg/model` **hanya boleh bergantung pada pustaka st
 
 ---
 
-## Model Workload (`pkg/model`)
+## Model Deklaratif & Batasan (`pkg/model`)
 
-Delapan jenis workload resmi dideklarasikan sebagai konstanta bertipe:
+Paket `pkg/model` mendefinisikan model fundamental, cakupan hierarki arsitektur, tangga lisensi, dan aturan validasi invarian untuk ekosistem Krewire:
 
 ```go
 package model
 
-type Kind string
+type Project struct {
+	Name       string `json:"name"`
+	ModulePath string `json:"modulePath"`
+	ConfigPath string `json:"configPath"`
+}
 
-const (
-	KindApp     Kind = "app"
-	KindCLI     Kind = "cli"
-	KindSite    Kind = "site"
-	KindBook    Kind = "book"
-	KindWorker  Kind = "worker"
-	KindService Kind = "service"
-	KindGateway Kind = "gateway"
-	KindInfra   Kind = "infra"
-)
-
-// AllKinds mencantumkan setiap Kind valid dalam urutan kanonikal.
-var AllKinds = []Kind{KindApp, KindCLI, KindSite, KindBook, KindWorker, KindService, KindGateway, KindInfra}
-
-// IsValid melaporkan apakah k merupakan salah satu dari delapan kind yang dikenal.
-func (k Kind) IsValid() bool
-
-// ParseKind mengurai s sebagai Kind, mengembalikan usage error jika input tidak dikenal.
-func ParseKind(s string) (Kind, error)
+// Validate memvalidasi invarian proyek (nama kebab-case, path modul yang aman).
+func (p Project) Validate() error
 ```
 
-`AllKinds` adalah pemilik tunggal (SSOT) dari daftar kind: paket lain (termasuk detektor bentuk pada `kiw`) menurunkan nilainya dari sini alih-alih mendeklarasikan ulang kedelapan nama tersebut.
-
-`pkg/model` juga mendeklarasikan `Project` (nama, path modul, jenis beban kerja, path konfigurasi) dengan method `Validate`, tangga `Scope` (`workspace` → `module` → `domain` → `service` → `unit`), tangga open-core `Tier`, serta batasan generik `OptInRule` / `ViolatesOptIn`.
+`pkg/model` juga mendeklarasikan hierarki `Scope` (`Workspace` → `Module` → `Domain` → `Service` → `Unit`), tangga lisensi open-core `Tier` (`free`, `pro`, `team`, `enterprise`), primitif `DomainEvent` yang imutabel, serta kontrol keamanan dasar.
 
 ---
 

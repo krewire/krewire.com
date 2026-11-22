@@ -290,16 +290,15 @@ func init() {
 }
 
 // ScaffoldKrewireYAML generates a valid krewire.yaml declarative configuration.
-func ScaffoldKrewireYAML(kind, name string) string {
-	if kind == "" {
-		kind = "app"
+func ScaffoldKrewireYAML(template, name string) string {
+	if template == "" {
+		template = "app"
 	}
 	if name == "" {
-		name = "my-" + kind
+		name = "my-" + template
 	}
 	return `version: "1.0"
 name: "` + name + `"
-kind: "` + kind + `"
 stability: "stable"
 
 build:

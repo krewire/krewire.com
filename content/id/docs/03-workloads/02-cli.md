@@ -128,7 +128,6 @@ func main() {
 ```yaml
 project:
   name: "sysmon"
-  kind: cli
   version: "0.1.0"
 
 build:

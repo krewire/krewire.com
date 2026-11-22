@@ -65,7 +65,7 @@ Jika diperbesar ke `github.com/krewire/krewire`, gagasan yang sama diterapkan se
 | 1 | Inti deklaratif (`pkg/errs`, `pkg/model`, `pkg/version`) | Pustaka standar (`model`, `version` boleh mengimpor `errs`) |
 | 0 | Pustaka standar Go | — |
 
-Enam invarian menjaga tangga ini tetap konsisten:
+Lima invarian menjaga tangga ini tetap konsisten:
 
 | # | Invarian | Ditegakkan oleh |
 | :--- | :--- | :--- |
@@ -74,7 +74,6 @@ Enam invarian menjaga tangga ini tetap konsisten:
 | 3 | **Tanpa nama ke atas** — paket fondasi tidak berisi string literal yang menyebut paket di atasnya. | `TestFoundationNamesNoHigherPackage` |
 | 4 | **Inti hermetis** — `pkg/model` tidak memiliki impor pihak ketiga maupun impor Krewire lainnya. | `TestModel_StdlibBoundary` |
 | 5 | **Isolasi perkakas** — tidak ada apa pun di bawah `pkg/` atau `templates/` yang mengimpor `krew`. | `TestPackagesNeverImportKiw` |
-| 6 | **Baterai opt-in** — paket khusus workload (`cloud/worker`, `web/ssg`, …) tidak dapat diimpor oleh jenis lain kecuali di-opt-in. | `ViolatesOptIn` di `pkg/model/project.go` |
 
 ## 4. Pemisahan Peer & Pola Bridge/Gateway
 

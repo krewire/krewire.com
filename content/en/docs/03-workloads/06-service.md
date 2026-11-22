@@ -95,7 +95,6 @@ func main() {
 ```yaml
 project:
   name: "auth-service"
-  kind: service
   version: "0.1.0"
 
 service:

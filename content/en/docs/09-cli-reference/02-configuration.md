@@ -18,7 +18,6 @@ There is no separate `ssg.yaml` or tool-specific configuration file. Configurati
 # 1. Project Identity
 project:
   name: "my-service"            # Unique project name (DNS-safe identifier)
-  kind: "service"               # app, cli, site, book, worker, service, gateway, infra
   version: "v0.1.0"             # Product version, injected as .Version into pages
 
 title: "My Service"             # Site/book title
@@ -40,19 +39,19 @@ build:
 dev:
   port: 8080                    # Dev server port (integer; --addr overrides)
 
-# 5. Workload-Specific Settings (only the block matching project.kind applies)
+# 5. Capability Settings
 
-# kind: worker
+# worker capability
 worker:
   concurrency: 10               # Maximum concurrent workers
   queues: ["default", "email"]  # Queue names this worker consumes
 
-# kind: service
+# service capability
 service:
   name: "user-service"
   port: 8080
 
-# kind: gateway
+# gateway capability
 gateway:
   host: ""
   port: 8080
@@ -67,7 +66,7 @@ gateway:
       middleware: [cors]
       rate_limit: 100
 
-# kind: infra
+# infra capability
 infra:
   provider: "aws"               # aws, gcp, kubernetes
   region: "ap-southeast-1"
@@ -83,11 +82,9 @@ infra:
 | Key | Type | Required | Description |
 | :--- | :--- | :---: | :--- |
 | `name` | String | Yes | Name of the project or service. |
-| `kind` | String | Yes | Workload kind (`app`, `cli`, `site`, `book`, `worker`, `service`, `gateway`, `infra`). |
 | `version` | String | No | Semantic release version (`vX.Y.Z`); folded into the effective version used by every pipeline. |
 
-A pre-scaffold bootstrap project is **not** a kind: `krew info` reports `none`
-with the marker `pre-init` until `krew init` equips a variant.
+A pre-scaffold bootstrap project is in a `pre-init` state until `krew init` equips a variant.
 
 ### Top-level metadata
 
@@ -162,7 +159,7 @@ on disk.
 | `entry` | String | `./wasm` | Main package built with `GOOS=js GOARCH=wasm`. |
 | `name` | String | `runtime` | Output module name. |
 
-Client-side WebAssembly is a **library target**, not a workload kind: build it
+Client-side WebAssembly is a **library target**: build it
 with `krew build --target wasm` inside an `app` or `site` project.
 
 ### `worker`

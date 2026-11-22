@@ -316,20 +316,19 @@ func (s *Server) dispatch(ctx context.Context, method string, paramsRaw json.Raw
 				},
 				{
 					"name":        "scaffold_project_config",
-					"description": "Scaffold a canonical krewire.yaml declarative configuration for any of the 8 Krewire project kinds.",
+					"description": "Scaffold a canonical krewire.yaml declarative configuration.",
 					"inputSchema": map[string]any{
 						"type": "object",
 						"properties": map[string]any{
-							"kind": map[string]any{
+							"template": map[string]any{
 								"type":        "string",
-								"description": "Project kind: app, cli, site, book, worker, service, gateway, or infra",
+								"description": "Starter template: app, cli, site, book, worker, service, gateway, or infra",
 							},
 							"name": map[string]any{
 								"type":        "string",
 								"description": "Project identifier name",
 							},
 						},
-						"required": []string{"kind"},
 					},
 				},
 				{
@@ -544,13 +543,18 @@ func (s *Server) callTool(ctx context.Context, name string, argsRaw json.RawMess
 
 	case "scaffold_project_config":
 		var p struct {
-			Kind string `json:"kind"`
-			Name string `json:"name"`
+			Template string `json:"template"`
+			Kind     string `json:"kind"`
+			Name     string `json:"name"`
 		}
 		if err := json.Unmarshal(argsRaw, &p); err != nil {
 			return fmt.Sprintf("invalid arguments: %v", err), true
 		}
-		yamlDoc := ScaffoldKrewireYAML(p.Kind, p.Name)
+		tmpl := p.Template
+		if tmpl == "" {
+			tmpl = p.Kind
+		}
+		yamlDoc := ScaffoldKrewireYAML(tmpl, p.Name)
 		return yamlDoc, false
 
 	case "get_cli_commands":

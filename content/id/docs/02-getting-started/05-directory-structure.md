@@ -202,7 +202,6 @@ Jika Anda mengintegrasikan Krewire ke dalam repositori lama yang memiliki konven
 ```yaml
 project:
   name: "custom-app"
-  kind: "app"
   dirs:
     web: "src/web"
     public: "static"

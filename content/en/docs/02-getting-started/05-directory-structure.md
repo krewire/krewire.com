@@ -204,7 +204,6 @@ If you are incorporating Krewire into an established repository with non-standar
 ```yaml
 project:
   name: "custom-app"
-  kind: "app"
   dirs:
     web: "src/web"
     public: "static"

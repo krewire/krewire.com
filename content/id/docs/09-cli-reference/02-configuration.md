@@ -18,7 +18,6 @@ Tidak ada berkas konfigurasi terpisah seperti `ssg.yaml` atau berkas spesifik pe
 # 1. Identitas Proyek
 project:
   name: "my-service"            # Nama unik proyek (pengenal aman-DNS)
-  kind: "service"               # app, cli, site, book, worker, service, gateway, infra
   version: "v0.1.0"             # Versi produk, disuntikkan sebagai .Version ke halaman
 
 title: "My Service"             # Judul situs/buku
@@ -40,19 +39,19 @@ build:
 dev:
   port: 8080                    # Port server dev (integer; ditimpa oleh --addr)
 
-# 5. Pengaturan Khusus Workload (hanya blok yang cocok dengan project.kind yang berlaku)
+# 5. Pengaturan Kapabilitas
 
-# kind: worker
+# kapabilitas worker
 worker:
   concurrency: 10               # Jumlah maksimum worker konkuren
   queues: ["default", "email"]  # Nama-nama antrean yang dikonsumsi worker ini
 
-# kind: service
+# kapabilitas service
 service:
   name: "user-service"
   port: 8080
 
-# kind: gateway
+# kapabilitas gateway
 gateway:
   host: ""
   port: 8080
@@ -67,7 +66,7 @@ gateway:
       middleware: [cors]
       rate_limit: 100
 
-# kind: infra
+# kapabilitas infra
 infra:
   provider: "aws"               # aws, gcp, kubernetes
   region: "ap-southeast-1"
@@ -83,10 +82,9 @@ infra:
 | Kunci | Tipe | Wajib | Deskripsi |
 | :--- | :--- | :---: | :--- |
 | `name` | String | Ya | Nama proyek atau layanan. |
-| `kind` | String | Ya | Jenis workload (`app`, `cli`, `site`, `book`, `worker`, `service`, `gateway`, `infra`). |
 | `version` | String | Tidak | Versi rilis semantik (`vX.Y.Z`); digabungkan ke dalam versi efektif yang digunakan oleh setiap pipeline. |
 
-Proyek bootstrap pra-perancah (pre-scaffold) **bukan** sebuah kind: `krew info` melaporkan `none` dengan penanda `pre-init` hingga `krew init` memilih suatu varian.
+Proyek bootstrap pra-perancah (pre-scaffold) berada dalam status `pre-init` hingga `krew init` memilih suatu varian.
 
 ### Metadata tingkat atas
 

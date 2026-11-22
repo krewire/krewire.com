@@ -35,7 +35,7 @@ The resulting directory tree follows Krewire's canonical modular monolith struct
 
 ```text
 storefront/
-├── krewire.yaml          # Project configuration (kind: app)
+├── krewire.yaml          # Project configuration (dev.port: 8080)
 ├── go.mod                # Go module definition
 ├── main.go               # Thin application entry point
 ├── internal/
@@ -244,7 +244,6 @@ Configure server ports, project metadata, and optional client WebAssembly target
 ```yaml
 project:
   name: "storefront"
-  kind: app
   version: "0.1.0"
 
 dev:

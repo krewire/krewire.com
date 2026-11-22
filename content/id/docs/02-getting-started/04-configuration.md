@@ -31,11 +31,9 @@ Berikut adalah skema kanonikal lengkap dari `krewire.yaml` beserta nilai default
 # Konfigurasi Devtool Krewire (krewire.yaml)
 # =============================================================================
 
-# Identitas Proyek & Jenis Workload
+# Identitas Proyek
 project:
   name: "my-service"            # Pengidentifikasi proyek (dibaca oleh site loader)
-  # kind: "site"                # Opsional (app | cli | site | book | worker | service | gateway | infra).
-                                # Jika tidak diisi, kiw otomatis mendeteksi tipe proyek dari marker direktori.
   version: "v0.2.0"             # Versi semantik yang diinjeksikan sebagai `.Version` ke dalam halaman
   dirs:                         # Opsional: Menimpa lokasi direktori kanonikal
     web: "web"                  # Handler dan template web
@@ -105,7 +103,7 @@ Bagian `project:` mendefinisikan identitas dan perilaku workload:
   - `infra`: Terdeteksi dari adanya blok konfigurasi `infra:`.
   - `cli`: Terdeteksi atau dideklarasikan untuk perkakas terminal / TUI.
 
-  Proyek bootstrap sebelum perancangan kerangka (pre-scaffold) **bukanlah** suatu jenis kind: `krew info` melaporkan `none` dengan penanda `pre-init` hingga `krew init` melengkapi variannya.
+  Proyek bootstrap sebelum perancangan kerangka (pre-scaffold) berada dalam status `pre-init`: `krew info` melaporkan penanda `pre-init` hingga `krew init` melengkapi varian perancah.
 
   **Progressive Pipeline:** Workload di Krewire bersifat aditif dan tidak membatasi evolusi proyek. Situs statis (`site`) dapat berkembang menjadi backend SSR (`app`) hanya dengan menambahkan berkas `main.go`—tanpa perlu menulis ulang komponen atau layout `.kiw` yang telah dibuat.
 

@@ -89,7 +89,6 @@ The frontmatter is automatically stripped before Markdown rendering, ensuring cl
 ```yaml
 project:
   name: "ecosystem-docs"
-  kind: book
   version: "0.1.0"
 
 # Source directory containing markdown manuscripts

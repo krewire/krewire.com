@@ -117,7 +117,6 @@ func main() {
 ```yaml
 project:
   name: "my-gateway"
-  kind: gateway
   version: "0.1.0"
 
 gateway:

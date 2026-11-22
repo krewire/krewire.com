@@ -61,7 +61,7 @@ The parts you will touch:
 ```text
 todo-app/
 ├── main.go                 # loads krewire.yaml, builds the app, runs it — unchanged
-├── krewire.yaml            # name, kind: app, dev.port: 8080
+├── krewire.yaml            # name, dev.port: 8080
 ├── internal/app/app.go     # wiring: providers registered in the app container
 ├── internal/http/http.go   # a sample JSON API (/api/status) — unchanged
 ├── web/layouts/shell.go    # the HTML shell around every page — unchanged

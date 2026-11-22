@@ -8,12 +8,11 @@ date: "2026-09-29"
 
 Krewire unifies eight distinct architectural workload kinds under one command-line interface (**`kiw`**) and one declarative devtool configuration (**`krewire.yaml`**).
 
-The workload is declared in your project's `krewire.yaml` via the `project.kind` field. `kiw` uses this setting to drive the correct compiler, dev server, and deployment pipeline:
+Krewire handles 8 progressive workloads within a unified project architecture without rigid workload boundaries or mode locking. Declare capabilities and configuration directly in `krewire.yaml`:
 
 ```yaml
 project:
   name: "my-service"
-  kind: "service" # app, cli, site, book, worker, service, gateway, infra
   version: "0.1.0"
 ```
 

@@ -206,7 +206,7 @@ kiw gateway [--port 8080] [--host 0.0.0.0] [--routes "/api/orders=http://localho
 
 ### `krew build`
 
-Compile the current project into release-ready artifacts according to its workload kind:
+Compile the current project into release-ready artifacts according to its detected capabilities:
 
 ```bash
 krew build [--target site|book|binary|wasm|infra] [--output <path>]

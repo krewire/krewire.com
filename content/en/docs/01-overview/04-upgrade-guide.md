@@ -86,7 +86,6 @@ Krewire enforces strict **Separation of Concerns** in project configuration:
 # Krewire Devtool Configuration (kiw)
 project:
   name: "my-site"
-  kind: "site"
   version: "v0.1.0"
   author: "Krewire Team"
 

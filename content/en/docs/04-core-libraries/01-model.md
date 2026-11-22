@@ -19,39 +19,24 @@ As a foundational core package, `pkg/model` may depend **only on Go standard lib
 
 ---
 
-## Workload Model (`pkg/model`)
+## Declarative Models & Boundaries (`pkg/model`)
 
-The eight official workload kinds are declared as typed constants:
+The `pkg/model` package establishes the foundational models, architectural scopes, licensing tiers, and invariant validation rules for the Krewire ecosystem:
 
 ```go
 package model
 
-type Kind string
+type Project struct {
+	Name       string `json:"name"`
+	ModulePath string `json:"modulePath"`
+	ConfigPath string `json:"configPath"`
+}
 
-const (
-	KindApp     Kind = "app"
-	KindCLI     Kind = "cli"
-	KindSite    Kind = "site"
-	KindBook    Kind = "book"
-	KindWorker  Kind = "worker"
-	KindService Kind = "service"
-	KindGateway Kind = "gateway"
-	KindInfra   Kind = "infra"
-)
-
-// AllKinds lists every valid Kind in canonical order.
-var AllKinds = []Kind{KindApp, KindCLI, KindSite, KindBook, KindWorker, KindService, KindGateway, KindInfra}
-
-// IsValid reports whether k is one of the eight known kinds.
-func (k Kind) IsValid() bool
-
-// ParseKind parses s as a Kind, returning a usage error on unknown input.
-func ParseKind(s string) (Kind, error)
+// Validate verifies project invariants (kebab-case name, safe module path).
+func (p Project) Validate() error
 ```
 
-`AllKinds` is the single owner of the kind list: every other package (including `kiw`'s shape detector) derives from it instead of restating the eight names.
-
-`pkg/model` also declares `Project` (name, module path, kind, config path) with `Validate`, the `Scope` ladder (`workspace` → `module` → `domain` → `service` → `unit`), the open-core `Tier` ladder, and the generic `OptInRule` / `ViolatesOptIn` constraints that keep batteries out of kinds that did not opt in.
+`pkg/model` also declares the hierarchical `Scope` ladder (`Workspace` → `Module` → `Domain` → `Service` → `Unit`), the open-core licensing `Tier` ladder (`free`, `pro`, `team`, `enterprise`), immutable `DomainEvent` primitives, and the baseline security controls.
 
 ---
 

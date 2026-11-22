@@ -31,11 +31,9 @@ Below is the complete, canonical schema of `krewire.yaml` with production defaul
 # Krewire Devtool Configuration (krewire.yaml)
 # =============================================================================
 
-# Project Identity & Workload Kind
+# Project Identity
 project:
   name: "my-service"            # Project identifier (read by the site loader)
-  # kind: "site"                # Optional override (app | cli | site | book | worker | service | gateway | infra).
-                                # When omitted, kiw auto-detects kind from filesystem markers (pages/, main.go, etc.)
   version: "v0.2.0"             # Semantic version injected as `.Version` into pages
   dirs:                         # Optional: Override canonical folder locations
     web: "web"                  # Web handlers and templates
@@ -105,8 +103,8 @@ The `project:` section defines the identity and workload behavior:
   - `infra`: Inferred from `infra:` configuration key.
   - `cli`: Inferred or declared for terminal utilities.
 
-  A pre-scaffold bootstrap project is **not** a kind: `krew info` reports `none`
-  with the marker `pre-init` until `krew init` equips a variant.
+  A pre-scaffold bootstrap project is in a `pre-init` state: `krew info` reports
+  the marker `pre-init` until `krew init` equips a variant.
 
   **Progressive Pipeline:** Workloads in Krewire are additive rather than rigid siloes. A static site (`site`) can evolve into a fullstack SSR backend (`app`) simply by adding a `main.go` entry point—without rewriting `.kiw` templates, layouts, or component hierarchies.
 

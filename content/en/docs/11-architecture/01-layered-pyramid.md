@@ -65,7 +65,7 @@ Zooming into `github.com/krewire/krewire`, the same idea is applied as a ranked 
 | 1 | Declarative core (`pkg/errs`, `pkg/model`, `pkg/version`) | Standard library (`model`, `version` may import `errs`) |
 | 0 | Go standard library | — |
 
-Six invariants keep this ladder honest:
+Five invariants keep this ladder honest:
 
 | # | Invariant | Enforced by |
 | :--- | :--- | :--- |
@@ -74,7 +74,6 @@ Six invariants keep this ladder honest:
 | 3 | **No upward names** — foundation packages contain no string literals naming higher packages. | `TestFoundationNamesNoHigherPackage` |
 | 4 | **Hermetic core** — `pkg/model` has no third-party or other Krewire imports. | `TestModel_StdlibBoundary` |
 | 5 | **Tooling isolation** — nothing under `pkg/` or `templates/` imports `krew`. | `TestPackagesNeverImportKiw` |
-| 6 | **Opt-in batteries** — workload-specific packages (`cloud/worker`, `web/ssg`, …) cannot be imported by other kinds unless opted in. | `ViolatesOptIn` in `pkg/model/project.go` |
 
 ## 4. Peer Decoupling & the Bridge/Gateway Pattern
 
