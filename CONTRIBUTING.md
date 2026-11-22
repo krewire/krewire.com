@@ -85,10 +85,10 @@ python3 scripts/check-i18n-parity.py
 python3 scripts/sync-i18n.py --check
 
 # 3. Clean static site generation
-kiw build
+krew build
 ```
 
-`kiw build` must exit code 0 and compile all static assets and documentation into `.krewire/build/` without errors or broken routes.
+`krew build` must exit code 0 and compile all static assets and documentation into `.krewire/build/` without errors or broken routes.
 
 ---
 
@@ -116,10 +116,16 @@ Keep commits focused and atomic (recommended ≤~300 LOC per commit). If impleme
 
 ---
 
-## 7. Additional Resources
+## 7. Deployment Pathways
+
+- **Standard Production Release**: Triggered exclusively by pushing stable SemVer Git tags (`vX.Y.Z`) on `main`. Workflow: [`.github/workflows/deploy.yaml`](.github/workflows/deploy.yaml).
+- **Emergency Hotfix Deployment**: Bypasses the release protocol and Git tags entirely. Pushed directly to `hotfix` branch (`git checkout hotfix && git merge main --ff-only && git push origin hotfix`). Workflow: [`.github/workflows/hotfix.yaml`](.github/workflows/hotfix.yaml).
+
+---
+
+## 8. Additional Resources
 
 - [Internal Documentation Hub](docs/index.md)
 - [Getting Started Guide](docs/getting-started.md)
 - [Architecture Deep Dive](docs/architecture.md)
-- [Contributing Details](docs/contributing.md)
 - [AI Agent Rules (AGENTS.md)](AGENTS.md)

@@ -148,7 +148,7 @@ krew build
 
 - [Getting Started Guide](docs/getting-started.md) — Local environment setup, previewing, and asset management.
 - [Architecture Deep Dive](docs/architecture.md) — SSG compilation pipeline, `.kiw` engine, and container runtime.
-- [Contributing Guidelines](docs/contributing.md) — Pull request workflow, bilingual authoring, and styling rules.
+- [Contributing Guidelines](CONTRIBUTING.md) — Pull request workflow, bilingual authoring, and styling rules.
 - [Agent Guidelines](AGENTS.md) — Single Source of Truth, commit discipline, and automated progress workflows.
 
 ---
