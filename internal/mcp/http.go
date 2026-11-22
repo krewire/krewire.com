@@ -37,6 +37,7 @@ func (h *HTTPTransport) Mount(mux *http.ServeMux, prefix string) {
 	mux.HandleFunc(ssePath, h.handleSSE)
 	mux.HandleFunc(msgPath, h.handleMessage)
 	mux.HandleFunc(healthPath, h.handleHealth)
+	mux.HandleFunc(prefix, h.handleRoot)
 	mux.HandleFunc(rootPath, h.handleRoot)
 }
 
@@ -209,6 +210,17 @@ func (h *HTTPTransport) handleHealth(w http.ResponseWriter, r *http.Request) {
 func (h *HTTPTransport) handleRoot(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/mcp" && r.URL.Path != "/mcp/" {
 		http.NotFound(w, r)
+		return
+	}
+	if r.Method == http.MethodOptions {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
+		w.WriteHeader(http.StatusOK)
+		return
+	}
+	if r.Method == http.MethodPost {
+		h.handleMessage(w, r)
 		return
 	}
 	w.Header().Set("Access-Control-Allow-Origin", "*")

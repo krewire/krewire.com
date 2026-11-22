@@ -191,6 +191,31 @@ func TestHTTPTransport_MessageStateless(t *testing.T) {
 	}
 }
 
+func TestHTTPTransport_RootPOST(t *testing.T) {
+	srv := NewServer(createTestIndexer())
+	transport := NewHTTPTransport(srv)
+	mux := http.NewServeMux()
+	transport.Mount(mux, "/mcp")
+
+	reqBody := `{"jsonrpc":"2.0","id":101,"method":"initialize","params":{}}`
+	req := httptest.NewRequest(http.MethodPost, "/mcp", strings.NewReader(reqBody))
+	req.Header.Set("Content-Type", "application/json")
+	w := httptest.NewRecorder()
+
+	mux.ServeHTTP(w, req)
+	if w.Code != http.StatusOK {
+		t.Fatalf("expected 200 OK, got %d: %s", w.Code, w.Body.String())
+	}
+
+	var resp Response
+	if err := json.Unmarshal(w.Body.Bytes(), &resp); err != nil {
+		t.Fatalf("failed to decode response: %v", err)
+	}
+	if resp.ID != float64(101) {
+		t.Errorf("expected ID 101, got %v", resp.ID)
+	}
+}
+
 func TestHTTPTransport_Health(t *testing.T) {
 	srv := NewServer(createTestIndexer())
 	transport := NewHTTPTransport(srv)
