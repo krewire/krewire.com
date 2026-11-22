@@ -47,8 +47,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/krewire/krew/pkg/embed"
-	"github.com/krewire/krew/pkg/persona"
+	"github.com/krewire/krewire/pkg/ai/embed"
+	"github.com/krewire/krewire/pkg/ai/persona"
 )
 
 func main() {
