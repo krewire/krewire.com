@@ -69,7 +69,7 @@ layout: Landing
     app.Get(<span class="s">"/"</span>, <span class="k">func</span>(c *web.Context) error {
         <span class="k">return</span> c.JSON(<span class="n">200</span>, web.Map{
             <span class="s">"ecosystem"</span>:  <span class="s">"Krewire"</span>,
-            <span class="s">"workload"</span>:   model.KindApp,
+            <span class="s">"runtime"</span>:    <span class="s">"pure-go"</span>,
             <span class="s">"pillars"</span>:    []string{<span class="s">"secure"</span>, <span class="s">"sustain"</span>, <span class="s">"scalable"</span>},
             <span class="s">"platforms"</span>:  []string{<span class="s">"krew"</span>, <span class="s">"auth"</span>, <span class="s">"cloud"</span>, <span class="s">"dash"</span>},
             <span class="s">"footprint"</span>:  <span class="s">"10-30 MB RAM"</span>,

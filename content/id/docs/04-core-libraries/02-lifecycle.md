@@ -33,15 +33,15 @@ func main() {
 		panic(err)
 	}
 
-	k.Use(bootModule, webModule)          // modul diinisialisasi sesuai urutan dependensi
-	k.RegisterHandler(model.KindApp, run) // satu handler per jenis workload
+	k.Use(bootModule, webModule) // modul diinisialisasi sesuai urutan dependensi
+	k.RegisterHandler(run)
 
 	if err := k.Boot(ctx); err != nil {
 		panic(err)
 	}
 	defer k.Shutdown(ctx)
 
-	os.Exit(k.Execute(ctx, workload).Int())
+	os.Exit(k.Execute(ctx).Int())
 }
 ```
 

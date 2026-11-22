@@ -33,15 +33,15 @@ func main() {
 		panic(err)
 	}
 
-	k.Use(bootModule, webModule)          // modules initialize in dependency order
-	k.RegisterHandler(model.KindApp, run) // one handler per workload kind
+	k.Use(bootModule, webModule) // modules initialize in dependency order
+	k.RegisterHandler(run)
 
 	if err := k.Boot(ctx); err != nil {
 		panic(err)
 	}
 	defer k.Shutdown(ctx)
 
-	os.Exit(k.Execute(ctx, workload).Int())
+	os.Exit(k.Execute(ctx).Int())
 }
 ```
 

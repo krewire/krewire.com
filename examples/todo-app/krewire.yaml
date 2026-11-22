@@ -1,6 +1,5 @@
 project:
   name: todo-app
-  kind: app
   version: 0.1.0
 
 dev:
