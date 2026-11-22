@@ -1,0 +1,199 @@
+---
+title: "Krewire MCP Server — Official Model Context Protocol for AI Coding Agents"
+description: "Connect Claude Desktop, Cursor, Antigravity, and Windsurf to Krewire's official MCP server for real-time documentation search, component catalog, and architectural rules."
+layout: Landing
+---
+
+<section class="w-full bg-bg dark:bg-bg-dark bg-dots py-12 sm:py-16 md:py-20 border-b-2 border-border">
+  <div class="container-site max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="flex flex-col items-start w-full">
+      <!-- Eyebrow -->
+      <div class="mb-4">
+        <span class="inline-flex items-center gap-2 px-3 py-1 text-xs font-black uppercase tracking-wider bg-primary text-primary-fg border-2 border-border shadow-[2px_2px_0_theme(colors.border)]">
+          <span class="inline-block w-2 h-2 rounded-full bg-success animate-pulse"></span>
+          LIVE REMOTE MCP SERVER · PROTOCOL 2024-11-05
+        </span>
+      </div>
+
+      <!-- Title -->
+      <h1 class="font-black tracking-tighter leading-tight text-fg dark:text-fg-dark break-words mb-4" style="font-size:clamp(28px,5vw,48px); letter-spacing:-0.03em">
+        Official Krewire <span class="text-primary">MCP Server</span>
+      </h1>
+
+      <!-- Lead -->
+      <p class="text-base sm:text-lg text-muted dark:text-muted-dark leading-relaxed max-w-3xl mb-8">
+        Connect your AI coding assistants (<b class="text-fg dark:text-fg-dark">Claude Desktop, Cursor, Antigravity, Windsurf, OpenCode</b>) directly to Krewire's official knowledge engine. Retrieve authoritative documentation, inspect the 6-Layer Pyramid Architecture rules, search 60+ Pop-Brutalist <code class="code-inline">.kiw</code> components, and enforce Three Pillars (3S) standards in real-time.
+      </p>
+
+      <!-- Connection Box -->
+      <div class="w-full p-6 bg-card dark:bg-card-dark border-2 border-border shadow-[4px_4px_0_theme(colors.border)] mb-10">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b-2 border-border mb-4">
+          <div>
+            <div class="text-xs font-black uppercase tracking-wider text-muted dark:text-muted-dark">Production SSE Endpoint</div>
+            <div class="text-lg sm:text-xl font-mono font-bold text-primary break-all">https://krewire.com/mcp/sse</div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-1 text-xs font-bold uppercase bg-success/20 text-success border border-success">SSE + JSON-RPC 2.0</span>
+            <span class="px-2.5 py-1 text-xs font-bold uppercase bg-primary/20 text-primary border border-primary">CORS Enabled</span>
+          </div>
+        </div>
+        <p class="text-xs sm:text-sm text-muted dark:text-muted-dark">
+          Stateless JSON-RPC messages can also be posted directly to <code class="code-inline">https://krewire.com/mcp/message</code> or queried locally via <code class="code-inline">krew mcp --stdio</code>.
+        </p>
+      </div>
+
+      <!-- Quick Setup Tabs -->
+      <h2 class="text-2xl font-black tracking-tight text-fg dark:text-fg-dark mb-4">Instant IDE Integration</h2>
+
+      <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+        <!-- Cursor -->
+        <div class="p-5 bg-card dark:bg-card-dark border-2 border-border shadow-[3px_3px_0_theme(colors.border)] flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="font-black text-lg text-fg dark:text-fg-dark">Cursor</h3>
+              <span class="text-xs font-mono text-muted dark:text-muted-dark">.cursor/mcp.json</span>
+            </div>
+            <p class="text-xs text-muted dark:text-muted-dark mb-3">Add Krewire to your project's Cursor MCP configuration:</p>
+            <pre class="bg-bg dark:bg-bg-dark p-3 text-xs font-mono border border-border overflow-x-auto"><code>{
+  "mcpServers": {
+    "krewire": {
+      "url": "https://krewire.com/mcp/sse"
+    }
+  }
+}</code></pre>
+          </div>
+        </div>
+
+        <!-- Claude Desktop -->
+        <div class="p-5 bg-card dark:bg-card-dark border-2 border-border shadow-[3px_3px_0_theme(colors.border)] flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="font-black text-lg text-fg dark:text-fg-dark">Claude Desktop</h3>
+              <span class="text-xs font-mono text-muted dark:text-muted-dark">claude_desktop_config.json</span>
+            </div>
+            <p class="text-xs text-muted dark:text-muted-dark mb-3">Add to your global Claude Desktop config:</p>
+            <pre class="bg-bg dark:bg-bg-dark p-3 text-xs font-mono border border-border overflow-x-auto"><code>{
+  "mcpServers": {
+    "krewire": {
+      "url": "https://krewire.com/mcp/sse"
+    }
+  }
+}</code></pre>
+          </div>
+        </div>
+
+        <!-- Local CLI / Stdio -->
+        <div class="p-5 bg-card dark:bg-card-dark border-2 border-border shadow-[3px_3px_0_theme(colors.border)] flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="font-black text-lg text-fg dark:text-fg-dark">Local Stdio (Offline)</h3>
+              <span class="text-xs font-mono text-muted dark:text-muted-dark">krew mcp --stdio</span>
+            </div>
+            <p class="text-xs text-muted dark:text-muted-dark mb-3">Run the built-in MCP server locally via the unified devtool:</p>
+            <pre class="bg-bg dark:bg-bg-dark p-3 text-xs font-mono border border-border overflow-x-auto"><code>{
+  "mcpServers": {
+    "krewire-local": {
+      "command": "krew",
+      "args": ["mcp", "--stdio"]
+    }
+  }
+}</code></pre>
+          </div>
+        </div>
+
+        <!-- OpenCode -->
+        <div class="p-5 bg-card dark:bg-card-dark border-2 border-border shadow-[3px_3px_0_theme(colors.border)] flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="font-black text-lg text-fg dark:text-fg-dark">OpenCode</h3>
+              <span class="text-xs font-mono text-muted dark:text-muted-dark">opencode.json</span>
+            </div>
+            <p class="text-xs text-muted dark:text-muted-dark mb-3">Attach the remote Krewire server to OpenCode agents:</p>
+            <pre class="bg-bg dark:bg-bg-dark p-3 text-xs font-mono border border-border overflow-x-auto"><code>{
+  "mcp": {
+    "krewire": {
+      "url": "https://krewire.com/mcp/sse"
+    }
+  }
+}</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tools Catalog -->
+      <h2 class="text-2xl font-black tracking-tight text-fg dark:text-fg-dark mb-4">Available MCP Tools</h2>
+      <div class="w-full flex flex-col gap-3 mb-12">
+        <div class="p-4 bg-card dark:bg-card-dark border-2 border-border shadow-[2px_2px_0_theme(colors.border)]">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
+            <span class="font-mono font-bold text-primary">search_docs(query, locale, limit)</span>
+            <span class="text-xs font-bold uppercase text-muted dark:text-muted-dark">Documentation Search</span>
+          </div>
+          <p class="text-xs sm:text-sm text-muted dark:text-muted-dark">Performs scored full-text search across all 70+ chapters of official Krewire documentation, returning titles, paths, excerpts, and URLs.</p>
+        </div>
+
+        <div class="p-4 bg-card dark:bg-card-dark border-2 border-border shadow-[2px_2px_0_theme(colors.border)]">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
+            <span class="font-mono font-bold text-primary">get_doc(path, locale)</span>
+            <span class="text-xs font-bold uppercase text-muted dark:text-muted-dark">Doc Content Fetcher</span>
+          </div>
+          <p class="text-xs sm:text-sm text-muted dark:text-muted-dark">Retrieves the complete, uncompressed markdown content of any documentation guide directly into the agent's context window.</p>
+        </div>
+
+        <div class="p-4 bg-card dark:bg-card-dark border-2 border-border shadow-[2px_2px_0_theme(colors.border)]">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
+            <span class="font-mono font-bold text-primary">list_components(category)</span>
+            <span class="text-xs font-bold uppercase text-muted dark:text-muted-dark">UI Catalog</span>
+          </div>
+          <p class="text-xs sm:text-sm text-muted dark:text-muted-dark">Lists all Pop-Brutalist .kiw components (Button, Card, Modal, Input, Badge, etc.) with their categories and descriptions.</p>
+        </div>
+
+        <div class="p-4 bg-card dark:bg-card-dark border-2 border-border shadow-[2px_2px_0_theme(colors.border)]">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
+            <span class="font-mono font-bold text-primary">get_component(name)</span>
+            <span class="text-xs font-bold uppercase text-muted dark:text-muted-dark">Component Specs</span>
+          </div>
+          <p class="text-xs sm:text-sm text-muted dark:text-muted-dark">Returns full property specifications, style variants, and copy-paste ready .kiw templates for a component.</p>
+        </div>
+
+        <div class="p-4 bg-card dark:bg-card-dark border-2 border-border shadow-[2px_2px_0_theme(colors.border)]">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
+            <span class="font-mono font-bold text-primary">get_ecosystem()</span>
+            <span class="text-xs font-bold uppercase text-muted dark:text-muted-dark">Ecosystem Matrix</span>
+          </div>
+          <p class="text-xs sm:text-sm text-muted dark:text-muted-dark">Returns the complete Krewire 10-repository architectural map, layer classifications (Layer 0–5), and package layout.</p>
+        </div>
+
+        <div class="p-4 bg-card dark:bg-card-dark border-2 border-border shadow-[2px_2px_0_theme(colors.border)]">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
+            <span class="font-mono font-bold text-primary">get_architecture_rules()</span>
+            <span class="text-xs font-bold uppercase text-muted dark:text-muted-dark">Quality Invariants</span>
+          </div>
+          <p class="text-xs sm:text-sm text-muted dark:text-muted-dark">Supplies the immutable architectural rules (6-Layer Pyramid, Three Pillars S1-S3, safePath guard, pure-Go invariant) to keep coding agents on track.</p>
+        </div>
+      </div>
+
+      <!-- Resources & Prompts -->
+      <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+        <div class="p-5 bg-card dark:bg-card-dark border-2 border-border shadow-[3px_3px_0_theme(colors.border)]">
+          <h3 class="font-black text-lg text-fg dark:text-fg-dark mb-3">MCP Resources</h3>
+          <ul class="text-xs sm:text-sm space-y-2 text-muted dark:text-muted-dark font-mono">
+            <li>• <span class="text-primary font-bold">krewire://docs/toc</span> — Full TOC</li>
+            <li>• <span class="text-primary font-bold">krewire://ecosystem</span> — Repositories &amp; Layers</li>
+            <li>• <span class="text-primary font-bold">krewire://components</span> — UI component catalog</li>
+            <li>• <span class="text-primary font-bold">krewire://rules</span> — 3S Filter &amp; Invariants</li>
+          </ul>
+        </div>
+
+        <div class="p-5 bg-card dark:bg-card-dark border-2 border-border shadow-[3px_3px_0_theme(colors.border)]">
+          <h3 class="font-black text-lg text-fg dark:text-fg-dark mb-3">MCP Prompts</h3>
+          <ul class="text-xs sm:text-sm space-y-2 text-muted dark:text-muted-dark font-mono">
+            <li>• <span class="text-primary font-bold">krewire-architect</span> — Pyramid SDLC guide</li>
+            <li>• <span class="text-primary font-bold">kiw-component-builder</span> — .kiw UI authoring</li>
+            <li>• <span class="text-primary font-bold">krewire-migrator</span> — Laravel-style Go migrations</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
