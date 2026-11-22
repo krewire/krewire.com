@@ -78,10 +78,33 @@ It is built as an end-to-end reference implementation for the **`site`** workloa
 
 ### 6. Internationalization (i18n) & Parity Pipeline
 - Configured in `krewire.yaml` (`locales: ["en", "id"]`, `default_locale: "en"`).
-- Translation dictionaries live in `lang/en.json` and `lang/id.json`.
+- **Separation of Concerns**:
+  - `content/{locale}/docs/`: Long-form markdown manuscripts compiled by `pkg/book`.
+  - `lang/{locale}/site.json`: UI and shell localized strings for the client translation engine.
 - Strict 1:1 bilingual documentation parity is enforced:
   - `python3 scripts/check-i18n-parity.py` validates that all 134 manuscripts in English have identical Indonesian counterparts.
   - `python3 scripts/sync-i18n.py --check` ensures all translation keys match across dictionaries.
+
+---
+
+## Directory Ownership & Workload Boundaries
+
+The official portal balances static site generation with production runtime daemons:
+
+1. **Framework-Reserved Discovery Roots**:
+   - `pages/`: Evaluated by `pkg/web/ssg` for URL routing.
+   - `layouts/`: Evaluated by `pkg/kiw` for master layout wrappers.
+   - `krewire.yaml`: Workload specification.
+2. **Conventional Content Roots**:
+   - `components/`: Project components. Subdirectories are recursively scanned and registered both by basename and namespaced identifier.
+   - `content/`: Markdown manuscripts parsed exclusively by the book engine.
+   - `lang/`: JSON translation dictionaries.
+   - `public/`: Copied verbatim to build output root (`.krewire/build/`).
+3. **Platform Extensions**:
+   - `cmd/krewire-mcp-server/`: Go daemon serving Model Context Protocol endpoints.
+   - `internal/mcp/`: Private packages for the MCP server.
+   - `examples/todo-app/`: Isolated example with independent `go.mod`.
+   - `.krewire/build/`: Transient compilation artifact output; excluded from source control.
 
 ---
 

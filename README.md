@@ -61,32 +61,40 @@ The output is emitted to `.krewire/build/`:
 
 ---
 
-## Project Structure
+## Project Structure & Ownership
+
+The official website conforms to the Krewire `site` workload layout and architectural ownership boundaries:
 
 ```text
 krewire.com/
-├── krewire.yaml           # Devtool configuration (kind, version, i18n, book mount, nav)
-├── pages/                 # File-based routes (index.kiw → /)
-├── layouts/               # SSG layouts (Landing.kiw, Docs.kiw)
-├── components/            # Reusable .kiw components (Navbar, Footer, SearchModal, etc.)
-├── content/               # Bilingual documentation manuscripts
-│   ├── en/docs/           # English documentation (134 chapters/subchapters)
-│   └── id/docs/           # Indonesian documentation (134 chapters/subchapters)
-├── lang/                  # i18n translation dictionaries (en.json, id.json)
-├── public/                # Static assets (images, icons, fonts, CSS, client JS)
-├── scripts/               # Automation & quality assurance tooling
-│   ├── check-i18n-parity.py   # Validates 1:1 file parity between en and id docs
-│   ├── sync-i18n.py           # Validates and syncs translation keys
-│   ├── gen-ui-previews.py     # Generates static HTML previews for UI components
-│   └── archive-docs-version.sh# Archives documentation snapshots
-├── examples/              # Tutorial companion code
-│   └── todo-app/          # "Build a Fullstack App in 15 Minutes" companion app
-├── ui/                    # UI component playground and variant previews
-├── docker/                # Hardened Nginx server configuration (nginx.conf)
-├── Dockerfile             # Multi-stage production container image
-├── docs/                  # Contributor and internal developer guides
-├── CONTRIBUTING.md        # Contributor workflow and contribution standards
-└── AGENTS.md              # Instructions and rules for AI developer agents
+├── krewire.yaml               # Devtool configuration (kind: site, version, i18n, book mount, nav)
+├── pages/                     # [Required] File-based routes (index.kiw, mcp.kiw, 404.kiw, ui/*.kiw)
+├── layouts/                   # [Required] SSG layout templates (Landing.kiw, Docs.kiw, Base.kiw)
+├── components/                # [Conventional] Reusable .kiw components (supports recursive subdirectories)
+│   ├── Navbar.kiw             # Main navigation header
+│   ├── NavMenu.kiw            # Dropdown menu items
+│   ├── Footer.kiw             # Site footer
+│   ├── SearchModal.kiw        # Client search modal dialog
+│   ├── TabbedCode.kiw         # Multi-language code snippet switcher
+│   └── ComponentPreview.kiw   # Interactive UI component preview container
+├── content/                   # [Conventional] Bilingual documentation manuscripts (parsed by pkg/book)
+│   ├── en/docs/               # English documentation chapters & subchapters
+│   └── id/docs/               # Indonesian documentation chapters & subchapters
+├── lang/                      # [Conventional] Localized UI string dictionaries (SSOT: site.json)
+│   ├── en/site.json           # English UI translation keys
+│   └── id/site.json           # Indonesian UI translation keys
+├── public/                    # [Conventional] Static assets copied to web root (public/assets/, images)
+├── cmd/                       # [Extension] Background production daemons
+│   └── krewire-mcp-server/    # Official Model Context Protocol (MCP) server daemon
+├── internal/                  # [Extension] Private server logic for background daemons
+│   └── mcp/                   # MCP handlers, tools, resources, and transports (SSE, HTTP, Stdio)
+├── docker/                    # Production deployment configuration (nginx.conf, entrypoint.sh)
+├── Dockerfile                 # Multi-stage production container image (Nginx + Go MCP daemon)
+├── examples/                  # Isolated companion projects with independent go.mod boundaries
+│   └── todo-app/              # Fullstack example application
+├── scripts/                   # Automation & parity verification scripts
+├── docs/                      # Architectural and contributor guides for this repository
+└── .krewire/build/            # [Generated] Ephemeral build output (never committed, in .gitignore)
 ```
 
 ---
