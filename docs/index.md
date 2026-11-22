@@ -49,7 +49,7 @@ krewire.com/
 
 ## Documentation Navigation
 
-- [**Getting Started**](./getting-started.md) — Local environment setup, `kiw` installation, live preview with `krew serve`, and building with `krew build`.
+- [**Getting Started**](./getting-started.md) — Local environment setup, `krew` installation, live preview with `krew serve`, and building with `krew build`.
 - [**Architecture**](./architecture.md) — SSG compilation pipeline, `.kiw` DSL integration, component playground, and production hosting model.
 - [**Contributing**](./contributing.md) — Contribution workflow, bilingual authoring standards, theme conventions, and quality gates.
 - [**Agent Guidelines**](../AGENTS.md) — Progress tracking, Git discipline, and automated quality gates.

@@ -18,11 +18,12 @@ Source repository for the unified Krewire public website and official documentat
 
 ## Key Features & Architecture
 
-- **Unified Build Engine:** Built via `kiw build`, powered by `pkg/kiw` (template engine), `pkg/book` (documentation manuscript engine), and `pkg/web/ssg` (static site generator).
+- **Unified Build Engine:** Built via `krew build`, powered by `pkg/kiw` (template engine), `pkg/book` (documentation manuscript engine), and `pkg/web/ssg` (static site generator).
 - **Single Source of Truth Versioning:** `krewire.yaml` (`project.version: "v0.2.3"`) automatically propagates as `.Version` to all templates, component footers, and asset cache-busting queries (`?v=0.2.3`).
 - **Bilingual Documentation:** Full 1:1 documentation parity between English (`content/en/docs/`) and Indonesian (`content/id/docs/`), verified by automated parity tooling.
 - **Krewire UI & Playground:** 66 single-file components with zero runtime dependencies. Core components feature live light/dark interactive previews at `/ui/playground` and inside documentation pages.
 - **Pop-Brutalism Design System:** Scoped CSS (`data-kiw-*`), theme tokens (`--primary` `#39D353`, `--border` `2.5px solid`), accessible theme toggling (`auto`/`light`/`dark`) via `localStorage`.
+- **Model Context Protocol (MCP) Server:** Native MCP server under `internal/mcp` exposing documentation search, component discovery, and ecosystem metadata over stdio and HTTP/SSE.
 
 ---
 
@@ -30,14 +31,14 @@ Source repository for the unified Krewire public website and official documentat
 
 ### Prerequisites
 
-Install the unified `kiw` CLI tool:
+Install the unified `krew` developer CLI:
 
 ```bash
 # Via official installer script
 curl -fsSL https://krewire.com/scripts/install.sh | sh
 
-# Or install with Go toolchain
-go install github.com/krewire/krewire/tools/kiw/cmd/kiw@latest
+# Or install from source
+go install github.com/krewire/krew/cmd/krew@latest
 ```
 
 ### Local Development
@@ -46,10 +47,10 @@ No `go.mod` is required to develop and build `krewire.com`:
 
 ```bash
 # Build the static site into .krewire/build/
-kiw build
+krew build
 
 # Start the local development server at http://localhost:8080
-kiw serve
+krew serve
 ```
 
 The output is emitted to `.krewire/build/`:
@@ -99,6 +100,26 @@ krewire.com/
 
 ---
 
+## Model Context Protocol (MCP) Server
+
+`krewire.com` includes a built-in Model Context Protocol (MCP) server under `internal/mcp/` allowing AI coding assistants (Cursor, Antigravity, Claude Desktop) to connect directly:
+
+- **Stdio Transport**:
+  ```bash
+  go run ./cmd/krewire-mcp-server --stdio
+  ```
+- **HTTP / Server-Sent Events (SSE)**:
+  Exposed via `/mcp/sse` when running the live daemon.
+
+### Exposed MCP Tools
+- `docs_search`: Semantic and keyword search across English and Indonesian documentation.
+- `docs_get`: Retrieve full markdown content of a documentation chapter or subchapter.
+- `components_list`: List all 66 Pop-Brutalist `.kiw` design system components and starter packs.
+- `components_get`: Fetch `.kiw` component source code and props specification.
+- `ecosystem_info`: Inspect repository matrix, versions, and architectural dependency graph.
+
+---
+
 ## Quality Gates & Verification
 
 Before committing changes or cutting a release, verify all quality gates:
@@ -111,7 +132,7 @@ python3 scripts/check-i18n-parity.py
 python3 scripts/sync-i18n.py --check
 
 # 3. Clean static build (must exit 0 and produce valid HTML)
-kiw build
+krew build
 ```
 
 ---

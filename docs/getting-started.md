@@ -6,7 +6,7 @@ This guide walks you through setting up, running, and contributing to **`krewire
 
 ## Prerequisites
 
-1. **`kiw` CLI**: The unified Krewire ecosystem CLI.
+1. **`krew` CLI**: The unified developer toolchain and CLI driver.
    - Install using the official installer:
      ```bash
      curl -fsSL https://krewire.com/scripts/install.sh | sh
@@ -17,16 +17,15 @@ This guide walks you through setting up, running, and contributing to **`krewire
      go install github.com/krewire/krew/cmd/krew@latest
      ```
 
-   - Or build locally from the core `krewire` repository:
+   - Or build locally from the `krew` repository:
      ```bash
-     git clone https://github.com/krewire/krewire.git
-     cd krewire
-     go build -o /usr/local/bin/krew ./krew/cmd/kiw
+     cd /home/krewire/workspace/krewire/krew
+     go build -o ../bin/krew ./cmd/krew
      ```
 
    - Verify installation:
      ```bash
-     kiw --version
+     krew version
      ```
 2. **Python 3**: Required to execute verification and utility scripts in `scripts/`.
 3. **Docker** *(optional)*: For testing the production Nginx container build.

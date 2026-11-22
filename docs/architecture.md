@@ -85,6 +85,16 @@ It is built as an end-to-end reference implementation for the **`site`** workloa
   - `python3 scripts/check-i18n-parity.py` validates that all 134 manuscripts in English have identical Indonesian counterparts.
   - `python3 scripts/sync-i18n.py --check` ensures all translation keys match across dictionaries.
 
+### 7. Model Context Protocol (MCP) Subsystem (`internal/mcp`)
+- Implements the Model Context Protocol (MCP) specification to bridge external AI coding agents directly with portal knowledge.
+- Supports both **stdio transport** (`cmd/krewire-mcp-server`) and **HTTP/SSE transport** (`/mcp/sse`).
+- Exposes structured tools:
+  - `docs_search`: Multilingual keyword and topic search across English and Indonesian documentation manuscripts.
+  - `docs_get`: Retrieves complete markdown content for a given document chapter or path.
+  - `components_list`: Catalogs all 66 Pop-Brutalist `.kiw` design system components and starter packs.
+  - `components_get`: Retrieves component source templates and prop definitions.
+  - `ecosystem_info`: Inspects cross-repository architecture, licensing, and package layers.
+
 ---
 
 ## Directory Ownership & Workload Boundaries

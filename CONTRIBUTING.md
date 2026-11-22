@@ -22,13 +22,13 @@ This document outlines the development workflow, quality gates, content authorin
 
 ### Prerequisites
 
-1. **`kiw` CLI**:
+1. **`krew` CLI**:
    ```bash
    curl -fsSL https://krewire.com/scripts/install.sh | sh
    ```
    Or install from the core Go repository:
    ```bash
-   go install github.com/krewire/krewire/tools/kiw/cmd/kiw@latest
+   go install github.com/krewire/krew/cmd/krew@latest
    ```
 2. **Python 3**: Used for running verification and utility scripts in `scripts/`.
 3. **Docker** *(optional)*: For testing the production container build.
@@ -37,10 +37,10 @@ This document outlines the development workflow, quality gates, content authorin
 
 ```bash
 # Build the entire static site into .krewire/build/
-kiw build
+krew build
 
 # Start the local development server (default: http://localhost:8080)
-kiw serve
+krew serve
 ```
 
 ---
