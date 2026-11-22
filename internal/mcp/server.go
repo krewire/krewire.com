@@ -93,7 +93,7 @@ func (s *Server) dispatch(ctx context.Context, method string, paramsRaw json.Raw
 				"prompts":   map[string]any{},
 			},
 			"serverInfo": map[string]any{
-				"name":    "krewire-docs-mcp",
+				"name":    "krewire",
 				"version": "0.2.4",
 			},
 		}, nil
@@ -278,6 +278,68 @@ func (s *Server) dispatch(ctx context.Context, method string, paramsRaw json.Raw
 						"properties": map[string]any{},
 					},
 				},
+				{
+					"name":        "check_layering_rule",
+					"description": "Validate whether an import from a source repository/package to a target satisfies the 6-Layer Pyramid Architecture rules.",
+					"inputSchema": map[string]any{
+						"type": "object",
+						"properties": map[string]any{
+							"from": map[string]any{
+								"type":        "string",
+								"description": "Source repository or package (e.g. 'cloud', 'krew', 'pkg/web')",
+							},
+							"to": map[string]any{
+								"type":        "string",
+								"description": "Target repository or package (e.g. 'dash', 'auth', 'pkg/model')",
+							},
+						},
+						"required": []string{"from", "to"},
+					},
+				},
+				{
+					"name":        "generate_migration",
+					"description": "Generate a Go code-first Laravel-style database migration file template for pkg/orm/migrate.",
+					"inputSchema": map[string]any{
+						"type": "object",
+						"properties": map[string]any{
+							"table_name": map[string]any{
+								"type":        "string",
+								"description": "Target table name (e.g. 'users', 'posts', 'api_tokens')",
+							},
+							"migration_name": map[string]any{
+								"type":        "string",
+								"description": "Migration name slug (e.g. 'create_users_table')",
+							},
+						},
+						"required": []string{"table_name"},
+					},
+				},
+				{
+					"name":        "scaffold_project_config",
+					"description": "Scaffold a canonical krewire.yaml declarative configuration for any of the 8 Krewire project kinds.",
+					"inputSchema": map[string]any{
+						"type": "object",
+						"properties": map[string]any{
+							"kind": map[string]any{
+								"type":        "string",
+								"description": "Project kind: app, cli, site, book, worker, service, gateway, or infra",
+							},
+							"name": map[string]any{
+								"type":        "string",
+								"description": "Project identifier name",
+							},
+						},
+						"required": []string{"kind"},
+					},
+				},
+				{
+					"name":        "get_cli_commands",
+					"description": "Get the canonical developer CLI command dictionary and usage options for krew.",
+					"inputSchema": map[string]any{
+						"type":       "object",
+						"properties": map[string]any{},
+					},
+				},
 			},
 		}, nil
 
@@ -455,6 +517,45 @@ func (s *Server) callTool(ctx context.Context, name string, argsRaw json.RawMess
 	case "get_architecture_rules":
 		rules := GetArchitectureRules()
 		b, _ := json.MarshalIndent(rules, "", "  ")
+		return string(b), false
+
+	case "check_layering_rule":
+		var p struct {
+			From string `json:"from"`
+			To   string `json:"to"`
+		}
+		if err := json.Unmarshal(argsRaw, &p); err != nil {
+			return fmt.Sprintf("invalid arguments: %v", err), true
+		}
+		eval := CheckLayering(p.From, p.To)
+		b, _ := json.MarshalIndent(eval, "", "  ")
+		return string(b), false
+
+	case "generate_migration":
+		var p struct {
+			TableName     string `json:"table_name"`
+			MigrationName string `json:"migration_name"`
+		}
+		if err := json.Unmarshal(argsRaw, &p); err != nil {
+			return fmt.Sprintf("invalid arguments: %v", err), true
+		}
+		code := GenerateMigrationTemplate(p.TableName, p.MigrationName)
+		return code, false
+
+	case "scaffold_project_config":
+		var p struct {
+			Kind string `json:"kind"`
+			Name string `json:"name"`
+		}
+		if err := json.Unmarshal(argsRaw, &p); err != nil {
+			return fmt.Sprintf("invalid arguments: %v", err), true
+		}
+		yamlDoc := ScaffoldKrewireYAML(p.Kind, p.Name)
+		return yamlDoc, false
+
+	case "get_cli_commands":
+		cmds := GetCLICommands()
+		b, _ := json.MarshalIndent(cmds, "", "  ")
 		return string(b), false
 
 	default:

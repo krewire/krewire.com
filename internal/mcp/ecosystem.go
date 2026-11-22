@@ -138,3 +138,184 @@ func GetArchitectureRules() []ArchitectureRule {
 		},
 	}
 }
+
+// LayeringEvaluation represents the result of validating a proposed import or peer connection.
+type LayeringEvaluation struct {
+	Allowed     bool   `json:"allowed"`
+	FromRepo    string `json:"from_repo"`
+	FromLayer   int    `json:"from_layer"`
+	ToRepo      string `json:"to_repo"`
+	ToLayer     int    `json:"to_layer"`
+	Explanation string `json:"explanation"`
+	Rule        string `json:"rule"`
+}
+
+var repoLayerMap = map[string]int{
+	"stdlib":            0,
+	"pkg/model":         1,
+	"pkg/lifecycle":     1,
+	"pkg/errs":          1,
+	"pkg/version":       1,
+	"krewire":           2,
+	"pkg/web":           2,
+	"pkg/orm":           2,
+	"pkg/cache":         2,
+	"pkg/sec":           2,
+	"pkg/ai":            2,
+	"tui":               2,
+	"ui":                2,
+	"krew":              3,
+	"cloud":             4,
+	"auth":              4,
+	"dash":              5,
+	"internal":          5,
+	"krewire.com":       5,
+	"krewire.github.io": 5,
+}
+
+// CheckLayering validates whether an import from one repo/package to another satisfies the 6-Layer Pyramid.
+func CheckLayering(from, to string) LayeringEvaluation {
+	fromLayer, hasFrom := repoLayerMap[from]
+	if !hasFrom {
+		fromLayer = 2 // default to domain library
+	}
+	toLayer, hasTo := repoLayerMap[to]
+	if !hasTo {
+		toLayer = 2
+	}
+
+	if from == to {
+		return LayeringEvaluation{
+			Allowed:     true,
+			FromRepo:    from,
+			FromLayer:   fromLayer,
+			ToRepo:      to,
+			ToLayer:     toLayer,
+			Explanation: "Same module/repository internal import is permitted.",
+			Rule:        "INTERNAL-PACKAGE-IMPORT",
+		}
+	}
+
+	if fromLayer < toLayer {
+		return LayeringEvaluation{
+			Allowed:     false,
+			FromRepo:    from,
+			FromLayer:   fromLayer,
+			ToRepo:      to,
+			ToLayer:     toLayer,
+			Explanation: "Upward dependency violation: Layer " + string(rune('0'+fromLayer)) + " (" + from + ") cannot import higher Layer " + string(rune('0'+toLayer)) + " (" + to + ").",
+			Rule:        "RULE-PYRAMID-DOWNWARD",
+		}
+	}
+
+	if fromLayer == toLayer && (fromLayer == 4 || fromLayer == 5) {
+		return LayeringEvaluation{
+			Allowed:     false,
+			FromRepo:    from,
+			FromLayer:   fromLayer,
+			ToRepo:      to,
+			ToLayer:     toLayer,
+			Explanation: "Zero peer coupling violation: Sibling platforms at Layer " + string(rune('0'+fromLayer)) + " (" + from + " and " + to + ") must not import each other. Use API Gateways or token federation.",
+			Rule:        "RULE-ZERO-PEER-COUPLING",
+		}
+	}
+
+	return LayeringEvaluation{
+		Allowed:     true,
+		FromRepo:    from,
+		FromLayer:   fromLayer,
+		ToRepo:      to,
+		ToLayer:     toLayer,
+		Explanation: "Valid downward dependency: Layer " + string(rune('0'+fromLayer)) + " imports Layer " + string(rune('0'+toLayer)) + ".",
+		Rule:        "RULE-PYRAMID-DOWNWARD",
+	}
+}
+
+// CLICommandInfo documents a developer CLI command in krew.
+type CLICommandInfo struct {
+	Command     string `json:"command"`
+	Description string `json:"description"`
+	Usage       string `json:"usage"`
+	Layer       int    `json:"layer"`
+}
+
+// GetCLICommands returns the canonical krew CLI developer driver commands.
+func GetCLICommands() []CLICommandInfo {
+	return []CLICommandInfo{
+		{Command: "krew init", Description: "Scaffold a new Krewire project with prewired batteries for site, book, app, cli, worker, or service.", Usage: "krew init [name] [--site|--book|--app|--cli]", Layer: 3},
+		{Command: "krew dev", Description: "Start live-reload development server with hot module replacement.", Usage: "krew dev [--port 8080]", Layer: 3},
+		{Command: "krew build", Description: "Compile single static pure-Go binary with embedded assets (CGO_ENABLED=0).", Usage: "krew build [--release]", Layer: 3},
+		{Command: "krew make migration", Description: "Generate a new Laravel-style code-first database migration under database/migrations/.", Usage: "krew make migration <name>", Layer: 3},
+		{Command: "krew migrate", Description: "Execute pending database migrations with distributed advisory locking.", Usage: "krew migrate [--rollback|--status]", Layer: 3},
+		{Command: "krew make component", Description: "Generate a Pop-Brutalist .kiw component in the components catalog.", Usage: "krew make component <Name>", Layer: 3},
+		{Command: "krew deploy", Description: "Deploy project to Krewire Cloud PaaS or self-hosted runner.", Usage: "krew deploy [--cloud|--prod]", Layer: 3},
+		{Command: "krew compat", Description: "Audit cross-repository version compatibility constraints across the workspace.", Usage: "krew compat", Layer: 3},
+		{Command: "krew vet", Description: "Run formatting, static analysis, layering invariant checks, and security audit.", Usage: "krew vet [--sec]", Layer: 3},
+		{Command: "krew ai", Description: "Launch autonomous developer assistant or ReAct agent in terminal.", Usage: "krew ai [prompt]", Layer: 3},
+	}
+}
+
+// GenerateMigrationTemplate returns a Laravel-style Go code-first migration file for pkg/orm/migrate.
+func GenerateMigrationTemplate(tableName, migrationName string) string {
+	if migrationName == "" {
+		migrationName = "create_" + tableName + "_table"
+	}
+	return `package migrations
+
+import (
+	"context"
+
+	"github.com/krewire/krewire/pkg/orm/migrate"
+	"github.com/krewire/krewire/pkg/orm/schema"
+)
+
+func init() {
+	migrate.Register(&migrate.GoMigration{
+		Version: "20261123000000",
+		Name:    "` + migrationName + `",
+		Up: func(ctx context.Context, s *schema.Builder) error {
+			return s.Create("` + tableName + `", func(t *schema.Blueprint) {
+				t.ID()
+				t.String("name", 255)
+				t.Bool("is_active").Default(true)
+				t.Timestamps()
+			})
+		},
+		Down: func(ctx context.Context, s *schema.Builder) error {
+			return s.DropIfExists("` + tableName + `")
+		},
+	})
+}
+`
+}
+
+// ScaffoldKrewireYAML generates a valid krewire.yaml declarative configuration.
+func ScaffoldKrewireYAML(kind, name string) string {
+	if kind == "" {
+		kind = "app"
+	}
+	if name == "" {
+		name = "my-" + kind
+	}
+	return `version: "1.0"
+name: "` + name + `"
+kind: "` + kind + `"
+stability: "stable"
+
+build:
+  target: "bin/` + name + `"
+  cgo: false
+  flags: ["-s", "-w"]
+
+server:
+  host: "0.0.0.0"
+  port: 8080
+  read_header_timeout: "5s"
+  max_body_bytes: "2MB"
+
+security:
+  csp: "default-src 'self'"
+  hsts: true
+  csrf: true
+`
+}

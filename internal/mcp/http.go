@@ -193,7 +193,7 @@ func (h *HTTPTransport) handleHealth(w http.ResponseWriter, r *http.Request) {
 	uptime := time.Since(h.srv.startTime).Round(time.Second)
 	status := map[string]any{
 		"status":       "ok",
-		"server":       "krewire-docs-mcp",
+		"server":       "krewire",
 		"version":      "0.2.4",
 		"uptime":       uptime.String(),
 		"docs_indexed": h.srv.docs.Count(),
@@ -226,8 +226,8 @@ func (h *HTTPTransport) handleRoot(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Content-Type", "application/json")
 	meta := map[string]any{
-		"name":        "krewire-docs-mcp",
-		"description": "Official Model Context Protocol (MCP) server for Krewire documentation and ecosystem",
+		"name":        "krewire",
+		"description": "Unified Model Context Protocol (MCP) server for the Krewire digital SDLC ecosystem",
 		"version":     "0.2.4",
 		"protocol":    ProtocolVersion,
 		"docs_url":    "https://krewire.com/mcp",

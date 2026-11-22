@@ -229,8 +229,60 @@ func TestHTTPTransport_Health(t *testing.T) {
 	if w.Code != http.StatusOK {
 		t.Fatalf("expected 200 OK, got %d", w.Code)
 	}
-	if !strings.Contains(w.Body.String(), "krewire-docs-mcp") {
-		t.Errorf("expected krewire-docs-mcp in health response: %s", w.Body.String())
+	if !strings.Contains(w.Body.String(), `"server":"krewire"`) {
+		t.Errorf("expected server name krewire in health response: %s", w.Body.String())
+	}
+}
+
+func TestServer_EcosystemTools(t *testing.T) {
+	srv := NewServer(createTestIndexer())
+	ctx := context.Background()
+
+	// 1. check_layering_rule
+	argsLayer, _ := json.Marshal(map[string]any{"from": "cloud", "to": "dash"})
+	respLayer := srv.HandleRequest(ctx, Request{
+		JSONRPC: "2.0",
+		ID:      10,
+		Method:  "tools/call",
+		Params:  json.RawMessage(fmtJSON(map[string]any{"name": "check_layering_rule", "arguments": argsLayer})),
+	})
+	if respLayer == nil || respLayer.Error != nil {
+		t.Fatalf("check_layering_rule failed: %+v", respLayer)
+	}
+
+	// 2. generate_migration
+	argsMig, _ := json.Marshal(map[string]any{"table_name": "orders", "migration_name": "create_orders_table"})
+	respMig := srv.HandleRequest(ctx, Request{
+		JSONRPC: "2.0",
+		ID:      11,
+		Method:  "tools/call",
+		Params:  json.RawMessage(fmtJSON(map[string]any{"name": "generate_migration", "arguments": argsMig})),
+	})
+	if respMig == nil || respMig.Error != nil {
+		t.Fatalf("generate_migration failed: %+v", respMig)
+	}
+
+	// 3. scaffold_project_config
+	argsScaffold, _ := json.Marshal(map[string]any{"kind": "service", "name": "billing-svc"})
+	respScaffold := srv.HandleRequest(ctx, Request{
+		JSONRPC: "2.0",
+		ID:      12,
+		Method:  "tools/call",
+		Params:  json.RawMessage(fmtJSON(map[string]any{"name": "scaffold_project_config", "arguments": argsScaffold})),
+	})
+	if respScaffold == nil || respScaffold.Error != nil {
+		t.Fatalf("scaffold_project_config failed: %+v", respScaffold)
+	}
+
+	// 4. get_cli_commands
+	respCLI := srv.HandleRequest(ctx, Request{
+		JSONRPC: "2.0",
+		ID:      13,
+		Method:  "tools/call",
+		Params:  json.RawMessage(fmtJSON(map[string]any{"name": "get_cli_commands", "arguments": map[string]any{}})),
+	})
+	if respCLI == nil || respCLI.Error != nil {
+		t.Fatalf("get_cli_commands failed: %+v", respCLI)
 	}
 }
 
