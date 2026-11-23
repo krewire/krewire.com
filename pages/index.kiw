@@ -38,7 +38,7 @@ layout: Landing
           <!-- Quick terminal: install first -->
           <div class="w-full max-w-xl lg:max-w-2xl xl:max-w-none flex flex-col gap-3.5 mb-8 sm:mb-10">
             <Terminal Command="curl -fsSL https://krewire.com/scripts/install.sh | sh" Class="w-full" />
-            <Terminal Command="kiw new my-app --site && cd my-app && kiw dev" PromptColor="muted" Class="w-full" />
+            <Terminal Command="kiw new my-app && cd my-app && kiw dev" PromptColor="muted" Class="w-full" />
           </div>
 
           <!-- CTAs: stacked on mobile, row on sm+ -->
@@ -59,7 +59,6 @@ layout: Landing
 
 <span class="k">import</span> (
     <span class="s">"github.com/krewire/krewire/pkg/web"</span>
-    <span class="s">"github.com/krewire/krewire/pkg/model"</span>
 )
 
 <span class="k">func</span> <span class="f">main</span>() {
@@ -68,12 +67,12 @@ layout: Landing
     <span class="c">// End-to-end SDLC platform in pure Go</span>
     app.Get(<span class="s">"/"</span>, <span class="k">func</span>(c *web.Context) error {
         <span class="k">return</span> c.JSON(<span class="n">200</span>, web.Map{
-            <span class="s">"ecosystem"</span>:  <span class="s">"Krewire"</span>,
-            <span class="s">"runtime"</span>:    <span class="s">"pure-go"</span>,
-            <span class="s">"pillars"</span>:    []string{<span class="s">"secure"</span>, <span class="s">"sustain"</span>, <span class="s">"scalable"</span>},
-            <span class="s">"platforms"</span>:  []string{<span class="s">"krew"</span>, <span class="s">"auth"</span>, <span class="s">"cloud"</span>, <span class="s">"dash"</span>},
-            <span class="s">"footprint"</span>:  <span class="s">"10-30 MB RAM"</span>,
-            <span class="s">"cold_start"</span>: <span class="s">"&lt; 1ms"</span>,
+            <span class="s">"ecosystem"</span>:    <span class="s">"Krewire"</span>,
+            <span class="s">"architecture"</span>: <span class="s">"6-Layer Pyramid"</span>,
+            <span class="s">"pillars"</span>:      []string{<span class="s">"secure"</span>, <span class="s">"sustainable"</span>, <span class="s">"scalable"</span>},
+            <span class="s">"pipeline"</span>:     <span class="s">"P0 (Static) -&gt; P6 (Distributed Mesh)"</span>,
+            <span class="s">"footprint"</span>:    <span class="s">"10-30 MB RAM"</span>,
+            <span class="s">"cold_start"</span>:   <span class="s">"&lt; 1ms"</span>,
         })
     })
 
@@ -97,7 +96,7 @@ layout: Landing
         <span class="hidden sm:inline opacity-40">·</span>
         <span><b class="text-fg dark:text-fg-dark">1</b> CLI · kiw</span>
         <span class="hidden sm:inline opacity-40">·</span>
-        <span><b class="text-fg dark:text-fg-dark">8</b> Workload Types</span>
+        <span><b class="text-fg dark:text-fg-dark">8</b> Progressive Workloads</span>
         <span class="hidden sm:inline opacity-40">·</span>
         <span><b class="text-fg dark:text-fg-dark">1</b> Project Config</span>
         <span class="hidden sm:inline opacity-40">·</span>
@@ -421,13 +420,113 @@ layout: Landing
 </section>
 
 <!-- =====================================================================
+     PROGRESSIVE PIPELINE (P0 - P6)
+     ===================================================================== -->
+<section id="pipeline" class="w-full bg-bg-2 dark:bg-bg-dark-2 bg-dots py-14 sm:py-18 md:py-22 lg:py-26 border-b-2 border-border">
+  <div class="container-site">
+    <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
+      <Badge Variant="primary" Class="mb-3 sm:mb-4"><span data-i18n="pipeline.badge">Progressive Pipeline</span></Badge>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4 sm:mb-5 text-fg dark:text-fg-dark" data-i18n="pipeline.title">Additive Growth Without Rewrites (P0 → P6)</h2>
+      <p class="text-sm sm:text-base md:text-lg text-muted dark:text-muted-dark leading-relaxed" data-i18n="pipeline.lead">Software should pay only for the complexity it needs today. Seamlessly evolve across 7 progressive stages within a single repository, driven by declarative configuration.</p>
+    </div>
+
+    <!-- Progressive Stages Grid (7 Stages) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
+      <!-- P0: Static -->
+      <div class="card p-5 sm:p-6 bg-bg dark:bg-bg-dark flex flex-col justify-between hover:-translate-y-1 transition-all duration-150">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono text-xs font-black px-2.5 py-1 rounded bg-primary/20 text-primary border border-primary/30" data-i18n="pipeline.p0_stage">P0</span>
+            <span class="text-xs font-mono font-bold text-muted dark:text-muted-dark">Zero Runtime</span>
+          </div>
+          <h3 class="text-base sm:text-lg font-black tracking-tight text-fg dark:text-fg-dark mb-2" data-i18n="pipeline.p0_title">Static Content</h3>
+          <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed m-0" data-i18n="pipeline.p0_desc">Marketing sites, landing pages, and technical books with zero runtime cost and instant edge hosting.</p>
+        </div>
+      </div>
+
+      <!-- P1: Islands -->
+      <div class="card p-5 sm:p-6 bg-bg dark:bg-bg-dark flex flex-col justify-between hover:-translate-y-1 transition-all duration-150">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono text-xs font-black px-2.5 py-1 rounded bg-secondary/20 text-secondary border border-secondary/30" data-i18n="pipeline.p1_stage">P1</span>
+            <span class="text-xs font-mono font-bold text-muted dark:text-muted-dark">WASM Island</span>
+          </div>
+          <h3 class="text-base sm:text-lg font-black tracking-tight text-fg dark:text-fg-dark mb-2" data-i18n="pipeline.p1_title">Dynamic Islands</h3>
+          <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed m-0" data-i18n="pipeline.p1_desc">Hydrate interactive UI widgets with pure Go WebAssembly without Node.js or npm bloat.</p>
+        </div>
+      </div>
+
+      <!-- P2: Monolith -->
+      <div class="card p-5 sm:p-6 bg-bg dark:bg-bg-dark flex flex-col justify-between hover:-translate-y-1 transition-all duration-150">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono text-xs font-black px-2.5 py-1 rounded bg-primary/20 text-primary border border-primary/30" data-i18n="pipeline.p2_stage">P2</span>
+            <span class="text-xs font-mono font-bold text-muted dark:text-muted-dark">Single Binary</span>
+          </div>
+          <h3 class="text-base sm:text-lg font-black tracking-tight text-fg dark:text-fg-dark mb-2" data-i18n="pipeline.p2_title">Fullstack Monolith</h3>
+          <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed m-0" data-i18n="pipeline.p2_desc">Single Go binary combining HTTP routing, embedded templates, and lightweight database models.</p>
+        </div>
+      </div>
+
+      <!-- P3: Modular Monolith -->
+      <div class="card p-5 sm:p-6 bg-bg dark:bg-bg-dark flex flex-col justify-between hover:-translate-y-1 transition-all duration-150">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono text-xs font-black px-2.5 py-1 rounded bg-secondary/20 text-secondary border border-secondary/30" data-i18n="pipeline.p3_stage">P3</span>
+            <span class="text-xs font-mono font-bold text-muted dark:text-muted-dark">Domain Scope</span>
+          </div>
+          <h3 class="text-base sm:text-lg font-black tracking-tight text-fg dark:text-fg-dark mb-2" data-i18n="pipeline.p3_title">Modular Monolith</h3>
+          <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed m-0" data-i18n="pipeline.p3_desc">Enforce clean domain boundaries across Workspace ⊃ Module ⊃ Domain ⊃ Service ⊃ Unit.</p>
+        </div>
+      </div>
+
+      <!-- P4: Headless Split -->
+      <div class="card p-5 sm:p-6 bg-bg dark:bg-bg-dark flex flex-col justify-between hover:-translate-y-1 transition-all duration-150">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono text-xs font-black px-2.5 py-1 rounded bg-primary/20 text-primary border border-primary/30" data-i18n="pipeline.p4_stage">P4</span>
+            <span class="text-xs font-mono font-bold text-muted dark:text-muted-dark">Edge API</span>
+          </div>
+          <h3 class="text-base sm:text-lg font-black tracking-tight text-fg dark:text-fg-dark mb-2" data-i18n="pipeline.p4_title">Headless Split</h3>
+          <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed m-0" data-i18n="pipeline.p4_desc">Decouple presentation from backend API services with typed schema contracts and gateway routing.</p>
+        </div>
+      </div>
+
+      <!-- P5: Services & Workers -->
+      <div class="card p-5 sm:p-6 bg-bg dark:bg-bg-dark flex flex-col justify-between hover:-translate-y-1 transition-all duration-150">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono text-xs font-black px-2.5 py-1 rounded bg-secondary/20 text-secondary border border-secondary/30" data-i18n="pipeline.p5_stage">P5</span>
+            <span class="text-xs font-mono font-bold text-muted dark:text-muted-dark">Async Queues</span>
+          </div>
+          <h3 class="text-base sm:text-lg font-black tracking-tight text-fg dark:text-fg-dark mb-2" data-i18n="pipeline.p5_title">Services &amp; Workers</h3>
+          <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed m-0" data-i18n="pipeline.p5_desc">Extract asynchronous job queues, scheduled recurring tasks, and dedicated service containers.</p>
+        </div>
+      </div>
+
+      <!-- P6: Distributed Mesh (spans 2 cols on lg) -->
+      <div class="card p-5 sm:p-6 bg-bg dark:bg-bg-dark flex flex-col justify-between sm:col-span-2 hover:-translate-y-1 transition-all duration-150">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono text-xs font-black px-2.5 py-1 rounded bg-primary/20 text-primary border border-primary/30" data-i18n="pipeline.p6_stage">P6</span>
+            <span class="text-xs font-mono font-bold text-primary">Hyperscale Fleet</span>
+          </div>
+          <h3 class="text-base sm:text-lg font-black tracking-tight text-fg dark:text-fg-dark mb-2" data-i18n="pipeline.p6_title">Distributed Mesh</h3>
+          <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed m-0" data-i18n="pipeline.p6_desc">Multi-tenant edge gateways, service discovery, resilient circuit breakers, and OpenTelemetry.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
      8 WORKLOADS
      ===================================================================== -->
 <section id="workloads" class="w-full bg-bg dark:bg-bg-dark py-14 sm:py-18 md:py-22 lg:py-26 border-b-2 border-border">
   <div class="container-site">
     <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
-      <Badge Variant="primary" Class="mb-3 sm:mb-4"><span data-i18n="workloads.badge">Unified Workload Engine</span></Badge>
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4 sm:mb-5 text-fg dark:text-fg-dark" data-i18n="workloads.title">One Unified Architecture. Eight Workloads.</h2>
+      <Badge Variant="primary" Class="mb-3 sm:mb-4"><span data-i18n="workloads.badge">Progressive Capacity</span></Badge>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4 sm:mb-5 text-fg dark:text-fg-dark" data-i18n="workloads.title">One Progressive Pipeline. Eight Workloads.</h2>
       <p class="text-sm sm:text-base md:text-lg text-muted dark:text-muted-dark leading-relaxed" data-i18n="workloads.lead">Stop assembling disparate frameworks for web, CLI, background queues, and infra. Krewire provides unified ergonomics, shared configuration, and zero context switching.</p>
     </div>
 
@@ -614,7 +713,7 @@ layout: Landing
           <h3 class="text-lg font-black tracking-tight mb-2.5 text-fg dark:text-fg-dark">kiw new</h3>
           <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed mb-6" data-i18n="steps.s2_desc">Generate a production-ready project template for any workload in under one second.</p>
         </div>
-        <Terminal Command="kiw new my-site --site && cd my-site" Class="mt-6 sm:mt-8 w-full" />
+        <Terminal Command="kiw new my-app && cd my-app" Class="mt-6 sm:mt-8 w-full" />
       </div>
 
       <!-- Step 3: Develop -->
@@ -640,7 +739,7 @@ layout: Landing
           <h3 class="text-lg font-black tracking-tight mb-2.5 text-fg dark:text-fg-dark">kiw deploy</h3>
           <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed mb-6" data-i18n="steps.s4_desc">Compile into a single static binary or static asset bundle and ship to GitHub Pages or Docker.</p>
         </div>
-        <Terminal Command="kiw deploy --target gh-pages" Class="mt-6 sm:mt-8 w-full" />
+        <Terminal Command="kiw deploy" Class="mt-6 sm:mt-8 w-full" />
       </div>
 
     </div>
@@ -872,7 +971,7 @@ p  { font-size: 15px; color: var(--muted); }
           <Button Variant="outline" Size="lg" Href="https://open.krewire.com"><span data-i18n="cta.contribute">Contribute →</span></Button>
         </HStack>
         <div class="w-full max-w-md sm:max-w-lg md:max-w-xl mx-auto text-left mt-6 sm:mt-8">
-          <Terminal Command="kiw new my-app --site && cd my-app && kiw dev" Class="bg-bg dark:bg-bg-dark" />
+          <Terminal Command="kiw new my-app && cd my-app && kiw dev" Class="bg-bg dark:bg-bg-dark" />
         </div>
       </VStack>
     </div>
