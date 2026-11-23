@@ -281,10 +281,10 @@ Reusable component libraries can be distributed and installed as standalone pack
 - **Install Directory (`./.krewire/pkg/`)**: Local project packages repository.
 
 ```bash
-kiw pkg init @acme/ui              # Scaffolds package directory with kiw.pkg.json
-kiw pkg pack ./acme-ui             # Packs into acme-ui-0.1.0.kpkg archive
-kiw pkg add ./acme-ui-0.1.0.kpkg   # Installs into ./.krewire/pkg/acme-ui
-kiw pkg list                       # Lists installed packages and exported components
+krew pkg init @acme/ui              # Scaffolds package directory with kiw.pkg.json
+krew pkg pack ./acme-ui             # Packs into acme-ui-0.1.0.kpkg archive
+krew pkg add ./acme-ui-0.1.0.kpkg   # Installs into ./.krewire/pkg/acme-ui
+krew pkg list                       # Lists installed packages and exported components
 ```
 
 Stylesheets declared in `kiw.pkg.json` (`styles: "./styles/theme.css"`) are automatically compiled and injected into the site asset pipeline.

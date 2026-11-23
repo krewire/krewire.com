@@ -26,10 +26,10 @@ project:
 | **Terminal CLI & TUI** | `cli` | Command-line utilities, interactive developer TUIs | `krew run`, `krew new my-cli --cli` | `pkg/tui` |
 | **Static Site (SSG)** | `site` | Landing pages, marketing websites, blogs, portfolios | `krew build`, `krew dev` | `pkg/web/ssg`, `pkg/kiw` |
 | **Technical Book** | `book` | Multi-chapter documentation, books, software manuals | `krew build --target book`, `krew dev` | `pkg/book` |
-| **Background Worker** | `worker` | Asynchronous job queues, cron schedules, retries, DLQ | `kiw worker` | `pkg/cloud/worker` |
-| **Microservice** | `service` | Distributed RPC/HTTP APIs, service registry, gateways | `krew run`, `kiw dash` | `pkg/cloud/service` |
+| **Background Worker** | `worker` | Asynchronous job queues, cron schedules, retries, DLQ | `krew worker` | `pkg/cloud/worker` |
+| **Microservice** | `service` | Distributed RPC/HTTP APIs, service registry, gateways | `krew run`, `krew dash` | `pkg/cloud/service` |
 | **Cloud Infra (IaC)** | `infra` | Provider-agnostic cloud resource provisioning (AWS/K8s) | `krew deploy --target infra` | `pkg/cloud/infra` |
-| **API Gateway** | `gateway` | Declarative reverse proxy, per-route middleware, service-discovery balancing | `kiw gateway`, `krew run` | `pkg/web/gateway` |
+| **API Gateway** | `gateway` | Declarative reverse proxy, per-route middleware, service-discovery balancing | `krew gateway`, `krew run` | `pkg/web/gateway` |
 
 ---
 
@@ -129,7 +129,7 @@ The `worker` workload runs background asynchronous job processors, distributed t
 ### Running
 
 ```bash
-kiw worker --queue memory
+krew worker --queue memory
 ```
 
 ---
@@ -181,12 +181,12 @@ The `gateway` workload is a standalone reverse proxy that fronts one or more ups
 - **Declarative Routing:** Exact and prefix routes, per-route method matching, and either a fixed `target_url` or a registry-resolved `service`.
 - **Per-Route Middleware:** CORS, tracing, timeout, rate limiting, and circuit breaking are registered by name and composed per route.
 - **Service Discovery:** Round-robin balancing over registered endpoints; an unavailable upstream returns `502` with a structured Problem JSON body.
-- **One Route Table, Two Runners:** `krew run` executes the project binary; `kiw gateway` runs the identical `gateway:` block without a rebuild.
+- **One Route Table, Two Runners:** `krew run` executes the project binary; `krew gateway` runs the identical `gateway:` block without a rebuild.
 
 ### Running
 
 ```bash
-kiw gateway --port 8080 --routes "/api=user-service"
+krew gateway --port 8080 --routes "/api=user-service"
 ```
 
 > [!NOTE]

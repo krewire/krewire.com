@@ -22,8 +22,8 @@ flowchart TD
     end
 
     subgraph Inbound ["Telemetri & Kontrol Agen Masuk"]
-        STDIO["kiw mcp --stdio"]
-        SSE["kiw dash (/mcp/sse)"]
+        STDIO["krew mcp --stdio"]
+        SSE["krew dash (/mcp/sse)"]
         SRV["Native MCP Server"]
     end
 
@@ -58,7 +58,7 @@ flowchart TD
 
 Setiap proyek Krewire dapat langsung berfungsi sebagai server MCP dengan nol konfigurasi tambahan.
 
-### A. Konfigurasi IDE dengan stdio (`kiw mcp --stdio`)
+### A. Konfigurasi IDE dengan stdio (`krew mcp --stdio`)
 
 Untuk **Cursor** (`.cursor/mcp.json`) atau **Claude Desktop** (`claude_desktop_config.json`):
 
@@ -88,10 +88,10 @@ Untuk **OpenCode** (`opencode.json`):
 
 ### B. Konfigurasi Jaringan / Browser dengan HTTP/SSE
 
-Saat mengembangkan layanan mikro, kontainer, atau menggunakan agen yang terhubung melalui web, jalankan `kiw dash`:
+Saat mengembangkan layanan mikro, kontainer, atau menggunakan agen yang terhubung melalui web, jalankan `krew dash`:
 
 ```bash
-kiw dash --port 4000
+krew dash --port 4000
 ```
 
 Server MCP SSE secara otomatis tersedia di:

@@ -45,7 +45,7 @@ Krewire unifies all of these workloads under **Go**, **`kiw`**, and **`krewire.y
 | **Documentation** | Docusaurus / GitBook / MkDocs | `krew build --book` (`pkg/book` markdown engine) |
 | **Web Monolith** | Laravel / Django / Next.js + Node | `krew run` (`pkg/app` single Go binary) |
 | **CLI & TUI** | Python Click / Node / Cobra | `krew run` (`pkg/tui` reactive terminal) |
-| **Background Jobs** | Celery + Python + Redis / Sidekiq | `kiw worker` (`pkg/cloud/worker` queues & cron) |
+| **Background Jobs** | Celery + Python + Redis / Sidekiq | `krew worker` (`pkg/cloud/worker` queues & cron) |
 | **Microservices** | Spring Boot / Express / Go kit | `krew run` (`pkg/cloud/service` gateway & OTel) |
 | **Cloud Infra** | Terraform / HCL / CloudFormation | `krew deploy --target infra` (`pkg/cloud/infra` Go IaC declarations) |
 | **Client Frontend** | React / Vue / Angular + bundlers | `krew build --target wasm` (`pkg/runtime` Go-to-WASM) |

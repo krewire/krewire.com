@@ -1,0 +1,13 @@
+{
+  "badge": "Architecture & Philosophy",
+  "title": "Go-First. Progressive. Zero Bloat.",
+  "lead": "Built for engineers who value compilation speed, predictable deployments, and maintainable software architecture.",
+  "w1_title": "Pure Go Toolchain",
+  "w1_desc": "No Node.js, no npm dependencies, and no bundler configuration. Your entire application compiles with standard Go tooling into clean, self-contained binaries.",
+  "w2_title": "Scoped .kiw Components",
+  "w2_desc": "Combines YAML frontmatter, standard Go HTML templates, and scoped <style> blocks. CSS classes never leak outside their component boundary.",
+  "w3_title": "Progressive Scaling",
+  "w3_desc": "Start as a lightweight static site, grow into a fullstack web monolith, then seamlessly extract background workers and microservices — all within the same ecosystem.",
+  "w4_title": "Enterprise Resilience",
+  "w4_desc": "Engineered with production defaults: structured JSON logging, distributed tracing, health checks, circuit breakers, and graceful shutdown out of the box."
+}

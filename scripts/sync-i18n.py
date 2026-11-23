@@ -2,13 +2,14 @@
 """
 Sync the landing-page translation dictionaries into the client bundle.
 
-`lang/<locale>/site.json` is the source of truth for landing-page strings.
+`lang/<locale>/*.json` (split per context/classification) is the source of truth for landing-page strings.
 `public/assets/krewire.js` embeds a copy of those dictionaries
 (`var translations = {...};`) so the language toggle works without an extra
 network request. This script:
 
-1. verifies that `en` and `id` declare exactly the same keys, and
-2. rewrites the embedded `translations` object from the JSON files.
+1. loads all context/classification JSON files from `lang/<locale>/*.json`,
+2. verifies that `en` and `id` declare exactly the same keys, and
+3. rewrites the embedded `translations` object in `public/assets/krewire.js`.
 
 Usage:
     python3 scripts/sync-i18n.py           # verify + rewrite
@@ -34,14 +35,30 @@ def flatten(obj, prefix=""):
     return keys
 
 
+def load_locale_dict(root, locale):
+    loc_dir = os.path.join(root, "lang", locale)
+    result = {}
+    if not os.path.isdir(loc_dir):
+        return result
+
+    for fname in sorted(os.listdir(loc_dir)):
+        if not fname.endswith(".json") or fname == "site.json":
+            continue
+        context_name = fname[:-5]  # strip .json
+        fpath = os.path.join(loc_dir, fname)
+        with open(fpath, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            result[context_name] = data
+    return result
+
+
 def main():
     check_only = "--check" in sys.argv[1:]
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
     dicts = {}
     for loc in LOCALES:
-        with open(os.path.join(root, "lang", loc, "site.json"), encoding="utf-8") as f:
-            dicts[loc] = json.load(f)
+        dicts[loc] = load_locale_dict(root, loc)
 
     en_keys, id_keys = flatten(dicts["en"]), flatten(dicts["id"])
     if en_keys != id_keys:
@@ -75,7 +92,7 @@ def main():
     if not in_sync:
         with open(js_path, "w", encoding="utf-8") as f:
             f.write(src[:start] + rendered + src[start + length:])
-    print(f"SUCCESS: {len(en_keys)} landing keys in parity; krewire.js {'updated' if not in_sync else 'already in sync'}.")
+    print(f"SUCCESS: {len(en_keys)} landing keys in parity across modular files; krewire.js {'updated' if not in_sync else 'already in sync'}.")
 
 
 if __name__ == "__main__":

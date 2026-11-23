@@ -1,0 +1,13 @@
+{
+  "badge": "Arsitektur & Filosofi",
+  "title": "Go-First. Progresif. Bebas Kembung.",
+  "lead": "Dibangun untuk para engineer yang menghargai kecepatan kompilasi, deployment terprediksi, dan arsitektur kode yang terawat.",
+  "w1_title": "Toolchain Go Murni",
+  "w1_desc": "Tanpa Node.js, tanpa dependensi npm, dan tanpa konfigurasi bundler. Seluruh aplikasi Anda dikompilasi dengan toolchain Go standar menjadi biner mandiri yang bersih.",
+  "w2_title": "Komponen .kiw yang Terisolasi",
+  "w2_desc": "Menggabungkan frontmatter YAML, template HTML Go standar, dan blok <style> terisolasi. Kelas CSS tidak pernah bocor ke luar batas komponen.",
+  "w3_title": "Skalabilitas Progresif",
+  "w3_desc": "Mulai sebagai situs statis ringan, berkembang menjadi monolit web fullstack, lalu ekstrak worker antrean dan layanan mikro tanpa repot — semuanya dalam satu ekosistem.",
+  "w4_title": "Ketahanan Skala Enterprise",
+  "w4_desc": "Dirancang dengan standar siap produksi: structured JSON logging, distributed tracing, health check, circuit breaker, dan graceful shutdown langsung tersedia."
+}

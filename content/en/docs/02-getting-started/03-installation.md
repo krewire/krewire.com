@@ -1,23 +1,23 @@
 ---
 title: "Installation"
-description: "Comprehensive installation guide for the kiw CLI developer tool on Linux, macOS, and Windows."
+description: "Comprehensive installation guide for the krew CLI developer toolchain on Linux, macOS, and Windows."
 date: "2026-09-29"
 ---
 
 # Installation
 
-The **`kiw`** CLI is the unified developer multi-tool for the Krewire ecosystem. A single binary powers project scaffolding, code generation, local development servers, testing, asset compilation, and production deployment across all eight workloads.
+The **`krew`** CLI is the unified developer multi-tool and driver for the Krewire ecosystem. A single binary powers project scaffolding, code generation, local development servers with live reload, quality gates, migrations, and production compilation across all eight workloads.
 
 ---
 
 ## 1. System Requirements
 
-Before installing `kiw`, verify that your development environment satisfies the baseline requirements:
+Before installing `krew`, verify that your development environment satisfies the baseline requirements:
 
 | Requirement | Supported Specifications | Notes |
 | :--- | :--- | :--- |
-| **Operating System** | Linux (Ubuntu, Debian, Fedora, Arch, Alpine), macOS (12+), Windows (10/11) | Native binaries available for all platforms. |
-| **Architecture** | `amd64` (x86_64), `arm64` (Apple Silicon, ARM64 servers) | Verified multi-arch static builds. |
+| **Operating System** | Linux (Ubuntu, Debian, Fedora, Arch, Alpine), macOS (12+), Windows (10/11) | Native static binaries available for all platforms. |
+| **Architecture** | `amd64` (x86_64), `arm64` (Apple Silicon, ARM64 servers) | Verified multi-arch static builds with zero native C dependencies (`CGO_ENABLED=0`). |
 | **Go Runtime** | **Go 1.27.1 or higher** | Required when building from source or running Go workloads. |
 | **Version Control** | `git` (2.30+) | Required for template bootstrapping and module fetching. |
 
@@ -34,55 +34,80 @@ go version
 
 ## 2. Installation Methods
 
-Choose the installation method best suited to your platform and workflow:
+Choose the installation method best suited to your platform:
 
 ### Method A: Automated Shell Installer (Linux & macOS)
 
 The recommended installation method for Linux and macOS systems uses the automated installation script:
 
 ```bash
-curl -fsSL https://krewire.com/scripts/install.sh | sh
+curl -fsSL https://krewire.com/install.sh | sh
 ```
+
+*(Alternatively: `curl -fsSL https://krewire.com/scripts/install.sh | sh`)*
 
 #### How the Installer Works:
 1. **Platform Detection:** Inspects your kernel (`Linux`/`Darwin`) and CPU architecture (`x86_64`/`arm64`).
-2. **Tag Resolution:** Queries GitHub Releases for the latest release of `krewire/krewire`. **No GitHub Release has been published yet** (the latest tag is `v0.2.0`), so the installer currently falls back to `go install` from source, which requires **Go 1.27.1+**. Steps 3–4 apply once pre-built release archives exist.
-3. **Checksum Verification:** Downloads the official `kiw_checksums.txt` manifest and cryptographically validates the SHA256 hash of the downloaded archive before extraction.
-4. **Atomic Placement:** Places the binary into `/usr/local/bin` using `install -m 755`. If run without root permissions, it automatically falls back to `~/.local/bin`.
-5. **Secure Cleanup:** Traps exit signals (`INT`, `TERM`, `EXIT`) to guarantee temporary extraction directories are safely erased.
+2. **Release Resolution:** Queries GitHub Releases for precompiled binary archives. If pre-built binaries are not available for your platform, it automatically falls back to `go install github.com/krewire/krew/cmd/krew@latest`.
+3. **Checksum Verification:** Downloads the official `krew_checksums.txt` manifest and cryptographically validates the SHA256 hash before extraction.
+4. **Atomic Placement:** Places `krew` into `/usr/local/bin` using `install -m 755` (or falls back to `~/.local/bin` if running without root permissions). It also automatically creates a `kiw` alias symlink.
+5. **Secure Cleanup:** Traps exit signals to ensure temporary directories are immediately erased.
 
-To customize the installation directory, pass the `INSTALL_DIR` environment variable:
+To customize the installation directory:
 
 ```bash
-curl -fsSL https://krewire.com/scripts/install.sh | INSTALL_DIR="$HOME/bin" sh
+curl -fsSL https://krewire.com/install.sh | INSTALL_DIR="$HOME/bin" sh
 ```
 
 ---
 
-### Method B: Install via Go Toolchain (Cross-Platform / Windows)
+### Method B: Automated PowerShell Installer (Windows)
 
-If you already have Go installed and `$GOPATH/bin` configured in your system `PATH`, install `kiw` directly from source:
+On Windows 10/11, open PowerShell (Administrator or standard user) and run:
+
+```powershell
+irm https://krewire.com/install.ps1 | iex
+```
+
+*(Alternatively: `irm https://krewire.com/scripts/install.ps1 | iex`)*
+
+#### How the PowerShell Installer Works:
+1. Detects `amd64` or `arm64` Windows architecture.
+2. Downloads and validates the precompiled binary archive or compiles via `go install`.
+3. Installs `krew.exe` and `kiw.exe` into `$env:LOCALAPPDATA\Programs\krew`.
+4. Adds the installation directory to your User `PATH` environment variable automatically.
+
+---
+
+### Method C: Install via Go Toolchain (Cross-Platform)
+
+If you already have Go installed and `$GOPATH/bin` in your system `PATH`, install `krew` directly from source:
 
 ```bash
 go install github.com/krewire/krew/cmd/krew@latest
 ```
 
-To pin a specific version (e.g. `v0.2.0`):
+To pin a specific version (e.g. `v0.2.3`):
 
 ```bash
-go install github.com/krewire/krew/cmd/krew@v0.2.0
+go install github.com/krewire/krew/cmd/krew@v0.2.3
 ```
 
 #### Configuring Your PATH:
-Ensure your Go binary directory is included in your shell profile (`~/.bashrc`, `~/.zshrc`, or Windows Environment Variables):
 
+Ensure your Go binary directory is included in your shell profile:
+
+**Bash / Zsh (`~/.bashrc` or `~/.zshrc`):**
 ```bash
-# Add to ~/.bashrc or ~/.zshrc if not already present:
 export PATH="$PATH:$(go env GOPATH)/bin"
 ```
 
-On Windows PowerShell:
+**Fish (`~/.config/fish/config.fish`):**
+```fish
+set -gx PATH $PATH (go env GOPATH)/bin
+```
 
+**Windows PowerShell:**
 ```powershell
 $env:Path += ";$((go env GOPATH))\bin"
 ```
@@ -99,68 +124,33 @@ After installation completes, verify that the binary is accessible and operation
 krew version
 ```
 
-Expected output (the `Commit` line is printed only for builds with module
-provenance):
-
+Output:
 ```text
-kiw Krewire Devtool
-  Krewire Ecosystem  v0.2.0
-  Signature          build with krewire
-  Go                 go1.27.1 (linux/amd64)
-  Commit             a1b2c3d4
+krew v0.2.3 (darwin/arm64) commit 7a8f9c1 built 2026-11-20
 ```
 
-### 2. Environment Diagnostics
-
-Run `krew info` to inspect your active toolchain, operating system, and Go environment:
+### 2. Interactive Help & Command Map
 
 ```bash
-krew info
-```
-
-### 3. Compatibility Check
-
-Run `krew compat` inside any Krewire project directory to verify that your local CLI matches the package dependencies in `go.mod`:
-
-```bash
-krew compat
+krew help
 ```
 
 ---
 
-## 4. Upgrading `kiw`
+## 4. Next Steps
 
-To upgrade to the latest stable release:
-
-- **Via Shell Installer:**
-  ```bash
-  curl -fsSL https://krewire.com/scripts/install.sh | sh
-  ```
-
-- **Via Go Toolchain:**
-  ```bash
-  go install github.com/krewire/krew/cmd/krew@latest
-  ```
-
----
-
-## 5. Uninstalling `kiw`
-
-Because `kiw` is distributed as a single static binary with no background daemons or registry entries, uninstallation is straightforward:
+With `krew` installed, you can initialize a new project in under 30 seconds:
 
 ```bash
-# For standard system-wide install:
-sudo rm -f /usr/local/bin/krew
+# Scaffold a new fullstack project
+krew new my-app
 
-# For user-local install:
-rm -f ~/.local/bin/krew
+# Navigate to the workspace
+cd my-app
 
-# For Go bin install:
-rm -f "$(go env GOPATH)/bin/krew"
+# Launch the live-reload development server
+krew dev
+
+# Compile into a production standalone static bundle or binary
+krew build
 ```
-
----
-
-## Next Steps
-
-Now that your toolchain is installed, proceed to [**2.4 Configuration →**](/getting-started/configuration) to learn how to configure projects using `krewire.yaml`.

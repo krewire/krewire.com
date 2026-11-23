@@ -12,7 +12,7 @@ tracing, timeouts, rate limiting, circuit breaking), and resolves upstream
 addresses through the service registry.
 
 Powered by `pkg/web/gateway`, the same route table runs from the project binary
-or straight from the CLI with `kiw gateway`.
+or straight from the CLI with `krew gateway`.
 
 ---
 
@@ -21,7 +21,7 @@ or straight from the CLI with `kiw gateway`.
 1. **Declarative Route Table:** Exact and prefix routes, per-route method matching, and either a fixed `target_url` or a registry-resolved `service`.
 2. **Per-Route Middleware:** CORS, tracing, timeout, rate limiting, and circuit breaking are registered by name and composed per route instead of globally.
 3. **Service Discovery:** Round-robin load balancing over registered endpoints; an unavailable upstream returns `502` with a structured Problem JSON body.
-4. **One Route Table, Two Runners:** `krew dev` / `krew run` execute the project binary; `kiw gateway` runs the identical `gateway:` block without a rebuild.
+4. **One Route Table, Two Runners:** `krew dev` / `krew run` execute the project binary; `krew gateway` runs the identical `gateway:` block without a rebuild.
 
 ---
 
@@ -172,5 +172,5 @@ krew dev
 krew build
 
 # Run the shared route table without building the project binary
-kiw gateway --port 8080 --routes "/api=user-service,/pay=payment-service"
+krew gateway --port 8080 --routes "/api=user-service,/pay=payment-service"
 ```

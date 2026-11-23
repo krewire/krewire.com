@@ -137,11 +137,11 @@ selected in Go code, not in `krewire.yaml`.
 Run the worker daemon locally:
 
 ```bash
-kiw worker
+krew worker
 ```
 
 Run with custom concurrency or queue:
 
 ```bash
-kiw worker --concurrency 16
+krew worker --concurrency 16
 ```

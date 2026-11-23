@@ -1,0 +1,13 @@
+{
+  "badge": "Pengalaman Pengembang",
+  "title": "Dari Nol ke Produksi dalam 4 Perintah",
+  "lead": "Tanpa boilerplate rumit, tanpa pergulatan package manager, tanpa magis tersembunyi.",
+  "s1_desc": "Pasang tool CLI krew mandiri lewat skrip satu baris atau go install.",
+  "s2_desc": "Buat template proyek siap produksi untuk workload apa pun dalam waktu kurang dari satu detik.",
+  "s3_desc": "Server pengembangan lokal hot-reload instan dengan perutean berbasis berkas dan pembaruan scoped CSS.",
+  "s4_desc": "Kompilasi ke binary statis tunggal atau bundle aset statis dan rilis ke GitHub Pages atau Docker.",
+  "s1_badge": "Instal",
+  "s2_badge": "Scaffold",
+  "s3_badge": "Kembangkan",
+  "s4_badge": "Deploy"
+}

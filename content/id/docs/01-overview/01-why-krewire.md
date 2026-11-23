@@ -45,7 +45,7 @@ Krewire menyatukan seluruh jenis workload ini di bawah payung **Go**, **`kiw`**,
 | **Dokumentasi** | Docusaurus / GitBook / MkDocs | `krew build --book` (engine markdown `pkg/book`) |
 | **Monolit Web** | Laravel / Django / Next.js + Node | `krew run` (`pkg/app` single binary Go) |
 | **CLI & TUI** | Python Click / Node / Cobra | `krew run` (antarmuka reaktif `pkg/tui`) |
-| **Tugas Latar Belakang** | Celery + Python + Redis / Sidekiq | `kiw worker` (antrean & cron `pkg/cloud/worker`) |
+| **Tugas Latar Belakang** | Celery + Python + Redis / Sidekiq | `krew worker` (antrean & cron `pkg/cloud/worker`) |
 | **Microservices** | Spring Boot / Express / Go kit | `krew run` (gateway & OTel `pkg/cloud/service`) |
 | **Infrastruktur Cloud** | Terraform / HCL / CloudFormation | `krew deploy --target infra` (deklarasi Go IaC `pkg/cloud/infra`) |
 | **Client Frontend** | React / Vue / Angular + bundler | `krew build --target wasm` (Go-ke-WASM `pkg/runtime`) |

@@ -22,8 +22,8 @@ flowchart TD
     end
 
     subgraph Inbound ["Inbound Agent Telemetry & Control"]
-        STDIO["kiw mcp --stdio"]
-        SSE["kiw dash (/mcp/sse)"]
+        STDIO["krew mcp --stdio"]
+        SSE["krew dash (/mcp/sse)"]
         SRV["Native MCP Server"]
     end
 
@@ -58,7 +58,7 @@ flowchart TD
 
 Every Krewire project can instantly serve as an MCP server with zero configuration.
 
-### A. IDE Setup with stdio (`kiw mcp --stdio`)
+### A. IDE Setup with stdio (`krew mcp --stdio`)
 
 For **Cursor** (`.cursor/mcp.json`) or **Claude Desktop** (`claude_desktop_config.json`):
 
@@ -88,10 +88,10 @@ For **OpenCode** (`opencode.json`):
 
 ### B. Network / Browser Setup with HTTP/SSE
 
-When developing microservices, containers, or using web-connected agents, start `kiw dash`:
+When developing microservices, containers, or using web-connected agents, start `krew dash`:
 
 ```bash
-kiw dash --port 4000
+krew dash --port 4000
 ```
 
 The MCP SSE server is automatically exposed at:

@@ -1,0 +1,14 @@
+{
+  "badge": "Component DSL",
+  "title": "Write Pages as Clean .kiw Components",
+  "lead": "The elegance of Svelte and Astro brought to Go. Frontmatter + HTML + scoped CSS in one intuitive file.",
+  "f1_html": "<b>Scoped by Default:</b> Styles remain strictly isolated to the component.",
+  "f2_html": "<b>Global CSS via <code class=\"code-inline\">:root</code>:</b> Theme tokens cascade cleanly across layouts.",
+  "f3_html": "<b>Built into Krewire:</b> Compiled natively via <code class=\"code-inline\">pkg/kiw</code> with standard Go tooling.",
+  "f4_html": "<b>Light & Dark Mode:</b> Native token switching via <code class=\"code-inline\">data-theme</code>.",
+  "scoping_badge": "Scoping",
+  "scoping_title": "Why Scoped CSS in Go?",
+  "scoping_desc": "Every <code class=\"code-inline\">.kiw</code> component receives automatic <code class=\"code-inline\">data-kiw-component</code> scope hashing at build time. No CSS collisions, no naming gymnastics, zero runtime cost.",
+  "cta_explore": "Explore DSL Syntax →",
+  "cta_docs": "Read the Docs"
+}

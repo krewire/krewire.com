@@ -140,10 +140,10 @@ func init() {
 
 Run migrations via the CLI:
 ```bash
-kiw migrate up       # Apply all pending migrations
-kiw migrate down     # Roll back the last migration batch
-kiw migrate redo     # Re-apply the last migration atomically
-kiw migrate status   # Inspect migration states
+krew migrate up       # Apply all pending migrations
+krew migrate down     # Roll back the last migration batch
+krew migrate redo     # Re-apply the last migration atomically
+krew migrate status   # Inspect migration states
 ```
 
 ## Faker Engine (`pkg/orm/faker`)
@@ -233,8 +233,8 @@ func (DatabaseSeeder) Run(ctx context.Context, db *orm.DB) error {
 
 Run seeders via the CLI:
 ```bash
-kiw seed                      # runs DatabaseSeeder
-kiw seed --class UserSeeder   # runs a specific seeder
+krew seed                      # runs DatabaseSeeder
+krew seed --class UserSeeder   # runs a specific seeder
 kiw db:seed                   # Laravel-compatible alias
 ```
 

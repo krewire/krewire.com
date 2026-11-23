@@ -65,7 +65,7 @@ Ekosistem Krewire mengoordinasikan rekayasa AI melalui tiga batasan yang terpisa
 ```
 
 1. **Penyedia Kebenaran (`krew`)**:
-   Menyediakan satu-satunya sumber kebenaran (*single source of truth*) yang terbaca mesin via `kiw context --json`, menjalankan kompilasi, memeriksa kesehatan paket (`kiw pkg health`), dan menegakkan gerbang mutu (`krew test`, `gofmt`, `go vet`). Berjalan 100% luring tanpa butuh LLM atau koneksi internet.
+   Menyediakan satu-satunya sumber kebenaran (*single source of truth*) yang terbaca mesin via `kiw context --json`, menjalankan kompilasi, memeriksa kesehatan paket (`krew pkg health`), dan menegakkan gerbang mutu (`krew test`, `gofmt`, `go vet`). Berjalan 100% luring tanpa butuh LLM atau koneksi internet.
 2. **Konstitusi Rekayasa (`templates/boost`)**:
    Mendefinisikan aturan operasional, konvensi commit, struktur direktori, dan definisi persona agen yang tertanam langsung di repositori via `AGENTS.md` dan `.agents/`.
 3. **Engine Kognitif (`krew`)**:
@@ -183,7 +183,7 @@ Alur kerja AI-Native memperkenalkan pertimbangan keamanan khusus yang wajib dimi
    - Untuk mencegah serangan *dependency confusion* atau paket bayangan (*phantom*), verifikasi seluruh modul:
    ```bash
    go mod verify
-   kiw pkg health
+   krew pkg health
    ```
 
 ---
@@ -254,7 +254,7 @@ Alur kerja AI-Native memperkenalkan pertimbangan keamanan khusus yang wajib dimi
 
 ## 8. Rangkuman Tindakan untuk Tim
 
-- [x] Konfigurasikan `.cursor/mcp.json` atau `opencode.json` dengan `kiw mcp --stdio`.
+- [x] Konfigurasikan `.cursor/mcp.json` atau `opencode.json` dengan `krew mcp --stdio`.
 - [x] Pertahankan `AGENTS.md` yang otoritatif di root repositori Anda.
 - [x] Terapkan 4 gerbang mutu dalam alur *continuous integration*.
 - [x] Pastikan manusia memegang kendali persetujuan atas tindakan berisiko tinggi.

@@ -61,17 +61,17 @@ krew make doc <name>             # Membuat artikel dokumentasi
 
 Mendukung sintaks titik dua (misalnya `krew make:component Card` atau `krew make component:Card`) dan flag eksplisit (`--kind`, `--name`). Mendukung notasi komponen majemuk bertitik (`krew make component Card.Header` secara otomatis membuat `components/Card/Header.kiw` untuk pemanggilan komponen majemuk `<Card.Header />`).
 
-### `kiw migrate <up [n] | down [n] | redo | status | create <name>>`
+### `krew migrate <up [n] | down [n] | redo | status | create <name>>`
 
 Mengelola migrasi skema database dengan jaminan transaksi aman dan advisory lock:
 
 ```bash
-kiw migrate create create_users   # Membuat berkas migrasi skema Go baru
-kiw migrate up                    # Menerapkan seluruh migrasi yang tertunda
-kiw migrate up 1                  # Menerapkan satu migrasi berikutnya
-kiw migrate down                  # Mengembalikan batch migrasi terakhir
-kiw migrate redo                  # Rollback dan terapkan ulang secara atomik
-kiw migrate status                # Menampilkan tabel status migrasi
+krew migrate create create_users   # Membuat berkas migrasi skema Go baru
+krew migrate up                    # Menerapkan seluruh migrasi yang tertunda
+krew migrate up 1                  # Menerapkan satu migrasi berikutnya
+krew migrate down                  # Mengembalikan batch migrasi terakhir
+krew migrate redo                  # Rollback dan terapkan ulang secara atomik
+krew migrate status                # Menampilkan tabel status migrasi
 ```
 
 Flag:
@@ -81,14 +81,14 @@ Flag:
 - `--dir <path>`: Direktori migrasi (default: `migrations`).
 - `--lock-timeout <duration>`: Batas waktu perolehan lock (default: `30s`).
 
-### `kiw seed [--class <nama>] [--dsn <dsn>] [--driver <driver>] [--dir <dir>]`
-Alias: `kiw db:seed`
+### `krew seed [--class <nama>] [--dsn <dsn>] [--driver <driver>] [--dir <dir>]`
+Alias: `krew db:seed`
 
 Mengisi database dengan data pengujian dan status inisial sistem via seeder Go dan model factory:
 
 ```bash
-kiw seed                       # Menjalankan DatabaseSeeder
-kiw seed --class UserSeeder    # Menjalankan seeder tertentu
+krew seed                       # Menjalankan DatabaseSeeder
+krew seed --class UserSeeder    # Menjalankan seeder tertentu
 kiw db:seed                    # Alias kompatibel dengan Laravel
 ```
 
@@ -130,17 +130,17 @@ Menjalankan server HTTP lokal untuk meninjau output statis (workload `site` atau
 krew serve [--port 3000] [--dir .krewire/build]
 ```
 
-### `kiw dash` (alias: `kiw dashboard`)
+### `krew dash` (alias: `krew dashboard`)
 
 Meluncurkan dasbor pengembang lokal yang interaktif dan server telemetri observabilitas real-time, atau mengelola virtual developer workspace berbasis AI dan sandbox eksekusi terisolasi:
 
 ```bash
-kiw dash [--port 4000] [--host 127.0.0.1]
-kiw dash start --sandbox=go-1.27
-kiw dash list
-kiw dash status
-kiw dash console [--port 9000]
-kiw dash stop [id]
+krew dash [--port 4000] [--host 127.0.0.1]
+krew dash start --sandbox=go-1.27
+krew dash list
+krew dash status
+krew dash console [--port 9000]
+krew dash stop [id]
 ```
 
 - **UI Interaktif (`/`)**: Dasbor web bertema gelap untuk memeriksa halaman yang terdeteksi, handler, layanan mikro terkonfigurasi, dan metrik memori secara langsung.
@@ -157,13 +157,13 @@ kiw dash stop [id]
   - `GET /api/health`: Probe status kesehatan untuk kontainer lokal dan otomasi.
   - `GET /mcp/sse`: Server native Model Context Protocol (MCP) untuk AI coding agent.
 
-### `kiw mcp`
+### `krew mcp`
 
 Menjalankan server native Model Context Protocol (MCP) untuk AI coding agent (Antigravity, Cursor, Claude Desktop, OpenCode):
 
 ```bash
-kiw mcp --stdio                      # Transportasi standar stdio untuk AI IDE
-kiw mcp --port 4000 --host 127.0.0.1 # Transportasi mandiri HTTP/SSE
+krew mcp --stdio                      # Transportasi standar stdio untuk AI IDE
+krew mcp --port 4000 --host 127.0.0.1 # Transportasi mandiri HTTP/SSE
 ```
 
 - **Resource MCP**:
@@ -177,12 +177,12 @@ kiw mcp --port 4000 --host 127.0.0.1 # Transportasi mandiri HTTP/SSE
   - `kiw_make_scaffold`: Menghasilkan komponen, halaman, handler, migrasi, model, middleware, dan service.
   - `kiw_get_metrics`: Probe telemetri real-time untuk audit performa berbasis AI.
 
-### `kiw worker`
+### `krew worker`
 
 Menjalankan worker latar belakang asinkron dan pemroses antrean (queue processor):
 
 ```bash
-kiw worker [--queue memory|file|kv] [--concurrency <N>] [--dlq list|clear]
+krew worker [--queue memory|file|kv] [--concurrency <N>] [--dlq list|clear]
 ```
 
 - `--queue`: Backend penyimpanan antrean (`memory`, `file`, atau `kv`).
@@ -190,12 +190,12 @@ kiw worker [--queue memory|file|kv] [--concurrency <N>] [--dlq list|clear]
 - `--dlq list`: Memeriksa pekerjaan yang gagal dan masuk ke dead-letter queue.
 - `--dlq clear`: Mengosongkan dan membersihkan seluruh pekerjaan di dead-letter queue.
 
-### `kiw gateway`
+### `krew gateway`
 
 Menjalankan API gateway dan reverse proxy performa tinggi untuk layanan mikro:
 
 ```bash
-kiw gateway [--port 8080] [--host 0.0.0.0] [--routes "/api/orders=http://localhost:8081,/api/users=http://localhost:8082"]
+krew gateway [--port 8080] [--host 0.0.0.0] [--routes "/api/orders=http://localhost:8081,/api/users=http://localhost:8082"]
 ```
 
 - Meneruskan rute berdasarkan konfigurasi `gateway:` di `krewire.yaml` atau flag eksplisit `--routes`.
@@ -347,15 +347,15 @@ krew doctor [--json]
 
 Memeriksa prasyarat toolchain, tata letak workspace, dan prasyarat yang harus dipenuhi proyek sebelum dapat di-build. `--json` menghasilkan laporan siap-mesin untuk CI.
 
-### `kiw ws <perintah>`
+### `krew ws <perintah>`
 
 Mengelola multi-paket Go workspace (`go.work`):
 
 ```bash
-kiw ws info         # Menampilkan anggota workspace dan modul yang aktif
-kiw ws list         # Mendaftar path dari semua paket
-kiw ws sync         # Menyinkronkan dependensi go.work dan go.mod
-kiw ws exec <cmd>   # Menjalankan perintah di setiap modul workspace
+krew ws info         # Menampilkan anggota workspace dan modul yang aktif
+krew ws list         # Mendaftar path dari semua paket
+krew ws sync         # Menyinkronkan dependensi go.work dan go.mod
+krew ws exec <cmd>   # Menjalankan perintah di setiap modul workspace
 ```
 
 ### `krew boost install`
@@ -411,20 +411,20 @@ krew update github.com/foo/bar   # Perbarui dependensi eksternal tertentu
 - `--tidy`: Menjalankan `go mod tidy` secara otomatis setelah unduhan selesai (default `true`).
 - Otomatis memperbarui dependensi `package.json` melalui `npm update` jika terdapat integrasi plugin frontend.
 
-### `kiw self-update [flags]`
+### `krew self-update [flags]`
 
 Memeriksa dan memperbarui binary devtool `kiw` ke rilis stabil terbaru:
 
 ```bash
-kiw self-update          # Perbarui binary kiw ke versi stabil terbaru
-kiw self-update --check  # Cek ketersediaan pembaruan tanpa mengunduh
-kiw self-update --force  # Paksa instalasi ulang versi terbaru
-kiw self-update --dry-run # Simulasikan proses pembaruan
+krew self-update          # Perbarui binary kiw ke versi stabil terbaru
+krew self-update --check  # Cek ketersediaan pembaruan tanpa mengunduh
+krew self-update --force  # Paksa instalasi ulang versi terbaru
+krew self-update --dry-run # Simulasikan proses pembaruan
 ```
 
 - `--check`: Memeriksa GitHub Releases untuk mendeteksi rilis stabil baru.
 
-> **Catatan (2026-11-09):** belum ada GitHub Release yang dipublikasikan untuk `krewire/krewire`, sehingga `kiw self-update` saat ini mengandalkan fallback toolchain Go (Go 1.27.1+).
+> **Catatan (2026-11-09):** belum ada GitHub Release yang dipublikasikan untuk `krewire/krewire`, sehingga `krew self-update` saat ini mengandalkan fallback toolchain Go (Go 1.27.1+).
 
 - `--force`: Memasang ulang atau memperbarui meskipun sudah berada di versi terbaru.
 - `--version <ver>`: Memasang versi target semver tertentu.
@@ -440,20 +440,20 @@ krew ui add <name>         # Pasang komponen langsung ke ./components/
 krew ui diff <name>        # Bandingkan komponen lokal dengan template upstream
 ```
 
-### `kiw pkg <init|pack|add|list|export>`
+### `krew pkg <init|pack|add|list|export>`
 
 Kelola paket komponen mandiri `.kiw` dan kit UI yang dapat didistribusikan secara independen (ADR-K7P9L). Memungkinkan pengemasan modular, pengarsipan tar.gz (`.kpkg`) dengan verifikasi integritas SHA-256, pemasangan lokal ke `./.krewire/pkg/`, dan injeksi stylesheet otomatis tanpa dependensi npm:
 
 ```bash
-kiw pkg init @acme/ui              # Membuat perancah paket mandiri dengan kiw.pkg.json
-kiw pkg pack ./my-kit              # Mengemas paket ke dalam arsip distributable .kpkg
-kiw pkg add ./dist/ui-1.0.0.kpkg   # Memasang arsip paket ke ./.krewire/pkg/
-kiw pkg add ./local-kit            # Memasang dari direktori lokal ke ./.krewire/pkg/
-kiw pkg list                       # Menampilkan daftar paket komponen yang terpasang di ./.krewire/pkg
-kiw pkg list --json                # Inventaris JSON paket terpasang untuk mesin/CI
-kiw pkg export Card                # Memvalidasi dan mengekspor komponen mandiri
+krew pkg init @acme/ui              # Membuat perancah paket mandiri dengan kiw.pkg.json
+krew pkg pack ./my-kit              # Mengemas paket ke dalam arsip distributable .kpkg
+krew pkg add ./dist/ui-1.0.0.kpkg   # Memasang arsip paket ke ./.krewire/pkg/
+krew pkg add ./local-kit            # Memasang dari direktori lokal ke ./.krewire/pkg/
+krew pkg list                       # Menampilkan daftar paket komponen yang terpasang di ./.krewire/pkg
+krew pkg list --json                # Inventaris JSON paket terpasang untuk mesin/CI
+krew pkg export Card                # Memvalidasi dan mengekspor komponen mandiri
 ```
 
 - **Manifest (`kiw.pkg.json`)**: Mendeklarasikan metadata paket, pemetaan path komponen yang diekspor, dan stylesheet (`styles`).
 - **Namespace & Aliasing**: Komponen dari paket terpasang dapat dipanggil menggunakan namespace paket (misalnya `<acme:Button />`) atau diimpor langsung via `<script> import Button from '@acme/ui'; </script>`.
-- **Integritas & Keamanan**: `kiw pkg pack` dan `kiw pkg add` menegakkan checksum SHA-256 dan batas `sec.SafePath` untuk mencegah kerentanan ZipSlip dan traversal direktori.
+- **Integritas & Keamanan**: `krew pkg pack` dan `krew pkg add` menegakkan checksum SHA-256 dan batas `sec.SafePath` untuk mencegah kerentanan ZipSlip dan traversal direktori.

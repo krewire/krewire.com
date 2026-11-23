@@ -1,23 +1,23 @@
 ---
 title: "Instalasi"
-description: "Panduan instalasi komprehensif untuk alat pengembang CLI kiw di Linux, macOS, dan Windows."
+description: "Panduan instalasi komprehensif untuk alat pengembang CLI krew di Linux, macOS, dan Windows."
 date: "2026-09-29"
 ---
 
 # Instalasi
 
-CLI **`kiw`** adalah multi-tool terpadu bagi pengembang di seluruh ekosistem Krewire. Satu binary mandiri mendukung scaffolding proyek, pembuatan kode (code generation), server pengembangan lokal, pengujian, kompilasi aset, dan deployment produksi di seluruh delapan jenis workload.
+CLI **`krew`** adalah perkakas terpadu (developer toolchain & CLI driver) untuk seluruh ekosistem Krewire. Satu binary mandiri mendukung scaffolding proyek, pembuatan kode, server pengembangan lokal dengan live-reload, pengujian, migrasi database, dan kompilasi produksi di seluruh delapan jenis workload.
 
 ---
 
 ## 1. Persyaratan Sistem
 
-Sebelum menginstal `kiw`, pastikan lingkungan pengembangan Anda memenuhi persyaratan dasar berikut:
+Sebelum menginstal `krew`, pastikan lingkungan pengembangan Anda memenuhi persyaratan dasar berikut:
 
 | Persyaratan | Spesifikasi yang Didukung | Catatan |
 | :--- | :--- | :--- |
-| **Sistem Operasi** | Linux (Ubuntu, Debian, Fedora, Arch, Alpine), macOS (12+), Windows (10/11) | Binary bawaan (native) tersedia untuk semua platform. |
-| **Arsitektur** | `amd64` (x86_64), `arm64` (Apple Silicon, server ARM64) | Build statis multi-arsitektur terverifikasi. |
+| **Sistem Operasi** | Linux (Ubuntu, Debian, Fedora, Arch, Alpine), macOS (12+), Windows (10/11) | Binary statis bawaan tersedia untuk semua platform. |
+| **Arsitektur** | `amd64` (x86_64), `arm64` (Apple Silicon, server ARM64) | Build statis multi-arsitektur terverifikasi tanpa dependensi C native (`CGO_ENABLED=0`). |
 | **Go Runtime** | **Go 1.27.1 atau lebih tinggi** | Diperlukan saat membangun dari source code atau menjalankan workload Go. |
 | **Version Control** | `git` (2.30+) | Diperlukan untuk bootstrap template dan pengambilan modul. |
 
@@ -34,55 +34,80 @@ go version
 
 ## 2. Metode Instalasi
 
-Pilih metode penginstalan yang paling sesuai dengan platform dan alur kerja Anda:
+Pilih metode penginstalan yang paling sesuai dengan platform Anda:
 
 ### Metode A: Skrip Penginstal Otomatis (Linux & macOS)
 
 Metode instalasi yang direkomendasikan untuk sistem Linux dan macOS menggunakan skrip penginstalan otomatis:
 
 ```bash
-curl -fsSL https://krewire.com/scripts/install.sh | sh
+curl -fsSL https://krewire.com/install.sh | sh
 ```
+
+*(Atau: `curl -fsSL https://krewire.com/scripts/install.sh | sh`)*
 
 #### Cara Kerja Penginstal:
 1. **Deteksi Platform:** Memeriksa kernel Anda (`Linux`/`Darwin`) dan arsitektur CPU (`x86_64`/`arm64`).
-2. **Resolusi Tag:** Meminta data rilis terbaru `krewire/krewire` dari GitHub Releases. **Belum ada GitHub Release yang dipublikasikan** (tag terbaru adalah `v0.2.0`), sehingga installer saat ini beralih ke `go install` dari kode sumber, yang memerlukan **Go 1.27.1+**. Langkah 3–4 berlaku setelah arsip rilis siap pakai tersedia.
-3. **Verifikasi Checksum:** Mengunduh manifes resmi `kiw_checksums.txt` dan memvalidasi hash SHA256 dari arsip yang diunduh secara kriptografis sebelum ekstraksi.
-4. **Penempatan Atomik:** Menempatkan binary ke `/usr/local/bin` menggunakan `install -m 755`. Jika dijalankan tanpa izin root, secara otomatis beralih ke `~/.local/bin`.
-5. **Pembersihan Aman:** Menangkap sinyal keluar (`INT`, `TERM`, `EXIT`) untuk menjamin direktori ekstraksi sementara dihapus secara aman.
+2. **Resolusi Rilis:** Memeriksa ketersediaan arsip binary pre-built di GitHub Releases. Jika binary siap pakai belum tersedia untuk platform Anda, installer secara otomatis beralih ke `go install github.com/krewire/krew/cmd/krew@latest`.
+3. **Verifikasi Checksum:** Mengunduh manifes resmi `krew_checksums.txt` dan memvalidasi hash SHA256 sebelum ekstraksi.
+4. **Penempatan Atomik:** Menempatkan binary `krew` ke `/usr/local/bin` menggunakan `install -m 755` (atau `~/.local/bin` jika tanpa akses root). Skrip juga secara otomatis membuat symlink alias `kiw`.
+5. **Pembersihan Aman:** Menangkap sinyal keluar untuk memastikan direktori sementara segera dihapus.
 
-Untuk menyesuaikan direktori instalasi, gunakan variabel lingkungan `INSTALL_DIR`:
+Untuk menentukan direktori kustom:
 
 ```bash
-curl -fsSL https://krewire.com/scripts/install.sh | INSTALL_DIR="$HOME/bin" sh
+curl -fsSL https://krewire.com/install.sh | INSTALL_DIR="$HOME/bin" sh
 ```
 
 ---
 
-### Metode B: Instal via Go Toolchain (Lintas Platform / Windows)
+### Metode B: Skrip PowerShell Otomatis (Windows)
 
-Jika Anda sudah menginstal Go dan mengonfigurasi `$GOPATH/bin` dalam `PATH` sistem Anda, instal `kiw` langsung dari source code:
+Pada Windows 10/11, buka PowerShell dan jalankan:
+
+```powershell
+irm https://krewire.com/install.ps1 | iex
+```
+
+*(Atau: `irm https://krewire.com/scripts/install.ps1 | iex`)*
+
+#### Cara Kerja Penginstal PowerShell:
+1. Mendeteksi arsitektur Windows `amd64` atau `arm64`.
+2. Mengunduh arsip binary pre-built atau mengompilasi via `go install`.
+3. Memasang `krew.exe` dan `kiw.exe` ke `$env:LOCALAPPDATA\Programs\krew`.
+4. Menambahkan direktori instalasi ke variabel lingkungan `PATH` pengguna secara otomatis.
+
+---
+
+### Metode C: Instal via Go Toolchain (Lintas Platform)
+
+Jika Anda sudah menginstal Go dan mengonfigurasi `$GOPATH/bin` dalam `PATH` sistem Anda, instal `krew` langsung dari source code:
 
 ```bash
 go install github.com/krewire/krew/cmd/krew@latest
 ```
 
-Untuk mengunci versi tertentu (misalnya `v0.2.0`):
+Untuk mengunci versi tertentu (misalnya `v0.2.3`):
 
 ```bash
-go install github.com/krewire/krew/cmd/krew@v0.2.0
+go install github.com/krewire/krew/cmd/krew@v0.2.3
 ```
 
 #### Mengonfigurasi PATH Anda:
-Pastikan direktori binary Go Anda disertakan dalam profil shell (`~/.bashrc`, `~/.zshrc`, atau Environment Variables Windows):
 
+Pastikan direktori binary Go disertakan dalam profil shell:
+
+**Bash / Zsh (`~/.bashrc` atau `~/.zshrc`):**
 ```bash
-# Tambahkan ke ~/.bashrc atau ~/.zshrc jika belum ada:
 export PATH="$PATH:$(go env GOPATH)/bin"
 ```
 
-Pada Windows PowerShell:
+**Fish (`~/.config/fish/config.fish`):**
+```fish
+set -gx PATH $PATH (go env GOPATH)/bin
+```
 
+**Windows PowerShell:**
 ```powershell
 $env:Path += ";$((go env GOPATH))\bin"
 ```
@@ -99,67 +124,33 @@ Setelah instalasi selesai, pastikan bahwa binary dapat diakses dan berfungsi nor
 krew version
 ```
 
-Output yang diharapkan (baris `Commit` hanya dicetak untuk build dengan informasi provenance modul):
-
+Output contoh:
 ```text
-kiw Krewire Devtool
-  Krewire Ecosystem  v0.2.0
-  Signature          build with krewire
-  Go                 go1.27.1 (linux/amd64)
-  Commit             a1b2c3d4
+krew v0.2.3 (linux/amd64) commit 7a8f9c1 built 2026-11-20
 ```
 
-### 2. Diagnostik Lingkungan
-
-Jalankan `krew info` untuk memeriksa toolchain aktif, sistem operasi, dan lingkungan Go Anda:
+### 2. Menu Bantuan Interaktif
 
 ```bash
-krew info
-```
-
-### 3. Pemeriksaan Kompatibilitas
-
-Jalankan `krew compat` di dalam direktori proyek Krewire mana pun untuk memverifikasi bahwa CLI lokal Anda sesuai dengan dependensi paket di `go.mod`:
-
-```bash
-krew compat
+krew help
 ```
 
 ---
 
-## 4. Memperbarui `kiw`
+## 4. Langkah Berikutnya
 
-Untuk memperbarui ke rilis stabil terbaru:
-
-- **Via Skrip Penginstal Shell:**
-  ```bash
-  curl -fsSL https://krewire.com/scripts/install.sh | sh
-  ```
-
-- **Via Go Toolchain:**
-  ```bash
-  go install github.com/krewire/krew/cmd/krew@latest
-  ```
-
----
-
-## 5. Menghapus (Uninstall) `kiw`
-
-Karena `kiw` didistribusikan sebagai satu binary statis mandiri tanpa daemon latar belakang atau entri registry, penghapusannya sangat mudah:
+Dengan `krew` terinstal, Anda dapat membuat proyek baru dalam 30 detik:
 
 ```bash
-# Untuk instalasi standar di seluruh sistem:
-sudo rm -f /usr/local/bin/krew
+# Inisialisasi proyek fullstack baru
+krew new my-app
 
-# Untuk instalasi lokal pengguna:
-rm -f ~/.local/bin/krew
+# Masuk ke direktori proyek
+cd my-app
 
-# Untuk instalasi via Go bin:
-rm -f "$(go env GOPATH)/bin/krew"
+# Jalankan server pengembangan lokal (hot-reload)
+krew dev
+
+# Kompilasi hasil produksi (binary mandiri atau bundle statis)
+krew build
 ```
-
----
-
-## Langkah Berikutnya
-
-Sekarang toolchain Anda telah terinstal, lanjutkan ke [**2.4 Konfigurasi →**](/getting-started/configuration) untuk mempelajari cara mengonfigurasi proyek menggunakan `krewire.yaml`.

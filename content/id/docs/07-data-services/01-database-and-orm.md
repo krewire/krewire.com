@@ -140,10 +140,10 @@ func init() {
 
 Jalankan migrasi melalui CLI:
 ```bash
-kiw migrate up       # Jalankan seluruh migrasi tertunda
-kiw migrate down     # Kembalikan (rollback) kelompok migrasi terakhir
-kiw migrate redo     # Jalankan ulang migrasi terakhir secara atomik
-kiw migrate status   # Periksa status seluruh berkas migrasi
+krew migrate up       # Jalankan seluruh migrasi tertunda
+krew migrate down     # Kembalikan (rollback) kelompok migrasi terakhir
+krew migrate redo     # Jalankan ulang migrasi terakhir secara atomik
+krew migrate status   # Periksa status seluruh berkas migrasi
 ```
 
 ## Faker Engine (`pkg/orm/faker`)
@@ -233,8 +233,8 @@ func (DatabaseSeeder) Run(ctx context.Context, db *orm.DB) error {
 
 Jalankan seeder melalui CLI:
 ```bash
-kiw seed                      # Menjalankan DatabaseSeeder
-kiw seed --class UserSeeder   # Menjalankan seeder tertentu
+krew seed                      # Menjalankan DatabaseSeeder
+krew seed --class UserSeeder   # Menjalankan seeder tertentu
 kiw db:seed                   # Alias kompatibel dengan Laravel
 ```
 

@@ -19,7 +19,7 @@
         <!-- Value Proposition Badges -->
         <div class="flex flex-wrap gap-2">
           <Badge Variant="neutral" Size="sm" Class="font-mono text-2xs">100% Pure Go</Badge>
-          <Badge Variant="neutral" Size="sm" Class="font-mono text-2xs">Zero npm / Node</Badge>
+          <Badge Variant="neutral" Size="sm" Class="font-mono text-2xs">Pure Go · Standalone Binary</Badge>
           <Badge Variant="neutral" Size="sm" Class="font-mono text-2xs">MIT Open Core</Badge>
           <Badge Variant="neutral" Size="sm" Class="font-mono text-2xs">CGO_ENABLED=0</Badge>
         </div>

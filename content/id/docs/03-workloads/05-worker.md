@@ -135,10 +135,10 @@ worker:
 Jalankan daemon worker secara lokal:
 
 ```bash
-kiw worker
+krew worker
 ```
 
 Jalankan dengan konkurensi atau antrean kustom:
 
 ```bash
-kiw worker --concurrency 16
+krew worker --concurrency 16

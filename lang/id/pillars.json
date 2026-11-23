@@ -1,0 +1,14 @@
+{
+  "badge": "Tiga Pilar",
+  "title": "Secure. Sustainable. Scalable.",
+  "lead": "Krewire adalah ekosistem SDLC digital end-to-end — dari baris pertama spesifikasi hingga sistem produksi yang berjalan. Setiap kapabilitas wajib lolos ketiga pilar sebelum dirilis, dan setiap klaim terlacak ke spek, pengujian, atau gerbang kualitas.",
+  "secure_title": "Secure",
+  "secure_desc": "Keamanan adalah bawaan, bukan sekadar fitur. Graf dependensi berbasis stdlib, primitif HTTP aman secara bawaan, kontrol selaras OWASP/CWE, kredensial hanya direferensikan — tidak pernah disimpan — serta sandboxing WASM menjaga permukaan serangan tetap minim dan teruji.",
+  "sustainable_title": "Sustainable",
+  "sustainable_desc": "Perangkat lunak yang dapat dibaca, dijalankan, dan dijangkau oleh satu pengembang bahkan satu dekade mendatang. Binary statis tunggal dengan aset tersemat, baterai opsional tanpa beban saat tak digunakan, komponen teruji yang stabil, dan bebas biaya lisensi — selamanya.",
+  "scalable_title": "Scalable",
+  "scalable_desc": "Pertumbuhan bersifat aditif, bukan penulisan ulang. Pipeline progresif membawa produk dari situs statis ke monolit hingga worker, service, dan infra — setiap tahap adalah modul opsional dan terbalikkan, dari VPS $5 hingga hyperscale.",
+  "pillar1_badge": "Pilar 01",
+  "pillar2_badge": "Pilar 02",
+  "pillar3_badge": "Pilar 03"
+}

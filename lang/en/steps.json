@@ -1,0 +1,13 @@
+{
+  "badge": "Developer Experience",
+  "title": "From Zero to Production in 4 Commands",
+  "lead": "No boilerplate scaffolding, no package manager wrestling, no hidden magic.",
+  "s1_desc": "Install the standalone krew CLI tool via a single-line shell script or Go install.",
+  "s2_desc": "Generate a production-ready project template for any workload in under one second.",
+  "s3_desc": "Instant hot-reload local development server with file-based routing and scoped CSS updates.",
+  "s4_desc": "Compile into a single static binary or static asset bundle and ship to GitHub Pages or Docker.",
+  "s1_badge": "Install",
+  "s2_badge": "Scaffold",
+  "s3_badge": "Develop",
+  "s4_badge": "Deploy"
+}

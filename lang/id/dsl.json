@@ -1,0 +1,14 @@
+{
+  "badge": "DSL Komponen",
+  "title": "Tulis Halaman sebagai Komponen .kiw yang Bersih",
+  "lead": "Keanggunan Svelte dan Astro dihadirkan ke Go. Frontmatter + HTML + scoped CSS dalam satu berkas intuitif.",
+  "f1_html": "<b>Terisolasi secara Bawaan:</b> Gaya tetap terisolasi ketat di dalam komponen.",
+  "f2_html": "<b>CSS Global via <code class=\"code-inline\">:root</code>:</b> Token tema mengalir secara rapi di seluruh layout.",
+  "f3_html": "<b>Bawaan dari Krewire:</b> Dikompilasi secara native melalui <code class=\"code-inline\">pkg/kiw</code> tanpa npm atau dependensi bundler eksternal.",
+  "f4_html": "<b>Mode Terang & Gelap:</b> Pergantian token tema native melalui atribut <code class=\"code-inline\">data-theme</code>.",
+  "scoping_badge": "Isolasi",
+  "scoping_title": "Mengapa Scoped CSS di Go?",
+  "scoping_desc": "Setiap komponen <code class=\"code-inline\">.kiw</code> menerima hashing scope <code class=\"code-inline\">data-kiw-component</code> otomatis saat build. Bebas tabrakan CSS, bebas penamaan rumit, tanpa biaya runtime.",
+  "cta_explore": "Pelajari Sintaks DSL →",
+  "cta_docs": "Baca Dokumentasi"
+}

@@ -1,0 +1,22 @@
+{
+  "badge": "Progressive Capacity",
+  "title": "One Progressive Pipeline. Eight Workloads.",
+  "lead": "Stop assembling disparate frameworks for web, CLI, background queues, and infra. Krewire provides unified ergonomics, shared configuration, and zero context switching.",
+  "app_desc": "Fullstack web monolith — compile your web interface, HTTP routing, and API handlers into a single static Go binary.",
+  "cli_desc": "Developer command-line tools & rich terminal interfaces powered by the lightweight TUI library with zero dependencies.",
+  "site_desc": "High-performance static marketing sites, landing pages, and blogs built with the .kiw DSL and scoped CSS styling.",
+  "book_desc": "Technical documentation, knowledge bases, and API references compiled with the native pkg/book engine.",
+  "worker_desc": "Asynchronous background queues, scheduled recurring tasks, and durable workers with graceful shutdowns.",
+  "service_desc": "Headless microservices, JSON REST APIs, and gRPC endpoints engineered for high concurrency and low latency.",
+  "infra_desc": "Automated bare-metal and VPS provisioning, TLS certificate issuance, and zero-downtime blue-green deployments.",
+  "gateway_desc": "Declarative reverse proxy fronting upstream services with per-route middleware, rate limiting, timeouts, and service-discovery balancing.",
+  "app_badge": "Fullstack",
+  "cli_badge": "Terminal",
+  "site_badge": "SSG",
+  "book_badge": "Publishing",
+  "worker_badge": "Async",
+  "service_badge": "Microservice",
+  "infra_badge": "Cloud IaC",
+  "gateway_badge": "Reverse Proxy",
+  "docs_link": "Docs →"
+}

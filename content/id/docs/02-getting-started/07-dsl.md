@@ -275,10 +275,10 @@ Pustaka komponen yang dapat digunakan kembali dapat didistribusikan dan dipasang
 - **Direktori Pemasangan (`./.krewire/pkg/`)**: Repositori paket proyek lokal.
 
 ```bash
-kiw pkg init @acme/ui              # Men-scaffold direktori paket dengan kiw.pkg.json
-kiw pkg pack ./acme-ui             # Mengemas ke arsip acme-ui-0.1.0.kpkg
-kiw pkg add ./acme-ui-0.1.0.kpkg   # Memasang ke ./.krewire/pkg/acme-ui
-kiw pkg list                       # Menampilkan daftar paket dan komponen yang diekspor
+krew pkg init @acme/ui              # Men-scaffold direktori paket dengan kiw.pkg.json
+krew pkg pack ./acme-ui             # Mengemas ke arsip acme-ui-0.1.0.kpkg
+krew pkg add ./acme-ui-0.1.0.kpkg   # Memasang ke ./.krewire/pkg/acme-ui
+krew pkg list                       # Menampilkan daftar paket dan komponen yang diekspor
 ```
 
 Stylesheet yang dideklarasikan di `kiw.pkg.json` (`styles: "./styles/theme.css"`) secara otomatis dikompilasi dan disuntikkan ke dalam pipeline aset situs.

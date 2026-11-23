@@ -1,0 +1,14 @@
+{
+  "badge": "Three Pillars",
+  "title": "Secure. Sustainable. Scalable.",
+  "lead": "Krewire is an end-to-end digital SDLC ecosystem — from the first line of the specification to running production. Every capability must pass all three pillars before it ships, and each claim traces to a spec, a test, or a gate.",
+  "secure_title": "Secure",
+  "secure_desc": "Security is a default, not a feature. A stdlib-first dependency graph, secure-by-default HTTP primitives, OWASP/CWE-aligned controls, secrets referenced — never stored — and WASM sandboxing keep the attack surface small and auditable.",
+  "sustainable_title": "Sustainable",
+  "sustainable_desc": "Software a single builder can still read, run, and afford a decade from now. Single static binaries with embedded assets, opt-in batteries that cost nothing when unused, boring proven parts, and no license fees — ever.",
+  "scalable_title": "Scalable",
+  "scalable_desc": "Growth is additive, not a rewrite. The progressive pipeline takes a product from static site to monolith to workers, services, and infra — each stage an opt-in, reversible battery, from a $5 VPS to hyperscale.",
+  "pillar1_badge": "Pillar 01",
+  "pillar2_badge": "Pillar 02",
+  "pillar3_badge": "Pillar 03"
+}

@@ -65,7 +65,7 @@ The Krewire ecosystem coordinates AI engineering across three decoupled boundari
 ```
 
 1. **The Truth Provider (`krew`)**:
-   Exposes the deterministic single source of truth (`kiw context --json`), runs compilations, checks dependencies (`kiw pkg health`), and enforces quality gates (`krew test`, `gofmt`, `go vet`). Operates 100% offline without requiring an LLM or network access.
+   Exposes the deterministic single source of truth (`kiw context --json`), runs compilations, checks dependencies (`krew pkg health`), and enforces quality gates (`krew test`, `gofmt`, `go vet`). Operates 100% offline without requiring an LLM or network access.
 2. **The Engineering Constitution (`templates/boost`)**:
    Defines the operational rules, commit standards, directory structures, and role definitions embedded directly into repositories via `AGENTS.md` and `.agents/`.
 3. **The Cognitive Engine (`krew`)**:
@@ -183,7 +183,7 @@ AI-Native workflows introduce specific security considerations that every develo
    - To prevent dependency confusion and phantom package attacks, verify all modules:
    ```bash
    go mod verify
-   kiw pkg health
+   krew pkg health
    ```
 
 ---
@@ -254,7 +254,7 @@ AI-Native workflows introduce specific security considerations that every develo
 
 ## 8. Summary Checklist for Teams
 
-- [x] Configure `.cursor/mcp.json` or `opencode.json` with `kiw mcp --stdio`.
+- [x] Configure `.cursor/mcp.json` or `opencode.json` with `krew mcp --stdio`.
 - [x] Maintain a clean, authoritative `AGENTS.md` at your repository root.
 - [x] Enforce the 4 quality gates in continuous integration pipelines.
 - [x] Ensure humans retain approval authority over high-risk actions.

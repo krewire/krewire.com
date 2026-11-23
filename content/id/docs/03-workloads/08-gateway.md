@@ -8,7 +8,7 @@ date: "2026-10-25"
 
 Workload **`gateway`** adalah reverse proxy mandiri yang menjadi gerbang utama di depan satu atau beberapa layanan upstream. Beban kerja ini memiliki tabel rute deklaratif, menerapkan middleware (CORS, tracing, timeout, rate limiting, circuit breaking), dan menguraikan alamat upstream melalui service registry.
 
-Ditenagai oleh `pkg/web/gateway`, tabel rute yang sama dapat dijalankan dari binary proyek maupun langsung dari CLI melalui `kiw gateway`.
+Ditenagai oleh `pkg/web/gateway`, tabel rute yang sama dapat dijalankan dari binary proyek maupun langsung dari CLI melalui `krew gateway`.
 
 ---
 
@@ -17,7 +17,7 @@ Ditenagai oleh `pkg/web/gateway`, tabel rute yang sama dapat dijalankan dari bin
 1. **Tabel Rute Deklaratif:** Rute eksak dan prefiks, pencocokan method per-route, serta penentuan alamat baik dengan `target_url` tetap maupun `service` yang diuraikan oleh registry.
 2. **Middleware Per-Route:** CORS, tracing, timeout, rate limiting, dan circuit breaking didaftarkan berdasarkan nama dan disusun per-route alih-alih secara global.
 3. **Penemuan Layanan (Service Discovery):** Penyeimbangan beban round-robin di atas endpoint yang terdaftar; upstream yang tidak tersedia akan mengembalikan `502` dengan payload bodi Problem JSON terstruktur.
-4. **Satu Tabel Rute, Dua Cara Eksekusi:** `krew dev` / `krew run` mengeksekusi binary proyek; `kiw gateway` menjalankan blok `gateway:` yang identik secara langsung tanpa perlu build ulang.
+4. **Satu Tabel Rute, Dua Cara Eksekusi:** `krew dev` / `krew run` mengeksekusi binary proyek; `krew gateway` menjalankan blok `gateway:` yang identik secara langsung tanpa perlu build ulang.
 
 ---
 
@@ -160,4 +160,4 @@ krew dev
 krew build
 
 # Jalankan tabel rute bersama tanpa perlu melakukan build binary proyek
-kiw gateway --port 8080 --routes "/api=user-service,/pay=payment-service"
+krew gateway --port 8080 --routes "/api=user-service,/pay=payment-service"
