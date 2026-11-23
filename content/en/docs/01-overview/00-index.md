@@ -8,7 +8,7 @@ date: "2026-09-29"
 
 Welcome to the **Krewire Documentation**.
 
-**Krewire** is an open-source, end-to-end **digital SDLC ecosystem** delivered as **Modular Libraries**: independent, single-purpose Go packages you compose behind one CLI (**`kiw`**) and one unified configuration (**`krewire.yaml`**) to build, test, and deploy **eight distinct workloads**:
+**Krewire** is an open-source, end-to-end **digital SDLC ecosystem** delivered as **Modular Libraries**: independent, single-purpose Go packages you compose behind one CLI (**`krew`**) and one unified configuration (**`krewire.yaml`**) to build, test, and deploy **eight distinct workloads**:
 
 1. **Fullstack Web Monoliths (`app`)**
 2. **Terminal Interfaces & TUIs (`cli`)**
@@ -96,7 +96,7 @@ Krewire is engineered around four guiding tenets:
 1. **Go as the Architectural Foundation:** Standard Go (`net/http`, `html/template`, `embed`, `context`, `slog`, `flag`) powers every layer. Single-binary deployments with embedded static assets ensure near-instant startups, negligible RAM usage, and zero runtime dependencies.
 2. **Modular at Every Scope (SRP & SoC):** Engineered using strict Single Responsibility and High Cohesion principles. Start with a simple modular monolith and cleanly extract services or background workers as your traffic scales — without restructuring your business logic.
 3. **Zero JavaScript Fatigue:** Generate lightning-fast static sites, documentation portals, and fullstack applications with `.kiw` component files without requiring Node.js, `npm`, webpack, or fragile `node_modules` dependency trees.
-4. **Unified Developer Experience:** Manage your entire software lifecycle — creation, local development, asset compilation, testing, and deployment — through **one single CLI binary (`kiw`)** and a single devtool configuration file (**`krewire.yaml`**).
+4. **Unified Developer Experience:** Manage your entire software lifecycle — creation, local development, asset compilation, testing, and deployment — through **one single CLI binary (`krew`)** and a single devtool configuration file (**`krewire.yaml`**).
 
 ---
 
@@ -114,7 +114,7 @@ Explore the comprehensive manual for the Krewire ecosystem:
 | **6.** | [**Krewire UI & Design System**](/ui) | The design system and all 66 `.kiw` components, with live previews of the core atoms. |
 | **7.** | [**Data, Storage & Services**](/data-services) | Multi-driver ORM, object storage, virtual filesystem, caching, transactional mail, and Indonesian payments. |
 | **8.** | [**Security & Ecosystem Platforms**](/security-platforms) | Security controls, auth primitives, enterprise identity platform, hybrid PaaS, and autonomous AI agents. |
-| **9.** | [**CLI Reference**](/cli-reference) | Complete `kiw` command catalog, `krewire.yaml` schema specification, and task automation. |
+| **9.** | [**CLI Reference**](/cli-reference) | Complete `krew` command catalog, `krewire.yaml` schema specification, and task automation. |
 | **10.** | [**Guides & Best Practices**](/guides) | Architectural design invariants, open core licensing rules, and production deployment playbooks. |
 | **11.** | [**Architecture Deep-Dive**](/architecture) | Platform engineering: layered pyramid, ecosystem DAG, scope levels, and data flow. |
 

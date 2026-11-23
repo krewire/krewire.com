@@ -95,7 +95,7 @@ Keamanan dan kecerdasan terdistribusi adalah pilar fundamental dari ekosistem Kr
     <div class="chapter-card-head">
       <span class="chapter-card-num">8.7</span>
       <h3 class="chapter-card-title">
-        <a href="/security-platforms/autonomous-agent">Mesin Agen AI Otonom (krew) <span class="arrow">→</span></a>
+        <a href="/security-platforms/autonomous-agent">Mesin Agen AI Otonom (pkg/ai & krew) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">

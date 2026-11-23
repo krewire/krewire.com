@@ -15,7 +15,7 @@ github.com/krewire/krewire/pkg/env
 github.com/krewire/krewire/pkg/version
 ```
 
-As a foundational core package, `pkg/model` may depend **only on Go standard library packages** and its internal `errs` sibling — never on higher-level packages and never on `kiw`.
+As a foundational core package, `pkg/model` may depend **only on Go standard library packages** and its internal `errs` sibling — never on higher-level packages and never on `krew`.
 
 ---
 

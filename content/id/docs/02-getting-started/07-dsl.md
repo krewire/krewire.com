@@ -397,7 +397,7 @@ Untuk bagian yang berfokus pada konten tekstual, Anda dapat menulis Markdown nat
   <markdown>
   ### Versi 0.1.0 (Rilis Perdana)
   - **Pustaka:** Arsitektur pustaka modular inti.
-  - **Kiw CLI:** Scaffolding, dev server, dan pipeline build.
+  - **Krew CLI:** Scaffolding, dev server, dan pipeline build.
   - **Nol Bloat:** 100% pustaka standar Go, nol dependensi npm.
   </markdown>
 </section>

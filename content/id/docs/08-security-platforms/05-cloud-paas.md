@@ -42,11 +42,11 @@ Krewire Cloud dirancang sebagai mesin PaaS hibrida mandiri (self-hosted) sekalig
 
 > **Portal Live:** Krewire Cloud tersedia di [cloud.krewire.com](https://cloud.krewire.com) menyediakan orkestrasi PaaS hibrida, build hermetis, supervisi proses, dan routing edge dinamis. Lihat dokumentasi publik proyek untuk detail arsitektur.
 
-Selain hosting cloud, Anda dapat men-deploy proyek Krewire apa pun ke infrastruktur Anda sendiri hari ini menggunakan CLI open-source `kiw`:
+Selain hosting cloud, Anda dapat men-deploy proyek Krewire apa pun ke infrastruktur Anda sendiri hari ini menggunakan CLI open-source `krew`:
 
 ### Men-deploy Aplikasi Anda
 
-Anda dapat men-deploy proyek Krewire apa pun secara langsung menggunakan CLI `kiw`:
+Anda dapat men-deploy proyek Krewire apa pun secara langsung menggunakan CLI `krew`:
 
 ```bash
 # Menyiapkan binary produksi dan artefak siap rilis

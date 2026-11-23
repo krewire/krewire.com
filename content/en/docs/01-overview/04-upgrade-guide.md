@@ -24,9 +24,9 @@ $$\text{vMAJOR}.\text{MINOR}.\text{PATCH}$$
 
 ---
 
-## 2. Upgrading the `kiw` CLI
+## 2. Upgrading the `krew` CLI
 
-To upgrade your local installation of `kiw` to the latest release:
+To upgrade your local installation of `krew` to the latest release:
 
 ### Option A: Shell Script (Linux & macOS)
 
@@ -80,10 +80,10 @@ go test ./...
 
 Krewire enforces strict **Separation of Concerns** in project configuration:
 
-`krewire.yaml` is dedicated solely to **`kiw` devtool and build pipeline configuration**:
+`krewire.yaml` is dedicated solely to **`krew` devtool and build pipeline configuration**:
 
 ```yaml
-# Krewire Devtool Configuration (kiw)
+# Krewire Devtool Configuration (krew)
 project:
   name: "my-site"
   version: "v0.1.0"

@@ -101,9 +101,9 @@ build:
 
 ---
 
-## Native CLI Usage (`kiw`)
+## Native CLI Usage (`krew`)
 
-Build and serve your book directly with `kiw`:
+Build and serve your book directly with `krew`:
 
 ```bash
 # Build book to output directory

@@ -66,7 +66,7 @@ For **Cursor** (`.cursor/mcp.json`) or **Claude Desktop** (`claude_desktop_confi
 {
   "mcpServers": {
     "krewire": {
-      "command": "kiw",
+      "command": "krew",
       "args": ["mcp", "--stdio"]
     }
   }
@@ -79,7 +79,7 @@ For **OpenCode** (`opencode.json`):
 {
   "mcp": {
     "krewire": {
-      "command": "kiw",
+      "command": "krew",
       "args": ["mcp", "--stdio"]
     }
   }

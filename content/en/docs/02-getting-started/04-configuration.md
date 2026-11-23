@@ -16,7 +16,7 @@ Every Krewire project is driven by a single, declarative configuration file: **`
 
 Krewire maintains a strict separation of concerns between devtool configuration and application runtime logic:
 
-1. **Devtool Controls (`krewire.yaml`):** Instructs the `kiw` CLI on how to build, run, test, and package the project.
+1. **Devtool Controls (`krewire.yaml`):** Instructs the `krew` CLI on how to build, run, test, and package the project.
 2. **Application Settings:** Web titles, layouts, meta tags, and component styling belong inside pages, templates, and Go code—never duplicated in YAML.
 3. **Decoupled Toolchain:** Projects compile cleanly with standard `go build` even if `krewire.yaml` is absent, falling back to sensible Go conventions.
 
@@ -93,7 +93,7 @@ scripts:
 
 The `project:` section defines the identity and workload behavior:
 
-- **`kind` (Optional):** Explicitly pins the architectural workload. When omitted, `kiw` automatically infers the workload kind from filesystem markers via `shape.Detect`:
+- **`kind` (Optional):** Explicitly pins the architectural workload. When omitted, `krew` automatically infers the workload kind from filesystem markers via `shape.Detect`:
   - `site`: Inferred from `pages/` directory or `ssg:` key in `krewire.yaml`.
   - `app`: Inferred from root `main.go` or `cmd/` with `func main()`.
   - `book`: Inferred from `content/` directory.

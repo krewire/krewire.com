@@ -235,7 +235,7 @@ Run seeders via the CLI:
 ```bash
 krew seed                      # runs DatabaseSeeder
 krew seed --class UserSeeder   # runs a specific seeder
-kiw db:seed                   # Laravel-compatible alias
+krew seed                   # Laravel-compatible alias
 ```
 
 ## Generic Repository Pattern (`pkg/orm/repository`)

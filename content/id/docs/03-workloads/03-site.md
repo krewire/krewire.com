@@ -20,7 +20,7 @@ Ditenagai oleh `pkg/web/ssg` dan DSL `.kiw`, compiler `site` mengubah Single-Fil
    - `pages/blog/[slug].kiw` → Pembuatan slug dinamis dari frontmatter Markdown.
 2. **Scoped CSS Saat Kompilasi:** Gaya visual yang dideklarasikan dalam blok `<style>` di-hash secara otomatis dan diberi cakupan (scoped) dengan atribut `data-kiw-component`. Tidak ada tabrakan CSS atau perlunya konvensi penamaan yang rumit.
 3. **Bebas Bloat Langkah Build:** Mengompilasi puluhan halaman dalam waktu kurang dari 15 md menggunakan Go murni. Tidak memerlukan Node.js atau folder `node_modules`.
-4. **Plugin Tailwind CSS:** Integrasi bawaan dengan Tailwind CSS: jika `tailwind.config.js` tersedia, `kiw` secara otomatis memicu pembuatan utility class yang diminifikasi.
+4. **Plugin Tailwind CSS:** Integrasi bawaan dengan Tailwind CSS: jika `tailwind.config.js` tersedia, `krew` secara otomatis memicu pembuatan utility class yang diminifikasi.
 
 ---
 

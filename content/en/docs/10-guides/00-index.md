@@ -74,7 +74,7 @@ Whether you are contributing to core packages or authoring mission-critical appl
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Governed, evidence-based engineering method across Krew, Boost, and the kiw toolchain with deterministic quality gates and human checkpoints.
+      Governed, evidence-based engineering method across Krew, Boost, and the krew toolchain with deterministic quality gates and human checkpoints.
     </p>
   </div>
 

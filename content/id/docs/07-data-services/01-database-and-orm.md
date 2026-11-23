@@ -235,7 +235,7 @@ Jalankan seeder melalui CLI:
 ```bash
 krew seed                      # Menjalankan DatabaseSeeder
 krew seed --class UserSeeder   # Menjalankan seeder tertentu
-kiw db:seed                   # Alias kompatibel dengan Laravel
+krew seed                   # Alias kompatibel dengan Laravel
 ```
 
 ## Generic Repository Pattern (`pkg/orm/repository`)

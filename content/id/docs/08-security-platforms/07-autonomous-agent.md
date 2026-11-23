@@ -1,24 +1,26 @@
 ---
 title: "Mesin Agen AI Otonom"
-description: "Arsitektur, execution loop ReAct, sandboxed tools, memori sliding-window, persona, multi-protocol transport (HTTP/SSE & MCP), dan embedding API di krewire/krew."
-date: "2026-11-05"
+description: "Arsitektur, execution loop ReAct, sandboxed tools, memori sliding-window, persona, multi-protocol transport (HTTP/SSE & MCP), dan embedding API di pkg/ai dan toolchain krew."
+date: "2026-11-24"
 ---
 
 # Mesin Agen AI Otonom
 
-`krewire/krew` adalah monorepo agen AI otonom yang mandiri dan agnostik terhadap platform di dalam ekosistem Krewire. Monorepo ini menyediakan runtime agen lengkap dengan reasoning ReAct multi-langkah, operasi workspace terisolasi (sandbox), pemadatan konteks memori geser (sliding-window), dukungan native Model Context Protocol (MCP), serta embedding API yang sangat ergonomis.
+Krewire menyediakan mesin agen AI otonom tingkat produksi yang dibangun secara native dalam bahasa Go murni pada repositori fondasi di `krewire/pkg/ai`. Mesin ini digerakkan secara langsung dalam alur kerja pengembang harian melalui toolchain CLI terpadu `krew` (`cmd/krew`).
+
+Mesin ini menyediakan runtime agen lengkap dengan reasoning ReAct multi-langkah, operasi workspace terisolasi (sandbox), pemadatan konteks memori geser (sliding-window), dukungan native Model Context Protocol (MCP), serta embedding API yang sangat ergonomis.
 
 ---
 
 ## Subsistem & Arsitektur
 
-### 1. `pkg/agent` — ReAct Reasoning Loop
+### 1. `pkg/ai/agent` — ReAct Reasoning Loop
 - **Multi-Turn Reasoning:** Loop otonom observe-orient-decide-act dengan batas langkah eksekusi yang terkendali (`MaxSteps`).
 - **Concurrent Tool Calls:** Pemanggilan tool LLM yang independen dieksekusi secara konkuren dengan pemulihan error agregat.
 - **Sandboxed Workspace Tools:** Tool manipulasi berkas dan shell yang terisolasi (`read_file`, `write_file`, `edit_file`, `list_dir`, `run_command`, `fetch_url`).
 - **Keamanan & Otorisasi:** Interface `Authorizer` dan `Auditor` untuk kebijakan izin tool granular serta logging audit kepatuhan.
 
-### 2. `pkg/persona` — Spesialisasi Karakter Agen
+### 2. `pkg/ai/persona` — Spesialisasi Karakter Agen
 Persona terkonfigurasi yang menyesuaikan system prompt, temperature, dan batasan perilaku:
 
 - `CodingAssistant`: Pair programming, refaktorisasi struktural, dan implementasi berbasis TDD.
@@ -26,18 +28,18 @@ Persona terkonfigurasi yang menyesuaikan system prompt, temperature, dan batasan
 - `AutonomousWorker`: Penyelesaian tugas mandiri tanpa pengawasan, otomatisasi skrip batch, dan migrasi massal.
 - `GeneralAssistant`: Asisten percakapan untuk dokumentasi, riset, dan perencanaan proyek.
 
-### 3. `pkg/memory` — Buffer Konteks Berbasis Token
+### 3. `pkg/ai/memory` — Buffer Konteks Berbasis Token
 - **Sliding-Window Buffer:** `TokenBuffer` melacak riwayat pesan dan konsumsi token secara dinamis.
 - **Kompaksi Konteks:** Ringkasan otomatis saat ukuran pesan mendekati batas jendela konteks model.
 - **Penyimpanan Sesi Persisten:** Format sesi serial JSON dengan kemampuan melanjutkan sesi (`krew chat --resume=<id>`).
 - **Ekspor Transkrip:** Rendering transkrip percakapan ke format Markdown bersih untuk keperluan audit dan review kode.
 
-### 4. `pkg/transport` — Antarmuka Multi-Protokol
+### 4. `pkg/ai/transport` — Antarmuka Multi-Protokol
 - **HTTP / REST Server:** Endpoint eksekusi streaming dengan Server-Sent Events (`POST /api/agent/run?stream=true`).
 - **Model Context Protocol (MCP):** Server stdio MCP untuk integrasi instan dengan IDE modern (Cursor, Claude Desktop, Antigravity).
 - **Autentikasi & RBAC:** Verifikasi token sesi dengan isolasi tenant dan middleware bearer token.
 
-### 5. `pkg/embed` — SDK Go In-Process
+### 5. `pkg/ai/embed` — SDK Go In-Process
 Menyematkan agen otonom ke dalam layanan Go atau CLI Krewire hanya dalam tiga baris kode:
 
 ```go
@@ -70,13 +72,13 @@ func main() {
 
 ---
 
-## Perintah CLI (`cmd/krew`)
+## Integrasi Toolchain Developer (`krew`)
 
-CLI mandiri `krew` menyediakan sub-perintah terarah yang didekomposisi berdasarkan Single Responsibility Principle:
+CLI developer `krew` mengekspos mesin agen AI otonom secara langsung melalui perintah alur kerja inti:
 
 - `krew chat`: Memulai sesi coding percakapan interaktif di terminal.
-- `krew run <prompt>`: Menjalankan satu instruksi atau tugas otomatisasi headless hingga tuntas.
-- `krew serve`: Menjalankan daemon server HTTP/REST dan Server-Sent Events (SSE).
+- `krew agent <prompt>`: Menjalankan tugas otonom atau prompt secara headless hingga tuntas.
 - `krew mcp`: Menjalankan server stdio Model Context Protocol untuk alur kerja copilot di IDE.
 - `krew sessions`: Menampilkan daftar sesi percakapan terdahulu beserta jumlah pesan dan token.
 - `krew export <id>`: Mengekspor transkrip percakapan sesi ke dalam berkas Markdown bersih.
+- `krew daemon`: Menjalankan daemon server HTTP/REST dan SSE untuk eksekusi antrean headless jarak jauh.

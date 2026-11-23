@@ -8,7 +8,7 @@ date: "2026-11-21"
 
 > **Inisiatif Referensi**: [Baseline AI-Native Engineering Ekosistem (internal#8)](https://github.com/krewire/internal/issues/8) · [krewire.com#31](https://github.com/krewire/krewire.com/issues/31)  
 > **Status**: Panduan Rekayasa Kanonikal  
-> **Penyelarasan**: SDLC Terkelola di seluruh Krew, Boost, dan Toolchain `kiw`  
+> **Penyelarasan**: SDLC Terkelola di seluruh Krew, Boost, dan Toolchain `krew`  
 
 ---
 
@@ -23,7 +23,7 @@ Rekayasa perangkat lunak modern kini bertransisi melampaui **AI-assisted coding*
 │ Metrik / Karakteristik        │ AI-Assisted Coding (Lama)         │ AI-Native Engineering (Krewire) │
 ├───────────────────────────────┼───────────────────────────────────┼─────────────────────────────────┤
 │ Model Integrasi               │ Popup chat editor sementara       │ Native MCP & runtime in-process │
-│ Penemuan Konteks              │ Salin-tempel prompt ad-hoc        │ SSOT terbaca-mesin (kiw)        │
+│ Penemuan Konteks              │ Salin-tempel prompt ad-hoc        │ SSOT terbaca-mesin (krew)        │
 │ Batasan Keamanan              │ Akses terminal tanpa batas        │ SafePath & gerbang manusia      │
 │ Model Verifikasi              │ "Tampak benar di editor"          │ krew verify & rekaman bukti      │
 │ Sikap Tanggung Jawab          │ Menyalahkan AI atas bug           │ Manusia memiliki hasil & mutu   │
@@ -58,14 +58,14 @@ Ekosistem Krewire mengoordinasikan rekayasa AI melalui tiga batasan yang terpisa
                                          │ dijalankan & diverifikasi via
                                          ▼
                ┌───────────────────────────────────────────────────┐
-               │             Krewire kiw CLI (Layer 3)             │
+               │             Krewire krew CLI (Layer 3)             │
                │          Toolchain Deterministik & SSOT           │
-               │   kiw context · krew verify · krew test · Compiler  │
+               │   krew context · krew verify · krew test · Compiler  │
                └───────────────────────────────────────────────────┘
 ```
 
 1. **Penyedia Kebenaran (`krew`)**:
-   Menyediakan satu-satunya sumber kebenaran (*single source of truth*) yang terbaca mesin via `kiw context --json`, menjalankan kompilasi, memeriksa kesehatan paket (`krew pkg health`), dan menegakkan gerbang mutu (`krew test`, `gofmt`, `go vet`). Berjalan 100% luring tanpa butuh LLM atau koneksi internet.
+   Menyediakan satu-satunya sumber kebenaran (*single source of truth*) yang terbaca mesin via `krew context --json`, menjalankan kompilasi, memeriksa kesehatan paket (`krew pkg health`), dan menegakkan gerbang mutu (`krew test`, `gofmt`, `go vet`). Berjalan 100% luring tanpa butuh LLM atau koneksi internet.
 2. **Konstitusi Rekayasa (`templates/boost`)**:
    Mendefinisikan aturan operasional, konvensi commit, struktur direktori, dan definisi persona agen yang tertanam langsung di repositori via `AGENTS.md` dan `.agents/`.
 3. **Engine Kognitif (`krew`)**:
@@ -83,7 +83,7 @@ Untuk memastikan keamanan tanpa menghambat kecepatan pengembang, kapabilitas age
 
 - **Tingkat 1: Otonom (Tanpa Persetujuan Khusus)**:
   - Membaca file repositori, dokumentasi, dan catatan keputusan arsitektur (ADR).
-  - Memeriksa konteks proyek (`kiw context --json`) dan aturan linter.
+  - Memeriksa konteks proyek (`krew context --json`) dan aturan linter.
   - Menjalankan kueri baca-saja, pemeriksaan status, dan unit test (`krew test`).
 - **Tingkat 2: Diawasi (Tindakan Dicatat, Ditinjau saat PR)**:
   - Membuat atau mengubah kode aplikasi, gaya CSS, template, dan unit test.
@@ -112,7 +112,7 @@ Sebelum menulis kode apa pun, agen memeriksa konteks proyek resmi yang terbaca-m
 
 ```bash
 # Menemukan jenis beban kerja, dependensi, aturan, dan cakupan
-kiw context --json
+krew context --json
 krew info
 ```
 

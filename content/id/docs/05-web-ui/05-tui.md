@@ -8,7 +8,7 @@ date: "2026-10-25"
 
 Jalur impor: `github.com/krewire/krewire/pkg/tui`
 
-Paket `tui` mentenagai antarmuka terminal interaktif untuk CLI `kiw` dan berbagai devtool menggunakan arsitektur Elm/Bubble Tea.
+Paket `tui` mentenagai antarmuka terminal interaktif untuk CLI `krew` dan berbagai devtool menggunakan arsitektur Elm/Bubble Tea.
 
 ---
 

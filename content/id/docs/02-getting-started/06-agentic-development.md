@@ -8,13 +8,13 @@ date: "2026-09-29"
 
 Rekayasa perangkat lunak modern bergerak cepat menuju kolaborasi antara pengembang manusia dan agen coding AI otonom. Namun, agen AI tanpa panduan sering kali berhalusinasi tentang arsitektur, melanggar konvensi, atau memasukkan dependensi yang berlebihan (bloat).
 
-Krewire menyelesaikan tantangan ini melalui **Krewire Boost** (`templates/boost` di `github.com/krewire/krewire`)—sebuah framework agentik dan standar konfigurasi tersemat yang membekali agen AI dengan pengetahuan mendalam dan intrinsik tentang ekosistem Krewire, 8 workload-nya, CLI `kiw`, serta quality gate otomatis yang ketat.
+Krewire menyelesaikan tantangan ini melalui **Krewire Boost** (`templates/boost` di `github.com/krewire/krewire`)—sebuah framework agentik dan standar konfigurasi tersemat yang membekali agen AI dengan pengetahuan mendalam dan intrinsik tentang ekosistem Krewire, 8 workload-nya, CLI `krew`, serta quality gate otomatis yang ketat.
 
 ---
 
 ## 1. Apa itu Krewire Boost?
 
-**Krewire Boost** didistribusikan sebagai modul Go yang tersemat langsung di dalam CLI `kiw`. Hanya dengan satu perintah, Anda dapat melakukan bootstrap sistem agen yang lengkap ke dalam repositori Krewire mana pun:
+**Krewire Boost** didistribusikan sebagai modul Go yang tersemat langsung di dalam CLI `krew`. Hanya dengan satu perintah, Anda dapat melakukan bootstrap sistem agen yang lengkap ke dalam repositori Krewire mana pun:
 
 ```bash
 krew boost install
@@ -22,7 +22,7 @@ krew boost install
 
 ### Kemampuan Inti:
 
-1. **Konstitusi Terpadu (`AGENTS.md`):** Mengodekan tabel deteksi 8 workload, matriks perintah lengkap `kiw`, batasan arsitektur (SRP, SoC), serta aturan proyek yang tidak boleh dilanggar (immutable).
+1. **Konstitusi Terpadu (`AGENTS.md`):** Mengodekan tabel deteksi 8 workload, matriks perintah lengkap `krew`, batasan arsitektur (SRP, SoC), serta aturan proyek yang tidak boleh dilanggar (immutable).
 2. **Daftar Sub-agen Terspesialisasi:** 15+ persona agen khusus (`scout`, `plan`, `build`, `reviewer`, `tester`, `debugger`, `refactor`, `docs`, `security`, `deploy`).
 3. **Perintah Slash Terstruktur:** 16 perintah standar (`/kickoff`, `/spec`, `/plan`, `/review`, `/test`, `/fix`, `/commit`, `/deploy`).
 4. **Skill yang Sadar Konteks (Context-Aware Skills):** 20+ skill prosedural yang dapat digunakan kembali (`context-awareness`, `quality-gate`, `wasm-runtime`, `infra-provision`, `worker-queue`).

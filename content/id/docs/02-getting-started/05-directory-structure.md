@@ -116,13 +116,13 @@ Berkas di dalam `public/` disajikan apa adanya tanpa pra-pemrosesan:
 Dibuat secara otomatis oleh `krew dev` dan `krew build`:
 
 - **`.krewire/build/`:** Menyimpan output produksi hasil kompilasi yang siap untuk hosting statis atau pemaketan citra Docker.
-- Direktori ini dikelola sepenuhnya oleh `kiw` dan harus selalu ditambahkan ke dalam `.gitignore` Anda.
+- Direktori ini dikelola sepenuhnya oleh `krew` dan harus selalu ditambahkan ke dalam `.gitignore` Anda.
 
 ---
 
 ## 3. Tata Letak Khusus untuk Masing-Masing Workload
 
-Saat membuat proyek baru melalui `krew new <project> [flags]`, `kiw` akan menyiapkan struktur direktori yang disesuaikan untuk workload tersebut:
+Saat membuat proyek baru melalui `krew new <project> [flags]`, `krew` akan menyiapkan struktur direktori yang disesuaikan untuk workload tersebut:
 
 ### 1. Situs Statis (`krew new my-site --site`)
 ```text
@@ -209,7 +209,7 @@ project:
     cmd: "entrypoints"
 ```
 
-Kompiler `kiw` akan me-resolve semua path terhadap pemetaan ini secara otomatis.
+Kompiler `krew` akan me-resolve semua path terhadap pemetaan ini secara otomatis.
 
 ---
 

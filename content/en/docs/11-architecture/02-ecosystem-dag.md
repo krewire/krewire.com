@@ -21,7 +21,7 @@ Krewire is not one repository. The core libraries and CLI, the UI catalog, the a
 
 ## 1. The Ecosystem Architectural Battery
 
-All components, platforms, and workloads advance along a progressive architectural battery, driven entirely by the `kiw` devtool CLI and declarative `krewire.yaml` schema:
+All components, platforms, and workloads advance along a progressive architectural battery, driven entirely by the `krew` devtool CLI and declarative `krewire.yaml` schema:
 
 ```text
 Go Stdlib ──► Krewire Libraries ──► Krewire UI | Krewire Auth | Krewire Krew ──► Krewire Cloud ──► Krewire Dash
@@ -33,9 +33,9 @@ Go Stdlib ──► Krewire Libraries ──► Krewire UI | Krewire Auth | Krew
 These edges are Go module dependencies: an arrow means "imports packages from". They were read from each repository's `go.mod` and import statements on 9 November 2026.
 
 ```text
-                 krewire.com    krewire.github.io        (Layer 5 — built by kiw, no Go module)
+                 krewire.com    krewire.github.io        (Layer 5 — built by krew, no Go module)
                         │              │
-                        └──────┬───────┘   uses kiw + kui at build time
+                        └──────┬───────┘   uses krew + kui at build time
                                ▼
      dash ──────┐        cloud ─────┐                    (Layer 4 — products & platform services)
       │  │      │         │  │      │
@@ -44,7 +44,7 @@ These edges are Go module dependencies: an arrow means "imports packages from". 
       └──► krew ◄────────────┘      │
             │   │                   │
             ▼   ▼                   ▼
-        ┌──────────────── github.com/krewire/krewire ────────────────┐  (Layers 1–3 — core + kiw)
+        ┌──────────────── github.com/krewire/krewire ────────────────┐  (Layers 1–3 — core + krew)
         │  krew · pkg/* · pkg/model · pkg/errs · pkg/lifecycle   │
         └─────────────────────────────┬──────────────────────────────┘
                                       ▼
@@ -56,7 +56,7 @@ These edges are Go module dependencies: an arrow means "imports packages from". 
 | Repository | Module | Imports from the ecosystem |
 | :--- | :--- | :--- |
 | `ui` (kui) | `github.com/krewire/ui` | nothing — standard library only (`TestModuleHasNoExternalDependencies`) |
-| `krewire` (core + `kiw`) | `github.com/krewire/krewire` | `ui` (`pkg/ui/components` re-exports the kui `embed.FS`) |
+| `krewire` (core monorepo) | `github.com/krewire/krewire` | `ui` (`pkg/ui/components` re-exports the kui `embed.FS`) |
 | `krew` (agent engine) | `github.com/krewire/krew` | `krewire` |
 | `auth` | `github.com/krewire/auth` | `krewire` |
 | `cloud` | `github.com/krewire/cloud` | `krewire`, `auth`, `krew` |

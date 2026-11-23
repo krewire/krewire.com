@@ -57,7 +57,7 @@ Developers can explore sandboxed project environments and execution telemetry:
 
 ### Local Development Alternatives
 
-For local development without cloud dependencies, developers use the native `kiw` CLI tools:
+For local development without cloud dependencies, developers use the native `krew` CLI tools:
 
 - `krew dev`: Run applications locally with auto-restart and hot reload.
 - `krew dash`: Run local dev dashboard & MCP telemetry (`:4000`) or manage virtual workspace sandboxes.

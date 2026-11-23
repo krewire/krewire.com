@@ -42,11 +42,11 @@ Krewire Cloud is designed as both a hybrid PaaS engine and a multi-tenant manage
 
 ## Platform Access & Deployment
 
-Krewire Cloud is accessible via [cloud.krewire.com](https://cloud.krewire.com). In addition to cloud hosting, you can deploy any Krewire project to your own infrastructure today using the open-source `kiw` CLI:
+Krewire Cloud is accessible via [cloud.krewire.com](https://cloud.krewire.com). In addition to cloud hosting, you can deploy any Krewire project to your own infrastructure today using the open-source `krew` CLI:
 
 ### Deploying Your Application
 
-You can deploy any Krewire project directly using the `kiw` CLI:
+You can deploy any Krewire project directly using the `krew` CLI:
 
 ```bash
 # Stage production binary and deployable artifacts

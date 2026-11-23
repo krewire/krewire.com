@@ -28,7 +28,7 @@ Go Stdlib ──► Krewire Libraries ──► Krewire UI | Krewire Auth | Krew
                                                                                                   (Workspace Terpadu)
 ```
 
-Setiap tahapan progresi ini digerakkan dan dikelola secara penuh oleh CLI developer `kiw` serta dikonfigurasi secara deklaratif melalui berkas `krewire.yaml`.
+Setiap tahapan progresi ini digerakkan dan dikelola secara penuh oleh CLI developer `krew` serta dikonfigurasi secara deklaratif melalui berkas `krewire.yaml`.
 
 ## 2. Piramida Ekosistem (Dependensi Ketat ke Arah Bawah)
 
@@ -39,7 +39,7 @@ Layer 5: Unified Studio & Apex Portals     Dash (virtual workspace) · krewire.c
    ↓
 Layer 4: Platform Engines & Cloud          Cloud (PaaS) ∥ Auth (IAM / SSO) ∥ Krew (AI agent)
    ↓
-Layer 3: Universal Developer Driver & CLI  krew (kiw) driven by krewire.yaml
+Layer 3: Universal Developer Driver & CLI (krew driven by krewire.yaml)
    ↓
 Layer 2: UI Foundation & Domain Libraries  kui (.kiw components) · pkg/* (web, orm, sec, …)
    ↓
@@ -50,7 +50,7 @@ Layer 0: Go Standard Library & OS Primitives
 
 - **Ketat hanya ke arah bawah:** sebuah lapisan hanya boleh mengimpor lapisan di bawahnya (`Layer N → Layer < N`). Impor ke atas dilarang dan terdeteksi oleh `layering_test.go`.
 - **Isolasi kernel:** `pkg/model` hanya bergantung pada pustaka standar dan `pkg/errs`.
-- **Enkapsulasi CLI:** tidak ada pustaka atau paket platform yang boleh mengimpor `kiw` (`krew`). Proyek pengguna yang dihasilkan bergantung pada pustaka Krewire, tidak pernah pada CLI.
+- **Enkapsulasi CLI:** tidak ada pustaka atau paket platform yang boleh mengimpor `krew`. Proyek pengguna yang dihasilkan bergantung pada pustaka Krewire, tidak pernah pada CLI.
 
 ## 3. Di Dalam Repositori Inti
 

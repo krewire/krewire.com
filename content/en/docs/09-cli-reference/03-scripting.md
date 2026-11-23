@@ -6,7 +6,7 @@ date: "2026-10-08"
 
 # Task Automation & Scripting
 
-Krewire includes a built-in task automation engine directly within `kiw`, eliminating the need for `Makefile`, `npm run`, or external task runners.
+Krewire includes a built-in task automation engine directly within `krew`, eliminating the need for `Makefile`, `npm run`, or external task runners.
 
 Tasks are declared in the `scripts:` block of `krewire.yaml` and executed via `krew run <task>`.
 

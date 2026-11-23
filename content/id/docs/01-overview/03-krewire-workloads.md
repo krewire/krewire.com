@@ -6,7 +6,7 @@ date: "2026-09-29"
 
 # Workload Krewire
 
-Krewire menyatukan delapan jenis arsitektur workload di bawah satu antarmuka baris perintah (**`kiw`**) dan satu berkas konfigurasi devtool deklaratif (**`krewire.yaml`**).
+Krewire menyatukan delapan jenis arsitektur workload di bawah satu antarmuka baris perintah (**`krew`**) dan satu berkas konfigurasi devtool deklaratif (**`krewire.yaml`**).
 
 Krewire dapat menangani 8 workload secara progresif dalam satu arsitektur terpadu tanpa pemisahan jenis workload yang kaku. Konfigurasi dideklarasikan langsung di dalam `krewire.yaml`:
 

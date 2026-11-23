@@ -95,11 +95,11 @@ Security and distributed intelligence are foundational pillars of the Krewire ec
     <div class="chapter-card-head">
       <span class="chapter-card-num">8.7</span>
       <h3 class="chapter-card-title">
-        <a href="/security-platforms/autonomous-agent">Autonomous AI Agent Engine (krew) <span class="arrow">→</span></a>
+        <a href="/security-platforms/autonomous-agent">Autonomous AI Agent Engine (pkg/ai & krew) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Platform-agnostic autonomous AI agent monorepo: in-process Go embedding, standalone CLI runner, HTTP/SSE streaming, and Model Context Protocol (MCP) servers.
+      Autonomous AI agent engine: in-process Go embedding (pkg/ai/embed), multi-turn ReAct reasoning loop, tool sandboxes, unified CLI commands (krew chat, krew agent), and native Model Context Protocol (MCP) server.
     </p>
   </div>
 

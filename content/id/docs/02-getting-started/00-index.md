@@ -1,6 +1,6 @@
 ---
 title: "Memulai (Getting Started)"
-description: "Jalur pemula: instal kiw, bangun situs pertama Anda dalam lima menit, lalu aplikasi fullstack dengan SQLite dan form. Tanpa perlu latar belakang arsitektur."
+description: "Jalur pemula: instal krew, bangun situs pertama Anda dalam lima menit, lalu aplikasi fullstack dengan SQLite dan form. Tanpa perlu latar belakang arsitektur."
 date: "2026-11-09"
 ---
 
@@ -23,7 +23,7 @@ Bab ini adalah **jalur pemula**. Bab ini mengasumsikan Anda sedikit mengenal Go 
 
 ## 1. Jalur Pemula
 
-Ikuti secara berurutan. Setiap perintah di dalamnya telah dijalankan terhadap CLI `kiw` versi terkini.
+Ikuti secara berurutan. Setiap perintah di dalamnya telah dijalankan terhadap CLI `krew` versi terkini.
 
 <div class="overview-grid">
 
@@ -35,7 +35,7 @@ Ikuti secara berurutan. Setiap perintah di dalamnya telah dijalankan terhadap CL
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Instal <code>kiw</code>, scaffold situs statis, ubah halaman, tambahkan komponen buatan Anda sendiri, jalankan server pengembangan, dan hasilkan build produksi.
+      Instal <code>krew</code>, scaffold situs statis, ubah halaman, tambahkan komponen buatan Anda sendiri, jalankan server pengembangan, dan hasilkan build produksi.
     </p>
   </div>
 
@@ -115,7 +115,7 @@ Daftar lengkapnya ada di [Referensi Perintah CLI](/cli-reference/commands).
 
 ## 5. Kendala Umum bagi Pemula
 
-**`kiw: command not found`** — direktori instalasi tidak ada di `PATH` Anda. Tambahkan `export PATH="$HOME/.local/bin:$PATH"` (installer shell) atau `export PATH="$(go env GOPATH)/bin:$PATH"` (`go install`) ke `~/.zshrc` atau `~/.bashrc`, lalu buka terminal baru.
+**`krew: command not found`** — direktori instalasi tidak ada di `PATH` Anda. Tambahkan `export PATH="$HOME/.local/bin:$PATH"` (installer shell) atau `export PATH="$(go env GOPATH)/bin:$PATH"` (`go install`) ke `~/.zshrc` atau `~/.bashrc`, lalu buka terminal baru.
 
 **`address already in use`** — port 8080 sedang dipakai program lain. Ubah `dev.port` di `krewire.yaml`, atau pratinjau build di alamat lain dengan `krew serve --addr :3000`.
 

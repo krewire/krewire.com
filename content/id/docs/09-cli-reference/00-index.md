@@ -1,14 +1,14 @@
 ---
 title: "Referensi CLI"
-description: "Panduan komprehensif untuk CLI kiw: arsitektur, flag global, variabel environment, kode keluar, dan alur kerja pengembang harian."
+description: "Panduan komprehensif untuk CLI krew: arsitektur, flag global, variabel environment, kode keluar, dan alur kerja pengembang harian."
 date: "2026-10-08"
 ---
 
 # Referensi CLI
 
-CLI **`kiw`** adalah pintu masuk tunggal yang menyatukan seluruh ekosistem Krewire. Alat ini menggerakkan kedelapan jenis proyek (`app`, `cli`, `site`, `book`, `worker`, `service`, `gateway`, `infra`) di balik satu binary dan satu berkas konfigurasi (**`krewire.yaml`**).
+CLI **`krew`** adalah pintu masuk tunggal yang menyatukan seluruh ekosistem Krewire. Alat ini menggerakkan kedelapan jenis proyek (`app`, `cli`, `site`, `book`, `worker`, `service`, `gateway`, `infra`) di balik satu binary dan satu berkas konfigurasi (**`krewire.yaml`**).
 
-`kiw` dibangun secara langsung menggunakan pustaka `pkg/tui` dan `pkg/term` milik Krewire sendiri, memastikan nol dependensi eksternal, waktu mulai instan (<2 milidetik), dan disiplin kode keluar POSIX yang konsisten.
+`krew` dibangun secara langsung menggunakan pustaka `pkg/tui` dan `pkg/term` milik Krewire sendiri, memastikan nol dependensi eksternal, waktu mulai instan (<2 milidetik), dan disiplin kode keluar POSIX yang konsisten.
 
 ---
 
@@ -24,7 +24,7 @@ CLI **`kiw`** adalah pintu masuk tunggal yang menyatukan seluruh ekosistem Krewi
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Dokumentasi terperinci untuk setiap perintah <code>kiw</code>: flag, sintaks penggunaan, workload yang didukung, dan perilaku eksekusinya.
+      Dokumentasi terperinci untuk setiap perintah <code>krew</code>: flag, sintaks penggunaan, workload yang didukung, dan perilaku eksekusinya.
     </p>
   </div>
 

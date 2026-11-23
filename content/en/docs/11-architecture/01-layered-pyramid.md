@@ -28,7 +28,7 @@ Go Stdlib ──► Krewire Libraries ──► Krewire UI | Krewire Auth | Krew
                                                                                                   (Unified Workspace)
 ```
 
-Every stage in this progression is driven and composed through the `kiw` developer CLI and configured declaratively via `krewire.yaml`.
+Every stage in this progression is driven and composed through the `krew` developer CLI and configured declaratively via `krewire.yaml`.
 
 ## 2. The Ecosystem Pyramid (Strict Downward Dependencies)
 
@@ -39,7 +39,7 @@ Layer 5: Unified Studio & Apex Portals     Dash (virtual workspace) · krewire.c
    ↓
 Layer 4: Platform Engines & Cloud          Cloud (PaaS) ∥ Auth (IAM / SSO) ∥ Krew (AI agent)
    ↓
-Layer 3: Universal Developer Driver & CLI  krew (kiw) driven by krewire.yaml
+Layer 3: Universal Developer Driver & CLI (krew driven by krewire.yaml)
    ↓
 Layer 2: UI Foundation & Domain Libraries  kui (.kiw components) · pkg/* (web, orm, sec, …)
    ↓
@@ -50,7 +50,7 @@ Layer 0: Go Standard Library & OS Primitives
 
 - **Strict downward-only:** a layer may import only layers below it (`Layer N → Layer < N`). Upward imports are forbidden and caught by `layering_test.go`.
 - **Kernel isolation:** `pkg/model` depends only on the standard library and `pkg/errs`.
-- **CLI encapsulation:** no library or platform package may import `kiw` (`krew`). Generated user projects depend on Krewire libraries, never on the CLI.
+- **CLI encapsulation:** no library or platform package may import `krew`. Generated user projects depend on Krewire libraries, never on the CLI.
 
 ## 3. Inside the Core Repository
 

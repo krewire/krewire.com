@@ -37,7 +37,7 @@ Typical Modern Stack:
 
 ## 2. The Krewire Solution
 
-Krewire unifies all of these workloads under **Go**, **`kiw`**, and **`krewire.yaml`**:
+Krewire unifies all of these workloads under **Go**, **`krew`**, and **`krewire.yaml`**:
 
 | Workload | Traditional Fragmented Approach | The Krewire Approach |
 | :--- | :--- | :--- |

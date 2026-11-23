@@ -6,7 +6,7 @@ date: "2026-10-08"
 
 # Workloads
 
-Krewire provides a unified developer experience across eight first-class workload kinds. Rather than stitching together disjointed libraries and runtimes, every workload is defined in a single configuration file (**`krewire.yaml`**) and orchestrated through one developer tool (**`kiw`**).
+Krewire provides a unified developer experience across eight first-class workload kinds. Rather than stitching together disjointed libraries and runtimes, every workload is defined in a single configuration file (**`krewire.yaml`**) and orchestrated through one developer tool (**`krew`**).
 
 Workload kind selection informs the compiler, dev server, and deployment pipeline while preserving standard Go ergonomics and strict downward-only package dependencies.
 

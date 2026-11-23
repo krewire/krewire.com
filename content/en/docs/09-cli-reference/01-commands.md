@@ -1,20 +1,51 @@
 ---
 title: "Command Catalog"
-description: "Complete command catalog for kiw: syntax, flags, workload support, and examples for every command in the Krewire developer CLI."
-date: "2026-10-08"
+description: "Complete command catalog for krew: syntax, flags, workload support, and examples for every command in the Krewire developer CLI toolchain."
+date: "2026-11-24"
 ---
 
 # Command Catalog
 
-The **`kiw`** CLI provides an end-to-end command set spanning the entire software development lifecycle—from project initialization to production deployment.
+The **`krew`** CLI provides an end-to-end command set spanning the entire software development lifecycle—from project initialization and AI-assisted development to quality gates and production deployment.
+
+*(Note: The shorthand alias `kiw` is automatically installed as a symlink pointing to `krew` for terminal convenience).*
 
 ---
 
-## 1. Project Initialization & Scaffolding
+## 1. Core Workflow
+
+### `krew chat`
+
+Start an interactive conversational AI coding session in the terminal:
+
+```bash
+krew chat [options]
+```
+
+- `--model <model>`: Model override (OpenAI, Anthropic, Gemini, Ollama).
+- `--persona <persona>`: Agent persona (default: `coding`). Options: `coding`, `devops`, `worker`, `general`.
+- `--resume <session-id>`: Resume an existing saved conversation session ID.
+- `--max-steps <int>`: Maximum reasoning steps per prompt (default: `25`).
+- `--workspace <dir>`: Target workspace directory (default: `.`).
+
+### `krew agent <prompt>`
+
+Execute an autonomous task or prompt headless to completion:
+
+```bash
+krew agent "Add unit tests for auth middleware" [options]
+```
+
+- `--brief <path>`: Path to a Markdown Task Brief file or GitHub issue reference.
+- `--sdlc`: Execute governed SDLC workflow phases (`Understand -> Plan -> Implement -> Verify -> Review -> Report`).
+- `--persona <persona>`: Agent persona specialization (default: `coding`).
+- `--model <model>`: Model override.
+- `--max-steps <int>`: Bounded reasoning steps (default: `25`).
+- `--workspace <dir>`: Workspace directory (default: `.`).
 
 ### `krew new <name>`
 
-Scaffold a new project in a new directory with a pre-configured template.
+Scaffold a new project in a new directory with a pre-configured template:
 
 ```bash
 krew new my-app [--site | --app | --cli | --book | --worker | --service | --infra]
@@ -24,19 +55,82 @@ krew new my-app [--site | --app | --cli | --book | --worker | --service | --infr
 - `--app`: Fullstack web monolith with `net/http` and embedded assets.
 - `--cli`: Terminal utility with Elm-style Model-Update-View architecture.
 - `--book`: Documentation book with Markdown manuscripts and `pkg/book`.
-- `--worker`: Asynchronous job worker daemon.
+- `--worker`: Asynchronous background job worker daemon.
 - `--service`: Cloud-native microservice.
 - `--infra`: Infrastructure as Code in Go.
 
-### `krew init`
+### `krew dev`
 
-Equip an existing project directory with Krewire workload structures:
+Start the local development server with automatic file watching and live reload:
 
 ```bash
-krew init [--site | --book | --cli | --worker | --service | --infra]
+krew dev [--port 8080]
 ```
 
-- `--template <git-url>`: Clone an external starter template repository into an empty directory.
+- Watches `pages/`, `layouts/`, `components/`, `public/`, and Go source files.
+- Automatically re-renders templates or restarts Go server processes in `<10ms`.
+
+### `krew build`
+
+Compile and bundle the project for production:
+
+```bash
+krew build [--release]
+```
+
+- `site`: Emits compiled static HTML, CSS, and JS into `.krewire/build/`.
+- `book`: Compiles Markdown manuscripts and navigation into static pages.
+- `app`, `cli`, `worker`, `service`: Produces standalone static CGO-free binaries (`CGO_ENABLED=0`) with embedded assets.
+
+### `krew test`
+
+Run the automated test suite of the current project:
+
+```bash
+krew test [flags]
+```
+
+Runs standard Go unit tests (`go test -v ./...`) across all packages with coverage calculation.
+
+### `krew verify`
+
+Run reproducible quality gates and produce an evidence-backed task verification record:
+
+```bash
+krew verify [--json] [--ledger <path>]
+```
+
+- `--json`: Output verification record in machine-readable JSON format.
+- `--ledger <path>`: Path to tamper-evident ledger JSON file to append evidence block.
+- `--task <id>`: Task identifier for evidence tracking (default: `active-task`).
+- `--verify-ledger`: Verify cryptographic integrity of existing ledger file without running gates.
+
+### `krew add <package[@version]>`
+
+Add a package, plugin, or copy Krewire UI components into `./components`:
+
+```bash
+krew add ui/button ui:minimal      # Install components into ./components/
+krew add twcss                     # Enable Tailwind CSS compiler runner
+krew add github.com/krewire/ui     # Add Go UI component package
+```
+
+### `krew dash` (alias: `krew dashboard`)
+
+Launch an interactive local developer dashboard and real-time observability telemetry server, or manage AI-native virtual developer workspaces and isolated execution sandboxes:
+
+```bash
+krew dash [--port 4000] [--host 127.0.0.1]
+krew dash start --sandbox=go-1.27
+krew dash list
+krew dash status
+krew dash console [--port 9000]
+krew dash stop [id]
+```
+
+- **Interactive UI (`/`)**: Dark-themed web dashboard inspecting detected pages, handlers, configured microservices, and live memory metrics.
+- **Real-Time Telemetry (`/api/events`)**: Server-Sent Events (SSE) stream pushing goroutine count, memory allocation, and GC telemetry every 2 seconds.
+- **Virtual Workspace Sandboxes**: Mount and attach to isolated developer execution sandboxes.
 
 ### `krew make <kind> <name>`
 
@@ -59,7 +153,54 @@ krew make chapter <name>         # Scaffold book chapter manuscript
 krew make doc <name>             # Scaffold docs article
 ```
 
-Supports colon syntax (e.g. `krew make:component Card` or `krew make component:Card`) and explicit flags (`--kind`, `--name`). Supports compound dotted component names (`krew make component Card.Header` automatically scaffolds `components/Card/Header.kiw` for seamless `<Card.Header />` compound invocation).
+Supports colon syntax (e.g. `krew make:component Card` or `krew make component:Card`) and explicit flags (`--kind`, `--name`). Supports compound dotted component names (`krew make component Card.Header`).
+
+### `krew pkg <init|pack|add|list|export>`
+
+Manage standalone, independently distributable `.kiw` component packages and UI kits (ADR-K7P9L):
+
+```bash
+krew pkg init @acme/ui              # Scaffolds standalone package with kiw.pkg.json
+krew pkg pack ./my-kit              # Packs package into a distributable .kpkg archive
+krew pkg add ./dist/ui-1.0.0.kpkg   # Installs package archive into ./.krewire/pkg/
+krew pkg add ./local-kit            # Installs from local directory into ./.krewire/pkg/
+krew pkg list                       # Lists installed component packages in ./.krewire/pkg
+krew pkg list --json                # Machine-readable JSON inventory of installed packages
+krew pkg export Card                # Validates and exports self-contained component
+```
+
+---
+
+## 2. Project Management
+
+### `krew init`
+
+Equip an existing project directory with Krewire workload structures:
+
+```bash
+krew init [--site | --book | --cli | --worker | --service | --infra]
+```
+
+- `--template <git-url>`: Clone an external starter template repository into an empty directory.
+
+### `krew remove <package>`
+
+Uninstall a package or deactivate an opt-in plugin:
+
+```bash
+krew remove twcss
+```
+
+### `krew update [packages...] [flags]`
+
+Update project dependencies to their latest compatible versions:
+
+```bash
+krew update                      # Update all dependencies in project
+krew update --dry-run            # Preview available updates without modifying files
+krew update krewire ui           # Update specific ecosystem packages to @latest
+krew update github.com/foo/bar   # Update specific external dependency
+```
 
 ### `krew migrate <up [n] | down [n] | redo | status | create <name>>`
 
@@ -75,359 +216,19 @@ krew migrate status                # Display migration status table
 ```
 
 Flags:
-
 - `--dsn <dsn>`: Override database connection string.
 - `--driver <driver>`: Database driver (`sqlite`, `postgres`, `mysql`).
 - `--dir <path>`: Migrations directory (default: `migrations`).
 - `--lock-timeout <duration>`: Lock acquisition timeout (default: `30s`).
 
 ### `krew seed [--class <name>] [--dsn <dsn>] [--driver <driver>] [--dir <dir>]`
-Alias: `krew db:seed`
 
 Seed the database with test data and initial system state via Go seeders and model factories:
 
 ```bash
 krew seed                       # Execute DatabaseSeeder
 krew seed --class UserSeeder    # Execute a specific seeder class
-kiw db:seed                    # Laravel-compatible alias
 ```
-
----
-
-## 2. Development & Execution
-
-### `krew dev`
-
-Start the local development server with automatic file watching and live reload:
-
-```bash
-krew dev [--port 8080]
-```
-
-- Watches `pages/`, `layouts/`, `components/`, `public/`, and Go source files.
-- Automatically re-renders templates or restarts Go server processes in `<10ms`.
-
-### `krew run [task|args]`
-
-Run a Go entry point or a custom task defined in `krewire.yaml`:
-
-```bash
-krew run [task-name] [-- args...]
-```
-
-Examples:
-```bash
-krew run                # Runs the default Go entry point
-krew run build-css      # Executes the 'build-css' task from krewire.yaml
-krew run -- --verbose   # Forwards '--verbose' flag to the application
-```
-
-### `krew serve`
-
-Start a local HTTP server to preview static output (`site` or `book` workloads) or listen on a web port:
-
-```bash
-krew serve [--port 3000] [--dir .krewire/build]
-```
-
-### `krew dash` (alias: `krew dashboard`)
-
-Launch an interactive local developer dashboard and real-time observability telemetry server, or manage AI-native virtual developer workspaces and isolated execution sandboxes:
-
-```bash
-krew dash [--port 4000] [--host 127.0.0.1]
-krew dash start --sandbox=go-1.27
-krew dash list
-krew dash status
-krew dash console [--port 9000]
-krew dash stop [id]
-```
-
-- **Interactive UI (`/`)**: Dark-themed web dashboard inspecting detected pages, handlers, configured microservices, and live memory metrics.
-- **Real-Time Telemetry (`/api/events`)**: Server-Sent Events (SSE) stream pushing goroutine count, memory allocation, and GC telemetry every 2 seconds.
-- **Virtual Workspace Sandboxes**:
-  - `start [--sandbox=<image>]`: Mount and attach to an isolated developer workspace sandbox.
-  - `list`: List running developer workspaces and sandboxes.
-  - `status`: Inspect Dash server connectivity, quota, and health.
-  - `console`: Open or print Web IDE console URL.
-  - `stop [id]`: Stop a running sandbox.
-- **REST & MCP Endpoints**:
-  - `GET /api/info`: Project shape, Go toolchain version, services, and route table.
-  - `GET /api/metrics`: Live memory allocations and goroutine counter.
-  - `GET /api/health`: Health status probe for local containers and automation.
-  - `GET /mcp/sse`: Native Model Context Protocol (MCP) server for AI coding agents.
-
-### `krew mcp`
-
-Start a native Model Context Protocol (MCP) server for AI coding agents (Antigravity, Cursor, Claude Desktop, OpenCode):
-
-```bash
-krew mcp --stdio                      # Standard stdio transport for AI IDEs
-krew mcp --port 4000 --host 127.0.0.1 # Standalone HTTP/SSE transport
-```
-
-- **MCP Resources**:
-  - `krewire://project/info`: Project metadata, detected kind, Go version, and configured services.
-  - `krewire://project/routes`: All discovered `.kiw` pages, Markdown articles, and Go HTTP handlers.
-  - `krewire://runtime/metrics`: Live memory allocation, system memory, goroutines, and GC stats.
-  - `krewire://runtime/health`: Continuous health status probe.
-- **MCP Tools**:
-  - `kiw_inspect_project`: Inspect project configuration, architecture shape, and environment.
-  - `kiw_list_routes`: Extract the full routing tree.
-  - `kiw_make_scaffold`: Generate components, pages, handlers, migrations, models, middleware, and services.
-  - `kiw_get_metrics`: Real-time telemetry probe for AI performance audits.
-### `krew worker`
-
-Run asynchronous background workers and queue processors:
-
-```bash
-krew worker [--queue memory|file|kv] [--concurrency <N>] [--dlq list|clear]
-```
-
-- `--queue`: Queue storage backend (`memory`, `file`, or `kv`).
-- `--concurrency`: Number of concurrent job workers (default derived from `krewire.yaml` or CPU count).
-- `--dlq list`: Inspect dead-lettered failed jobs.
-- `--dlq clear`: Flush and purge all dead-lettered jobs.
-
-### `krew gateway`
-
-Run a high-performance API gateway and reverse proxy for microservices:
-
-```bash
-krew gateway [--port 8080] [--host 0.0.0.0] [--routes "/api/orders=http://localhost:8081,/api/users=http://localhost:8082"]
-```
-
-- Dispatches routes based on `gateway:` configuration in `krewire.yaml` or explicit `--routes` flag.
-- Built-in circuit breaking, distributed rate limiting, CORS, distributed tracing headers, and round-robin load balancing.
-
----
-
-## 3. Building & Deployment
-
-### `krew build`
-
-Compile the current project into release-ready artifacts according to its detected capabilities:
-
-```bash
-krew build [--target site|book|binary|wasm|infra] [--output <path>]
-```
-
-- **`site`**: Generates optimized static HTML and scoped CSS into `.krewire/build`.
-- **`book`**: Compiles Markdown manuscripts into multi-chapter documentation portal.
-- **`app`/`cli`/`service`/`worker`**: Compiles a single Go binary with embedded assets.
-- **`wasm`**: Compiles a `pkg/runtime` client bundle into a `.wasm` module plus JS glue.
-- **`infra`**: Compiles and verifies the cloud infrastructure topology plan.
-
-### `krew deploy`
-
-Validate the project, run quality gates, stage distribution artifacts into `.krewire/dist/`, and publish to target environments:
-
-```bash
-krew deploy [--target binary|systemd|gh-pages|infra] [--branch <name>] [--remote <name>] [--dry-run]
-```
-
-- `--dry-run`: Preview deployment steps without publishing or mutating cloud state.
-- `--target binary`: Build and stage standalone executable into distribution directory.
-- `--target systemd`: Generate and configure Linux systemd unit service files (`/etc/systemd/system/<app>.service`) with custom user, working directory, and auto-restart policies.
-- `--target gh-pages`: Commit and push the static output to GitHub Pages (`gh-pages` branch).
-- `--target infra`: Provision declared cloud resources via provider adapters.
-
-### `krew bundle`
-
-Bundle all eligible CSS and JS assets into `assets/krewire.css` and `assets/krewire.js`:
-
-```bash
-krew bundle [--minify] [--output <dir>]
-```
-
-- `--minify` / `-m`: enable CSS and JS minification.
-- `--output <dir>` / `-o`: target output directory (default: derived from `krewire.yaml` or `.krewire/build`).
-
----
-
-## 4. Code Quality & Testing
-
-### `krew test`
-
-Execute unit and integration tests across all Go packages:
-
-```bash
-krew test [--filter <pattern>] [--watch] [--coverage] [--verbose] [--json]
-```
-
-Spawns `go test ./...` with standardized colorized output and test summary reporting.
-
-- `--filter <pattern>` (alias `--run`): run only tests matching a name or file pattern.
-- `--watch` / `-w`: watch files and rerun tests on change.
-- `--coverage`: run with coverage (`go test -cover`); `--coverprofile <file>` writes the profile.
-- `--verbose` / `-v`, `--json`, `--reporter verbose|dot|json`: output control.
-- `--update` / `-u`: update snapshots/golden files; `--list`: list tests instead of running.
-- `--count <n>`: pass through `go test -count` (e.g. `1` to disable the test cache).
-
-### `krew vet`
-
-Run static code analysis and optional security audits:
-
-```bash
-krew vet [--sec] [--vuln]
-```
-
-Runs Go's official `go vet ./...` analyzer, catching potential defects, dead code, and invalid struct tags.
-
-- `--sec`: security posture checks — secrets scan, config hygiene, and `.gitignore` coverage.
-- `--vuln`: vulnerability audit via `govulncheck` and checksum verification.
-
-### `krew fmt`
-
-Inspect or format source code and `.kiw` component files:
-
-```bash
-krew fmt [--write]
-```
-
-- Without `--write`: Prints unformatted files and exits with code `1` if formatting is required (useful for CI gates).
-- With `--write`: Formats all Go and component files in-place according to canonical conventions.
-
----
-
-## 5. Ecosystem & Management
-
-### `krew info`
-
-Display detected workload kind, active configuration, and Go environment diagnostics:
-
-```bash
-krew info
-```
-
-*Example Output:*
-```text
-Project:      storefront (v0.1.0)
-Kind:         app (Fullstack Monolith)
-Config:       /home/reasvyn/workspace/storefront/krewire.yaml
-Output:       bin/server
-Go Version:   go1.27.1 (linux/amd64)
-```
-
-### `krew version`
-
-Print the version of the `kiw` CLI and underlying Krewire packages:
-
-```bash
-krew version
-```
-
-### `krew compat`
-
-Validate version compatibility across all module declarations in the workspace:
-
-```bash
-krew compat
-```
-
-### `krew tier`
-
-Inspect the project's open-core tier and validate open-core boundary invariants:
-
-```bash
-krew tier [--json] [--check <tier>]
-```
-
-- `--json`: output tier posture in structured JSON.
-- `--check <tier>`: assert the project does not exceed the specified tier (e.g. `--check free`).
-
-### `krew doctor`
-
-Diagnose the developer environment and project readiness:
-
-```bash
-krew doctor [--json]
-```
-
-Checks toolchain prerequisites, workspace layout, and the prerequisites a project must meet before it can build. `--json` emits a machine-readable report for CI.
-
-### `krew ws <command>`
-
-Manage multi-package Go workspaces (`go.work`):
-
-```bash
-krew ws info         # Show workspace members and active modules
-krew ws list         # List paths of all packages
-krew ws sync         # Synchronize go.work and go.mod dependencies
-krew ws exec <cmd>   # Execute a command across every workspace module
-```
-
-### `krew boost install`
-
-Equip any project repository with the **Krewire Boost** autonomous AI agent system:
-
-```bash
-krew boost install [path]
-```
-
-Installs:
-- 21 autonomous agent personas into `.agents/`
-- 6-phase SDLC workflow rules into `.workflow/`
-- Slash command definitions (`/plan`, `/build`, `/test`, `/review`, `/deploy`, `/boost`)
-- Operational guidelines into `AGENTS.md`
-
-### `krew add <package[@version]>`
-
-Add a Go module, external library, or an opt-in ecosystem frontend plugin:
-
-```bash
-krew add svelte                     # Install Svelte 5 island compiler and plugin
-krew add vue                        # Install Vue 3 island compiler and plugin
-krew add twcss                      # Install Tailwind CSS compiler runner
-krew add tailwindcss                # Alias for twcss
-krew add github.com/krewire/krewire@v0.2.0
-```
-
-- **Pure Go by Default**: Krewire defaults to zero JavaScript and standalone CSS tokens.
-- **Opt-In Technology**: When adding `twcss`, `kiw` automatically initializes `tailwind.config.js` and enables the Tailwind compiler runner (standalone CLI binary in `bin/tailwindcss`, Bun, PNPM, or npm/npx fallback).
-- **Reactive Islands**: Adding `svelte` or `vue` configures client bundlers for progressive island hydration (`data-kiw-framework="svelte|vue"`).
-
-### `krew remove <package>`
-
-Uninstall a package or deactivate an opt-in plugin:
-
-```bash
-krew remove twcss
-```
-
-### `krew update [packages...] [flags]`
-
-Update project dependencies to their latest compatible versions. When run without arguments, updates all direct and indirect dependencies in `go.mod` and tidies the module files:
-
-```bash
-krew update                      # Update all dependencies in project
-krew update --dry-run            # Preview available updates without modifying files
-krew update krewire ui           # Update specific ecosystem packages to @latest
-krew update github.com/foo/bar   # Update specific external dependency
-```
-
-- `--dry-run`: Previews available dependency updates without touching disk.
-- `--tidy`: Runs `go mod tidy` automatically after updating (default `true`).
-- Automatically updates `package.json` dependencies via `npm update` if frontend plugins are configured.
-
-### `krew self-update [flags]`
-
-Check for and install the latest stable release of the `kiw` devtool binary:
-
-```bash
-krew self-update          # Update kiw binary to latest stable release
-krew self-update --check  # Check if an update is available without downloading
-krew self-update --force  # Force reinstall the latest version
-krew self-update --dry-run # Simulate update process
-```
-
-- `--check`: Inspects GitHub Releases for a newer stable version.
-
-> **Note (2026-11-09):** no GitHub Release has been published for `krewire/krewire` yet, so `krew self-update` currently relies on the Go toolchain fallback (Go 1.27.1+).
-
-- `--force`: Reinstalls or updates even if already on the latest version.
-- `--version <ver>`: Installs a specific target version.
-- Performs atomic binary replacement on Linux, macOS, and Windows with automatic Go toolchain fallback.
 
 ### `krew ui <subcommand>`
 
@@ -439,20 +240,238 @@ krew ui add <name>         # Install component directly into ./components/
 krew ui diff <name>        # Compare local component with upstream template
 ```
 
-### `krew pkg <init|pack|add|list|export>`
+---
 
-Manage standalone, independently distributable `.kiw` component packages and UI kits (ADR-K7P9L). Enables modular packaging, tar.gz (`.kpkg`) archiving with SHA-256 integrity verification, local installation into `./.krewire/pkg/`, and automated style injection with standard Go dependencies:
+## 3. Inspection & Diagnostics
+
+### `krew version`
+
+Print the version of the `krew` CLI and underlying Krewire packages:
 
 ```bash
-krew pkg init @acme/ui              # Scaffolds standalone package with kiw.pkg.json
-krew pkg pack ./my-kit              # Packs package into a distributable .kpkg archive
-krew pkg add ./dist/ui-1.0.0.kpkg   # Installs package archive into ./.krewire/pkg/
-krew pkg add ./local-kit            # Installs from local directory into ./.krewire/pkg/
-krew pkg list                       # Lists installed component packages in ./.krewire/pkg
-krew pkg list --json                # Machine-readable JSON inventory of installed packages
-krew pkg export Card                # Validates and exports self-contained component
+krew version [--json]
 ```
 
-- **Manifest (`kiw.pkg.json`)**: Declares package metadata, exported component paths, and package stylesheets (`styles`).
-- **Namespace & Aliasing**: Components from installed packages can be invoked using their package namespace (e.g. `<acme:Button />`) or imported directly via `<script> import Button from '@acme/ui'; </script>`.
-- **Integrity & Security**: `krew pkg pack` and `krew pkg add` enforce SHA-256 checksums and `sec.SafePath` bounds to prevent ZipSlip and directory traversal vulnerabilities.
+### `krew info`
+
+Print comprehensive diagnostic information about the current workspace:
+
+```bash
+krew info [--json]
+```
+
+### `krew compat`
+
+Validate cross-module compatibility against the ecosystem dependency graph:
+
+```bash
+krew compat [--json]
+```
+
+### `krew context`
+
+Inspect, validate, and lint authoritative project context for human engineers and autonomous AI agents:
+
+```bash
+krew context [--lint] [--json] [--scope <level>]
+```
+
+- `--lint`: Run context integrity checks and return error if missing or conflicting.
+- `--json`: Output complete project context in structured JSON.
+- `--scope <level>`: Filter context rules by architectural scope (`workspace`, `module`, `domain`, `service`, `unit`).
+
+### `krew bench`
+
+Run performance benchmarks and evaluate baselines:
+
+```bash
+krew bench [--cli | --core | --workflow] [--iterations 50] [--compare] [--json]
+```
+
+- `--cli`: Benchmark CLI startup latency and command dispatch.
+- `--core`: Benchmark Core primitive performance (parsers, renderers, models).
+- `--workflow`: Benchmark end-to-end SDLC workflows.
+- `--compare`: Compare results against baseline report and report regressions.
+- `--save <path>`: Save benchmark report artifact to disk.
+
+### `krew tier`
+
+Inspect and validate open-core tier licensing posture:
+
+```bash
+krew tier [--check free|pro|enterprise]
+```
+
+### `krew config`
+
+Validate `krewire.yaml` against its JSON Schema or inspect the schema:
+
+```bash
+krew config validate [--strict] [--json]
+```
+
+- `--strict`: Treat warnings (unknown or deprecated keys) as failures.
+- `--json`: Print validation issues as JSON.
+
+### `krew doctor`
+
+Diagnose developer environment, toolchain prerequisites, and workspace integrity:
+
+```bash
+krew doctor
+```
+
+### `krew self-update [flags]`
+
+Check for and install the latest stable release of the `krew` binary:
+
+```bash
+krew self-update          # Update krew binary to latest stable release
+krew self-update --check  # Check if an update is available without downloading
+krew self-update --force  # Force reinstall the latest version
+```
+
+---
+
+## 4. Build & Preview
+
+### `krew bundle`
+
+Bundle and optimize static CSS and JS assets:
+
+```bash
+krew bundle [--minify]
+```
+
+### `krew serve`
+
+Preview production build output without watching:
+
+```bash
+krew serve [--port 3000] [--dir .krewire/build]
+```
+
+---
+
+## 5. Development & Runtime
+
+### `krew run [task|args]`
+
+Run a Go entry point, file, or a custom task defined in `krewire.yaml`:
+
+```bash
+krew run [task-name] [-- args...]
+```
+
+### `krew vet`
+
+Run Go static analysis, security posture audit, and vulnerability checks:
+
+```bash
+krew vet [--sec] [--vuln]
+```
+
+### `krew fmt`
+
+Check formatting and format source files according to Go and `.kiw` standards:
+
+```bash
+krew fmt [--write]
+```
+
+### `krew worker`
+
+Start background worker daemons and process job queues:
+
+```bash
+krew worker [--queues default,emails,reports]
+```
+
+### `krew gateway`
+
+Run edge API gateway reverse proxy for microservices:
+
+```bash
+krew gateway [--port 8080]
+```
+
+### `krew mcp`
+
+Start native Model Context Protocol (MCP) server for AI coding agents:
+
+```bash
+krew mcp --stdio                      # Standard stdio transport for AI IDEs
+krew mcp --port 4000 --host 127.0.0.1 # Standalone HTTP/SSE transport
+```
+
+---
+
+## 6. Ship & Operations
+
+### `krew deploy`
+
+Stage deployable artifacts in `.krewire/dist/`:
+
+```bash
+krew deploy [--dry-run]
+```
+
+### `krew ws <command>`
+
+Manage multi-repository and multi-project workspaces:
+
+```bash
+krew ws list
+krew ws sync
+krew ws run <command>
+```
+
+### `krew boost`
+
+Manage the embedded Krewire Boost autonomous AI agent framework:
+
+```bash
+krew boost install [path]
+krew boost status
+```
+
+### `krew release`
+
+Bump versions and stage a release across ecosystem modules:
+
+```bash
+krew release framework --bump minor --apply
+```
+
+- `--all`: Release every Krewire module (workspace maintainer mode).
+- `--bump <level>`: Version component to increment (`patch`, `minor`, `major`).
+- `--apply`: Write changes to disk (default is dry-run).
+- `--qualify`: Run release qualification checks against compatibility matrix.
+
+---
+
+## 7. Autonomous Agent & Headless
+
+### `krew daemon`
+
+Launch background HTTP/REST and Server-Sent Events (SSE) server for remote agent hosting:
+
+```bash
+krew daemon [--port 8080] [--host 0.0.0.0] [--token <secret>]
+```
+
+### `krew sessions`
+
+List past conversation sessions with message and token counts:
+
+```bash
+krew sessions [--dir <path>]
+```
+
+### `krew export <session-id>`
+
+Export a conversation session transcript into clean Markdown:
+
+```bash
+krew export <session-id> [--format markdown]
+```

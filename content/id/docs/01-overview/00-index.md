@@ -8,7 +8,7 @@ date: "2026-09-29"
 
 Selamat datang di **Dokumentasi Krewire**.
 
-**Krewire** adalah ekosistem **SDLC digital menyeluruh** open-source yang disajikan sebagai **Pustaka Modular**: paket Go independen dengan satu tujuan yang Anda komposisi di balik satu CLI (**`kiw`**) dan satu konfigurasi terpadu (**`krewire.yaml`**) untuk membangun, menguji, dan men-deploy **delapan workload berbeda**:
+**Krewire** adalah ekosistem **SDLC digital menyeluruh** open-source yang disajikan sebagai **Pustaka Modular**: paket Go independen dengan satu tujuan yang Anda komposisi di balik satu CLI (**`krew`**) dan satu konfigurasi terpadu (**`krewire.yaml`**) untuk membangun, menguji, dan men-deploy **delapan workload berbeda**:
 
 1. **Monolit Web Fullstack (`app`)**
 2. **Antarmuka Terminal & TUI (`cli`)**
@@ -96,7 +96,7 @@ Krewire dibangun berlandaskan empat prinsip rekayasa utama:
 1. **Go sebagai Fondasi Arsitektural:** Standar Go (`net/http`, `html/template`, `embed`, `context`, `slog`, `flag`) mentenagai setiap lapisan. Deployment binary tunggal dengan aset statis tersemat menjamin startup instan, penggunaan RAM sangat rendah (~15MB), dan bebas dependensi runtime eksternal.
 2. **Modular di Setiap Cakupan (SRP & SoC):** Dirancang menggunakan prinsip Tanggung Jawab Tunggal (*Single Responsibility Principle*) dan Kohesi Tinggi. Mulailah dari monolit modular sederhana, lalu ekstrak worker atau microservice secara bersih saat lalu lintas meningkat tanpa merombak logika bisnis.
 3. **Arsitektur Go Murni:** Hasilkan situs statis, portal dokumentasi, dan aplikasi fullstack super cepat menggunakan berkas komponen `.kiw` tanpa rantai perkakas yang rumit.
-4. **Pengalaman Pengembang Terpadu:** Kelola seluruh siklus hidup perangkat lunak — inisialisasi, pengembangan lokal, kompilasi aset, pengujian, hingga deployment — melalui **satu binary CLI tunggal (`kiw`)** dan satu berkas konfigurasi devtool (**`krewire.yaml`**).
+4. **Pengalaman Pengembang Terpadu:** Kelola seluruh siklus hidup perangkat lunak — inisialisasi, pengembangan lokal, kompilasi aset, pengujian, hingga deployment — melalui **satu binary CLI tunggal (`krew`)** dan satu berkas konfigurasi devtool (**`krewire.yaml`**).
 
 ---
 
@@ -114,7 +114,7 @@ Pelajari panduan lengkap untuk ekosistem Krewire:
 | **6.** | [**Krewire UI & Design System**](/ui) | Design system dan seluruh 66 komponen `.kiw`, dengan pratinjau langsung untuk komponen inti. |
 | **7.** | [**Data, Penyimpanan & Layanan**](/data-services) | ORM multi-driver, penyimpanan objek, sistem berkas virtual, caching, email transaksional, dan pembayaran Indonesia. |
 | **8.** | [**Keamanan & Platform Ekosistem**](/security-platforms) | Kontrol keamanan, primitif auth, platform identitas enterprise, hybrid PaaS, dan agen AI otonom. |
-| **9.** | [**Referensi CLI**](/cli-reference) | Katalog perintah `kiw`, spesifikasi skema `krewire.yaml`, dan otomasi tugas. |
+| **9.** | [**Referensi CLI**](/cli-reference) | Katalog perintah `krew`, spesifikasi skema `krewire.yaml`, dan otomasi tugas. |
 | **10.** | [**Panduan & Praktik Terbaik**](/guides) | Desain arsitektur, ketentuan lisensi open-core, dan panduan deployment produksi. |
 | **11.** | [**Pendalaman Arsitektur**](/architecture) | Platform engineering: piramida berlapis, DAG ekosistem, level cakupan, dan alur data. |
 

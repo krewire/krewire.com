@@ -20,5 +20,5 @@ Komponen dapat digunakan langsung melalui dua authoring surface:
 
 1. [**Direktori Komponen (`/ui/components`)**](/id/docs/ui/components) — Katalog referensi komprehensif untuk seluruh 66 Single-File Component (.kiw), termasuk tombol, kartu, dialog modal, bilah navigasi, formulir, tampilan data, dan primitif tata letak.
 2. **Token Desain & Pop-Brutalism** — Palet warna semantik kontras tinggi, border solid 2.5px, bayangan kotak kaku (*hard offset drop shadows* `4px 4px 0px var(--border)`), dan inversi mode gelap yang aksesibel.
-3. **Arsitektur Tanpa Dependensi (Zero-Dependency)** — Kompilasi pure Go (`CGO_ENABLED=0`), bebas dari beban runtime npm atau Node.js, dan distribusi native via `embed.FS` pustaka standar.
+3. **Arsitektur Pure-Go & Integrasi Tailwind CSS** — Kompilasi pure Go (`CGO_ENABLED=0`), integrasi styling utility Tailwind CSS secara default tanpa duplikasi kelas CSS kustom, dan distribusi native via `embed.FS` pustaka standar.
 4. [**Playground Komponen (`/ui/playground`)**](https://krewire.com/ui/playground) — Pratinjau langsung tema terang/gelap untuk `Button`, `Badge`, `Input`, `Card`, `Modal`, `Tabs`, dan `Alert` dengan pilihan varian dan ukuran serta salin sekali klik untuk kode sumber `.kiw` dan contoh penggunaannya. Pratinjau yang sama disematkan di bagian atas halaman masing-masing komponen.

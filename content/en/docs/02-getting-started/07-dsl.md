@@ -403,7 +403,7 @@ For content-heavy sections, you can write native Markdown directly within your `
   <markdown>
   ### Version 0.1.0 (Initial Release)
   - **Libraries:** Core modular library architecture.
-  - **Kiw CLI:** Scaffolding, dev server, and build pipeline.
+  - **Krew CLI:** Scaffolding, dev server, and build pipeline.
   - **Zero Bloat:** 100% Go standard library, standard Go dependencies.
   </markdown>
 </section>

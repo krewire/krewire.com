@@ -8,7 +8,7 @@ date: "2026-10-14"
 
 Krewire dipandu oleh sebuah keyakinan fundamental — dirumuskan sebagai [misinya](/overview/why-krewire): **membuatnya mendekati gratis — baik dalam biaya finansial, beban operasional, maupun beban kognitif — bagi siapa pun untuk membangun, memiliki, dan mengoperasikan produk digital yang aman, berkelanjutan, dan berskala besar.**
 
-Perangkat lunak seharusnya mengubah pembangun menjadi produsen yang berdaulat, bukan penyewa abadi di atas platform kepemilikan tertutup (proprietary). Krewire dihadirkan sebagai **Pustaka Modular**: paket Go independen dengan satu tujuan yang Anda padukan di balik satu berkas konfigurasi (`krewire.yaml`) dan satu CLI terpadu (`kiw`).
+Perangkat lunak seharusnya mengubah pembangun menjadi produsen yang berdaulat, bukan penyewa abadi di atas platform kepemilikan tertutup (proprietary). Krewire dihadirkan sebagai **Pustaka Modular**: paket Go independen dengan satu tujuan yang Anda padukan di balik satu berkas konfigurasi (`krewire.yaml`) dan satu CLI terpadu (`krew`).
 
 ---
 
@@ -57,7 +57,7 @@ Fragmentasi membebani paling berat mereka yang memiliki sumber daya terbatas —
 Berkomitmen pada satu toolchain yang koheren mengubah eksplorasi yang terpecah menjadi penguasaan yang terakumulasi:
 
 - **Satu Konfigurasi:** `krewire.yaml` adalah satu-satunya sumber kebenaran (SSOT) untuk seluruh definisi workload, binding environment, dan target build.
-- **Satu CLI:** `kiw` menangani pembuatan proyek, pengembangan lokal, pengujian, kompilasi, dan deployment di seluruh tipe workload.
+- **Satu CLI:** `krew` menangani pembuatan proyek, pengembangan lokal, pengujian, kompilasi, dan deployment di seluruh tipe workload.
 - **Satu Bahasa:** Go mentenagai seluruh tumpukan — dari layanan backend dan antrean worker hingga situs statis dan runtime WebAssembly client-side.
 - **Model Mental Universal:** Delapan jenis workload berbagi semantik direktori, sintaks konfigurasi, dan fase siklus hidup yang identik.
 

@@ -8,7 +8,7 @@ date: "2026-10-25"
 
 Import path: `github.com/krewire/krewire/pkg/tui`
 
-The `tui` package powers interactive terminal user interfaces across the `kiw` CLI and developer tools using an Elm/Bubble Tea architecture.
+The `tui` package powers interactive terminal user interfaces across the `krew` CLI and developer tools using an Elm/Bubble Tea architecture.
 
 ---
 

@@ -6,7 +6,7 @@ date: "2026-09-29"
 
 # Krewire Workloads
 
-Krewire unifies eight distinct architectural workload kinds under one command-line interface (**`kiw`**) and one declarative devtool configuration (**`krewire.yaml`**).
+Krewire unifies eight distinct architectural workload kinds under one command-line interface (**`krew`**) and one declarative devtool configuration (**`krewire.yaml`**).
 
 Krewire handles 8 progressive workloads within a unified project architecture without rigid workload boundaries or mode locking. Declare capabilities and configuration directly in `krewire.yaml`:
 

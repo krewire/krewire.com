@@ -20,7 +20,7 @@ Powered by `pkg/web/ssg` and the `.kiw` DSL, the `site` compiler transforms Sing
    - `pages/blog/[slug].kiw` → Dynamic slug generation from Markdown frontmatter.
 2. **Compile-Time Scoped CSS:** Styles declared in `<style>` blocks are automatically hashed and scoped with `data-kiw-component` attributes. No CSS collisions or complex naming conventions needed.
 3. **No Build Step Bloat:** Compiles dozens of pages in under 15ms using pure Go. No Node.js or `node_modules` required.
-4. **Tailwind CSS Plugin:** Native integration with Tailwind CSS: when `tailwind.config.js` exists, `kiw` automatically triggers minified utility generation.
+4. **Tailwind CSS Plugin:** Native integration with Tailwind CSS: when `tailwind.config.js` exists, `krew` automatically triggers minified utility generation.
 
 ---
 

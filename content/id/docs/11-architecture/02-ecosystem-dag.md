@@ -21,7 +21,7 @@ Krewire bukan satu repositori. Pustaka inti dan CLI, katalog UI, engine agen, la
 
 ## 1. Baterai Arsitektur Ekosistem
 
-Seluruh komponen, platform, dan workload berjalan di atas progresi baterai arsitektur terpadu, dikelola penuh oleh CLI `kiw` dan skema deklaratif `krewire.yaml`:
+Seluruh komponen, platform, dan workload berjalan di atas progresi baterai arsitektur terpadu, dikelola penuh oleh CLI `krew` dan skema deklaratif `krewire.yaml`:
 
 ```text
 Go Stdlib ──► Krewire Libraries ──► Krewire UI | Krewire Auth | Krewire Krew ──► Krewire Cloud ──► Krewire Dash
@@ -33,9 +33,9 @@ Go Stdlib ──► Krewire Libraries ──► Krewire UI | Krewire Auth | Krew
 Sisi-sisi ini adalah dependensi modul Go: sebuah panah berarti "mengimpor paket dari". Data ini dibaca dari `go.mod` dan pernyataan impor setiap repositori pada 9 November 2026.
 
 ```text
-                 krewire.com    krewire.github.io        (Layer 5 — built by kiw, no Go module)
+                 krewire.com    krewire.github.io        (Layer 5 — built by krew, no Go module)
                         │              │
-                        └──────┬───────┘   uses kiw + kui at build time
+                        └──────┬───────┘   uses krew + kui at build time
                                ▼
      dash ──────┐        cloud ─────┐                    (Layer 4 — products & platform services)
       │  │      │         │  │      │
@@ -44,7 +44,7 @@ Sisi-sisi ini adalah dependensi modul Go: sebuah panah berarti "mengimpor paket 
       └──► krew ◄────────────┘      │
             │   │                   │
             ▼   ▼                   ▼
-        ┌──────────────── github.com/krewire/krewire ────────────────┐  (Layers 1–3 — core + kiw)
+        ┌──────────────── github.com/krewire/krewire ────────────────┐  (Layers 1–3 — core + krew)
         │  krew · pkg/* · pkg/model · pkg/errs · pkg/lifecycle   │
         └─────────────────────────────┬──────────────────────────────┘
                                       ▼
@@ -56,7 +56,7 @@ Sisi-sisi ini adalah dependensi modul Go: sebuah panah berarti "mengimpor paket 
 | Repositori | Modul | Impor dari ekosistem |
 | :--- | :--- | :--- |
 | `ui` (kui) | `github.com/krewire/ui` | tidak ada — hanya pustaka standar (`TestModuleHasNoExternalDependencies`) |
-| `krewire` (inti + `kiw`) | `github.com/krewire/krewire` | `ui` (`pkg/ui/components` mengekspor ulang `embed.FS` milik kui) |
+| `krewire` (monorepo inti) | `github.com/krewire/krewire` | `ui` (`pkg/ui/components` mengekspor ulang `embed.FS` milik kui) |
 | `krew` (engine agen) | `github.com/krewire/krew` | `krewire` |
 | `auth` | `github.com/krewire/auth` | `krewire` |
 | `cloud` | `github.com/krewire/cloud` | `krewire`, `auth`, `krew` |

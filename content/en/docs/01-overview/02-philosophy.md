@@ -8,7 +8,7 @@ date: "2026-10-14"
 
 Krewire is guided by a fundamental belief — stated as its [mission](/overview/why-krewire): **make it nearly free — in financial cost, operational burden, and cognitive effort — for anyone to build, own, and operate digital products that are secure, sustainable, and scalable.**
 
-Software should turn builders into sovereign producers, not perpetual renters of proprietary platforms. Krewire is delivered as **Modular Libraries**: independent, single-purpose Go packages that you compose behind one configuration file (`krewire.yaml`) and one unified CLI (`kiw`).
+Software should turn builders into sovereign producers, not perpetual renters of proprietary platforms. Krewire is delivered as **Modular Libraries**: independent, single-purpose Go packages that you compose behind one configuration file (`krewire.yaml`) and one unified CLI (`krew`).
 
 ---
 
@@ -57,7 +57,7 @@ Fragmentation taxes hardest those who can least afford it — early-stage teams,
 Committing to one coherent toolchain transforms fragmented exploration into compounding mastery:
 
 - **One Config:** `krewire.yaml` is the single source of truth for all workload definitions, environment bindings, and build targets.
-- **One CLI:** `kiw` handles project creation, local development, testing, compilation, and deployment across all workloads.
+- **One CLI:** `krew` handles project creation, local development, testing, compilation, and deployment across all workloads.
 - **One Language:** Go powers the entire stack — from backend services and worker queues to static sites and client-side WebAssembly runtimes.
 - **Universal Mental Model:** Eight workload kinds share identical directory semantics, configuration syntax, and lifecycle phases.
 

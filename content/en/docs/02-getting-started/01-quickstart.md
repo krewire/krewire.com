@@ -1,6 +1,6 @@
 ---
 title: "Quickstart"
-description: "Five-minute beginner quickstart: install kiw, scaffold a site, edit a page, add a component, run the dev server, and build for production."
+description: "Five-minute beginner quickstart: install krew, scaffold a site, edit a page, add a component, run the dev server, and build for production."
 date: "2026-11-09"
 ---
 
@@ -17,11 +17,11 @@ date: "2026-11-09"
 </ol>
 </nav>
 
-In five minutes you will install the `kiw` CLI, create a static site, change a page, write your first component, and produce a production build. You only need Go 1.27.1+ and a terminal — no Node.js, no npm, and no knowledge of Krewire's internals.
+In five minutes you will install the `krew` CLI, create a static site, change a page, write your first component, and produce a production build. You only need Go 1.27.1+ and a terminal — no Node.js, no npm, and no knowledge of Krewire's internals.
 
 ---
 
-## Step 1: Install `kiw`
+## Step 1: Install `krew`
 
 On Linux or macOS:
 
@@ -41,7 +41,7 @@ Check that the shell can find it:
 krew version
 ```
 
-The first line reads `kiw Krewire Devtool`, followed by the ecosystem version and your Go version. If the command is not found, see [Installation → Configuring your PATH](/getting-started/installation).
+The first line reads `krew v`, followed by the ecosystem version and your Go version. If the command is not found, see [Installation → Configuring your PATH](/getting-started/installation).
 
 ---
 
@@ -52,7 +52,7 @@ krew new my-site --site --title "My Site"
 cd my-site
 ```
 
-`kiw` prints the files it created:
+`krew` prints the files it created:
 
 ```text
 created my-site/krewire.yaml

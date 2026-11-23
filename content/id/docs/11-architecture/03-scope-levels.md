@@ -28,7 +28,7 @@ Workspace  ───►  Module  ───►  Domain  ───►  Service  �
 
 | Level | Cakupan | Apa itu | Contoh |
 | :--- | :--- | :--- | :--- |
-| 0 | **Workspace** | Workspace Go multi-repositori yang berakar pada berkas `go.work`, beserta binary `kiw` dan repositori-repositori sejajarnya. | `krewire/` + `ui/` + `krew/` di-checkout berdampingan |
+| 0 | **Workspace** | Workspace Go multi-repositori yang berakar pada berkas `go.work`, beserta binary `krew` dan repositori-repositori sejajarnya. | `krewire/` + `ui/` + `krew/` di-checkout berdampingan |
 | 1 | **Module** | Modul Go — unit yang Anda beri versi, rilis, dan impor. | `github.com/krewire/krewire`, `github.com/krewire/ui` |
 | 2 | **Domain** | Bounded context di dalam modul: sekumpulan layanan yang kohesif, biasanya `internal/<domain>/`. Sebelum diekstraksi, domain adalah sekelompok paket; setelah diekstraksi, domain dapat menjadi modulnya sendiri. | `internal/catalog`, `internal/user` |
 | 3 | **Service** | Unit runtime yang dapat di-deploy, diimplementasikan sebagai paket Go `main`. | `cmd/api/`, `service/billing/` |

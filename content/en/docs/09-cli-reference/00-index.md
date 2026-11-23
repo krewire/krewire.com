@@ -1,14 +1,14 @@
 ---
 title: "CLI Reference"
-description: "Comprehensive guide to the kiw CLI: architecture, global flags, environment variables, exit codes, and everyday developer workflows."
+description: "Comprehensive guide to the krew CLI: architecture, global flags, environment variables, exit codes, and everyday developer workflows."
 date: "2026-10-08"
 ---
 
 # CLI Reference
 
-The **`kiw`** CLI is the unified entry point for the entire Krewire ecosystem. It drives all eight project kinds (`app`, `cli`, `site`, `book`, `worker`, `service`, `gateway`, `infra`) behind one binary and one configuration file (**`krewire.yaml`**).
+The **`krew`** CLI is the unified entry point for the entire Krewire ecosystem. It drives all eight project kinds (`app`, `cli`, `site`, `book`, `worker`, `service`, `gateway`, `infra`) behind one binary and one configuration file (**`krewire.yaml`**).
 
-`kiw` dogfoods Krewire's own `pkg/tui` and `pkg/term` libraries, ensuring zero external dependencies, near-instant startup times (<2ms), and consistent POSIX exit code discipline.
+`krew` dogfoods Krewire's own `pkg/tui` and `pkg/term` libraries, ensuring zero external dependencies, near-instant startup times (<2ms), and consistent POSIX exit code discipline.
 
 ---
 
@@ -24,7 +24,7 @@ The **`kiw`** CLI is the unified entry point for the entire Krewire ecosystem. I
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Detailed documentation of every <code>kiw</code> command: flags, usage syntax, supported workloads, and execution behavior.
+      Detailed documentation of every <code>krew</code> command: flags, usage syntax, supported workloads, and execution behavior.
     </p>
   </div>
 
@@ -58,7 +58,7 @@ The **`kiw`** CLI is the unified entry point for the entire Krewire ecosystem. I
 
 ## Global Options & Environment Variables
 
-Every `kiw` command respects the following global flags and environment variable overrides:
+Every `krew` command respects the following global flags and environment variable overrides:
 
 | Flag / Variable | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
@@ -73,7 +73,7 @@ Every `kiw` command respects the following global flags and environment variable
 
 ## POSIX Exit Code Contract
 
-`kiw` adheres to strict exit code standards across all commands (`pkg/errs`):
+`krew` adheres to strict exit code standards across all commands (`pkg/errs`):
 
 | Exit Code | Constant | Meaning |
 | :---: | :--- | :--- |

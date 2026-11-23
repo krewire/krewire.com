@@ -216,7 +216,7 @@ Kunci untuk rute:
 
 ## Lapisan Lingkungan & Dotenv (`.env`)
 
-`kiw` memuat berkas lingkungan dari direktori akar proyek (jalur dari `runtime.env_file`, default `.env`) tanpa menimpa variabel yang telah disetel sebelumnya di lingkungan proses:
+`krew` memuat berkas lingkungan dari direktori akar proyek (jalur dari `runtime.env_file`, default `.env`) tanpa menimpa variabel yang telah disetel sebelumnya di lingkungan proses:
 
 ```bash
 # .env

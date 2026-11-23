@@ -57,7 +57,7 @@ Developer dapat mengelola lingkungan proyek sandbox dan telemetri eksekusi:
 
 ### Alternatif Pengembangan Lokal
 
-Untuk alur kerja pengembangan lokal tanpa dependensi cloud, developer dapat memanfaatkan perkakas native CLI `kiw`:
+Untuk alur kerja pengembangan lokal tanpa dependensi cloud, developer dapat memanfaatkan perkakas native CLI `krew`:
 
 - `krew dev`: Menjalankan aplikasi secara lokal dengan auto-restart dan hot reload.
 - `krew dash`: Menjalankan dashboard observabilitas lokal & telemetri MCP (`:4000`) atau mengelola virtual workspace dan sandbox eksekusi.

@@ -6,7 +6,7 @@ date: "2026-10-08"
 
 # Workload Mendalam
 
-Krewire memberikan pengalaman pengembang yang terpadu di delapan jenis workload kelas satu. Alih-alih menyambungkan pustaka dan runtime yang berbeda secara terpisah-pisah, setiap workload didefinisikan dalam satu berkas konfigurasi (**`krewire.yaml`**) dan diorkestrasikan melalui satu developer tool (**`kiw`**).
+Krewire memberikan pengalaman pengembang yang terpadu di delapan jenis workload kelas satu. Alih-alih menyambungkan pustaka dan runtime yang berbeda secara terpisah-pisah, setiap workload didefinisikan dalam satu berkas konfigurasi (**`krewire.yaml`**) dan diorkestrasikan melalui satu developer tool (**`krew`**).
 
 Pemilihan jenis workload memberi tahu kompiler, server dev lokal, dan pipeline deployment sembari tetap mempertahankan ergonomi Go standar dan dependensi menurun (*downward-only*) yang ketat.
 

@@ -66,7 +66,7 @@ Untuk **Cursor** (`.cursor/mcp.json`) atau **Claude Desktop** (`claude_desktop_c
 {
   "mcpServers": {
     "krewire": {
-      "command": "kiw",
+      "command": "krew",
       "args": ["mcp", "--stdio"]
     }
   }
@@ -79,7 +79,7 @@ Untuk **OpenCode** (`opencode.json`):
 {
   "mcp": {
     "krewire": {
-      "command": "kiw",
+      "command": "krew",
       "args": ["mcp", "--stdio"]
     }
   }

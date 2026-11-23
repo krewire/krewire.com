@@ -1,5 +1,5 @@
-# Krewire Devtool Configuration (kiw)
-# Controls kiw devtool behavior within the project.
+# Krewire Devtool Configuration (krew)
+# Controls krew devtool behavior within the project.
 # Application settings (titles, navigation, themes, etc.) belong in pages, layouts, and components.
 
 project:
@@ -23,7 +23,7 @@ nav:
   - text: "GitHub"
     url: "https://github.com/krewire/krewire"
 
-# Default-locale content directory. With i18n enabled, `kiw build` resolves
+# Default-locale content directory. With i18n enabled, `krew build` resolves
 # content/<locale>/docs/ per locale and only falls back to this value.
 input: "content/en/docs"
 

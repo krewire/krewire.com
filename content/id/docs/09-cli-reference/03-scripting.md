@@ -6,7 +6,7 @@ date: "2026-10-08"
 
 # Otomasi Tugas & Skrip
 
-Krewire menyertakan mesin otomasi tugas bawaan langsung di dalam `kiw`, menghilangkan kebutuhan akan `Makefile`, `npm run`, atau task runner eksternal lainnya.
+Krewire menyertakan mesin otomasi tugas bawaan langsung di dalam `krew`, menghilangkan kebutuhan akan `Makefile`, `npm run`, atau task runner eksternal lainnya.
 
 Tugas-tugas dideklarasikan di dalam blok `scripts:` pada `krewire.yaml` dan dieksekusi melalui `krew run <tugas>`.
 

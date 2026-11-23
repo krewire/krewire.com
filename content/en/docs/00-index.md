@@ -8,7 +8,7 @@ date: "2026-11-12"
 
 > **Mission:** Krewire's mission is to make it nearly free — in financial cost, operational burden, and cognitive effort — for anyone to build, own, and operate digital products that are secure, sustainable, and scalable. Read more in [Why Krewire](/overview/why-krewire).
 
-**Krewire** is a set of independent Go packages driven by one CLI (**`kiw`**) and one config file (**`krewire.yaml`**). You use it to build websites, documentation, web applications, CLIs, and — when you need them — workers, microservices, gateways, and infrastructure.
+**Krewire** is a set of independent Go packages driven by one CLI (**`krew`**) and one config file (**`krewire.yaml`**). You use it to build websites, documentation, web applications, CLIs, and — when you need them — workers, microservices, gateways, and infrastructure.
 
 You do **not** need to read about architecture to use it. Follow the stages below in order, or jump directly to the path that matches your goal.
 
@@ -19,7 +19,7 @@ You do **not** need to read about architecture to use it. Follow the stages belo
 | Stage | Goal | Read |
 | :--- | :--- | :--- |
 | **0. Orient** | Understand what Krewire is and whether it fits. | [1. Overview](/overview) |
-| **1. First success** | Install `kiw`, scaffold a project, and build something runnable. | [2. Getting Started](/getting-started) |
+| **1. First success** | Install `krew`, scaffold a project, and build something runnable. | [2. Getting Started](/getting-started) |
 | **2. Build products** | Choose the right workload and learn its lifecycle and commands. | [3. Workloads](/workloads) |
 | **3. Learn the foundations** | Understand the domain model, lifecycle, config, validation, and resilience. | [4. Core & Foundation Libraries](/core-libraries) |
 | **4. Build interfaces** | Add HTTP routing, application containers, WASM, and a design system. | [5. Web & UI Framework](/web-ui) · [6. Krewire UI](/ui) |
@@ -42,7 +42,7 @@ You do **not** need to read about architecture to use it. Follow the stages belo
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Install <code>kiw</code>, scaffold a site, edit a page, add a component, run the dev server, and build. Zero prior knowledge of Krewire required.
+      Install <code>krew</code>, scaffold a site, edit a page, add a component, run the dev server, and build. Zero prior knowledge of Krewire required.
     </p>
   </div>
 
@@ -86,7 +86,7 @@ You do **not** need to read about architecture to use it. Follow the stages belo
 
 ### "I want to build a web application with a backend API and database" — `app`
 
-1. [Quickstart](/getting-started/quickstart) — learn the `kiw` loop on a small site.
+1. [Quickstart](/getting-started/quickstart) — learn the `krew` loop on a small site.
 2. [Build a Fullstack App in 15 Minutes](/getting-started/fullstack-app-tutorial) — SQLite, forms, CSRF, single binary.
 3. [App workload](/workloads/app) and [Application container (`pkg/app`)](/web-ui/app).
 4. [Web engine & routing (`pkg/web`)](/web-ui/web) and [Database & ORM (`pkg/orm`)](/data-services/database-and-orm).
@@ -126,6 +126,6 @@ You do **not** need to read about architecture to use it. Follow the stages belo
 | [6. Krewire UI](/ui) | The design system and all 66 components, with live previews. |
 | [7. Data, Storage & Services](/data-services) | ORM, object storage, filesystem, cache, mail, payments. |
 | [8. Security & Ecosystem Platforms](/security-platforms) | Security controls, auth, identity, cloud, AI agents. |
-| [9. CLI Reference](/cli-reference) | Every `kiw` command and `krewire.yaml` field. |
+| [9. CLI Reference](/cli-reference) | Every `krew` command and `krewire.yaml` field. |
 | [10. Guides & Best Practices](/guides) | Deployment, agentic development, hybrid cloud, open-core licensing. |
 | [11. Architecture Deep-Dive](/architecture) | Platform engineering: pyramid, ecosystem DAG, scope levels, data flow, and the staged learning path for teams. |

@@ -72,7 +72,7 @@ Bab ini menyediakan panduan operasional praktis dan resep integrasi untuk memban
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Metode rekayasa terkelola dan berbasis bukti di seluruh Krew, Boost, dan toolchain kiw dengan gerbang mutu deterministik dan titik persetujuan manusia.
+      Metode rekayasa terkelola dan berbasis bukti di seluruh Krew, Boost, dan toolchain krew dengan gerbang mutu deterministik dan titik persetujuan manusia.
     </p>
   </div>
 

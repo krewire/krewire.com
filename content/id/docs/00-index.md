@@ -8,7 +8,7 @@ date: "2026-11-12"
 
 > **Misi:** Misi Krewire adalah membuatnya mendekati gratis — baik dalam biaya finansial, beban operasional, maupun beban kognitif — bagi siapa pun untuk membangun, memiliki, dan mengoperasikan produk digital yang aman, berkelanjutan, dan berskala besar. Baca selengkapnya di [Mengapa Krewire](/overview/why-krewire).
 
-**Krewire** adalah sekumpulan paket Go independen yang dijalankan melalui satu CLI (**`kiw`**) dan satu berkas konfigurasi (**`krewire.yaml`**). Anda menggunakannya untuk membangun situs web, dokumentasi, aplikasi web, CLI, dan — saat Anda membutuhkannya — worker, microservices, gateway, serta infrastruktur.
+**Krewire** adalah sekumpulan paket Go independen yang dijalankan melalui satu CLI (**`krew`**) dan satu berkas konfigurasi (**`krewire.yaml`**). Anda menggunakannya untuk membangun situs web, dokumentasi, aplikasi web, CLI, dan — saat Anda membutuhkannya — worker, microservices, gateway, serta infrastruktur.
 
 Anda **tidak** perlu membaca tentang arsitektur untuk menggunakannya. Ikuti tahapan di bawah ini secara berurutan, atau langsung menuju jalur yang sesuai dengan tujuan Anda.
 
@@ -19,7 +19,7 @@ Anda **tidak** perlu membaca tentang arsitektur untuk menggunakannya. Ikuti taha
 | Tahap | Tujuan | Baca |
 | :--- | :--- | :--- |
 | **0. Orientasi** | Memahami apa itu Krewire dan apakah cocok untuk Anda. | [1. Ringkasan](/overview) |
-| **1. Sukses pertama** | Instal `kiw`, scaffold proyek, dan build sesuatu yang bisa dijalankan. | [2. Memulai](/getting-started) |
+| **1. Sukses pertama** | Instal `krew`, scaffold proyek, dan build sesuatu yang bisa dijalankan. | [2. Memulai](/getting-started) |
 | **2. Bangun produk** | Pilih workload yang tepat dan pelajari siklus hidup serta perintahnya. | [3. Workload](/workloads) |
 | **3. Pelajari fondasi** | Pahami model domain, siklus hidup, konfigurasi, validasi, dan resiliensi. | [4. Pustaka Inti & Fondasi](/core-libraries) |
 | **4. Bangun antarmuka** | Tambahkan routing HTTP, wadah aplikasi, WASM, dan design system. | [5. Framework Web & UI](/web-ui) · [6. Krewire UI](/ui) |
@@ -42,7 +42,7 @@ Anda **tidak** perlu membaca tentang arsitektur untuk menggunakannya. Ikuti taha
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Instal <code>kiw</code>, scaffold sebuah situs, ubah halaman, tambahkan komponen, jalankan server pengembangan, lalu build. Tidak perlu pengetahuan awal tentang Krewire.
+      Instal <code>krew</code>, scaffold sebuah situs, ubah halaman, tambahkan komponen, jalankan server pengembangan, lalu build. Tidak perlu pengetahuan awal tentang Krewire.
     </p>
   </div>
 
@@ -86,7 +86,7 @@ Anda **tidak** perlu membaca tentang arsitektur untuk menggunakannya. Ikuti taha
 
 ### "Saya ingin membangun aplikasi web dengan API backend dan database" — `app`
 
-1. [Quickstart](/getting-started/quickstart) — pelajari siklus kerja `kiw` pada situs kecil.
+1. [Quickstart](/getting-started/quickstart) — pelajari siklus kerja `krew` pada situs kecil.
 2. [Membangun Aplikasi Fullstack dalam 15 Menit](/getting-started/fullstack-app-tutorial) — SQLite, form, CSRF, satu binary.
 3. [Workload App](/workloads/app) dan [Wadah aplikasi (`pkg/app`)](/web-ui/app).
 4. [Web engine & perutean (`pkg/web`)](/web-ui/web) dan [Database & ORM (`pkg/orm`)](/data-services/database-and-orm).
@@ -126,6 +126,6 @@ Anda **tidak** perlu membaca tentang arsitektur untuk menggunakannya. Ikuti taha
 | [6. Krewire UI](/ui) | Design system dan seluruh 66 komponen, dengan pratinjau langsung. |
 | [7. Data, Penyimpanan & Layanan](/data-services) | ORM, penyimpanan objek, sistem berkas, cache, email, pembayaran. |
 | [8. Keamanan & Platform Ekosistem](/security-platforms) | Kontrol keamanan, auth, identitas, cloud, agen AI. |
-| [9. Referensi CLI](/cli-reference) | Setiap perintah `kiw` dan field `krewire.yaml`. |
+| [9. Referensi CLI](/cli-reference) | Setiap perintah `krew` dan field `krewire.yaml`. |
 | [10. Panduan & Praktik Terbaik](/guides) | Deployment, pengembangan berbantuan AI, hybrid cloud, lisensi open-core. |
 | [11. Pendalaman Arsitektur](/architecture) | Platform engineering: piramida, DAG ekosistem, level cakupan, alur data, dan jalur belajar bertahap untuk tim. |

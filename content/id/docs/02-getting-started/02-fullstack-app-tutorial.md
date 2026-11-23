@@ -22,7 +22,7 @@ Anda akan membangun **todo-app**, sebuah pengelola tugas kecil: halaman yang men
 <div class="overview-grid">
 
   <div class="chapter-card">
-    <p class="chapter-card-desc"><b>Waktu:</b> sekitar 15 menit.<br><b>Yang Anda perlukan:</b> Go 1.27.1+, <code>kiw</code> (lihat <a href="/getting-started/quickstart">Quickstart</a>), dan akses jaringan untuk <code>go get</code>.<br><b>Yang Anda pelajari:</b> <code>krew new --app</code>, <code>krew make</code>, <code>pkg/orm</code>, migrasi, view <code>.kiw</code>, <code>pkg/validation</code>, <code>web.CSRF</code>, <code>krew build</code>.</p>
+    <p class="chapter-card-desc"><b>Waktu:</b> sekitar 15 menit.<br><b>Yang Anda perlukan:</b> Go 1.27.1+, <code>krew</code> (lihat <a href="/getting-started/quickstart">Quickstart</a>), dan akses jaringan untuk <code>go get</code>.<br><b>Yang Anda pelajari:</b> <code>krew new --app</code>, <code>krew make</code>, <code>pkg/orm</code>, migrasi, view <code>.kiw</code>, <code>pkg/validation</code>, <code>web.CSRF</code>, <code>krew build</code>.</p>
   </div>
 
 </div>
@@ -121,7 +121,7 @@ func (Task) TableName() string { return "tasks" }
 krew make migration create_tasks
 ```
 
-`kiw` membuat `migrations/<timestamp>_create_tasks.sql` dengan bagian `-- +up` dan `-- +down` yang masih kosong. Isi keduanya:
+`krew` membuat `migrations/<timestamp>_create_tasks.sql` dengan bagian `-- +up` dan `-- +down` yang masih kosong. Isi keduanya:
 
 ```sql
 -- Migration: create_tasks

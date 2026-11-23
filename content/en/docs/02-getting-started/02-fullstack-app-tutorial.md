@@ -22,7 +22,7 @@ You will build **todo-app**, a small task manager: a page that lists tasks store
 <div class="overview-grid">
 
   <div class="chapter-card">
-    <p class="chapter-card-desc"><b>Time:</b> about 15 minutes.<br><b>You need:</b> Go 1.27.1+, <code>kiw</code> (see the <a href="/getting-started/quickstart">Quickstart</a>), and network access for <code>go get</code>.<br><b>You learn:</b> <code>krew new --app</code>, <code>krew make</code>, <code>pkg/orm</code>, migrations, <code>.kiw</code> views, <code>pkg/validation</code>, <code>web.CSRF</code>, <code>krew build</code>.</p>
+    <p class="chapter-card-desc"><b>Time:</b> about 15 minutes.<br><b>You need:</b> Go 1.27.1+, <code>krew</code> (see the <a href="/getting-started/quickstart">Quickstart</a>), and network access for <code>go get</code>.<br><b>You learn:</b> <code>krew new --app</code>, <code>krew make</code>, <code>pkg/orm</code>, migrations, <code>.kiw</code> views, <code>pkg/validation</code>, <code>web.CSRF</code>, <code>krew build</code>.</p>
   </div>
 
 </div>
@@ -121,7 +121,7 @@ func (Task) TableName() string { return "tasks" }
 krew make migration create_tasks
 ```
 
-`kiw` creates `migrations/<timestamp>_create_tasks.sql` with empty `-- +up` and `-- +down` sections. Fill them in:
+`krew` creates `migrations/<timestamp>_create_tasks.sql` with empty `-- +up` and `-- +down` sections. Fill them in:
 
 ```sql
 -- Migration: create_tasks

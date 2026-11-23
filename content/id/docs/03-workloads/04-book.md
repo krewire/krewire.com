@@ -101,9 +101,9 @@ build:
 
 ---
 
-## Penggunaan CLI Bawaan (`kiw`)
+## Penggunaan CLI Bawaan (`krew`)
 
-Build dan sajikan buku Anda langsung dengan `kiw`:
+Build dan sajikan buku Anda langsung dengan `krew`:
 
 ```bash
 # Build buku ke direktori output

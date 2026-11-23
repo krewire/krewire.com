@@ -1,6 +1,6 @@
 ---
 title: "Quickstart"
-description: "Quickstart pemula lima menit: instal kiw, scaffold situs, ubah halaman, tambahkan komponen, jalankan server pengembangan, dan build untuk produksi."
+description: "Quickstart pemula lima menit: instal krew, scaffold situs, ubah halaman, tambahkan komponen, jalankan server pengembangan, dan build untuk produksi."
 date: "2026-11-09"
 ---
 
@@ -17,11 +17,11 @@ date: "2026-11-09"
 </ol>
 </nav>
 
-Dalam lima menit Anda akan menginstal CLI `kiw`, membuat situs statis, mengubah halaman, menulis komponen pertama Anda, dan menghasilkan build produksi. Anda hanya memerlukan Go 1.27.1+ dan terminal — tanpa Node.js, tanpa npm, dan tanpa pengetahuan tentang internal Krewire.
+Dalam lima menit Anda akan menginstal CLI `krew`, membuat situs statis, mengubah halaman, menulis komponen pertama Anda, dan menghasilkan build produksi. Anda hanya memerlukan Go 1.27.1+ dan terminal — tanpa Node.js, tanpa npm, dan tanpa pengetahuan tentang internal Krewire.
 
 ---
 
-## Langkah 1: Instal `kiw`
+## Langkah 1: Instal `krew`
 
 Di Linux atau macOS:
 
@@ -41,7 +41,7 @@ Pastikan shell dapat menemukannya:
 krew version
 ```
 
-Baris pertama berbunyi `kiw Krewire Devtool`, diikuti versi ekosistem dan versi Go Anda. Jika perintah tidak ditemukan, lihat [Instalasi → Mengonfigurasi PATH Anda](/getting-started/installation).
+Baris pertama berbunyi `krew v`, diikuti versi ekosistem dan versi Go Anda. Jika perintah tidak ditemukan, lihat [Instalasi → Mengonfigurasi PATH Anda](/getting-started/installation).
 
 ---
 
@@ -52,7 +52,7 @@ krew new my-site --site --title "My Site"
 cd my-site
 ```
 
-`kiw` mencetak berkas-berkas yang dibuatnya:
+`krew` mencetak berkas-berkas yang dibuatnya:
 
 ```text
 created my-site/krewire.yaml

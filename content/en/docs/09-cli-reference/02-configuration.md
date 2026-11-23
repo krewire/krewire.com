@@ -222,7 +222,7 @@ Route keys:
 
 ## Environment Overlays & Dotenv (`.env`)
 
-`kiw` loads the environment file from the project root (path from
+`krew` loads the environment file from the project root (path from
 `runtime.env_file`, default `.env`) without overwriting variables that are
 already set in the process environment:
 

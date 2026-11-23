@@ -8,7 +8,7 @@ date: "2026-11-21"
 
 > **Reference Initiative**: [Ecosystem AI-Native Engineering Baseline (internal#8)](https://github.com/krewire/internal/issues/8) · [krewire.com#31](https://github.com/krewire/krewire.com/issues/31)  
 > **Status**: Canonical Engineering Guide  
-> **Alignment**: Governed SDLC across Krew, Boost, and the `kiw` toolchain  
+> **Alignment**: Governed SDLC across Krew, Boost, and the `krew` toolchain  
 
 ---
 
@@ -23,7 +23,7 @@ Modern software engineering is transitioning beyond simple **AI-assisted coding*
 │ Metric / Trait                │ AI-Assisted Coding (Legacy)       │ AI-Native Engineering (Krewire) │
 ├───────────────────────────────┼───────────────────────────────────┼─────────────────────────────────┤
 │ Integration Model             │ Ephemeral editor chat popup       │ Native MCP & in-process runtime │
-│ Context Discovery             │ Ad-hoc prompt copy-pasting        │ Machine-readable SSOT (kiw)     │
+│ Context Discovery             │ Ad-hoc prompt copy-pasting        │ Machine-readable SSOT (krew)     │
 │ Safety Boundary               │ Unbounded terminal access         │ SafePath & explicit human gates │
 │ Verification Model            │ "It looks right in editor"        │ krew verify & evidence records   │
 │ Responsibility Posture        │ Blaming model for bugs            │ Human owns outcome & quality    │
@@ -58,14 +58,14 @@ The Krewire ecosystem coordinates AI engineering across three decoupled boundari
                                          │ drives & verifies via
                                          ▼
                ┌───────────────────────────────────────────────────┐
-               │             Krewire kiw CLI (Layer 3)             │
+               │             Krewire krew CLI (Layer 3)             │
                │          Deterministic Toolchain & SSOT           │
-               │   kiw context · krew verify · krew test · Compiler  │
+               │   krew context · krew verify · krew test · Compiler  │
                └───────────────────────────────────────────────────┘
 ```
 
 1. **The Truth Provider (`krew`)**:
-   Exposes the deterministic single source of truth (`kiw context --json`), runs compilations, checks dependencies (`krew pkg health`), and enforces quality gates (`krew test`, `gofmt`, `go vet`). Operates 100% offline without requiring an LLM or network access.
+   Exposes the deterministic single source of truth (`krew context --json`), runs compilations, checks dependencies (`krew pkg health`), and enforces quality gates (`krew test`, `gofmt`, `go vet`). Operates 100% offline without requiring an LLM or network access.
 2. **The Engineering Constitution (`templates/boost`)**:
    Defines the operational rules, commit standards, directory structures, and role definitions embedded directly into repositories via `AGENTS.md` and `.agents/`.
 3. **The Cognitive Engine (`krew`)**:
@@ -83,7 +83,7 @@ To maintain safety without stalling developer velocity, agent capabilities are p
 
 - **Tier 1: Autonomous (No Approval Required)**:
   - Reading repository files, documentation, and architecture decision records.
-  - Inspecting project context (`kiw context --json`) and linting rules.
+  - Inspecting project context (`krew context --json`) and linting rules.
   - Running non-destructive read-only queries, status checks, and unit tests (`krew test`).
 - **Tier 2: Supervised (Action Logged, Review on PR)**:
   - Creating or editing application code, styles, templates, and unit tests.
@@ -112,7 +112,7 @@ Before authoring any code, the agent inspects the authoritative machine-readable
 
 ```bash
 # Discover workload kind, dependencies, rules, and scope
-kiw context --json
+krew context --json
 krew info
 ```
 

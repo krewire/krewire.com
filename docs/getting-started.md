@@ -9,7 +9,7 @@ This guide walks you through setting up, running, and contributing to **`krewire
 1. **`krew` CLI**: The unified developer toolchain and CLI driver.
    - Install using the official installer:
      ```bash
-     curl -fsSL https://krewire.com/scripts/install.sh | sh
+     curl -fsSL https://krewire.com/install.sh | bash
      ```
 
    - Or install via Go:

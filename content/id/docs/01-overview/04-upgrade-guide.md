@@ -1,6 +1,6 @@
 ---
 title: "Panduan Pembaruan"
-description: "Kebijakan versi, instruksi pembaruan CLI kiw, dan arsitektur konfigurasi untuk Krewire."
+description: "Kebijakan versi, instruksi pembaruan CLI krew, dan arsitektur konfigurasi untuk Krewire."
 date: "2026-09-29"
 ---
 
@@ -24,9 +24,9 @@ $$\text{vMAJOR}.\text{MINOR}.\text{PATCH}$$
 
 ---
 
-## 2. Memperbarui CLI `kiw`
+## 2. Memperbarui CLI `krew`
 
-Untuk memperbarui instalasi lokal `kiw` Anda ke versi rilis terbaru:
+Untuk memperbarui instalasi lokal `krew` Anda ke versi rilis terbaru:
 
 ### Opsi A: Skrip Shell Otomatis (Linux & macOS)
 

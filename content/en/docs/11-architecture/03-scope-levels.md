@@ -28,7 +28,7 @@ Workspace  ───►  Module  ───►  Domain  ───►  Service  �
 
 | Level | Scope | What it is | Example |
 | :--- | :--- | :--- | :--- |
-| 0 | **Workspace** | The multi-repository Go workspace rooted at a `go.work` file, with the `kiw` binary and the sibling repositories. | `krewire/` + `ui/` + `krew/` checked out side by side |
+| 0 | **Workspace** | The multi-repository Go workspace rooted at a `go.work` file, with the `krew` binary and the sibling repositories. | `krewire/` + `ui/` + `krew/` checked out side by side |
 | 1 | **Module** | A Go module — the unit you version, release, and import. | `github.com/krewire/krewire`, `github.com/krewire/ui` |
 | 2 | **Domain** | A bounded context inside a module: a cohesive set of services, usually `internal/<domain>/`. Before extraction it is a group of packages; after extraction it can become its own module. | `internal/catalog`, `internal/user` |
 | 3 | **Service** | A runtime deployable implemented as a Go `main` package. | `cmd/api/`, `service/billing/` |

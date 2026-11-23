@@ -118,13 +118,13 @@ Files inside `public/` are served verbatim without preprocessing:
 Created automatically by `krew dev` and `krew build`:
 
 - **`.krewire/build/`:** Houses the compiled production output ready for static hosting or Docker image packaging.
-- This directory is managed by `kiw` and should always be added to your `.gitignore`.
+- This directory is managed by `krew` and should always be added to your `.gitignore`.
 
 ---
 
 ## 3. Workload-Specific Layouts
 
-When scaffolding a new project via `krew new <project> [flags]`, `kiw` equips the directory structure tailored to that workload:
+When scaffolding a new project via `krew new <project> [flags]`, `krew` equips the directory structure tailored to that workload:
 
 ### 1. Static Site (`krew new my-site --site`)
 ```text
@@ -211,7 +211,7 @@ project:
     cmd: "entrypoints"
 ```
 
-The `kiw` compiler resolves all paths against these mappings automatically.
+The `krew` compiler resolves all paths against these mappings automatically.
 
 ---
 

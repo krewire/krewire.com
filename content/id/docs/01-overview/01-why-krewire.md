@@ -37,7 +37,7 @@ Tumpukan Modern Tipikal:
 
 ## 2. Solusi Krewire
 
-Krewire menyatukan seluruh jenis workload ini di bawah payung **Go**, **`kiw`**, dan **`krewire.yaml`**:
+Krewire menyatukan seluruh jenis workload ini di bawah payung **Go**, **`krew`**, dan **`krewire.yaml`**:
 
 | Workload | Pendekatan Terfragmentasi Tradisional | Pendekatan Krewire |
 | :--- | :--- | :--- |

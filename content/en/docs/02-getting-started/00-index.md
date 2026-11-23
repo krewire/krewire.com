@@ -1,6 +1,6 @@
 ---
 title: "Getting Started"
-description: "The beginner track: install kiw, build your first site in five minutes, then a fullstack app with SQLite and forms. No architecture background required."
+description: "The beginner track: install krew, build your first site in five minutes, then a fullstack app with SQLite and forms. No architecture background required."
 date: "2026-11-09"
 ---
 
@@ -23,7 +23,7 @@ This chapter is the **beginner track**. It assumes you know a little Go and a te
 
 ## 1. The Beginner Track
 
-Follow these in order. Every command in them was run against the current `kiw` CLI.
+Follow these in order. Every command in them was run against the current `krew` CLI.
 
 <div class="overview-grid">
 
@@ -35,7 +35,7 @@ Follow these in order. Every command in them was run against the current `kiw` C
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Install <code>kiw</code>, scaffold a static site, edit a page, add your own component, run the dev server, and produce a production build.
+      Install <code>krew</code>, scaffold a static site, edit a page, add your own component, run the dev server, and produce a production build.
     </p>
   </div>
 
@@ -115,7 +115,7 @@ The complete list is in the [CLI Command Reference](/cli-reference/commands).
 
 ## 5. Common Beginner Pitfalls
 
-**`kiw: command not found`** — the install directory is not on your `PATH`. Add `export PATH="$HOME/.local/bin:$PATH"` (shell installer) or `export PATH="$(go env GOPATH)/bin:$PATH"` (`go install`) to `~/.zshrc` or `~/.bashrc`, then open a new terminal.
+**`krew: command not found`** — the install directory is not on your `PATH`. Add `export PATH="$HOME/.local/bin:$PATH"` (shell installer) or `export PATH="$(go env GOPATH)/bin:$PATH"` (`go install`) to `~/.zshrc` or `~/.bashrc`, then open a new terminal.
 
 **`address already in use`** — another program owns port 8080. Change `dev.port` in `krewire.yaml`, or preview a build on another address with `krew serve --addr :3000`.
 

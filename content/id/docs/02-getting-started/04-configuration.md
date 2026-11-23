@@ -16,7 +16,7 @@ Setiap proyek Krewire dikendalikan oleh satu berkas konfigurasi deklaratif: **`k
 
 Krewire mempertahankan pemisahan tanggung jawab (Separation of Concerns) yang ketat antara konfigurasi devtool dan logika runtime aplikasi:
 
-1. **Kontrol Devtool (`krewire.yaml`):** Menginstruksikan CLI `kiw` tentang cara membangun, menjalankan, menguji, dan memaketkan proyek.
+1. **Kontrol Devtool (`krewire.yaml`):** Menginstruksikan CLI `krew` tentang cara membangun, menjalankan, menguji, dan memaketkan proyek.
 2. **Pengaturan Aplikasi:** Judul halaman web, layout, tag meta, dan styling komponen berada di dalam halaman, template, dan kode Go—tidak pernah diduplikasi di dalam YAML.
 3. **Toolchain Terpisah (Decoupled):** Proyek dapat dikompilasi secara bersih menggunakan perintah standar `go build` bahkan jika `krewire.yaml` tidak ada, dengan kembali ke konvensi standar Go.
 
@@ -93,7 +93,7 @@ scripts:
 
 Bagian `project:` mendefinisikan identitas dan perilaku workload:
 
-- **`kind` (Opsional):** Menetapkan jenis arsitektur workload secara eksplisit. Jika dikosongkan/dihapus, `kiw` otomatis mendeteksi tipe proyek dari struktur direktori melalui `shape.Detect`:
+- **`kind` (Opsional):** Menetapkan jenis arsitektur workload secara eksplisit. Jika dikosongkan/dihapus, `krew` otomatis mendeteksi tipe proyek dari struktur direktori melalui `shape.Detect`:
   - `site`: Terdeteksi dari adanya direktori `pages/` atau blok `ssg:` di `krewire.yaml`.
   - `app`: Terdeteksi dari adanya berkas `main.go` atau folder `cmd/` dengan `func main()`.
   - `book`: Terdeteksi dari adanya direktori `content/`.
