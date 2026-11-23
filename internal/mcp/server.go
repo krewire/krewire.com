@@ -403,7 +403,7 @@ func (s *Server) getPrompt(name string) (any, *Error) {
 					"role": "user",
 					"content": map[string]any{
 						"type": "text",
-						"text": "You are building an application in the Krewire digital SDLC ecosystem. Enforce the 6-Layer Pyramid Architecture strictly: Layer 0 (stdlib) -> Layer 1 (model/lifecycle) -> Layer 2 (domain libraries: orm, web, ui) -> Layer 3 (krew devtool) -> Layer 4 (cloud/auth) -> Layer 5 (dash/portal). All code must be pure Go (CGO_ENABLED=0) and follow the Three Pillars: Secure (stdlib-first, safePath), Sustainable (lean footprint, single binary, zero npm), and Scalable (reversible provider swaps).",
+						"text": "You are building an application in the Krewire digital SDLC ecosystem. Enforce the 6-Layer Pyramid Architecture strictly: Layer 0 (stdlib) -> Layer 1 (model/lifecycle) -> Layer 2 (domain libraries: orm, web, ui) -> Layer 3 (krew devtool) -> Layer 4 (cloud/auth) -> Layer 5 (dash/portal). All code must be pure Go (CGO_ENABLED=0) and follow the Three Pillars: Secure (stdlib-first, safePath), Sustainable (lean footprint, single binary, pure Go), and Scalable (reversible provider swaps).",
 					},
 				},
 			},

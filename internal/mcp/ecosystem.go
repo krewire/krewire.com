@@ -46,7 +46,7 @@ func GetEcosystem() []RepoInfo {
 			Name:        "ui",
 			Layer:       2,
 			Role:        "Pop-Brutalist Design System (.kiw)",
-			Description: "Pop-Brutalist .kiw web component catalog (shadcn/ui distribution model, zero npm runtime dependencies).",
+			Description: "Pop-Brutalist .kiw web component catalog (shadcn/ui distribution model, pure Go and Tailwind CSS).",
 			Packages:    []string{"components", "styles"},
 		},
 		{

@@ -14,7 +14,7 @@ Powered by Krewire's native **`pkg/book`** engine (`github.com/krewire/krewire/p
 
 ## Architectural Characteristics
 
-1. **Pure Go Standard Library:** Zero npm scripts, no Python runtime, and no Node.js dependencies.
+1. **Pure Go Standard Library:** pure Go standard library without external runtime dependencies.
 2. **Automated Chapter Ordering:** Files and directories with numeric prefixes (`01-overview`, `02-guide`) are automatically converted into numbered chapters and subchapters with clean URL slugs.
 3. **Responsive Navigation & Search:** Built-in collapsible sidebar, quick chapter search filter, keyboard shortcut navigation (`/` to search), and breadcrumbs.
 4. **Instant Live Authoring:** `krew dev` or `krew serve` provides a local HTTP server that re-renders Markdown files dynamically on browser refresh.

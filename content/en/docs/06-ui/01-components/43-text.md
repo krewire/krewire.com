@@ -40,4 +40,4 @@ Use `<Text />` directly within your `.kiw` page or layout templates:
 
 - **Design System Stylesheet**: Inherits variables from `krewire-ui.css` (`--border`, `--radius`, `--pop-shadow`).
 - **Dark Mode**: Automatically inverts surface and text colors when `data-theme="dark"` or the `.dark` class is applied to `:root`.
-- **Zero-Bloat**: Built natively with pure HTML primitives and scoped styles with zero npm dependencies.
+- **Zero-Bloat**: Built natively with pure HTML primitives and scoped styles with standard Go dependencies.

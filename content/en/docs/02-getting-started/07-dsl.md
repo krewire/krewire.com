@@ -274,7 +274,7 @@ Components can declare imports in `<script>` blocks or frontmatter:
 
 ### 4.6 Standalone Component Packages (`.kpkg`)
 
-Reusable component libraries can be distributed and installed as standalone packages with zero npm dependencies:
+Reusable component libraries can be distributed and installed as standalone packages with standard Go dependencies:
 
 - **Manifest (`kiw.pkg.json`)**: Declares package metadata, exported component paths, and stylesheets.
 - **Archive Format (`.kpkg`)**: Gzipped tarball with SHA-256 integrity verification.
@@ -404,7 +404,7 @@ For content-heavy sections, you can write native Markdown directly within your `
   ### Version 0.1.0 (Initial Release)
   - **Libraries:** Core modular library architecture.
   - **Kiw CLI:** Scaffolding, dev server, and build pipeline.
-  - **Zero Bloat:** 100% Go standard library, zero npm dependencies.
+  - **Zero Bloat:** 100% Go standard library, standard Go dependencies.
   </markdown>
 </section>
 ```

@@ -393,7 +393,7 @@ layout: Landing
           <div class="flex flex-wrap gap-2.5 sm:gap-3">
             <Badge Variant="neutral" Size="sm">10–30 MB Lean RAM</Badge>
             <Badge Variant="neutral" Size="sm">Single Static Binary</Badge>
-            <Badge Variant="neutral" Size="sm">Zero npm / Zero Bundlers</Badge>
+            <Badge Variant="neutral" Size="sm">Pure Go · Standalone Binary</Badge>
             <Badge Variant="neutral" Size="sm">Permanent MIT Open Core</Badge>
           </div>
         </div>
@@ -905,7 +905,7 @@ p  { font-size: 15px; color: var(--muted); }
           </li>
           <li class="flex items-start gap-3 text-sm sm:text-base text-muted dark:text-muted-dark leading-snug">
             <span class="text-primary font-black text-base shrink-0 leading-tight">✓</span>
-            <span data-i18n-html="dsl.f3_html"><b class="text-fg dark:text-fg-dark">Built into <code class="code-inline">kiw</code>:</b> Compiled natively via <code class="code-inline">kiw/dsl</code> with zero npm or external bundler dependencies.</span>
+            <span data-i18n-html="dsl.f3_html"><b class="text-fg dark:text-fg-dark">Built into <code class="code-inline">kiw</code>:</b> Compiled natively via <code class="code-inline">kiw/dsl</code> with standard Go tooling.</span>
           </li>
           <li class="flex items-start gap-3 text-sm sm:text-base text-muted dark:text-muted-dark leading-snug">
             <span class="text-primary font-black text-base shrink-0 leading-tight">✓</span>
@@ -947,7 +947,7 @@ p  { font-size: 15px; color: var(--muted); }
           <tr class="hover:bg-primary/5 transition-colors">
             <td class="py-4 px-4 sm:px-6 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row2_dim">Package Management</td>
             <td class="py-4 px-4 sm:px-6 text-muted dark:text-muted-dark" data-i18n="matrix.row2_trad">go.mod + package.json + npm/pnpm trees</td>
-            <td class="py-4 px-4 sm:px-6 font-bold text-primary" data-i18n="matrix.row2_krewire">✓ Single go.mod (Zero npm / Zero JS)</td>
+            <td class="py-4 px-4 sm:px-6 font-bold text-primary" data-i18n="matrix.row2_krewire">✓ Single go.mod (Pure Go Runtime)</td>
           </tr>
           <tr class="hover:bg-primary/5 transition-colors">
             <td class="py-4 px-4 sm:px-6 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row3_dim">Developer CLI</td>

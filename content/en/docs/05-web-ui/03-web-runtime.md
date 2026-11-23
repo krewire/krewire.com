@@ -10,7 +10,7 @@ Import path: `github.com/krewire/krewire/pkg/runtime`
 
 The `pkg/runtime` library delivers a client-side WebAssembly (WASM) execution engine, Virtual DOM (VDOM) diffing and reconciliation algorithm, Fiber component lifecycle scheduler, and progressive multi-framework island hydration contracts.
 
-It allows developers to write interactive, reactive client-side widgets in 100% pure Go compiled to WebAssembly (`GOOS=js GOARCH=wasm`), or seamlessly embed lightweight modular frontend framework islands (Svelte 5, Vue 3) while keeping initial page loads static and zero-JS by default.
+It allows developers to write interactive, reactive client-side widgets in 100% pure Go compiled to WebAssembly (`GOOS=js GOARCH=wasm`), or seamlessly embed lightweight modular frontend framework islands (Svelte 5, Vue 3) while keeping initial page loads static and pure Go by default.
 
 ---
 

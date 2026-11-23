@@ -383,7 +383,7 @@ krew add tailwindcss                # Alias for twcss
 krew add github.com/krewire/krewire@v0.2.0
 ```
 
-- **Zero JS by Default**: Krewire defaults to zero JavaScript and standalone CSS tokens.
+- **Pure Go by Default**: Krewire defaults to zero JavaScript and standalone CSS tokens.
 - **Opt-In Technology**: When adding `twcss`, `kiw` automatically initializes `tailwind.config.js` and enables the Tailwind compiler runner (standalone CLI binary in `bin/tailwindcss`, Bun, PNPM, or npm/npx fallback).
 - **Reactive Islands**: Adding `svelte` or `vue` configures client bundlers for progressive island hydration (`data-kiw-framework="svelte|vue"`).
 
@@ -441,7 +441,7 @@ krew ui diff <name>        # Compare local component with upstream template
 
 ### `kiw pkg <init|pack|add|list|export>`
 
-Manage standalone, independently distributable `.kiw` component packages and UI kits (ADR-K7P9L). Enables modular packaging, tar.gz (`.kpkg`) archiving with SHA-256 integrity verification, local installation into `./.krewire/pkg/`, and automated style injection with zero npm dependencies:
+Manage standalone, independently distributable `.kiw` component packages and UI kits (ADR-K7P9L). Enables modular packaging, tar.gz (`.kpkg`) archiving with SHA-256 integrity verification, local installation into `./.krewire/pkg/`, and automated style injection with standard Go dependencies:
 
 ```bash
 kiw pkg init @acme/ui              # Scaffolds standalone package with kiw.pkg.json
