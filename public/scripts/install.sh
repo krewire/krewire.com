@@ -259,8 +259,13 @@ if [ -n "${INSTALLED_AT}" ] && [ -f "${INSTALLED_AT}" ] && [ -x "${INSTALLED_AT}
   info "Binary:  ${INSTALLED_AT}"
   info "Version: ${VER_TXT}"
 
-  # Warn if the install dir isn't in PATH
+  # Create kiw alias symlink in the same bin directory if possible
   _bin_dir="$(dirname "${INSTALLED_AT}")"
+  if [ -w "${_bin_dir}" ] && [ ! -e "${_bin_dir}/kiw" ]; then
+    ln -sf "${INSTALLED_AT}" "${_bin_dir}/kiw" 2>/dev/null || true
+  fi
+
+  # Warn if the install dir isn't in PATH
   case ":${PATH}:" in
     *":${_bin_dir}:"*) ;;
     *)
@@ -276,7 +281,7 @@ fi
 # ── Next steps ───────────────────────────────────────────────────────────────
 printf "\n"
 printf "${BLD}  Get started in 30 seconds:${RST}\n\n"
-printf "    krew new my-app --site   # scaffold a new static site\n"
+printf "    krew new my-app          # scaffold a new Krewire project\n"
 printf "    cd my-app\n"
 printf "    krew dev                 # start hot-reload dev server\n"
 printf "    krew build               # build static output to .krewire/build\n"

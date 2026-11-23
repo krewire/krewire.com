@@ -11,7 +11,7 @@ layout: Landing
         <Badge Variant="primary" dot=true><span data-i18n="playground.eyebrow">KREWIRE UI · LIVE PREVIEW</span></Badge>
       </div>
       <h1 class="font-black tracking-tighter leading-tight text-fg dark:text-fg-dark mb-4" style="font-size:clamp(28px,5vw,48px); letter-spacing:-0.03em" data-i18n="playground.title">Component Playground</h1>
-      <p class="text-sm sm:text-base text-muted dark:text-muted-dark leading-relaxed mb-5" data-i18n-html="playground.lead_html">Every preview below is a real <code class="code-inline">.kiw</code> component from <code class="code-inline">github.com/krewire/ui</code>, rendered by <code class="code-inline">kiw build</code> for each variant and size. Toggle the options, compare the light and dark themes side by side, then copy the component source or the exact usage snippet. Nothing is fetched from the network.</p>
+      <p class="text-sm sm:text-base text-muted dark:text-muted-dark leading-relaxed mb-5" data-i18n-html="playground.lead_html">Every preview below is a real <code class="code-inline">.kiw</code> component from <code class="code-inline">github.com/krewire/ui</code>, rendered by <code class="code-inline">krew build</code> for each variant and size. Toggle the options, compare the light and dark themes side by side, then copy the component source or the exact usage snippet. Nothing is fetched from the network.</p>
       <nav class="cpv-index flex flex-wrap gap-2" aria-label="Components">
         <a class="cpv-chip" href="#button">Button</a>
         <a class="cpv-chip" href="#badge">Badge</a>

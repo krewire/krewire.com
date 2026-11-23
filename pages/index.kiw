@@ -38,7 +38,7 @@ layout: Landing
           <!-- Quick terminal: install first -->
           <div class="w-full max-w-xl lg:max-w-2xl xl:max-w-none flex flex-col gap-3.5 mb-8 sm:mb-10">
             <Terminal Command="curl -fsSL https://krewire.com/scripts/install.sh | sh" Class="w-full" />
-            <Terminal Command="kiw new my-app && cd my-app && kiw dev" PromptColor="muted" Class="w-full" />
+            <Terminal Command="krew new my-app && cd my-app && krew dev" PromptColor="muted" Class="w-full" />
           </div>
 
           <!-- CTAs: stacked on mobile, row on sm+ -->
@@ -94,7 +94,7 @@ layout: Landing
       <div class="flex flex-wrap items-center text-xs sm:text-xs md:text-sm font-semibold text-muted dark:text-muted-dark gap-y-2 gap-x-3 sm:gap-x-4">
         <span><b class="text-fg dark:text-fg-dark">Go-first</b> Toolchain</span>
         <span class="hidden sm:inline opacity-40">·</span>
-        <span><b class="text-fg dark:text-fg-dark">1</b> CLI · kiw</span>
+        <span><b class="text-fg dark:text-fg-dark">1</b> CLI · krew</span>
         <span class="hidden sm:inline opacity-40">·</span>
         <span><b class="text-fg dark:text-fg-dark">8</b> Progressive Workloads</span>
         <span class="hidden sm:inline opacity-40">·</span>
@@ -169,7 +169,7 @@ layout: Landing
         <ul class="flex flex-col gap-2 p-0 m-0 list-none text-sm">
           <li><a href="/docs/workloads/worker" class="font-bold text-primary hover:underline" data-i18n="audiences.team_uc1">Move slow work out of the request path → worker</a></li>
           <li><a href="/docs/workloads/service" class="font-bold text-primary hover:underline" data-i18n="audiences.team_uc2">Add a headless service next to an existing app → service</a></li>
-          <li><a href="/docs/guides/deployment-and-operations" class="font-bold text-primary hover:underline" data-i18n="audiences.team_uc3">Deploy to a VPS with systemd → kiw deploy</a></li>
+          <li><a href="/docs/guides/deployment-and-operations" class="font-bold text-primary hover:underline" data-i18n="audiences.team_uc3">Deploy to a VPS with systemd → krew deploy</a></li>
         </ul>
       </div>
     </div>
@@ -223,7 +223,7 @@ layout: Landing
               <Badge Variant="neutral" Size="sm"><span data-i18n="products.mockup">Illustration</span></Badge>
             </div>
             <div class="p-4 sm:p-5 font-mono text-xs leading-relaxed text-slate-300">
-              <div class="text-emerald-400 font-bold">$ kiw dash start --sandbox=go-1.27</div>
+              <div class="text-emerald-400 font-bold">$ krew dash start --sandbox=go-1.27</div>
               <div class="text-slate-400 mt-1">✓ Isolated micro-container mounted (14ms)</div>
               <div class="text-slate-400 mt-1">✓ PTY terminal attached on ws://dash.krewire.com/pty</div>
               <div class="text-cyan-400 mt-2 font-bold">⚡ Autonomous ReAct Agent active (krew engine)</div>
@@ -319,7 +319,7 @@ layout: Landing
 
       </div>
 
-      <p class="text-sm text-muted dark:text-muted-dark leading-relaxed m-0" data-i18n="products.boundary_note">The open-source core (kiw CLI, domain libraries, and ui) is 100% MIT-licensed and self-sufficient. Dash, Cloud, Auth, and Krew provide specialized platform capabilities for virtual workspaces, hybrid PaaS hosting, enterprise IAM, and autonomous AI agents.</p>
+      <p class="text-sm text-muted dark:text-muted-dark leading-relaxed m-0" data-i18n="products.boundary_note">The open-source core (krew CLI, domain libraries, tui, and ui) is 100% MIT-licensed and self-sufficient. Dash, Cloud, and Auth provide specialized platform capabilities for virtual workspaces, hybrid PaaS hosting, and enterprise IAM.</p>
       <Button Variant="outline" Size="md" Href="/docs/guides/open-core-and-licensing" Class="shrink-0"><span data-i18n="products.boundary_cta">Core vs. platform services →</span></Button>
     </div>
   </div>
@@ -530,41 +530,63 @@ layout: Landing
       <p class="text-sm sm:text-base md:text-lg text-muted dark:text-muted-dark leading-relaxed" data-i18n="workloads.lead">Stop assembling disparate frameworks for web, CLI, background queues, and infra. Krewire provides unified ergonomics, shared configuration, and zero context switching.</p>
     </div>
 
-    <!-- Group 1: Web & Application Workloads -->
+    <!-- Group 1: Web & Applications -->
     <div class="mb-10 sm:mb-14">
       <div class="flex items-center gap-3 mb-5">
         <Badge Variant="neutral" Class="text-xs font-mono font-bold uppercase tracking-wider">Web &amp; Applications</Badge>
         <div class="h-px bg-border-subtle flex-1"></div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
         <!-- 1. APP -->
-        <a href="/docs/workloads/app" class="card block no-underline group hover:-translate-y-1 transition-all duration-150 p-7 sm:p-8 bg-bg-2 dark:bg-bg-dark-2">
-          <div class="flex items-center justify-between gap-2 mb-4">
-            <div class="flex items-center gap-3">
-              <span class="icon-box bg-primary text-primary-content text-lg w-9 h-9 flex items-center justify-center font-bold">▲</span>
-              <h3 class="text-xl font-black tracking-tight text-fg dark:text-fg-dark group-hover:text-primary transition-colors">app</h3>
+        <a href="/docs/workloads/app" class="card block no-underline group hover:-translate-y-1 transition-all duration-150 p-6 sm:p-7 bg-bg-2 dark:bg-bg-dark-2 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <div class="flex items-center gap-3">
+                <span class="icon-box bg-primary text-primary-content text-lg w-9 h-9 flex items-center justify-center font-bold">▲</span>
+                <h3 class="text-xl font-black tracking-tight text-fg dark:text-fg-dark group-hover:text-primary transition-colors">app</h3>
+              </div>
+              <Badge Variant="primary" Size="sm" Class="font-mono"><span data-i18n="workloads.app_badge">Fullstack</span></Badge>
             </div>
-            <Badge Variant="primary" Size="sm" Class="font-mono"><span data-i18n="workloads.app_badge">Fullstack</span></Badge>
+            <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed mb-5" data-i18n="workloads.app_desc">Fullstack web monolith — compile your web interface, HTTP routing, and API handlers into a single static Go binary.</p>
           </div>
-          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-5" data-i18n="workloads.app_desc">Fullstack web monolith — compile your web interface, HTTP routing, and API handlers into a single static Go binary.</p>
           <div class="flex items-center justify-between pt-4 mt-auto border-t border-border-subtle">
-            <code class="px-2.5 py-1 rounded-md font-mono text-xs font-extrabold bg-bg dark:bg-bg-dark border border-border-subtle text-fg dark:text-fg-dark">kiw run</code>
+            <code class="px-2.5 py-1 rounded-md font-mono text-xs font-extrabold bg-bg dark:bg-bg-dark border border-border-subtle text-fg dark:text-fg-dark">krew run</code>
             <span class="text-xs font-bold text-primary flex items-center gap-1" data-i18n="workloads.docs_link">Docs →</span>
           </div>
         </a>
 
-        <!-- 2. SITE & BOOK -->
-        <a href="/docs/workloads/site" class="card block no-underline group hover:-translate-y-1 transition-all duration-150 p-7 sm:p-8 bg-bg-2 dark:bg-bg-dark-2">
-          <div class="flex items-center justify-between gap-2 mb-4">
-            <div class="flex items-center gap-3">
-              <span class="icon-box bg-primary text-primary-content text-lg w-9 h-9 flex items-center justify-center font-bold">◧</span>
-              <h3 class="text-xl font-black tracking-tight text-fg dark:text-fg-dark group-hover:text-primary transition-colors">site &amp; book</h3>
+        <!-- 2. SITE -->
+        <a href="/docs/workloads/site" class="card block no-underline group hover:-translate-y-1 transition-all duration-150 p-6 sm:p-7 bg-bg-2 dark:bg-bg-dark-2 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <div class="flex items-center gap-3">
+                <span class="icon-box bg-primary text-primary-content text-lg w-9 h-9 flex items-center justify-center font-bold">◧</span>
+                <h3 class="text-xl font-black tracking-tight text-fg dark:text-fg-dark group-hover:text-primary transition-colors">site</h3>
+              </div>
+              <Badge Variant="primary" Size="sm" Class="font-mono"><span data-i18n="workloads.site_badge">SSG</span></Badge>
             </div>
-            <Badge Variant="primary" Size="sm" Class="font-mono"><span data-i18n="workloads.site_badge">SSG</span></Badge>
+            <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed mb-5" data-i18n="workloads.site_desc">High-performance static site generator with file-based routing, scoped <code class="code-inline">.kiw</code> components, and technical books with auto-indexing.</p>
           </div>
-          <p class="text-sm text-muted dark:text-muted-dark leading-relaxed mb-5" data-i18n="workloads.site_desc">High-performance static site generator with file-based routing, scoped <code class="code-inline">.kiw</code> components, and technical books with auto-indexing.</p>
           <div class="flex items-center justify-between pt-4 mt-auto border-t border-border-subtle">
-            <code class="px-2.5 py-1 rounded-md font-mono text-xs font-extrabold bg-bg dark:bg-bg-dark border border-border-subtle text-fg dark:text-fg-dark">kiw build</code>
+            <code class="px-2.5 py-1 rounded-md font-mono text-xs font-extrabold bg-bg dark:bg-bg-dark border border-border-subtle text-fg dark:text-fg-dark">krew build</code>
+            <span class="text-xs font-bold text-primary flex items-center gap-1" data-i18n="workloads.docs_link">Docs →</span>
+          </div>
+        </a>
+
+        <!-- 3. BOOK -->
+        <a href="/docs/workloads/book" class="card block no-underline group hover:-translate-y-1 transition-all duration-150 p-6 sm:p-7 bg-bg-2 dark:bg-bg-dark-2 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <div class="flex items-center gap-3">
+                <span class="icon-box bg-primary text-primary-content text-lg w-9 h-9 flex items-center justify-center font-bold">📖</span>
+                <h3 class="text-xl font-black tracking-tight text-fg dark:text-fg-dark group-hover:text-primary transition-colors">book</h3>
+              </div>
+              <Badge Variant="primary" Size="sm" Class="font-mono"><span data-i18n="workloads.book_badge">Publishing</span></Badge>
+            </div>
+            <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed mb-5" data-i18n="workloads.book_desc">Technical documentation, knowledge bases, and API references compiled with the native pkg/book engine.</p>
+          </div>
+          <div class="flex items-center justify-between pt-4 mt-auto border-t border-border-subtle">
+            <code class="px-2.5 py-1 rounded-md font-mono text-xs font-extrabold bg-bg dark:bg-bg-dark border border-border-subtle text-fg dark:text-fg-dark">krew build</code>
             <span class="text-xs font-bold text-primary flex items-center gap-1" data-i18n="workloads.docs_link">Docs →</span>
           </div>
         </a>
@@ -578,7 +600,7 @@ layout: Landing
         <div class="h-px bg-border-subtle flex-1"></div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-        <!-- 3. WORKER -->
+        <!-- 4. WORKER -->
         <a href="/docs/workloads/worker" class="card block no-underline group hover:-translate-y-1 transition-all duration-150 p-6 sm:p-7 bg-bg-2 dark:bg-bg-dark-2 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-4">
@@ -589,12 +611,12 @@ layout: Landing
             <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed mb-5" data-i18n="workloads.worker_desc">Asynchronous job queues, scheduled cron tasks, retry policies, backoff timers, and dead-letter queues via <code class="code-inline">pkg/cloud/worker</code>.</p>
           </div>
           <div class="flex items-center justify-between pt-4 mt-auto border-t border-border-subtle">
-            <code class="px-2 py-0.5 rounded font-mono text-[11px] font-bold bg-bg dark:bg-bg-dark border border-border-subtle">kiw worker</code>
+            <code class="px-2 py-0.5 rounded font-mono text-[11px] font-bold bg-bg dark:bg-bg-dark border border-border-subtle">krew worker</code>
             <span class="text-xs font-bold text-primary" data-i18n="workloads.docs_link">Docs →</span>
           </div>
         </a>
 
-        <!-- 4. SERVICE -->
+        <!-- 5. SERVICE -->
         <a href="/docs/workloads/service" class="card block no-underline group hover:-translate-y-1 transition-all duration-150 p-6 sm:p-7 bg-bg-2 dark:bg-bg-dark-2 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-4">
@@ -605,12 +627,12 @@ layout: Landing
             <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed mb-5" data-i18n="workloads.service_desc">Distributed microservice architecture with service discovery, API gateway routing, rate limiting, and OpenTelemetry tracing.</p>
           </div>
           <div class="flex items-center justify-between pt-4 mt-auto border-t border-border-subtle">
-            <code class="px-2 py-0.5 rounded font-mono text-[11px] font-bold bg-bg dark:bg-bg-dark border border-border-subtle">kiw run</code>
+            <code class="px-2 py-0.5 rounded font-mono text-[11px] font-bold bg-bg dark:bg-bg-dark border border-border-subtle">krew run</code>
             <span class="text-xs font-bold text-primary" data-i18n="workloads.docs_link">Docs →</span>
           </div>
         </a>
 
-        <!-- 5. GATEWAY -->
+        <!-- 6. GATEWAY -->
         <a href="/docs/workloads/gateway" class="card block no-underline group hover:-translate-y-1 transition-all duration-150 p-6 sm:p-7 bg-bg-2 dark:bg-bg-dark-2 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-4">
@@ -621,7 +643,7 @@ layout: Landing
             <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed mb-5" data-i18n="workloads.gateway_desc">Front upstream services with a declarative route table, per-route middleware, rate limiting, and service-discovery balancing.</p>
           </div>
           <div class="flex items-center justify-between pt-4 mt-auto border-t border-border-subtle">
-            <code class="px-2 py-0.5 rounded font-mono text-[11px] font-bold bg-bg dark:bg-bg-dark border border-border-subtle">kiw gateway</code>
+            <code class="px-2 py-0.5 rounded font-mono text-[11px] font-bold bg-bg dark:bg-bg-dark border border-border-subtle">krew gateway</code>
             <span class="text-xs font-bold text-primary" data-i18n="workloads.docs_link">Docs →</span>
           </div>
         </a>
@@ -635,7 +657,7 @@ layout: Landing
         <div class="h-px bg-border-subtle flex-1"></div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-        <!-- 6. CLI -->
+        <!-- 7. CLI -->
         <a href="/docs/workloads/cli" class="card block no-underline group hover:-translate-y-1 transition-all duration-150 p-6 sm:p-7 bg-bg-2 dark:bg-bg-dark-2 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-4">
@@ -648,12 +670,12 @@ layout: Landing
             <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="workloads.cli_desc">Developer command-line tools &amp; rich terminal interfaces powered by the lightweight TUI library with zero dependencies.</p>
           </div>
           <div class="flex items-center justify-between pt-4 mt-auto border-t border-border-subtle">
-            <code class="px-2 py-0.5 rounded font-mono text-[11px] font-bold bg-bg dark:bg-bg-dark border border-border-subtle">kiw run</code>
+            <code class="px-2 py-0.5 rounded font-mono text-[11px] font-bold bg-bg dark:bg-bg-dark border border-border-subtle">krew run</code>
             <span class="text-xs font-bold text-primary" data-i18n="workloads.docs_link">Docs →</span>
           </div>
         </a>
 
-        <!-- 7. INFRA -->
+        <!-- 8. INFRA -->
         <a href="/docs/workloads/infra" class="card block no-underline group hover:-translate-y-1 transition-all duration-150 p-6 sm:p-7 bg-bg-2 dark:bg-bg-dark-2 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-4">
@@ -666,7 +688,7 @@ layout: Landing
             <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed mb-4" data-i18n="workloads.infra_desc">Provider-agnostic infrastructure-as-code compiling directly to AWS, GCP, or Kubernetes specifications from Go declarations.</p>
           </div>
           <div class="flex items-center justify-between pt-4 mt-auto border-t border-border-subtle">
-            <code class="px-2 py-0.5 rounded font-mono text-[11px] font-bold bg-bg dark:bg-bg-dark border border-border-subtle">kiw deploy --target infra</code>
+            <code class="px-2 py-0.5 rounded font-mono text-[11px] font-bold bg-bg dark:bg-bg-dark border border-border-subtle">krew deploy --target infra</code>
             <span class="text-xs font-bold text-primary" data-i18n="workloads.docs_link">Docs →</span>
           </div>
         </a>
@@ -698,7 +720,7 @@ layout: Landing
             <Badge Variant="primary" Size="sm" Class="font-mono"><span data-i18n="steps.s1_badge">Install</span></Badge>
           </div>
           <h3 class="text-lg font-black tracking-tight mb-2.5 text-fg dark:text-fg-dark">install.sh</h3>
-          <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed mb-6" data-i18n="steps.s1_desc">One command installs the <code class="code-inline">kiw</code> CLI on Linux or macOS. No package manager needed.</p>
+          <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed mb-6" data-i18n="steps.s1_desc">One command installs the <code class="code-inline">krew</code> CLI on Linux or macOS. No package manager needed.</p>
         </div>
         <Terminal Command="curl -fsSL https://krewire.com/scripts/install.sh | sh" Class="mt-6 sm:mt-8 w-full" />
       </div>
@@ -710,10 +732,10 @@ layout: Landing
             <span class="w-10 h-10 rounded-xl bg-primary text-primary-content flex items-center justify-center font-black text-sm border-2 border-border shadow-[2px_2px_0px_var(--border)]">02</span>
             <Badge Variant="primary" Size="sm" Class="font-mono"><span data-i18n="steps.s2_badge">Scaffold</span></Badge>
           </div>
-          <h3 class="text-lg font-black tracking-tight mb-2.5 text-fg dark:text-fg-dark">kiw new</h3>
+          <h3 class="text-lg font-black tracking-tight mb-2.5 text-fg dark:text-fg-dark">krew new</h3>
           <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed mb-6" data-i18n="steps.s2_desc">Generate a production-ready project template for any workload in under one second.</p>
         </div>
-        <Terminal Command="kiw new my-app && cd my-app" Class="mt-6 sm:mt-8 w-full" />
+        <Terminal Command="krew new my-app && cd my-app" Class="mt-6 sm:mt-8 w-full" />
       </div>
 
       <!-- Step 3: Develop -->
@@ -723,10 +745,10 @@ layout: Landing
             <span class="w-10 h-10 rounded-xl bg-primary text-primary-content flex items-center justify-center font-black text-sm border-2 border-border shadow-[2px_2px_0px_var(--border)]">03</span>
             <Badge Variant="primary" Size="sm" Class="font-mono"><span data-i18n="steps.s3_badge">Develop</span></Badge>
           </div>
-          <h3 class="text-lg font-black tracking-tight mb-2.5 text-fg dark:text-fg-dark">kiw dev</h3>
+          <h3 class="text-lg font-black tracking-tight mb-2.5 text-fg dark:text-fg-dark">krew dev</h3>
           <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed mb-6" data-i18n="steps.s3_desc">Instant hot-reload local development server with file-based routing and scoped CSS updates.</p>
         </div>
-        <Terminal Command="kiw dev" Class="mt-6 sm:mt-8 w-full" />
+        <Terminal Command="krew dev" Class="mt-6 sm:mt-8 w-full" />
       </div>
 
       <!-- Step 4: Deploy -->
@@ -736,10 +758,10 @@ layout: Landing
             <span class="w-10 h-10 rounded-xl bg-primary text-primary-content flex items-center justify-center font-black text-sm border-2 border-border shadow-[2px_2px_0px_var(--border)]">04</span>
             <Badge Variant="primary" Size="sm" Class="font-mono"><span data-i18n="steps.s4_badge">Deploy</span></Badge>
           </div>
-          <h3 class="text-lg font-black tracking-tight mb-2.5 text-fg dark:text-fg-dark">kiw deploy</h3>
+          <h3 class="text-lg font-black tracking-tight mb-2.5 text-fg dark:text-fg-dark">krew deploy</h3>
           <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed mb-6" data-i18n="steps.s4_desc">Compile into a single static binary or static asset bundle and ship to GitHub Pages or Docker.</p>
         </div>
-        <Terminal Command="kiw deploy" Class="mt-6 sm:mt-8 w-full" />
+        <Terminal Command="krew deploy" Class="mt-6 sm:mt-8 w-full" />
       </div>
 
     </div>
@@ -924,7 +946,7 @@ p  { font-size: 15px; color: var(--muted); }
           <tr class="hover:bg-primary/5 transition-colors">
             <td class="py-4 px-4 sm:px-6 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row3_dim">Developer CLI</td>
             <td class="py-4 px-4 sm:px-6 text-muted dark:text-muted-dark" data-i18n="matrix.row3_trad">Multiple: Air + npm + Cobra + Terraform</td>
-            <td class="py-4 px-4 sm:px-6 font-bold text-primary" data-i18n="matrix.row3_krewire">✓ One binary CLI: kiw</td>
+            <td class="py-4 px-4 sm:px-6 font-bold text-primary" data-i18n="matrix.row3_krewire">✓ One binary CLI: krew (kiw)</td>
           </tr>
           <tr class="hover:bg-primary/5 transition-colors">
             <td class="py-4 px-4 sm:px-6 font-bold text-fg dark:text-fg-dark" data-i18n="matrix.row4_dim">Configuration</td>
@@ -971,7 +993,7 @@ p  { font-size: 15px; color: var(--muted); }
           <Button Variant="outline" Size="lg" Href="https://open.krewire.com"><span data-i18n="cta.contribute">Contribute →</span></Button>
         </HStack>
         <div class="w-full max-w-md sm:max-w-lg md:max-w-xl mx-auto text-left mt-6 sm:mt-8">
-          <Terminal Command="kiw new my-app && cd my-app && kiw dev" Class="bg-bg dark:bg-bg-dark" />
+          <Terminal Command="krew new my-app && cd my-app && krew dev" Class="bg-bg dark:bg-bg-dark" />
         </div>
       </VStack>
     </div>

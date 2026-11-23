@@ -84,7 +84,7 @@
             <div class="pt-3.5 mt-2 border-t border-border-subtle flex flex-wrap items-center justify-between gap-3 text-xs">
               <div class="flex flex-wrap items-center gap-3 sm:gap-4 text-muted dark:text-muted-dark font-medium">
                 <span class="font-bold text-fg dark:text-fg-dark">Core Drivers:</span>
-                <a href="https://krewire.com/docs/getting-started" class="hover:text-primary transition-colors">CLI (<code class="code-inline">kiw</code>)</a>
+                <a href="https://krewire.com/docs/getting-started" class="hover:text-primary transition-colors">CLI (<code class="code-inline">krew</code>)</a>
                 <span>·</span>
                 <a href="https://krewire.com/docs/getting-started/dsl" class="hover:text-primary transition-colors">Component DSL (<code class="code-inline">.kiw</code>)</a>
                 <span>·</span>
