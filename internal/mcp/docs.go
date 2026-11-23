@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"io/fs"
+	"net/url"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -84,6 +85,8 @@ func (idx *DocIndexer) Search(query string, locale string, limit int) []SearchRe
 	}
 	if locale == "" {
 		locale = "en"
+	} else {
+		locale = strings.ToLower(strings.TrimSpace(locale))
 	}
 
 	tokens := strings.Fields(strings.ToLower(query))
@@ -148,28 +151,81 @@ func (idx *DocIndexer) Search(query string, locale string, limit int) []SearchRe
 }
 
 // Get retrieves a single documentation page by path and locale.
-func (idx *DocIndexer) Get(path string, locale string) (*DocPage, error) {
+// Supports full paths, clean paths, .md/.html extensions, URLs, and directory names.
+func (idx *DocIndexer) Get(rawPath string, locale string) (*DocPage, error) {
 	idx.mu.RLock()
 	defer idx.mu.RUnlock()
 
-	if locale == "" {
-		locale = "en"
+	rawPath = strings.TrimSpace(rawPath)
+	if rawPath == "" {
+		return nil, fmt.Errorf("path argument is required. Use list_docs to view available paths")
 	}
-	cleanTarget := stripNumericPrefixes(normalizePath(path))
 
+	normPath, detectedLocale := normalizeDocInputPath(rawPath)
+	if locale == "" {
+		if detectedLocale != "" {
+			locale = detectedLocale
+		} else {
+			locale = "en"
+		}
+	} else {
+		locale = strings.ToLower(strings.TrimSpace(locale))
+	}
+
+	cleanTarget := stripNumericPrefixes(normPath)
+
+	// Phase 1: Exact matches by Path or CleanPath
 	for _, page := range idx.pages {
 		if page.Locale != locale && locale != "all" {
 			continue
 		}
-		if normalizePath(page.Path) == normalizePath(path) ||
-			page.CleanPath == cleanTarget ||
-			strings.HasSuffix(normalizePath(page.Path), normalizePath(path)) ||
-			strings.HasSuffix(page.CleanPath, cleanTarget) {
+		if page.Path == normPath ||
+			page.CleanPath == normPath ||
+			page.Path == cleanTarget ||
+			page.CleanPath == cleanTarget {
 			return &page, nil
 		}
 	}
 
-	return nil, fmt.Errorf("documentation page not found: %s (locale: %s)", path, locale)
+	// Phase 2: Root index aliases
+	if normPath == "index" || normPath == "00-index" || normPath == "" {
+		for _, page := range idx.pages {
+			if page.Locale != locale && locale != "all" {
+				continue
+			}
+			if page.Path == "00-index" || page.CleanPath == "index" {
+				return &page, nil
+			}
+		}
+	}
+
+	// Phase 3: Directory index aliases (e.g. "getting-started" -> "02-getting-started/00-index")
+	for _, page := range idx.pages {
+		if page.Locale != locale && locale != "all" {
+			continue
+		}
+		if page.Path == normPath+"/00-index" ||
+			page.Path == normPath+"/index" ||
+			page.Path == cleanTarget+"/00-index" ||
+			(cleanTarget != "" && page.CleanPath == cleanTarget) {
+			return &page, nil
+		}
+	}
+
+	// Phase 4: Suffix segment matches (e.g. "08-mcp-server" -> "02-getting-started/08-mcp-server")
+	if normPath != "" {
+		for _, page := range idx.pages {
+			if page.Locale != locale && locale != "all" {
+				continue
+			}
+			if strings.HasSuffix(page.Path, "/"+normPath) ||
+				(cleanTarget != "" && cleanTarget != "index" && strings.HasSuffix(page.CleanPath, "/"+cleanTarget)) {
+				return &page, nil
+			}
+		}
+	}
+
+	return nil, fmt.Errorf("documentation page not found: %q (locale: %q). Available paths can be discovered using list_docs", rawPath, locale)
 }
 
 // List returns all documentation pages for a given locale.
@@ -179,12 +235,14 @@ func (idx *DocIndexer) List(locale string) []DocPage {
 
 	if locale == "" {
 		locale = "en"
+	} else {
+		locale = strings.ToLower(strings.TrimSpace(locale))
 	}
 
 	var out []DocPage
 	for _, page := range idx.pages {
 		if page.Locale == locale || locale == "all" {
-			// Return a shallow copy with truncated content for listing
+			// Return a shallow copy with empty content for compact listing
 			p := page
 			p.Content = ""
 			out = append(out, p)
@@ -199,8 +257,7 @@ func (idx *DocIndexer) List(locale string) []DocPage {
 }
 
 func parseDocPage(fullPath, raw string) DocPage {
-	// Normalize path: e.g. "content/en/docs/02-getting-started/01-quickstart.md"
-	rel := fullPath
+	rel := filepath.ToSlash(fullPath)
 	rel = strings.TrimPrefix(rel, "content/")
 	rel = strings.TrimSuffix(rel, ".md")
 
@@ -249,9 +306,19 @@ func parseDocPage(fullPath, raw string) DocPage {
 		}
 	}
 
-	canonicalURL := "https://krewire.com/docs/" + cleanPath
+	if desc == "" {
+		desc = fallbackDescription(body)
+	}
+
+	canonicalURL := "https://krewire.com/docs"
+	if cleanPath != "" && cleanPath != "index" {
+		canonicalURL = "https://krewire.com/docs/" + cleanPath
+	}
 	if locale == "id" {
-		canonicalURL = "https://krewire.com/id/docs/" + cleanPath
+		canonicalURL = "https://krewire.com/id/docs"
+		if cleanPath != "" && cleanPath != "index" {
+			canonicalURL = "https://krewire.com/id/docs/" + cleanPath
+		}
 	}
 
 	return DocPage{
@@ -274,6 +341,9 @@ func stripNumericPrefixes(path string) string {
 		if s != "" && s != "index" && s != "00-index" {
 			clean = append(clean, s)
 		}
+	}
+	if len(clean) == 0 {
+		return "index"
 	}
 	return strings.Join(clean, "/")
 }
@@ -311,15 +381,63 @@ func cleanYAMLString(s string) string {
 	return s
 }
 
-func normalizePath(p string) string {
+func normalizeDocInputPath(p string) (normPath string, detectedLocale string) {
+	p = strings.TrimSpace(p)
+
+	// If URL, parse out the path
+	if strings.Contains(p, "://") {
+		if u, err := url.Parse(p); err == nil {
+			p = u.Path
+		}
+	}
+
+	// Remove query and fragment if present
+	if idx := strings.IndexAny(p, "?#"); idx != -1 {
+		p = p[:idx]
+	}
+
+	p = filepath.ToSlash(p)
 	p = strings.Trim(p, "/")
+
+	// Strip common container and repo root prefixes
+	p = strings.TrimPrefix(p, "usr/share/nginx/html/")
 	p = strings.TrimPrefix(p, "content/")
-	p = strings.TrimPrefix(p, "en/docs/")
-	p = strings.TrimPrefix(p, "id/docs/")
+
+	// Detect and extract locale if encoded in path
+	if strings.HasPrefix(p, "id/docs/") {
+		detectedLocale = "id"
+		p = strings.TrimPrefix(p, "id/docs/")
+	} else if strings.HasPrefix(p, "en/docs/") {
+		detectedLocale = "en"
+		p = strings.TrimPrefix(p, "en/docs/")
+	} else if strings.HasPrefix(p, "id/") {
+		detectedLocale = "id"
+		p = strings.TrimPrefix(p, "id/")
+	} else if strings.HasPrefix(p, "en/") {
+		detectedLocale = "en"
+		p = strings.TrimPrefix(p, "en/")
+	}
+
 	p = strings.TrimPrefix(p, "docs/")
+	p = strings.Trim(p, "/")
 	p = strings.TrimSuffix(p, ".md")
 	p = strings.TrimSuffix(p, ".html")
-	return filepath.ToSlash(p)
+
+	return p, detectedLocale
+}
+
+func fallbackDescription(body string) string {
+	lines := strings.Split(body, "\n")
+	for _, l := range lines {
+		l = strings.TrimSpace(l)
+		if len(l) > 20 && !strings.HasPrefix(l, "#") && !strings.HasPrefix(l, "---") && !strings.HasPrefix(l, "```") {
+			if len(l) > 160 {
+				return l[:157] + "..."
+			}
+			return l
+		}
+	}
+	return "Documentation manuscript"
 }
 
 func generateExcerpt(content string, tokens []string) string {

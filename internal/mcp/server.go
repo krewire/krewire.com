@@ -465,6 +465,9 @@ func (s *Server) callTool(ctx context.Context, name string, argsRaw json.RawMess
 		if err := json.Unmarshal(argsRaw, &p); err != nil {
 			return fmt.Sprintf("invalid arguments: %v", err), true
 		}
+		if strings.TrimSpace(p.Path) == "" {
+			return "path argument is required. Use list_docs to view available paths.", true
+		}
 		page, err := s.docs.Get(p.Path, p.Locale)
 		if err != nil {
 			return fmt.Sprintf("error retrieving doc: %v", err), true

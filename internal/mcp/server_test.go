@@ -305,3 +305,218 @@ func fmtJSON(v any) string {
 	b, _ := json.Marshal(v)
 	return string(b)
 }
+
+func TestDocIndexer_GetDoc_AcceptanceCriteria(t *testing.T) {
+	// Create indexer with bilingual documents and numeric prefixes
+	mockFS := fstest.MapFS{
+		"content/en/docs/00-index.md": &fstest.MapFile{
+			Data: []byte(`---
+title: "Documentation Overview"
+description: "Master index of Krewire documentation"
+---
+# Documentation
+Welcome to Krewire documentation.
+`),
+		},
+		"content/en/docs/02-getting-started/00-index.md": &fstest.MapFile{
+			Data: []byte(`---
+title: "Getting Started"
+description: "Beginner track for Krewire"
+---
+# Getting Started
+Learn Krewire step by step.
+`),
+		},
+		"content/en/docs/02-getting-started/08-mcp-server.md": &fstest.MapFile{
+			Data: []byte(`---
+title: "Model Context Protocol (MCP) Server"
+description: "Connect AI coding agents directly to Krewire"
+tags:
+  - mcp
+  - agents
+---
+# MCP Server
+Krewire provides native MCP support.
+`),
+		},
+		"content/id/docs/00-index.md": &fstest.MapFile{
+			Data: []byte(`---
+title: "Dokumentasi Krewire"
+description: "Indeks utama dokumentasi Krewire"
+---
+# Dokumentasi
+Selamat datang di dokumentasi Krewire.
+`),
+		},
+		"content/id/docs/02-getting-started/08-mcp-server.md": &fstest.MapFile{
+			Data: []byte(`---
+title: "Server Model Context Protocol (MCP)"
+description: "Hubungkan agen koding AI langsung ke Krewire"
+tags:
+  - mcp
+  - agen
+---
+# Server MCP
+Krewire menyediakan dukungan MCP native.
+`),
+		},
+	}
+
+	idx, err := NewDocIndexer(mockFS)
+	if err != nil {
+		t.Fatalf("failed to create indexer: %v", err)
+	}
+
+	srv := NewServer(idx)
+	ctx := context.Background()
+
+	// Criteria 1 & 2 & 3: Every doc returned by list_docs can be fetched by path and clean_path with non-empty fields
+	for _, locale := range []string{"en", "id"} {
+		docs := idx.List(locale)
+		if len(docs) == 0 {
+			t.Fatalf("expected non-empty docs list for locale %s", locale)
+		}
+
+		for _, d := range docs {
+			// Test by Path
+			docByPath, err := idx.Get(d.Path, locale)
+			if err != nil {
+				t.Errorf("[%s] failed to get doc by Path %q: %v", locale, d.Path, err)
+			} else {
+				validateDocPage(t, docByPath, locale)
+			}
+
+			// Test by CleanPath
+			if d.CleanPath != "" {
+				docByClean, err := idx.Get(d.CleanPath, locale)
+				if err != nil {
+					t.Errorf("[%s] failed to get doc by CleanPath %q: %v", locale, d.CleanPath, err)
+				} else {
+					validateDocPage(t, docByClean, locale)
+				}
+			}
+		}
+	}
+
+	// Test path format variants for "02-getting-started/08-mcp-server"
+	variants := []string{
+		"02-getting-started/08-mcp-server",
+		"getting-started/mcp-server",
+		"/02-getting-started/08-mcp-server",
+		"/getting-started/mcp-server",
+		"02-getting-started/08-mcp-server.md",
+		"getting-started/mcp-server.md",
+		"getting-started/mcp-server.html",
+		"docs/getting-started/mcp-server",
+		"/docs/getting-started/mcp-server",
+		"https://krewire.com/docs/getting-started/mcp-server",
+		"http://localhost:8080/docs/getting-started/mcp-server",
+		"  getting-started/mcp-server  ",
+	}
+
+	for _, v := range variants {
+		doc, err := idx.Get(v, "en")
+		if err != nil {
+			t.Errorf("failed to retrieve variant %q: %v", v, err)
+		} else if doc.Path != "02-getting-started/08-mcp-server" {
+			t.Errorf("variant %q resolved to %q, expected %q", v, doc.Path, "02-getting-started/08-mcp-server")
+		}
+	}
+
+	// Test Indonesian retrieval with locale in path
+	idVariants := []string{
+		"id/docs/getting-started/mcp-server",
+		"id/getting-started/mcp-server",
+		"/id/docs/getting-started/mcp-server",
+		"https://krewire.com/id/docs/getting-started/mcp-server",
+	}
+	for _, v := range idVariants {
+		doc, err := idx.Get(v, "")
+		if err != nil {
+			t.Errorf("failed to retrieve ID variant %q: %v", v, err)
+		} else if doc.Locale != "id" {
+			t.Errorf("ID variant %q returned locale %q, expected 'id'", v, doc.Locale)
+		}
+	}
+
+	// Criteria 4: Unknown path returns isError: true with actionable error message
+	badReq := Request{
+		JSONRPC: "2.0",
+		ID:      50,
+		Method:  "tools/call",
+		Params: json.RawMessage(`{
+			"name": "get_doc",
+			"arguments": {"path": "non-existent-ch-99"}
+		}`),
+	}
+	respBad := srv.HandleRequest(ctx, badReq)
+	if respBad == nil || respBad.Result == nil {
+		t.Fatalf("expected non-nil response for bad path")
+	}
+	badMap, ok := respBad.Result.(map[string]any)
+	if !ok {
+		t.Fatalf("expected result map, got %T", respBad.Result)
+	}
+	if badMap["isError"] != true {
+		t.Errorf("expected isError: true for unknown doc, got %v", badMap["isError"])
+	}
+	contentSlice := badMap["content"].([]map[string]any)
+	errText := contentSlice[0]["text"].(string)
+	if !strings.Contains(errText, "documentation page not found") || !strings.Contains(errText, "list_docs") {
+		t.Errorf("expected actionable error message containing list_docs, got: %s", errText)
+	}
+
+	// Criteria 5: Regression test over HTTP transport
+	transport := NewHTTPTransport(srv)
+	mux := http.NewServeMux()
+	transport.Mount(mux, "/mcp")
+
+	httpReqBody := `{"jsonrpc":"2.0","id":60,"method":"tools/call","params":{"name":"get_doc","arguments":{"path":"getting-started/mcp-server"}}}`
+	httpReq := httptest.NewRequest(http.MethodPost, "/mcp/message", strings.NewReader(httpReqBody))
+	httpReq.Header.Set("Content-Type", "application/json")
+	w := httptest.NewRecorder()
+
+	mux.ServeHTTP(w, httpReq)
+	if w.Code != http.StatusOK {
+		t.Fatalf("HTTP get_doc returned %d: %s", w.Code, w.Body.String())
+	}
+	var httpResp Response
+	if err := json.Unmarshal(w.Body.Bytes(), &httpResp); err != nil {
+		t.Fatalf("failed to decode HTTP response: %v", err)
+	}
+	resMap := httpResp.Result.(map[string]any)
+	if resMap["isError"] == true {
+		t.Fatalf("unexpected isError true on valid get_doc")
+	}
+	txt := resMap["content"].([]any)[0].(map[string]any)["text"].(string)
+	var returnedPage DocPage
+	if err := json.Unmarshal([]byte(txt), &returnedPage); err != nil {
+		t.Fatalf("returned text is not valid DocPage JSON: %v", err)
+	}
+	validateDocPage(t, &returnedPage, "en")
+}
+
+func validateDocPage(t *testing.T, doc *DocPage, expectedLocale string) {
+	t.Helper()
+	if doc == nil {
+		t.Fatal("doc is nil")
+	}
+	if doc.Path == "" {
+		t.Errorf("empty doc.Path")
+	}
+	if doc.CleanPath == "" {
+		t.Errorf("empty doc.CleanPath for %s", doc.Path)
+	}
+	if doc.Locale != expectedLocale {
+		t.Errorf("expected locale %q, got %q", expectedLocale, doc.Locale)
+	}
+	if doc.Title == "" {
+		t.Errorf("empty doc.Title for %s", doc.Path)
+	}
+	if doc.Content == "" {
+		t.Errorf("empty doc.Content for %s", doc.Path)
+	}
+	if doc.URL == "" {
+		t.Errorf("empty doc.URL for %s", doc.Path)
+	}
+}
