@@ -14,8 +14,8 @@ Krewire adalah ekosistem open-source dengan desain **open-core**: inti publik be
 
 | Lapisan | Repositori | Lisensi |
 | :--- | :--- | :--- |
-| Inti open-source | `krewire`, `ui`, `krewire.com`, `krewire.github.io` | MIT (publik) |
-| Layanan enterprise & platform | `dash`, `cloud`, `auth`, `krew`, `internal` | Repositori platform & enterprise dengan portal/akses terdedikasi |
+| Inti open-source | `krewire`, `krew`, `tui`, `ui`, `krewire.com`, `krewire.github.io` | MIT (publik) |
+| Layanan enterprise & platform | `dash`, `cloud`, `auth`, `internal` | Repositori platform & enterprise dengan portal/akses terdedikasi |
 
 Lihat berkas LICENSE di setiap repositori.
 

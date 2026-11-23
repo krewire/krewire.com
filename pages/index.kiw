@@ -318,9 +318,15 @@ layout: Landing
         </div>
 
       </div>
+    </div>
 
-      <p class="text-sm text-muted dark:text-muted-dark leading-relaxed m-0" data-i18n="products.boundary_note">The open-source core (krew CLI, domain libraries, tui, and ui) is 100% MIT-licensed and self-sufficient. Dash, Cloud, and Auth provide specialized platform capabilities for virtual workspaces, hybrid PaaS hosting, and enterprise IAM.</p>
-      <Button Variant="outline" Size="md" Href="/docs/guides/open-core-and-licensing" Class="shrink-0"><span data-i18n="products.boundary_cta">Core vs. platform services →</span></Button>
+    <!-- Core vs. Platform Boundary Card -->
+    <div class="card p-6 sm:p-7 bg-bg-2 dark:bg-bg-dark-2 mt-8 sm:mt-10 flex flex-col md:flex-row md:items-center justify-between gap-5 border-2 border-border shadow-[4px_4px_0px_var(--border)]">
+      <div class="flex items-start sm:items-center gap-3.5 max-w-3xl">
+        <span class="icon-box bg-primary text-primary-content text-lg w-9 h-9 shrink-0 flex items-center justify-center font-bold">ℹ</span>
+        <p class="text-xs sm:text-sm text-muted dark:text-muted-dark leading-relaxed m-0" data-i18n="products.boundary_note">The open-source core (krew CLI, domain libraries, tui, and ui) is 100% MIT-licensed and self-sufficient. Dash, Cloud, and Auth provide specialized platform capabilities for virtual workspaces, hybrid PaaS hosting, and enterprise IAM.</p>
+      </div>
+      <Button Variant="outline" Size="md" Href="/docs/guides/open-core-and-licensing" Class="shrink-0 whitespace-nowrap"><span data-i18n="products.boundary_cta">Core vs. platform services →</span></Button>
     </div>
   </div>
 </section>
