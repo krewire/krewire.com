@@ -13,7 +13,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/krewire/krewire.com/internal/mcp"
+	"github.com/krewire/krewire.com/mcp/mcp"
 )
 
 const version = "0.2.4"

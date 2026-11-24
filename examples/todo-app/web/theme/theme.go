@@ -3,7 +3,7 @@
 // default.
 package theme
 
-import "github.com/krewire/ui"
+import "github.com/krewire/ui/core"
 
 // New returns the application theme with the default Krewire palette.
 func New() *ui.Theme {

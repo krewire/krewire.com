@@ -2,7 +2,7 @@
 // Pages reference these by name via PageSpec.Root.
 package components
 
-import "github.com/krewire/krewire/pkg/web/ssg"
+import "github.com/krewire/krewire/web/ssg"
 
 // heroBody is the default landing component. It expects a map with the keys
 // badge, title, subtitle, and an optional cta_left map of label/href.

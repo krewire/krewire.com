@@ -5,7 +5,7 @@ package pages
 import (
 	"net/http"
 
-	"github.com/krewire/krewire/pkg/web"
+	"github.com/krewire/krewire/web"
 )
 
 // Register wires all application pages into the web app. board computes the

@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"os"
 
-	rconfig "github.com/krewire/krewire/pkg/config"
-	validation "github.com/krewire/krewire/pkg/validation"
+	rconfig "github.com/krewire/krewire/config"
+	validation "github.com/krewire/krewire/validation"
 )
 
 // Metadata mirrors krewire.yaml.

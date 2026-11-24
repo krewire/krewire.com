@@ -7,9 +7,9 @@ import (
 	"io/fs"
 	"strings"
 
-	"github.com/krewire/krewire/pkg/web"
-	"github.com/krewire/krewire/pkg/web/ssg"
-	"github.com/krewire/ui"
+	"github.com/krewire/krewire/web"
+	"github.com/krewire/krewire/web/ssg"
+	"github.com/krewire/ui/core"
 	"github.com/krewire/ui/kiw"
 )
 

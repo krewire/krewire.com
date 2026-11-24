@@ -7,8 +7,8 @@ import (
 	"context"
 	"io/fs"
 
-	rvapp "github.com/krewire/krewire/pkg/app"
-	rvweb "github.com/krewire/krewire/pkg/web"
+	rvapp "github.com/krewire/krewire/app"
+	rvweb "github.com/krewire/krewire/web"
 	"todo-app/assets"
 	"todo-app/internal/config"
 	"todo-app/internal/db"

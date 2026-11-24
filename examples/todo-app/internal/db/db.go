@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/krewire/krewire/pkg/orm"
-	_ "modernc.org/sqlite" // pure-Go SQLite driver, registers "sqlite"
+	_ "github.com/krewire/hub/sqlite" // pure-Go SQLite driver, registers "sqlite"
+	"github.com/krewire/krewire/orm"
 
 	"todo-app/migrations"
 )

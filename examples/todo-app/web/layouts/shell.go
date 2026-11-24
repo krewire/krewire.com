@@ -1,7 +1,7 @@
 // Package layouts defines the application page shells (FRK-STR-006).
 package layouts
 
-import "github.com/krewire/krewire/pkg/web/ssg"
+import "github.com/krewire/krewire/web/ssg"
 
 const shellBody = "<!DOCTYPE html>\n" +
 	"<html lang=\"en\">\n" +

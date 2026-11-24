@@ -9,9 +9,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/krewire/krewire/pkg/orm"
-	"github.com/krewire/krewire/pkg/validation"
-	"github.com/krewire/krewire/pkg/web"
+	"github.com/krewire/krewire/orm"
+	"github.com/krewire/krewire/validation"
+	"github.com/krewire/krewire/web"
 
 	"todo-app/internal/models"
 )

@@ -3,7 +3,6 @@ module todo-app
 go 1.27.1
 
 require (
-	github.com/krewire/krewire v0.2.1-0.20261109102926-33fe553e8745
 	modernc.org/sqlite v1.62.0
 )
 
@@ -13,7 +12,6 @@ require (
 	github.com/dustin/go-humanize v1.1.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/kr/text v0.2.0 // indirect
-	github.com/krewire/ui v0.0.0-20261109123017-e3ad186d0076 // indirect
 	github.com/mattn/go-isatty v0.0.24 // indirect
 	github.com/ncruces/go-strftime v1.1.0 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
@@ -29,8 +27,6 @@ require (
 	modernc.org/memory v1.12.1 // indirect
 )
 
-replace github.com/krewire/krewire => ../../../krewire
-replace github.com/krewire/krewire/pkg/router => ../../../krewire/pkg/router
-replace github.com/krewire/ui => ../../../ui
+replace github.com/krewire/krewire/router => ../../../krewire/router
 replace github.com/krewire/ui/styles => ../../../ui/styles
 replace github.com/krewire/ui/widget => ../../../ui/widget
