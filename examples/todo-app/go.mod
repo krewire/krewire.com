@@ -28,3 +28,8 @@ require (
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.12.1 // indirect
 )
+
+replace github.com/krewire/krewire => ../../../krewire
+replace github.com/krewire/ui => ../../../ui
+replace github.com/krewire/ui/styles => ../../../ui/styles
+replace github.com/krewire/ui/widget => ../../../ui/widget

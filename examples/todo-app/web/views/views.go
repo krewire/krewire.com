@@ -7,10 +7,10 @@ import (
 	"io/fs"
 	"strings"
 
-	"github.com/krewire/krewire/pkg/kiw"
-	"github.com/krewire/krewire/pkg/ui"
 	"github.com/krewire/krewire/pkg/web"
 	"github.com/krewire/krewire/pkg/web/ssg"
+	"github.com/krewire/ui"
+	"github.com/krewire/ui/kiw"
 )
 
 //go:embed *.kiw
