@@ -31,8 +31,7 @@ on:
           - 'experimental'
           - 'dev'
 
-permissions:
-  contents: write
+permissions: {}
 
 concurrency:
   group: release-krewire-com-${{ github.ref }}
@@ -42,11 +41,19 @@ jobs:
   classify:
     name: Classify Release Track
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     outputs:
       track: ${{ steps.meta.outputs.track }}
       version: ${{ steps.meta.outputs.version }}
       is_prerelease: ${{ steps.meta.outputs.is_prerelease }}
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Verify Release Policy Matrix Conformance
+        run: ./scripts/verify_release_matrix.sh
+
       - name: Parse Trigger & Track
         id: meta
         run: |
@@ -107,17 +114,19 @@ jobs:
     name: Build Portal Static Artifacts
     needs: [classify]
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Setup Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@f111f3307d8850f501ac008e886eec1fd1932a34 # v5.3.0
         with:
           go-version: '1.24'
           check-latest: true
 
-      - name: Install krew CLI
+      - name: Install canonical Krew CLI
         run: |
           git clone --depth 1 --branch main "https://github.com/krewire/krewire.git" "${RUNNER_TEMP}/krewire"
           git clone --depth 1 --branch main "https://github.com/krewire/ui.git" "${RUNNER_TEMP}/ui"
@@ -127,6 +136,7 @@ jobs:
           go work init ./krewire ./ui ./tui ./krew
           cd "${RUNNER_TEMP}/krew"
           go build -o "${RUNNER_TEMP}/bin/krew" ./cmd/krew
+          ln -sf "${RUNNER_TEMP}/bin/krew" "${RUNNER_TEMP}/bin/kiw"
           echo "${RUNNER_TEMP}/bin" >> "$GITHUB_PATH"
 
       - name: Build Static Site
@@ -144,7 +154,7 @@ jobs:
           sha256sum "${BUNDLE}" > "${BUNDLE}.sha256"
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 # v4.6.1
         with:
           name: portal-dist
           path: dist/*
@@ -154,12 +164,14 @@ jobs:
     name: Publish Release Assets
     needs: [classify, build-site]
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Download Built Artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@cc203385981b70ca67e1cc392babf9cc229d5806 # v4.1.9
         with:
           name: portal-dist
           path: release-assets
@@ -171,7 +183,7 @@ jobs:
           ls -la
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@c95fe1489396fe8a9eb87c0abf8aa5b2ef267fda # v2.2.1
         if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
         with:
           tag_name: ${{ needs.classify.outputs.version }}

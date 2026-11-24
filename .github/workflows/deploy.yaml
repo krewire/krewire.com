@@ -1,9 +1,9 @@
 name: Deploy to krewire.com (Production)
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Trigger on stable version git tags only (e.g. v0.1.0, v1.0.0, v2.1.3).
-# Pre-releases, development branches, and raw commits must pass through
-# the release process before reaching production.
+# Trigger on verified stable version git tags and successful stable Release Pipelines.
+# Pre-releases, experimental tracks, development branches, and failed pipeline runs
+# are strictly blocked from reaching the production portal (ADR-R7P3K / krewire.com#43).
 # ─────────────────────────────────────────────────────────────────────────────
 on:
   push:
@@ -16,9 +16,11 @@ on:
   workflow_dispatch:
     inputs:
       reason:
-        description: 'Reason for manual production deployment'
-        required: false
-        default: 'Manual maintenance trigger'
+        description: 'Auditable reason for manual production deployment'
+        required: true
+        default: 'Production maintenance deployment'
+
+permissions: {}
 
 concurrency:
   group: deploy-production
@@ -26,34 +28,137 @@ concurrency:
 
 jobs:
   # ─────────────────────────────────────────────────────────────────────────────
-  # JOB 1 — Build the static site with strict quality gates
+  # JOB 1 — Release Policy & Gate Verification (Strict Security Boundary)
+  # ─────────────────────────────────────────────────────────────────────────────
+  gate:
+    name: Verify Release Gate & Track
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      deploy_sha: ${{ steps.verify.outputs.deploy_sha }}
+      deploy_version: ${{ steps.verify.outputs.deploy_version }}
+      deploy_track: ${{ steps.verify.outputs.deploy_track }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Verify Release Policy Matrix Conformance
+        run: ./scripts/verify_release_matrix.sh
+
+      - name: Verify Event & Enforce Release Policy
+        id: verify
+        run: |
+          EVENT="${{ github.event_name }}"
+          echo "=========================================================="
+          echo "▶ Evaluating production deployment trigger: ${EVENT}"
+          echo "=========================================================="
+
+          DEPLOY_SHA=""
+          DEPLOY_VERSION=""
+          DEPLOY_TRACK=""
+
+          if [ "${EVENT}" = "workflow_run" ]; then
+            CONCLUSION="${{ github.event.workflow_run.conclusion }}"
+            WORKFLOW_NAME="${{ github.event.workflow_run.name }}"
+            HEAD_BRANCH="${{ github.event.workflow_run.head_branch }}"
+            HEAD_SHA="${{ github.event.workflow_run.head_sha }}"
+
+            echo "Originating Workflow: ${WORKFLOW_NAME}"
+            echo "Workflow Conclusion:  ${CONCLUSION}"
+            echo "Originating Ref/Tag:  ${HEAD_BRANCH}"
+            echo "Originating Head SHA: ${HEAD_SHA}"
+
+            # 1. Gate on successful completion
+            if [ "${CONCLUSION}" != "success" ]; then
+              echo "✗ ERROR: Originating Release Pipeline conclusion is '${CONCLUSION}' (expected: 'success'). Deployment aborted."
+              exit 1
+            fi
+
+            # 2. Gate on non-empty head SHA
+            if [ -z "${HEAD_SHA}" ]; then
+              echo "✗ ERROR: Missing originating head_sha. Deployment aborted."
+              exit 1
+            fi
+
+            # 3. Reject pre-release, experimental, and dev tracks
+            if [[ "${HEAD_BRANCH}" =~ -rc|-beta|-alpha|-exp|-dev|-nightly ]]; then
+              echo "✗ ERROR: Pre-release, experimental, or dev track '${HEAD_BRANCH}' cannot deploy to production."
+              exit 1
+            fi
+
+            # 4. Enforce SemVer stable or LTS tag pattern
+            if [[ ! "${HEAD_BRANCH}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-lts.*)?$ ]]; then
+              echo "✗ ERROR: Ref '${HEAD_BRANCH}' is not a valid stable or LTS release tag. Default branch and untagged builds cannot deploy to production."
+              exit 1
+            fi
+
+            DEPLOY_SHA="${HEAD_SHA}"
+            DEPLOY_VERSION="${HEAD_BRANCH}"
+            DEPLOY_TRACK="stable"
+            if [[ "${HEAD_BRANCH}" =~ -lts ]]; then DEPLOY_TRACK="lts"; fi
+
+          elif [ "${EVENT}" = "push" ]; then
+            TAG="${GITHUB_REF#refs/tags/}"
+            echo "Push Tag: ${TAG}"
+            echo "Commit:   ${GITHUB_SHA}"
+
+            if [[ ! "${TAG}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-lts.*)?$ ]]; then
+              echo "✗ ERROR: '${TAG}' is not a valid stable or LTS SemVer tag."
+              exit 1
+            fi
+
+            DEPLOY_SHA="${GITHUB_SHA}"
+            DEPLOY_VERSION="${TAG}"
+            DEPLOY_TRACK="stable"
+            if [[ "${TAG}" =~ -lts ]]; then DEPLOY_TRACK="lts"; fi
+
+          elif [ "${EVENT}" = "workflow_dispatch" ]; then
+            REASON="${{ inputs.reason }}"
+            if [ -z "${REASON}" ] || [ "${REASON}" = "none" ]; then
+              echo "✗ ERROR: Manual production deployment requires an auditable reason."
+              exit 1
+            fi
+
+            DEPLOY_SHA="${GITHUB_SHA}"
+            DEPLOY_VERSION="manual-${GITHUB_SHA::7}"
+            DEPLOY_TRACK="manual"
+            echo "▶ Manual deployment authorized by @${{ github.actor }}. Reason: ${REASON}"
+
+          else
+            echo "✗ ERROR: Unsupported event '${EVENT}'."
+            exit 1
+          fi
+
+          echo "deploy_sha=${DEPLOY_SHA}" >> "$GITHUB_OUTPUT"
+          echo "deploy_version=${DEPLOY_VERSION}" >> "$GITHUB_OUTPUT"
+          echo "deploy_track=${DEPLOY_TRACK}" >> "$GITHUB_OUTPUT"
+          echo "✓ Gate validation passed. Deploying Version: ${DEPLOY_VERSION} (Track: ${DEPLOY_TRACK}) at SHA: ${DEPLOY_SHA}"
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # JOB 2 — Build the static site with strict quality gates
   # ─────────────────────────────────────────────────────────────────────────────
   build:
     name: Build site (Production Gate)
+    needs: [gate]
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Validate Release Tag
-        if: startsWith(github.ref, 'refs/tags/')
-        run: |
-          TAG="${GITHUB_REF#refs/tags/}"
-          echo "▶ Validating stable release tag: ${TAG}"
-          if [[ ! "${TAG}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-lts.*)?$ ]]; then
-            echo "✗ Error: '${TAG}' is not a valid stable or LTS SemVer tag."
-            exit 1
-          fi
-          echo "✓ Stable version tag validated: ${TAG}"
+      - name: Checkout Verified Commit
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ needs.gate.outputs.deploy_sha }}
+          fetch-depth: 0
 
       - name: Setup Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@f111f3307d8850f501ac008e886eec1fd1932a34 # v5.3.0
         with:
           go-version: "stable"
           check-latest: true
           cache: true
 
-      - name: Install krew CLI
+      - name: Install canonical Krew CLI
         run: |
           git clone --depth 1 --branch main "https://github.com/krewire/krewire.git" "${RUNNER_TEMP}/krewire"
           git clone --depth 1 --branch main "https://github.com/krewire/ui.git" "${RUNNER_TEMP}/ui"
@@ -63,6 +168,7 @@ jobs:
           go work init ./krewire ./ui ./tui ./krew
           cd "${RUNNER_TEMP}/krew"
           go build -o "${RUNNER_TEMP}/bin/krew" ./cmd/krew
+          ln -sf "${RUNNER_TEMP}/bin/krew" "${RUNNER_TEMP}/bin/kiw"
           echo "${RUNNER_TEMP}/bin" >> "$GITHUB_PATH"
 
       - name: Verify krew installation
@@ -101,51 +207,69 @@ jobs:
           file .krewire/build/scripts/install.sh | grep -q "shell script\|text"
           echo "✓ All required build outputs present."
 
+      - name: Generate Build Provenance Checksums
+        run: |
+          cd .krewire/build
+          find . -type f -exec sha256sum {} + | sort -k2 > BUILD_MANIFEST.sha256
+          echo "▶ Build manifest generated ($(wc -l < BUILD_MANIFEST.sha256) files):"
+          head -n 10 BUILD_MANIFEST.sha256
+
       - name: Upload build artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 # v4.6.1
         with:
-          name: site-build-${{ github.sha }}
+          name: site-build-${{ needs.gate.outputs.deploy_sha }}
           path: .krewire/build
           retention-days: 3
           if-no-files-found: error
 
   # ─────────────────────────────────────────────────────────────────────────────
-  # JOB 2 — Build Docker image & deploy to VPS with atomic zero-downtime & rollback
+  # JOB 3 — Build Docker image & deploy to VPS with atomic zero-downtime & rollback
   # ─────────────────────────────────────────────────────────────────────────────
   deploy:
     name: Deploy to VPS (Production Release)
     runs-on: ubuntu-latest
-    needs: build
+    needs: [gate, build]
+    permissions:
+      contents: read
     environment:
       name: production
       url: https://krewire.com
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Checkout Verified Commit
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ needs.gate.outputs.deploy_sha }}
 
       - name: Download build artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@cc203385981b70ca67e1cc392babf9cc229d5806 # v4.1.9
         with:
-          name: site-build-${{ github.sha }}
+          name: site-build-${{ needs.gate.outputs.deploy_sha }}
           path: .krewire/build
 
+      - name: Verify Downloaded Manifest Checksum
+        run: |
+          cd .krewire/build
+          sha256sum -c BUILD_MANIFEST.sha256 > /dev/null
+          echo "✓ Build manifest integrity verified before Docker packaging."
+
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@b5ca514318bd6ebac0fb2aedd5d36ec1b5c232a2 # v3.10.0
 
       - name: Determine Version Tags
         id: meta
         run: |
-          RELEASE_TAG="${GITHUB_REF#refs/tags/}"
-          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
-            echo "version_tag=${RELEASE_TAG}" >> "$GITHUB_OUTPUT"
-            echo "image_tags=krewire-app:${{ github.sha }},krewire-app:${RELEASE_TAG},krewire-app:latest" >> "$GITHUB_OUTPUT"
+          VERSION="${{ needs.gate.outputs.deploy_version }}"
+          SHA="${{ needs.gate.outputs.deploy_sha }}"
+          if [[ "${VERSION}" =~ ^v[0-9]+ ]]; then
+            echo "version_tag=${VERSION}" >> "$GITHUB_OUTPUT"
+            echo "image_tags=krewire-app:${SHA},krewire-app:${VERSION},krewire-app:latest" >> "$GITHUB_OUTPUT"
           else
-            echo "version_tag=manual-${{ github.sha }}" >> "$GITHUB_OUTPUT"
-            echo "image_tags=krewire-app:${{ github.sha }},krewire-app:latest" >> "$GITHUB_OUTPUT"
+            echo "version_tag=${VERSION}" >> "$GITHUB_OUTPUT"
+            echo "image_tags=krewire-app:${SHA},krewire-app:latest" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Build Docker image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@471d1dc4e07e5cdedd4c2171150001c434f0b7a4 # v6.15.0
         with:
           context: .
           file: Dockerfile
@@ -157,7 +281,7 @@ jobs:
 
       - name: Export Docker image (with integrity checksum)
         run: |
-          docker save krewire-app:${{ github.sha }} | gzip > /tmp/krewire-app.tar.gz
+          docker save krewire-app:${{ needs.gate.outputs.deploy_sha }} | gzip > /tmp/krewire-app.tar.gz
           sha256sum /tmp/krewire-app.tar.gz > /tmp/krewire-app.tar.gz.sha256
           echo "Image checksum:"
           cat /tmp/krewire-app.tar.gz.sha256
@@ -202,13 +326,13 @@ jobs:
       - name: Deploy on VPS
         if: steps.check_ssh.outputs.reachable == 'true'
         env:
-          SHA: ${{ github.sha }}
+          SHA: ${{ needs.gate.outputs.deploy_sha }}
           VERSION: ${{ steps.meta.outputs.version_tag }}
         run: |
           ssh -i ~/.ssh/deploy_key \
               -o StrictHostKeyChecking=yes \
               -o BatchMode=yes \
-              ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} bash -s "${{ github.sha }}" "${{ steps.meta.outputs.version_tag }}" << 'REMOTE'
+              ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} bash -s "${{ needs.gate.outputs.deploy_sha }}" "${{ steps.meta.outputs.version_tag }}" << 'REMOTE'
             set -euo pipefail
             SHA="$1"
             VERSION="$2"
