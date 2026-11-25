@@ -51,5 +51,9 @@ krewire.com/
 
 - [**Getting Started**](./getting-started.md) — Local environment setup, `krew` installation, live preview with `krew serve`, and building with `krew build`.
 - [**Architecture**](./architecture.md) — SSG compilation pipeline, `.kiw` DSL integration, component playground, and production hosting model.
+- [**Production Deployment**](./deployment.md) — Cloudflare Edge -> Host Nginx (Port 80, zero origin SSL) -> `krewire-app` Docker container (`127.0.0.1:8090:80`).
+- [**Go Modules & Examples**](./modules/index.md) — Technical reference for the Go modules in this repository:
+  - [`mcp`](./modules/mcp.md) — Public MCP server (`krewire-mcp-server`) over HTTP/SSE and `stdio`.
+  - [`todo-app`](./modules/todo-app.md) — Full-stack Go + SQLite + `.kiw` SSR companion example (`examples/todo-app`).
 - [**Contributing**](../CONTRIBUTING.md) — Contribution workflow, bilingual authoring standards, theme conventions, and quality gates.
 - [**Agent Guidelines**](../AGENTS.md) — Progress tracking, Git discipline, and automated quality gates.
