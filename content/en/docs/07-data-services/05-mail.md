@@ -4,9 +4,9 @@ description: "Unified transactional email dispatch across multiple providers: SM
 date: "2026-10-25"
 ---
 
-# Transactional Mailer (`pkg/mail`)
+# Transactional Mailer (`mail`)
 
-`pkg/mail` dispatches transactional emails across different providers without rewriting business code. It decouples message composition from delivery mechanics.
+`mail` dispatches transactional emails across different providers without rewriting business code. It decouples message composition from delivery mechanics.
 
 ## Supported Mail Drivers
 
@@ -27,7 +27,7 @@ import (
     "context"
     "os"
 
-    "github.com/krewire/krewire/pkg/mail"
+    "github.com/krewire/krewire/mail"
 )
 
 func main() {

@@ -1,14 +1,14 @@
 ---
 title: "Pola Resiliensi & Circuit Breaker"
-description: "Komunikasi jaringan toleran kesalahan dengan retry backoff berjitter, propagasi batas waktu, dan circuit breaker di pkg/resilience."
+description: "Komunikasi jaringan toleran kesalahan dengan retry backoff berjitter, propagasi batas waktu, dan circuit breaker di resilience."
 date: "2026-10-25"
 ---
 
-# Pola Resiliensi & Circuit Breaker (`pkg/resilience`)
+# Pola Resiliensi & Circuit Breaker (`resilience`)
 
-Jalur impor: `github.com/krewire/krewire/pkg/resilience`
+Jalur impor: `github.com/krewire/krewire/resilience`
 
-Sistem terdistribusi dan aplikasi web kerap menghadapi kegagalan jaringan. `pkg/resilience` menyediakan primitif keandalan bawaan untuk mengisolasi kegagalan sementara dan melindungi sistem downstream.
+Sistem terdistribusi dan aplikasi web kerap menghadapi kegagalan jaringan. `resilience` menyediakan primitif keandalan bawaan untuk mengisolasi kegagalan sementara dan melindungi sistem downstream.
 
 ---
 
@@ -20,7 +20,7 @@ package main
 import (
 	"context"
 	"time"
-	"github.com/krewire/krewire/pkg/resilience"
+	"github.com/krewire/krewire/resilience"
 )
 
 func main() {

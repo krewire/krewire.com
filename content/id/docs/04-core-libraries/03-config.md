@@ -1,14 +1,14 @@
 ---
 title: "Konfigurasi Deklaratif"
-description: "Pemuatan konfigurasi YAML tipe-aman dengan overlay variabel lingkungan dan pengikatan field struct di pkg/config."
+description: "Pemuatan konfigurasi YAML tipe-aman dengan overlay variabel lingkungan dan pengikatan field struct di config."
 date: "2026-10-25"
 ---
 
-# Konfigurasi Deklaratif (`pkg/config`)
+# Konfigurasi Deklaratif (`config`)
 
-Jalur impor: `github.com/krewire/krewire/pkg/config`
+Jalur impor: `github.com/krewire/krewire/config`
 
-Paket `pkg/config` menyediakan pemuatan konfigurasi bertipe kuat dari berkas YAML dengan *overlay* variabel lingkungan untuk seluruh ekosistem Krewire.
+Paket `config` menyediakan pemuatan konfigurasi bertipe kuat dari berkas YAML dengan *overlay* variabel lingkungan untuk seluruh ekosistem Krewire.
 
 Urutan prioritas berlaku mutlak:
 $$\text{Bawaan Struct} < \text{Berkas Konfigurasi YAML} < \text{Variabel Lingkungan}$$
@@ -41,8 +41,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/krewire/krewire/pkg/config"
-	"github.com/krewire/krewire/pkg/validation"
+	"github.com/krewire/krewire/config"
+	"github.com/krewire/krewire/validation"
 )
 
 type ServerConfig struct {

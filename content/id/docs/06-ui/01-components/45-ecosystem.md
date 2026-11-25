@@ -1,6 +1,6 @@
 ---
 title: "Ecosystem"
-description: "Komponen grid interaktif untuk menampilkan arsitektur 10 repositori Krewire."
+description: "Komponen grid interaktif untuk menampilkan arsitektur 11 repositori Krewire."
 date: "2026-11-09"
 ---
 
@@ -8,7 +8,7 @@ date: "2026-11-09"
 
 Kategori: **Tampilan Data & Konten**
 
-Komponen grid interaktif untuk menampilkan arsitektur 10 repositori Krewire.
+Komponen grid interaktif untuk menampilkan arsitektur 11 repositori Krewire.
 
 ---
 

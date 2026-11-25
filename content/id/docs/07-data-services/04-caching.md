@@ -1,14 +1,14 @@
 ---
 title: "Cache Multi-Driver"
-description: "Caching berkinerja tinggi berbasis memori, berkas fisik, Redis, dan Memcached dengan TTL, pembersihan kedaluwarsa, dan pola Remember di pkg/cache."
+description: "Caching berkinerja tinggi berbasis memori, berkas fisik, Redis, dan Memcached dengan TTL, pembersihan kedaluwarsa, dan pola Remember di cache."
 date: "2026-10-25"
 ---
 
-# Cache Multi-Driver (`pkg/cache`)
+# Cache Multi-Driver (`cache`)
 
-Jalur impor: `github.com/krewire/krewire/pkg/cache`
+Jalur impor: `github.com/krewire/krewire/cache`
 
-Pustaka `pkg/cache` menghadirkan abstraksi penyimpanan cache kunci-nilai (key-value) terpadu dengan dukungan kedaluwarsa TTL, batas eviksi LRU, pembersihan latar belakang otomatis, serta pola atomik `Remember` di seluruh ekosistem Krewire.
+Pustaka `cache` menghadirkan abstraksi penyimpanan cache kunci-nilai (key-value) terpadu dengan dukungan kedaluwarsa TTL, batas eviksi LRU, pembersihan latar belakang otomatis, serta pola atomik `Remember` di seluruh ekosistem Krewire.
 
 ---
 
@@ -78,7 +78,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/krewire/krewire/pkg/cache"
+	"github.com/krewire/krewire/cache"
 )
 
 func GetUserProfile(ctx context.Context, c cache.Cache, userID string) ([]byte, error) {

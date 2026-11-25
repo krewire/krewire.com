@@ -1,14 +1,14 @@
 ---
 title: "Penyimpanan Objek Multi-Driver"
-description: "Abstraksi penyimpanan objek terpadu dengan driver yang dapat ditukar untuk memori, disk lokal, Redis, dan Amazon S3 di pkg/storage."
+description: "Abstraksi penyimpanan objek terpadu dengan driver yang dapat ditukar untuk memori, disk lokal, Redis, dan Amazon S3 di storage."
 date: "2026-10-25"
 ---
 
-# Penyimpanan Objek Multi-Driver (`pkg/storage`)
+# Penyimpanan Objek Multi-Driver (`storage`)
 
-Jalur impor: `github.com/krewire/krewire/pkg/storage`
+Jalur impor: `github.com/krewire/krewire/storage`
 
-Paket `pkg/storage` mendefinisikan abstraksi penyimpanan objek biner berkinerja tinggi yang ter-decoupling. Melalui antarmuka `storage.Store`, aplikasi tidak terikat secara kaku pada SDK vendor cloud tertentu, sehingga tetap portabel dan dapat bertransisi dengan mulus dari satu VPS hemat hingga lingkungan cloud terdistribusi.
+Paket `storage` mendefinisikan abstraksi penyimpanan objek biner berkinerja tinggi yang ter-decoupling. Melalui antarmuka `storage.Store`, aplikasi tidak terikat secara kaku pada SDK vendor cloud tertentu, sehingga tetap portabel dan dapat bertransisi dengan mulus dari satu VPS hemat hingga lingkungan cloud terdistribusi.
 
 ---
 
@@ -87,7 +87,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/krewire/krewire/pkg/storage"
+	"github.com/krewire/krewire/storage"
 )
 
 type MediaService struct {

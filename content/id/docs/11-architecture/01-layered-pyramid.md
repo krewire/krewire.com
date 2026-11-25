@@ -41,15 +41,15 @@ Layer 4: Platform Engines & Cloud          Cloud (PaaS) ∥ Auth (IAM / SSO) ∥
    ↓
 Layer 3: Universal Developer Driver & CLI (krew driven by krewire.yaml)
    ↓
-Layer 2: UI Foundation & Domain Libraries  kui (.kiw components) · pkg/* (web, orm, sec, …)
+Layer 2: UI Foundation & Domain Libraries  ui (.kiw components) · hub · krewire modules (web, orm, sec, …)
    ↓
-Layer 1: Core Foundation & Kernel          pkg/model · pkg/errs · pkg/version · pkg/lifecycle
+Layer 1: Core Foundation & Kernel          model · errs · version · lifecycle
    ↓
 Layer 0: Go Standard Library & OS Primitives
 ```
 
 - **Ketat hanya ke arah bawah:** sebuah lapisan hanya boleh mengimpor lapisan di bawahnya (`Layer N → Layer < N`). Impor ke atas dilarang dan terdeteksi oleh `layering_test.go`.
-- **Isolasi kernel:** `pkg/model` hanya bergantung pada pustaka standar dan `pkg/errs`.
+- **Isolasi kernel:** `model` hanya bergantung pada pustaka standar dan `errs`.
 - **Enkapsulasi CLI:** tidak ada pustaka atau paket platform yang boleh mengimpor `krew`. Proyek pengguna yang dihasilkan bergantung pada pustaka Krewire, tidak pernah pada CLI.
 
 ## 3. Di Dalam Repositori Inti
@@ -60,9 +60,9 @@ Jika diperbesar ke `github.com/krewire/krewire`, gagasan yang sama diterapkan se
 | :--- | :--- | :--- |
 | 5 | Blueprint scaffolding (`templates/*`) | Layer 0–4 |
 | 4 | Perkakas pengembang (`krew`) | Layer 0–3 |
-| 3 | Pustaka domain (`pkg/web`, `pkg/sec`, `pkg/orm`, `pkg/ui`, …) | Layer 0–2 dan paket domain sejajar, secara asiklik |
-| 2 | Eksekusi & supervisi (`pkg/lifecycle`, `pkg/env`, `pkg/log`) | Layer 0–1 |
-| 1 | Inti deklaratif (`pkg/errs`, `pkg/model`, `pkg/version`) | Pustaka standar (`model`, `version` boleh mengimpor `errs`) |
+| 3 | Pustaka domain (`web`, `sec`, `orm`, `ui`, …) | Layer 0–2 dan paket domain sejajar, secara asiklik |
+| 2 | Eksekusi & supervisi (`lifecycle`, `env`, `log`) | Layer 0–1 |
+| 1 | Inti deklaratif (`errs`, `model`, `version`) | Pustaka standar (`model`, `version` boleh mengimpor `errs`) |
 | 0 | Pustaka standar Go | — |
 
 Lima invarian menjaga tangga ini tetap konsisten:
@@ -70,10 +70,10 @@ Lima invarian menjaga tangga ini tetap konsisten:
 | # | Invarian | Ditegakkan oleh |
 | :--- | :--- | :--- |
 | 1 | **Arah hanya ke bawah** — setiap sisi impor mengarah ke lapisan yang lebih rendah, atau tetap asiklik di dalam Layer 3. | `TestFoundationLayering`, `TestUIDoesNotImportWeb` di `layering_test.go` |
-| 2 | **Lantai dasar** — `pkg/errs` hanya mengimpor pustaka standar; `model` dan `version` hanya menambahkan `errs`. | `pkg/errs/dependency_test.go`, `pkg/model/dependency_test.go` |
+| 2 | **Lantai dasar** — `errs` hanya mengimpor pustaka standar; `model` dan `version` hanya menambahkan `errs`. | `errs/dependency_test.go`, `model/dependency_test.go` |
 | 3 | **Tanpa nama ke atas** — paket fondasi tidak berisi string literal yang menyebut paket di atasnya. | `TestFoundationNamesNoHigherPackage` |
-| 4 | **Inti hermetis** — `pkg/model` tidak memiliki impor pihak ketiga maupun impor Krewire lainnya. | `TestModel_StdlibBoundary` |
-| 5 | **Isolasi perkakas** — tidak ada apa pun di bawah `pkg/` atau `templates/` yang mengimpor `krew`. | `TestPackagesNeverImportKiw` |
+| 4 | **Inti hermetis** — `model` tidak memiliki impor pihak ketiga maupun impor Krewire lainnya. | `TestModel_StdlibBoundary` |
+| 5 | **Isolasi perkakas** — tidak ada apa pun di bawah modul `krewire` atau `templates/` yang mengimpor `krew`. | `TestPackagesNeverImportKiw` |
 
 ## 4. Pemisahan Peer & Pola Bridge/Gateway
 

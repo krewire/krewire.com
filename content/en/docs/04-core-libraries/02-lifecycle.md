@@ -4,9 +4,9 @@ description: "Imperative control plane of Krewire: kernel supervisor, module reg
 date: "2026-10-25"
 ---
 
-# Lifecycle Supervision & Kernel (`pkg/lifecycle`)
+# Lifecycle Supervision & Kernel (`lifecycle`)
 
-Import path: `github.com/krewire/krewire/pkg/lifecycle`
+Import path: `github.com/krewire/krewire/lifecycle`
 
 `lifecycle.Kernel` is the imperative control plane: it binds a validated `model.Project` to registered modules and executes a declared workload.
 
@@ -21,8 +21,8 @@ import (
 	"context"
 	"os"
 
-	"github.com/krewire/krewire/pkg/lifecycle"
-	"github.com/krewire/krewire/pkg/model"
+	"github.com/krewire/krewire/lifecycle"
+	"github.com/krewire/krewire/model"
 )
 
 func main() {

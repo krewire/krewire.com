@@ -47,7 +47,7 @@ Ikuti secara berurutan. Setiap perintah di dalamnya telah dijalankan terhadap CL
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Pengelola tugas dengan <code>krew new --app</code>, SQLite melalui <code>pkg/orm</code>, halaman <code>.kiw</code> dengan komponen Krewire UI, form tervalidasi yang dilindungi CSRF, dan build satu binary.
+      Pengelola tugas dengan <code>krew new --app</code>, SQLite melalui <code>orm</code>, halaman <code>.kiw</code> dengan komponen Krewire UI, form tervalidasi yang dilindungi CSRF, dan build satu binary.
     </p>
   </div>
 

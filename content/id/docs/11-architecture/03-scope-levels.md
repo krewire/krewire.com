@@ -32,13 +32,13 @@ Workspace  ───►  Module  ───►  Domain  ───►  Service  �
 | 1 | **Module** | Modul Go — unit yang Anda beri versi, rilis, dan impor. | `github.com/krewire/krewire`, `github.com/krewire/ui` |
 | 2 | **Domain** | Bounded context di dalam modul: sekumpulan layanan yang kohesif, biasanya `internal/<domain>/`. Sebelum diekstraksi, domain adalah sekelompok paket; setelah diekstraksi, domain dapat menjadi modulnya sendiri. | `internal/catalog`, `internal/user` |
 | 3 | **Service** | Unit runtime yang dapat di-deploy, diimplementasikan sebagai paket Go `main`. | `cmd/api/`, `service/billing/` |
-| 4 | **Unit** | Potongan kode terkecil: paket, berkas, tipe, atau fungsi. | `pkg/ui`, `ui.Button` |
+| 4 | **Unit** | Potongan kode terkecil: paket, berkas, tipe, atau fungsi. | `ui`, `ui.Button` |
 
 Nama-nama lama tidak lagi diterima: gunakan **Module** alih-alih "Project", dan **Unit** alih-alih "Package" atau "Func".
 
-## 2. Cakupan sebagai Kode (`pkg/model`)
+## 2. Cakupan sebagai Kode (`model`)
 
-Hierarki ini bukan sekadar dokumentasi — ia adalah sebuah tipe di paket inti hermetis `pkg/model`:
+Hierarki ini bukan sekadar dokumentasi — ia adalah sebuah tipe di paket inti hermetis `model`:
 
 ```go
 package main
@@ -46,7 +46,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/krewire/krewire/pkg/model"
+	"github.com/krewire/krewire/model"
 )
 
 func main() {

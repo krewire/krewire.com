@@ -1,14 +1,14 @@
 ---
 title: "Kontrol Keamanan & Hardening"
-description: "Default keamanan tangguh, sandbox SafePath, proteksi SSRF SafeHTTPClient, hashing PBKDF2, middleware OWASP, dan redaksi PII di pkg/sec."
+description: "Default keamanan tangguh, sandbox SafePath, proteksi SSRF SafeHTTPClient, hashing PBKDF2, middleware OWASP, dan redaksi PII di sec."
 date: "2026-10-25"
 ---
 
-# Kontrol Keamanan & Hardening (`pkg/sec`)
+# Kontrol Keamanan & Hardening (`sec`)
 
-Jalur impor: `github.com/krewire/krewire/pkg/sec`
+Jalur impor: `github.com/krewire/krewire/sec`
 
-Keamanan adalah pilar utama Krewire (**Pilar 1: Aman / S1: Keamanan Secara Bawaan**). Alih-alih menjadikan pengerasan sistem sebagai pemikiran tambahan atau fitur komersial berbayar, `pkg/sec` menghadirkan primitif teruji yang aman secara default (*secure-by-default*) selaras dengan tolok ukur OWASP Top 10 dan CWE.
+Keamanan adalah pilar utama Krewire (**Pilar 1: Aman / S1: Keamanan Secara Bawaan**). Alih-alih menjadikan pengerasan sistem sebagai pemikiran tambahan atau fitur komersial berbayar, `sec` menghadirkan primitif teruji yang aman secara default (*secure-by-default*) selaras dengan tolok ukur OWASP Top 10 dan CWE.
 
 ---
 
@@ -28,7 +28,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/krewire/krewire/pkg/sec"
+	"github.com/krewire/krewire/sec"
 )
 
 func ServeUserUpload(filename string) ([]byte, error) {
@@ -62,7 +62,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/krewire/krewire/pkg/sec"
+	"github.com/krewire/krewire/sec"
 )
 
 func DeliverWebhook(ctx context.Context, webhookURL string) error {
@@ -92,7 +92,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/krewire/krewire/pkg/sec"
+	"github.com/krewire/krewire/sec"
 )
 
 func main() {

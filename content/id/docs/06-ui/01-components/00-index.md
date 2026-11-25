@@ -8,7 +8,7 @@ date: "2026-11-09"
 
 Selamat datang di **Katalog Komponen Krewire UI (`kui`)**.
 
-Krewire UI menyediakan **66 komponen pop-brutalist aksesibel tanpa dependensi** yang dibangun secara native untuk ekosistem Krewire. Komponen dapat diimpor langsung sebagai paket terversi (`@krewire/ui`), digunakan sebagai widget Go bertipe, atau di-eject secara lokal bila diperlukan kustomisasi kode sumber penuh.
+Krewire UI menyediakan **66 komponen pop-brutalist aksesibel tanpa dependensi** yang dibangun secara native untuk ekosistem Krewire. Komponen dapat diimpor langsung sebagai modul domain terversi (`@krewire/ui`), digunakan sebagai widget Go bertipe, atau di-eject secara lokal bila diperlukan kustomisasi kode sumber penuh.
 
 ---
 
@@ -77,7 +77,7 @@ Tujuh komponen inti memiliki pratinjau interaktif: [`Button`](/id/docs/ui/compon
 - [**`<Heading />`**](/id/docs/ui/components/heading) — Pembungkus tipografi heading semantik dari h1 hingga h6.
 - [**`<Text />`**](/id/docs/ui/components/text) — Pembungkus tipografi untuk teks paragraf isi, teks pengantar, dan teks diredam.
 - [**`<List />`**](/id/docs/ui/components/list) — Kontainer daftar berurutan dan tak berurutan dengan penataan rapi.
-- [**`<Ecosystem />`**](/id/docs/ui/components/ecosystem) — Komponen grid interaktif untuk menampilkan arsitektur 10 repositori Krewire.
+- [**`<Ecosystem />`**](/id/docs/ui/components/ecosystem) — Komponen grid interaktif untuk menampilkan arsitektur 11 repositori Krewire.
 
 ### Formulir & Masukan
 
@@ -121,7 +121,7 @@ Impor komponen berdasarkan nama:
 ```
 
 ### Pada Kode Go
-Impor paket komponen:
+Impor modul domain komponen:
 
 ```go
 import "github.com/krewire/ui/components"

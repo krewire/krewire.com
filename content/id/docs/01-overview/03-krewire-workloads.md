@@ -22,14 +22,14 @@ project:
 
 | Workload | Nama Kind | Kasus Penggunaan Utama | Eksekusi CLI | Paket Kunci |
 | :--- | :--- | :--- | :--- | :--- |
-| **Monolit Fullstack** | `app` | Aplikasi web, SSR, API JSON, sesi, akses database | `krew run`, `krew dev` | `pkg/web`, `pkg/app`, `pkg/ui` |
-| **CLI & TUI Terminal** | `cli` | Utilitas baris perintah, TUI pengembang interaktif | `krew run`, `krew new my-cli --cli` | `pkg/tui` |
-| **Situs Statis (SSG)** | `site` | Landing page, situs pemasaran, blog, portofolio | `krew build`, `krew dev` | `pkg/web/ssg`, `pkg/kiw` |
-| **Buku Teknis & Dokumentasi** | `book` | Dokumentasi multi-bab, buku panduan, manual software | `krew build --target book`, `krew dev` | `pkg/book` |
-| **Worker Latar Belakang** | `worker` | Antrean tugas asinkron, jadwal cron, retry, DLQ | `krew worker` | `pkg/cloud/worker` |
-| **Microservice** | `service` | API RPC/HTTP terdistribusi, registry layanan, gateway | `krew run`, `krew dash` | `pkg/cloud/service` |
-| **Infrastruktur Cloud (IaC)** | `infra` | Provisi sumber daya cloud multi-provider (AWS/K8s) | `krew deploy --target infra` | `pkg/cloud/infra` |
-| **Gateway API** | `gateway` | Reverse proxy deklaratif, middleware per rute, load balancing | `krew gateway`, `krew run` | `pkg/web/gateway` |
+| **Monolit Fullstack** | `app` | Aplikasi web, SSR, API JSON, sesi, akses database | `krew run`, `krew dev` | `web`, `app`, `ui` |
+| **CLI & TUI Terminal** | `cli` | Utilitas baris perintah, TUI pengembang interaktif | `krew run`, `krew new my-cli --cli` | `tui` |
+| **Situs Statis (SSG)** | `site` | Landing page, situs pemasaran, blog, portofolio | `krew build`, `krew dev` | `web/ssg`, `ui/kiw` |
+| **Buku Teknis & Dokumentasi** | `book` | Dokumentasi multi-bab, buku panduan, manual software | `krew build --target book`, `krew dev` | `book` |
+| **Worker Latar Belakang** | `worker` | Antrean tugas asinkron, jadwal cron, retry, DLQ | `krew worker` | `cloud/worker` |
+| **Microservice** | `service` | API RPC/HTTP terdistribusi, registry layanan, gateway | `krew run`, `krew dash` | `cloud/service` |
+| **Infrastruktur Cloud (IaC)** | `infra` | Provisi sumber daya cloud multi-provider (AWS/K8s) | `krew deploy --target infra` | `cloud/infra` |
+| **Gateway API** | `gateway` | Reverse proxy deklaratif, middleware per rute, load balancing | `krew gateway`, `krew run` | `web/gateway` |
 
 ---
 
@@ -60,7 +60,7 @@ Workload `cli` dirancang untuk membangun utilitas baris perintah, alat bantu pen
 
 ### Karakteristik
 
-- **Ditenagai `pkg/tui`:** Rendering TUI reaktif, komponen tabel interaktif, progress bar, dan penanganan input keyboard.
+- **Ditenagai `tui`:** Rendering TUI reaktif, komponen tabel interaktif, progress bar, dan penanganan input keyboard.
 - **Parsing Argumen Cepat:** Penanganan argumen, flag, dan sub-perintah yang intuitif dan cepat.
 - **Startup Cepat:** Waktu cold start instan (<2 milidetik) menjamin kenyamanan saat digunakan dalam skrip bash atau otomatisasi CI.
 

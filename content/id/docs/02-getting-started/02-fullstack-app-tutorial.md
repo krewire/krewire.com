@@ -1,6 +1,6 @@
 ---
 title: "Membangun Aplikasi Fullstack dalam 15 Menit"
-description: "Tutorial dari nol hingga mahir: scaffold aplikasi dengan krew new --app, simpan data di SQLite melalui pkg/orm beserta migrasi, render halaman .kiw dengan komponen Krewire UI, tangani form tervalidasi yang dilindungi CSRF, dan rilis satu binary."
+description: "Tutorial dari nol hingga mahir: scaffold aplikasi dengan krew new --app, simpan data di SQLite melalui orm beserta migrasi, render halaman .kiw dengan komponen Krewire UI, tangani form tervalidasi yang dilindungi CSRF, dan rilis satu binary."
 date: "2026-11-09"
 ---
 
@@ -22,7 +22,7 @@ Anda akan membangun **todo-app**, sebuah pengelola tugas kecil: halaman yang men
 <div class="overview-grid">
 
   <div class="chapter-card">
-    <p class="chapter-card-desc"><b>Waktu:</b> sekitar 15 menit.<br><b>Yang Anda perlukan:</b> Go 1.27.1+, <code>krew</code> (lihat <a href="/getting-started/quickstart">Quickstart</a>), dan akses jaringan untuk <code>go get</code>.<br><b>Yang Anda pelajari:</b> <code>krew new --app</code>, <code>krew make</code>, <code>pkg/orm</code>, migrasi, view <code>.kiw</code>, <code>pkg/validation</code>, <code>web.CSRF</code>, <code>krew build</code>.</p>
+    <p class="chapter-card-desc"><b>Waktu:</b> sekitar 15 menit.<br><b>Yang Anda perlukan:</b> Go 1.27.1+, <code>krew</code> (lihat <a href="/getting-started/quickstart">Quickstart</a>), dan akses jaringan untuk <code>go get</code>.<br><b>Yang Anda pelajari:</b> <code>krew new --app</code>, <code>krew make</code>, <code>orm</code>, migrasi, view <code>.kiw</code>, <code>validation</code>, <code>web.CSRF</code>, <code>krew build</code>.</p>
   </div>
 
 </div>
@@ -109,11 +109,11 @@ type Task struct {
 	CreatedAt time.Time `json:"created_at" db:"created_at"`
 }
 
-// TableName maps Task to the "tasks" table (pkg/orm would default to "task").
+// TableName maps Task to the "tasks" table (orm would default to "task").
 func (Task) TableName() string { return "tasks" }
 ```
 
-`pkg/orm` memetakan field yang diekspor ke kolom snake_case (`CreatedAt` → `created_at`), memperlakukan `ID` bertipe integer sebagai primary key auto-increment, dan menggunakan `TableName()` jika model mendefinisikannya.
+`orm` memetakan field yang diekspor ke kolom snake_case (`CreatedAt` → `created_at`), memperlakukan `ID` bertipe integer sebagai primary key auto-increment, dan menggunakan `TableName()` jika model mendefinisikannya.
 
 ### 2.3 Tulis migrasi
 
@@ -167,7 +167,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/krewire/krewire/pkg/orm"
+	"github.com/krewire/krewire/orm"
 	_ "modernc.org/sqlite" // pure-Go SQLite driver, registers "sqlite"
 
 	"todo-app/migrations"
@@ -278,9 +278,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/krewire/krewire/pkg/orm"
-	"github.com/krewire/krewire/pkg/validation"
-	"github.com/krewire/krewire/pkg/web"
+	"github.com/krewire/krewire/orm"
+	"github.com/krewire/krewire/validation"
+	"github.com/krewire/krewire/web"
 
 	"todo-app/internal/models"
 )
@@ -409,10 +409,10 @@ import (
 	"io/fs"
 	"strings"
 
-	"github.com/krewire/krewire/pkg/kiw"
-	"github.com/krewire/krewire/pkg/ui"
-	"github.com/krewire/krewire/pkg/web"
-	"github.com/krewire/krewire/pkg/web/ssg"
+	"github.com/krewire/ui/kiw"
+	"github.com/krewire/ui"
+	"github.com/krewire/krewire/web"
+	"github.com/krewire/krewire/web/ssg"
 )
 
 //go:embed *.kiw
@@ -473,7 +473,7 @@ package pages
 import (
 	"net/http"
 
-	"github.com/krewire/krewire/pkg/web"
+	"github.com/krewire/krewire/web"
 )
 
 // Register wires all application pages into the web app. board computes the
@@ -533,7 +533,7 @@ func (s *Store) Board(r *http.Request) (any, error) {
 	}, nil
 }
 
-// newTask is the form input, validated with pkg/validation struct tags.
+// newTask is the form input, validated with validation struct tags.
 type newTask struct {
 	Title string `validate:"required,max=120"`
 }
@@ -605,8 +605,8 @@ import (
 	"context"
 	"io/fs"
 
-	rvapp "github.com/krewire/krewire/pkg/app"
-	rvweb "github.com/krewire/krewire/pkg/web"
+	rvapp "github.com/krewire/krewire/app"
+	rvweb "github.com/krewire/krewire/web"
 	"todo-app/assets"
 	"todo-app/internal/config"
 	"todo-app/internal/db"
@@ -862,15 +862,15 @@ go run .
 | Yang Anda gunakan | Untuk |
 | :--- | :--- |
 | `krew new --app`, `krew make model`, `krew make migration` | Scaffold aplikasi, model, dan migrasi SQL |
-| `pkg/orm` + `modernc.org/sqlite` | Akses SQLite dengan API query fluent yang terparameterisasi |
+| `orm` + `modernc.org/sqlite` | Akses SQLite dengan API query fluent yang terparameterisasi |
 | `.kiw` + Krewire UI | Halaman, dengan `Badge`, `Alert`, `Input`, `Button`, dan `Card` |
 | `web.PageSpec{DataFunc}` | Data per request untuk halaman |
-| `pkg/validation` + post/redirect/get | Validasi sisi server dengan pesan error yang ramah |
+| `validation` + post/redirect/get | Validasi sisi server dengan pesan error yang ramah |
 | `web.CSRF()` | Proteksi CSRF berbasis token di setiap form |
 | `krew dev`, `krew test`, `krew build` | Mengembangkan, memverifikasi, dan merilis satu binary |
 
 ## Langkah Selanjutnya
 
 - Pahami kapan data di-resolve saat build dan kapan per request: [Alur Data: SSG vs Runtime](/architecture/data-flow).
-- Pelajari bagian-bagiannya lebih dalam: [Workload App](/workloads/app), [`pkg/web`](/web-ui/web), [Database & ORM](/data-services/database-and-orm), [Kontrol keamanan](/security-platforms/security).
+- Pelajari bagian-bagiannya lebih dalam: [Workload App](/workloads/app), [`web`](/web-ui/web), [Database & ORM](/data-services/database-and-orm), [Kontrol keamanan](/security-platforms/security).
 - Pelajari setiap fitur `.kiw`: [**2.7 DSL `.kiw` →**](/getting-started/dsl)

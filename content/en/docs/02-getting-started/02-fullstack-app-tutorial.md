@@ -1,6 +1,6 @@
 ---
 title: "Build a Fullstack App in 15 Minutes"
-description: "Zero-to-hero tutorial: scaffold an app with krew new --app, store data in SQLite through pkg/orm with migrations, render .kiw pages with Krewire UI components, handle validated CSRF-protected forms, and ship a single binary."
+description: "Zero-to-hero tutorial: scaffold an app with krew new --app, store data in SQLite through orm with migrations, render .kiw pages with Krewire UI components, handle validated CSRF-protected forms, and ship a single binary."
 date: "2026-11-09"
 ---
 
@@ -22,7 +22,7 @@ You will build **todo-app**, a small task manager: a page that lists tasks store
 <div class="overview-grid">
 
   <div class="chapter-card">
-    <p class="chapter-card-desc"><b>Time:</b> about 15 minutes.<br><b>You need:</b> Go 1.27.1+, <code>krew</code> (see the <a href="/getting-started/quickstart">Quickstart</a>), and network access for <code>go get</code>.<br><b>You learn:</b> <code>krew new --app</code>, <code>krew make</code>, <code>pkg/orm</code>, migrations, <code>.kiw</code> views, <code>pkg/validation</code>, <code>web.CSRF</code>, <code>krew build</code>.</p>
+    <p class="chapter-card-desc"><b>Time:</b> about 15 minutes.<br><b>You need:</b> Go 1.27.1+, <code>krew</code> (see the <a href="/getting-started/quickstart">Quickstart</a>), and network access for <code>go get</code>.<br><b>You learn:</b> <code>krew new --app</code>, <code>krew make</code>, <code>orm</code>, migrations, <code>.kiw</code> views, <code>validation</code>, <code>web.CSRF</code>, <code>krew build</code>.</p>
   </div>
 
 </div>
@@ -109,11 +109,11 @@ type Task struct {
 	CreatedAt time.Time `json:"created_at" db:"created_at"`
 }
 
-// TableName maps Task to the "tasks" table (pkg/orm would default to "task").
+// TableName maps Task to the "tasks" table (orm would default to "task").
 func (Task) TableName() string { return "tasks" }
 ```
 
-`pkg/orm` maps exported fields to snake_case columns (`CreatedAt` → `created_at`), treats an integer `ID` as an auto-increment primary key, and uses `TableName()` when the model defines it.
+`orm` maps exported fields to snake_case columns (`CreatedAt` → `created_at`), treats an integer `ID` as an auto-increment primary key, and uses `TableName()` when the model defines it.
 
 ### 2.3 Write the migration
 
@@ -167,7 +167,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/krewire/krewire/pkg/orm"
+	"github.com/krewire/krewire/orm"
 	_ "modernc.org/sqlite" // pure-Go SQLite driver, registers "sqlite"
 
 	"todo-app/migrations"
@@ -278,9 +278,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/krewire/krewire/pkg/orm"
-	"github.com/krewire/krewire/pkg/validation"
-	"github.com/krewire/krewire/pkg/web"
+	"github.com/krewire/krewire/orm"
+	"github.com/krewire/krewire/validation"
+	"github.com/krewire/krewire/web"
 
 	"todo-app/internal/models"
 )
@@ -409,10 +409,10 @@ import (
 	"io/fs"
 	"strings"
 
-	"github.com/krewire/krewire/pkg/kiw"
-	"github.com/krewire/krewire/pkg/ui"
-	"github.com/krewire/krewire/pkg/web"
-	"github.com/krewire/krewire/pkg/web/ssg"
+	"github.com/krewire/ui/kiw"
+	"github.com/krewire/ui"
+	"github.com/krewire/krewire/web"
+	"github.com/krewire/krewire/web/ssg"
 )
 
 //go:embed *.kiw
@@ -473,7 +473,7 @@ package pages
 import (
 	"net/http"
 
-	"github.com/krewire/krewire/pkg/web"
+	"github.com/krewire/krewire/web"
 )
 
 // Register wires all application pages into the web app. board computes the
@@ -533,7 +533,7 @@ func (s *Store) Board(r *http.Request) (any, error) {
 	}, nil
 }
 
-// newTask is the form input, validated with pkg/validation struct tags.
+// newTask is the form input, validated with validation struct tags.
 type newTask struct {
 	Title string `validate:"required,max=120"`
 }
@@ -605,8 +605,8 @@ import (
 	"context"
 	"io/fs"
 
-	rvapp "github.com/krewire/krewire/pkg/app"
-	rvweb "github.com/krewire/krewire/pkg/web"
+	rvapp "github.com/krewire/krewire/app"
+	rvweb "github.com/krewire/krewire/web"
 	"todo-app/assets"
 	"todo-app/internal/config"
 	"todo-app/internal/db"
@@ -862,15 +862,15 @@ Its `go.mod` pins the exact core version this tutorial was verified with.
 | You used | For |
 | :--- | :--- |
 | `krew new --app`, `krew make model`, `krew make migration` | Scaffolding the app, the model, and the SQL migration |
-| `pkg/orm` + `modernc.org/sqlite` | SQLite access with a fluent, parameterized query API |
+| `orm` + `modernc.org/sqlite` | SQLite access with a fluent, parameterized query API |
 | `.kiw` + Krewire UI | The page, with `Badge`, `Alert`, `Input`, `Button`, and `Card` |
 | `web.PageSpec{DataFunc}` | Per-request data for the page |
-| `pkg/validation` + post/redirect/get | Server-side validation with friendly errors |
+| `validation` + post/redirect/get | Server-side validation with friendly errors |
 | `web.CSRF()` | Token-based CSRF protection on every form |
 | `krew dev`, `krew test`, `krew build` | Develop, verify, and ship one binary |
 
 ## Next Steps
 
 - Understand when data is resolved at build time and when per request: [Data Flow: SSG vs Runtime](/architecture/data-flow).
-- Go deeper into the pieces: [App workload](/workloads/app), [`pkg/web`](/web-ui/web), [Database & ORM](/data-services/database-and-orm), [Security controls](/security-platforms/security).
+- Go deeper into the pieces: [App workload](/workloads/app), [`web`](/web-ui/web), [Database & ORM](/data-services/database-and-orm), [Security controls](/security-platforms/security).
 - Learn every `.kiw` feature: [**2.7 The `.kiw` DSL →**](/getting-started/dsl)

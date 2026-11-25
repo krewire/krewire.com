@@ -1,6 +1,6 @@
 ---
 title: "Background Worker (worker)"
-description: "Asynchronous job processing, recurring cron schedules, retry policies with backoff, and graceful shutdown in Go with pkg/cloud/worker."
+description: "Asynchronous job processing, recurring cron schedules, retry policies with backoff, and graceful shutdown in Go with cloud/worker."
 date: "2026-10-08"
 ---
 
@@ -8,7 +8,7 @@ date: "2026-10-08"
 
 The **`worker`** workload is designed for running long-lived background daemons, asynchronous job consumers, and scheduled cron workflows.
 
-Powered by `pkg/cloud/worker` and `pkg/resilience`, workers operate reliably under high load with automatic retry policies, exponential backoff, dead-letter queues (DLQ), and graceful shutdown handling.
+Powered by `cloud/worker` and `resilience`, workers operate reliably under high load with automatic retry policies, exponential backoff, dead-letter queues (DLQ), and graceful shutdown handling.
 
 ---
 
@@ -56,8 +56,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/krewire/krewire/pkg/cloud/worker"
-	"github.com/krewire/krewire/pkg/resilience"
+	"github.com/krewire/krewire/cloud/worker"
+	"github.com/krewire/krewire/resilience"
 )
 
 type SendEmailPayload struct {
@@ -127,7 +127,7 @@ worker:
 ```
 
 `concurrency` and `queues` are the only `worker:` keys. The queue backend —
-in-memory, KV-backed, or your own `pkg/cloud/worker.Queue` implementation — is
+in-memory, KV-backed, or your own `cloud/worker.Queue` implementation — is
 selected in Go code, not in `krewire.yaml`.
 
 ---

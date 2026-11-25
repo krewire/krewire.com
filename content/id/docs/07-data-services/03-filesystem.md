@@ -1,22 +1,22 @@
 ---
 title: "Sistem Berkas Virtual & I/O Atomik"
-description: "Batas sistem berkas virtual yang dapat diuji, penulisan berkas atomik bebas race condition, dan perlindungan symlink di pkg/fs dan pkg/file."
+description: "Batas sistem berkas virtual yang dapat diuji, penulisan berkas atomik bebas race condition, dan perlindungan symlink di fs dan file."
 date: "2026-10-25"
 ---
 
-# Sistem Berkas Virtual & I/O Atomik (`pkg/fs`, `pkg/file`)
+# Sistem Berkas Virtual & I/O Atomik (`fs`, `file`)
 
 Jalur impor:
-- `github.com/krewire/krewire/pkg/fs`
-- `github.com/krewire/krewire/pkg/file`
+- `github.com/krewire/krewire/fs`
+- `github.com/krewire/krewire/file`
 
 Krewire menyediakan abstraksi sistem berkas yang bersih dan dapat diuji, serta primitif penulisan berkas atomik yang dirancang untuk mencegah kerusakan akibat penulisan parsial, race condition symlink, serta serangan traversal berkas.
 
 ---
 
-## 1. Antarmuka Sistem Berkas yang Dapat Diuji (`pkg/fs`)
+## 1. Antarmuka Sistem Berkas yang Dapat Diuji (`fs`)
 
-Sementara pustaka standar Go `io/fs` hanya menyediakan abstraksi baca-saja (read-only), antarmuka `pkg/fs.FileSystem` menyediakan abstraksi baca-tulis penuh yang dapat diuji:
+Sementara pustaka standar Go `io/fs` hanya menyediakan abstraksi baca-saja (read-only), antarmuka `fs.FileSystem` menyediakan abstraksi baca-tulis penuh yang dapat diuji:
 
 ```go
 package fs
@@ -44,9 +44,9 @@ type FileSystem interface {
 
 ---
 
-## 2. Penulisan Atomik Bebas Race Condition (`pkg/file`)
+## 2. Penulisan Atomik Bebas Race Condition (`file`)
 
-Menulis berkas langsung ke jalur tujuan dapat menghasilkan berkas yang rusak jika proses berhenti di tengah jalan. Fungsi `pkg/file.WriteAtomic` menjamin atomisitas POSIX dan menegakkan keamanan defensif:
+Menulis berkas langsung ke jalur tujuan dapat menghasilkan berkas yang rusak jika proses berhenti di tengah jalan. Fungsi `file.WriteAtomic` menjamin atomisitas POSIX dan menegakkan keamanan defensif:
 
 ### Protokol Keamanan Defensif pada `file.WriteAtomic`
 
@@ -64,7 +64,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/krewire/krewire/pkg/file"
+	"github.com/krewire/krewire/file"
 )
 
 func SaveConfiguration(configJSON []byte) error {

@@ -59,7 +59,7 @@ Bab ini ditujukan bagi **platform engineer, arsitek, dan kontributor** repositor
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Workspace → Module → Domain → Service → Unit: lima level yang dikodifikasi di <code>pkg/model</code> dan bagaimana spesifikasi serta tes menargetkannya.
+      Workspace → Module → Domain → Service → Unit: lima level yang dikodifikasi di <code>model</code> dan bagaimana spesifikasi serta tes menargetkannya.
     </p>
   </div>
 
@@ -133,5 +133,5 @@ Aturan di halaman-halaman ini merangkum spesifikasi di repositori inti, yang tet
 
 - `krewire/docs/foundation/architecture.md` — lapisan monorepo dan enam invarian lapisan.
 - `krewire/docs/foundation/ecosystem-dag.md` — DAG ekosistem serta batas waktu kompilasi vs runtime.
-- `krewire/pkg/model/scope.go` — hierarki cakupan dalam bentuk kode.
+- `krewire/model/scope.go` — hierarki cakupan dalam bentuk kode.
 - `krewire/layering_test.go` — tes yang menegakkan pelapisan.

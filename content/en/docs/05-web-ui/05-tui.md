@@ -1,12 +1,12 @@
 ---
 title: "Terminal UI Toolkit"
-description: "Interactive terminal user interfaces, Elm/Bubble Tea architecture, ANSI color styling, tables, and progress bars in pkg/tui."
+description: "Interactive terminal user interfaces, Elm/Bubble Tea architecture, ANSI color styling, tables, and progress bars in tui."
 date: "2026-10-25"
 ---
 
-# Terminal UI Toolkit (`pkg/tui`)
+# Terminal UI Toolkit (`tui`)
 
-Import path: `github.com/krewire/krewire/pkg/tui`
+Import path: `github.com/krewire/tui`
 
 The `tui` package powers interactive terminal user interfaces across the `krew` CLI and developer tools using an Elm/Bubble Tea architecture.
 
@@ -18,8 +18,8 @@ The `tui` package powers interactive terminal user interfaces across the `krew` 
 package main
 
 import (
-	"github.com/krewire/krewire/pkg/term"
-	"github.com/krewire/krewire/pkg/tui"
+	"github.com/krewire/tui/term"
+	"github.com/krewire/tui"
 )
 
 type appModel struct {

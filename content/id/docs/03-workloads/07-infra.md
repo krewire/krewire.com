@@ -1,6 +1,6 @@
 ---
 title: "Infrastruktur Cloud sebagai Kode (infra)"
-description: "Deklarasikan, rencanakan, dan sediakan sumber daya cloud langsung di Go dengan pkg/cloud/infra, rencana eksekusi deterministik, dan bebas bloat DSL eksternal."
+description: "Deklarasikan, rencanakan, dan sediakan sumber daya cloud langsung di Go dengan cloud/infra, rencana eksekusi deterministik, dan bebas bloat DSL eksternal."
 date: "2026-10-08"
 ---
 
@@ -8,7 +8,7 @@ date: "2026-10-08"
 
 Workload **`infra`** memungkinkan tim rekayasa mendefinisikan topologi cloud, orkestrasi kontainer, jaringan, dan penyimpanan langsung menggunakan **struktur Go bertipe data kuat (typed structures)** alih-alih berkas HCL terpisah atau template YAML yang rumit.
 
-Ditenagai oleh `pkg/cloud/infra`, engine mengompilasi deklarasi Go menjadi rencana eksekusi deterministik dan menyediakan target cloud secara aman.
+Ditenagai oleh `cloud/infra`, engine mengompilasi deklarasi Go menjadi rencana eksekusi deterministik dan menyediakan target cloud secara aman.
 
 ---
 
@@ -48,8 +48,8 @@ import (
 	"context"
 	"os"
 
-	"github.com/krewire/krewire/pkg/cloud/infra"
-	"github.com/krewire/krewire/pkg/cloud/infra/providers/aws"
+	"github.com/krewire/krewire/cloud/infra"
+	"github.com/krewire/krewire/cloud/infra/providers/aws"
 )
 
 func main() {

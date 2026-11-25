@@ -10,7 +10,7 @@ This repository is **100% built with Krewire**, dogfooding the native `site` wor
 
 - **Workload Kind:** `site` (declared in `krewire.yaml`).
 - **Current Version:** `v0.2.3` (single source of truth in `krewire.yaml`).
-- **Build Engine:** `krew build` driven by `pkg/kiw`, `pkg/book`, and `pkg/web/ssg`.
+- **Build Engine:** `krew build` driven by `ui/kiw`, `book`, and `web/ssg`.
 - **Runtime Model:** Pure static assets emitted into `.krewire/build/`, served locally via `krew serve` or in production via lightweight hardened Nginx containers.
 - **Go Module Requirement:** None (`go.mod` is not needed for `site` workloads).
 - **Internationalization:** Bilingual 1:1 documentation parity between English (`en`) and Indonesian (`id`).

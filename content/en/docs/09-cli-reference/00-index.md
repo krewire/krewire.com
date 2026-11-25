@@ -8,7 +8,7 @@ date: "2026-10-08"
 
 The **`krew`** CLI is the unified entry point for the entire Krewire ecosystem. It drives all eight project kinds (`app`, `cli`, `site`, `book`, `worker`, `service`, `gateway`, `infra`) behind one binary and one configuration file (**`krewire.yaml`**).
 
-`krew` dogfoods Krewire's own `pkg/tui` and `pkg/term` libraries, ensuring zero external dependencies, near-instant startup times (<2ms), and consistent POSIX exit code discipline.
+`krew` dogfoods Krewire's own `tui` and `tui/term` libraries, ensuring zero external dependencies, near-instant startup times (<2ms), and consistent POSIX exit code discipline.
 
 ---
 
@@ -73,7 +73,7 @@ Every `krew` command respects the following global flags and environment variabl
 
 ## POSIX Exit Code Contract
 
-`krew` adheres to strict exit code standards across all commands (`pkg/errs`):
+`krew` adheres to strict exit code standards across all commands (`errs`):
 
 | Exit Code | Constant | Meaning |
 | :---: | :--- | :--- |

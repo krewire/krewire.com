@@ -1,6 +1,6 @@
 ---
 title: "Open Core & Lisensi"
-description: "Cara kerja batas open-core Krewire saat ini: repositori publik berlisensi MIT, klasifikasi tier di pkg/model, aturan desain yang melindungi inti gratis, dan hal yang belum didefinisikan."
+description: "Cara kerja batas open-core Krewire saat ini: repositori publik berlisensi MIT, klasifikasi tier di model, aturan desain yang melindungi inti gratis, dan hal yang belum didefinisikan."
 date: "2026-11-09"
 ---
 
@@ -21,9 +21,9 @@ Lihat berkas LICENSE di setiap repositori.
 
 ---
 
-## 2. Klasifikasi tier (`pkg/model`)
+## 2. Klasifikasi tier (`model`)
 
-`pkg/model` mendefinisikan empat tier berurutan — `free` → `pro` → `team` → `enterprise` — dan `krew tier [--json] [--check <tier>]` melaporkan postur tier sebuah proyek serta dapat memastikan proyek tetap dalam suatu tier (misalnya `krew tier --check free`).
+`model` mendefinisikan empat tier berurutan — `free` → `pro` → `team` → `enterprise` — dan `krew tier [--json] [--check <tier>]` melaporkan postur tier sebuah proyek serta dapat memastikan proyek tetap dalam suatu tier (misalnya `krew tier --check free`).
 
 ```text
 ┌──────────────────────────────┐

@@ -8,7 +8,7 @@ date: "2026-10-08"
 
 Workload **`site`** menyediakan generator situs statis (SSG) super cepat yang dirancang untuk situs web pemasaran, landing page, blog, dan portal dokumentasi publik.
 
-Ditenagai oleh `pkg/web/ssg` dan DSL `.kiw`, compiler `site` mengubah Single-File Components (SFC) menjadi HTML dan CSS semantik yang teroptimasi dengan **nol overhead JavaScript runtime secara default**.
+Ditenagai oleh `web/ssg` dan DSL `.kiw`, compiler `site` mengubah Single-File Components (SFC) menjadi HTML dan CSS semantik yang teroptimasi dengan **nol overhead JavaScript runtime secara default**.
 
 ---
 

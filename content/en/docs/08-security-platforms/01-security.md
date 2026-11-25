@@ -1,14 +1,14 @@
 ---
 title: "Security Controls & Hardening"
-description: "Hardened security defaults, SafePath sandbox, SafeHTTPClient SSRF defense, PBKDF2 hashing, OWASP middleware, and PII redaction in pkg/sec."
+description: "Hardened security defaults, SafePath sandbox, SafeHTTPClient SSRF defense, PBKDF2 hashing, OWASP middleware, and PII redaction in sec."
 date: "2026-10-25"
 ---
 
-# Security Controls & Hardening (`pkg/sec`)
+# Security Controls & Hardening (`sec`)
 
-Import path: `github.com/krewire/krewire/pkg/sec`
+Import path: `github.com/krewire/krewire/sec`
 
-Security is Krewire's primary pillar (**Pillar 1: Secure / S1: Safety by Default**). Rather than treating hardening as an afterthought or an enterprise add-on, `pkg/sec` delivers battle-tested, secure-by-default primitives aligned with OWASP Top 10 and CWE benchmarks.
+Security is Krewire's primary pillar (**Pillar 1: Secure / S1: Safety by Default**). Rather than treating hardening as an afterthought or an enterprise add-on, `sec` delivers battle-tested, secure-by-default primitives aligned with OWASP Top 10 and CWE benchmarks.
 
 ---
 
@@ -28,7 +28,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/krewire/krewire/pkg/sec"
+	"github.com/krewire/krewire/sec"
 )
 
 func ServeUserUpload(filename string) ([]byte, error) {
@@ -62,7 +62,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/krewire/krewire/pkg/sec"
+	"github.com/krewire/krewire/sec"
 )
 
 func DeliverWebhook(ctx context.Context, webhookURL string) error {
@@ -92,7 +92,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/krewire/krewire/pkg/sec"
+	"github.com/krewire/krewire/sec"
 )
 
 func main() {

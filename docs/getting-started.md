@@ -46,8 +46,8 @@ krew build
 The build pipeline performs:
 
 - Route generation from `pages/*.kiw` using layouts in `layouts/`.
-- Markdown compilation of `content/en/docs/**/*.md` into `/docs/...` via `pkg/book`.
-- Markdown compilation of `content/id/docs/**/*.md` into `/id/docs/...` via `pkg/book`.
+- Markdown compilation of `content/en/docs/**/*.md` into `/docs/...` via `book`.
+- Markdown compilation of `content/id/docs/**/*.md` into `/id/docs/...` via `book`.
 - Scoped CSS compilation for all `.kiw` component styles.
 - Automatic asset copying and bundling from `public/` into `.krewire/build/assets/`.
 

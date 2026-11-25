@@ -22,9 +22,9 @@ It is built as an end-to-end reference implementation for the **`site`** workloa
                                      v
                       +-----------------------------+
                       |          krew build          |
-                      |  - pkg/kiw (template parser)|
-                      |  - pkg/book (manuscripts)   |
-                      |  - pkg/web/ssg (generator)  |
+                      |  - ui/kiw (template parser)|
+                      |  - book (manuscripts)   |
+                      |  - web/ssg (generator)  |
                       |  - auto_assets (bundling)   |
                       +--------------+--------------+
                                      |
@@ -45,14 +45,14 @@ It is built as an end-to-end reference implementation for the **`site`** workloa
 
 ## Key Subsystems
 
-### 1. The `.kiw` Template Engine (`pkg/kiw`)
+### 1. The `.kiw` Template Engine (`ui/kiw`)
 - Parses YAML frontmatter, scoped `<style>` blocks, inline `<markdown>`, and custom tags.
 - Injects standard page context into layouts and templates:
   - `.Title`, `.Description`: Page metadata.
   - `.Version`: Propagated from `krewire.yaml` (SSOT: `v0.2.3`).
   - `.Nav`: Navigation links configured in `krewire.yaml`.
 
-### 2. Documentation Book Subsystem (`pkg/book`)
+### 2. Documentation Book Subsystem (`book`)
 - Configured via `book:` block in `krewire.yaml` (`mount: "/docs"`, `toc: true`).
 - Parses markdown manuscripts from `content/en/docs/` and `content/id/docs/`.
 - Automatically extracts headings to generate hierarchical tables of contents with independent subchapter toggle states.
@@ -79,7 +79,7 @@ It is built as an end-to-end reference implementation for the **`site`** workloa
 ### 6. Internationalization (i18n) & Parity Pipeline
 - Configured in `krewire.yaml` (`locales: ["en", "id"]`, `default_locale: "en"`).
 - **Separation of Concerns**:
-  - `content/{locale}/docs/`: Long-form markdown manuscripts compiled by `pkg/book`.
+  - `content/{locale}/docs/`: Long-form markdown manuscripts compiled by `book`.
   - `lang/{locale}/site.json`: UI and shell localized strings for the client translation engine.
 - Strict 1:1 bilingual documentation parity is enforced:
   - `python3 scripts/check-i18n-parity.py` validates that all 134 manuscripts in English have identical Indonesian counterparts.
@@ -102,8 +102,8 @@ It is built as an end-to-end reference implementation for the **`site`** workloa
 The official portal balances static site generation with production runtime daemons:
 
 1. **Framework-Reserved Discovery Roots**:
-   - `pages/`: Evaluated by `pkg/web/ssg` for URL routing.
-   - `layouts/`: Evaluated by `pkg/kiw` for master layout wrappers.
+   - `pages/`: Evaluated by `web/ssg` for URL routing.
+   - `layouts/`: Evaluated by `ui/kiw` for master layout wrappers.
    - `krewire.yaml`: Workload specification.
 2. **Conventional Content Roots**:
    - `components/`: Project components. Subdirectories are recursively scanned and registered both by basename and namespaced identifier.

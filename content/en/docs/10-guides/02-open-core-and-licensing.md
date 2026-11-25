@@ -1,6 +1,6 @@
 ---
 title: "Open Core & Licensing"
-description: "How Krewire's open-core boundary works today: MIT-licensed public repositories, the tier classification in pkg/model, the design rules that protect the free core, and what is not yet defined."
+description: "How Krewire's open-core boundary works today: MIT-licensed public repositories, the tier classification in model, the design rules that protect the free core, and what is not yet defined."
 date: "2026-11-09"
 ---
 
@@ -21,9 +21,9 @@ See the repository LICENSE files.
 
 ---
 
-## 2. The tier classification (`pkg/model`)
+## 2. The tier classification (`model`)
 
-`pkg/model` defines four ordered tiers — `free` → `pro` → `team` → `enterprise` — and `krew tier [--json] [--check <tier>]` reports a project's tier posture and can assert that it stays within a tier (for example `krew tier --check free`).
+`model` defines four ordered tiers — `free` → `pro` → `team` → `enterprise` — and `krew tier [--json] [--check <tier>]` reports a project's tier posture and can assert that it stays within a tier (for example `krew tier --check free`).
 
 ```text
 ┌──────────────────────────────┐

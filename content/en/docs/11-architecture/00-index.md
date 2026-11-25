@@ -59,7 +59,7 @@ This chapter is for **platform engineers, architects, and contributors** to the 
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Workspace → Module → Domain → Service → Unit: the five levels codified in <code>pkg/model</code> and how specs and tests target them.
+      Workspace → Module → Domain → Service → Unit: the five levels codified in <code>model</code> and how specs and tests target them.
     </p>
   </div>
 
@@ -133,5 +133,5 @@ The rules on these pages summarize the specifications in the core repository, wh
 
 - `krewire/docs/foundation/architecture.md` — monorepo layers and the six layering invariants.
 - `krewire/docs/foundation/ecosystem-dag.md` — the ecosystem DAG and compile-time vs runtime boundaries.
-- `krewire/pkg/model/scope.go` — the scope hierarchy as code.
+- `krewire/model/scope.go` — the scope hierarchy as code.
 - `krewire/layering_test.go` — the tests that enforce the layering.

@@ -1,14 +1,14 @@
 ---
 title: "Resilience Patterns & Circuit Breakers"
-description: "Fault-tolerant network communication with jittered retry policies, timeout propagation, and circuit breakers in pkg/resilience."
+description: "Fault-tolerant network communication with jittered retry policies, timeout propagation, and circuit breakers in resilience."
 date: "2026-10-25"
 ---
 
-# Resilience Patterns & Circuit Breakers (`pkg/resilience`)
+# Resilience Patterns & Circuit Breakers (`resilience`)
 
-Import path: `github.com/krewire/krewire/pkg/resilience`
+Import path: `github.com/krewire/krewire/resilience`
 
-Distributed systems and web applications fail over network boundaries. `pkg/resilience` provides built-in resilience primitives to isolate transient failures and protect downstream systems.
+Distributed systems and web applications fail over network boundaries. `resilience` provides built-in resilience primitives to isolate transient failures and protect downstream systems.
 
 ---
 
@@ -20,7 +20,7 @@ package main
 import (
 	"context"
 	"time"
-	"github.com/krewire/krewire/pkg/resilience"
+	"github.com/krewire/krewire/resilience"
 )
 
 func main() {

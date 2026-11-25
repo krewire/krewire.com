@@ -1,14 +1,14 @@
 ---
 title: "Multi-Driver Cache"
-description: "High-performance in-memory, file, Redis, and Memcached caching with TTL, expiration sweeps, and Remember pattern in pkg/cache."
+description: "High-performance in-memory, file, Redis, and Memcached caching with TTL, expiration sweeps, and Remember pattern in cache."
 date: "2026-10-25"
 ---
 
-# Multi-Driver Cache (`pkg/cache`)
+# Multi-Driver Cache (`cache`)
 
-Import path: `github.com/krewire/krewire/pkg/cache`
+Import path: `github.com/krewire/krewire/cache`
 
-The `pkg/cache` library delivers a unified key-value caching abstraction with support for TTL expiration, LRU eviction bounds, background cleanup sweeps, and the atomic `Remember` pattern across the Krewire ecosystem.
+The `cache` library delivers a unified key-value caching abstraction with support for TTL expiration, LRU eviction bounds, background cleanup sweeps, and the atomic `Remember` pattern across the Krewire ecosystem.
 
 ---
 
@@ -78,7 +78,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/krewire/krewire/pkg/cache"
+	"github.com/krewire/krewire/cache"
 )
 
 func GetUserProfile(ctx context.Context, c cache.Cache, userID string) ([]byte, error) {

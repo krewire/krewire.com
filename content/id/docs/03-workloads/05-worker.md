@@ -1,6 +1,6 @@
 ---
 title: "Worker Latar Belakang (worker)"
-description: "Pemrosesan tugas asinkron, jadwal cron berulang, kebijakan retry dengan backoff, dan graceful shutdown di Go dengan pkg/cloud/worker."
+description: "Pemrosesan tugas asinkron, jadwal cron berulang, kebijakan retry dengan backoff, dan graceful shutdown di Go dengan cloud/worker."
 date: "2026-10-08"
 ---
 
@@ -8,7 +8,7 @@ date: "2026-10-08"
 
 Workload **`worker`** dirancang untuk menjalankan daemon latar belakang berumur panjang (long-lived), consumer antrean tugas asinkron, dan alur kerja terjadwal berbasis cron.
 
-Ditenagai oleh `pkg/cloud/worker` dan `pkg/resilience`, worker beroperasi secara andal di bawah beban tinggi dengan kebijakan retry otomatis, backoff eksponensial, dead-letter queue (DLQ), dan penanganan shutdown yang anggun (graceful shutdown).
+Ditenagai oleh `cloud/worker` dan `resilience`, worker beroperasi secara andal di bawah beban tinggi dengan kebijakan retry otomatis, backoff eksponensial, dead-letter queue (DLQ), dan penanganan shutdown yang anggun (graceful shutdown).
 
 ---
 
@@ -56,8 +56,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/krewire/krewire/pkg/cloud/worker"
-	"github.com/krewire/krewire/pkg/resilience"
+	"github.com/krewire/krewire/cloud/worker"
+	"github.com/krewire/krewire/resilience"
 )
 
 type SendEmailPayload struct {
@@ -126,7 +126,7 @@ worker:
     - email
 ```
 
-`concurrency` dan `queues` adalah satu-satunya kunci di bawah `worker:`. Backend antrean—baik in-memory, berbasis KV, atau implementasi kustom `pkg/cloud/worker.Queue` milik Anda—dipilih langsung di dalam kode Go, bukan di `krewire.yaml`.
+`concurrency` dan `queues` adalah satu-satunya kunci di bawah `worker:`. Backend antrean—baik in-memory, berbasis KV, atau implementasi kustom `cloud/worker.Queue` milik Anda—dipilih langsung di dalam kode Go, bukan di `krewire.yaml`.
 
 ---
 

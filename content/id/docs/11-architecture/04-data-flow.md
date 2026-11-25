@@ -19,8 +19,8 @@ date: "2026-11-09"
 
 Berkas `.kiw` tidak pernah mengambil data sendiri. Berkas ini adalah template yang menerima sebuah **nilai data** lalu mengubahnya menjadi HTML. Yang membedakan antar-workload adalah *kapan* nilai tersebut dihitung dan *siapa* yang menghitungnya:
 
-- Pada **`site` atau `book`**, data dievaluasi **satu kali, saat build**, oleh `krew build` (`pkg/web/ssg`, `pkg/book`). Hasilnya berupa berkas biasa; tidak ada server yang menjalankan kode Anda.
-- Pada **`app`**, data dihitung **per request** oleh fungsi Go yang Anda daftarkan pada `web.App` (`pkg/web`, dirakit dengan `pkg/app`). Renderer yang sama mengubahnya menjadi HTML pada setiap request.
+- Pada **`site` atau `book`**, data dievaluasi **satu kali, saat build**, oleh `krew build` (`web/ssg`, `book`). Hasilnya berupa berkas biasa; tidak ada server yang menjalankan kode Anda.
+- Pada **`app`**, data dihitung **per request** oleh fungsi Go yang Anda daftarkan pada `web.App` (`web`, dirakit dengan `app`). Renderer yang sama mengubahnya menjadi HTML pada setiap request.
 - Pada keduanya, **skrip klien** dapat berkomunikasi dengan endpoint JSON setelah halaman dimuat — pada `app`, endpoint tersebut adalah handler Go Anda sendiri.
 
 ---
@@ -63,7 +63,7 @@ Renderer di bagian tengah sama untuk kedua kolom. `web.App` membangun sebuah `ss
 | | SSG saat build (`site`, `book`) | SSR saat request (`app`) |
 | :--- | :--- | :--- |
 | Siapa yang menghitung data | `krew build` | Kode Go Anda pada setiap request (`PageSpec.DataFunc`) atau sekali saat startup (`PageSpec.Data`) |
-| Sumber data | `krewire.yaml`, frontmatter halaman, `content/<collection>/*.md`, kamus `lang/` | Apa pun yang dapat dijangkau Go: database (`pkg/orm`), layanan, request (query, cookie, sesi, token CSRF) |
+| Sumber data | `krewire.yaml`, frontmatter halaman, `content/<collection>/*.md`, kamus `lang/` | Apa pun yang dapat dijangkau Go: database (`orm`), layanan, request (query, cookie, sesi, token CSRF) |
 | Output | Berkas `.html` statis di `.krewire/build/` | Respons HTML per request, dari satu binary Go |
 | Server yang dibutuhkan | Tidak ada — host statis apa pun | Binary aplikasi |
 | Konten per pengguna | Hanya di sisi klien, setelah dimuat | Ya — dihitung per request |
@@ -178,10 +178,10 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/krewire/krewire/pkg/kiw"
-	"github.com/krewire/krewire/pkg/validation"
-	"github.com/krewire/krewire/pkg/web"
-	"github.com/krewire/krewire/pkg/web/ssg"
+	"github.com/krewire/ui/kiw"
+	"github.com/krewire/krewire/validation"
+	"github.com/krewire/krewire/web"
+	"github.com/krewire/krewire/web/ssg"
 )
 
 //go:embed views/*.kiw static
@@ -193,7 +193,7 @@ type Note struct {
 	Text string `json:"text"`
 }
 
-// Store stands in for a database (see the fullstack tutorial for pkg/orm).
+// Store stands in for a database (see the fullstack tutorial for orm).
 type Store struct {
 	mu    sync.Mutex
 	notes []Note
@@ -313,7 +313,7 @@ func main() {
 Yang terjadi pada `GET /`:
 
 1. Router menjalankan rantai middleware. `web.CSRF()` menerbitkan cookie `XSRF-TOKEN` dan menaruh token di context request.
-2. `DataFunc` membangun struct `NotesPage` dari store (di aplikasi nyata, berupa query `pkg/orm` — lihat [tutorial fullstack](/getting-started/fullstack-app-tutorial)) dan membaca token dengan `web.CSRFFrom(r.Context())`.
+2. `DataFunc` membangun struct `NotesPage` dari store (di aplikasi nyata, berupa query `orm` — lihat [tutorial fullstack](/getting-started/fullstack-app-tutorial)) dan membaca token dengan `web.CSRFFrom(r.Context())`.
 3. Renderer mengeksekusi `Notes.kiw` dengan struct tersebut sebagai `.`: `{count}` adalah `.Count`, `{#each notes as n}` melakukan perulangan atas `.Notes`.
 4. Karena `EmitProps` diaktifkan, struct tersebut juga diserialisasi ke atribut `data-props` pada elemen root view, dan `/static/notes.js` disisipkan sebelum `</body>`.
 

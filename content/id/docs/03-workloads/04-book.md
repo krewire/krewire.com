@@ -8,7 +8,7 @@ date: "2026-10-08"
 
 Workload **`book`** mengompilasi folder-folder manuskrip Markdown menjadi portal dokumentasi yang terstruktur, responsif, dan berbentuk buku.
 
-Ditenagai oleh engine bawaan Krewire **`pkg/book`** (`github.com/krewire/krewire/pkg/book`), engine buku beroperasi tanpa dependensi eksternal apa pun dan mengompilasi ratusan halaman dokumentasi menjadi HTML statis dalam waktu kurang dari **15 milidetik**.
+Ditenagai oleh engine bawaan Krewire **`book`** (`github.com/krewire/krewire/book`), engine buku beroperasi tanpa dependensi eksternal apa pun dan mengompilasi ratusan halaman dokumentasi menjadi HTML statis dalam waktu kurang dari **15 milidetik**.
 
 ---
 

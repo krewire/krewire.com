@@ -12,27 +12,27 @@ Krewire Dash provides an AI-powered virtual workspace engine and cloud IDE platf
 
 ## Subsystems & Architecture
 
-### 1. `pkg/sandbox` — Hermetic Isolation Engine
+### 1. `sandbox` — Hermetic Isolation Engine
 - **Process Jail:** Lightweight container-like sandboxing using Linux Bubblewrap (`bwrap`) with unprivileged user namespaces.
 - **Resource Boundaries:** Hard memory quotas, temporary file limits, and process tree isolation per workspace.
 - **Automated Idle Sweeper:** Background daemon worker monitoring workspace activity and gracefully pausing sandboxes after 30 minutes of inactivity.
 - **Cross-Platform Fallback:** Safe process isolation with graceful OS-specific sysprocattr separation across Linux and macOS.
 
-### 2. `pkg/terminal` — Bidirectional WebSocket PTY
+### 2. `terminal` — Bidirectional WebSocket PTY
 - **Real PTY Allocation:** Kernel pseudo-terminal allocation (`pty`) spawning real shell instances (`/bin/bash` or `/bin/sh`).
 - **WebSocket Streaming:** Sub-10ms latency streaming between xterm.js in the browser and the host PTY runner.
 - **Window Resizing:** Dynamic terminal window column and row synchronization.
 
-### 3. `pkg/session` — Real-Time Collaboration Hub
+### 3. `session` — Real-Time Collaboration Hub
 - **Multi-Tenant Hub:** Manages active workspace sessions and connected client connections.
 - **Presence & Broadcast:** Synchronizes cursor positions, file selection changes, and live agent thoughts across collaborators.
 
-### 4. `pkg/ai` — Embedded Agent Assistant Pool
+### 4. `ai` — Embedded Agent Assistant Pool
 - **Workspace-Aware Context:** Connects the embedded `krew` agent runtime directly to the active workspace sandbox filesystem.
 - **Semantic Code Search:** AST-based code navigation allowing the assistant to resolve symbols and declarations across packages.
 - **Interactive Diff Review:** Generates unified diffs for proposed code edits before committing them to the workspace.
 
-### 5. `pkg/api` — Unified REST & Streaming API
+### 5. `api` — Unified REST & Streaming API
 - `POST /api/v1/workspaces`: Provision a new hermetic workspace.
 - `GET /api/v1/workspaces`: List running and paused tenant workspaces.
 - `DELETE /api/v1/workspaces/{id}`: Destroy and cleanup workspace resources.

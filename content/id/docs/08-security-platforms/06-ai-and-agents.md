@@ -4,12 +4,12 @@ description: "Panduan referensi untuk SDK AI Go terpadu Krewire: abstraksi multi
 date: "2026-10-18"
 ---
 
-# AI & Agen Otonom (`pkg/ai`)
+# AI & Agen Otonom (`ai`)
 
 Jalur impor (*import paths*):
 
-- `github.com/krewire/krewire/pkg/ai`
-- `github.com/krewire/krewire/pkg/ai/providers`
+- `github.com/krewire/krewire/ai`
+- `github.com/krewire/krewire/ai/providers`
 
 Paket `ai` menyediakan SDK Go terpadu dan agnostik terhadap penyedia (*provider-agnostic*) untuk mengintegrasikan model bahasa besar (LLM) ke dalam aplikasi web Krewire, worker latar belakang, dan alur agen otonom tanpa dependensi runtime eksternal.
 
@@ -37,8 +37,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/krewire/krewire/pkg/ai"
-	"github.com/krewire/krewire/pkg/ai/providers"
+	"github.com/krewire/krewire/ai"
+	"github.com/krewire/krewire/ai/providers"
 )
 
 func main() {
@@ -131,7 +131,7 @@ func handleStream(w http.ResponseWriter, r *http.Request) {
 
 ## 6. Mesin AI Agent Otonom
 
-Sementara `pkg/ai` menyediakan abstraksi tingkat rendah untuk LLM, **`krew`** adalah platform AI agent otonom Krewire:
+Sementara `ai` menyediakan abstraksi tingkat rendah untuk LLM, **`krew`** adalah platform AI agent otonom Krewire:
 
 - **CLI Terdedikasi (`cmd/krew`):** Binary terminal mandiri (`krew run`, `krew session`, `krew exec`, `krew doctor`).
 - **Daemon HTTP/SSE Transport:** `transport.NewHTTPServer` yang diamankan token bearer dari Krewire Auth dan isolasi workspace tenant (sandboxing).

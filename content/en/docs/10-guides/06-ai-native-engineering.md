@@ -129,7 +129,7 @@ Changes are implemented in small, focused batches ($\le 300$ lines of code per c
 
 ```bash
 # Verify initial state
-go test -v ./pkg/target/...
+go test -v ./target/...
 ```
 
 ### Step 5: Deterministic Quality Gates
@@ -162,7 +162,7 @@ This verifies that all acceptance criteria are met, dependencies exist in `go.mo
 Changes are committed bottom-up using Conventional Commits with linked issue references:
 
 ```bash
-git add pkg/auth/token.go pkg/auth/token_test.go
+git add auth/token.go auth/token_test.go
 git commit -m "feat(auth): prevent token replay within clock window (ref #12)"
 git push origin main
 ```
@@ -199,7 +199,7 @@ AI-Native workflows introduce specific security considerations that every develo
 [Clear 1-2 sentence description of what done looks like.]
 
 ## Scope & Architectural Boundary
-- Repository: [e.g. krewire/pkg/web]
+- Repository: [e.g. krewire/web]
 - Workload Kind: [e.g. app / service / worker]
 - Layer Level: [Layer 1-3 Core / Layer 4 Platform / Layer 5 Portal]
 
@@ -243,12 +243,12 @@ AI-Native workflows introduce specific security considerations that every develo
 | Capability | Component | Status | Production Ready |
 |---|---|---|---|
 | Native MCP Server (`stdio`) | `krew` | Shipped & Verified | Yes |
-| Unified AI SDK (`pkg/ai`) | `krewire/pkg/ai` | Shipped (v0.3+) | Yes |
+| Unified AI SDK (`ai`) | `krewire/ai` | Shipped (v0.3+) | Yes |
 | Boost 21-Agent Constitution | `templates/boost` | Shipped & Verified | Yes |
 | Reproducible Verification (`krew verify`) | `krew` | Shipped (v0.3.2) | Yes |
-| Web PTY Sandboxing (Bubblewrap) | `dash/pkg/sandbox` | Shipped (Linux amd64/arm64) | Yes (Fail-closed) |
-| Multi-Agent Dynamic Swarms | `krew/pkg/sdlc` | Shipped (ref #15) | Yes |
-| Autonomous Workload Migrations | `cloud/pkg/supervisor` | Active Development | Single-Tenant Only |
+| Web PTY Sandboxing (Bubblewrap) | `dash/sandbox` | Shipped (Linux amd64/arm64) | Yes (Fail-closed) |
+| Multi-Agent Dynamic Swarms | `krew/sdlc` | Shipped (ref #15) | Yes |
+| Autonomous Workload Migrations | `cloud/supervisor` | Active Development | Single-Tenant Only |
 
 ---
 

@@ -11,7 +11,7 @@ upstream services. It owns a declarative route table, applies middleware (CORS,
 tracing, timeouts, rate limiting, circuit breaking), and resolves upstream
 addresses through the service registry.
 
-Powered by `pkg/web/gateway`, the same route table runs from the project binary
+Powered by `web/gateway`, the same route table runs from the project binary
 or straight from the CLI with `krew gateway`.
 
 ---
@@ -62,8 +62,8 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/krewire/krewire/pkg/cloud/service/registry"
-	"github.com/krewire/krewire/pkg/web/gateway"
+	"github.com/krewire/krewire/cloud/service/registry"
+	"github.com/krewire/krewire/web/gateway"
 	"my-gateway/internal/config"
 )
 

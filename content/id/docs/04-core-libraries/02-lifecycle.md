@@ -4,9 +4,9 @@ description: "Bidang kontrol imperatif Krewire: supervisor kernel, registri modu
 date: "2026-10-25"
 ---
 
-# Supervisi Siklus Hidup & Kernel (`pkg/lifecycle`)
+# Supervisi Siklus Hidup & Kernel (`lifecycle`)
 
-Jalur impor: `github.com/krewire/krewire/pkg/lifecycle`
+Jalur impor: `github.com/krewire/krewire/lifecycle`
 
 `lifecycle.Kernel` adalah bidang kontrol imperatif ekosistem Krewire: mengikat `model.Project` yang telah tervalidasi ke modul-modul terdaftar dan mengeksekusi beban kerja yang dideklarasikan.
 
@@ -21,8 +21,8 @@ import (
 	"context"
 	"os"
 
-	"github.com/krewire/krewire/pkg/lifecycle"
-	"github.com/krewire/krewire/pkg/model"
+	"github.com/krewire/krewire/lifecycle"
+	"github.com/krewire/krewire/model"
 )
 
 func main() {

@@ -14,26 +14,26 @@ Krewire Cloud is designed as both a hybrid PaaS engine and a multi-tenant manage
 
 ## Subsystems & Architecture
 
-### 1. `pkg/controlplane`
+### 1. `controlplane`
 - Manages tenant accounts, projects, deployment records, and environment variable secrets.
 - Enforces plan limits and quotas (`free`, `pro`, `team`, `enterprise`).
 - Indonesian Personal Data Protection (UU PDP) compliant tenant data isolation and auditing.
 
-### 2. `pkg/runner`
+### 2. `runner`
 - Executes hermetic Go compilations (`CGO_ENABLED=0`, `-trimpath`, `-s -w`).
 - Produces compact, standalone binaries running in ~15MB RAM with zero external runtime dependencies.
 
-### 3. `pkg/supervisor`
+### 3. `supervisor`
 - Dynamic process pool supervisor allocating isolated execution sandboxes.
 - Automated health check probes before traffic cutover.
 - Graceful zero-downtime rolling deploys.
 
-### 4. `pkg/gateway`
+### 4. `gateway`
 - Dynamic reverse proxy edge router.
 - Automated Let's Encrypt ACME TLS certificate provisioning for wildcard subdomains and custom domains.
 - Host-based HTTP/WebSocket edge routing and connection pooling.
 
-### 5. `pkg/api` & Web Console
+### 5. `api` & Web Console
 - **WebAuth Console UI:** Integrated login, SSO, and TOTP 2FA web console UI (`/webauth/login`, `/webauth/sso`, `/webauth/mfa`).
 - **Continuous Deployment Webhooks:** Automated Git push webhook listener (`/api/v1/webhooks/git`) triggering immediate build and deploy pipelines.
 - **Log Streaming:** Real-time build and container execution log streaming delivered over Server-Sent Events (SSE) at `/api/v1/apps/{id}/logs`.

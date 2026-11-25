@@ -8,7 +8,7 @@ date: "2026-10-25"
 
 Krewire operates under the **One Config** rule: all settings across all eight workloads are declared in a single file—**`krewire.yaml`**.
 
-There is no separate `ssg.yaml` or tool-specific configuration file. Configuration is typed, validated against schema rules (`pkg/validation`), and loaded using `pkg/config` (schema owner: `krew/internal/config`).
+There is no separate `ssg.yaml` or tool-specific configuration file. Configuration is typed, validated against schema rules (`validation`), and loaded using `config` (schema owner: `krew/internal/config`).
 
 ---
 

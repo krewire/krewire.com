@@ -34,7 +34,7 @@ my-project/
 │   ├── Footer.kiw        # Bagian footer
 │   └── CodeBlock.kiw     # Komponen syntax highlighter
 │
-├── content/              # Manuskrip & buku dokumentasi (pkg/book)
+├── content/              # Manuskrip & buku dokumentasi (book)
 │   ├── 01-overview/      # Direktori Bab 1
 │   │   ├── index.md      # Halaman utama bab
 │   │   └── 01-arch.md    # Sub-bab 1.1
@@ -93,7 +93,7 @@ Komponen adalah berkas `.kiw` mandiri yang disusun menggunakan sintaksis mirip J
 ---
 
 ### `content/` (Engine Manuskrip)
-Menyimpan manuskrip dokumentasi Markdown yang dikompilasi oleh `pkg/book`. Awalan numerik (`01-`, `02-`) menentukan urutan membaca bab dan sub-bab pada bilah navigasi samping (sidebar) yang dihasilkan.
+Menyimpan manuskrip dokumentasi Markdown yang dikompilasi oleh `book`. Awalan numerik (`01-`, `02-`) menentukan urutan membaca bab dan sub-bab pada bilah navigasi samping (sidebar) yang dihasilkan.
 
 ---
 

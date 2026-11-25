@@ -45,7 +45,7 @@ These edges are Go module dependencies: an arrow means "imports packages from". 
             │   │                   │
             ▼   ▼                   ▼
         ┌──────────────── github.com/krewire/krewire ────────────────┐  (Layers 1–3 — core + krew)
-        │  krew · pkg/* · pkg/model · pkg/errs · pkg/lifecycle   │
+        │  krew · domain modules · model · errs · lifecycle   │
         └─────────────────────────────┬──────────────────────────────┘
                                       ▼
                              github.com/krewire/ui  (kui)              (Layer 2 — no dependencies)
@@ -56,7 +56,7 @@ These edges are Go module dependencies: an arrow means "imports packages from". 
 | Repository | Module | Imports from the ecosystem |
 | :--- | :--- | :--- |
 | `ui` (kui) | `github.com/krewire/ui` | nothing — standard library only (`TestModuleHasNoExternalDependencies`) |
-| `krewire` (core monorepo) | `github.com/krewire/krewire` | `ui` (`pkg/ui/components` re-exports the kui `embed.FS`) |
+| `krewire` (core monorepo) | `github.com/krewire/krewire` | `ui` (`ui/components` re-exports the kui `embed.FS`) |
 | `krew` (agent engine) | `github.com/krewire/krew` | `krewire` |
 | `auth` | `github.com/krewire/auth` | `krewire` |
 | `cloud` | `github.com/krewire/cloud` | `krewire`, `auth`, `krew` |
@@ -66,7 +66,7 @@ These edges are Go module dependencies: an arrow means "imports packages from". 
 Two properties matter:
 
 - **The graph is acyclic.** `kui` imports nothing, the core imports only `kui`, and every product imports downward. No product imports another product: `dash` and `cloud` share no Go code.
-- **The CLI is a leaf for consumers.** Products import `pkg/*` packages; none imports `krew`.
+- **The CLI is a leaf for consumers.** Products import domain modules; none imports `krew`.
 
 ## 3. Runtime Integrations (Decoupled Protocols)
 

@@ -1,14 +1,14 @@
 ---
 title: "Declarative Struct Validation"
-description: "Reflection-based struct and scalar validation using validate tags in pure Go in pkg/validation."
+description: "Reflection-based struct and scalar validation using validate tags in pure Go in validation."
 date: "2026-10-25"
 ---
 
-# Declarative Struct Validation (`pkg/validation`)
+# Declarative Struct Validation (`validation`)
 
-Import path: `github.com/krewire/krewire/pkg/validation`
+Import path: `github.com/krewire/krewire/validation`
 
-The `pkg/validation` package validates Go structs and scalar fields using `validate` struct tags. It is framework-agnostic and relies 100% on the Go standard library, allowing HTTP endpoints, CLI tools, and domain entities to share one unified validation engine.
+The `validation` package validates Go structs and scalar fields using `validate` struct tags. It is framework-agnostic and relies 100% on the Go standard library, allowing HTTP endpoints, CLI tools, and domain entities to share one unified validation engine.
 
 ---
 
@@ -40,7 +40,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/krewire/krewire/pkg/validation"
+	"github.com/krewire/krewire/validation"
 )
 
 type UserRegistration struct {

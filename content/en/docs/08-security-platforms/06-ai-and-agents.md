@@ -4,12 +4,12 @@ description: "Reference guide for Krewire's unified Go AI SDK: provider-agnostic
 date: "2026-10-18"
 ---
 
-# AI & Agents (`pkg/ai`)
+# AI & Agents (`ai`)
 
 Import paths:
 
-- `github.com/krewire/krewire/pkg/ai`
-- `github.com/krewire/krewire/pkg/ai/providers`
+- `github.com/krewire/krewire/ai`
+- `github.com/krewire/krewire/ai/providers`
 
 The `ai` package provides a unified, provider-agnostic Go SDK for integrating Large Language Models into Krewire web apps, background workers, and autonomous agent workflows with zero external runtime dependencies.
 
@@ -37,8 +37,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/krewire/krewire/pkg/ai"
-	"github.com/krewire/krewire/pkg/ai/providers"
+	"github.com/krewire/krewire/ai"
+	"github.com/krewire/krewire/ai/providers"
 )
 
 func main() {
@@ -131,7 +131,7 @@ func handleStream(w http.ResponseWriter, r *http.Request) {
 
 ## 6. Autonomous AI Agent Engine
 
-While `pkg/ai` provides low-level LLM abstractions, **`krew`** is Krewire's autonomous AI agent platform:
+While `ai` provides low-level LLM abstractions, **`krew`** is Krewire's autonomous AI agent platform:
 
 - **Standalone CLI (`cmd/krew`):** Dedicated terminal binary (`krew run`, `krew session`, `krew exec`, `krew doctor`).
 - **HTTP/SSE Transport Daemon:** `transport.NewHTTPServer` secured with bearer tokens from Krewire Auth and sandboxed tenant workspaces.

@@ -1,14 +1,14 @@
 ---
-title: "Web Runtime & WASM (pkg/runtime)"
+title: "Web Runtime & WASM (runtime)"
 description: "Author client-side reactive web applications in Go compiled to WebAssembly: virtual DOM diffing, hooks, component registry, SSR hydration markers, and multi-framework island hydration."
 date: "2026-10-25"
 ---
 
-# Web Runtime & WASM (`pkg/runtime`)
+# Web Runtime & WASM (`runtime`)
 
-Import path: `github.com/krewire/krewire/pkg/runtime`
+Import path: `github.com/krewire/krewire/runtime`
 
-The `pkg/runtime` library delivers a client-side WebAssembly (WASM) execution engine, Virtual DOM (VDOM) diffing and reconciliation algorithm, Fiber component lifecycle scheduler, and progressive multi-framework island hydration contracts.
+The `runtime` library delivers a client-side WebAssembly (WASM) execution engine, Virtual DOM (VDOM) diffing and reconciliation algorithm, Fiber component lifecycle scheduler, and progressive multi-framework island hydration contracts.
 
 It allows developers to write interactive, reactive client-side widgets in 100% pure Go compiled to WebAssembly (`GOOS=js GOARCH=wasm`), or seamlessly embed lightweight modular frontend framework islands (Svelte 5, Vue 3) while keeping initial page loads static and pure Go by default.
 
@@ -17,7 +17,7 @@ It allows developers to write interactive, reactive client-side widgets in 100% 
 ## 1. Subpackage Layout
 
 ```text
-pkg/runtime/
+runtime/
 ├── vdom/         # Immutable virtual DOM: VNode, El, Text, Component, Diff, RenderHTML
 ├── component/    # Component model, Fiber scheduler, state hooks, event registry
 ├── mount/        # Progressive hydration contract (data-kiw-mount, load, idle, visible)
@@ -28,7 +28,7 @@ pkg/runtime/
 
 ---
 
-## 2. Progressive Island Hydration (`pkg/runtime/mount`)
+## 2. Progressive Island Hydration (`runtime/mount`)
 
 Krewire implements the **Islands Architecture**: pages are rendered statically on the server (SSG/SSR) with zero JavaScript bloat. Interactive islands are hydrated selectively on the client based on user visibility or browser idle cycles.
 
@@ -54,17 +54,17 @@ Mount points emit standard HTML markers:
 
 ### Multi-Framework Island Support
 
-Through `pkg/runtime/mount` and the Krewire plugin ecosystem, mount points support:
+Through `runtime/mount` and the Krewire plugin ecosystem, mount points support:
 - **`wasm`** (Default): Pure-Go compiled WebAssembly island with zero node/npm dependencies.
 - **`svelte`**: Svelte 5 reactive component island installed via `krew add svelte`.
 - **`vue`**: Vue 3 reactive component island installed via `krew add vue`.
 
 ---
 
-## 3. Virtual DOM Engine (`pkg/runtime/vdom`)
+## 3. Virtual DOM Engine (`runtime/vdom`)
 
 ```go
-import "github.com/krewire/krewire/pkg/runtime/vdom"
+import "github.com/krewire/krewire/runtime/vdom"
 
 tree := vdom.El("section", map[string]string{"class": "hero"},
 	vdom.El("h1", nil, vdom.Text("Hello from Go")),
@@ -79,7 +79,7 @@ patches := vdom.Diff(oldTree, tree) // Client-side reconciliation
 
 ---
 
-## 4. Component Model & Reactive Hooks (`pkg/runtime/component`)
+## 4. Component Model & Reactive Hooks (`runtime/component`)
 
 A component is anything implementing the `Component` interface:
 
@@ -98,8 +98,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/krewire/krewire/pkg/runtime/component"
-	"github.com/krewire/krewire/pkg/runtime/vdom"
+	"github.com/krewire/krewire/runtime/component"
+	"github.com/krewire/krewire/runtime/vdom"
 )
 
 type Counter struct{}
@@ -128,7 +128,7 @@ Available hooks include `UseState`, `UseRef`, `UseMemo`, `UseEffect`, and `UseEv
 
 ---
 
-## 5. Client Boot Scanner (`pkg/runtime/boot`)
+## 5. Client Boot Scanner (`runtime/boot`)
 
 The client runtime automatically boots and mounts components upon DOM ready:
 
@@ -136,8 +136,8 @@ The client runtime automatically boots and mounts components upon DOM ready:
 package main
 
 import (
-	"github.com/krewire/krewire/pkg/runtime/boot"
-	"github.com/krewire/krewire/pkg/runtime/component"
+	"github.com/krewire/krewire/runtime/boot"
+	"github.com/krewire/krewire/runtime/component"
 )
 
 func main() {
@@ -153,10 +153,10 @@ func main() {
 
 ---
 
-## 6. Building WASM Binaries (`pkg/runtime/build`)
+## 6. Building WASM Binaries (`runtime/build`)
 
 ```go
-import "github.com/krewire/krewire/pkg/runtime/build"
+import "github.com/krewire/krewire/runtime/build"
 
 artifacts, err := build.BuildWASM(build.Config{
 	Entry:  "./frontend",

@@ -1,14 +1,14 @@
 ---
 title: "Primitif Autentikasi"
-description: "Penandatanganan dan verifikasi kriptografis JWT, HTTP Basic Authentication dengan perbandingan waktu konstan di pkg/auth."
+description: "Penandatanganan dan verifikasi kriptografis JWT, HTTP Basic Authentication dengan perbandingan waktu konstan di auth."
 date: "2026-10-25"
 ---
 
-# Primitif Autentikasi (`pkg/auth`)
+# Primitif Autentikasi (`auth`)
 
-Jalur impor: `github.com/krewire/krewire/pkg/auth`
+Jalur impor: `github.com/krewire/krewire/auth`
 
-`pkg/auth` menyediakan primitif autentikasi kriptografis inti dan rutinitas verifikasi token untuk API dan layanan web.
+`auth` menyediakan primitif autentikasi kriptografis inti dan rutinitas verifikasi token untuk API dan layanan web.
 
 ---
 
@@ -22,8 +22,8 @@ package main
 import (
 	"time"
 
-	"github.com/krewire/krewire/pkg/auth"
-	"github.com/krewire/krewire/pkg/web"
+	"github.com/krewire/krewire/auth"
+	"github.com/krewire/krewire/web"
 )
 
 func main() {

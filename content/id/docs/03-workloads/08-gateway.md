@@ -8,7 +8,7 @@ date: "2026-10-25"
 
 Workload **`gateway`** adalah reverse proxy mandiri yang menjadi gerbang utama di depan satu atau beberapa layanan upstream. Beban kerja ini memiliki tabel rute deklaratif, menerapkan middleware (CORS, tracing, timeout, rate limiting, circuit breaking), dan menguraikan alamat upstream melalui service registry.
 
-Ditenagai oleh `pkg/web/gateway`, tabel rute yang sama dapat dijalankan dari binary proyek maupun langsung dari CLI melalui `krew gateway`.
+Ditenagai oleh `web/gateway`, tabel rute yang sama dapat dijalankan dari binary proyek maupun langsung dari CLI melalui `krew gateway`.
 
 ---
 
@@ -58,8 +58,8 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/krewire/krewire/pkg/cloud/service/registry"
-	"github.com/krewire/krewire/pkg/web/gateway"
+	"github.com/krewire/krewire/cloud/service/registry"
+	"github.com/krewire/krewire/web/gateway"
 	"my-gateway/internal/config"
 )
 

@@ -4,24 +4,24 @@ description: "Foundational domain model of Krewire: eight workload kinds, projec
 date: "2026-10-25"
 ---
 
-# Workload Model & Domain Primitives (`pkg/model`, `pkg/errs`)
+# Workload Model & Domain Primitives (`model`, `errs`)
 
 Import paths:
 
 ```text
-github.com/krewire/krewire/pkg/model
-github.com/krewire/krewire/pkg/errs
-github.com/krewire/krewire/pkg/env
-github.com/krewire/krewire/pkg/version
+github.com/krewire/krewire/model
+github.com/krewire/krewire/errs
+github.com/krewire/krewire/env
+github.com/krewire/krewire/version
 ```
 
-As a foundational core package, `pkg/model` may depend **only on Go standard library packages** and its internal `errs` sibling — never on higher-level packages and never on `krew`.
+As a foundational core package, `model` may depend **only on Go standard library packages** and its internal `errs` sibling — never on higher-level packages and never on `krew`.
 
 ---
 
-## Declarative Models & Boundaries (`pkg/model`)
+## Declarative Models & Boundaries (`model`)
 
-The `pkg/model` package establishes the foundational models, architectural scopes, licensing tiers, and invariant validation rules for the Krewire ecosystem:
+The `model` package establishes the foundational models, architectural scopes, licensing tiers, and invariant validation rules for the Krewire ecosystem:
 
 ```go
 package model
@@ -36,16 +36,16 @@ type Project struct {
 func (p Project) Validate() error
 ```
 
-`pkg/model` also declares the hierarchical `Scope` ladder (`Workspace` → `Module` → `Domain` → `Service` → `Unit`), the open-core licensing `Tier` ladder (`free`, `pro`, `team`, `enterprise`), immutable `DomainEvent` primitives, and the baseline security controls.
+`model` also declares the hierarchical `Scope` ladder (`Workspace` → `Module` → `Domain` → `Service` → `Unit`), the open-core licensing `Tier` ladder (`free`, `pro`, `team`, `enterprise`), immutable `DomainEvent` primitives, and the baseline security controls.
 
 ---
 
-## Error Handling & Exit Codes (`pkg/errs`)
+## Error Handling & Exit Codes (`errs`)
 
 Krewire standardizes errors across all packages with a structured taxonomy and POSIX exit codes:
 
 ```go
-import "github.com/krewire/krewire/pkg/errs"
+import "github.com/krewire/krewire/errs"
 
 // Exit codes
 errs.ExitCodeSuccess // 0
@@ -69,12 +69,12 @@ fmt.Println(errs.FormatTree(err))
 
 ---
 
-## Environment Resolution (`pkg/env`)
+## Environment Resolution (`env`)
 
-`pkg/env` owns the environment vocabulary; resolution itself comes from configuration (`env:` in `krewire.yaml`, `KIW_ENV`, or `--env`).
+`env` owns the environment vocabulary; resolution itself comes from configuration (`env:` in `krewire.yaml`, `KIW_ENV`, or `--env`).
 
 ```go
-import "github.com/krewire/krewire/pkg/env"
+import "github.com/krewire/krewire/env"
 
 current, err := env.ParseEnv(cfg.Env) // empty input yields env.DefaultEnv
 if err != nil {
@@ -93,12 +93,12 @@ case env.EnvTesting:
 
 ---
 
-## Version Contract (`pkg/version`)
+## Version Contract (`version`)
 
 Semantic versions are parsed, compared, and validated:
 
 ```go
-import "github.com/krewire/krewire/pkg/version"
+import "github.com/krewire/krewire/version"
 
 v := version.MustParseVersion("0.1.0")
 fmt.Println(v.String()) // 0.1.0

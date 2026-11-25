@@ -32,13 +32,13 @@ Workspace  ───►  Module  ───►  Domain  ───►  Service  �
 | 1 | **Module** | A Go module — the unit you version, release, and import. | `github.com/krewire/krewire`, `github.com/krewire/ui` |
 | 2 | **Domain** | A bounded context inside a module: a cohesive set of services, usually `internal/<domain>/`. Before extraction it is a group of packages; after extraction it can become its own module. | `internal/catalog`, `internal/user` |
 | 3 | **Service** | A runtime deployable implemented as a Go `main` package. | `cmd/api/`, `service/billing/` |
-| 4 | **Unit** | The smallest piece of code: a package, file, type, or function. | `pkg/ui`, `ui.Button` |
+| 4 | **Unit** | The smallest piece of code: a package, file, type, or function. | `ui`, `ui.Button` |
 
 Older names are no longer accepted: use **Module** instead of "Project", and **Unit** instead of "Package" or "Func".
 
-## 2. Scope as Code (`pkg/model`)
+## 2. Scope as Code (`model`)
 
-The hierarchy is not just documentation — it is a type in the hermetic core package `pkg/model`:
+The hierarchy is not just documentation — it is a type in the hermetic core package `model`:
 
 ```go
 package main
@@ -46,7 +46,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/krewire/krewire/pkg/model"
+	"github.com/krewire/krewire/model"
 )
 
 func main() {

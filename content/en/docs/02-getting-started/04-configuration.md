@@ -67,7 +67,7 @@ auto_assets:
       layer: "page"             # scoped | vendor | component | theme | book | page
   bundle: false                 # true merges CSS/JS into assets/krewire.{css,js}
 
-# Documentation Book Pipeline (pkg/book)
+# Documentation Book Pipeline (book)
 book:
   mount: "/docs/"               # Mount path in output URL space (hybrid mode)
   toc: true                     # Generate root table-of-contents page
@@ -114,7 +114,7 @@ The `project:` section defines the identity and workload behavior:
 
 ### 3.2 Content Input (`input:`)
 
-- **`input`:** The content directory consumed by the book (`pkg/book`) pipeline. Defaults to `content`. With `i18n:` enabled, `krew build` resolves `content/<locale>/docs/` per locale and only falls back to this value.
+- **`input`:** The content directory consumed by the book (`book`) pipeline. Defaults to `content`. With `i18n:` enabled, `krew build` resolves `content/<locale>/docs/` per locale and only falls back to this value.
 
 ---
 
@@ -185,7 +185,7 @@ order, so each layer can win over the previous one:
 | `vendor`      | third-party output such as plugin CSS (Tailwind) |
 | `component`   | component-library styling (Krewire UI)           |
 | `theme`       | theme variables and last-mile design overrides   |
-| `book`        | content-pipeline styling (pkg/book)                |
+| `book`        | content-pipeline styling (book)                |
 | `page`        | per-page overrides — always last                 |
 
 ```yaml

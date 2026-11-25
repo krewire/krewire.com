@@ -1,12 +1,12 @@
 ---
 title: "Web Engine & HTTP Routing"
-description: "High-performance radix tree HTTP routing, middleware pipeline, RFC 7807 problem details, parameter extraction, and render helpers in pkg/web."
+description: "High-performance radix tree HTTP routing, middleware pipeline, RFC 7807 problem details, parameter extraction, and render helpers in web."
 date: "2026-10-25"
 ---
 
-# Web Engine & HTTP Routing (`pkg/web`)
+# Web Engine & HTTP Routing (`web`)
 
-Import path: `github.com/krewire/krewire/pkg/web`
+Import path: `github.com/krewire/krewire/web`
 
 The `web` package wraps Go's `net/http` with expressive routing, parameter extraction, middleware chains, and JSON serialization without external runtime dependencies.
 
@@ -28,7 +28,7 @@ package main
 
 import (
 	"net/http"
-	"github.com/krewire/krewire/pkg/web"
+	"github.com/krewire/krewire/web"
 )
 
 func main() {

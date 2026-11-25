@@ -88,8 +88,8 @@ Anda **tidak** perlu membaca tentang arsitektur untuk menggunakannya. Ikuti taha
 
 1. [Quickstart](/getting-started/quickstart) — pelajari siklus kerja `krew` pada situs kecil.
 2. [Membangun Aplikasi Fullstack dalam 15 Menit](/getting-started/fullstack-app-tutorial) — SQLite, form, CSRF, satu binary.
-3. [Workload App](/workloads/app) dan [Wadah aplikasi (`pkg/app`)](/web-ui/app).
-4. [Web engine & perutean (`pkg/web`)](/web-ui/web) dan [Database & ORM (`pkg/orm`)](/data-services/database-and-orm).
+3. [Workload App](/workloads/app) dan [Wadah aplikasi (`app`)](/web-ui/app).
+4. [Web engine & perutean (`web`)](/web-ui/web) dan [Database & ORM (`orm`)](/data-services/database-and-orm).
 5. [Kontrol keamanan](/security-platforms/security) dan [Autentikasi](/security-platforms/auth).
 6. [Alur data: waktu build vs waktu request](/architecture/data-flow) — kapan merender secara statis dan kapan per request.
 
@@ -97,7 +97,7 @@ Anda **tidak** perlu membaca tentang arsitektur untuk menggunakannya. Ikuti taha
 
 1. [Mengapa Krewire?](/overview/why-krewire) dan [matriks workload](/overview/krewire-workloads).
 2. Workload [Service](/workloads/service), [Gateway](/workloads/gateway), dan [Worker](/workloads/worker).
-3. [Sistem terdistribusi (`pkg/cloud`)](/security-platforms/cloud-distributed) dan [Resiliensi](/core-libraries/resilience).
+3. [Sistem terdistribusi (`cloud`)](/security-platforms/cloud-distributed) dan [Resiliensi](/core-libraries/resilience).
 4. [Pendalaman Arsitektur](/architecture) — piramida, DAG ekosistem, level cakupan.
 5. [Deployment & Operasi](/guides/deployment-and-operations) dan [Hybrid PaaS & Cloud](/guides/hybrid-paas-and-cloud).
 
@@ -107,8 +107,8 @@ Anda **tidak** perlu membaca tentang arsitektur untuk menggunakannya. Ikuti taha
 
 | Peran | Baca dengan urutan ini |
 | :--- | :--- |
-| **Pengembang frontend** | [Quickstart](/getting-started/quickstart) → [DSL `.kiw`](/getting-started/dsl) → [Komponen UI](/ui/components) → [Design system UI (`pkg/ui`)](/web-ui/ui) → [Web runtime & WASM](/web-ui/web-runtime) → [Workload Site](/workloads/site) |
-| **Pengembang backend** | [Quickstart](/getting-started/quickstart) → [Tutorial aplikasi fullstack](/getting-started/fullstack-app-tutorial) → [`pkg/web`](/web-ui/web) → [`pkg/app`](/web-ui/app) → [Database & ORM](/data-services/database-and-orm) → [Validasi](/core-libraries/validation) → [Alur data](/architecture/data-flow) |
+| **Pengembang frontend** | [Quickstart](/getting-started/quickstart) → [DSL `.kiw`](/getting-started/dsl) → [Komponen UI](/ui/components) → [Design system UI (`ui`)](/web-ui/ui) → [Web runtime & WASM](/web-ui/web-runtime) → [Workload Site](/workloads/site) |
+| **Pengembang backend** | [Quickstart](/getting-started/quickstart) → [Tutorial aplikasi fullstack](/getting-started/fullstack-app-tutorial) → [`web`](/web-ui/web) → [`app`](/web-ui/app) → [Database & ORM](/data-services/database-and-orm) → [Validasi](/core-libraries/validation) → [Alur data](/architecture/data-flow) |
 | **DevOps engineer** | [Instalasi](/getting-started/installation) → [Konfigurasi](/getting-started/configuration) → [Perintah CLI](/cli-reference/commands) → [Skrip & CI/CD](/cli-reference/scripting) → [Deployment & Operasi](/guides/deployment-and-operations) → [Hybrid PaaS & Cloud](/guides/hybrid-paas-and-cloud) |
 | **Platform engineer** | [Ringkasan](/overview) → [Matriks workload](/overview/krewire-workloads) → [Pendalaman Arsitektur](/architecture) → [Model & primitif](/core-libraries/model) → [Kernel siklus hidup](/core-libraries/lifecycle) → [Open core & lisensi](/guides/open-core-and-licensing) |
 

@@ -4,15 +4,15 @@ description: "Reference guide for Krewire's multi-driver ORM: SQLite, MySQL, Pos
 date: "2026-11-11"
 ---
 
-# Database & Multi-Driver ORM (`pkg/orm`)
+# Database & Multi-Driver ORM (`orm`)
 
-`pkg/orm` provides an expressive, database-agnostic Object-Relational Mapping (ORM) and query builder designed for Go's type-safe ecosystem. It eliminates external CGO dependencies and abstracts dialect differences (parameter placeholders, identifier quoting, DDL statements, auto-increment conventions) behind a single fluent API.
+`orm` provides an expressive, database-agnostic Object-Relational Mapping (ORM) and query builder designed for Go's type-safe ecosystem. It eliminates external CGO dependencies and abstracts dialect differences (parameter placeholders, identifier quoting, DDL statements, auto-increment conventions) behind a single fluent API.
 
 ## Supported Drivers
 
 | Driver | Target Database | Protocol / Architecture |
 |---|---|---|
-| `sqlite` | SQLite 3 | Embedded, zero-CGO, WAL mode, foreign keys enforced; bundled in `pkg/orm/sqlite` |
+| `sqlite` | SQLite 3 | Embedded, zero-CGO, WAL mode, foreign keys enforced; bundled in `hub/sqlite` |
 | `mysql` | MySQL 8.0+ / MariaDB | Standard relational protocol with connection pooling |
 | `postgres` | PostgreSQL 14+ | Advanced relational features, JSONB, transaction advisory locks |
 | `mongodb` | MongoDB 6.0+ | Document-oriented NoSQL storage with BSON mapping |
@@ -28,7 +28,7 @@ package models
 import (
     "context"
 
-    "github.com/krewire/krewire/pkg/orm"
+    "github.com/krewire/krewire/orm"
 )
 
 type User struct {
@@ -111,8 +111,8 @@ package migrations
 import (
     "context"
 
-    "github.com/krewire/krewire/pkg/orm/migrate"
-    "github.com/krewire/krewire/pkg/orm/schema"
+    "github.com/krewire/krewire/orm/migrate"
+    "github.com/krewire/krewire/orm/schema"
 )
 
 func init() {
@@ -146,12 +146,12 @@ krew migrate redo     # Re-apply the last migration atomically
 krew migrate status   # Inspect migration states
 ```
 
-## Faker Engine (`pkg/orm/faker`)
+## Faker Engine (`orm/faker`)
 
 A pure-Go, deterministic, thread-safe fake data generator for testing and seeding:
 
 ```go
-import "github.com/krewire/krewire/pkg/orm/faker"
+import "github.com/krewire/krewire/orm/faker"
 
 f := faker.New() // or faker.New(42) for deterministic reproducible seeds
 
@@ -165,7 +165,7 @@ price    := f.Price(5.0, 250.0)
 uuid     := f.UUID()
 ```
 
-## Seeder & Model Factory Engine (`pkg/orm/seeder`)
+## Seeder & Model Factory Engine (`orm/seeder`)
 
 Create reproducible test datasets and initial system state using generic model factories and seeders:
 
@@ -175,9 +175,9 @@ Create reproducible test datasets and initial system state using generic model f
 package factories
 
 import (
-    "github.com/krewire/krewire/pkg/orm"
-    "github.com/krewire/krewire/pkg/orm/faker"
-    "github.com/krewire/krewire/pkg/orm/seeder"
+    "github.com/krewire/krewire/orm"
+    "github.com/krewire/krewire/orm/faker"
+    "github.com/krewire/krewire/orm/seeder"
     "my-app/models"
 )
 
@@ -214,8 +214,8 @@ package seeds
 import (
     "context"
 
-    "github.com/krewire/krewire/pkg/orm"
-    "github.com/krewire/krewire/pkg/orm/seeder"
+    "github.com/krewire/krewire/orm"
+    "github.com/krewire/krewire/orm/seeder"
     "my-app/factories"
 )
 
@@ -238,7 +238,7 @@ krew seed --class UserSeeder   # runs a specific seeder
 krew seed                   # Laravel-compatible alias
 ```
 
-## Generic Repository Pattern (`pkg/orm/repository`)
+## Generic Repository Pattern (`orm/repository`)
 
 Krewire provides a type-safe generic Repository pattern (`Repository[T any]`) that decouples persistence concerns from domain services and provides transaction safety:
 
@@ -248,8 +248,8 @@ package repositories
 import (
     "context"
 
-    "github.com/krewire/krewire/pkg/orm"
-    "github.com/krewire/krewire/pkg/orm/repository"
+    "github.com/krewire/krewire/orm"
+    "github.com/krewire/krewire/orm/repository"
     "my-app/models"
 )
 

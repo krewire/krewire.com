@@ -1,12 +1,12 @@
 ---
 title: "Commerce & Gateway Pembayaran Indonesia"
-description: "Panduan integrasi untuk Midtrans QRIS, Virtual Account (BCA, Mandiri, BRI, BNI), dan kartu kredit menggunakan pkg/commerce."
+description: "Panduan integrasi untuk Midtrans QRIS, Virtual Account (BCA, Mandiri, BRI, BNI), dan kartu kredit menggunakan commerce."
 date: "2026-10-24"
 ---
 
-# Commerce & Gateway Pembayaran Indonesia (`pkg/commerce`)
+# Commerce & Gateway Pembayaran Indonesia (`commerce`)
 
-`pkg/commerce` memberdayakan aplikasi Krewire dan Krewire Cloud untuk menerima metode pembayaran lokal Indonesia secara bawaan melalui Midtrans.
+`commerce` memberdayakan aplikasi Krewire dan Krewire Cloud untuk menerima metode pembayaran lokal Indonesia secara bawaan melalui Midtrans.
 
 ## Jalur Pembayaran yang Didukung
 
@@ -24,7 +24,7 @@ import (
     "fmt"
     "os"
     
-    "github.com/krewire/krewire/pkg/commerce"
+    "github.com/krewire/krewire/commerce"
 )
 
 func main() {

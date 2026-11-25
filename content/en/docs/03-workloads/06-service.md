@@ -8,7 +8,7 @@ date: "2026-10-08"
 
 The **`service`** workload equips developers to build high-throughput, cloud-native microservices and distributed APIs.
 
-Powered by `pkg/cloud/service`, `pkg/sec`, and `pkg/resilience`, the `service` workload includes production-grade discovery, distributed tracing, gateway routing, and telemetry out of the box.
+Powered by `cloud/service`, `sec`, and `resilience`, the `service` workload includes production-grade discovery, distributed tracing, gateway routing, and telemetry out of the box.
 
 ---
 
@@ -56,8 +56,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/krewire/krewire/pkg/cloud/service"
-	"github.com/krewire/krewire/pkg/web"
+	"github.com/krewire/krewire/cloud/service"
+	"github.com/krewire/krewire/web"
 )
 
 func main() {
@@ -103,8 +103,8 @@ service:
 ```
 
 `name` and `port` are the only `service:` keys. Service discovery
-(`pkg/cloud/service/registry`), rate limiting and circuit breaking
-(`pkg/cloud/service/resilience`), and tracing (`pkg/cloud/service/tracing`) are
+(`cloud/service/registry`), rate limiting and circuit breaking
+(`cloud/service/resilience`), and tracing (`cloud/service/tracing`) are
 composed in Go code, where the registry and transport are wired.
 
 ---

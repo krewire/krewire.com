@@ -12,30 +12,30 @@ Krewire Auth is the enterprise identity platform providing full-spectrum identit
 
 ## Subsystems & Architecture
 
-### 1. `pkg/identity`
+### 1. `identity`
 - **Password Hashing:** OWASP-recommended PBKDF2-HMAC-SHA256 (600,000 iterations).
 - **Multi-Factor Authentication:** Time-based One-Time Passwords (TOTP RFC 6238) with QR code and `otpauth://` provisioning URIs.
 - **Recovery Codes:** 8-count emergency backup recovery codes validated with SHA-256 hashes.
 - **Persistent Storage:** Persistent SQL user and session stores supporting PostgreSQL and SQLite.
 - **Redis Session Store:** High-throughput `RedisSessionStore` communicating over native RESP protocol with TTL expiration sweeps.
 
-### 2. `pkg/sso`
+### 2. `sso`
 - **OIDC / OAuth2:** Generic OIDC/OAuth2 with PKCE (RFC 7636) and state verification.
 - **Provider Presets:** Pre-configured identity provider drivers for Google Workspace, GitHub, and Microsoft Azure AD / Entra ID.
 - **SAML 2.0:** SP metadata generation, clock-skew tolerant cryptographic assertion validation, and signature verification.
 - **OIDC Discovery:** Public discovery metadata endpoint (`/.well-known/openid-configuration`) and JWKS key management.
 
-### 3. `pkg/rbac`
+### 3. `rbac`
 - **User Roles:** Hierarchical personas (`superadmin` > `org_admin` > `developer` > `viewer`).
 - **Granular Permissions:** Resource-action rules with wildcard matching (`workloads:*`, `projects:deploy`, `secrets:read`).
 - **Agent & Tool RBAC:** Dedicated permissions for autonomous AI agents (`AgentPermission`, `ToolPermission`) with policy evaluators preventing unprivileged tool calls.
 - **Security Audit Trail:** Structured `AuditLogger` capturing all authentication, authorization, and administrative actions with IP and user context.
 
-### 4. `pkg/middleware`
+### 4. `middleware`
 - **Double-Submit CSRF Cookie:** Cryptographic cookie-to-header token verification adhering to defense-in-depth security standards.
 - **Session Context:** Safe extraction helpers (`WithSession`, `SessionFromContext`) integrating seamlessly with HTTP request lifecycles.
 
-### 5. `pkg/webauth`
+### 5. `webauth`
 Ready-to-mount HTTP handlers with clean, responsive dark/light UI:
 
 - `GET /login`, `POST /login`
@@ -47,7 +47,7 @@ Ready-to-mount HTTP handlers with clean, responsive dark/light UI:
 - `GET /logout`, `POST /logout`
 
 #### Safe Redirection & Open Redirect Prevention (CWE-601)
-`pkg/webauth` protects against phishing and unvalidated redirects via the `return_to` parameter:
+`webauth` protects against phishing and unvalidated redirects via the `return_to` parameter:
 - **`AUTH_RETURN_TO_HOSTS`**: Configured via environment variable as a comma-separated list of permitted hostnames (e.g. `localhost:8080,dash.internal.org,app.krewire.com`).
 - If `return_to` targets an external domain not listed in `AUTH_RETURN_TO_HOSTS`, the handler automatically discards it and safely falls back to `/`.
 
@@ -71,13 +71,13 @@ Krewire Auth integrates with web services through standard OIDC protocols:
 
 For open-source projects operating independently of the cloud service, Krewire provides native, zero-dependency authentication and security libraries directly in the core monorepo:
 
-- `pkg/sec`: Constant-time comparisons, OWASP security headers, CSRF token validation, and SSRF guards.
-- `pkg/auth`: Stateless JWT tokens, PBKDF2 password hashing, and HTTP Basic Auth middleware.
+- `sec`: Constant-time comparisons, OWASP security headers, CSRF token validation, and SSRF guards.
+- `auth`: Stateless JWT tokens, PBKDF2 password hashing, and HTTP Basic Auth middleware.
 
 ```go
 import (
-    "github.com/krewire/krewire/pkg/auth"
-    "github.com/krewire/krewire/pkg/sec"
+    "github.com/krewire/krewire/auth"
+    "github.com/krewire/krewire/sec"
 )
 ```
 

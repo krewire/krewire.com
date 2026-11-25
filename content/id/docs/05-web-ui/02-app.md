@@ -1,14 +1,14 @@
 ---
 title: "Wadah Aplikasi & Assembly"
-description: "Wadah dependency injection bertipe, perakitan provider, manajemen siklus hidup, dan supervisi proses graceful shutdown di pkg/app."
+description: "Wadah dependency injection bertipe, perakitan provider, manajemen siklus hidup, dan supervisi proses graceful shutdown di app."
 date: "2026-10-31"
 ---
 
-# Wadah Aplikasi & Assembly (`pkg/app`)
+# Wadah Aplikasi & Assembly (`app`)
 
-Jalur impor: `github.com/krewire/krewire/pkg/app`
+Jalur impor: `github.com/krewire/krewire/app`
 
-Paket `pkg/app` menyediakan kontainer dependensi bertipe (typed dependency container), sistem perakitan penyedia (provider assembly), dan supervisi proses dengan graceful shutdown. Paket ini berfungsi sebagai akar komposisi tunggal (single composition root) aplikasi—setiap dependensi dideklarasikan dengan keamanan tipe statis Go, diselesaikan secara deterministik, dan dapat diobservasi melalui log terstruktur serta hook tracer.
+Paket `app` menyediakan kontainer dependensi bertipe (typed dependency container), sistem perakitan penyedia (provider assembly), dan supervisi proses dengan graceful shutdown. Paket ini berfungsi sebagai akar komposisi tunggal (single composition root) aplikasi—setiap dependensi dideklarasikan dengan keamanan tipe statis Go, diselesaikan secara deterministik, dan dapat diobservasi melalui log terstruktur serta hook tracer.
 
 ---
 
@@ -88,7 +88,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/krewire/krewire/pkg/app"
+	"github.com/krewire/krewire/app"
 )
 
 // Service mendefinisikan antarmuka logika bisnis.
@@ -149,4 +149,4 @@ func main() {
 
 ## Batasan Desain
 
-`pkg/app` bertanggung jawab atas komposisi aplikasi, urutan registrasi, dan supervisi runner saja. Aturan domain bisnis berada di `pkg/model`, perutean HTTP di `pkg/web`, dan mekanisme mesin runtime di `pkg/lifecycle`. `pkg/app` tidak pernah mengimpor `krew`.
+`app` bertanggung jawab atas komposisi aplikasi, urutan registrasi, dan supervisi runner saja. Aturan domain bisnis berada di `model`, perutean HTTP di `web`, dan mekanisme mesin runtime di `lifecycle`. `app` tidak pernah mengimpor `krew`.

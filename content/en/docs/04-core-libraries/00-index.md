@@ -10,7 +10,7 @@ The foundational tier of Krewire establishes the architectural guarantees, domai
 
 Packages in this layer adhere to strict design principles:
 
-- **Strict Downward-Only Dependencies:** Domain primitives and rules reside in `pkg/model` and `pkg/errs`. Higher packages never inject upward dependencies.
+- **Strict Downward-Only Dependencies:** Domain primitives and rules reside in `model` and `errs`. Higher packages never inject upward dependencies.
 - **Single Source of Truth (SSOT):** Facts, constants, and validation rules are owned by exactly one package and imported elsewhere.
 - **Zero Third-Party Bloat:** Where Go standard library packages suffice, Krewire builds upon them without introducing external dependency chains.
 
@@ -24,7 +24,7 @@ Packages in this layer adhere to strict design principles:
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.1</span>
       <h3 class="chapter-card-title">
-        <a href="/core-libraries/model">Workload Model & Domain Primitives (pkg/model, pkg/errs) <span class="arrow">→</span></a>
+        <a href="/core-libraries/model">Workload Model & Domain Primitives (model, errs) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -36,7 +36,7 @@ Packages in this layer adhere to strict design principles:
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.2</span>
       <h3 class="chapter-card-title">
-        <a href="/core-libraries/lifecycle">Lifecycle Supervision & Kernel (pkg/lifecycle) <span class="arrow">→</span></a>
+        <a href="/core-libraries/lifecycle">Lifecycle Supervision & Kernel (lifecycle) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -48,7 +48,7 @@ Packages in this layer adhere to strict design principles:
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.3</span>
       <h3 class="chapter-card-title">
-        <a href="/core-libraries/config">Hierarchical Configuration (pkg/config) <span class="arrow">→</span></a>
+        <a href="/core-libraries/config">Hierarchical Configuration (config) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -60,7 +60,7 @@ Packages in this layer adhere to strict design principles:
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.4</span>
       <h3 class="chapter-card-title">
-        <a href="/core-libraries/validation">Composable Input Validation (pkg/validation) <span class="arrow">→</span></a>
+        <a href="/core-libraries/validation">Composable Input Validation (validation) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -72,7 +72,7 @@ Packages in this layer adhere to strict design principles:
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.5</span>
       <h3 class="chapter-card-title">
-        <a href="/core-libraries/resilience">Resilience Patterns & Circuit Breakers (pkg/resilience) <span class="arrow">→</span></a>
+        <a href="/core-libraries/resilience">Resilience Patterns & Circuit Breakers (resilience) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -84,7 +84,7 @@ Packages in this layer adhere to strict design principles:
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.6</span>
       <h3 class="chapter-card-title">
-        <a href="/core-libraries/testing">Testing Harness & Assertions (pkg/testing) <span class="arrow">→</span></a>
+        <a href="/core-libraries/testing">Testing Harness & Assertions (testing) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">

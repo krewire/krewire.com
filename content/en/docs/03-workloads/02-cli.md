@@ -1,6 +1,6 @@
 ---
 title: "Terminal CLI & TUI (cli)"
-description: "Build developer command-line interfaces and interactive terminal applications in Go with pkg/tui, POSIX flag parsing, and strict exit code discipline."
+description: "Build developer command-line interfaces and interactive terminal applications in Go with tui, POSIX flag parsing, and strict exit code discipline."
 date: "2026-10-08"
 ---
 
@@ -8,7 +8,7 @@ date: "2026-10-08"
 
 The **`cli`** workload is engineered for authoring high-performance command-line utilities, system tools, developer CLIs, and interactive terminal user interfaces (TUIs).
 
-Powered by `pkg/tui` and `pkg/term`, the `cli` workload delivers an Elm/Bubble Tea-inspired **Model-Update-View (MUV)** pattern with zero external dependencies and strict POSIX exit code discipline (`pkg/errs`).
+Powered by `tui` and `tui/term`, the `cli` workload delivers an Elm/Bubble Tea-inspired **Model-Update-View (MUV)** pattern with zero external dependencies and strict POSIX exit code discipline (`errs`).
 
 ---
 
@@ -47,7 +47,7 @@ sysmon/
 
 ## Interactive TUI Implementation
 
-Here is an interactive terminal dashboard using `pkg/tui`:
+Here is an interactive terminal dashboard using `tui`:
 
 ```go
 package main
@@ -56,8 +56,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/krewire/krewire/pkg/term"
-	"github.com/krewire/krewire/pkg/tui"
+	"github.com/krewire/tui/term"
+	"github.com/krewire/tui"
 )
 
 type model struct {

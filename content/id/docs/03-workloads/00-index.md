@@ -36,7 +36,7 @@ Pemilihan jenis workload memberi tahu kompiler, server dev lokal, dan pipeline d
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Membangun aplikasi baris perintah dan TUI terminal interaktif menggunakan <code>pkg/tui</code> dengan startup milidetik.
+      Membangun aplikasi baris perintah dan TUI terminal interaktif menggunakan <code>tui</code> dengan startup milidetik.
     </p>
   </div>
 

@@ -1,14 +1,14 @@
 ---
 title: "Utilitas Pengujian & Asersi"
-description: "Harness asersi pengujian, rantai HTTP fasih, snapshot golden, asersi komponen UI, dan otomasi browser di pkg/testing."
+description: "Harness asersi pengujian, rantai HTTP fasih, snapshot golden, asersi komponen UI, dan otomasi browser di testing."
 date: "2026-10-25"
 ---
 
-# Utilitas Pengujian & Asersi (`pkg/testing`)
+# Utilitas Pengujian & Asersi (`testing`)
 
-Jalur impor: `github.com/krewire/krewire/pkg/testing`
+Jalur impor: `github.com/krewire/krewire/testing`
 
-`pkg/testing` menghadirkan perangkat pengujian murni Go (pure-Go) yang idiomatik untuk ekosistem Krewire. Paket ini mencakup pembangun permintaan HTTP yang fasih (fluent), matcher asersi respons yang dapat dirangkai berantai (chainable), manajemen fixture sementara, perbandingan berkas snapshot golden, inspeksi komponen UI, serta otomasi peramban tanpa kepala (headless browser automation).
+`testing` menghadirkan perangkat pengujian murni Go (pure-Go) yang idiomatik untuk ekosistem Krewire. Paket ini mencakup pembangun permintaan HTTP yang fasih (fluent), matcher asersi respons yang dapat dirangkai berantai (chainable), manajemen fixture sementara, perbandingan berkas snapshot golden, inspeksi komponen UI, serta otomasi peramban tanpa kepala (headless browser automation).
 
 ---
 
@@ -23,7 +23,7 @@ import (
 	"net/http"
 	"testing"
 
-	ftest "github.com/krewire/krewire/pkg/testing"
+	ftest "github.com/krewire/krewire/testing"
 )
 
 func TestProfileEndpoint(t *testing.T) {
@@ -77,7 +77,7 @@ package compiler_test
 import (
 	"testing"
 
-	ftest "github.com/krewire/krewire/pkg/testing"
+	ftest "github.com/krewire/krewire/testing"
 )
 
 func TestTemplateRendering(t *testing.T) {
@@ -90,7 +90,7 @@ func TestTemplateRendering(t *testing.T) {
 
 ---
 
-## 4. Otomasi Peramban Tanpa Kepala (`pkg/testing/browser`)
+## 4. Otomasi Peramban Tanpa Kepala (`testing/browser`)
 
 Paket `browser` menyediakan harness pengujian end-to-end terotomasi tanpa memerlukan runtime Node.js:
 
@@ -101,7 +101,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/krewire/krewire/pkg/testing/browser"
+	"github.com/krewire/krewire/testing/browser"
 )
 
 func TestWebUI_E2E(t *testing.T) {

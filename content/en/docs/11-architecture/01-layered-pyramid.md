@@ -41,15 +41,15 @@ Layer 4: Platform Engines & Cloud          Cloud (PaaS) ∥ Auth (IAM / SSO) ∥
    ↓
 Layer 3: Universal Developer Driver & CLI (krew driven by krewire.yaml)
    ↓
-Layer 2: UI Foundation & Domain Libraries  kui (.kiw components) · pkg/* (web, orm, sec, …)
+Layer 2: UI Foundation & Domain Libraries  ui (.kiw components) · hub · krewire modules (web, orm, sec, …)
    ↓
-Layer 1: Core Foundation & Kernel          pkg/model · pkg/errs · pkg/version · pkg/lifecycle
+Layer 1: Core Foundation & Kernel          model · errs · version · lifecycle
    ↓
 Layer 0: Go Standard Library & OS Primitives
 ```
 
 - **Strict downward-only:** a layer may import only layers below it (`Layer N → Layer < N`). Upward imports are forbidden and caught by `layering_test.go`.
-- **Kernel isolation:** `pkg/model` depends only on the standard library and `pkg/errs`.
+- **Kernel isolation:** `model` depends only on the standard library and `errs`.
 - **CLI encapsulation:** no library or platform package may import `krew`. Generated user projects depend on Krewire libraries, never on the CLI.
 
 ## 3. Inside the Core Repository
@@ -60,9 +60,9 @@ Zooming into `github.com/krewire/krewire`, the same idea is applied as a ranked 
 | :--- | :--- | :--- |
 | 5 | Scaffolding blueprints (`templates/*`) | Layers 0–4 |
 | 4 | Developer tooling (`krew`) | Layers 0–3 |
-| 3 | Domain libraries (`pkg/web`, `pkg/sec`, `pkg/orm`, `pkg/ui`, …) | Layers 0–2 and sibling domain packages, acyclically |
-| 2 | Execution & supervision (`pkg/lifecycle`, `pkg/env`, `pkg/log`) | Layers 0–1 |
-| 1 | Declarative core (`pkg/errs`, `pkg/model`, `pkg/version`) | Standard library (`model`, `version` may import `errs`) |
+| 3 | Domain libraries (`web`, `sec`, `orm`, `ui`, …) | Layers 0–2 and sibling domain packages, acyclically |
+| 2 | Execution & supervision (`lifecycle`, `env`, `log`) | Layers 0–1 |
+| 1 | Declarative core (`errs`, `model`, `version`) | Standard library (`model`, `version` may import `errs`) |
 | 0 | Go standard library | — |
 
 Five invariants keep this ladder honest:
@@ -70,10 +70,10 @@ Five invariants keep this ladder honest:
 | # | Invariant | Enforced by |
 | :--- | :--- | :--- |
 | 1 | **Downward-only directionality** — every import edge goes to a lower layer, or stays acyclic inside Layer 3. | `TestFoundationLayering`, `TestUIDoesNotImportWeb` in `layering_test.go` |
-| 2 | **Base floor** — `pkg/errs` imports only the standard library; `model` and `version` add only `errs`. | `pkg/errs/dependency_test.go`, `pkg/model/dependency_test.go` |
+| 2 | **Base floor** — `errs` imports only the standard library; `model` and `version` add only `errs`. | `errs/dependency_test.go`, `model/dependency_test.go` |
 | 3 | **No upward names** — foundation packages contain no string literals naming higher packages. | `TestFoundationNamesNoHigherPackage` |
-| 4 | **Hermetic core** — `pkg/model` has no third-party or other Krewire imports. | `TestModel_StdlibBoundary` |
-| 5 | **Tooling isolation** — nothing under `pkg/` or `templates/` imports `krew`. | `TestPackagesNeverImportKiw` |
+| 4 | **Hermetic core** — `model` has no third-party or other Krewire imports. | `TestModel_StdlibBoundary` |
+| 5 | **Tooling isolation** — no foundational domain module or `templates/` imports `krew`. | `TestPackagesNeverImportKiw` |
 
 ## 4. Peer Decoupling & the Bridge/Gateway Pattern
 

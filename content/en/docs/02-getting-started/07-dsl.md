@@ -6,7 +6,7 @@ date: "2026-09-29"
 
 # DSL (.kiw)
 
-The **`.kiw` Component DSL** (`pkg/kiw`) is Krewire's unified, file-based component templating language. It brings modern Single-File Component (SFC) ergonomics—reminiscent of Astro, Svelte, or Vue—directly to the Go ecosystem without requiring Node.js, `npm`, webpack, or JavaScript build fatigue.
+The **`.kiw` Component DSL** (`ui/kiw`) is Krewire's unified, file-based component templating language. It brings modern Single-File Component (SFC) ergonomics—reminiscent of Astro, Svelte, or Vue—directly to the Go ecosystem without requiring Node.js, `npm`, webpack, or JavaScript build fatigue.
 
 Every `.kiw` file encapsulates its metadata, markup, scoped styles, and client interactions in a single, readable file that compiles down to high-performance Go template trees and static assets in milliseconds.
 
@@ -174,7 +174,7 @@ injection off or exclude specific files.
 
 ## 4. Reusable Component Composition
 
-Components can be instantiated dynamically inside any page, layout, or component using custom component tags. Sources include local files in `components/`, standalone packages installed into `./.krewire/pkg/`, and components imported as Go modules (for example `github.com/krewire/ui`, available as `@krewire/ui`):
+Components can be instantiated dynamically inside any page, layout, or component using custom component tags. Sources include local files in `components/`, standalone packages installed into `./.krewire/`, and components imported as Go modules (for example `github.com/krewire/ui`, available as `@krewire/ui`):
 
 ```html
 <!-- Tag-based invocation with attributes as props -->
@@ -209,7 +209,7 @@ krew make component Card.Footer     # generates components/Card/Footer.kiw
 
 ### 4.2 Namespaced & Vendor Components
 
-Installed UI packages from `./.krewire/pkg/` or embedded design systems can be invoked with colon namespace syntax:
+Installed UI packages from `./.krewire/` or embedded design systems can be invoked with colon namespace syntax:
 
 ```html
 <ui:Button variant="primary">Launch</ui:Button>
@@ -278,12 +278,12 @@ Reusable component libraries can be distributed and installed as standalone pack
 
 - **Manifest (`kiw.pkg.json`)**: Declares package metadata, exported component paths, and stylesheets.
 - **Archive Format (`.kpkg`)**: Gzipped tarball with SHA-256 integrity verification.
-- **Install Directory (`./.krewire/pkg/`)**: Local project packages repository.
+- **Install Directory (`./.krewire/`)**: Local project packages repository.
 
 ```bash
 krew pkg init @acme/ui              # Scaffolds package directory with kiw.pkg.json
 krew pkg pack ./acme-ui             # Packs into acme-ui-0.1.0.kpkg archive
-krew pkg add ./acme-ui-0.1.0.kpkg   # Installs into ./.krewire/pkg/acme-ui
+krew pkg add ./acme-ui-0.1.0.kpkg   # Installs into ./.krewire/acme-ui
 krew pkg list                       # Lists installed packages and exported components
 ```
 
@@ -319,7 +319,7 @@ Instantiate `Alert` inside `pages/index.kiw`:
 
 ### Interactive Islands & Client Hydration
 
-Krewire implements an **Island Architecture** (`pkg/runtime/mount` and `pkg/runtime/boot`) allowing selective client-side hydration of interactive components while keeping the rest of the page 100% zero-JavaScript static HTML.
+Krewire implements an **Island Architecture** (`runtime/mount` and `runtime/boot`) allowing selective client-side hydration of interactive components while keeping the rest of the page 100% zero-JavaScript static HTML.
 
 You declare hydration behavior using `client:*` directives directly on component tags:
 
@@ -338,7 +338,7 @@ You declare hydration behavior using `client:*` directives directly on component
 
 1. **Server Rendering (SSR/SSG)**: During build, Krewire renders the component to HTML and wraps it in a lightweight marker container (`data-kiw-mount="Counter" data-kiw-hydrate="load" data-kiw-props='{"initial":0}'`).
 2. **Instant Preview**: The browser paints the full content immediately with zero layout shift (CLS: 0).
-3. **Progressive Hydration**: The Krewire WebAssembly runtime (`pkg/runtime`) scans for mount markers, seeds the VDOM fiber with the existing DOM, and attaches reactive events without re-rendering server text.
+3. **Progressive Hydration**: The Krewire WebAssembly runtime (`runtime`) scans for mount markers, seeds the VDOM fiber with the existing DOM, and attaches reactive events without re-rendering server text.
 
 ---
 
@@ -354,7 +354,7 @@ Styles defined inside `<style>` blocks are **scoped to the component automatical
    <div class="card" data-kiw-component="Card">...</div>
    ```
 
-2. The CSS compiler (`pkg/web/ssg`) rewrites your selectors to bind strictly to that component's scope:
+2. The CSS compiler (`web/ssg`) rewrites your selectors to bind strictly to that component's scope:
 
    ```css
    /* Your authored CSS */
@@ -409,7 +409,7 @@ For content-heavy sections, you can write native Markdown directly within your `
 </section>
 ```
 
-The Krewire compiler automatically converts the Markdown block to clean, sanitized HTML at build time using `pkg/kiw` and `pkg/markdown`.
+The Krewire compiler automatically converts the Markdown block to clean, sanitized HTML at build time using `ui/kiw` and `markdown`.
 
 ---
 

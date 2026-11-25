@@ -10,7 +10,7 @@ Tingkat fondasi Krewire menetapkan jaminan arsitektur, aturan domain, dan superv
 
 Pustaka pada lapisan ini mematuhi prinsip desain yang ketat:
 
-- **Dependensi Searah ke Bawah:** Primitif domain dan aturan bisnis berada di `pkg/model` dan `pkg/errs`. Pustaka lapisan atas tidak boleh menyuntikkan dependensi ke atas.
+- **Dependensi Searah ke Bawah:** Primitif domain dan aturan bisnis berada di `model` dan `errs`. Pustaka lapisan atas tidak boleh menyuntikkan dependensi ke atas.
 - **Single Source of Truth (SSOT):** Fakta, konstanta, dan aturan validasi dimiliki oleh tepat satu paket dan diimpor oleh modul lainnya.
 - **Tanpa Ketergantungan Eksternal yang Tidak Perlu:** Jika pustaka standar Go sudah mencukupi, Krewire mengembangkannya secara langsung tanpa menambah rantai dependensi pihak ketiga.
 
@@ -24,7 +24,7 @@ Pustaka pada lapisan ini mematuhi prinsip desain yang ketat:
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.1</span>
       <h3 class="chapter-card-title">
-        <a href="/core-libraries/model">Model Workload & Primitif Domain (pkg/model, pkg/errs) <span class="arrow">→</span></a>
+        <a href="/core-libraries/model">Model Workload & Primitif Domain (model, errs) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -36,7 +36,7 @@ Pustaka pada lapisan ini mematuhi prinsip desain yang ketat:
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.2</span>
       <h3 class="chapter-card-title">
-        <a href="/core-libraries/lifecycle">Supervisi Siklus Hidup & Kernel (pkg/lifecycle) <span class="arrow">→</span></a>
+        <a href="/core-libraries/lifecycle">Supervisi Siklus Hidup & Kernel (lifecycle) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -48,7 +48,7 @@ Pustaka pada lapisan ini mematuhi prinsip desain yang ketat:
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.3</span>
       <h3 class="chapter-card-title">
-        <a href="/core-libraries/config">Konfigurasi Hierarkis (pkg/config) <span class="arrow">→</span></a>
+        <a href="/core-libraries/config">Konfigurasi Hierarkis (config) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -60,7 +60,7 @@ Pustaka pada lapisan ini mematuhi prinsip desain yang ketat:
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.4</span>
       <h3 class="chapter-card-title">
-        <a href="/core-libraries/validation">Validasi Input Komposabel (pkg/validation) <span class="arrow">→</span></a>
+        <a href="/core-libraries/validation">Validasi Input Komposabel (validation) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -72,7 +72,7 @@ Pustaka pada lapisan ini mematuhi prinsip desain yang ketat:
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.5</span>
       <h3 class="chapter-card-title">
-        <a href="/core-libraries/resilience">Pola Resiliensi & Circuit Breaker (pkg/resilience) <span class="arrow">→</span></a>
+        <a href="/core-libraries/resilience">Pola Resiliensi & Circuit Breaker (resilience) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -84,7 +84,7 @@ Pustaka pada lapisan ini mematuhi prinsip desain yang ketat:
     <div class="chapter-card-head">
       <span class="chapter-card-num">4.6</span>
       <h3 class="chapter-card-title">
-        <a href="/core-libraries/testing">Utilitas Pengujian & Asersi (pkg/testing) <span class="arrow">→</span></a>
+        <a href="/core-libraries/testing">Utilitas Pengujian & Asersi (testing) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">

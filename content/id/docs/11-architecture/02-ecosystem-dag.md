@@ -45,7 +45,7 @@ Sisi-sisi ini adalah dependensi modul Go: sebuah panah berarti "mengimpor paket 
             │   │                   │
             ▼   ▼                   ▼
         ┌──────────────── github.com/krewire/krewire ────────────────┐  (Layers 1–3 — core + krew)
-        │  krew · pkg/* · pkg/model · pkg/errs · pkg/lifecycle   │
+        │  krew · domain modules · model · errs · lifecycle   │
         └─────────────────────────────┬──────────────────────────────┘
                                       ▼
                              github.com/krewire/ui  (kui)              (Layer 2 — no dependencies)
@@ -56,7 +56,7 @@ Sisi-sisi ini adalah dependensi modul Go: sebuah panah berarti "mengimpor paket 
 | Repositori | Modul | Impor dari ekosistem |
 | :--- | :--- | :--- |
 | `ui` (kui) | `github.com/krewire/ui` | tidak ada — hanya pustaka standar (`TestModuleHasNoExternalDependencies`) |
-| `krewire` (monorepo inti) | `github.com/krewire/krewire` | `ui` (`pkg/ui/components` mengekspor ulang `embed.FS` milik kui) |
+| `krewire` (monorepo inti) | `github.com/krewire/krewire` | `ui` (`ui/components` mengekspor ulang `embed.FS` milik kui) |
 | `krew` (engine agen) | `github.com/krewire/krew` | `krewire` |
 | `auth` | `github.com/krewire/auth` | `krewire` |
 | `cloud` | `github.com/krewire/cloud` | `krewire`, `auth`, `krew` |
@@ -66,7 +66,7 @@ Sisi-sisi ini adalah dependensi modul Go: sebuah panah berarti "mengimpor paket 
 Dua sifat yang penting:
 
 - **Grafiknya asiklik.** `kui` tidak mengimpor apa pun, inti hanya mengimpor `kui`, dan setiap produk mengimpor ke arah bawah. Tidak ada produk yang mengimpor produk lain: `dash` dan `cloud` tidak berbagi kode Go.
-- **CLI adalah daun bagi konsumen.** Produk mengimpor paket `pkg/*`; tidak ada yang mengimpor `krew`.
+- **CLI adalah daun bagi konsumen.** Produk mengimpor modul domain `krewire`; tidak ada yang mengimpor `krew`.
 
 ## 3. Integrasi Runtime (Protokol Terpisah)
 

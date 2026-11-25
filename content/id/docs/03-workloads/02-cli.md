@@ -1,6 +1,6 @@
 ---
 title: "Terminal CLI & TUI (cli)"
-description: "Bangun antarmuka command-line pengembang dan aplikasi terminal interaktif di Go dengan pkg/tui, parsing flag POSIX, dan disiplin exit code yang ketat."
+description: "Bangun antarmuka command-line pengembang dan aplikasi terminal interaktif di Go dengan tui, parsing flag POSIX, dan disiplin exit code yang ketat."
 date: "2026-10-08"
 ---
 
@@ -8,7 +8,7 @@ date: "2026-10-08"
 
 Workload **`cli`** dirancang khusus untuk membangun utilitas command-line berkinerja tinggi, perkakas sistem, CLI pengembang, dan terminal user interface (TUI) yang interaktif.
 
-Ditenagai oleh `pkg/tui` dan `pkg/term`, workload `cli` menghadirkan pola **Model-Update-View (MUV)** yang terinspirasi dari Elm/Bubble Tea dengan nol dependensi eksternal serta disiplin exit code POSIX yang ketat (`pkg/errs`).
+Ditenagai oleh `tui` dan `tui/term`, workload `cli` menghadirkan pola **Model-Update-View (MUV)** yang terinspirasi dari Elm/Bubble Tea dengan nol dependensi eksternal serta disiplin exit code POSIX yang ketat (`errs`).
 
 ---
 
@@ -47,7 +47,7 @@ sysmon/
 
 ## Implementasi TUI Interaktif
 
-Berikut adalah contoh dasbor terminal interaktif menggunakan `pkg/tui`:
+Berikut adalah contoh dasbor terminal interaktif menggunakan `tui`:
 
 ```go
 package main
@@ -56,8 +56,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/krewire/krewire/pkg/term"
-	"github.com/krewire/krewire/pkg/tui"
+	"github.com/krewire/tui/term"
+	"github.com/krewire/tui"
 )
 
 type model struct {

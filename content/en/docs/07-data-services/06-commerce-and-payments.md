@@ -1,12 +1,12 @@
 ---
 title: "Commerce & Indonesian Payment Gateway"
-description: "Integration guide for Midtrans QRIS, Virtual Accounts (BCA, Mandiri, BRI, BNI), and credit cards using pkg/commerce."
+description: "Integration guide for Midtrans QRIS, Virtual Accounts (BCA, Mandiri, BRI, BNI), and credit cards using commerce."
 date: "2026-10-24"
 ---
 
-# Commerce & Indonesian Payment Gateway (`pkg/commerce`)
+# Commerce & Indonesian Payment Gateway (`commerce`)
 
-`pkg/commerce` empowers Krewire applications and Krewire Cloud to accept Indonesian local payment methods natively through Midtrans.
+`commerce` empowers Krewire applications and Krewire Cloud to accept Indonesian local payment methods natively through Midtrans.
 
 ## Supported Payment Rails
 
@@ -22,7 +22,7 @@ package main
 import (
     "context"
     
-    "github.com/krewire/krewire/pkg/commerce"
+    "github.com/krewire/krewire/commerce"
 )
 
 func main() {

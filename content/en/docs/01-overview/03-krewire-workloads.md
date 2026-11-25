@@ -22,14 +22,14 @@ project:
 
 | Workload | Kind Name | Primary Use Case | CLI Execution | Key Packages |
 | :--- | :--- | :--- | :--- | :--- |
-| **Fullstack Monolith** | `app` | Web applications, SSR, JSON APIs, sessions, database access | `krew run`, `krew dev` | `pkg/web`, `pkg/app`, `pkg/ui` |
-| **Terminal CLI & TUI** | `cli` | Command-line utilities, interactive developer TUIs | `krew run`, `krew new my-cli --cli` | `pkg/tui` |
-| **Static Site (SSG)** | `site` | Landing pages, marketing websites, blogs, portfolios | `krew build`, `krew dev` | `pkg/web/ssg`, `pkg/kiw` |
-| **Technical Book** | `book` | Multi-chapter documentation, books, software manuals | `krew build --target book`, `krew dev` | `pkg/book` |
-| **Background Worker** | `worker` | Asynchronous job queues, cron schedules, retries, DLQ | `krew worker` | `pkg/cloud/worker` |
-| **Microservice** | `service` | Distributed RPC/HTTP APIs, service registry, gateways | `krew run`, `krew dash` | `pkg/cloud/service` |
-| **Cloud Infra (IaC)** | `infra` | Provider-agnostic cloud resource provisioning (AWS/K8s) | `krew deploy --target infra` | `pkg/cloud/infra` |
-| **API Gateway** | `gateway` | Declarative reverse proxy, per-route middleware, service-discovery balancing | `krew gateway`, `krew run` | `pkg/web/gateway` |
+| **Fullstack Monolith** | `app` | Web applications, SSR, JSON APIs, sessions, database access | `krew run`, `krew dev` | `web`, `app`, `ui` |
+| **Terminal CLI & TUI** | `cli` | Command-line utilities, interactive developer TUIs | `krew run`, `krew new my-cli --cli` | `tui` |
+| **Static Site (SSG)** | `site` | Landing pages, marketing websites, blogs, portfolios | `krew build`, `krew dev` | `web/ssg`, `ui/kiw` |
+| **Technical Book** | `book` | Multi-chapter documentation, books, software manuals | `krew build --target book`, `krew dev` | `book` |
+| **Background Worker** | `worker` | Asynchronous job queues, cron schedules, retries, DLQ | `krew worker` | `cloud/worker` |
+| **Microservice** | `service` | Distributed RPC/HTTP APIs, service registry, gateways | `krew run`, `krew dash` | `cloud/service` |
+| **Cloud Infra (IaC)** | `infra` | Provider-agnostic cloud resource provisioning (AWS/K8s) | `krew deploy --target infra` | `cloud/infra` |
+| **API Gateway** | `gateway` | Declarative reverse proxy, per-route middleware, service-discovery balancing | `krew gateway`, `krew run` | `web/gateway` |
 
 ---
 
@@ -60,8 +60,8 @@ The `cli` workload is tailored for building command-line utilities, developer to
 
 ### Characteristics
 
-- **Terminal Model:** Powered by `pkg/tui` with an Elm/Bubble Tea-inspired Model-Update-View architecture.
-- **Flag Parsing & Commands:** POSIX-compliant flag parser with automatic `--help` generation and exit-code discipline (`pkg/errs`).
+- **Terminal Model:** Powered by `tui` with an Elm/Bubble Tea-inspired Model-Update-View architecture.
+- **Flag Parsing & Commands:** POSIX-compliant flag parser with automatic `--help` generation and exit-code discipline (`errs`).
 - **Structured Logging:** Integrated with Go's `log/slog` for structured, colorized terminal output.
 
 ### Scaffolding & Running
@@ -97,7 +97,7 @@ krew dev # Starts dev server at localhost:8080 with live reload
 
 ## 4. Technical Book (`book`)
 
-The `book` workload transforms Markdown manuscripts into responsive, reader-friendly documentation portals via the integrated `pkg/book` engine:
+The `book` workload transforms Markdown manuscripts into responsive, reader-friendly documentation portals via the integrated `book` engine:
 
 ### Characteristics
 
@@ -190,7 +190,7 @@ krew gateway --port 8080 --routes "/api=user-service"
 ```
 
 > [!NOTE]
-> Client-side WebAssembly is a **library**, not a workload kind. `pkg/runtime`
+> Client-side WebAssembly is a **library**, not a workload kind. `runtime`
 > compiles Go to WASM inside an `app` or `site` project via
 > `krew build --target wasm` — see [Web Runtime & WASM](/web-ui/web-runtime).
 

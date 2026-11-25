@@ -1,6 +1,6 @@
 ---
 title: "Cloud Infrastructure as Code (infra)"
-description: "Declare, plan, and provision cloud resources directly in Go with pkg/cloud/infra, deterministic execution plans, and zero external DSL bloat."
+description: "Declare, plan, and provision cloud resources directly in Go with cloud/infra, deterministic execution plans, and zero external DSL bloat."
 date: "2026-10-08"
 ---
 
@@ -8,7 +8,7 @@ date: "2026-10-08"
 
 The **`infra`** workload allows engineering teams to define cloud topology, container orchestration, networking, and storage directly using **typed Go structures** instead of disjointed HCL or complex YAML templates.
 
-Powered by `pkg/cloud/infra`, the engine compiles Go declarations into deterministic execution plans and provisions cloud targets safely.
+Powered by `cloud/infra`, the engine compiles Go declarations into deterministic execution plans and provisions cloud targets safely.
 
 ---
 
@@ -48,8 +48,8 @@ import (
 	"context"
 	"os"
 
-	"github.com/krewire/krewire/pkg/cloud/infra"
-	"github.com/krewire/krewire/pkg/cloud/infra/providers/aws"
+	"github.com/krewire/krewire/cloud/infra"
+	"github.com/krewire/krewire/cloud/infra/providers/aws"
 )
 
 func main() {

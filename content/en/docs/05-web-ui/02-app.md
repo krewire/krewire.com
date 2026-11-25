@@ -1,14 +1,14 @@
 ---
 title: "Application Container & Assembly"
-description: "Typed dependency injection container, provider assembly, lifecycle management, and graceful process supervision in pkg/app."
+description: "Typed dependency injection container, provider assembly, lifecycle management, and graceful process supervision in app."
 date: "2026-10-31"
 ---
 
-# Application Container & Assembly (`pkg/app`)
+# Application Container & Assembly (`app`)
 
-Import path: `github.com/krewire/krewire/pkg/app`
+Import path: `github.com/krewire/krewire/app`
 
-The `pkg/app` package provides Krewire's typed dependency container, provider assembly system, and graceful process supervision. It serves as the single composition root of an application—every dependency is declared with strict Go type safety, resolved in deterministic order, and observable via structured logging and tracer hooks.
+The `app` package provides Krewire's typed dependency container, provider assembly system, and graceful process supervision. It serves as the single composition root of an application—every dependency is declared with strict Go type safety, resolved in deterministic order, and observable via structured logging and tracer hooks.
 
 ---
 
@@ -88,7 +88,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/krewire/krewire/pkg/app"
+	"github.com/krewire/krewire/app"
 )
 
 // Service defines a business logic interface.
@@ -149,4 +149,4 @@ func main() {
 
 ## Design Boundaries
 
-`pkg/app` owns application composition, registration order, and runner supervision. Domain business rules belong in `pkg/model`, HTTP routing belongs in `pkg/web`, and runtime engine mechanics belong in `pkg/lifecycle`. `pkg/app` never imports `krew`.
+`app` owns application composition, registration order, and runner supervision. Domain business rules belong in `model`, HTTP routing belongs in `web`, and runtime engine mechanics belong in `lifecycle`. `app` never imports `krew`.

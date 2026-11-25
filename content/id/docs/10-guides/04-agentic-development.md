@@ -28,7 +28,7 @@ flowchart TD
     end
 
     subgraph Outbound ["Kecerdasan Aplikasi Keluar"]
-        AISDK["pkg/ai"]
+        AISDK["ai"]
         PROV["Providers (Gemini, Claude, OpenAI, Ollama)"]
     end
 
@@ -50,7 +50,7 @@ flowchart TD
 ```
 
 1. **Protokol Masuk (Native MCP Server)**: Agen meminta informasi dan memberikan perintah ke proyek Krewire Anda menggunakan standar terbuka [Model Context Protocol (MCP)](https://modelcontextprotocol.io/).
-2. **Kecerdasan Keluar (Unified Go AI SDK)**: Aplikasi, HTTP handler, dan background worker Anda menghasilkan output terstruktur (`ai.GenerateObject[T]`), melakukan streaming token, dan memanggil tools menggunakan `pkg/ai`.
+2. **Kecerdasan Keluar (Unified Go AI SDK)**: Aplikasi, HTTP handler, dan background worker Anda menghasilkan output terstruktur (`ai.GenerateObject[T]`), melakukan streaming token, dan memanggil tools menggunakan `ai`.
 
 ---
 
@@ -126,9 +126,9 @@ Saat agen terhubung ke `krewire-mcp`, agen memperoleh akses ke resource terstand
 
 ---
 
-## 4. Kecerdasan Keluar dengan `pkg/ai`
+## 4. Kecerdasan Keluar dengan `ai`
 
-Ketika aplikasi Anda perlu menghasilkan konten, menganalisis masukan pengguna, atau menjalankan alur kerja otonom, impor `pkg/ai`:
+Ketika aplikasi Anda perlu menghasilkan konten, menganalisis masukan pengguna, atau menjalankan alur kerja otonom, impor `ai`:
 
 ```go
 package main
@@ -138,8 +138,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/krewire/krewire/pkg/ai"
-	"github.com/krewire/krewire/pkg/ai/providers"
+	"github.com/krewire/krewire/ai"
+	"github.com/krewire/krewire/ai/providers"
 )
 
 type CodeReview struct {

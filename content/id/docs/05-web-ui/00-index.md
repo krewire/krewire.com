@@ -25,7 +25,7 @@ Framework ini mendukung pengalaman render di sisi server maupun interaktivitas s
     <div class="chapter-card-head">
       <span class="chapter-card-num">5.1</span>
       <h3 class="chapter-card-title">
-        <a href="/web-ui/web">Web Engine & Perutean HTTP (pkg/web) <span class="arrow">→</span></a>
+        <a href="/web-ui/web">Web Engine & Perutean HTTP (web) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -37,7 +37,7 @@ Framework ini mendukung pengalaman render di sisi server maupun interaktivitas s
     <div class="chapter-card-head">
       <span class="chapter-card-num">5.2</span>
       <h3 class="chapter-card-title">
-        <a href="/web-ui/app">Wadah Aplikasi & Monolit (pkg/app) <span class="arrow">→</span></a>
+        <a href="/web-ui/app">Wadah Aplikasi & Monolit (app) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -49,7 +49,7 @@ Framework ini mendukung pengalaman render di sisi server maupun interaktivitas s
     <div class="chapter-card-head">
       <span class="chapter-card-num">5.3</span>
       <h3 class="chapter-card-title">
-        <a href="/web-ui/web-runtime">Web Runtime & WebAssembly (pkg/runtime) <span class="arrow">→</span></a>
+        <a href="/web-ui/web-runtime">Web Runtime & WebAssembly (runtime) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -61,7 +61,7 @@ Framework ini mendukung pengalaman render di sisi server maupun interaktivitas s
     <div class="chapter-card-head">
       <span class="chapter-card-num">5.4</span>
       <h3 class="chapter-card-title">
-        <a href="/web-ui/ui">Komponen Web UI & Token Desain (pkg/ui) <span class="arrow">→</span></a>
+        <a href="/web-ui/ui">Komponen Web UI & Token Desain (ui) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -73,7 +73,7 @@ Framework ini mendukung pengalaman render di sisi server maupun interaktivitas s
     <div class="chapter-card-head">
       <span class="chapter-card-num">5.5</span>
       <h3 class="chapter-card-title">
-        <a href="/web-ui/tui">Toolkit Terminal UI (pkg/tui) <span class="arrow">→</span></a>
+        <a href="/web-ui/tui">Toolkit Terminal UI (tui) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">

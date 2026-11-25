@@ -17,7 +17,7 @@ Built on standard Go primitives (`net/http`, `embed.FS`, `context`, `slog`), the
 1. **Zero Runtime Dependencies:** Everything needed to run the application is compiled into a single static executable.
 2. **Standard Library First:** The routing, middleware, and handler interfaces integrate directly with Go's `net/http` ecosystem.
 3. **Embedded Static Assets:** CSS, JavaScript, and templates are compiled into the binary using Go's `embed` package, preventing missing-asset errors in production.
-4. **Deterministic Dependency Assembly:** Leverages `pkg/app` for typed dependency injection, provider registration (`Register` and `Boot`), and observable lifecycles.
+4. **Deterministic Dependency Assembly:** Leverages `app` for typed dependency injection, provider registration (`Register` and `Boot`), and observable lifecycles.
 5. **Clean Domain Boundaries:** Built around modular monolith patterns, separating configuration, HTTP handlers, SSR presentation, and domain logic.
 
 ---
@@ -110,7 +110,7 @@ func main() {
 
 ### 1. Composition Root (`internal/app/app.go`)
 
-The composition root wires all subsystem providers (`configProvider`, `webProvider`, `http.Provider`) through `pkg/app`:
+The composition root wires all subsystem providers (`configProvider`, `webProvider`, `http.Provider`) through `app`:
 
 ```go
 package app
@@ -118,8 +118,8 @@ package app
 import (
 	"io/fs"
 
-	rvapp "github.com/krewire/krewire/pkg/app"
-	rvweb "github.com/krewire/krewire/pkg/web"
+	rvapp "github.com/krewire/krewire/app"
+	rvweb "github.com/krewire/krewire/web"
 	"storefront/assets"
 	"storefront/internal/config"
 	"storefront/internal/http"
@@ -145,7 +145,7 @@ func New(meta *config.Metadata) (*rvweb.App, error) {
 
 ### 2. HTTP Routing & API Handlers (`internal/http/http.go`)
 
-HTTP API handlers bind input payloads, perform validation with `pkg/validation`, and mount onto the application router:
+HTTP API handlers bind input payloads, perform validation with `validation`, and mount onto the application router:
 
 ```go
 package http
@@ -153,8 +153,8 @@ package http
 import (
 	"net/http"
 
-	rvapp "github.com/krewire/krewire/pkg/app"
-	rvweb "github.com/krewire/krewire/pkg/web"
+	rvapp "github.com/krewire/krewire/app"
+	rvweb "github.com/krewire/krewire/web"
 )
 
 type Handler struct{}
@@ -197,7 +197,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/krewire/krewire/pkg/web"
+	"github.com/krewire/krewire/web"
 )
 
 func Register(a *web.App) {

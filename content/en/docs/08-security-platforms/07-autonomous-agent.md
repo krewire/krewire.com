@@ -1,12 +1,12 @@
 ---
 title: "Autonomous AI Agent Engine"
-description: "Architecture, ReAct execution loop, safe sandboxed tools, sliding-window memory, personas, multi-protocol transport (HTTP/SSE & MCP), and embedding API in pkg/ai and the krew toolchain."
+description: "Architecture, ReAct execution loop, safe sandboxed tools, sliding-window memory, personas, multi-protocol transport (HTTP/SSE & MCP), and embedding API in ai and the krew toolchain."
 date: "2026-11-24"
 ---
 
 # Autonomous AI Agent Engine
 
-Krewire delivers a full-spectrum, production-grade autonomous AI agent engine built natively in pure Go within the foundational monorepo at `krewire/pkg/ai`. It is driven directly in developer workflows by the unified `krew` CLI toolchain (`cmd/krew`).
+Krewire delivers a full-spectrum, production-grade autonomous AI agent engine built natively in pure Go within the foundational monorepo at `krewire/ai`. It is driven directly in developer workflows by the unified `krew` CLI toolchain (`cmd/krew`).
 
 The engine features multi-turn ReAct reasoning, sandboxed workspace operations, sliding-window memory compaction, native Model Context Protocol (MCP) support, and a high-ergonomics embedding API.
 
@@ -14,13 +14,13 @@ The engine features multi-turn ReAct reasoning, sandboxed workspace operations, 
 
 ## Subsystems & Architecture
 
-### 1. `pkg/ai/agent` — ReAct Reasoning Loop
+### 1. `ai/agent` — ReAct Reasoning Loop
 - **Multi-Turn Reasoning:** Autonomous observe-orient-decide-act loop with bounded execution steps (`MaxSteps`).
 - **Concurrent Tool Calls:** Independent LLM tool calls execute concurrently with aggregate error recovery.
 - **Sandboxed Workspace Tools:** Hermetic file system and execution tools (`read_file`, `write_file`, `edit_file`, `list_dir`, `run_command`, `fetch_url`).
 - **Security & Authorization:** Pluggable `Authorizer` and `Auditor` interfaces for granular tool permissions and compliance logging.
 
-### 2. `pkg/ai/persona` — Agent Specializations
+### 2. `ai/persona` — Agent Specializations
 Configurable personas tailoring system prompts, temperature, and behavioral constraints:
 
 - `CodingAssistant`: Pair programming, structural refactoring, and test-driven implementation.
@@ -28,18 +28,18 @@ Configurable personas tailoring system prompts, temperature, and behavioral cons
 - `AutonomousWorker`: Unattended task completion, batch script automation, and bulk migrations.
 - `GeneralAssistant`: Conversational assistant for documentation, research, and project planning.
 
-### 3. `pkg/ai/memory` — Token-Bounded Context Buffer
+### 3. `ai/memory` — Token-Bounded Context Buffer
 - **Sliding-Window Buffer:** `TokenBuffer` tracking message history and rolling token consumption.
 - **Context Compaction:** Automated summarization when approaching LLM context window limits.
 - **Persistent Sessions:** JSON-serialized session storage with resume capability (`krew chat --resume=<id>`).
 - **Transcript Export:** Markdown transcript renderer for audits and pull request reviews.
 
-### 4. `pkg/ai/transport` — Multi-Protocol Interfaces
+### 4. `ai/transport` — Multi-Protocol Interfaces
 - **HTTP / REST Server:** Streaming execution endpoints with Server-Sent Events (`POST /api/agent/run?stream=true`).
 - **Model Context Protocol (MCP):** Stdio MCP server enabling instant integration with IDEs (Cursor, Claude Desktop, Antigravity).
 - **Authentication & RBAC:** Session token verification with tenant isolation and bearer token middleware.
 
-### 5. `pkg/ai/embed` — In-Process Go SDK
+### 5. `ai/embed` — In-Process Go SDK
 Embed the autonomous agent into any Krewire service or CLI in three lines:
 
 ```go
@@ -49,8 +49,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/krewire/krewire/pkg/ai/embed"
-	"github.com/krewire/krewire/pkg/ai/persona"
+	"github.com/krewire/krewire/ai/embed"
+	"github.com/krewire/krewire/ai/persona"
 )
 
 func main() {

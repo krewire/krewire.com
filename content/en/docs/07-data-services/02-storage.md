@@ -1,14 +1,14 @@
 ---
 title: "Multi-Driver Object Storage"
-description: "Uniform object storage abstraction with swappable drivers for memory, local disk, Redis, and Amazon S3 in pkg/storage."
+description: "Uniform object storage abstraction with swappable drivers for memory, local disk, Redis, and Amazon S3 in storage."
 date: "2026-10-25"
 ---
 
-# Multi-Driver Object Storage (`pkg/storage`)
+# Multi-Driver Object Storage (`storage`)
 
-Import path: `github.com/krewire/krewire/pkg/storage`
+Import path: `github.com/krewire/krewire/storage`
 
-The `pkg/storage` package defines a decoupled, high-performance object storage abstraction for binary payloads. By programming to the `storage.Store` interface rather than cloud-specific SDKs, applications remain fully portable and can transition smoothly from a single minimal VPS to distributed cloud environments.
+The `storage` package defines a decoupled, high-performance object storage abstraction for binary payloads. By programming to the `storage.Store` interface rather than cloud-specific SDKs, applications remain fully portable and can transition smoothly from a single minimal VPS to distributed cloud environments.
 
 ---
 
@@ -87,7 +87,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/krewire/krewire/pkg/storage"
+	"github.com/krewire/krewire/storage"
 )
 
 type MediaService struct {

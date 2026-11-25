@@ -1,14 +1,14 @@
 ---
 title: "Validasi Struct Deklaratif"
-description: "Validasi struct dan skalar berbasis refleksi menggunakan tag validate murni di Go dalam pkg/validation."
+description: "Validasi struct dan skalar berbasis refleksi menggunakan tag validate murni di Go dalam validation."
 date: "2026-10-25"
 ---
 
-# Validasi Struct Deklaratif (`pkg/validation`)
+# Validasi Struct Deklaratif (`validation`)
 
-Jalur impor: `github.com/krewire/krewire/pkg/validation`
+Jalur impor: `github.com/krewire/krewire/validation`
 
-Paket `pkg/validation` memvalidasi struct dan field skalar Go menggunakan tag struct `validate`. Pustaka ini beroperasi bebas framework dan 100% menggunakan pustaka standar Go, memungkinkan endpoint HTTP, perkakas CLI, dan entitas domain berbagi satu model aturan validasi terpadu.
+Paket `validation` memvalidasi struct dan field skalar Go menggunakan tag struct `validate`. Pustaka ini beroperasi bebas framework dan 100% menggunakan pustaka standar Go, memungkinkan endpoint HTTP, perkakas CLI, dan entitas domain berbagi satu model aturan validasi terpadu.
 
 ---
 
@@ -40,7 +40,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/krewire/krewire/pkg/validation"
+	"github.com/krewire/krewire/validation"
 )
 
 type UserRegistration struct {

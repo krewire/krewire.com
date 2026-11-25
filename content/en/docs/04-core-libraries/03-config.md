@@ -1,14 +1,14 @@
 ---
 title: "Declarative Configuration"
-description: "Type-safe YAML configuration loading with environment variable overlay and struct field binding in pkg/config."
+description: "Type-safe YAML configuration loading with environment variable overlay and struct field binding in config."
 date: "2026-10-25"
 ---
 
-# Declarative Configuration (`pkg/config`)
+# Declarative Configuration (`config`)
 
-Import path: `github.com/krewire/krewire/pkg/config`
+Import path: `github.com/krewire/krewire/config`
 
-The `pkg/config` package provides typed configuration loading from YAML files with environment variable overlays for the Krewire ecosystem.
+The `config` package provides typed configuration loading from YAML files with environment variable overlays for the Krewire ecosystem.
 
 Precedence is strictly:
 $$\text{Built-in Struct Defaults} < \text{YAML Configuration File} < \text{Environment Variables}$$
@@ -41,8 +41,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/krewire/krewire/pkg/config"
-	"github.com/krewire/krewire/pkg/validation"
+	"github.com/krewire/krewire/config"
+	"github.com/krewire/krewire/validation"
 )
 
 type ServerConfig struct {

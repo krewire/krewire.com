@@ -54,7 +54,7 @@ krew new my-app [--site | --app | --cli | --book | --worker | --service | --infr
 - `--site`: Static site generator with `.kiw` Single-File Components.
 - `--app`: Fullstack web monolith with `net/http` and embedded assets.
 - `--cli`: Terminal utility with Elm-style Model-Update-View architecture.
-- `--book`: Documentation book with Markdown manuscripts and `pkg/book`.
+- `--book`: Documentation book with Markdown manuscripts and `book`.
 - `--worker`: Asynchronous background job worker daemon.
 - `--service`: Cloud-native microservice.
 - `--infra`: Infrastructure as Code in Go.
@@ -162,8 +162,8 @@ Manage standalone, independently distributable `.kiw` component packages and UI 
 ```bash
 krew pkg init @acme/ui              # Scaffolds standalone package with kiw.pkg.json
 krew pkg pack ./my-kit              # Packs package into a distributable .kpkg archive
-krew pkg add ./dist/ui-1.0.0.kpkg   # Installs package archive into ./.krewire/pkg/
-krew pkg add ./local-kit            # Installs from local directory into ./.krewire/pkg/
+krew pkg add ./dist/ui-1.0.0.kpkg   # Installs package archive into ./.krewire/
+krew pkg add ./local-kit            # Installs from local directory into ./.krewire/
 krew pkg list                       # Lists installed component packages in ./.krewire/pkg
 krew pkg list --json                # Machine-readable JSON inventory of installed packages
 krew pkg export Card                # Validates and exports self-contained component

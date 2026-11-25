@@ -1,14 +1,14 @@
 ---
 title: "Authentication Primitives"
-description: "Cryptographic JWT signing and verification, HTTP Basic Authentication with constant-time password comparison in pkg/auth."
+description: "Cryptographic JWT signing and verification, HTTP Basic Authentication with constant-time password comparison in auth."
 date: "2026-10-25"
 ---
 
-# Authentication Primitives (`pkg/auth`)
+# Authentication Primitives (`auth`)
 
-Import path: `github.com/krewire/krewire/pkg/auth`
+Import path: `github.com/krewire/krewire/auth`
 
-`pkg/auth` provides core cryptographic authentication primitives and token verification routines for APIs and web services.
+`auth` provides core cryptographic authentication primitives and token verification routines for APIs and web services.
 
 ---
 
@@ -22,8 +22,8 @@ package main
 import (
 	"time"
 
-	"github.com/krewire/krewire/pkg/auth"
-	"github.com/krewire/krewire/pkg/web"
+	"github.com/krewire/krewire/auth"
+	"github.com/krewire/krewire/web"
 )
 
 func main() {

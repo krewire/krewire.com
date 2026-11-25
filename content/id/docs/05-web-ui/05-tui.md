@@ -1,12 +1,12 @@
 ---
 title: "Toolkit Terminal UI"
-description: "Antarmuka pengguna terminal interaktif, arsitektur Elm/Bubble Tea, pewarnaan ANSI, tabel, dan bilah progres di pkg/tui."
+description: "Antarmuka pengguna terminal interaktif, arsitektur Elm/Bubble Tea, pewarnaan ANSI, tabel, dan bilah progres di tui."
 date: "2026-10-25"
 ---
 
-# Toolkit Terminal UI (`pkg/tui`)
+# Toolkit Terminal UI (`tui`)
 
-Jalur impor: `github.com/krewire/krewire/pkg/tui`
+Jalur impor: `github.com/krewire/tui`
 
 Paket `tui` mentenagai antarmuka terminal interaktif untuk CLI `krew` dan berbagai devtool menggunakan arsitektur Elm/Bubble Tea.
 
@@ -18,8 +18,8 @@ Paket `tui` mentenagai antarmuka terminal interaktif untuk CLI `krew` dan berbag
 package main
 
 import (
-	"github.com/krewire/krewire/pkg/term"
-	"github.com/krewire/krewire/pkg/tui"
+	"github.com/krewire/tui/term"
+	"github.com/krewire/tui"
 )
 
 type appModel struct {

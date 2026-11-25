@@ -67,7 +67,7 @@ auto_assets:
       layer: "page"             # scoped | vendor | component | theme | book | page
   bundle: false                 # true menggabungkan CSS/JS ke dalam assets/krewire.{css,js}
 
-# Pipeline Dokumentasi Book (pkg/book)
+# Pipeline Dokumentasi Book (book)
 book:
   mount: "/docs/"               # Path mount dalam ruang URL output (mode hybrid)
   toc: true                     # Menghasilkan halaman daftar isi (table of contents) utama
@@ -113,7 +113,7 @@ Bagian `project:` mendefinisikan identitas dan perilaku workload:
 
 ### 3.2 Input Konten (`input:`)
 
-- **`input`:** Direktori konten yang digunakan oleh pipeline buku dokumentasi (`pkg/book`). Nilai defaultnya adalah `content`. Dengan mengaktifkan `i18n:`, `krew build` me-resolve `content/<locale>/docs/` per lokal dan hanya beralih ke nilai ini jika lokal tidak ditemukan.
+- **`input`:** Direktori konten yang digunakan oleh pipeline buku dokumentasi (`book`). Nilai defaultnya adalah `content`. Dengan mengaktifkan `i18n:`, `krew build` me-resolve `content/<locale>/docs/` per lokal dan hanya beralih ke nilai ini jika lokal tidak ditemukan.
 
 ---
 
@@ -167,7 +167,7 @@ Aset **tidak** diinjeksikan secara alfabetis — urutan alfabetis dapat memuat k
 | `vendor` | output pihak ketiga seperti CSS plugin (Tailwind) |
 | `component` | styling pustaka komponen (Krewire UI) |
 | `theme` | variabel tema dan penimpaan desain last-mile |
-| `book` | styling pipeline konten (pkg/book) |
+| `book` | styling pipeline konten (book) |
 | `page` | penimpaan spesifik per-halaman — selalu terakhir |
 
 ```yaml

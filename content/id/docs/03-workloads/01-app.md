@@ -17,7 +17,7 @@ Dibangun di atas primitif standar Go (`net/http`, `embed.FS`, `context`, `slog`)
 1. **Nol Dependensi Runtime:** Semua yang dibutuhkan untuk menjalankan aplikasi dikompilasi ke dalam satu file executable statis.
 2. **Utamakan Pustaka Standar:** Sistem perutean, middleware, dan handler terintegrasi langsung dengan ekosistem antarmuka standar Go `net/http`.
 3. **Embedded Static Assets:** File CSS, JavaScript, dan template dikompilasi langsung ke dalam binary menggunakan package `embed` bawaan Go, mencegah galat aset hilang (missing assets) di lingkungan produksi.
-4. **Perakitan Dependensi Deterministik:** Memanfaatkan `pkg/app` untuk typed dependency injection, registrasi penyedia (`Register` dan `Boot`), serta siklus hidup yang terpantau (observable).
+4. **Perakitan Dependensi Deterministik:** Memanfaatkan `app` untuk typed dependency injection, registrasi penyedia (`Register` dan `Boot`), serta siklus hidup yang terpantau (observable).
 5. **Batas Domain yang Rapi:** Dibangun di sekitar pola modular monolit, memisahkan konfigurasi, handler HTTP, presentasi SSR, dan logika domain secara bersih.
 
 ---
@@ -110,7 +110,7 @@ func main() {
 
 ### 1. Komposisi Root (`internal/app/app.go`)
 
-Komposisi root merakit semua subsistem provider (`configProvider`, `webProvider`, `http.Provider`) melalui `pkg/app`:
+Komposisi root merakit semua subsistem provider (`configProvider`, `webProvider`, `http.Provider`) melalui `app`:
 
 ```go
 package app
@@ -118,8 +118,8 @@ package app
 import (
 	"io/fs"
 
-	rvapp "github.com/krewire/krewire/pkg/app"
-	rvweb "github.com/krewire/krewire/pkg/web"
+	rvapp "github.com/krewire/krewire/app"
+	rvweb "github.com/krewire/krewire/web"
 	"storefront/assets"
 	"storefront/internal/config"
 	"storefront/internal/http"
@@ -145,7 +145,7 @@ func New(meta *config.Metadata) (*rvweb.App, error) {
 
 ### 2. Perutean HTTP & Handler API (`internal/http/http.go`)
 
-Handler API HTTP mengikat data input, menjalankan validasi dengan `pkg/validation`, dan dipasang ke router aplikasi:
+Handler API HTTP mengikat data input, menjalankan validasi dengan `validation`, dan dipasang ke router aplikasi:
 
 ```go
 package http
@@ -153,8 +153,8 @@ package http
 import (
 	"net/http"
 
-	rvapp "github.com/krewire/krewire/pkg/app"
-	rvweb "github.com/krewire/krewire/pkg/web"
+	rvapp "github.com/krewire/krewire/app"
+	rvweb "github.com/krewire/krewire/web"
 )
 
 type Handler struct{}
@@ -197,7 +197,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/krewire/krewire/pkg/web"
+	"github.com/krewire/krewire/web"
 )
 
 func Register(a *web.App) {

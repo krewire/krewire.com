@@ -4,24 +4,24 @@ description: "Model domain fondasi Krewire: delapan jenis beban kerja, metadata 
 date: "2026-10-25"
 ---
 
-# Model Workload & Primitif Domain (`pkg/model`, `pkg/errs`)
+# Model Workload & Primitif Domain (`model`, `errs`)
 
 Jalur impor:
 
 ```text
-github.com/krewire/krewire/pkg/model
-github.com/krewire/krewire/pkg/errs
-github.com/krewire/krewire/pkg/env
-github.com/krewire/krewire/pkg/version
+github.com/krewire/krewire/model
+github.com/krewire/krewire/errs
+github.com/krewire/krewire/env
+github.com/krewire/krewire/version
 ```
 
-Sebagai paket fondasi inti, `pkg/model` **hanya boleh bergantung pada pustaka standar Go** dan saudara internalnya `errs` — tidak boleh bergantung pada paket tingkat lebih tinggi dan tidak boleh mengimpor `krew`.
+Sebagai paket fondasi inti, `model` **hanya boleh bergantung pada pustaka standar Go** dan saudara internalnya `errs` — tidak boleh bergantung pada paket tingkat lebih tinggi dan tidak boleh mengimpor `krew`.
 
 ---
 
-## Model Deklaratif & Batasan (`pkg/model`)
+## Model Deklaratif & Batasan (`model`)
 
-Paket `pkg/model` mendefinisikan model fundamental, cakupan hierarki arsitektur, tangga lisensi, dan aturan validasi invarian untuk ekosistem Krewire:
+Paket `model` mendefinisikan model fundamental, cakupan hierarki arsitektur, tangga lisensi, dan aturan validasi invarian untuk ekosistem Krewire:
 
 ```go
 package model
@@ -36,16 +36,16 @@ type Project struct {
 func (p Project) Validate() error
 ```
 
-`pkg/model` juga mendeklarasikan hierarki `Scope` (`Workspace` → `Module` → `Domain` → `Service` → `Unit`), tangga lisensi open-core `Tier` (`free`, `pro`, `team`, `enterprise`), primitif `DomainEvent` yang imutabel, serta kontrol keamanan dasar.
+`model` juga mendeklarasikan hierarki `Scope` (`Workspace` → `Module` → `Domain` → `Service` → `Unit`), tangga lisensi open-core `Tier` (`free`, `pro`, `team`, `enterprise`), primitif `DomainEvent` yang imutabel, serta kontrol keamanan dasar.
 
 ---
 
-## Penanganan Error & Kode Keluar (`pkg/errs`)
+## Penanganan Error & Kode Keluar (`errs`)
 
 Krewire menstandardisasi galat di seluruh paket dengan taksonomi terstruktur dan kode keluar POSIX:
 
 ```go
-import "github.com/krewire/krewire/pkg/errs"
+import "github.com/krewire/krewire/errs"
 
 // Kode keluar
 errs.ExitCodeSuccess // 0
@@ -67,12 +67,12 @@ fmt.Println(errs.FormatTree(err))
 
 ---
 
-## Resolusi Lingkungan (`pkg/env`)
+## Resolusi Lingkungan (`env`)
 
-`pkg/env` memiliki kosakata lingkungan; resolusinya diperoleh dari konfigurasi (`env:` pada `krewire.yaml`, `KIW_ENV`, atau flag `--env`).
+`env` memiliki kosakata lingkungan; resolusinya diperoleh dari konfigurasi (`env:` pada `krewire.yaml`, `KIW_ENV`, atau flag `--env`).
 
 ```go
-import "github.com/krewire/krewire/pkg/env"
+import "github.com/krewire/krewire/env"
 
 current, err := env.ParseEnv(cfg.Env) // input kosong menghasilkan env.DefaultEnv
 if err != nil {
@@ -91,12 +91,12 @@ case env.EnvTesting:
 
 ---
 
-## Kontrak Versi (`pkg/version`)
+## Kontrak Versi (`version`)
 
 Versi semantik diurai, dibandingkan, dan divalidasi:
 
 ```go
-import "github.com/krewire/krewire/pkg/version"
+import "github.com/krewire/krewire/version"
 
 v := version.MustParseVersion("0.1.0")
 fmt.Println(v.String()) // 0.1.0

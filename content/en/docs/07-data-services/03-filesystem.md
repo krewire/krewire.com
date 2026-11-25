@@ -1,22 +1,22 @@
 ---
 title: "Virtual Filesystem & Atomic I/O"
-description: "Testable virtual filesystem boundaries, race-free atomic file writes, and symlink protection in pkg/fs and pkg/file."
+description: "Testable virtual filesystem boundaries, race-free atomic file writes, and symlink protection in fs and file."
 date: "2026-10-25"
 ---
 
-# Virtual Filesystem & Atomic I/O (`pkg/fs`, `pkg/file`)
+# Virtual Filesystem & Atomic I/O (`fs`, `file`)
 
 Import paths:
-- `github.com/krewire/krewire/pkg/fs`
-- `github.com/krewire/krewire/pkg/file`
+- `github.com/krewire/krewire/fs`
+- `github.com/krewire/krewire/file`
 
 Krewire provides clean, testable filesystem abstractions and atomic file writing primitives designed to eliminate partial write corruptions, symlink race conditions, and hostile traversal attacks.
 
 ---
 
-## 1. Testable Filesystem Interface (`pkg/fs`)
+## 1. Testable Filesystem Interface (`fs`)
 
-While the Go standard library `io/fs` provides read-only abstractions, `pkg/fs.FileSystem` provides a fully testable read-write abstraction:
+While the Go standard library `io/fs` provides read-only abstractions, `fs.FileSystem` provides a fully testable read-write abstraction:
 
 ```go
 package fs
@@ -44,9 +44,9 @@ type FileSystem interface {
 
 ---
 
-## 2. Race-Free Atomic Writes (`pkg/file`)
+## 2. Race-Free Atomic Writes (`file`)
 
-Writing directly to destination paths risks leaving corrupted or incomplete files if the process crashes mid-write. `pkg/file.WriteAtomic` guarantees POSIX atomicity and enforces strict defensive security:
+Writing directly to destination paths risks leaving corrupted or incomplete files if the process crashes mid-write. `file.WriteAtomic` guarantees POSIX atomicity and enforces strict defensive security:
 
 ### Defensive Protocols in `file.WriteAtomic`
 
@@ -64,7 +64,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/krewire/krewire/pkg/file"
+	"github.com/krewire/krewire/file"
 )
 
 func SaveConfiguration(configJSON []byte) error {

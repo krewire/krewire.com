@@ -1,9 +1,9 @@
 # todo-app — Companion Code for "Build a Fullstack App in 15 Minutes"
 
 The finished tutorial project from [Build a Fullstack App in 15 Minutes](https://krewire.com/docs/getting-started/fullstack-app-tutorial): a task manager built on a `kiw new todo-app --app` scaffold featuring:
-- Embedded SQLite using `pkg/orm` with the pure-Go `modernc.org/sqlite` driver
+- Embedded SQLite using `orm` with the pure-Go `modernc.org/sqlite` driver
 - Single-File `.kiw` component views using Krewire UI components
-- Server-side validation via `pkg/validation`
+- Server-side validation via `validation`
 - CSRF-protected HTML forms with token verification
 - Zero CGO requirement (`CGO_ENABLED=0`)
 

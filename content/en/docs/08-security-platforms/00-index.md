@@ -23,7 +23,7 @@ Security and distributed intelligence are foundational pillars of the Krewire ec
     <div class="chapter-card-head">
       <span class="chapter-card-num">8.1</span>
       <h3 class="chapter-card-title">
-        <a href="/security-platforms/security">Security Controls & Hardening (pkg/sec) <span class="arrow">→</span></a>
+        <a href="/security-platforms/security">Security Controls & Hardening (sec) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -35,7 +35,7 @@ Security and distributed intelligence are foundational pillars of the Krewire ec
     <div class="chapter-card-head">
       <span class="chapter-card-num">8.2</span>
       <h3 class="chapter-card-title">
-        <a href="/security-platforms/auth">Authentication Primitives (pkg/auth) <span class="arrow">→</span></a>
+        <a href="/security-platforms/auth">Authentication Primitives (auth) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -59,7 +59,7 @@ Security and distributed intelligence are foundational pillars of the Krewire ec
     <div class="chapter-card-head">
       <span class="chapter-card-num">8.4</span>
       <h3 class="chapter-card-title">
-        <a href="/security-platforms/cloud-distributed">Cloud & Distributed Systems (pkg/cloud) <span class="arrow">→</span></a>
+        <a href="/security-platforms/cloud-distributed">Cloud & Distributed Systems (cloud) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -83,7 +83,7 @@ Security and distributed intelligence are foundational pillars of the Krewire ec
     <div class="chapter-card-head">
       <span class="chapter-card-num">8.6</span>
       <h3 class="chapter-card-title">
-        <a href="/security-platforms/ai-and-agents">AI Orchestration & LLMs (pkg/ai) <span class="arrow">→</span></a>
+        <a href="/security-platforms/ai-and-agents">AI Orchestration & LLMs (ai) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -95,11 +95,11 @@ Security and distributed intelligence are foundational pillars of the Krewire ec
     <div class="chapter-card-head">
       <span class="chapter-card-num">8.7</span>
       <h3 class="chapter-card-title">
-        <a href="/security-platforms/autonomous-agent">Autonomous AI Agent Engine (pkg/ai & krew) <span class="arrow">→</span></a>
+        <a href="/security-platforms/autonomous-agent">Autonomous AI Agent Engine (ai & krew) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
-      Autonomous AI agent engine: in-process Go embedding (pkg/ai/embed), multi-turn ReAct reasoning loop, tool sandboxes, unified CLI commands (krew chat, krew agent), and native Model Context Protocol (MCP) server.
+      Autonomous AI agent engine: in-process Go embedding (ai/embed), multi-turn ReAct reasoning loop, tool sandboxes, unified CLI commands (krew chat, krew agent), and native Model Context Protocol (MCP) server.
     </p>
   </div>
 

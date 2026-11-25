@@ -23,7 +23,7 @@ Keamanan dan kecerdasan terdistribusi adalah pilar fundamental dari ekosistem Kr
     <div class="chapter-card-head">
       <span class="chapter-card-num">8.1</span>
       <h3 class="chapter-card-title">
-        <a href="/security-platforms/security">Kontrol Keamanan & Hardening (pkg/sec) <span class="arrow">→</span></a>
+        <a href="/security-platforms/security">Kontrol Keamanan & Hardening (sec) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -35,7 +35,7 @@ Keamanan dan kecerdasan terdistribusi adalah pilar fundamental dari ekosistem Kr
     <div class="chapter-card-head">
       <span class="chapter-card-num">8.2</span>
       <h3 class="chapter-card-title">
-        <a href="/security-platforms/auth">Primitif Autentikasi (pkg/auth) <span class="arrow">→</span></a>
+        <a href="/security-platforms/auth">Primitif Autentikasi (auth) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -59,7 +59,7 @@ Keamanan dan kecerdasan terdistribusi adalah pilar fundamental dari ekosistem Kr
     <div class="chapter-card-head">
       <span class="chapter-card-num">8.4</span>
       <h3 class="chapter-card-title">
-        <a href="/security-platforms/cloud-distributed">Cloud & Sistem Terdistribusi (pkg/cloud) <span class="arrow">→</span></a>
+        <a href="/security-platforms/cloud-distributed">Cloud & Sistem Terdistribusi (cloud) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -83,7 +83,7 @@ Keamanan dan kecerdasan terdistribusi adalah pilar fundamental dari ekosistem Kr
     <div class="chapter-card-head">
       <span class="chapter-card-num">8.6</span>
       <h3 class="chapter-card-title">
-        <a href="/security-platforms/ai-and-agents">Orkestrasi AI & LLM (pkg/ai) <span class="arrow">→</span></a>
+        <a href="/security-platforms/ai-and-agents">Orkestrasi AI & LLM (ai) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">
@@ -95,7 +95,7 @@ Keamanan dan kecerdasan terdistribusi adalah pilar fundamental dari ekosistem Kr
     <div class="chapter-card-head">
       <span class="chapter-card-num">8.7</span>
       <h3 class="chapter-card-title">
-        <a href="/security-platforms/autonomous-agent">Mesin Agen AI Otonom (pkg/ai & krew) <span class="arrow">→</span></a>
+        <a href="/security-platforms/autonomous-agent">Mesin Agen AI Otonom (ai & krew) <span class="arrow">→</span></a>
       </h3>
     </div>
     <p class="chapter-card-desc">

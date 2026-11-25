@@ -65,7 +65,7 @@ Ekosistem Krewire mengoordinasikan rekayasa AI melalui tiga batasan yang terpisa
 ```
 
 1. **Penyedia Kebenaran (`krew`)**:
-   Menyediakan satu-satunya sumber kebenaran (*single source of truth*) yang terbaca mesin via `krew context --json`, menjalankan kompilasi, memeriksa kesehatan paket (`krew pkg health`), dan menegakkan gerbang mutu (`krew test`, `gofmt`, `go vet`). Berjalan 100% luring tanpa butuh LLM atau koneksi internet.
+   Menyediakan satu-satunya sumber kebenaran (*single source of truth*) yang terbaca mesin via `krew context --json`, menjalankan kompilasi, memeriksa kesehatan modul domain (`krew pkg health`), dan menegakkan gerbang mutu (`krew test`, `gofmt`, `go vet`). Berjalan 100% luring tanpa butuh LLM atau koneksi internet.
 2. **Konstitusi Rekayasa (`templates/boost`)**:
    Mendefinisikan aturan operasional, konvensi commit, struktur direktori, dan definisi persona agen yang tertanam langsung di repositori via `AGENTS.md` dan `.agents/`.
 3. **Engine Kognitif (`krew`)**:
@@ -129,7 +129,7 @@ Perubahan diimplementasikan dalam kelompok-kelompok kecil ($\le 300$ baris kode 
 
 ```bash
 # Memverifikasi status awal
-go test -v ./pkg/target/...
+go test -v ./target/...
 ```
 
 ### Langkah 5: Gerbang Mutu Deterministik
@@ -162,7 +162,7 @@ Langkah ini memvalidasi bahwa seluruh kriteria penerimaan terpenuhi, dependensi 
 Perubahan di-*commit* secara *bottom-up* menggunakan format *Conventional Commits* dengan tautan ke isu terkait:
 
 ```bash
-git add pkg/auth/token.go pkg/auth/token_test.go
+git add auth/token.go auth/token_test.go
 git commit -m "feat(auth): prevent token replay within clock window (ref #12)"
 git push origin main
 ```
@@ -180,7 +180,7 @@ Alur kerja AI-Native memperkenalkan pertimbangan keamanan khusus yang wajib dimi
 3. **Invarian Tanpa Kredensial Tersimpan**:
    - Kredensial tidak boleh ada di prompt, commit, maupun kode sumber. Selalu gunakan variabel lingkungan dinamis (`${env:DB_PASSWORD}`).
 4. **Verifikasi Asal-Usul Dependensi**:
-   - Untuk mencegah serangan *dependency confusion* atau paket bayangan (*phantom*), verifikasi seluruh modul:
+   - Untuk mencegah serangan *dependency confusion* atau modul domain bayangan (*phantom*), verifikasi seluruh modul:
    ```bash
    go mod verify
    krew pkg health
@@ -199,7 +199,7 @@ Alur kerja AI-Native memperkenalkan pertimbangan keamanan khusus yang wajib dimi
 [Deskripsi jelas dalam 1-2 kalimat mengenai definisi selesai.]
 
 ## Batasan & Lingkup Arsitektur
-- Repositori: [misal: krewire/pkg/web]
+- Repositori: [misal: krewire/web]
 - Jenis Beban Kerja: [misal: app / service / worker]
 - Tingkat Layer: [Layer 1-3 Inti / Layer 4 Platform / Layer 5 Portal]
 
@@ -243,12 +243,12 @@ Alur kerja AI-Native memperkenalkan pertimbangan keamanan khusus yang wajib dimi
 | Kapabilitas | Komponen | Status | Kesiapan Produksi |
 |---|---|---|---|
 | Native MCP Server (`stdio`) | `krew` | Rilis & Terverifikasi | Ya |
-| Unified AI SDK (`pkg/ai`) | `krewire/pkg/ai` | Rilis (v0.3+) | Ya |
+| Unified AI SDK (`ai`) | `krewire/ai` | Rilis (v0.3+) | Ya |
 | Konstitusi 21 Agen Boost | `templates/boost` | Rilis & Terverifikasi | Ya |
 | Verifikasi AI (`krew verify`) | `krew` | Rilis (v0.3.2) | Ya |
-| Sandbox Web PTY (Bubblewrap) | `dash/pkg/sandbox` | Rilis (Linux amd64/arm64) | Ya (Fail-closed) |
-| Multi-Agent Dynamic Swarms | `krew/pkg/sdlc` | Rilis (ref #15) | Ya |
-| Migrasi Beban Kerja Otonom | `cloud/pkg/supervisor` | Pengembangan Aktif | Single-Tenant Saja |
+| Sandbox Web PTY (Bubblewrap) | `dash/sandbox` | Rilis (Linux amd64/arm64) | Ya (Fail-closed) |
+| Multi-Agent Dynamic Swarms | `krew/sdlc` | Rilis (ref #15) | Ya |
+| Migrasi Beban Kerja Otonom | `cloud/supervisor` | Pengembangan Aktif | Single-Tenant Saja |
 
 ---
 

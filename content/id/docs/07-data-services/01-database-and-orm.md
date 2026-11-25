@@ -4,15 +4,15 @@ description: "Panduan referensi untuk ORM multi-driver Krewire: SQLite, MySQL, P
 date: "2026-11-11"
 ---
 
-# Database & Multi-Driver ORM (`pkg/orm`)
+# Database & Multi-Driver ORM (`orm`)
 
-`pkg/orm` menyediakan Object-Relational Mapping (ORM) ekspresif dan query builder agnostik database yang dirancang untuk ekosistem Go yang aman secara tipe (*type-safe*). Pustaka ini meniadakan ketergantungan CGO eksternal dan mengabstraksikan perbedaan dialek SQL (placeholder parameter, pengutipan identifier, DDL, dan konvensi auto-increment) di balik satu API yang bersih.
+`orm` menyediakan Object-Relational Mapping (ORM) ekspresif dan query builder agnostik database yang dirancang untuk ekosistem Go yang aman secara tipe (*type-safe*). Pustaka ini meniadakan ketergantungan CGO eksternal dan mengabstraksikan perbedaan dialek SQL (placeholder parameter, pengutipan identifier, DDL, dan konvensi auto-increment) di balik satu API yang bersih.
 
 ## Driver yang Didukung
 
 | Driver | Target Database | Protokol / Karakteristik |
 |---|---|---|
-| `sqlite` | SQLite 3 | Tersemat (*embedded*), bebas CGO, mode WAL, foreign key aktif; terpaket di `pkg/orm/sqlite` |
+| `sqlite` | SQLite 3 | Tersemat (*embedded*), bebas CGO, mode WAL, foreign key aktif; terpaket di `hub/sqlite` |
 | `mysql` | MySQL 8.0+ / MariaDB | Protokol relasional standar dengan connection pooling otomatis |
 | `postgres` | PostgreSQL 14+ | Fitur relasional tingkat lanjut, tipe JSONB, advisory lock berbasis transaksi |
 | `mongodb` | MongoDB 6.0+ | Penyimpanan dokumen NoSQL dengan pemetaan BSON otomatis |
@@ -28,7 +28,7 @@ package models
 import (
     "context"
 
-    "github.com/krewire/krewire/pkg/orm"
+    "github.com/krewire/krewire/orm"
 )
 
 type User struct {
@@ -111,8 +111,8 @@ package migrations
 import (
     "context"
 
-    "github.com/krewire/krewire/pkg/orm/migrate"
-    "github.com/krewire/krewire/pkg/orm/schema"
+    "github.com/krewire/krewire/orm/migrate"
+    "github.com/krewire/krewire/orm/schema"
 )
 
 func init() {
@@ -146,12 +146,12 @@ krew migrate redo     # Jalankan ulang migrasi terakhir secara atomik
 krew migrate status   # Periksa status seluruh berkas migrasi
 ```
 
-## Faker Engine (`pkg/orm/faker`)
+## Faker Engine (`orm/faker`)
 
 Generator data tiruan (*fake data*) deterministik dan aman terhadap goroutine (*thread-safe*) berbasis Go murni:
 
 ```go
-import "github.com/krewire/krewire/pkg/orm/faker"
+import "github.com/krewire/krewire/orm/faker"
 
 f := faker.New() // atau faker.New(42) untuk data deterministik yang dapat direproduksi
 
@@ -165,7 +165,7 @@ price    := f.Price(5.0, 250.0)
 uuid     := f.UUID()
 ```
 
-## Seeder & Model Factory Engine (`pkg/orm/seeder`)
+## Seeder & Model Factory Engine (`orm/seeder`)
 
 Buat dataset pengujian yang konsisten dan inisialisasi status sistem menggunakan Model Factory generik dan Seeder:
 
@@ -175,9 +175,9 @@ Buat dataset pengujian yang konsisten dan inisialisasi status sistem menggunakan
 package factories
 
 import (
-    "github.com/krewire/krewire/pkg/orm"
-    "github.com/krewire/krewire/pkg/orm/faker"
-    "github.com/krewire/krewire/pkg/orm/seeder"
+    "github.com/krewire/krewire/orm"
+    "github.com/krewire/krewire/orm/faker"
+    "github.com/krewire/krewire/orm/seeder"
     "my-app/models"
 )
 
@@ -214,8 +214,8 @@ package seeds
 import (
     "context"
 
-    "github.com/krewire/krewire/pkg/orm"
-    "github.com/krewire/krewire/pkg/orm/seeder"
+    "github.com/krewire/krewire/orm"
+    "github.com/krewire/krewire/orm/seeder"
     "my-app/factories"
 )
 
@@ -238,7 +238,7 @@ krew seed --class UserSeeder   # Menjalankan seeder tertentu
 krew seed                   # Alias kompatibel dengan Laravel
 ```
 
-## Generic Repository Pattern (`pkg/orm/repository`)
+## Generic Repository Pattern (`orm/repository`)
 
 Pola generic Repository (`Repository[T any]`) memisahkan urusan persistensi data dari logika bisnis domain dengan keamanan transaksi database penuh:
 
@@ -248,8 +248,8 @@ package repositories
 import (
     "context"
 
-    "github.com/krewire/krewire/pkg/orm"
-    "github.com/krewire/krewire/pkg/orm/repository"
+    "github.com/krewire/krewire/orm"
+    "github.com/krewire/krewire/orm/repository"
     "my-app/models"
 )
 

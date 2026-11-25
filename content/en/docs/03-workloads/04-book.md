@@ -8,7 +8,7 @@ date: "2026-10-08"
 
 The **`book`** workload compiles folders of Markdown manuscripts into structured, responsive, book-shaped documentation portals.
 
-Powered by Krewire's native **`pkg/book`** engine (`github.com/krewire/krewire/pkg/book`), the book engine operates with zero external dependencies and compiles hundreds of documentation pages into static HTML in less than **15 milliseconds**.
+Powered by Krewire's native **`book`** engine (`github.com/krewire/krewire/book`), the book engine operates with zero external dependencies and compiles hundreds of documentation pages into static HTML in less than **15 milliseconds**.
 
 ---
 

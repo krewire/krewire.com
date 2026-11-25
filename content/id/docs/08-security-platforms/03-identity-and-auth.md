@@ -12,30 +12,30 @@ Krewire Auth adalah platform identitas enterprise terdedikasi yang menyediakan s
 
 ## Subsistem & Arsitektur
 
-### 1. `pkg/identity`
+### 1. `identity`
 - **Hashing Kata Sandi:** PBKDF2-HMAC-SHA256 sesuai standar OWASP (600.000 iterasi).
 - **Autentikasi Multifaktor:** Time-based One-Time Passwords (TOTP RFC 6238) dengan kode QR dan URI provisi `otpauth://`.
 - **Kode Pemulihan Cadangan:** 8 kode pemulihan darurat sekali pakai yang divalidasi hash SHA-256.
 - **Penyimpanan Persisten:** SQL user store dan session store persisten dengan dukungan PostgreSQL dan SQLite.
 - **Redis Session Store:** `RedisSessionStore` throughput tinggi yang berkomunikasi via protokol asli RESP dengan pembersihan TTL otomatis.
 
-### 2. `pkg/sso`
+### 2. `sso`
 - **OIDC / OAuth2:** OIDC/OAuth2 generik dengan PKCE (RFC 7636) dan verifikasi status (state).
 - **Preset Penyedia:** Driver siap pakai untuk Google Workspace, GitHub, dan Microsoft Azure AD / Entra ID.
 - **SAML 2.0:** Pembuatan metadata SP, validasi cryptographic assertion toleran clock-skew, dan verifikasi tanda tangan digital.
 - **OIDC Discovery:** Endpoint metadata publik (`/.well-known/openid-configuration`) dan manajemen kunci JWKS.
 
-### 3. `pkg/rbac`
+### 3. `rbac`
 - **Peran Pengguna:** Hierarki pengguna (`superadmin` > `org_admin` > `developer` > `viewer`).
 - **Izin Granular:** Aturan resource-action dengan pencocokan wildcard (`workloads:*`, `projects:deploy`, `secrets:read`).
 - **RBAC Agen & Tool:** Hak akses terdedikasi untuk AI agent otonom (`AgentPermission`, `ToolPermission`) dengan evaluator kebijakan untuk mencegah eksekusi tool tanpa wewenang.
 - **Audit Trail Keamanan:** `AuditLogger` terstruktur yang mencatat seluruh aksi autentikasi, otorisasi, dan administratif beserta konteks IP dan pengguna.
 
-### 4. `pkg/middleware`
+### 4. `middleware`
 - **Double-Submit CSRF Cookie:** Verifikasi token kriptografis cookie-ke-header sesuai standar keamanan berlapis (defense-in-depth).
 - **Konteks Sesi:** Helper ekstraksi sesi yang aman (`WithSession`, `SessionFromContext`) terintegrasi langsung dengan siklus permintaan HTTP.
 
-### 5. `pkg/webauth`
+### 5. `webauth`
 Handler HTTP siap pasang dengan antarmuka web responsif dark/light:
 
 - `GET /login`, `POST /login`
@@ -47,7 +47,7 @@ Handler HTTP siap pasang dengan antarmuka web responsif dark/light:
 - `GET /logout`, `POST /logout`
 
 #### Pengalihan Aman & Pencegahan Open Redirect (CWE-601)
-`pkg/webauth` melindungi sistem dari upaya phishing dan pengalihan yang tidak divalidasi via parameter `return_to`:
+`webauth` melindungi sistem dari upaya phishing dan pengalihan yang tidak divalidasi via parameter `return_to`:
 - **`AUTH_RETURN_TO_HOSTS`**: Dikonfigurasi melalui environment variable sebagai daftar hostname yang diizinkan dipisahkan koma (contoh: `localhost:8080,dash.internal.org,app.krewire.com`).
 - Jika parameter `return_to` menargetkan domain eksternal di luar daftar `AUTH_RETURN_TO_HOSTS`, handler otomatis menolaknya dan mengalihkan pengguna dengan aman ke `/`.
 
@@ -71,13 +71,13 @@ Krewire Auth berintegrasi dengan layanan web melalui protokol OIDC standar:
 
 Bagi proyek open-source yang berjalan mandiri tanpa layanan cloud, Krewire menyediakan library autentikasi dan keamanan native tanpa dependensi di monorepo inti:
 
-- `pkg/sec`: Perbandingan constant-time, header keamanan OWASP, validasi token CSRF, dan pencegahan SSRF.
-- `pkg/auth`: Token JWT stateless, hashing password PBKDF2, dan middleware HTTP Basic Auth.
+- `sec`: Perbandingan constant-time, header keamanan OWASP, validasi token CSRF, dan pencegahan SSRF.
+- `auth`: Token JWT stateless, hashing password PBKDF2, dan middleware HTTP Basic Auth.
 
 ```go
 import (
-    "github.com/krewire/krewire/pkg/auth"
-    "github.com/krewire/krewire/pkg/sec"
+    "github.com/krewire/krewire/auth"
+    "github.com/krewire/krewire/sec"
 )
 ```
 

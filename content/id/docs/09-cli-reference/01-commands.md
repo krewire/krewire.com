@@ -54,7 +54,7 @@ krew new my-app [--site | --app | --cli | --book | --worker | --service | --infr
 - `--site`: Generator situs statis (SSG) dengan Single-File Component `.kiw`.
 - `--app`: Monolit web fullstack dengan `net/http` dan aset yang disematkan (embedded assets).
 - `--cli`: Utilitas terminal dengan arsitektur Model-Update-View bergaya Elm.
-- `--book`: Buku dokumentasi berbasis naskah Markdown dan `pkg/book`.
+- `--book`: Buku dokumentasi berbasis naskah Markdown dan `book`.
 - `--worker`: Daemon pemroses pekerjaan latar belakang (background job worker) asinkron.
 - `--service`: Layanan mikro (microservice) cloud-native.
 - `--infra`: Infrastructure as Code dalam bahasa Go.
@@ -162,8 +162,8 @@ Mengelola paket komponen `.kiw` dan UI kit yang dapat didistribusikan secara ind
 ```bash
 krew pkg init @acme/ui              # Membuat perancah paket mandiri dengan kiw.pkg.json
 krew pkg pack ./my-kit              # Membungkus paket ke dalam arsip .kpkg yang dapat didistribusikan
-krew pkg add ./dist/ui-1.0.0.kpkg   # Memasang arsip paket ke dalam ./.krewire/pkg/
-krew pkg add ./local-kit            # Memasang dari direktori lokal ke dalam ./.krewire/pkg/
+krew pkg add ./dist/ui-1.0.0.kpkg   # Memasang arsip paket ke dalam ./.krewire/
+krew pkg add ./local-kit            # Memasang dari direktori lokal ke dalam ./.krewire/
 krew pkg list                       # Menampilkan daftar paket komponen yang terpasang
 krew pkg list --json                # Inventaris paket terpasang dalam format JSON
 krew pkg export Card                # Memvalidasi dan mengekspor komponen mandiri

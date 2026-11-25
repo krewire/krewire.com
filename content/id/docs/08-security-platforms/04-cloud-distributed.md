@@ -6,7 +6,7 @@ date: "2026-10-10"
 
 # Cloud & Sistem Terdistribusi (`cloud`)
 
-Jalur impor (*import path*): `github.com/krewire/krewire/pkg/cloud`
+Jalur impor (*import path*): `github.com/krewire/krewire/cloud`
 
 Rangkaian paket **`cloud`** membekali aplikasi Krewire dengan primitif sistem terdistribusi kelas produksi, penjadwalan tugas latar belakang, perutean microservices, dan deklarasi infrastruktur cloud sebagai kode (*Infrastructure as Code*).
 
@@ -14,7 +14,7 @@ Rangkaian paket **`cloud`** membekali aplikasi Krewire dengan primitif sistem te
 
 ## 1. Worker Latar Belakang & Antrean Tugas (`cloud/worker`)
 
-Jalur impor (*import path*): `github.com/krewire/krewire/pkg/cloud/worker`
+Jalur impor (*import path*): `github.com/krewire/krewire/cloud/worker`
 
 Paket `worker` menyediakan eksekusi tugas latar belakang asinkron, penjadwalan cron periodik, kebijakan retry bertingkat, dan dead-letter queue (DLQ).
 
@@ -28,7 +28,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/krewire/krewire/pkg/cloud/worker"
+	"github.com/krewire/krewire/cloud/worker"
 )
 
 type EmailPayload struct {
@@ -70,7 +70,7 @@ func main() {
 
 ## 2. Mesh Microservice & Gateway (`cloud/service`)
 
-Jalur impor (*import path*): `github.com/krewire/krewire/pkg/cloud/service`
+Jalur impor (*import path*): `github.com/krewire/krewire/cloud/service`
 
 Paket `service` menyediakan perutean microservice cloud-native, penemuan layanan dinamis (*dynamic service discovery*), sinkronisasi konfigurasi, dan tracing terdistribusi.
 
@@ -88,7 +88,7 @@ package main
 import (
 	"context"
 
-	"github.com/krewire/krewire/pkg/cloud/service/registry"
+	"github.com/krewire/krewire/cloud/service/registry"
 )
 
 func main() {
@@ -115,7 +115,7 @@ func main() {
 
 ## 3. Infrastruktur sebagai Kode (`cloud/infra`)
 
-Jalur impor (*import path*): `github.com/krewire/krewire/pkg/cloud/infra`
+Jalur impor (*import path*): `github.com/krewire/krewire/cloud/infra`
 
 Paket `infra` memungkinkan pengembang mendefinisikan infrastruktur cloud secara deklaratif menggunakan bahasa Go. Paket ini menegakkan resolusi dependensi deterministik dan menghasilkan rencana eksekusi (*execution plan*) bebas efek samping sebelum menerapkan perubahan nyata.
 
@@ -125,8 +125,8 @@ Paket `infra` memungkinkan pengembang mendefinisikan infrastruktur cloud secara 
 package main
 
 import (
-	"github.com/krewire/krewire/pkg/cloud/infra/schema"
-	"github.com/krewire/krewire/pkg/cloud/infra/state"
+	"github.com/krewire/krewire/cloud/infra/schema"
+	"github.com/krewire/krewire/cloud/infra/state"
 )
 
 func main() {

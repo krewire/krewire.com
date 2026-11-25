@@ -8,7 +8,7 @@ date: "2026-10-25"
 
 Krewire beroperasi di bawah aturan **Satu Konfigurasi (One Config)**: semua pengaturan di seluruh delapan jenis workload dideklarasikan dalam satu berkas tunggal—**`krewire.yaml`**.
 
-Tidak ada berkas konfigurasi terpisah seperti `ssg.yaml` atau berkas spesifik perkakas lainnya. Konfigurasi memiliki tipe data kuat, divalidasi terhadap aturan skema (`pkg/validation`), dan dimuat menggunakan `pkg/config` (pemilik skema: `krew/internal/config`).
+Tidak ada berkas konfigurasi terpisah seperti `ssg.yaml` atau berkas spesifik perkakas lainnya. Konfigurasi memiliki tipe data kuat, divalidasi terhadap aturan skema (`validation`), dan dimuat menggunakan `config` (pemilik skema: `krew/internal/config`).
 
 ---
 

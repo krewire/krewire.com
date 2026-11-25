@@ -1,14 +1,14 @@
 ---
-title: "Web Runtime & WASM (pkg/runtime)"
+title: "Web Runtime & WASM (runtime)"
 description: "Menulis aplikasi web reaktif di sisi klien menggunakan Go yang dikompilasi ke WebAssembly: diffing virtual DOM, hooks, registri komponen, penanda hidrasi SSR, dan hidrasi pulau multi-framework."
 date: "2026-10-25"
 ---
 
-# Web Runtime & WASM (`pkg/runtime`)
+# Web Runtime & WASM (`runtime`)
 
-Jalur impor: `github.com/krewire/krewire/pkg/runtime`
+Jalur impor: `github.com/krewire/krewire/runtime`
 
-Pustaka `pkg/runtime` menghadirkan mesin eksekusi WebAssembly (WASM) di sisi klien, algoritma diffing dan rekonsiliasi Virtual DOM (VDOM), penjadwal siklus hidup komponen Fiber, serta kontrak hidrasi pulau (island hydration) progresif lintas framework.
+Pustaka `runtime` menghadirkan mesin eksekusi WebAssembly (WASM) di sisi klien, algoritma diffing dan rekonsiliasi Virtual DOM (VDOM), penjadwal siklus hidup komponen Fiber, serta kontrak hidrasi pulau (island hydration) progresif lintas framework.
 
 Pustaka ini memungkinkan pengembang menulis widget sisi klien yang interaktif dan reaktif dalam 100% Go murni yang dikompilasi ke WebAssembly (`GOOS=js GOARCH=wasm`), atau menyematkan pulau frontend modular yang ringan (Svelte 5, Vue 3) sembari menjaga pemuatan awal halaman tetap statis dan bebas JavaScript secara bawaan.
 
@@ -17,7 +17,7 @@ Pustaka ini memungkinkan pengembang menulis widget sisi klien yang interaktif da
 ## 1. Tata Letak Subpackage
 
 ```text
-pkg/runtime/
+runtime/
 ├── vdom/         # Virtual DOM immutable: VNode, El, Text, Component, Diff, RenderHTML
 ├── component/    # Model komponen, penjadwal Fiber, hooks state, registri event
 ├── mount/        # Kontrak hidrasi progresif (data-kiw-mount, load, idle, visible)
@@ -28,7 +28,7 @@ pkg/runtime/
 
 ---
 
-## 2. Hidrasi Pulau Progresif (`pkg/runtime/mount`)
+## 2. Hidrasi Pulau Progresif (`runtime/mount`)
 
 Krewire menerapkan **Arsitektur Kepulauan (Islands Architecture)**: halaman dirender secara statis di server (SSG/SSR) tanpa beban JavaScript berlebih. Pulau-pulau interaktif dihidrasi secara selektif di peramban klien berdasarkan visibilitas layar atau periode senggang peramban.
 
@@ -54,17 +54,17 @@ Titik pemasangan (mount point) memancarkan penanda HTML standar:
 
 ### Dukungan Pulau Multi-Framework
 
-Melalui `pkg/runtime/mount` dan ekosistem plugin Krewire, titik pemasangan mendukung:
+Melalui `runtime/mount` dan ekosistem plugin Krewire, titik pemasangan mendukung:
 - **`wasm`** (Bawaan): Pulau WebAssembly hasil kompilasi Go murni tanpa dependensi runtime node/npm.
 - **`svelte`**: Pulau komponen reaktif Svelte 5 yang dipasang melalui `krew add svelte`.
 - **`vue`**: Pulau komponen reaktif Vue 3 yang dipasang melalui `krew add vue`.
 
 ---
 
-## 3. Mesin Virtual DOM (`pkg/runtime/vdom`)
+## 3. Mesin Virtual DOM (`runtime/vdom`)
 
 ```go
-import "github.com/krewire/krewire/pkg/runtime/vdom"
+import "github.com/krewire/krewire/runtime/vdom"
 
 tree := vdom.El("section", map[string]string{"class": "hero"},
 	vdom.El("h1", nil, vdom.Text("Halo dari Go")),
@@ -79,7 +79,7 @@ patches := vdom.Diff(oldTree, tree) // Rekonsiliasi di sisi klien
 
 ---
 
-## 4. Model Komponen & Hooks Reaktif (`pkg/runtime/component`)
+## 4. Model Komponen & Hooks Reaktif (`runtime/component`)
 
 Komponen adalah entitas apa pun yang mengimplementasikan antarmuka `Component`:
 
@@ -98,8 +98,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/krewire/krewire/pkg/runtime/component"
-	"github.com/krewire/krewire/pkg/runtime/vdom"
+	"github.com/krewire/krewire/runtime/component"
+	"github.com/krewire/krewire/runtime/vdom"
 )
 
 type Counter struct{}
@@ -128,7 +128,7 @@ Hooks yang tersedia mencakup `UseState`, `UseRef`, `UseMemo`, `UseEffect`, dan `
 
 ---
 
-## 5. Pemindai Boot Klien (`pkg/runtime/boot`)
+## 5. Pemindai Boot Klien (`runtime/boot`)
 
 Runtime klien secara otomatis melakukan booting dan memasang komponen saat DOM selesai dimuat:
 
@@ -136,8 +136,8 @@ Runtime klien secara otomatis melakukan booting dan memasang komponen saat DOM s
 package main
 
 import (
-	"github.com/krewire/krewire/pkg/runtime/boot"
-	"github.com/krewire/krewire/pkg/runtime/component"
+	"github.com/krewire/krewire/runtime/boot"
+	"github.com/krewire/krewire/runtime/component"
 )
 
 func main() {
@@ -153,10 +153,10 @@ func main() {
 
 ---
 
-## 6. Membangun Modul Biner WASM (`pkg/runtime/build`)
+## 6. Membangun Modul Biner WASM (`runtime/build`)
 
 ```go
-import "github.com/krewire/krewire/pkg/runtime/build"
+import "github.com/krewire/krewire/runtime/build"
 
 artifacts, err := build.BuildWASM(build.Config{
 	Entry:  "./frontend",

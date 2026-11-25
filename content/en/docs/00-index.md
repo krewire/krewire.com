@@ -88,8 +88,8 @@ You do **not** need to read about architecture to use it. Follow the stages belo
 
 1. [Quickstart](/getting-started/quickstart) — learn the `krew` loop on a small site.
 2. [Build a Fullstack App in 15 Minutes](/getting-started/fullstack-app-tutorial) — SQLite, forms, CSRF, single binary.
-3. [App workload](/workloads/app) and [Application container (`pkg/app`)](/web-ui/app).
-4. [Web engine & routing (`pkg/web`)](/web-ui/web) and [Database & ORM (`pkg/orm`)](/data-services/database-and-orm).
+3. [App workload](/workloads/app) and [Application container (`app`)](/web-ui/app).
+4. [Web engine & routing (`web`)](/web-ui/web) and [Database & ORM (`orm`)](/data-services/database-and-orm).
 5. [Security controls](/security-platforms/security) and [Authentication](/security-platforms/auth).
 6. [Data flow: build time vs request time](/architecture/data-flow) — when to render statically and when per request.
 
@@ -97,7 +97,7 @@ You do **not** need to read about architecture to use it. Follow the stages belo
 
 1. [Why Krewire?](/overview/why-krewire) and the [workload matrix](/overview/krewire-workloads).
 2. [Service](/workloads/service), [Gateway](/workloads/gateway), and [Worker](/workloads/worker) workloads.
-3. [Distributed systems (`pkg/cloud`)](/security-platforms/cloud-distributed) and [Resilience](/core-libraries/resilience).
+3. [Distributed systems (`cloud`)](/security-platforms/cloud-distributed) and [Resilience](/core-libraries/resilience).
 4. [Architecture Deep-Dive](/architecture) — pyramid, ecosystem DAG, scope levels.
 5. [Deployment & Operations](/guides/deployment-and-operations) and [Hybrid PaaS & Cloud](/guides/hybrid-paas-and-cloud).
 
@@ -107,8 +107,8 @@ You do **not** need to read about architecture to use it. Follow the stages belo
 
 | Role | Read in this order |
 | :--- | :--- |
-| **Frontend developer** | [Quickstart](/getting-started/quickstart) → [`.kiw` DSL](/getting-started/dsl) → [UI components](/ui/components) → [UI design system (`pkg/ui`)](/web-ui/ui) → [Web runtime & WASM](/web-ui/web-runtime) → [Site workload](/workloads/site) |
-| **Backend developer** | [Quickstart](/getting-started/quickstart) → [Fullstack app tutorial](/getting-started/fullstack-app-tutorial) → [`pkg/web`](/web-ui/web) → [`pkg/app`](/web-ui/app) → [Database & ORM](/data-services/database-and-orm) → [Validation](/core-libraries/validation) → [Data flow](/architecture/data-flow) |
+| **Frontend developer** | [Quickstart](/getting-started/quickstart) → [`.kiw` DSL](/getting-started/dsl) → [UI components](/ui/components) → [UI design system (`ui`)](/web-ui/ui) → [Web runtime & WASM](/web-ui/web-runtime) → [Site workload](/workloads/site) |
+| **Backend developer** | [Quickstart](/getting-started/quickstart) → [Fullstack app tutorial](/getting-started/fullstack-app-tutorial) → [`web`](/web-ui/web) → [`app`](/web-ui/app) → [Database & ORM](/data-services/database-and-orm) → [Validation](/core-libraries/validation) → [Data flow](/architecture/data-flow) |
 | **DevOps engineer** | [Installation](/getting-started/installation) → [Configuration](/getting-started/configuration) → [CLI commands](/cli-reference/commands) → [Scripting & CI/CD](/cli-reference/scripting) → [Deployment & Operations](/guides/deployment-and-operations) → [Hybrid PaaS & Cloud](/guides/hybrid-paas-and-cloud) |
 | **Platform engineer** | [Overview](/overview) → [Workload matrix](/overview/krewire-workloads) → [Architecture Deep-Dive](/architecture) → [Model & primitives](/core-libraries/model) → [Lifecycle kernel](/core-libraries/lifecycle) → [Open core & licensing](/guides/open-core-and-licensing) |
 

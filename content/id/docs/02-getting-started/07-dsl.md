@@ -6,7 +6,7 @@ date: "2026-09-29"
 
 # DSL (.kiw)
 
-**DSL Komponen `.kiw`** (`pkg/kiw`) adalah bahasa templating komponen berbasis berkas terpadu milik Krewire. Bahasa ini menghadirkan ergonomi Single-File Component (SFC) modern—serupa dengan Astro, Svelte, atau Vue—langsung ke ekosistem Go tanpa memerlukan Node.js, `npm`, webpack, ataupun kerumitan build JavaScript.
+**DSL Komponen `.kiw`** (`ui/kiw`) adalah bahasa templating komponen berbasis berkas terpadu milik Krewire. Bahasa ini menghadirkan ergonomi Single-File Component (SFC) modern—serupa dengan Astro, Svelte, atau Vue—langsung ke ekosistem Go tanpa memerlukan Node.js, `npm`, webpack, ataupun kerumitan build JavaScript.
 
 Setiap berkas `.kiw` merangkum metadata, markup, scoped style, dan interaksi sisi klien di dalam satu berkas yang mudah dibaca, yang dikompilasi menjadi pohon template Go berkinerja tinggi serta aset statis hanya dalam hitungan milidetik.
 
@@ -168,7 +168,7 @@ Tidak diperlukan tag `<link>` atau `<script>` manual untuk CSS/JS situs: setiap 
 
 ## 4. Komposisi Komponen yang Dapat Digunakan Kembali
 
-Komponen dapat diinstansiasi secara dinamis di dalam halaman, layout, atau komponen lainnya menggunakan tag komponen kustom. Sumbernya mencakup file lokal di `components/`, paket mandiri yang dipasang di `./.krewire/pkg/`, dan komponen yang diimpor sebagai modul Go (misalnya `github.com/krewire/ui`, tersedia sebagai `@krewire/ui`):
+Komponen dapat diinstansiasi secara dinamis di dalam halaman, layout, atau komponen lainnya menggunakan tag komponen kustom. Sumbernya mencakup file lokal di `components/`, paket mandiri yang dipasang di `./.krewire/`, dan komponen yang diimpor sebagai modul Go (misalnya `github.com/krewire/ui`, tersedia sebagai `@krewire/ui`):
 
 ```html
 <!-- Pemanggilan berbasis tag dengan atribut sebagai props -->
@@ -203,7 +203,7 @@ krew make component Card.Footer     # menghasilkan components/Card/Footer.kiw
 
 ### 4.2 Komponen Bernamespace & Vendor
 
-Paket antarmuka pengguna yang dipasang dari `./.krewire/pkg/` atau design system bawaan dapat dipanggil menggunakan sintaks namespace titik dua:
+Paket antarmuka pengguna yang dipasang dari `./.krewire/` atau design system bawaan dapat dipanggil menggunakan sintaks namespace titik dua:
 
 ```html
 <ui:Button variant="primary">Jalankan</ui:Button>
@@ -272,12 +272,12 @@ Pustaka komponen yang dapat digunakan kembali dapat didistribusikan dan dipasang
 
 - **Manifest (`kiw.pkg.json`)**: Mendeklarasikan metadata paket, pemetaan komponen yang diekspor, dan stylesheet.
 - **Format Arsip (`.kpkg`)**: Arsip tarball gzipped dengan verifikasi integritas SHA-256.
-- **Direktori Pemasangan (`./.krewire/pkg/`)**: Repositori paket proyek lokal.
+- **Direktori Pemasangan (`./.krewire/`)**: Repositori paket proyek lokal.
 
 ```bash
 krew pkg init @acme/ui              # Men-scaffold direktori paket dengan kiw.pkg.json
 krew pkg pack ./acme-ui             # Mengemas ke arsip acme-ui-0.1.0.kpkg
-krew pkg add ./acme-ui-0.1.0.kpkg   # Memasang ke ./.krewire/pkg/acme-ui
+krew pkg add ./acme-ui-0.1.0.kpkg   # Memasang ke ./.krewire/acme-ui
 krew pkg list                       # Menampilkan daftar paket dan komponen yang diekspor
 ```
 
@@ -313,7 +313,7 @@ Instansiasi `Alert` di dalam `pages/index.kiw`:
 
 ### Island Architecture & Hidrasi Sisi Klien
 
-Krewire mengimplementasikan **Island Architecture** (`pkg/runtime/mount` dan `pkg/runtime/boot`) yang memungkinkan hidrasi sisi klien secara selektif untuk komponen interaktif, sementara bagian halaman lainnya tetap berupa HTML statis 100% tanpa JavaScript.
+Krewire mengimplementasikan **Island Architecture** (`runtime/mount` dan `runtime/boot`) yang memungkinkan hidrasi sisi klien secara selektif untuk komponen interaktif, sementara bagian halaman lainnya tetap berupa HTML statis 100% tanpa JavaScript.
 
 Anda mendeklarasikan perilaku hidrasi menggunakan direktif `client:*` langsung pada tag komponen:
 
@@ -332,7 +332,7 @@ Anda mendeklarasikan perilaku hidrasi menggunakan direktif `client:*` langsung p
 
 1. **Server Rendering (SSR/SSG)**: Selama proses build, Krewire me-render komponen menjadi HTML dan membungkusnya dalam wadah penanda ringan (`data-kiw-mount="Counter" data-kiw-hydrate="load" data-kiw-props='{"initial":0}'`).
 2. **Pratinjau Instan**: Browser menampilkan konten lengkap dengan segera tanpa adanya pergeseran tata letak (CLS: 0).
-3. **Hidrasi Progresif**: Runtime WebAssembly Krewire (`pkg/runtime`) memindai penanda mount, menginisialisasi fiber VDOM dengan DOM yang sudah ada, dan memasang event reaktif tanpa me-render ulang teks server.
+3. **Hidrasi Progresif**: Runtime WebAssembly Krewire (`runtime`) memindai penanda mount, menginisialisasi fiber VDOM dengan DOM yang sudah ada, dan memasang event reaktif tanpa me-render ulang teks server.
 
 ---
 
@@ -348,7 +348,7 @@ Style yang didefinisikan di dalam blok `<style>` secara **otomatis diisolasi ke 
    <div class="card" data-kiw-component="Card">...</div>
    ```
 
-2. Kompiler CSS (`pkg/web/ssg`) menulis ulang selektor Anda agar terikat ketat pada scope komponen tersebut:
+2. Kompiler CSS (`web/ssg`) menulis ulang selektor Anda agar terikat ketat pada scope komponen tersebut:
 
    ```css
    /* CSS yang Anda tulis */
@@ -403,7 +403,7 @@ Untuk bagian yang berfokus pada konten tekstual, Anda dapat menulis Markdown nat
 </section>
 ```
 
-Kompiler Krewire secara otomatis mengonversi blok Markdown menjadi HTML yang bersih dan tersanitasi pada waktu build menggunakan `pkg/kiw` dan `pkg/markdown`.
+Kompiler Krewire secara otomatis mengonversi blok Markdown menjadi HTML yang bersih dan tersanitasi pada waktu build menggunakan `ui/kiw` dan `markdown`.
 
 ---
 

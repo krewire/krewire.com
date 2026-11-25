@@ -1,14 +1,14 @@
 ---
 title: "Testing Utilities & Assertions"
-description: "Testing assertion harness, fluent HTTP chain, golden snapshots, UI component assertions, and browser automation in pkg/testing."
+description: "Testing assertion harness, fluent HTTP chain, golden snapshots, UI component assertions, and browser automation in testing."
 date: "2026-10-25"
 ---
 
-# Testing Utilities & Assertions (`pkg/testing`)
+# Testing Utilities & Assertions (`testing`)
 
-Import path: `github.com/krewire/krewire/pkg/testing`
+Import path: `github.com/krewire/krewire/testing`
 
-`pkg/testing` delivers an idiomatic, pure-Go testing toolkit for the Krewire ecosystem. It includes fluent HTTP request builders, chainable response assertion matchers, temporary fixture management, golden file diffing, UI component inspection, and headless browser automation.
+`testing` delivers an idiomatic, pure-Go testing toolkit for the Krewire ecosystem. It includes fluent HTTP request builders, chainable response assertion matchers, temporary fixture management, golden file diffing, UI component inspection, and headless browser automation.
 
 ---
 
@@ -23,7 +23,7 @@ import (
 	"net/http"
 	"testing"
 
-	ftest "github.com/krewire/krewire/pkg/testing"
+	ftest "github.com/krewire/krewire/testing"
 )
 
 func TestProfileEndpoint(t *testing.T) {
@@ -77,7 +77,7 @@ package compiler_test
 import (
 	"testing"
 
-	ftest "github.com/krewire/krewire/pkg/testing"
+	ftest "github.com/krewire/krewire/testing"
 )
 
 func TestTemplateRendering(t *testing.T) {
@@ -90,7 +90,7 @@ func TestTemplateRendering(t *testing.T) {
 
 ---
 
-## 4. Headless Browser Automation (`pkg/testing/browser`)
+## 4. Headless Browser Automation (`testing/browser`)
 
 The `browser` package provides an automated end-to-end testing harness:
 
@@ -101,7 +101,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/krewire/krewire/pkg/testing/browser"
+	"github.com/krewire/krewire/testing/browser"
 )
 
 func TestWebUI_E2E(t *testing.T) {

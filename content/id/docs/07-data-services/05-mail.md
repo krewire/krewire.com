@@ -4,9 +4,9 @@ description: "Pengiriman email transaksional terpadu ke berbagai penyedia: SMTP,
 date: "2026-10-25"
 ---
 
-# Mailer Transaksional (`pkg/mail`)
+# Mailer Transaksional (`mail`)
 
-`pkg/mail` mengirimkan email transaksional ke berbagai penyedia tanpa perlu mengubah kode logika bisnis. Paket ini memisahkan penyusunan pesan dari mekanisme pengiriman teknis.
+`mail` mengirimkan email transaksional ke berbagai penyedia tanpa perlu mengubah kode logika bisnis. Paket ini memisahkan penyusunan pesan dari mekanisme pengiriman teknis.
 
 ## Driver Email yang Didukung
 
@@ -27,7 +27,7 @@ import (
     "context"
     "os"
 
-    "github.com/krewire/krewire/pkg/mail"
+    "github.com/krewire/krewire/mail"
 )
 
 func main() {

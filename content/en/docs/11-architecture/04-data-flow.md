@@ -19,8 +19,8 @@ date: "2026-11-09"
 
 A `.kiw` file never fetches data itself. It is a template that receives a **data value** and turns it into HTML. What differs between workloads is *when* that value is computed and *who* computes it:
 
-- In a **`site` or `book`** the data is evaluated **once, at build time**, by `krew build` (`pkg/web/ssg`, `pkg/book`). The output is plain files; no server runs your code.
-- In an **`app`** the data is computed **per request** by Go functions you register on a `web.App` (`pkg/web`, assembled with `pkg/app`). The same renderer turns it into HTML on every request.
+- In a **`site` or `book`** the data is evaluated **once, at build time**, by `krew build` (`web/ssg`, `book`). The output is plain files; no server runs your code.
+- In an **`app`** the data is computed **per request** by Go functions you register on a `web.App` (`web`, assembled with `app`). The same renderer turns it into HTML on every request.
 - In both, a **client script** can talk to JSON endpoints after the page loads — in an `app` those endpoints are your own Go handlers.
 
 ---
@@ -63,7 +63,7 @@ The renderer in the middle is the same in both columns. `web.App` builds an `ssg
 | | Build-time SSG (`site`, `book`) | Request-time SSR (`app`) |
 | :--- | :--- | :--- |
 | Who computes the data | `krew build` | Your Go code on every request (`PageSpec.DataFunc`) or once at startup (`PageSpec.Data`) |
-| Data sources | `krewire.yaml`, page frontmatter, `content/<collection>/*.md`, `lang/` dictionaries | Anything Go can reach: databases (`pkg/orm`), services, the request (query, cookies, session, CSRF token) |
+| Data sources | `krewire.yaml`, page frontmatter, `content/<collection>/*.md`, `lang/` dictionaries | Anything Go can reach: databases (`orm`), services, the request (query, cookies, session, CSRF token) |
 | Output | Static `.html` files in `.krewire/build/` | An HTML response per request, from one Go binary |
 | Server needed | None — any static host | The app binary |
 | Per-user content | Only client-side, after load | Yes — computed per request |
@@ -178,10 +178,10 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/krewire/krewire/pkg/kiw"
-	"github.com/krewire/krewire/pkg/validation"
-	"github.com/krewire/krewire/pkg/web"
-	"github.com/krewire/krewire/pkg/web/ssg"
+	"github.com/krewire/ui/kiw"
+	"github.com/krewire/krewire/validation"
+	"github.com/krewire/krewire/web"
+	"github.com/krewire/krewire/web/ssg"
 )
 
 //go:embed views/*.kiw static
@@ -193,7 +193,7 @@ type Note struct {
 	Text string `json:"text"`
 }
 
-// Store stands in for a database (see the fullstack tutorial for pkg/orm).
+// Store stands in for a database (see the fullstack tutorial for orm).
 type Store struct {
 	mu    sync.Mutex
 	notes []Note
@@ -313,7 +313,7 @@ func main() {
 What happens on `GET /`:
 
 1. The router runs the middleware chain. `web.CSRF()` issues an `XSRF-TOKEN` cookie and puts the token in the request context.
-2. `DataFunc` builds a `NotesPage` struct from the store (in a real app, a `pkg/orm` query — see the [fullstack tutorial](/getting-started/fullstack-app-tutorial)) and reads the token with `web.CSRFFrom(r.Context())`.
+2. `DataFunc` builds a `NotesPage` struct from the store (in a real app, a `orm` query — see the [fullstack tutorial](/getting-started/fullstack-app-tutorial)) and reads the token with `web.CSRFFrom(r.Context())`.
 3. The renderer executes `Notes.kiw` with that struct as `.`: `{count}` is `.Count`, `{#each notes as n}` ranges over `.Notes`.
 4. Because `EmitProps` is set, the struct is also serialized into a `data-props` attribute on the view's root element, and `/static/notes.js` is injected before `</body>`.
 

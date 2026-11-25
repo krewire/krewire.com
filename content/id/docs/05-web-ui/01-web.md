@@ -1,12 +1,12 @@
 ---
 title: "Web Engine & Perutean HTTP"
-description: "Perutean HTTP radix tree berkinerja tinggi, pipeline middleware, problem details RFC 7807, ekstraksi parameter, dan helper render di pkg/web."
+description: "Perutean HTTP radix tree berkinerja tinggi, pipeline middleware, problem details RFC 7807, ekstraksi parameter, dan helper render di web."
 date: "2026-10-25"
 ---
 
-# Web Engine & Perutean HTTP (`pkg/web`)
+# Web Engine & Perutean HTTP (`web`)
 
-Jalur impor: `github.com/krewire/krewire/pkg/web`
+Jalur impor: `github.com/krewire/krewire/web`
 
 Paket `web` membungkus pustaka standar Go `net/http` dengan perutean ekspresif, ekstraksi parameter, rantai middleware, dan serialisasi JSON tanpa dependensi runtime eksternal.
 
@@ -28,7 +28,7 @@ package main
 
 import (
 	"net/http"
-	"github.com/krewire/krewire/pkg/web"
+	"github.com/krewire/krewire/web"
 )
 
 func main() {

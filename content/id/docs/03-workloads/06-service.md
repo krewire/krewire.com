@@ -8,7 +8,7 @@ date: "2026-10-08"
 
 Workload **`service`** memperlengkapi para pengembang untuk membangun microservice cloud-native ber-throughput tinggi dan API terdistribusi.
 
-Ditenagai oleh `pkg/cloud/service`, `pkg/sec`, dan `pkg/resilience`, workload `service` sudah mencakup penemuan layanan (service discovery) kelas produksi, tracing terdistribusi, perutean gateway, dan telemetri langsung sejak awal.
+Ditenagai oleh `cloud/service`, `sec`, dan `resilience`, workload `service` sudah mencakup penemuan layanan (service discovery) kelas produksi, tracing terdistribusi, perutean gateway, dan telemetri langsung sejak awal.
 
 ---
 
@@ -56,8 +56,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/krewire/krewire/pkg/cloud/service"
-	"github.com/krewire/krewire/pkg/web"
+	"github.com/krewire/krewire/cloud/service"
+	"github.com/krewire/krewire/web"
 )
 
 func main() {
@@ -102,7 +102,7 @@ service:
   port: 8080
 ```
 
-`name` dan `port` adalah satu-satunya kunci di bawah `service:`. Penemuan layanan (`pkg/cloud/service/registry`), rate limiting dan circuit breaking (`pkg/cloud/service/resilience`), serta tracing (`pkg/cloud/service/tracing`) disusun langsung dalam kode Go tempat registry dan transport dihubungkan.
+`name` dan `port` adalah satu-satunya kunci di bawah `service:`. Penemuan layanan (`cloud/service/registry`), rate limiting dan circuit breaking (`cloud/service/resilience`), serta tracing (`cloud/service/tracing`) disusun langsung dalam kode Go tempat registry dan transport dihubungkan.
 
 ---
 

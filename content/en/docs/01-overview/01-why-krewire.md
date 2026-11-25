@@ -42,13 +42,13 @@ Krewire unifies all of these workloads under **Go**, **`krew`**, and **`krewire.
 | Workload | Traditional Fragmented Approach | The Krewire Approach |
 | :--- | :--- | :--- |
 | **Static Site** | Node.js + Astro / Hugo / Next.js | `krew build --site` (Go SSG, zero client JS) |
-| **Documentation** | Docusaurus / GitBook / MkDocs | `krew build --book` (`pkg/book` markdown engine) |
-| **Web Monolith** | Laravel / Django / Next.js + Node | `krew run` (`pkg/app` single Go binary) |
-| **CLI & TUI** | Python Click / Node / Cobra | `krew run` (`pkg/tui` reactive terminal) |
-| **Background Jobs** | Celery + Python + Redis / Sidekiq | `krew worker` (`pkg/cloud/worker` queues & cron) |
-| **Microservices** | Spring Boot / Express / Go kit | `krew run` (`pkg/cloud/service` gateway & OTel) |
-| **Cloud Infra** | Terraform / HCL / CloudFormation | `krew deploy --target infra` (`pkg/cloud/infra` Go IaC declarations) |
-| **Client Frontend** | React / Vue / Angular + bundlers | `krew build --target wasm` (`pkg/runtime` Go-to-WASM) |
+| **Documentation** | Docusaurus / GitBook / MkDocs | `krew build --book` (`book` markdown engine) |
+| **Web Monolith** | Laravel / Django / Next.js + Node | `krew run` (`app` single Go binary) |
+| **CLI & TUI** | Python Click / Node / Cobra | `krew run` (`tui` reactive terminal) |
+| **Background Jobs** | Celery + Python + Redis / Sidekiq | `krew worker` (`cloud/worker` queues & cron) |
+| **Microservices** | Spring Boot / Express / Go kit | `krew run` (`cloud/service` gateway & OTel) |
+| **Cloud Infra** | Terraform / HCL / CloudFormation | `krew deploy --target infra` (`cloud/infra` Go IaC declarations) |
+| **Client Frontend** | React / Vue / Angular + bundlers | `krew build --target wasm` (`runtime` Go-to-WASM) |
 
 ---
 

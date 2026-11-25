@@ -76,7 +76,7 @@ Saat asisten AI terhubung ke `https://krewire.com/mcp/sse`, agen memperoleh akse
 - `list_docs(locale)`: Menampilkan daftar hierarkis daftar isi dokumentasi.
 - `list_components(category)`: Menampilkan katalog komponen UI Pop-Brutalist `.kiw` beserta varian gayanya.
 - `get_component(name)`: Menampilkan spesifikasi properti lengkap dan contoh kode `.kiw` siap pakai.
-- `get_ecosystem()`: Menampilkan matriks 10 repositori dan pembagian layer (Layer 0 hingga Layer 5).
+- `get_ecosystem()`: Menampilkan matriks 11 repositori dan pembagian layer (Layer 0 hingga Layer 5).
 - `get_architecture_rules()`: Menyediakan aturan Arsitektur Piramida 6 Lapisan, Tiga Pilar (3S), dan invarian pure-Go.
 
 ---

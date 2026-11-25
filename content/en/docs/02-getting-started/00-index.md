@@ -47,7 +47,7 @@ Follow these in order. Every command in them was run against the current `krew` 
       </h3>
     </div>
     <p class="chapter-card-desc">
-      A task manager with <code>krew new --app</code>, SQLite through <code>pkg/orm</code>, a <code>.kiw</code> page with Krewire UI components, validated CSRF-protected forms, and a single-binary build.
+      A task manager with <code>krew new --app</code>, SQLite through <code>orm</code>, a <code>.kiw</code> page with Krewire UI components, validated CSRF-protected forms, and a single-binary build.
     </p>
   </div>
 

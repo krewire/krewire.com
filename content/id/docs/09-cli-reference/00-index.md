@@ -8,7 +8,7 @@ date: "2026-10-08"
 
 CLI **`krew`** adalah pintu masuk tunggal yang menyatukan seluruh ekosistem Krewire. Alat ini menggerakkan kedelapan jenis proyek (`app`, `cli`, `site`, `book`, `worker`, `service`, `gateway`, `infra`) di balik satu binary dan satu berkas konfigurasi (**`krewire.yaml`**).
 
-`krew` dibangun secara langsung menggunakan pustaka `pkg/tui` dan `pkg/term` milik Krewire sendiri, memastikan nol dependensi eksternal, waktu mulai instan (<2 milidetik), dan disiplin kode keluar POSIX yang konsisten.
+`krew` dibangun secara langsung menggunakan pustaka `tui` dan `tui/term` milik Krewire sendiri, memastikan nol dependensi eksternal, waktu mulai instan (<2 milidetik), dan disiplin kode keluar POSIX yang konsisten.
 
 ---
 
